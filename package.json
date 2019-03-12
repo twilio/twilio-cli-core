@@ -1,0 +1,50 @@
+{
+  "name": "@twilio/cli-core",
+  "description": "Core functionality for the Twilio CLI.",
+  "version": "0.1.2",
+  "author": "Twilio @twilio",
+  "bugs": "https://github.com/twilio/twilio-cli/issues",
+  "dependencies": {
+    "@oclif/command": "^1.4.36",
+    "@oclif/config": "^1.6.33",
+    "chalk": "^2.4.1",
+    "columnify": "^1.5.4",
+    "fs-extra": "^7.0.0",
+    "inquirer": "^6.1.0",
+    "keytar": "^4.2.1",
+    "shelljs": "^0.8.2",
+    "tsv": "^0.2.0",
+    "twilio": "^3.19.1"
+  },
+  "devDependencies": {
+    "@oclif/test": "^1.1.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-oclif": "^1.5.1",
+    "eslint-plugin-mocha": "^5.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.3.0",
+    "sinon": "^6.3.4",
+    "tmp": "0.0.33"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/twilio/twilio-cli",
+  "keywords": [
+    "twilio"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "repository": "twilio/cli-core",
+  "scripts": {
+    "posttest": "eslint --ignore-path .gitignore . && npm audit",
+    "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\""
+  }
+}
