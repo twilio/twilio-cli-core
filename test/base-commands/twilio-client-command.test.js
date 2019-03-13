@@ -1,8 +1,7 @@
-/* eslint no-unused-expressions: 0 */
 const sinon = require('sinon');
-const { expect, test, constants } = require('../test');
+const { expect, test, constants } = require('@twilio/cli-test');
 const TwilioClientCommand = require('../../src/base-commands/twilio-client-command');
-const { ConfigData } = require('../../src/services/config');
+const { Config, ConfigData } = require('../../src/services/config');
 
 describe('base-commands', () => {
   describe('twilio-client-command', () => {
@@ -16,7 +15,7 @@ describe('base-commands', () => {
             ctx.userConfig.addProject('default', constants.FAKE_ACCOUNT_SID);
           }
         })
-        .twilioCliEnv()
+        .twilioCliEnv(Config)
         .stderr()
         .do(async ctx => {
           ctx.testCmd = new TwilioClientCommand(

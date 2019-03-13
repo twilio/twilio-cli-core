@@ -1,7 +1,8 @@
 const path = require('path');
-const { expect, test } = require('../test');
+const { expect, test } = require('@twilio/cli-test');
 const BaseCommand = require('../../src/base-commands/base-command');
 const { Logger, LoggingLevel } = require('../../src/services/logging');
+const { Config } = require('../../src/services/config');
 
 const baseCommandTest = test.twilioCliEnv().do(async ctx => {
   ctx.testCmd = new BaseCommand([], ctx.fakeConfig);
@@ -19,7 +20,7 @@ describe('base-commands', () => {
     });
 
     test
-      .twilioCliEnv()
+      .twilioCliEnv(Config)
       .stderr()
       .do(async ctx => {
         ctx.testCmd = new BaseCommand(['-l', 'debug'], ctx.fakeConfig);
@@ -56,7 +57,7 @@ describe('base-commands', () => {
       });
 
       test
-        .twilioCliEnv()
+        .twilioCliEnv(Config)
         .do(async ctx => {
           ctx.testCmd = new BaseCommand(['-o', 'json'], ctx.fakeConfig);
           await ctx.testCmd.run();
@@ -70,7 +71,7 @@ describe('base-commands', () => {
         });
 
       test
-        .twilioCliEnv()
+        .twilioCliEnv(Config)
         .do(async ctx => {
           ctx.testCmd = new BaseCommand(['-o', 'tsv'], ctx.fakeConfig);
           await ctx.testCmd.run();

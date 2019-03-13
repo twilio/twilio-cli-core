@@ -1,4 +1,4 @@
-const { expect, test } = require('../test');
+const { expect, test } = require('@twilio/cli-test');
 const CLIRequestClient = require('../../src/services/cli-http-client');
 const { Logger, LoggingLevel } = require('../../src/services/logging');
 
