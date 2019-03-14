@@ -15,12 +15,13 @@ describe('services', () => {
       });
       expect(client.commandName).to.equal('blah');
       const response = await client.request({
-        method: 'GET',
+        method: 'POST',
         uri: 'https://foo.com/bar',
         username: 'AC1234',
         password: 'aaaaaaaaa',
         headers: { 'User-Agent': 'test' },
-        params: { x: 1, y: 2 }
+        params: { x: 1, y: 2 },
+        data: { foo: 'bar' }
       });
 
       expect(response.statusCode).to.equal(200);

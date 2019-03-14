@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@oclif/test": "^1.1.0",
-    "@twilio/cli-test": "^0.1.2",
+    "@twilio/cli-test": "git+ssh://git@code.hq.twilio.com:twilio/cli-test.git",
     "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-config-oclif": "^1.5.1",
