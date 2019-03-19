@@ -49,7 +49,7 @@ class CLIRequestClient {
       headers.Authorization = 'Basic ' + b64Auth;
     }
 
-    const componentInfo = headers['User-Agent']
+    const componentInfo = (headers['User-Agent'] || '')
       .replace(' (', '|')
       .replace(')', '')
       .split('|');
