@@ -37,7 +37,7 @@ class BaseCommand extends Command {
     this.userConfig = await this.configFile.load();
   }
 
-  output(fullData, properties) {
+  output(fullData, properties, options) {
     const dataArray = fullData.constructor === Array ? fullData : [fullData];
     const invalidPropertyNames = new Set();
     let limitedData = null;
@@ -63,7 +63,7 @@ class BaseCommand extends Command {
       }
     }
     const processOutput = OutputFormats[this.flags['output-format']];
-    process.stdout.write(processOutput(dataArray, limitedData || dataArray) + '\n');
+    process.stdout.write(processOutput(dataArray, limitedData || dataArray, options) + '\n');
   }
 }
 

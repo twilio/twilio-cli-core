@@ -7,6 +7,7 @@ const CLIRequestClient = require('../services/cli-http-client');
 class TwilioClientCommand extends BaseCommand {
   constructor(argv, config, secureStorage) {
     super(argv, config, secureStorage);
+    this.httpClient = undefined;
     this.twilioClient = undefined;
   }
 
@@ -35,9 +36,10 @@ class TwilioClientCommand extends BaseCommand {
       return;
     }
 
+    this.httpClient = new CLIRequestClient(this.id, this.logger);
     this.twilioClient = twilio(apiKey, apiSecret, {
       accountSid: this.currentProject.accountSid,
-      httpClient: new CLIRequestClient(this.id, this.logger)
+      httpClient: this.httpClient
     });
   }
 

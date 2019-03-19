@@ -13,7 +13,7 @@ function headingTransform(heading) {
   return chalk.bold(heading);
 }
 
-module.exports = (fullData, limitedData) => {
+module.exports = (fullData, limitedData, options) => {
   if (limitedData.length === 0) {
     return '';
   }
@@ -25,8 +25,15 @@ module.exports = (fullData, limitedData) => {
       return map;
     }, {});
 
-  return columnify(limitedData, {
-    columnSplitter: '  ',
-    config: columns
-  });
+  options = options || {};
+  return columnify(
+    limitedData,
+    Object.assign(
+      {
+        columnSplitter: '  ',
+        config: columns
+      },
+      options
+    )
+  );
 };
