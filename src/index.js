@@ -6,6 +6,7 @@ module.exports = {
   services: {
     CLIRequestClient: require('./services/cli-http-client'),
     config: require('./services/config'),
+    JSUtils: require('./services/javascript-utilities'),
     logging: require('./services/logging')
   }
 };
