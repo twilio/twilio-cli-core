@@ -4,6 +4,7 @@ const twilio = require('twilio');
 const BaseCommand = require('./base-command');
 const CLIRequestClient = require('../services/cli-http-client');
 const { DEFAULT_PROJECT } = require('../services/config');
+const { HELP_ENVIRONMENT_VARIABLES } = require('../services/help-messages');
 
 class TwilioClientCommand extends BaseCommand {
   constructor(argv, config, secureStorage) {
@@ -18,15 +19,18 @@ class TwilioClientCommand extends BaseCommand {
     this.logger.debug('Using project: ' + this.flags.project);
     this.currentProject = this.userConfig.getProjectById(this.flags.project);
 
-    const reportUnconfigured = verb => {
+    const reportUnconfigured = (verb, infoMessage) => {
       const projParam = this.flags.project === DEFAULT_PROJECT ? '' : ' -p ' + this.flags.project;
       this.logger.error('To ' + verb + ' project, run: ' + chalk.whiteBright('twilio login' + projParam));
+      if (infoMessage) {
+        this.logger.info(infoMessage);
+      }
       this.exit(1);
     };
 
     if (!this.currentProject) {
       this.logger.error('No project "' + this.flags.project + '" configured.');
-      reportUnconfigured('add');
+      reportUnconfigured('add', '\n' + HELP_ENVIRONMENT_VARIABLES);
       return;
     }
 

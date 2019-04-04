@@ -49,6 +49,7 @@ describe('base-commands', () => {
       expect(ctx.stderr).to.contain('Using project: default');
       expect(ctx.stderr).to.contain('No project "default" configured');
       expect(ctx.stderr).to.contain('To add project, run: twilio login');
+      expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       expect(ctx.testCmd.exit.calledWith(1)).to.be.true;
     });
 
@@ -58,6 +59,7 @@ describe('base-commands', () => {
       expect(ctx.stderr).to.contain('Using project: alt');
       expect(ctx.stderr).to.contain('No project "alt" configured');
       expect(ctx.stderr).to.contain('To add project, run: twilio login -p alt');
+      expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       expect(ctx.testCmd.exit.calledWith(1)).to.be.true;
     });
 
