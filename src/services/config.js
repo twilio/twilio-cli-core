@@ -2,6 +2,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const shell = require('shelljs');
 
+const DEFAULT_PROJECT = 'default';
+
 class ConfigDataProject {
   constructor(id, accountSid) {
     this.id = id;
@@ -14,10 +16,37 @@ class ConfigData {
     this.projects = [];
   }
 
+  getProjectFromEnvironment() {
+    const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_API_KEY, TWILIO_API_SECRET } = process.env;
+    if (!TWILIO_ACCOUNT_SID) return;
+
+    if (TWILIO_API_KEY && TWILIO_API_SECRET)
+      return {
+        // eslint-disable-next-line no-template-curly-in-string
+        id: '${TWILIO_API_KEY}/${TWILIO_API_SECRET}',
+        accountSid: TWILIO_ACCOUNT_SID,
+        apiKey: TWILIO_API_KEY,
+        apiSecret: TWILIO_API_SECRET
+      };
+
+    if (TWILIO_AUTH_TOKEN)
+      return {
+        // eslint-disable-next-line no-template-curly-in-string
+        id: '${TWILIO_ACCOUNT_SID}/${TWILIO_AUTH_TOKEN}',
+        accountSid: TWILIO_ACCOUNT_SID,
+        apiKey: TWILIO_ACCOUNT_SID,
+        apiSecret: TWILIO_AUTH_TOKEN
+      };
+  }
+
   getProjectById(projectId) {
-    return this.projects.find(project => {
-      return project.id === projectId;
-    });
+    let project = this.projects.find(project => project.id === projectId);
+
+    if (projectId === DEFAULT_PROJECT && !project) {
+      project = this.getProjectFromEnvironment();
+    }
+
+    return project;
   }
 
   removeProject(projectToRemove) {
@@ -66,4 +95,4 @@ class Config {
   }
 }
 
-module.exports = { Config, ConfigData };
+module.exports = { Config, ConfigData, DEFAULT_PROJECT };

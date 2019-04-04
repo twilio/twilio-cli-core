@@ -3,6 +3,7 @@ const { flags } = require('@oclif/command');
 const twilio = require('twilio');
 const BaseCommand = require('./base-command');
 const CLIRequestClient = require('../services/cli-http-client');
+const { DEFAULT_PROJECT } = require('../services/config');
 
 class TwilioClientCommand extends BaseCommand {
   constructor(argv, config, secureStorage) {
@@ -18,7 +19,7 @@ class TwilioClientCommand extends BaseCommand {
     this.currentProject = this.userConfig.getProjectById(this.flags.project);
 
     const reportUnconfigured = verb => {
-      const projParam = this.flags.project === 'default' ? '' : ' -p ' + this.flags.project;
+      const projParam = this.flags.project === DEFAULT_PROJECT ? '' : ' -p ' + this.flags.project;
       this.logger.error('To ' + verb + ' project, run: ' + chalk.whiteBright('twilio login' + projParam));
       this.exit(1);
     };
@@ -29,15 +30,19 @@ class TwilioClientCommand extends BaseCommand {
       return;
     }
 
-    const { apiKey, apiSecret } = await this.secureStorage.getCredentials(this.currentProject.id);
-    if (apiKey === 'error') {
-      this.logger.error('Could not get credentials for project "' + this.flags.project + '".');
-      reportUnconfigured('reconfigure');
-      return;
+    if (!this.currentProject.apiKey || !this.currentProject.apiSecret) {
+      const creds = await this.secureStorage.getCredentials(this.currentProject.id);
+      if (creds.apiKey === 'error') {
+        this.logger.error('Could not get credentials for project "' + this.flags.project + '".');
+        reportUnconfigured('reconfigure');
+        return;
+      }
+      this.currentProject.apiKey = creds.apiKey;
+      this.currentProject.apiSecret = creds.apiSecret;
     }
 
     this.httpClient = new CLIRequestClient(this.id, this.logger);
-    this.twilioClient = twilio(apiKey, apiSecret, {
+    this.twilioClient = twilio(this.currentProject.apiKey, this.currentProject.apiSecret, {
       accountSid: this.currentProject.accountSid,
       httpClient: this.httpClient
     });
@@ -92,7 +97,7 @@ TwilioClientCommand.flags = Object.assign(
   {
     project: flags.string({
       char: 'p',
-      default: 'default',
+      default: DEFAULT_PROJECT,
       description: 'Shorthand identifier for your Twilio project'
     })
   },

@@ -1,7 +1,7 @@
 const sinon = require('sinon');
 const { expect, test, constants } = require('@twilio/cli-test');
 const TwilioClientCommand = require('../../src/base-commands/twilio-client-command');
-const { Config, ConfigData } = require('../../src/services/config');
+const { Config, ConfigData, DEFAULT_PROJECT } = require('../../src/services/config');
 
 describe('base-commands', () => {
   describe('twilio-client-command', () => {
@@ -12,7 +12,7 @@ describe('base-commands', () => {
           if (setUpUserConfig) {
             setUpUserConfig(ctx.userConfig);
           } else {
-            ctx.userConfig.addProject('default', constants.FAKE_ACCOUNT_SID);
+            ctx.userConfig.addProject(DEFAULT_PROJECT, constants.FAKE_ACCOUNT_SID);
           }
         })
         .twilioCliEnv(Config)
