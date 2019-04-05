@@ -12,6 +12,21 @@ describe('services', () => {
         expect(project).to.equal(undefined);
       });
 
+      test.it('should return default project if it exists, even with env vars', async () => {
+        const configData = new ConfigData();
+        configData.addProject('default', constants.FAKE_ACCOUNT_SID);
+
+        process.env.TWILIO_ACCOUNT_SID = 'ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+        process.env.TWILIO_AUTH_TOKEN = 'api key should take precedence';
+        process.env.TWILIO_API_KEY = constants.FAKE_API_KEY;
+        process.env.TWILIO_API_SECRET = constants.FAKE_API_SECRET;
+
+        const project = configData.getProjectById(DEFAULT_PROJECT);
+        expect(project.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(project.apiKey).to.equal(undefined);
+        expect(project.apiSecret).to.equal(undefined);
+      });
+
       test.it('should return project populated from AccountSid/AuthToken env vars', async () => {
         const configData = new ConfigData();
         process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
