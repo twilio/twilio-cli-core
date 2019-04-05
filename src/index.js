@@ -8,5 +8,6 @@ module.exports = {
     config: require('./services/config'),
     JSUtils: require('./services/javascript-utilities'),
     logging: require('./services/logging')
-  }
+  },
+  configureEnv: require('./services/env')
 };
