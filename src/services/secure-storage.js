@@ -1,7 +1,17 @@
 const keytar = require('keytar');
 const TWILIO_CLI_IDENTIFIER = 'twilio-cli';
 
+const PLATFORM_DESCRIPTIONS = {
+  darwin: 'in your keychain',
+  win32: 'in the Windows Credential Vault',
+  linux: 'using libsecret'
+};
+
 class SecureStorage {
+  constructor(platform) {
+    this.platform = platform || process.platform;
+  }
+
   async saveCredentials(projectId, username, password) {
     await keytar.setPassword(TWILIO_CLI_IDENTIFIER, projectId, username + '|' + password);
   }
@@ -20,6 +30,10 @@ class SecureStorage {
       apiKey,
       apiSecret
     };
+  }
+
+  get platformDescription() {
+    return PLATFORM_DESCRIPTIONS[this.platform];
   }
 }
 
