@@ -1,7 +1,23 @@
 const keytar = require('keytar');
 const TWILIO_CLI_IDENTIFIER = 'twilio-cli';
 
+const STORAGE_LOCATIONS = {
+  KEYCHAIN: 'keychain',
+  WIN_CRED_VAULT: 'win_cred_vault',
+  LIBSECRET: 'libsecret'
+};
+
+const PLATFORM_TO_LOCATION = {
+  darwin: STORAGE_LOCATIONS.KEYCHAIN,
+  win32: STORAGE_LOCATIONS.WIN_CRED_VAULT,
+  linux: STORAGE_LOCATIONS.LIBSECRET
+};
+
 class SecureStorage {
+  constructor(platform) {
+    this.platform = platform || process.platform;
+  }
+
   async saveCredentials(projectId, username, password) {
     await keytar.setPassword(TWILIO_CLI_IDENTIFIER, projectId, username + '|' + password);
   }
@@ -21,8 +37,13 @@ class SecureStorage {
       apiSecret
     };
   }
+
+  get storageLocation() {
+    return PLATFORM_TO_LOCATION[this.platform];
+  }
 }
 
 module.exports = {
-  SecureStorage
+  SecureStorage,
+  STORAGE_LOCATIONS
 };
