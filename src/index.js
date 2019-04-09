@@ -7,7 +7,8 @@ module.exports = {
     CLIRequestClient: require('./services/cli-http-client'),
     config: require('./services/config'),
     JSUtils: require('./services/javascript-utilities'),
-    logging: require('./services/logging')
+    logging: require('./services/logging'),
+    secureStorage: require('./services/secure-storage')
   },
   configureEnv: require('./services/env')
 };
