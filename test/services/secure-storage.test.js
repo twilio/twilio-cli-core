@@ -1,31 +1,31 @@
 const { expect, test } = require('@twilio/cli-test');
-const { SecureStorage } = require('../../src/services/secure-storage');
+const { SecureStorage, STORAGE_LOCATIONS } = require('../../src/services/secure-storage');
 
 describe('services', () => {
   describe('secure-storage', () => {
-    test.it('platformDescription (Native)', () => {
+    test.it('storageLocation (Native)', () => {
       const secureStorage = new SecureStorage();
-      expect(secureStorage.platformDescription).to.not.eq(undefined);
+      expect(secureStorage.storageLocation).to.not.eq(undefined);
     });
 
-    test.it('platformDescription (Mac)', () => {
+    test.it('storageLocation (Mac)', () => {
       const secureStorage = new SecureStorage('darwin');
-      expect(secureStorage.platformDescription).to.eq('in your keychain');
+      expect(secureStorage.storageLocation).to.eq(STORAGE_LOCATIONS.KEYCHAIN);
     });
 
-    test.it('platformDescription (Windows)', () => {
+    test.it('storageLocation (Windows)', () => {
       const secureStorage = new SecureStorage('win32');
-      expect(secureStorage.platformDescription).to.eq('in the Windows Credential Vault');
+      expect(secureStorage.storageLocation).to.eq(STORAGE_LOCATIONS.WIN_CRED_VAULT);
     });
 
-    test.it('platformDescription (Linux)', () => {
+    test.it('storageLocation (Linux)', () => {
       const secureStorage = new SecureStorage('linux');
-      expect(secureStorage.platformDescription).to.eq('using libsecret');
+      expect(secureStorage.storageLocation).to.eq(STORAGE_LOCATIONS.LIBSECRET);
     });
 
-    test.it('platformDescription (OpenBSD)', () => {
+    test.it('storageLocation (OpenBSD)', () => {
       const secureStorage = new SecureStorage('openbsd');
-      expect(secureStorage.platformDescription).to.eq(undefined);
+      expect(secureStorage.storageLocation).to.eq(undefined);
     });
   });
 });

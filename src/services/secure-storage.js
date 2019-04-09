@@ -1,10 +1,16 @@
 const keytar = require('keytar');
 const TWILIO_CLI_IDENTIFIER = 'twilio-cli';
 
-const PLATFORM_DESCRIPTIONS = {
-  darwin: 'in your keychain',
-  win32: 'in the Windows Credential Vault',
-  linux: 'using libsecret'
+const STORAGE_LOCATIONS = {
+  KEYCHAIN: 'keychain',
+  WIN_CRED_VAULT: 'win_cred_vault',
+  LIBSECRET: 'libsecret'
+};
+
+const PLATFORM_TO_LOCATION = {
+  darwin: STORAGE_LOCATIONS.KEYCHAIN,
+  win32: STORAGE_LOCATIONS.WIN_CRED_VAULT,
+  linux: STORAGE_LOCATIONS.LIBSECRET
 };
 
 class SecureStorage {
@@ -32,11 +38,12 @@ class SecureStorage {
     };
   }
 
-  get platformDescription() {
-    return PLATFORM_DESCRIPTIONS[this.platform];
+  get storageLocation() {
+    return PLATFORM_TO_LOCATION[this.platform];
   }
 }
 
 module.exports = {
-  SecureStorage
+  SecureStorage,
+  STORAGE_LOCATIONS
 };
