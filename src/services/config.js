@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const shell = require('shelljs');
-const MessageTemplates = require('./message-templates');
+const MessageTemplates = require('./messaging/templates');
 
 const DEFAULT_PROJECT = 'default';
 

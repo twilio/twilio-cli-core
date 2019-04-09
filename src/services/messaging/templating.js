@@ -19,9 +19,6 @@ const templatize = (templateStrings, ...templateKeys) => {
   };
 };
 
-const configSaved = templatize`twilio-cli configuration saved to "${'path'}"`;
-
 module.exports = {
-  templatize,
-  configSaved
+  templatize
 };

@@ -1,7 +1,7 @@
 const path = require('path');
 const { expect, test } = require('@twilio/cli-test');
 const BaseCommand = require('../../src/base-commands/base-command');
-const { Logger, LoggingLevel } = require('../../src/services/logging');
+const { Logger, LoggingLevel } = require('../../src/services/messaging/logging');
 const { Config } = require('../../src/services/config');
 
 const baseCommandTest = test.twilioCliEnv().do(async ctx => {

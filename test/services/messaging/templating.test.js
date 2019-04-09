@@ -1,11 +1,11 @@
 const { expect, test } = require('@twilio/cli-test');
-const { templatize } = require('../../src/services/message-templates');
+const { templatize } = require('../../../src/services/messaging/templating');
 
 const EXPECTED_MESSAGE = 'Indiana Jones and the Template of Doom';
 
 describe('services', () => {
-  describe('message-templates', () => {
-    describe('templatize', () => {
+  describe('messaging', () => {
+    describe('templating.templatize', () => {
       test.it('should handle a string without params', () => {
         const template = templatize`Indiana Jones and the Template of Doom`;
 

@@ -4,7 +4,7 @@ const twilio = require('twilio');
 const BaseCommand = require('./base-command');
 const CLIRequestClient = require('../services/cli-http-client');
 const { DEFAULT_PROJECT } = require('../services/config');
-const { HELP_ENVIRONMENT_VARIABLES } = require('../services/help-messages');
+const { HELP_ENVIRONMENT_VARIABLES } = require('../services/messaging/help-messages');
 
 class TwilioClientCommand extends BaseCommand {
   constructor(argv, config, secureStorage) {
