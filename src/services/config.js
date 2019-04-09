@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
-const shell = require('shelljs');
+const MessageTemplates = require('./message-templates');
 
 const DEFAULT_PROJECT = 'default';
 
@@ -90,8 +90,13 @@ class Config {
   }
 
   async save(userConfig) {
-    shell.mkdir('-p', this.configDir);
+    if (!fs.existsSync(this.configDir)) {
+      fs.mkdirSync(this.configDir, { recursive: true });
+    }
+
     await fs.writeJSON(this.filePath, userConfig, { flag: 'w' });
+
+    return MessageTemplates.configSaved({ path: this.filePath });
   }
 }
 

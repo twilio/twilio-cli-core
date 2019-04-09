@@ -7,18 +7,18 @@ const configureEnv = require('../../src/services/env');
 const ORIGINAL_ENV = Object.assign({}, process.env);
 const DEFAULT_DIR = path.join('home', '.twilio');
 
-beforeEach(() => {
-  process.env.HOME = 'home';
-  process.env.USERPROFILE = 'user-profile';
-});
-
-afterEach(() => {
-  process.env = ORIGINAL_ENV;
-});
-
 describe('services', () => {
   describe('env', () => {
     describe('configureEnv', () => {
+      beforeEach(() => {
+        process.env.HOME = 'home';
+        process.env.USERPROFILE = 'user-profile';
+      });
+
+      afterEach(() => {
+        process.env = ORIGINAL_ENV;
+      });
+
       test.it('should default all dir vars', () => {
         configureEnv();
 
