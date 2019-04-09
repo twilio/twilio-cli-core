@@ -1,6 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const shell = require('shelljs');
+const MessageTemplates = require('./messaging/templates');
 
 const DEFAULT_PROJECT = 'default';
 
@@ -90,8 +91,11 @@ class Config {
   }
 
   async save(userConfig) {
+    // Migrate to 'fs.mkdirSync' with 'recursive: true' when no longer supporting Node8.
     shell.mkdir('-p', this.configDir);
     await fs.writeJSON(this.filePath, userConfig, { flag: 'w' });
+
+    return MessageTemplates.configSaved({ path: this.filePath });
   }
 }
 

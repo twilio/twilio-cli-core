@@ -1,5 +1,8 @@
+const tmp = require('tmp');
+const path = require('path');
+
 const { expect, test, constants } = require('@twilio/cli-test');
-const { ConfigData, DEFAULT_PROJECT } = require('../../src/services/config');
+const { Config, ConfigData, DEFAULT_PROJECT } = require('../../src/services/config');
 
 const FAKE_AUTH_TOKEN = '1234567890abcdefghijklmnopqrstuvwxyz';
 
@@ -60,6 +63,32 @@ describe('services', () => {
 
         const project = configData.getProjectById('my-other-project');
         expect(project).to.equal(undefined);
+      });
+    });
+
+    describe('Config', () => {
+      const tempConfigDir = tmp.dirSync({ unsafeCleanup: true });
+
+      test.it('saves and loads user configuration', async () => {
+        const config = new Config(tempConfigDir.name);
+        const userConfig = await config.load();
+        userConfig.addProject('default', constants.FAKE_ACCOUNT_SID);
+
+        const saveMessage = await config.save(userConfig);
+        expect(saveMessage).to.contain(`${tempConfigDir.name}/config.json`);
+
+        const loadedConfig = await config.load();
+        expect(loadedConfig).to.deep.equal(userConfig);
+      });
+
+      test.it('works with config dirs that did not exist', async () => {
+        const nestedConfig = path.join(tempConfigDir.name, 'some', 'nested', 'path');
+
+        const config = new Config(nestedConfig);
+        const userConfig = await config.load();
+
+        const saveMessage = await config.save(userConfig);
+        expect(saveMessage).to.contain(`${nestedConfig}/config.json`);
       });
     });
   });

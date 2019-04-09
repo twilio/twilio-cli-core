@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const { Command, flags } = require('@oclif/command');
 const { Config, ConfigData } = require('../services/config');
-const { Logger, LoggingLevel } = require('../services/logging');
+const { Logger, LoggingLevel } = require('../services/messaging/logging');
 const { OutputFormats } = require('../services/output-formats');
 const { SecureStorage } = require('../services/secure-storage');
 

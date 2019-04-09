@@ -1,6 +1,6 @@
 const { expect, test } = require('@twilio/cli-test');
 const CLIRequestClient = require('../../src/services/cli-http-client');
-const { Logger, LoggingLevel } = require('../../src/services/logging');
+const { Logger, LoggingLevel } = require('../../src/services/messaging/logging');
 
 describe('services', () => {
   describe('cli-http-client', () => {
