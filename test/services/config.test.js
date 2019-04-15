@@ -75,7 +75,7 @@ describe('services', () => {
         userConfig.addProject('default', constants.FAKE_ACCOUNT_SID);
 
         const saveMessage = await config.save(userConfig);
-        expect(saveMessage).to.contain(`${tempConfigDir.name}/config.json`);
+        expect(saveMessage).to.contain(`${tempConfigDir.name}${path.sep}config.json`);
 
         const loadedConfig = await config.load();
         expect(loadedConfig).to.deep.equal(userConfig);
@@ -88,7 +88,7 @@ describe('services', () => {
         const userConfig = await config.load();
 
         const saveMessage = await config.save(userConfig);
-        expect(saveMessage).to.contain(`${nestedConfig}/config.json`);
+        expect(saveMessage).to.contain(`${nestedConfig}${path.sep}config.json`);
       });
     });
   });
