@@ -21,7 +21,7 @@ class TwilioClientCommand extends BaseCommand {
 
     const reportUnconfigured = (verb, infoMessage) => {
       const projParam = this.flags.project === DEFAULT_PROJECT ? '' : ' -p ' + this.flags.project;
-      this.logger.error('To ' + verb + ' project, run: ' + chalk.whiteBright('twilio login' + projParam));
+      this.logger.error('To ' + verb + ' project, run: ' + chalk.whiteBright('twilio project:add' + projParam));
       if (infoMessage) {
         this.logger.info(infoMessage);
       }
@@ -102,7 +102,7 @@ TwilioClientCommand.flags = Object.assign(
     project: flags.string({
       char: 'p',
       default: DEFAULT_PROJECT,
-      description: 'Shorthand identifier for your Twilio project'
+      description: 'Shorthand identifier for your Twilio project.'
     })
   },
   BaseCommand.flags

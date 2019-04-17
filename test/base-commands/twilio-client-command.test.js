@@ -48,7 +48,7 @@ describe('base-commands', () => {
       await ctx.testCmd.run();
       expect(ctx.stderr).to.contain('Using project: default');
       expect(ctx.stderr).to.contain('No project "default" configured');
-      expect(ctx.stderr).to.contain('To add project, run: twilio login');
+      expect(ctx.stderr).to.contain('To add project, run: twilio project:add');
       expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       expect(ctx.testCmd.exit.calledWith(1)).to.be.true;
     });
@@ -58,7 +58,7 @@ describe('base-commands', () => {
       await ctx.testCmd.run();
       expect(ctx.stderr).to.contain('Using project: alt');
       expect(ctx.stderr).to.contain('No project "alt" configured');
-      expect(ctx.stderr).to.contain('To add project, run: twilio login -p alt');
+      expect(ctx.stderr).to.contain('To add project, run: twilio project:add -p alt');
       expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       expect(ctx.testCmd.exit.calledWith(1)).to.be.true;
     });
@@ -82,7 +82,7 @@ describe('base-commands', () => {
       ctx.testCmd.exit = sinon.fake();
       await ctx.testCmd.run();
       expect(ctx.stderr).to.contain('Could not get credentials for project "twilio-cli-unit-testing"');
-      expect(ctx.stderr).to.contain('To reconfigure project, run: twilio login -p twilio-cli-unit-testing');
+      expect(ctx.stderr).to.contain('To reconfigure project, run: twilio project:add -p twilio-cli-unit-testing');
       expect(ctx.testCmd.exit.calledWith(1)).to.be.true;
     });
 
