@@ -41,7 +41,11 @@ class ConfigData {
   }
 
   getProjectById(projectId) {
-    let project = this.projects.find(project => project.id === projectId);
+    return this.projects.find(project => project.id === projectId);
+  }
+
+  getProjectByIdWithEnvFallback(projectId) {
+    let project = this.getProjectById(projectId);
 
     if (projectId === DEFAULT_PROJECT && !project) {
       project = this.getProjectFromEnvironment();

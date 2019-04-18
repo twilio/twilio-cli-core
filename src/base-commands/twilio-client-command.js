@@ -17,7 +17,7 @@ class TwilioClientCommand extends BaseCommand {
     await super.run();
 
     this.logger.debug('Using project: ' + this.flags.project);
-    this.currentProject = this.userConfig.getProjectById(this.flags.project);
+    this.currentProject = this.userConfig.getProjectByIdWithEnvFallback(this.flags.project);
 
     const reportUnconfigured = (verb, infoMessage) => {
       const projParam = this.flags.project === DEFAULT_PROJECT ? '' : ' -p ' + this.flags.project;
