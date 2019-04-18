@@ -1,12 +1,12 @@
-# Twilio CLI Core
+# twilio-cli Core
 
-This module contains core functionality for the Twilio CLI.
+This module contains core functionality for the twilio-cli.
 
 ## Base commands
 
 ### BaseCommand
 
-The base command class for _all_ Twilio CLI commands. Includes support for confiuration management, logging, and output formatting.
+The base command class for _all_ twilio-cli commands. Includes support for configuration management, logging, and output formatting.
 
 ### TwilioClientCommand
 
