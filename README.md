@@ -1,4 +1,4 @@
-# twilio-cli Core
+# twilio-cli-core
 
 This module contains core functionality for the twilio-cli.
 
