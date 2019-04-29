@@ -8,6 +8,27 @@ const FAKE_AUTH_TOKEN = '1234567890abcdefghijklmnopqrstuvwxyz';
 
 describe('services', () => {
   describe('config', () => {
+    describe('ConfigData.addProject', () => {
+      test.it('should add a new project', () => {
+        const configData = new ConfigData();
+        configData.addProject('default', constants.FAKE_ACCOUNT_SID, 'dev');
+
+        expect(configData.projects[0].id).to.equal('default');
+        expect(configData.projects[0].accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(configData.projects[0].region).to.equal('dev');
+      });
+
+      test.it('should update an existing project', () => {
+        const configData = new ConfigData();
+        configData.addProject('default', constants.FAKE_ACCOUNT_SID, 'dev');
+        configData.addProject('default', 'new-account-sid');
+
+        expect(configData.projects[0].id).to.equal('default');
+        expect(configData.projects[0].accountSid).to.equal('new-account-sid');
+        expect(configData.projects[0].region).to.equal(undefined);
+      });
+    });
+
     describe('ConfigData.getProjectById', () => {
       test.it('should return undefined if no projects', () => {
         const configData = new ConfigData();
@@ -99,7 +120,7 @@ describe('services', () => {
       test.it('saves and loads user configuration', async () => {
         const config = new Config(tempConfigDir.name);
         const userConfig = await config.load();
-        userConfig.addProject('default', constants.FAKE_ACCOUNT_SID);
+        userConfig.addProject('default', constants.FAKE_ACCOUNT_SID, 'stage');
 
         const saveMessage = await config.save(userConfig);
         expect(saveMessage).to.contain(`${tempConfigDir.name}${path.sep}config.json`);

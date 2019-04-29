@@ -48,6 +48,7 @@ class TwilioClientCommand extends BaseCommand {
     this.httpClient = new CLIRequestClient(this.id, this.logger);
     this.twilioClient = twilio(this.currentProject.apiKey, this.currentProject.apiSecret, {
       accountSid: this.currentProject.accountSid,
+      region: this.currentProject.region,
       httpClient: this.httpClient
     });
   }
