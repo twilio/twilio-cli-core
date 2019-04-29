@@ -6,9 +6,10 @@ const MessageTemplates = require('./messaging/templates');
 const DEFAULT_PROJECT = 'default';
 
 class ConfigDataProject {
-  constructor(id, accountSid) {
+  constructor(id, accountSid, region) {
     this.id = id;
     this.accountSid = accountSid;
+    this.region = region;
   }
 }
 
@@ -60,19 +61,20 @@ class ConfigData {
     });
   }
 
-  addProject(id, accountSid) {
+  addProject(id, accountSid, region) {
     const existing = this.getProjectById(id);
     if (existing) {
       existing.accountSid = accountSid;
+      existing.region = region;
     } else {
-      this.projects.push(new ConfigDataProject(id, accountSid));
+      this.projects.push(new ConfigDataProject(id, accountSid, region));
     }
   }
 
   loadFromObject(configObj) {
     configObj.projects = configObj.projects || [];
     configObj.projects.forEach(project => {
-      this.addProject(project.id, project.accountSid);
+      this.addProject(project.id, project.accountSid, project.region);
     });
   }
 }

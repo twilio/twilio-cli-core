@@ -41,6 +41,7 @@ describe('base-commands', () => {
       expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
       expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
       expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'default');
+      expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
     });
 
     setUpTest(['-l', 'debug'], () => 0).it('should fail for a non-existant default project', async ctx => {
@@ -64,12 +65,13 @@ describe('base-commands', () => {
     });
 
     setUpTest(['-p', 'twilio-cli-unit-testing'], userConfig => {
-      userConfig.addProject('twilio-cli-unit-testing', constants.FAKE_ACCOUNT_SID);
+      userConfig.addProject('twilio-cli-unit-testing', constants.FAKE_ACCOUNT_SID, 'stage');
     }).it('should create a client for a non-default project', async ctx => {
       await ctx.testCmd.run();
       expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
       expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
       expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'twilio-cli-unit-testing');
+      expect(ctx.testCmd.twilioClient.region).to.equal('stage');
     });
 
     setUpTest(
