@@ -1,6 +1,5 @@
 const chalk = require('chalk');
 const { flags } = require('@oclif/command');
-const twilio = require('twilio');
 const BaseCommand = require('./base-command');
 const CLIRequestClient = require('../services/cli-http-client');
 const { DEFAULT_PROJECT } = require('../services/config');
@@ -46,7 +45,7 @@ class TwilioClientCommand extends BaseCommand {
     }
 
     this.httpClient = new CLIRequestClient(this.id, this.logger);
-    this.twilioClient = twilio(this.currentProject.apiKey, this.currentProject.apiSecret, {
+    this.twilioClient = require('twilio')(this.currentProject.apiKey, this.currentProject.apiSecret, {
       accountSid: this.currentProject.accountSid,
       region: this.currentProject.region,
       httpClient: this.httpClient
