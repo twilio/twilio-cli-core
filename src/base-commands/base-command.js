@@ -1,17 +1,23 @@
-const inquirer = require('inquirer');
 const { Command, flags } = require('@oclif/command');
 const { Config, ConfigData } = require('../services/config');
 const { Logger, LoggingLevel } = require('../services/messaging/logging');
 const { OutputFormats } = require('../services/output-formats');
 const { SecureStorage } = require('../services/secure-storage');
+let inquirer; // We'll lazy-load this only when it's needed.
 
 class BaseCommand extends Command {
   constructor(argv, config, secureStorage) {
     super(argv, config);
     this.configFile = new Config('');
     this.userConfig = new ConfigData();
-    this.inquirer = inquirer;
     this.secureStorage = secureStorage || new SecureStorage();
+  }
+
+  get inquirer() {
+    if (!inquirer) {
+      inquirer = require('inquirer');
+    }
+    return inquirer;
   }
 
   async run() {
