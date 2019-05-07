@@ -44,20 +44,18 @@ describe('base-commands', () => {
       expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
     });
 
-    setUpTest(['-l', 'debug'], () => 0).it('should fail for a non-existant default project', async ctx => {
+    setUpTest(['-l', 'debug'], () => 0).it('should fail for a non-existent default project', async ctx => {
       ctx.testCmd.exit = sinon.fake();
       await ctx.testCmd.run();
-      expect(ctx.stderr).to.contain('Using project: default');
       expect(ctx.stderr).to.contain('No project "default" configured');
       expect(ctx.stderr).to.contain('To add project, run: twilio project:add');
       expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       expect(ctx.testCmd.exit.calledWith(1)).to.be.true;
     });
 
-    setUpTest(['-p', 'alt', '-l', 'debug']).it('should fail for a non-existant project', async ctx => {
+    setUpTest(['-p', 'alt', '-l', 'debug']).it('should fail for a non-existent project', async ctx => {
       ctx.testCmd.exit = sinon.fake();
       await ctx.testCmd.run();
-      expect(ctx.stderr).to.contain('Using project: alt');
       expect(ctx.stderr).to.contain('No project "alt" configured');
       expect(ctx.stderr).to.contain('To add project, run: twilio project:add -p alt');
       expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
