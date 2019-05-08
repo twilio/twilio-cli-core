@@ -5,6 +5,9 @@ const { OutputFormats } = require('../services/output-formats');
 const { SecureStorage } = require('../services/secure-storage');
 let inquirer; // We'll lazy-load this only when it's needed.
 
+const DEFAULT_LOG_LEVEL = 'info';
+const DEFAULT_OUTPUT_FORMAT = 'columns';
+
 class BaseCommand extends Command {
   constructor(argv, config, secureStorage) {
     super(argv, config);
@@ -26,8 +29,10 @@ class BaseCommand extends Command {
     this.flags = flags;
     await this.loadConfig();
 
+    this.outputProcessor = OutputFormats[this.flags['output-format'] || DEFAULT_OUTPUT_FORMAT];
+
     this.logger = new Logger({
-      level: LoggingLevel[flags['log-level']]
+      level: LoggingLevel[flags['log-level'] || DEFAULT_LOG_LEVEL]
     });
 
     this.logger.debug('Config File: ' + this.configFile.filePath);
@@ -68,22 +73,21 @@ class BaseCommand extends Command {
         });
       }
     }
-    const processOutput = OutputFormats[this.flags['output-format']];
-    process.stdout.write(processOutput(dataArray, limitedData || dataArray, options) + '\n');
+    process.stdout.write(this.outputProcessor(dataArray, limitedData || dataArray, options) + '\n');
   }
 }
 
 BaseCommand.flags = {
   'log-level': flags.enum({
     char: 'l',
-    default: 'info',
+    default: DEFAULT_LOG_LEVEL,
     options: Object.keys(LoggingLevel),
     description: 'Level of logging messages.'
   }),
 
   'output-format': flags.enum({
     char: 'o',
-    default: 'columns',
+    default: DEFAULT_OUTPUT_FORMAT,
     options: Object.keys(OutputFormats),
     description: 'Format of command output.'
   })

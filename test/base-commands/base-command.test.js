@@ -2,6 +2,7 @@ const path = require('path');
 const { expect, test } = require('@twilio/cli-test');
 const BaseCommand = require('../../src/base-commands/base-command');
 const { Logger, LoggingLevel } = require('../../src/services/messaging/logging');
+const { OutputFormats } = require('../../src/services/output-formats');
 const { Config } = require('../../src/services/config');
 
 const baseCommandTest = test.twilioCliEnv().do(async ctx => {
@@ -9,10 +10,26 @@ const baseCommandTest = test.twilioCliEnv().do(async ctx => {
   await ctx.testCmd.run();
 });
 
+const childCommandTest = test.twilioCliEnv().do(async ctx => {
+  class ChildCommand extends BaseCommand {
+  }
+
+  ctx.testCmd = new ChildCommand([], ctx.fakeConfig);
+  await ctx.testCmd.run();
+});
+
 describe('base-commands', () => {
   describe('base-command', () => {
     baseCommandTest.stderr().it('should initialize properly', async ctx => {
-      expect(ctx.testCmd.flags['output-format']).to.equal('columns');
+      expect(ctx.testCmd.outputProcessor).to.equal(OutputFormats.columns);
+      expect(ctx.testCmd.logger).to.be.an.instanceOf(Logger);
+      expect(ctx.testCmd.logger.config.level).to.equal(LoggingLevel.info);
+      expect(ctx.testCmd.inquirer).to.not.equal(undefined);
+      expect(ctx.stderr).to.equal('');
+    });
+
+    childCommandTest.stderr().it('should initialize properly from children', async ctx => {
+      expect(ctx.testCmd.outputProcessor).to.equal(OutputFormats.columns);
       expect(ctx.testCmd.logger).to.be.an.instanceOf(Logger);
       expect(ctx.testCmd.logger.config.level).to.equal(LoggingLevel.info);
       expect(ctx.testCmd.inquirer).to.not.equal(undefined);
