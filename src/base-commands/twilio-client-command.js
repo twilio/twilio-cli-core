@@ -15,11 +15,10 @@ class TwilioClientCommand extends BaseCommand {
   async run() {
     await super.run();
 
-    this.logger.debug('Using project: ' + this.flags.project);
-    this.currentProject = this.userConfig.getProjectByIdWithEnvFallback(this.flags.project);
+    this.currentProject = this.userConfig.getProjectById(this.flags.project);
 
     const reportUnconfigured = (verb, infoMessage) => {
-      const projParam = this.flags.project === DEFAULT_PROJECT ? '' : ' -p ' + this.flags.project;
+      const projParam = this.flags.project ? ' -p ' + this.flags.project : '';
       this.logger.error('To ' + verb + ' project, run: ' + chalk.whiteBright('twilio project:add' + projParam));
       if (infoMessage) {
         this.logger.info(infoMessage);
@@ -28,15 +27,17 @@ class TwilioClientCommand extends BaseCommand {
     };
 
     if (!this.currentProject) {
-      this.logger.error('No project "' + this.flags.project + '" configured.');
+      this.logger.error('No project "' + (this.flags.project || DEFAULT_PROJECT) + '" configured.');
       reportUnconfigured('add', '\n' + HELP_ENVIRONMENT_VARIABLES);
       return;
     }
 
+    this.logger.debug('Using project: ' + this.currentProject.id);
+
     if (!this.currentProject.apiKey || !this.currentProject.apiSecret) {
       const creds = await this.secureStorage.getCredentials(this.currentProject.id);
       if (creds.apiKey === 'error') {
-        this.logger.error('Could not get credentials for project "' + this.flags.project + '".');
+        this.logger.error('Could not get credentials for project "' + this.currentProject.id + '".');
         reportUnconfigured('reconfigure');
         return;
       }
@@ -101,7 +102,6 @@ TwilioClientCommand.flags = Object.assign(
   {
     project: flags.string({
       char: 'p',
-      default: DEFAULT_PROJECT,
       description: 'Shorthand identifier for your Twilio project.'
     })
   },
