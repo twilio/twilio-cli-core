@@ -46,7 +46,12 @@ class Logger {
   }
 }
 
+const logger = new Logger({
+  level: LoggingLevel.info
+});
+
 module.exports = {
-  Logger,
-  LoggingLevel
+  LoggingLevel,
+  Logger, // class
+  logger // global instance
 };
