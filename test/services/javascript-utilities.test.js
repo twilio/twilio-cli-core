@@ -1,4 +1,4 @@
-const { doesObjectHaveProperty, sleep } = require('../../src/services/javascript-utilities');
+const { doesObjectHaveProperty, sleep, splitArray } = require('../../src/services/javascript-utilities');
 
 const { expect, test } = require('@twilio/cli-test');
 
@@ -42,6 +42,18 @@ describe('services', () => {
         const endTime = Date.now();
 
         expect(endTime - startTime).to.be.within(sleepTimeLower, sleepTimeUpper);
+      });
+    });
+
+    describe('splitArray', () => {
+      test.it('should split the array in 2', async () => {
+        const testArray = ['a', 'ey!', 'bee', 'b', 'c', 'SEA'];
+        const isLengthOne = item => item.length === 1;
+
+        const [matched, notMatched] = splitArray(testArray, isLengthOne);
+
+        expect(matched).to.deep.equal(['a', 'b', 'c']);
+        expect(notMatched).to.deep.equal(['ey!', 'bee', 'SEA']);
       });
     });
   });
