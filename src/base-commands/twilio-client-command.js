@@ -2,7 +2,6 @@ const chalk = require('chalk');
 const { flags } = require('@oclif/command');
 const BaseCommand = require('./base-command');
 const CLIRequestClient = require('../services/cli-http-client');
-const { DEFAULT_PROJECT } = require('../services/config');
 const { HELP_ENVIRONMENT_VARIABLES } = require('../services/messaging/help-messages');
 
 class TwilioClientCommand extends BaseCommand {
@@ -27,7 +26,7 @@ class TwilioClientCommand extends BaseCommand {
     };
 
     if (!this.currentProject) {
-      this.logger.error('No project "' + (this.flags.project || DEFAULT_PROJECT) + '" configured.');
+      this.logger.error('No project configured.');
       reportUnconfigured('add', '\n' + HELP_ENVIRONMENT_VARIABLES);
       return;
     }

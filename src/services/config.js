@@ -3,7 +3,6 @@ const path = require('path');
 const shell = require('shelljs');
 const MessageTemplates = require('./messaging/templates');
 
-const DEFAULT_PROJECT = 'default';
 
 class ConfigDataProject {
   constructor(id, accountSid, region) {
@@ -16,6 +15,7 @@ class ConfigDataProject {
 class ConfigData {
   constructor() {
     this.projects = [];
+    this.activeProject = null;
   }
 
   getProjectFromEnvironment() {
@@ -48,8 +48,16 @@ class ConfigData {
       project = this.getProjectFromEnvironment();
     }
 
-    if (!project) {
-      project = this.projects.find(project => project.id === (projectId || DEFAULT_PROJECT));
+    if (this.projects.length > 0) {
+      if (!project) {
+        const selectedProjectId = projectId || this.activeProject
+        if (selectedProjectId) {
+          project = this.projects.find(project => project.id === selectedProjectId);
+        }
+        else {
+          project = this.projects[0];
+        }
+      }
     }
 
     return project;
@@ -72,6 +80,7 @@ class ConfigData {
   }
 
   loadFromObject(configObj) {
+    this.activeProject = configObj.activeProject;
     configObj.projects = configObj.projects || [];
     configObj.projects.forEach(project => {
       this.addProject(project.id, project.accountSid, project.region);
@@ -105,4 +114,4 @@ class Config {
   }
 }
 
-module.exports = { Config, ConfigData, DEFAULT_PROJECT };
+module.exports = { Config, ConfigData };
