@@ -20,8 +20,8 @@ describe('services', () => {
 
       test.it('should update an existing project', () => {
         const configData = new ConfigData();
-        configData.addProject('updatedProject', constants.FAKE_ACCOUNT_SID, 'dev');
-        configData.addProject('updatedProject', 'new-account-sid');
+        configData.addProject('activeProject', constants.FAKE_ACCOUNT_SID, 'dev');
+        configData.addProject('activeProject', 'new-account-sid');
 
         expect(configData.projects[0].id).to.equal('activeProject');
         expect(configData.projects[0].accountSid).to.equal('new-account-sid');
@@ -32,7 +32,7 @@ describe('services', () => {
     describe('ConfigData.getProjectById', () => {
       test.it('should return undefined if no projects', () => {
         const configData = new ConfigData();
-        const project = configData.getProjectById(DOES_NOT_EXIST);
+        const project = configData.getProjectById('DOES_NOT_EXIST');
         expect(project).to.equal(undefined);
       });
       test.it('should return undefined if no projects, even with env vars', () => {
@@ -40,7 +40,7 @@ describe('services', () => {
         process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
         process.env.TWILIO_AUTH_TOKEN = FAKE_AUTH_TOKEN;
 
-        const project = configData.getProjectById(DOES_NOT_EXIST);
+        const project = configData.getProjectById('DOES_NOT_EXIST');
         expect(project).to.equal(undefined);
       });
       test.it('should return first project if it exists, and no env vars', () => {

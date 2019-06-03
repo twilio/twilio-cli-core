@@ -3,7 +3,6 @@ const path = require('path');
 const shell = require('shelljs');
 const MessageTemplates = require('./messaging/templates');
 
-
 class ConfigDataProject {
   constructor(id, accountSid, region) {
     this.id = id;
@@ -50,11 +49,10 @@ class ConfigData {
 
     if (this.projects.length > 0) {
       if (!project) {
-        const selectedProjectId = projectId || this.activeProject
+        const selectedProjectId = projectId || this.activeProject;
         if (selectedProjectId) {
           project = this.projects.find(project => project.id === selectedProjectId);
-        }
-        else {
+        } else {
           project = this.projects[0];
         }
       }
