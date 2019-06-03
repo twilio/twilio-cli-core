@@ -29,10 +29,10 @@ class BaseCommand extends Command {
     this.flags = flags;
     await this.loadConfig();
 
-    this.outputProcessor = OutputFormats[this.flags['output-format'] || DEFAULT_OUTPUT_FORMAT];
+    this.outputProcessor = OutputFormats[this.flags['cli-output-format'] || DEFAULT_OUTPUT_FORMAT];
 
     this.logger = new Logger({
-      level: LoggingLevel[flags['log-level'] || DEFAULT_LOG_LEVEL]
+      level: LoggingLevel[flags['cli-log-level'] || DEFAULT_LOG_LEVEL]
     });
 
     this.logger.debug('Config File: ' + this.configFile.filePath);
@@ -78,15 +78,17 @@ class BaseCommand extends Command {
 }
 
 BaseCommand.flags = {
-  'log-level': flags.enum({
+  'cli-log-level': flags.enum({
     char: 'l',
+    helpLabel: '-l',
     default: DEFAULT_LOG_LEVEL,
     options: Object.keys(LoggingLevel),
     description: 'Level of logging messages.'
   }),
 
-  'output-format': flags.enum({
+  'cli-output-format': flags.enum({
     char: 'o',
+    helpLabel: '-o',
     default: DEFAULT_OUTPUT_FORMAT,
     options: Object.keys(OutputFormats),
     description: 'Format of command output.'
