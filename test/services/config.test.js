@@ -2,7 +2,7 @@ const tmp = require('tmp');
 const path = require('path');
 
 const { expect, test, constants } = require('@twilio/cli-test');
-const { Config, ConfigData, DEFAULT_PROJECT } = require('../../src/services/config');
+const { Config, ConfigData } = require('../../src/services/config');
 
 const FAKE_AUTH_TOKEN = '1234567890abcdefghijklmnopqrstuvwxyz';
 
@@ -11,19 +11,19 @@ describe('services', () => {
     describe('ConfigData.addProject', () => {
       test.it('should add a new project', () => {
         const configData = new ConfigData();
-        configData.addProject('default', constants.FAKE_ACCOUNT_SID, 'dev');
+        configData.addProject('newProject', constants.FAKE_ACCOUNT_SID, 'dev');
 
-        expect(configData.projects[0].id).to.equal('default');
+        expect(configData.projects[0].id).to.equal('newProject');
         expect(configData.projects[0].accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
         expect(configData.projects[0].region).to.equal('dev');
       });
 
       test.it('should update an existing project', () => {
         const configData = new ConfigData();
-        configData.addProject('default', constants.FAKE_ACCOUNT_SID, 'dev');
-        configData.addProject('default', 'new-account-sid');
+        configData.addProject('activeProject', constants.FAKE_ACCOUNT_SID, 'dev');
+        configData.addProject('activeProject', 'new-account-sid');
 
-        expect(configData.projects[0].id).to.equal('default');
+        expect(configData.projects[0].id).to.equal('activeProject');
         expect(configData.projects[0].accountSid).to.equal('new-account-sid');
         expect(configData.projects[0].region).to.equal(undefined);
       });
@@ -32,32 +32,41 @@ describe('services', () => {
     describe('ConfigData.getProjectById', () => {
       test.it('should return undefined if no projects', () => {
         const configData = new ConfigData();
-        const project = configData.getProjectById(DEFAULT_PROJECT);
+        const project = configData.getProjectById('DOES_NOT_EXIST');
         expect(project).to.equal(undefined);
       });
-
       test.it('should return undefined if no projects, even with env vars', () => {
         const configData = new ConfigData();
         process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
         process.env.TWILIO_AUTH_TOKEN = FAKE_AUTH_TOKEN;
 
-        const project = configData.getProjectById(DEFAULT_PROJECT);
+        const project = configData.getProjectById('DOES_NOT_EXIST');
         expect(project).to.equal(undefined);
       });
-
-      test.it('should return default project if it exists, and no env vars', () => {
+      test.it('should return first project if it exists, and no env vars', () => {
         const configData = new ConfigData();
-        configData.addProject('default', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
 
         const project = configData.getProjectById();
         expect(project.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
         expect(project.apiKey).to.equal(undefined);
         expect(project.apiSecret).to.equal(undefined);
       });
+      test.it('return the active project if there are multiple projects', () => {
+        const configData = new ConfigData();
+        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('secondProject', 'new_account_SID');
+        configData.addProject('thirdProject', 'newest_account_SID');
 
+        configData.activeProject = 'secondProject';
+        const project = configData.getProjectById();
+        expect(project.accountSid).to.equal('new_account_SID');
+        expect(project.apiKey).to.equal(undefined);
+        expect(project.apiSecret).to.equal(undefined);
+      });
       test.it('should return project populated from AccountSid/AuthToken env vars', () => {
         const configData = new ConfigData();
-        configData.addProject('default', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('envProject', constants.FAKE_ACCOUNT_SID);
 
         process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
         process.env.TWILIO_AUTH_TOKEN = FAKE_AUTH_TOKEN;
@@ -70,7 +79,7 @@ describe('services', () => {
 
       test.it('should return project populated from AccountSid/ApiKey env vars', () => {
         const configData = new ConfigData();
-        configData.addProject('default', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('envProject', constants.FAKE_ACCOUNT_SID);
 
         process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
         process.env.TWILIO_AUTH_TOKEN = 'api key should take precedence';
@@ -90,7 +99,7 @@ describe('services', () => {
       test.it('saves and loads user configuration', async () => {
         const config = new Config(tempConfigDir.name);
         const userConfig = await config.load();
-        userConfig.addProject('default', constants.FAKE_ACCOUNT_SID, 'stage');
+        userConfig.addProject('myProject', constants.FAKE_ACCOUNT_SID, 'stage');
 
         const saveMessage = await config.save(userConfig);
         expect(saveMessage).to.contain(`${tempConfigDir.name}${path.sep}config.json`);
