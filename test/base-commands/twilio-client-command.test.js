@@ -48,7 +48,6 @@ describe('base-commands', () => {
       ctx.testCmd.exit = sinon.fake();
       await ctx.testCmd.run();
       expect(ctx.stderr).to.contain('No project configured');
-      // expect(ctx.stderr).to.contain('No project "default" configured');
       expect(ctx.stderr).to.contain('To add project, run: twilio project:add');
       expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       expect(ctx.testCmd.exit.calledWith(1)).to.be.true;
@@ -58,7 +57,6 @@ describe('base-commands', () => {
       ctx.testCmd.exit = sinon.fake();
       await ctx.testCmd.run();
       expect(ctx.stderr).to.contain('No project configured');
-      // expect(ctx.stderr).to.contain('No project "alt" configured');
       expect(ctx.stderr).to.contain('To add project, run: twilio project:add -p alt');
       expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       expect(ctx.testCmd.exit.calledWith(1)).to.be.true;
