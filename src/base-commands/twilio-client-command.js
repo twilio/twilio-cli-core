@@ -18,7 +18,7 @@ class TwilioClientCommand extends BaseCommand {
 
     const reportUnconfigured = (verb, infoMessage) => {
       const projParam = this.flags.project ? ' -p ' + this.flags.project : '';
-      this.logger.error('To ' + verb + ' project, run: ' + chalk.whiteBright('twilio project:add' + projParam));
+      this.logger.error('To ' + verb + ' project, run: ' + chalk.whiteBright('twilio projects:add' + projParam));
       if (infoMessage) {
         this.logger.info(infoMessage);
       }
