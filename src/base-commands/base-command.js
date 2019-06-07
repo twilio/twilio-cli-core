@@ -48,6 +48,15 @@ class BaseCommand extends Command {
     this.userConfig = await this.configFile.load();
   }
 
+  sanitizeProperty(propertiesVal) {
+    if (propertiesVal instanceof Date) {
+      var dateString = propertiesVal.toString();
+      var shortDate = dateString.slice(4, 33);
+      propertiesVal = shortDate;
+    }
+    return propertiesVal;
+  }
+
   output(fullData, properties, options) {
     const dataArray = fullData.constructor === Array ? fullData : [fullData];
     const invalidPropertyNames = new Set();
@@ -60,12 +69,11 @@ class BaseCommand extends Command {
           if (fullItem[p] === undefined) {
             invalidPropertyNames.add(p);
           } else {
-            limitedItem[p] = fullItem[p];
+            limitedItem[p] = this.sanitizeProperty(fullItem[p]);
           }
         });
         return limitedItem;
       });
-
       if (invalidPropertyNames.size > 0) {
         const warn = this.logger.warn.bind(this.logger);
         invalidPropertyNames.forEach(p => {
