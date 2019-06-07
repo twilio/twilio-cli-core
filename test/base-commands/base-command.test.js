@@ -50,26 +50,11 @@ describe('base-commands', () => {
       });
 
     describe('sanitizeProperty', () => {
-      baseCommandTest.it('check format for ISO dates that are inputted', ctx => {
-        expect(ctx.testCmd.sanitizeProperty(new Date('2019-05-24T17:43:11.000Z'))).to.equal('May 24 2019 11:43:11 GMT-0600');
+      baseCommandTest.it('check date is sliced correctly', ctx => {
+        expect(ctx.testCmd.sanitizeProperty('Fri May 24 2019 11:43:11 GMT-0600 (MDT)')).to.equal('May 24 2019 11:43:11 GMT-0600');
       });
-      baseCommandTest.it('check format for ISO short date', ctx => {
-        expect(ctx.testCmd.sanitizeProperty(new Date('2019-05-24'))).to.equal('May 23 2019 18:00:00 GMT-0600'); // defaults to time 00
-      });
-      baseCommandTest.it('check format for abbreviated text string', ctx => {
-        expect(ctx.testCmd.sanitizeProperty(new Date('Fri May 24 2019 11:43:11 GMT-0600 (MDT)'))).to.equal('May 24 2019 11:43:11 GMT-0600');
-      });
-      baseCommandTest.it('check format for full text string', ctx => {
-        expect(ctx.testCmd.sanitizeProperty(new Date('Fri May 24 2019 11:43:11 GMT-0600 (Mountain Daylight Time)'))).to.equal('May 24 2019 11:43:11 GMT-0600');
-      });
-      baseCommandTest.it('check format for short date', ctx => {
-        expect(ctx.testCmd.sanitizeProperty(new Date('05/24/2019'))).to.equal('May 24 2019 00:00:00 GMT-0600'); // defaults to time 00
-      });
-      baseCommandTest.it('check to see other properties are returned', ctx => {
-        expect(ctx.testCmd.sanitizeProperty('properties')).to.equal('properties');
-      });
-      baseCommandTest.it('should return undefined', ctx => {
-        expect(ctx.testCmd.sanitizeProperty(undefined)).to.equal(undefined);
+      baseCommandTest.it('check other timezone date is sliced correctly', ctx => {
+        expect(ctx.testCmd.sanitizeProperty('Fri May 24 2019 11:43:11 GMT-0700 (PDT)')).to.equal('May 24 2019 11:43:11 GMT-0700');
       });
     });
 

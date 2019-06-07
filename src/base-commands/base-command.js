@@ -3,6 +3,7 @@ const { Config, ConfigData } = require('../services/config');
 const { Logger, LoggingLevel } = require('../services/messaging/logging');
 const { OutputFormats } = require('../services/output-formats');
 const { SecureStorage } = require('../services/secure-storage');
+
 let inquirer; // We'll lazy-load this only when it's needed.
 
 const DEFAULT_LOG_LEVEL = 'info';
@@ -49,12 +50,8 @@ class BaseCommand extends Command {
   }
 
   sanitizeProperty(propertiesVal) {
-    if (propertiesVal instanceof Date) {
-      var dateString = propertiesVal.toString();
-      var shortDate = dateString.slice(4, 33);
-      propertiesVal = shortDate;
-    }
-    return propertiesVal;
+    var shortDate = propertiesVal.slice(4, 33);
+    return shortDate;
   }
 
   output(fullData, properties, options) {
@@ -68,8 +65,12 @@ class BaseCommand extends Command {
         propNames.forEach(p => {
           if (fullItem[p] === undefined) {
             invalidPropertyNames.add(p);
+          } else if (fullItem[p] instanceof Date) {
+            const dateString = fullItem[p].toString();
+            var shortDate = this.sanitizeProperty(dateString);
+            limitedItem[p] = shortDate;
           } else {
-            limitedItem[p] = this.sanitizeProperty(fullItem[p]);
+            limitedItem[p] = fullItem[p];
           }
         });
         return limitedItem;
