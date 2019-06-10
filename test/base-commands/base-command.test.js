@@ -56,6 +56,9 @@ describe('base-commands', () => {
       baseCommandTest.it('check other timezone date is sliced correctly', ctx => {
         expect(ctx.testCmd.sanitizeDateString('Fri May 24 2019 11:43:11 GMT-0700 (PDT)')).to.equal('May 24 2019 11:43:11 GMT-0700');
       });
+      baseCommandTest.it('check output if timezone in parenthesis is not included', ctx => {
+        expect(ctx.testCmd.sanitizeDateString('Fri May 24 2019 11:43:11 GMT-0700')).to.equal('May 24 2019 11:43:11 GMT-0700');
+      });
       baseCommandTest.it('return empty string if the date is empty', ctx => {
         expect(ctx.testCmd.sanitizeDateString('')).to.equal('');
       });
