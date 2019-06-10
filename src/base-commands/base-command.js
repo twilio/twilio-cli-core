@@ -49,7 +49,7 @@ class BaseCommand extends Command {
     this.userConfig = await this.configFile.load();
   }
 
-  sanitizeProperty(propertiesVal) {
+  sanitizeDateString(propertiesVal) {
     var shortDate = propertiesVal.slice(4, 33);
     return shortDate;
   }
@@ -67,7 +67,7 @@ class BaseCommand extends Command {
             invalidPropertyNames.add(p);
           } else if (fullItem[p] instanceof Date) {
             const dateString = fullItem[p].toString();
-            var shortDate = this.sanitizeProperty(dateString);
+            var shortDate = this.sanitizeDateString(dateString);
             limitedItem[p] = shortDate;
           } else {
             limitedItem[p] = fullItem[p];
