@@ -49,7 +49,7 @@ describe('base-commands', () => {
         expect(ctx.stderr).to.contain(`[DEBUG] Config File: ${expectedConfigFile}`);
       });
 
-    describe('sanitizeProperty', () => {
+    describe('sanitizeDateString', () => {
       baseCommandTest.it('check date is sliced correctly', ctx => {
         expect(ctx.testCmd.sanitizeDateString('Fri May 24 2019 11:43:11 GMT-0600 (MDT)')).to.equal('May 24 2019 11:43:11 GMT-0600');
       });
