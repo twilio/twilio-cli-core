@@ -3,6 +3,8 @@ const path = require('path');
 const shell = require('shelljs');
 const MessageTemplates = require('./messaging/templates');
 
+const CLI_NAME = 'twilio-cli';
+
 class ConfigDataProject {
   constructor(id, accountSid, region) {
     this.id = id;
@@ -112,4 +114,8 @@ class Config {
   }
 }
 
-module.exports = { Config, ConfigData };
+module.exports = {
+  CLI_NAME,
+  Config,
+  ConfigData
+};
