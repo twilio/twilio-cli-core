@@ -6,9 +6,11 @@ module.exports = {
   services: {
     CLIRequestClient: require('./services/cli-http-client'),
     config: require('./services/config'),
+    error: require('./services/error'),
     JSUtils: require('./services/javascript-utilities'),
     logging: require('./services/messaging/logging'),
     templating: require('./services/messaging/templating'),
+    outputFormats: require('./services/output-formats'),
     secureStorage: require('./services/secure-storage')
   },
   configureEnv: require('./services/env')
