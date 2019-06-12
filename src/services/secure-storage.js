@@ -1,5 +1,5 @@
 const keytar = require('keytar');
-const TWILIO_CLI_IDENTIFIER = 'twilio-cli';
+const { CLI_NAME } = require('./config');
 
 const STORAGE_LOCATIONS = {
   KEYCHAIN: 'keychain',
@@ -19,13 +19,13 @@ class SecureStorage {
   }
 
   async saveCredentials(projectId, username, password) {
-    await keytar.setPassword(TWILIO_CLI_IDENTIFIER, projectId, username + '|' + password);
+    await keytar.setPassword(CLI_NAME, projectId, username + '|' + password);
   }
 
   async getCredentials(projectId) {
     let credentials = null;
     try {
-      credentials = await keytar.getPassword('twilio-cli', projectId);
+      credentials = await keytar.getPassword(CLI_NAME, projectId);
     } catch (e) {
       return { apiKey: 'error', apiSecret: e.message };
     }

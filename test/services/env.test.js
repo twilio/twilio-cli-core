@@ -5,7 +5,7 @@ const { expect, test } = require('@twilio/cli-test');
 const configureEnv = require('../../src/services/env');
 
 const ORIGINAL_ENV = Object.assign({}, process.env);
-const DEFAULT_DIR = path.join('home', '.twilio');
+const DEFAULT_DIR = path.join('home', '.twilio-cli');
 
 describe('services', () => {
   describe('env', () => {
@@ -54,7 +54,7 @@ describe('services', () => {
 
         configureEnv();
 
-        expect(process.env.TWILIO_CACHE_DIR).to.equal(path.join('user-profile', '.twilio'));
+        expect(process.env.TWILIO_CACHE_DIR).to.equal(path.join('user-profile', '.twilio-cli'));
       });
 
       test.it('should fallback to the OS home dir if no home or user profile found', () => {
@@ -63,7 +63,7 @@ describe('services', () => {
 
         configureEnv();
 
-        expect(process.env.TWILIO_CACHE_DIR).to.equal(path.join(os.homedir(), '.twilio'));
+        expect(process.env.TWILIO_CACHE_DIR).to.equal(path.join(os.homedir(), '.twilio-cli'));
       });
     });
   });
