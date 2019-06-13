@@ -1,11 +1,26 @@
-const sinon = require('sinon');
 const { expect, test, constants } = require('@twilio/cli-test');
 const TwilioClientCommand = require('../../src/base-commands/twilio-client-command');
 const { Config, ConfigData } = require('../../src/services/config');
 
 describe('base-commands', () => {
   describe('twilio-client-command', () => {
-    const setUpTest = (args = [], setUpUserConfig = undefined, mockSecureStorage = true) => {
+    class TestClientCommand extends TwilioClientCommand {
+      async runCommand() {
+        // no-op
+      }
+    }
+
+    TestClientCommand.flags = TwilioClientCommand.flags;
+
+    class ThrowingClientCommand extends TwilioClientCommand {
+      async runCommand() {
+        throw new Error('We were so wrong!');
+      }
+    }
+
+    ThrowingClientCommand.flags = TwilioClientCommand.flags;
+
+    const setUpTest = (args = [], { setUpUserConfig = undefined, mockSecureStorage = true, commandClass: CommandClass = TestClientCommand } = {}) => {
       return test
         .do(ctx => {
           ctx.userConfig = new ConfigData();
@@ -13,12 +28,13 @@ describe('base-commands', () => {
             setUpUserConfig(ctx.userConfig);
           } else {
             ctx.userConfig.addProject('MyFirstProject', constants.FAKE_ACCOUNT_SID);
+            ctx.userConfig.addProject('twilio-cli-unit-testing', constants.FAKE_ACCOUNT_SID, 'stage');
           }
         })
         .twilioCliEnv(Config)
         .stderr()
         .do(async ctx => {
-          ctx.testCmd = new TwilioClientCommand(
+          ctx.testCmd = new CommandClass(
             args,
             ctx.fakeConfig,
             mockSecureStorage ?
@@ -32,69 +48,68 @@ describe('base-commands', () => {
               } :
               undefined
           );
+          return ctx.testCmd.run();
         });
     };
 
-    setUpTest(['-l', 'debug']).it('should create a client for the first project', async ctx => {
-      await ctx.testCmd.run();
-      expect(ctx.stderr).to.contain('MyFirstProject');
-      expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
-      expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
-      expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'MyFirstProject');
-      expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
-    });
+    setUpTest()
+      .it('should not allow construction of the base class', async ctx => {
+        expect(() => new TwilioClientCommand([], ctx.fakeConfig)).to.throw('runCommand');
+      });
 
-    setUpTest(['-l', 'debug'], () => 0).it('should fail for a non-existent default project', async ctx => {
-      ctx.testCmd.exit = sinon.fake();
-      await ctx.testCmd.run();
-      expect(ctx.stderr).to.contain('No project configured');
-      expect(ctx.stderr).to.contain('To add project, run: twilio projects:add');
-      expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
-      expect(ctx.testCmd.exit.calledWith(1)).to.be.true;
-    });
+    setUpTest(['-l', 'debug'])
+      .it('should create a client for the active project', async ctx => {
+        expect(ctx.stderr).to.contain('MyFirstProject');
+        expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
+        expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'MyFirstProject');
+        expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
+      });
 
-    setUpTest(['-p', 'alt', '-l', 'debug']).it('should fail for a non-existent project', async ctx => {
-      ctx.testCmd.exit = sinon.fake();
-      await ctx.testCmd.run();
-      expect(ctx.stderr).to.contain('No project configured');
-      expect(ctx.stderr).to.contain('To add project, run: twilio projects:add -p alt');
-      expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
-      expect(ctx.testCmd.exit.calledWith(1)).to.be.true;
-    });
+    setUpTest(['-l', 'debug'], { setUpUserConfig: () => 0 })
+      .exit(1)
+      .it('should fail for a non-existent active project', async ctx => {
+        expect(ctx.stderr).to.contain('No project configured');
+        expect(ctx.stderr).to.contain('To add the project, run: twilio projects:add');
+        expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
+      });
 
-    setUpTest(['-p', 'twilio-cli-unit-testing'], userConfig => {
-      userConfig.addProject('twilio-cli-unit-testing', constants.FAKE_ACCOUNT_SID, 'stage');
-    }).it('should create a client for a non-default project', async ctx => {
-      await ctx.testCmd.run();
-      expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
-      expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
-      expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'twilio-cli-unit-testing');
-      expect(ctx.testCmd.twilioClient.region).to.equal('stage');
-    });
+    setUpTest(['-p', 'alt', '-l', 'debug'])
+      .exit(1)
+      .it('should fail for a non-existent project', async ctx => {
+        expect(ctx.stderr).to.contain('No project configured');
+        expect(ctx.stderr).to.contain('To add the project, run: twilio projects:add -p alt');
+        expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
+      });
 
-    setUpTest(
-      ['-p', 'twilio-cli-unit-testing'],
-      userConfig => {
-        userConfig.addProject('twilio-cli-unit-testing', constants.FAKE_ACCOUNT_SID);
-      },
-      false
-    ).it('should handle a secure storage error', async ctx => {
-      ctx.testCmd.exit = sinon.fake();
-      await ctx.testCmd.run();
-      expect(ctx.stderr).to.contain('Could not get credentials for project "twilio-cli-unit-testing"');
-      expect(ctx.stderr).to.contain('To reconfigure project, run: twilio projects:add -p twilio-cli-unit-testing');
-      expect(ctx.testCmd.exit.calledWith(1)).to.be.true;
-    });
+    setUpTest(['-p', 'twilio-cli-unit-testing'])
+      .it('should create a client for a non-default project', async ctx => {
+        expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
+        expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'twilio-cli-unit-testing');
+        expect(ctx.testCmd.twilioClient.region).to.equal('stage');
+      });
+
+    setUpTest(['-p', 'twilio-cli-unit-testing'], { mockSecureStorage: false })
+      .exit(1)
+      .it('should handle a secure storage error', async ctx => {
+        expect(ctx.stderr).to.contain('Could not get credentials for project "twilio-cli-unit-testing"');
+        expect(ctx.stderr).to.contain('To reconfigure the project, run: twilio projects:add -p twilio-cli-unit-testing');
+      });
+
+    setUpTest([], { commandClass: ThrowingClientCommand })
+      .exit(1)
+      .it('should catch unhandled errors', async ctx => {
+        expect(ctx.stderr).to.contain('unexpected error');
+      });
 
     describe('parseProperties', () => {
       setUpTest().it('should ignore empty PropertyFlags', async ctx => {
-        await ctx.testCmd.run();
         const updatedProperties = ctx.testCmd.parseProperties();
         expect(updatedProperties).to.be.null;
       });
 
       setUpTest().it('should ignore empty command flags', async ctx => {
-        await ctx.testCmd.run();
         ctx.testCmd.constructor.PropertyFlags = {
           'friendly-name': {},
           'sms-url': {}
@@ -105,7 +120,6 @@ describe('base-commands', () => {
       });
 
       setUpTest().it('should parse options into API resource properties', async ctx => {
-        await ctx.testCmd.run();
         ctx.testCmd.constructor.PropertyFlags = {
           'friendly-name': {},
           'sms-url': {}
@@ -123,7 +137,6 @@ describe('base-commands', () => {
 
     describe('updateResource', () => {
       setUpTest().it('should return nothing to update if no properties passed', async ctx => {
-        await ctx.testCmd.run();
         const resourceSid = constants.FAKE_ACCOUNT_SID;
         const results = await ctx.testCmd.updateResource(null, resourceSid);
         expect(results.sid).to.equal(resourceSid);
@@ -132,8 +145,6 @@ describe('base-commands', () => {
       });
 
       setUpTest().it('should return success if resource was updated', async ctx => {
-        await ctx.testCmd.run();
-
         const resourceSid = constants.FAKE_ACCOUNT_SID;
         const updatedProperties = {
           friendlyName: 'Casper'
@@ -154,7 +165,6 @@ describe('base-commands', () => {
       });
 
       setUpTest().it('should return success if resource was updated from flags', async ctx => {
-        await ctx.testCmd.run();
         ctx.testCmd.constructor.PropertyFlags = {
           'friendly-name': {},
           'sms-url': {}
@@ -181,8 +191,6 @@ describe('base-commands', () => {
       });
 
       setUpTest().it('should report an error if API call fails', async ctx => {
-        await ctx.testCmd.run();
-
         const resourceSid = constants.FAKE_ACCOUNT_SID;
         const fakeResource = sid => {
           expect(sid).to.equal(resourceSid);

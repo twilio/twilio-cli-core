@@ -1,55 +1,73 @@
 const chalk = require('chalk');
 const { flags } = require('@oclif/command');
 const BaseCommand = require('./base-command');
-const CLIRequestClient = require('../services/cli-http-client');
-const { HELP_ENVIRONMENT_VARIABLES } = require('../services/messaging/help-messages');
+const CliRequestClient = require('../services/cli-http-client');
+const { TwilioCliError } = require('../services/error');
+const { HELP_ENVIRONMENT_VARIABLES, UNEXPECTED_ERROR } = require('../services/messaging/help-messages');
 
 class TwilioClientCommand extends BaseCommand {
   constructor(argv, config, secureStorage) {
     super(argv, config, secureStorage);
     this.httpClient = undefined;
     this.twilioClient = undefined;
+
+    // Ensure the 'runCommand' function is defined in the child class.
+    if (!this.runCommand || typeof this.runCommand !== 'function') {
+      throw new TwilioCliError(`The class "${this.constructor.name}" must implement the function "runCommand"`);
+    }
   }
 
   async run() {
     await super.run();
 
-    this.currentProject = this.userConfig.getProjectById(this.flags.project);
+    try {
+      this.currentProject = this.userConfig.getProjectById(this.flags.project);
 
-    const reportUnconfigured = (verb, infoMessage) => {
-      const projParam = this.flags.project ? ' -p ' + this.flags.project : '';
-      this.logger.error('To ' + verb + ' project, run: ' + chalk.whiteBright('twilio projects:add' + projParam));
-      if (infoMessage) {
-        this.logger.info(infoMessage);
+      const reportUnconfigured = (verb, message = '') => {
+        const projParam = this.flags.project ? ' -p ' + this.flags.project : '';
+        throw new TwilioCliError(`To ${verb} the project, run: ` + chalk.whiteBright('twilio projects:add' + projParam) + message);
+      };
+
+      if (!this.currentProject) {
+        this.logger.error('No project configured.');
+        reportUnconfigured('add', '\n\n' + HELP_ENVIRONMENT_VARIABLES);
       }
-      this.exit(1);
-    };
 
-    if (!this.currentProject) {
-      this.logger.error('No project configured.');
-      reportUnconfigured('add', '\n' + HELP_ENVIRONMENT_VARIABLES);
-      return;
-    }
+      this.logger.debug('Using project: ' + this.currentProject.id);
 
-    this.logger.debug('Using project: ' + this.currentProject.id);
-
-    if (!this.currentProject.apiKey || !this.currentProject.apiSecret) {
-      const creds = await this.secureStorage.getCredentials(this.currentProject.id);
-      if (creds.apiKey === 'error') {
-        this.logger.error('Could not get credentials for project "' + this.currentProject.id + '".');
-        reportUnconfigured('reconfigure');
-        return;
+      if (!this.currentProject.apiKey || !this.currentProject.apiSecret) {
+        const creds = await this.secureStorage.getCredentials(this.currentProject.id);
+        if (creds.apiKey === 'error') {
+          this.logger.error(`Could not get credentials for project "${this.currentProject.id}".`);
+          reportUnconfigured('reconfigure');
+        }
+        this.currentProject.apiKey = creds.apiKey;
+        this.currentProject.apiSecret = creds.apiSecret;
       }
-      this.currentProject.apiKey = creds.apiKey;
-      this.currentProject.apiSecret = creds.apiSecret;
-    }
 
-    this.httpClient = new CLIRequestClient(this.id, this.logger);
-    this.twilioClient = require('twilio')(this.currentProject.apiKey, this.currentProject.apiSecret, {
-      accountSid: this.currentProject.accountSid,
-      region: this.currentProject.region,
-      httpClient: this.httpClient
-    });
+      this.httpClient = new CliRequestClient(this.id, this.logger);
+      this.twilioClient = require('twilio')(this.currentProject.apiKey, this.currentProject.apiSecret, {
+        accountSid: this.currentProject.accountSid,
+        region: this.currentProject.region,
+        httpClient: this.httpClient
+      });
+
+      // Run the 'abstract' command executor.
+      return await this.runCommand();
+    } catch (error) {
+      if (error instanceof TwilioCliError) {
+        // User/API errors
+        this.logger.error(error.message);
+        this.logger.debug(error.stack);
+        this.exit(error.exitCode || 1);
+      } else {
+        // System errors
+        this.logger.error(UNEXPECTED_ERROR);
+        this.logger.debug(error.message);
+        this.logger.debug(error.stack);
+        this.exit(1);
+      }
+    }
   }
 
   parseProperties() {
