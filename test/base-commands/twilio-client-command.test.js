@@ -54,7 +54,7 @@ describe('base-commands', () => {
 
     setUpTest()
       .it('should not allow construction of the base class', async ctx => {
-        expect(() => new TwilioClientCommand([], ctx.fakeConfig)).to.throw(TypeError);
+        expect(() => new TwilioClientCommand([], ctx.fakeConfig)).to.throw('runCommand');
       });
 
     setUpTest(['-l', 'debug'])
@@ -70,7 +70,7 @@ describe('base-commands', () => {
       .exit(1)
       .it('should fail for a non-existent active project', async ctx => {
         expect(ctx.stderr).to.contain('No project configured');
-        expect(ctx.stderr).to.contain('To add project, run: twilio projects:add');
+        expect(ctx.stderr).to.contain('To add the project, run: twilio projects:add');
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       });
 
@@ -78,7 +78,7 @@ describe('base-commands', () => {
       .exit(1)
       .it('should fail for a non-existent project', async ctx => {
         expect(ctx.stderr).to.contain('No project configured');
-        expect(ctx.stderr).to.contain('To add project, run: twilio projects:add -p alt');
+        expect(ctx.stderr).to.contain('To add the project, run: twilio projects:add -p alt');
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       });
 
@@ -94,7 +94,7 @@ describe('base-commands', () => {
       .exit(1)
       .it('should handle a secure storage error', async ctx => {
         expect(ctx.stderr).to.contain('Could not get credentials for project "twilio-cli-unit-testing"');
-        expect(ctx.stderr).to.contain('To reconfigure project, run: twilio projects:add -p twilio-cli-unit-testing');
+        expect(ctx.stderr).to.contain('To reconfigure the project, run: twilio projects:add -p twilio-cli-unit-testing');
       });
 
     setUpTest([], { commandClass: ThrowingClientCommand })

@@ -22,7 +22,7 @@ Formatters to take a JSON array and write to the stdout. Current formatters incl
 - JSON (raw API output)
 - TSV
 
-### CLIRequestClient
+### CliRequestClient
 
 A custom http client for the Twilio helper library to allow us to log API requests as well as modify the User-Agent header.
 

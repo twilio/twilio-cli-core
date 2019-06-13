@@ -47,8 +47,17 @@ class BaseCommand extends Command {
     this.userConfig = await this.configFile.load();
   }
 
-  sanitizeDateString(propertiesVal) {
-    return propertiesVal.slice(4, 33);
+  /**
+   * Drops the week day and timezone name from the result of Date.toString().
+   *
+   *   In: "Fri May 24 2019 11:43:11 GMT-0600 (MDT)"
+   *   Out: "May 24 2019 11:43:11 GMT-0600"
+   *
+   * @param {string} value - date string to sanitize
+   * @returns {string} the sanitized date string
+   */
+  sanitizeDateString(value) {
+    return value.slice(4, 33);
   }
 
   output(fullData, properties, options) {

@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const { flags } = require('@oclif/command');
 const BaseCommand = require('./base-command');
-const CLIRequestClient = require('../services/cli-http-client');
+const CliRequestClient = require('../services/cli-http-client');
 const { TwilioCliError } = require('../services/error');
 const { HELP_ENVIRONMENT_VARIABLES, UNEXPECTED_ERROR } = require('../services/messaging/help-messages');
 
@@ -13,7 +13,7 @@ class TwilioClientCommand extends BaseCommand {
 
     // Ensure the 'runCommand' function is defined in the child class.
     if (!this.runCommand || typeof this.runCommand !== 'function') {
-      throw new TypeError(`The class "${this.constructor.name}" must implement the function "runCommand"`);
+      throw new TwilioCliError(`The class "${this.constructor.name}" must implement the function "runCommand"`);
     }
   }
 
@@ -25,7 +25,7 @@ class TwilioClientCommand extends BaseCommand {
 
       const reportUnconfigured = (verb, message = '') => {
         const projParam = this.flags.project ? ' -p ' + this.flags.project : '';
-        throw new TwilioCliError(`To ${verb} project, run: ` + chalk.whiteBright('twilio projects:add' + projParam) + message);
+        throw new TwilioCliError(`To ${verb} the project, run: ` + chalk.whiteBright('twilio projects:add' + projParam) + message);
       };
 
       if (!this.currentProject) {
@@ -45,7 +45,7 @@ class TwilioClientCommand extends BaseCommand {
         this.currentProject.apiSecret = creds.apiSecret;
       }
 
-      this.httpClient = new CLIRequestClient(this.id, this.logger);
+      this.httpClient = new CliRequestClient(this.id, this.logger);
       this.twilioClient = require('twilio')(this.currentProject.apiKey, this.currentProject.apiSecret, {
         accountSid: this.currentProject.accountSid,
         region: this.currentProject.region,

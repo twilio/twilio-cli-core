@@ -1,5 +1,5 @@
 const { expect, test } = require('@twilio/cli-test');
-const CLIRequestClient = require('../../src/services/cli-http-client');
+const CliRequestClient = require('../../src/services/cli-http-client');
 const { Logger, LoggingLevel } = require('../../src/services/messaging/logging');
 
 describe('services', () => {
@@ -9,7 +9,7 @@ describe('services', () => {
     });
 
     test.it('should make an http request', async () => {
-      const client = new CLIRequestClient('blah', logger, (options, callback) => {
+      const client = new CliRequestClient('blah', logger, (options, callback) => {
         expect(options.url).to.equal('https://foo.com/bar');
         callback(null, { statusCode: 200, body: '{}' });
       });

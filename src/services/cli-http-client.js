@@ -5,7 +5,7 @@ const Response = require('twilio/lib/http/response');
 const Request = require('twilio/lib/http/request');
 const pkg = require('../../package.json');
 
-class CLIRequestClient {
+class CliRequestClient {
   constructor(commandName, logger, http) {
     this.commandName = commandName;
     this.logger = logger;
@@ -118,4 +118,4 @@ class CLIRequestClient {
   }
 }
 
-module.exports = CLIRequestClient;
+module.exports = CliRequestClient;
