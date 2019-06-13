@@ -15,7 +15,7 @@
     "keytar": "^4.9.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",
-    "twilio": "^3.31.1"
+    "twilio": "^3.32.0"
   },
   "devDependencies": {
     "@oclif/test": "^1.2.4",
