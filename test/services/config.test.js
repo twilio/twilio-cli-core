@@ -115,7 +115,7 @@ describe('services', () => {
         expect(active.id).to.equal('secondProject');
         expect(active.accountSid).to.equal('new_account_SID');
       });
-      test.it('should return undefined if project does not exits and there are no prohjects configured', () => {
+      test.it('should return undefined if project does not exist and there are no projects configured', () => {
         const configData = new ConfigData();
         const active = configData.getActiveProject();
         expect(active).to.equal(undefined);
@@ -132,9 +132,10 @@ describe('services', () => {
           id: 'DOES_NOT_EXIST',
           accountSid: 'fake_SID'
         };
+        const originalLength = configData.projects.length;
         configData.removeProject(fakeProject);
 
-        expect(configData.projects.length).to.equal(configData.projects.length);
+        expect(configData.projects.length).to.equal(originalLength);
       });
       test.it('removes project', () => {
         const configData = new ConfigData();
