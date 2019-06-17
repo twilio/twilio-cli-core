@@ -124,7 +124,6 @@ describe('services', () => {
 
     describe('ConfigData.removeProject', () => {
       test.it('remove a project that does not exist', () => {
-        // expect to return the same list
         const configData = new ConfigData();
         configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
         configData.addProject('secondProject', 'new_account_SID');
