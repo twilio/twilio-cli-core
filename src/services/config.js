@@ -46,18 +46,26 @@ class ConfigData {
     if (!projectId) {
       project = this.getProjectFromEnvironment();
     }
-
-    if (this.projects.length > 0) {
-      if (!project) {
-        const selectedProjectId = projectId || this.activeProject;
-        if (selectedProjectId) {
-          project = this.projects.find(project => project.id === selectedProjectId);
-        } else {
-          project = this.projects[0];
-        }
+    if (!project) {
+      if (projectId) {
+        project = this.projects.find(project => project.id === projectId);
+      } else {
+        project = this.getActiveProject();
       }
     }
+    return project;
+  }
 
+  getActiveProject() {
+    let project;
+    if (this.projects.length > 0) {
+      if (this.activeProject) {
+        project = this.projects.find(project => project.id === this.activeProject);
+      }
+      if (!project) {
+        project = this.projects[0];
+      }
+    }
     return project;
   }
 
@@ -65,6 +73,9 @@ class ConfigData {
     this.projects = this.projects.filter(project => {
       return project.id !== projectToRemove.id;
     });
+    if (projectToRemove.id === this.activeProject) {
+      this.activeProject = null;
+    }
   }
 
   addProject(id, accountSid, region) {
