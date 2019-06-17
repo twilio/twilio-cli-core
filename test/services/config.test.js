@@ -93,6 +93,76 @@ describe('services', () => {
       });
     });
 
+    describe('ConfigData.getActiveProject', () => {
+      test.it('should return first project when no active project is set', () => {
+        const configData = new ConfigData();
+        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('secondProject', 'new_account_SID');
+        configData.addProject('thirdProject', 'newest_account_SID');
+        const active = configData.getActiveProject();
+
+        expect(active.id).to.equal('firstProject');
+        expect(active.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+      });
+      test.it('should return active project when active project has been set', () => {
+        const configData = new ConfigData();
+        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('secondProject', 'new_account_SID');
+        configData.addProject('thirdProject', 'newest_account_SID');
+        configData.activeProject = 'secondProject';
+        const active = configData.getActiveProject();
+
+        expect(active.id).to.equal('secondProject');
+        expect(active.accountSid).to.equal('new_account_SID');
+      });
+      test.it('should return undefined if project does not exits and there are no prohjects configured', () => {
+        const configData = new ConfigData();
+        const active = configData.getActiveProject();
+        expect(active).to.equal(undefined);
+      });
+    });
+
+    describe('ConfigData.removeProject', () => {
+      test.it('remove a project that does not exist', () => {
+        // expect to return the same list
+        const configData = new ConfigData();
+        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('secondProject', 'new_account_SID');
+        configData.addProject('thirdProject', 'newest_account_SID');
+        const fakeProject = {
+          id: 'DOES_NOT_EXIST',
+          accountSid: 'fake_SID'
+        };
+        configData.removeProject(fakeProject);
+
+        expect(configData.projects.length).to.equal(configData.projects.length);
+      });
+      test.it('removes project', () => {
+        const configData = new ConfigData();
+        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('secondProject', 'new_account_SID');
+        configData.addProject('thirdProject', 'newest_account_SID');
+        const project = configData.getProjectById('secondProject');
+        configData.removeProject(project);
+
+        expect(configData.projects[1].id).to.equal('thirdProject');
+        expect(configData.projects[1].accountSid).to.equal('newest_account_SID');
+      });
+      test.it('removes active project', () => {
+        const configData = new ConfigData();
+        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('secondProject', 'new_account_SID');
+        configData.addProject('thirdProject', 'newest_account_SID');
+        const project = configData.getProjectById('firstProject');
+        configData.activeProject = 'firstProject';
+        configData.removeProject(project);
+
+        expect(configData.projects[1].id).to.equal('thirdProject');
+        expect(configData.projects[1].accountSid).to.equal('newest_account_SID');
+        expect(configData.activeProject).to.equal(null);
+      });
+    });
+
     describe('Config', () => {
       const tempConfigDir = tmp.dirSync({ unsafeCleanup: true });
 
