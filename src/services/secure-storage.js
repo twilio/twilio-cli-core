@@ -22,6 +22,10 @@ class SecureStorage {
     await keytar.setPassword(CLI_NAME, projectId, username + '|' + password);
   }
 
+  async removeCredentials(projectId) {
+    return keytar.deletePassword(CLI_NAME, projectId);
+  }
+
   async getCredentials(projectId) {
     let credentials = null;
     try {
