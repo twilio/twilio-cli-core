@@ -4,6 +4,7 @@ module.exports = {
     TwilioClientCommand: require('./base-commands/twilio-client-command')
   },
   services: {
+    TwilioApi: require('./services/twilio-api'),
     CliRequestClient: require('./services/cli-http-client'),
     config: require('./services/config'),
     error: require('./services/error'),
