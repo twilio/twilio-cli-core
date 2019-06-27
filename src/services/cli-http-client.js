@@ -1,19 +1,16 @@
 const os = require('os');
-const _ = require('lodash');
-const Q = require('q');
-const Response = require('twilio/lib/http/response');
-const Request = require('twilio/lib/http/request');
 const pkg = require('../../package.json');
 
 class CliRequestClient {
   constructor(commandName, logger, http) {
     this.commandName = commandName;
     this.logger = logger;
-    this.http = http || require('request');
+    this.http = require('util').promisify(http || require('request'));
   }
 
   /**
-   * Make http request
+   * Make an HTTP request.
+   *
    * @param {object} opts - The options argument
    * @param {string} opts.method - The http method
    * @param {string} opts.uri - The request uri
@@ -26,7 +23,7 @@ class CliRequestClient {
    * @param {boolean} [opts.allowRedirects] - Should the client follow redirects
    * @param {boolean} [opts.forever] - Set to true to use the forever-agent
    */
-  request(opts) {
+  async request(opts) {
     opts = opts || {};
     if (!opts.method) {
       throw new Error('http method is required');
@@ -36,16 +33,14 @@ class CliRequestClient {
       throw new Error('uri is required');
     }
 
-    const deferred = Q.defer();
     const headers = opts.headers || {};
 
     if (!headers.Connection && !headers.connection) {
       headers.Connection = 'close';
     }
 
-    let b64Auth = null;
     if (opts.username && opts.password) {
-      b64Auth = Buffer.from(opts.username + ':' + opts.password).toString('base64');
+      const b64Auth = Buffer.from(opts.username + ':' + opts.password).toString('base64');
       headers.Authorization = 'Basic ' + b64Auth;
     }
 
@@ -69,7 +64,7 @@ class CliRequestClient {
     this.logger.debug('-- BEGIN Twilio API Request --');
     this.logger.debug(options.method + ' ' + options.url);
 
-    if (!_.isNull(opts.data)) {
+    if (opts.data) {
       options.formData = opts.data;
       if (options.formData) {
         this.logger.debug('Form data:');
@@ -77,7 +72,7 @@ class CliRequestClient {
       }
     }
 
-    if (!_.isNull(opts.params)) {
+    if (opts.params) {
       options.qs = opts.params;
       options.useQuerystring = true;
       if (options.qs && Object.keys(options.qs).length > 0) {
@@ -88,33 +83,7 @@ class CliRequestClient {
     this.logger.debug('User-Agent: ' + options.headers['User-Agent']);
     this.logger.debug('-- END Twilio API Request --');
 
-    const optionsRequest = {
-      method: options.method,
-      url: options.url,
-      auth: b64Auth,
-      params: options.qs,
-      data: options.formData,
-      headers: options.headers
-    };
-
-    const that = this;
-    this.lastResponse = undefined;
-    this.lastRequest = new Request(optionsRequest);
-
-    this.http(options, (error, response) => {
-      if (error) {
-        that.lastResponse = undefined;
-        deferred.reject(error);
-      } else {
-        that.lastResponse = new Response(response.statusCode, response.body);
-        deferred.resolve({
-          statusCode: response.statusCode,
-          body: response.body
-        });
-      }
-    });
-
-    return deferred.promise;
+    return this.http(options);
   }
 }
 
