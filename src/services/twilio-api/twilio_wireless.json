@@ -691,13 +691,7 @@
         ],
         "responses": {
           "204": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "null"
-                }
-              }
-            }
+            "description": "The resource was deleted successfully."
           }
         },
         "security": [
@@ -980,13 +974,7 @@
         ],
         "responses": {
           "204": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "null"
-                }
-              }
-            }
+            "description": "The resource was deleted successfully."
           }
         },
         "security": [
@@ -1251,13 +1239,7 @@
         ],
         "responses": {
           "204": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "null"
-                }
-              }
-            }
+            "description": "The resource was deleted successfully."
           }
         },
         "security": [
