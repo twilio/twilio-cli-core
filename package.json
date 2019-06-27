@@ -1,21 +1,22 @@
 {
   "name": "@twilio/cli-core",
   "description": "Core functionality for the twilio-cli",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "author": "Twilio @twilio",
   "bugs": "https://github.com/twilio/twilio-cli/issues",
   "dependencies": {
-    "@oclif/command": "^1.5.14",
+    "@oclif/command": "^1.5.15",
     "@oclif/config": "^1.13.0",
     "@oclif/plugin-help": "^2.2.0",
     "chalk": "^2.4.2",
     "columnify": "^1.5.4",
     "fs-extra": "^7.0.1",
-    "inquirer": "^6.3.1",
-    "keytar": "^4.9.0",
+    "inquirer": "^6.4.1",
+    "request": "^2.88.0",
+    "keytar": "^4.11.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",
-    "twilio": "^3.32.0"
+    "twilio": "^3.33.0"
   },
   "devDependencies": {
     "@oclif/test": "^1.2.4",
