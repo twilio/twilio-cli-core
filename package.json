@@ -12,8 +12,8 @@
     "columnify": "^1.5.4",
     "fs-extra": "^7.0.1",
     "inquirer": "^6.3.1",
-    "keytar": "^4.9.0",
     "request": "^2.88.0",
+    "keytar": "4.9.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",
     "twilio": "^3.32.0"
