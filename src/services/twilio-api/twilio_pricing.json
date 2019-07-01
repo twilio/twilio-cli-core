@@ -69,18 +69,21 @@
                   "type": "string"
                 },
                 "prices": {
-                  "properties": {
-                    "base_price": {
-                      "type": "number"
+                  "items": {
+                    "properties": {
+                      "base_price": {
+                        "type": "number"
+                      },
+                      "current_price": {
+                        "type": "number"
+                      },
+                      "number_type": {
+                        "type": "string"
+                      }
                     },
-                    "current_price": {
-                      "type": "number"
-                    },
-                    "number_type": {
-                      "type": "string"
-                    }
+                    "type": "object"
                   },
-                  "type": "object"
+                  "type": "array"
                 }
               },
               "type": "object"
@@ -230,7 +233,9 @@
                   "type": "string"
                 },
                 "prefixes": {
-                  "items": "string",
+                  "items": {
+                    "type": "string"
+                  },
                   "type": "array"
                 }
               },
@@ -359,14 +364,18 @@
                   "type": "number"
                 },
                 "destination_prefixes": {
-                  "items": "string",
+                  "items": {
+                    "type": "string"
+                  },
                   "type": "array"
                 },
                 "friendly_name": {
                   "type": "string"
                 },
                 "origination_prefixes": {
-                  "items": "string",
+                  "items": {
+                    "type": "string"
+                  },
                   "type": "array"
                 }
               },
