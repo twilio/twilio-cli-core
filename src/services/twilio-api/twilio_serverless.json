@@ -24,12 +24,6 @@
             "type": "boolean"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "sid": {
@@ -68,12 +62,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "service_sid": {
@@ -236,12 +224,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "service_sid": {
@@ -380,12 +362,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "service_sid": {

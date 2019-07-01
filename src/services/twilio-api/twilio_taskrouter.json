@@ -37,12 +37,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "multi_task_enabled": {
@@ -230,12 +224,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "priority": {
@@ -310,12 +298,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "reservation_status": {
@@ -388,12 +370,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "sid": {
@@ -447,12 +423,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "max_reserved_workers": {
@@ -734,12 +704,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "sid": {
@@ -870,12 +834,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "reservation_status": {
@@ -1069,12 +1027,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "sid": {

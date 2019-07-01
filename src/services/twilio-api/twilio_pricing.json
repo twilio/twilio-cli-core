@@ -4,12 +4,6 @@
       "pricing.v1.messaging": {
         "properties": {
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "name": {
@@ -106,12 +100,6 @@
       "pricing.v1.phone_number": {
         "properties": {
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "name": {
@@ -177,12 +165,6 @@
       "pricing.v1.voice": {
         "properties": {
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "name": {
@@ -219,34 +201,13 @@
             "items": {
               "properties": {
                 "base_price": {
-                  "anyOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
+                  "type": "number"
                 },
                 "current_price": {
-                  "anyOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
+                  "type": "number"
                 },
                 "number_type": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
+                  "type": "string"
                 }
               },
               "type": "object"
@@ -292,34 +253,13 @@
           "inbound_call_price": {
             "properties": {
               "base_price": {
-                "anyOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "number"
               },
               "current_price": {
-                "anyOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "number"
               },
               "number_type": {
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "string"
               }
             },
             "type": "object"
@@ -354,12 +294,6 @@
       "pricing.v2.voice": {
         "properties": {
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "name": {
@@ -396,34 +330,13 @@
             "items": {
               "properties": {
                 "base_price": {
-                  "anyOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
+                  "type": "number"
                 },
                 "current_price": {
-                  "anyOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
+                  "type": "number"
                 },
                 "number_type": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
+                  "type": "string"
                 }
               },
               "type": "object"
@@ -476,34 +389,13 @@
           "inbound_call_price": {
             "properties": {
               "base_price": {
-                "anyOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "number"
               },
               "current_price": {
-                "anyOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "number"
               },
               "number_type": {
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "string"
               }
             },
             "type": "object"

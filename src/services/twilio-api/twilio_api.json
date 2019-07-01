@@ -7,9 +7,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -36,12 +38,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "type": {
@@ -73,9 +69,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "emergency_enabled": {
@@ -139,9 +137,11 @@
             "type": "object"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "emergency_address_sid": {
@@ -314,9 +314,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -479,9 +481,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "permissions": {
@@ -513,12 +517,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -951,9 +949,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "direction": {
@@ -963,6 +963,7 @@
             "type": "string"
           },
           "end_time": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "forwarded_from": {
@@ -1005,6 +1006,7 @@
             "type": "string"
           },
           "start_time": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "status": {
@@ -1021,12 +1023,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "to": {
@@ -1051,9 +1047,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "issues": {
@@ -1099,9 +1097,11 @@
             "type": "integer"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "end_date": {
@@ -1166,9 +1166,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "error_code": {
@@ -1178,6 +1180,7 @@
             "type": "string"
           },
           "message_date": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "message_text": {
@@ -1239,9 +1242,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "error_code": {
@@ -1251,6 +1256,7 @@
             "type": "string"
           },
           "message_date": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "message_text": {
@@ -1330,9 +1336,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "duration": {
@@ -1342,14 +1350,8 @@
             "type": "object"
           },
           "error_code": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "price": {
             "type": "number"
@@ -1376,6 +1378,7 @@
             "type": "string"
           },
           "start_time": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "status": {
@@ -1408,9 +1411,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -1434,12 +1439,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -1476,9 +1475,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "duration": {
@@ -1488,14 +1489,8 @@
             "type": "object"
           },
           "error_code": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "price": {
             "type": "number"
@@ -1522,6 +1517,7 @@
             "type": "string"
           },
           "start_time": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "status": {
@@ -1572,9 +1568,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "end_conference_on_exit": {
@@ -1720,9 +1718,11 @@
             "type": "object"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "emergency_address_sid": {
@@ -1904,9 +1904,11 @@
             "type": "object"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "description": {
@@ -1928,12 +1930,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "unique_name": {
@@ -2035,9 +2031,11 @@
             "type": "object"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -2238,9 +2236,11 @@
             "type": "object"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -2441,9 +2441,11 @@
             "type": "object"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -2603,9 +2605,11 @@
       "api.v2010.account.key": {
         "properties": {
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -2635,12 +2639,15 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_sent": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "direction": {
@@ -2653,14 +2660,8 @@
             "type": "string"
           },
           "error_code": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "error_message": {
             "type": "string"
@@ -2709,12 +2710,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "to": {
@@ -2738,9 +2733,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "parent_sid": {
@@ -2771,9 +2768,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "message_sid": {
@@ -2798,9 +2797,11 @@
       "api.v2010.account.new_key": {
         "properties": {
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -2821,9 +2822,11 @@
       "api.v2010.account.new_signing_key": {
         "properties": {
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -2859,9 +2862,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "error_code": {
@@ -2871,6 +2876,7 @@
             "type": "string"
           },
           "message_date": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "message_text": {
@@ -2932,9 +2938,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "error_code": {
@@ -2944,6 +2952,7 @@
             "type": "string"
           },
           "message_date": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "message_text": {
@@ -3005,9 +3014,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -3044,9 +3055,11 @@
             "type": "integer"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -3077,6 +3090,7 @@
             "type": "string"
           },
           "date_enqueued": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "position": {
@@ -3125,9 +3139,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "duration": {
@@ -3137,14 +3153,8 @@
             "type": "object"
           },
           "error_code": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "price": {
             "type": "string"
@@ -3171,6 +3181,7 @@
             "type": "string"
           },
           "start_time": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "status": {
@@ -3185,12 +3196,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -3221,12 +3226,15 @@
             "type": "string"
           },
           "date_completed": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "reference_sid": {
@@ -3255,12 +3263,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           }
         },
@@ -3296,9 +3298,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "label": {
@@ -3317,12 +3321,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           }
         },
@@ -3349,9 +3347,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "duration": {
@@ -3408,9 +3408,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -3477,9 +3479,11 @@
       "api.v2010.account.signing_key": {
         "properties": {
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -3507,9 +3511,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -3522,12 +3528,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -3552,9 +3552,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "sid": {
@@ -3588,9 +3590,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "domain_name": {
@@ -3609,12 +3613,6 @@
             "type": "boolean"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -3704,9 +3702,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -3730,9 +3730,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -3760,9 +3762,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -3786,9 +3790,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -3801,12 +3807,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -3825,9 +3825,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -3840,12 +3842,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -3864,9 +3860,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -3879,12 +3877,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -3906,9 +3898,11 @@
             "type": "integer"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -3948,9 +3942,11 @@
             "type": "integer"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {
@@ -4014,12 +4010,15 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_sent": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "direction": {
@@ -4077,9 +4076,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "ice_servers": {
@@ -4112,9 +4113,11 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "duration": {
@@ -4446,12 +4449,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -4750,12 +4747,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -5054,12 +5045,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -5358,12 +5343,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -5662,12 +5641,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -5966,12 +5939,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -6270,12 +6237,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -6574,12 +6535,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -6878,12 +6833,6 @@
             "type": "string"
           },
           "subresource_uris": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "uri": {
@@ -6935,12 +6884,15 @@
             "type": "string"
           },
           "date_created": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_fired": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "date_updated": {
+            "format": "date-time-rfc-2822",
             "type": "string"
           },
           "friendly_name": {

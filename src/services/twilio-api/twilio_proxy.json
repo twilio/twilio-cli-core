@@ -44,12 +44,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "number_selection_behavior": {
@@ -179,12 +173,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "mode": {
@@ -399,12 +387,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "proxy_identifier": {

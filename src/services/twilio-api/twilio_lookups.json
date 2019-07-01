@@ -106,12 +106,6 @@
             "name": "AddOnsData",
             "required": false,
             "schema": {
-              "patternProperties": {
-                "^.+$": {
-                  "format": "uri",
-                  "type": "string"
-                }
-              },
               "type": "object"
             }
           }

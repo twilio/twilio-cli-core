@@ -191,12 +191,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "resource_sid": {

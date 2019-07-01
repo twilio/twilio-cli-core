@@ -47,14 +47,8 @@
             "type": "object"
           },
           "connect_duration": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "direction": {
             "enum": [
@@ -75,14 +69,8 @@
             "type": "string"
           },
           "duration": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "end_time": {
             "format": "date-time",
