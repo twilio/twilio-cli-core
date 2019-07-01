@@ -226,6 +226,9 @@
                 "current_price": {
                   "type": "number"
                 },
+                "friendly_name": {
+                  "type": "string"
+                },
                 "prefixes": {
                   "items": "string",
                   "type": "array"
@@ -358,6 +361,9 @@
                 "destination_prefixes": {
                   "items": "string",
                   "type": "array"
+                },
+                "friendly_name": {
+                  "type": "string"
                 },
                 "origination_prefixes": {
                   "items": "string",
