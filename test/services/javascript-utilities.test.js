@@ -1,4 +1,4 @@
-const { doesObjectHaveProperty, sleep, splitArray } = require('../../src/services/javascript-utilities');
+const { doesObjectHaveProperty, translateKeys, sleep, splitArray } = require('../../src/services/javascript-utilities');
 
 const { expect, test } = require('@twilio/cli-test');
 
@@ -31,6 +31,38 @@ describe('services', () => {
       });
     });
 
+    describe('translateKeys', () => {
+      const keyFunc = key => key.toUpperCase();
+
+      test.it('should translate the keys of a complex object', () => {
+        const actual = {
+          nullValue: null,
+          anArray: ['a', 'b', 'c'],
+          nested: { level2: { level3: 'value' } },
+          custom: {
+            one: 1,
+            two: 2,
+            three: 3,
+            toJSON() {
+              return { one: this.one, two: this.two };
+            }
+          }
+        };
+
+        const expected = {
+          NULLVALUE: null,
+          ANARRAY: ['a', 'b', 'c'],
+          NESTED: { LEVEL2: { LEVEL3: 'value' } },
+          CUSTOM: {
+            ONE: 1,
+            TWO: 2
+          }
+        };
+
+        expect(translateKeys(actual, keyFunc)).to.eql(expected);
+      });
+    });
+
     describe('sleep', () => {
       test.it('should sleep about as long as it is told', async () => {
         const sleepTimeLower = 80;
@@ -46,7 +78,7 @@ describe('services', () => {
     });
 
     describe('splitArray', () => {
-      test.it('should split the array in 2', async () => {
+      test.it('should split the array in 2', () => {
         const testArray = ['a', 'ey!', 'bee', 'b', 'c', 'SEA'];
         const isLengthOne = item => item.length === 1;
 
