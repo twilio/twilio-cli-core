@@ -5,6 +5,13 @@ const doesObjectHaveProperty = (obj, propertyName) => {
   return Object.prototype.hasOwnProperty.call(obj, propertyName);
 };
 
+/**
+ * Recursively translates the keys of the object using the given key translator function.
+ *
+ * @param {object} obj - The object to have its keys translated
+ * @param {function(key)} keyFunc - The function to translate and return each key
+ * @returns {*} Input obj with keys translated
+ */
 const translateKeys = (obj, keyFunc) => {
   if (!obj || typeof obj !== 'object') {
     return obj;
