@@ -668,7 +668,8 @@
         "status",
         "address_sid",
         "email"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/HostedNumber/AuthorizationDocuments/{Sid}": {
       "delete": {
@@ -845,7 +846,8 @@
         "status",
         "address_sid",
         "email"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/HostedNumber/AuthorizationDocuments/{SigningDocumentSid}/DependentOrders": {
       "description": "TODO: Resource-level docs",
@@ -984,7 +986,8 @@
         "friendly_name",
         "status",
         "phone_number"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/HostedNumber/Orders": {
       "description": "TODO: Resource-level docs",
@@ -1328,7 +1331,8 @@
         "friendly_name",
         "status",
         "phone_number"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/HostedNumber/Orders/{Sid}": {
       "delete": {
@@ -1517,7 +1521,8 @@
         "friendly_name",
         "status",
         "phone_number"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/RegulatoryCompliance/Identities": {
       "description": "TODO: Resource-level docs",
@@ -1707,7 +1712,8 @@
         "friendly_name",
         "type",
         "status"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/RegulatoryCompliance/Identities/{IdentitySid}/Documents": {
       "description": "TODO: Resource-level docs",
@@ -1793,7 +1799,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/RegulatoryCompliance/Identities/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -1843,7 +1850,8 @@
         "friendly_name",
         "type",
         "status"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/RegulatoryCompliance/ProofOfAddresses": {
       "description": "TODO: Resource-level docs",
@@ -1990,7 +1998,8 @@
         "sid",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/RegulatoryCompliance/ProofOfAddresses/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -2039,7 +2048,8 @@
         "sid",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

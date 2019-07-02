@@ -176,7 +176,8 @@
       "x-default-output-properties": [
         "update_request",
         "update_count"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/DialingPermissions/Countries": {
       "description": "TODO: Resource-level docs",
@@ -305,7 +306,8 @@
         "iso_code",
         "name",
         "continent"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/DialingPermissions/Countries/{IsoCode}": {
       "description": "TODO: Resource-level docs",
@@ -351,7 +353,8 @@
         "iso_code",
         "name",
         "continent"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/DialingPermissions/Countries/{IsoCode}/HighRiskSpecialPrefixes": {
       "description": "TODO: Resource-level docs",
@@ -433,7 +436,8 @@
       ],
       "x-default-output-properties": [
         "prefix"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Settings": {
       "description": "TODO: Resource-level docs",
@@ -500,7 +504,8 @@
       ],
       "x-default-output-properties": [
         "dialing_permissions_inheritance"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

@@ -668,7 +668,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Documents": {
       "description": "Sync document objects",
@@ -818,7 +819,8 @@
         "sid",
         "unique_name",
         "revision"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Documents/{DocumentSid}/Permissions": {
       "description": "Sync document permissions",
@@ -918,7 +920,8 @@
         "read",
         "write",
         "manage"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Documents/{DocumentSid}/Permissions/{Identity}": {
       "delete": {
@@ -1124,7 +1127,8 @@
         "read",
         "write",
         "manage"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Documents/{Sid}": {
       "delete": {
@@ -1293,7 +1297,8 @@
         "sid",
         "unique_name",
         "revision"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Lists": {
       "description": "Sync list objects",
@@ -1443,7 +1448,8 @@
         "sid",
         "unique_name",
         "revision"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Lists/{ListSid}/Items": {
       "description": "Items in a sync list",
@@ -1661,7 +1667,8 @@
         "index",
         "revision",
         "created_by"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Lists/{ListSid}/Items/{Index}": {
       "delete": {
@@ -1875,7 +1882,8 @@
         "index",
         "revision",
         "created_by"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Lists/{ListSid}/Permissions": {
       "description": "Permissions for sync list items",
@@ -1975,7 +1983,8 @@
         "read",
         "write",
         "manage"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Lists/{ListSid}/Permissions/{Identity}": {
       "delete": {
@@ -2181,7 +2190,8 @@
         "read",
         "write",
         "manage"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Lists/{Sid}": {
       "delete": {
@@ -2350,7 +2360,8 @@
         "sid",
         "unique_name",
         "revision"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Maps": {
       "description": "Sync map objects",
@@ -2500,7 +2511,8 @@
         "sid",
         "unique_name",
         "revision"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Maps/{MapSid}/Items": {
       "description": "Keys in a sync map",
@@ -2727,7 +2739,8 @@
         "key",
         "revision",
         "created_by"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Maps/{MapSid}/Items/{Key}": {
       "delete": {
@@ -2941,7 +2954,8 @@
         "key",
         "revision",
         "created_by"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Maps/{MapSid}/Permissions": {
       "description": "Permissions for sync map keys",
@@ -3041,7 +3055,8 @@
         "read",
         "write",
         "manage"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Maps/{MapSid}/Permissions/{Identity}": {
       "delete": {
@@ -3247,7 +3262,8 @@
         "read",
         "write",
         "manage"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Maps/{Sid}": {
       "delete": {
@@ -3416,7 +3432,8 @@
         "sid",
         "unique_name",
         "revision"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Streams": {
       "description": "TODO: Resource-level docs",
@@ -3557,7 +3574,8 @@
         "sid",
         "unique_name",
         "created_by"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Streams/{Sid}": {
       "delete": {
@@ -3717,7 +3735,8 @@
         "sid",
         "unique_name",
         "created_by"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Streams/{StreamSid}/Messages": {
       "description": "TODO: Resource-level docs",
@@ -3785,7 +3804,8 @@
       ],
       "x-default-output-properties": [
         "sid"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{Sid}": {
       "delete": {
@@ -3955,7 +3975,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

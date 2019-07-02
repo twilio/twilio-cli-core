@@ -127,7 +127,8 @@
         "request_sid",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

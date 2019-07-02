@@ -485,7 +485,8 @@
         "flex_flow_sid",
         "user_sid",
         "task_sid"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Channels/{ChatChannelSid}/Roles/{Role}/Users": {
       "description": "Users in a Flex channel",
@@ -550,7 +551,8 @@
       ],
       "x-default-output-properties": [
         "identity"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Channels/{Sid}": {
       "delete": {
@@ -594,7 +596,8 @@
         "flex_flow_sid",
         "user_sid",
         "task_sid"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Configuration": {
       "description": "Configuration for a Flex instance",
@@ -664,7 +667,8 @@
         "ui_language",
         "ui_version",
         "service_version"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Configuration/Public": {
       "description": "Flex public configuration",
@@ -758,7 +762,8 @@
       ],
       "x-default-output-properties": [
         "runtime_domain"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/FlexFlows": {
       "description": "Flex flow",
@@ -1028,7 +1033,8 @@
         "friendly_name",
         "channel_type",
         "integration_type"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/FlexFlows/{Sid}": {
       "delete": {
@@ -1305,7 +1311,8 @@
         "friendly_name",
         "channel_type",
         "integration_type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/WebChannels": {
       "description": "Flex web channel",
@@ -1398,7 +1405,8 @@
       "x-default-output-properties": [
         "sid",
         "flex_flow_sid"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/WebChannels/{Sid}": {
       "description": "Flex web channel",
@@ -1467,7 +1475,8 @@
       "x-default-output-properties": [
         "sid",
         "flex_flow_sid"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

@@ -7360,7 +7360,8 @@
         "sid",
         "friendly_name",
         "status"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Addresses.json": {
       "description": "Physical locations within a country",
@@ -7590,7 +7591,8 @@
         "friendly_name",
         "validated",
         "verified"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Addresses/{AddressSid}/DependentPhoneNumbers.json": {
       "description": "Phone numbers dependent on an Address resource",
@@ -7687,7 +7689,8 @@
         "sid",
         "phone_number",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Addresses/{Sid}.json": {
       "delete": {
@@ -7911,7 +7914,8 @@
         "friendly_name",
         "validated",
         "verified"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Applications.json": {
       "description": "Applications that you have created with Twilio",
@@ -8253,7 +8257,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Applications/{Sid}.json": {
       "delete": {
@@ -8616,7 +8621,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/AuthorizedConnectApps.json": {
       "description": "Authorized Twilio Connect apps",
@@ -8700,7 +8706,8 @@
       "x-default-output-properties": [
         "connect_app_sid",
         "connect_app_friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/AuthorizedConnectApps/{ConnectAppSid}.json": {
       "description": "Authorized Twilio Connect apps",
@@ -8760,7 +8767,8 @@
       "x-default-output-properties": [
         "connect_app_sid",
         "connect_app_friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers.json": {
       "description": "Country codes with available phone numbers",
@@ -8845,7 +8853,8 @@
         "country_code",
         "country",
         "beta"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json": {
       "description": "Country codes with available phone numbers",
@@ -8903,7 +8912,8 @@
         "country_code",
         "country",
         "beta"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/Local.json": {
       "description": "Available local phone numbers",
@@ -9159,7 +9169,8 @@
         "phone_number",
         "region",
         "beta"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/MachineToMachine.json": {
       "description": "Available machine-to-machine phone numbers",
@@ -9415,7 +9426,8 @@
         "phone_number",
         "region",
         "beta"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/Mobile.json": {
       "description": "Available mobile phone numbers",
@@ -9671,7 +9683,8 @@
         "phone_number",
         "region",
         "beta"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/National.json": {
       "description": "Available national phone numbers",
@@ -9927,7 +9940,8 @@
         "phone_number",
         "region",
         "beta"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/SharedCost.json": {
       "description": "Available shared cost numbers",
@@ -10183,7 +10197,8 @@
         "phone_number",
         "region",
         "beta"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/TollFree.json": {
       "description": "Available toll free phone numbers",
@@ -10439,7 +10454,8 @@
         "phone_number",
         "region",
         "beta"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/Voip.json": {
       "description": "Available VoIP phone numbers",
@@ -10695,7 +10711,8 @@
         "phone_number",
         "region",
         "beta"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Balance.json": {
       "description": "Account balance",
@@ -10744,7 +10761,8 @@
         "account_sid",
         "balance",
         "currency"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls.json": {
       "description": "Connections between telephones and Twilio",
@@ -11238,7 +11256,8 @@
         "to",
         "status",
         "start_time"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/FeedbackSummary.json": {
       "description": "How your end user\u00e2\u20ac\u2122s perceive the quality of their calls",
@@ -11350,7 +11369,8 @@
         "call_feedback_count",
         "quality_score_average",
         "start_date"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/FeedbackSummary/{Sid}.json": {
       "delete": {
@@ -11454,7 +11474,8 @@
         "call_feedback_count",
         "quality_score_average",
         "start_date"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Feedback.json": {
       "description": "Describes the quality experienced during phone calls",
@@ -11594,7 +11615,8 @@
         "sid",
         "quality_score",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Notifications.json": {
       "description": "Error notifications for calls",
@@ -11711,7 +11733,8 @@
         "call_sid",
         "error_code",
         "message_date"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Notifications/{Sid}.json": {
       "delete": {
@@ -11839,7 +11862,8 @@
         "call_sid",
         "error_code",
         "message_date"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings.json": {
       "description": "Recordings associated with voice calls",
@@ -12059,7 +12083,8 @@
         "status",
         "start_time",
         "duration"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings/{Sid}.json": {
       "delete": {
@@ -12274,7 +12299,8 @@
         "status",
         "start_time",
         "duration"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json": {
       "delete": {
@@ -12539,7 +12565,8 @@
         "to",
         "status",
         "start_time"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Conferences.json": {
       "description": "Voice call conferences",
@@ -12667,7 +12694,8 @@
         "sid",
         "friendly_name",
         "status"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json": {
       "description": "Conference participants",
@@ -13218,7 +13246,8 @@
         "status",
         "muted",
         "hold"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json": {
       "delete": {
@@ -13562,7 +13591,8 @@
         "status",
         "muted",
         "hold"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Recordings.json": {
       "description": "Recordings of conferences",
@@ -13671,7 +13701,8 @@
         "status",
         "start_time",
         "duration"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Recordings/{Sid}.json": {
       "delete": {
@@ -13886,7 +13917,8 @@
         "status",
         "start_time",
         "duration"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Conferences/{Sid}.json": {
       "description": "Voice call conferences",
@@ -14040,7 +14072,8 @@
         "sid",
         "friendly_name",
         "status"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/ConnectApps.json": {
       "description": "Twilio Connect apps",
@@ -14124,7 +14157,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/ConnectApps/{Sid}.json": {
       "delete": {
@@ -14370,7 +14404,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers.json": {
       "description": "Incoming phone numbers on a Twilio account/project",
@@ -14835,7 +14870,8 @@
         "sid",
         "phone_number",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json": {
       "description": "Incoming local phone numbers on a Twilio account/project",
@@ -15241,7 +15277,8 @@
         "sid",
         "phone_number",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Mobile.json": {
       "description": "Incoming mobile phone numbers on a Twilio account/project",
@@ -15647,7 +15684,8 @@
         "sid",
         "phone_number",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json": {
       "description": "Incoming toll free phone numbers on a Twilio account/project",
@@ -16053,7 +16091,8 @@
         "sid",
         "phone_number",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns.json": {
       "description": "TODO: Resource-level docs",
@@ -16211,7 +16250,8 @@
         "unique_name",
         "friendly_name",
         "description"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{AssignedAddOnSid}/Extensions.json": {
       "description": "TODO: Resource-level docs",
@@ -16321,7 +16361,8 @@
         "unique_name",
         "friendly_name",
         "product_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{AssignedAddOnSid}/Extensions/{Sid}.json": {
       "description": "TODO: Resource-level docs",
@@ -16407,7 +16448,8 @@
         "unique_name",
         "friendly_name",
         "product_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{Sid}.json": {
       "delete": {
@@ -16535,7 +16577,8 @@
         "unique_name",
         "friendly_name",
         "description"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json": {
       "delete": {
@@ -16988,7 +17031,8 @@
         "sid",
         "phone_number",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Keys.json": {
       "description": "API keys",
@@ -17118,7 +17162,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Keys/{Sid}.json": {
       "delete": {
@@ -17278,7 +17323,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Messages.json": {
       "description": "Inbound or outbound messages",
@@ -17567,7 +17613,8 @@
         "status",
         "direction",
         "date_sent"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Feedback.json": {
       "description": "Customer-provided feedback on delivery confirmation",
@@ -17641,7 +17688,8 @@
         "message_sid",
         "outcome",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Media.json": {
       "description": "Media attached to MMS messages",
@@ -17748,7 +17796,8 @@
         "sid",
         "parent_sid",
         "content_type"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Media/{Sid}.json": {
       "delete": {
@@ -17875,7 +17924,8 @@
         "sid",
         "parent_sid",
         "content_type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Messages/{Sid}.json": {
       "delete": {
@@ -18038,7 +18088,8 @@
         "status",
         "direction",
         "date_sent"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Notifications.json": {
       "description": "[DEPRECATED] Log entries",
@@ -18143,7 +18194,8 @@
         "call_sid",
         "error_code",
         "message_date"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Notifications/{Sid}.json": {
       "delete": {
@@ -18247,7 +18299,8 @@
         "call_sid",
         "error_code",
         "message_date"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds.json": {
       "description": "Verified numbers that may be used as caller ID",
@@ -18455,7 +18508,8 @@
         "sid",
         "phone_number",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds/{Sid}.json": {
       "delete": {
@@ -18615,7 +18669,8 @@
         "sid",
         "phone_number",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Queues.json": {
       "description": "Queues of calls",
@@ -18755,7 +18810,8 @@
         "friendly_name",
         "current_size",
         "average_wait_time"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members.json": {
       "description": "Calls in a call queue",
@@ -18853,7 +18909,8 @@
         "date_enqueued",
         "position",
         "wait_time"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json": {
       "description": "Calls in a call queue",
@@ -19020,7 +19077,8 @@
         "date_enqueued",
         "position",
         "wait_time"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Queues/{Sid}.json": {
       "delete": {
@@ -19190,7 +19248,8 @@
         "friendly_name",
         "current_size",
         "average_wait_time"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings.json": {
       "description": "Recordings of phone calls",
@@ -19311,7 +19370,8 @@
         "status",
         "start_time",
         "duration"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions.json": {
       "description": "References to text transcriptions of call recordings",
@@ -19409,7 +19469,8 @@
         "type",
         "status",
         "duration"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions/{Sid}.json": {
       "delete": {
@@ -19537,7 +19598,8 @@
         "type",
         "status",
         "duration"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults.json": {
       "description": "The results of an Add-on API call",
@@ -19635,7 +19697,8 @@
         "status",
         "add_on_sid",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads.json": {
       "description": "A single Add-on results' payload",
@@ -19744,7 +19807,8 @@
         "sid",
         "label",
         "content_type"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{PayloadSid}/Data.json": {
       "description": "TODO: Resource-level docs",
@@ -19827,7 +19891,8 @@
       ],
       "x-default-output-properties": [
         "redirect_to"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{Sid}.json": {
       "delete": {
@@ -19978,7 +20043,8 @@
         "sid",
         "label",
         "content_type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{Sid}.json": {
       "delete": {
@@ -20106,7 +20172,8 @@
         "status",
         "add_on_sid",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{Sid}.json": {
       "delete": {
@@ -20211,7 +20278,8 @@
         "status",
         "start_time",
         "duration"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists.json": {
       "description": "Lists of SIP credentials",
@@ -20340,7 +20408,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json": {
       "description": "Username and password information for SIP Domains",
@@ -20503,7 +20572,8 @@
         "sid",
         "username",
         "credential_list_sid"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{Sid}.json": {
       "delete": {
@@ -20699,7 +20769,8 @@
         "sid",
         "username",
         "credential_list_sid"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{Sid}.json": {
       "delete": {
@@ -20858,7 +20929,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains.json": {
       "description": "Custom DNS hostnames that can accept SIP traffic",
@@ -21105,7 +21177,8 @@
         "sid",
         "domain_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/CredentialListMappings.json": {
       "description": "Credential lists for SIP calls",
@@ -21261,7 +21334,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/CredentialListMappings/{Sid}.json": {
       "delete": {
@@ -21387,7 +21461,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/IpAccessControlListMappings.json": {
       "description": "IP address lists for SIP calls",
@@ -21543,7 +21618,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/IpAccessControlListMappings/{Sid}.json": {
       "delete": {
@@ -21669,7 +21745,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings.json": {
       "description": "Credential lists for SIP registrations",
@@ -21825,7 +21902,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings/{Sid}.json": {
       "delete": {
@@ -21951,7 +22029,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings.json": {
       "description": "Credential lists associated with a SIP Domain",
@@ -22107,7 +22186,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings/{Sid}.json": {
       "delete": {
@@ -22233,7 +22313,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings.json": {
       "description": "Access control lists associated with a SIP Domain",
@@ -22389,7 +22470,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings/{Sid}.json": {
       "delete": {
@@ -22515,7 +22597,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{Sid}.json": {
       "delete": {
@@ -22792,7 +22875,8 @@
         "sid",
         "domain_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists.json": {
       "description": "Access control lists of IP address resources",
@@ -22921,7 +23005,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses.json": {
       "description": "TODO: Resource-level docs",
@@ -23093,7 +23178,8 @@
         "sid",
         "ip_address",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses/{Sid}.json": {
       "delete": {
@@ -23307,7 +23393,8 @@
         "sid",
         "ip_address",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json": {
       "description": "IP addresses that have access to a SIP Domain",
@@ -23479,7 +23566,8 @@
         "sid",
         "ip_address",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json": {
       "delete": {
@@ -23693,7 +23781,8 @@
         "sid",
         "ip_address",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{Sid}.json": {
       "delete": {
@@ -23852,7 +23941,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Regions.json": {
       "description": "TODO: Resource-level docs",
@@ -23945,7 +24035,8 @@
       "x-default-output-properties": [
         "friendly_name",
         "region"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SMS/Messages.json": {
       "description": "TODO: Resource-level docs",
@@ -24155,7 +24246,8 @@
         "status",
         "direction",
         "date_sent"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SMS/Messages/{Sid}.json": {
       "description": "TODO: Resource-level docs",
@@ -24219,7 +24311,8 @@
         "status",
         "direction",
         "date_sent"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes.json": {
       "description": "Messaging short codes",
@@ -24322,7 +24415,8 @@
         "sid",
         "short_code",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes/{Sid}.json": {
       "description": "Messaging short codes",
@@ -24515,7 +24609,8 @@
         "sid",
         "short_code",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/SigningKeys.json": {
       "description": "Create a new signing key",
@@ -24645,7 +24740,8 @@
         "sid",
         "friendly_name",
         "secret"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/SigningKeys/{Sid}.json": {
       "delete": {
@@ -24804,7 +24900,8 @@
       "x-default-output-properties": [
         "sid",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Tokens.json": {
       "description": "Credentials for ICE servers",
@@ -24861,7 +24958,8 @@
       "x-default-output-properties": [
         "username",
         "ice_servers"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Transcriptions.json": {
       "description": "Text transcriptions of call recordings",
@@ -24947,7 +25045,8 @@
         "type",
         "status",
         "duration"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Transcriptions/{Sid}.json": {
       "delete": {
@@ -25051,7 +25150,8 @@
         "type",
         "status",
         "duration"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records.json": {
       "description": "Twilio account usage records",
@@ -25421,7 +25521,8 @@
         "end_date",
         "count",
         "count_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/AllTime.json": {
       "description": "Usage records for all time",
@@ -25791,7 +25892,8 @@
         "end_date",
         "count",
         "count_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Daily.json": {
       "description": "Usage records summarized by day",
@@ -26161,7 +26263,8 @@
         "end_date",
         "count",
         "count_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/LastMonth.json": {
       "description": "Usage records for last month",
@@ -26531,7 +26634,8 @@
         "end_date",
         "count",
         "count_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Monthly.json": {
       "description": "Usage records summarized by month",
@@ -26901,7 +27005,8 @@
         "end_date",
         "count",
         "count_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/ThisMonth.json": {
       "description": "Usage records for this month",
@@ -27271,7 +27376,8 @@
         "end_date",
         "count",
         "count_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Today.json": {
       "description": "Usage records for today",
@@ -27641,7 +27747,8 @@
         "end_date",
         "count",
         "count_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Yearly.json": {
       "description": "Usage records summarized by year",
@@ -28011,7 +28118,8 @@
         "end_date",
         "count",
         "count_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Yesterday.json": {
       "description": "Usage records for yesterday",
@@ -28381,7 +28489,8 @@
         "end_date",
         "count",
         "count_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers.json": {
       "description": "Webhooks that notify you of usage thresholds",
@@ -29120,7 +29229,8 @@
         "friendly_name",
         "usage_category",
         "trigger_by"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers/{Sid}.json": {
       "delete": {
@@ -29314,7 +29424,8 @@
         "friendly_name",
         "usage_category",
         "trigger_by"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/2010-04-01/Accounts/{Sid}.json": {
       "description": "Twilio accounts (aka Project) or subaccounts",
@@ -29422,7 +29533,8 @@
         "sid",
         "friendly_name",
         "status"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

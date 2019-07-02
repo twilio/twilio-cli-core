@@ -1461,7 +1461,8 @@
         "sid",
         "friendly_name",
         "type"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Credentials/{Sid}": {
       "delete": {
@@ -1630,7 +1631,8 @@
         "sid",
         "friendly_name",
         "type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services": {
       "description": "Top level scope for all chat resources",
@@ -1737,7 +1739,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Channels": {
       "description": "Channels represent chat rooms",
@@ -1916,7 +1919,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Channels/{ChannelSid}/Invites": {
       "description": "Pending invitations to users to become channel members",
@@ -2096,7 +2100,8 @@
         "sid",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Channels/{ChannelSid}/Invites/{Sid}": {
       "delete": {
@@ -2223,7 +2228,8 @@
         "sid",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Channels/{ChannelSid}/Members": {
       "description": "Users joined to specific channels",
@@ -2403,7 +2409,8 @@
         "sid",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Channels/{ChannelSid}/Members/{Sid}": {
       "delete": {
@@ -2612,7 +2619,8 @@
         "sid",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Channels/{ChannelSid}/Messages": {
       "description": "Individual chat messages",
@@ -2800,7 +2808,8 @@
         "from",
         "to",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Channels/{ChannelSid}/Messages/{Sid}": {
       "delete": {
@@ -3006,7 +3015,8 @@
         "from",
         "to",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Channels/{Sid}": {
       "delete": {
@@ -3184,7 +3194,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Roles": {
       "description": "Roles determining user or member permissions",
@@ -3341,7 +3352,8 @@
         "sid",
         "friendly_name",
         "type"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Roles/{Sid}": {
       "delete": {
@@ -3504,7 +3516,8 @@
         "sid",
         "friendly_name",
         "type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Users": {
       "description": "Unique chat users within a chat service",
@@ -3666,7 +3679,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Users/{Sid}": {
       "delete": {
@@ -3847,7 +3861,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Users/{UserSid}/Channels": {
       "description": "TODO: Resource-level docs",
@@ -3945,7 +3960,8 @@
       "x-default-output-properties": [
         "channel_sid",
         "status"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{Sid}": {
       "delete": {
@@ -4814,7 +4830,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Credentials": {
       "description": "Credentials for push notifications channels",
@@ -4980,7 +4997,8 @@
         "sid",
         "friendly_name",
         "type"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Credentials/{Sid}": {
       "delete": {
@@ -5149,7 +5167,8 @@
         "sid",
         "friendly_name",
         "type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services": {
       "description": "Top level scope for all chat resources",
@@ -5256,7 +5275,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Bindings": {
       "description": "Push notification subscription for users",
@@ -5372,7 +5392,8 @@
         "sid",
         "endpoint",
         "identity"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Bindings/{Sid}": {
       "delete": {
@@ -5475,7 +5496,8 @@
         "sid",
         "endpoint",
         "identity"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/Channels": {
       "description": "Channels represent chat rooms",
@@ -5683,7 +5705,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Channels/{ChannelSid}/Invites": {
       "description": "Pending invitations to users to become channel members",
@@ -5863,7 +5886,8 @@
         "sid",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Channels/{ChannelSid}/Invites/{Sid}": {
       "delete": {
@@ -5990,7 +6014,8 @@
         "sid",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/Channels/{ChannelSid}/Members": {
       "description": "Users joined to specific channels",
@@ -6219,7 +6244,8 @@
         "sid",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Channels/{ChannelSid}/Members/{Sid}": {
       "delete": {
@@ -6467,7 +6493,8 @@
         "sid",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/Channels/{ChannelSid}/Messages": {
       "description": "Individual chat messages",
@@ -6696,7 +6723,8 @@
         "from",
         "to",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Channels/{ChannelSid}/Messages/{Sid}": {
       "delete": {
@@ -6940,7 +6968,8 @@
         "from",
         "to",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/Channels/{ChannelSid}/Webhooks": {
       "description": "Webhooks for specific channels",
@@ -7167,7 +7196,8 @@
       "x-default-output-properties": [
         "sid",
         "configuration"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Channels/{ChannelSid}/Webhooks/{Sid}": {
       "delete": {
@@ -7420,7 +7450,8 @@
       "x-default-output-properties": [
         "sid",
         "configuration"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/Channels/{Sid}": {
       "delete": {
@@ -7627,7 +7658,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/Roles": {
       "description": "Roles determining user or member permissions",
@@ -7784,7 +7816,8 @@
         "sid",
         "friendly_name",
         "type"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Roles/{Sid}": {
       "delete": {
@@ -7947,7 +7980,8 @@
         "sid",
         "friendly_name",
         "type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/Users": {
       "description": "Unique chat users within a chat service",
@@ -8110,7 +8144,8 @@
         "friendly_name",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Users/{Sid}": {
       "delete": {
@@ -8292,7 +8327,8 @@
         "friendly_name",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/Users/{UserSid}/Bindings": {
       "description": "List of bindings for a given user",
@@ -8409,7 +8445,8 @@
         "endpoint",
         "identity",
         "binding_type"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Users/{UserSid}/Bindings/{Sid}": {
       "delete": {
@@ -8537,7 +8574,8 @@
         "endpoint",
         "identity",
         "binding_type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/Users/{UserSid}/Channels": {
       "description": "List of channels for a given user",
@@ -8635,7 +8673,8 @@
       "x-default-output-properties": [
         "channel_sid",
         "status"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Users/{UserSid}/Channels/{ChannelSid}": {
       "description": "List of channels for a given user",
@@ -8780,7 +8819,8 @@
       "x-default-output-properties": [
         "channel_sid",
         "status"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{Sid}": {
       "delete": {
@@ -9202,7 +9242,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

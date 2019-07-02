@@ -349,7 +349,8 @@
         "error_code",
         "log_level",
         "alert_text"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Alerts/{Sid}": {
       "delete": {
@@ -429,7 +430,8 @@
         "error_code",
         "log_level",
         "alert_text"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Events": {
       "description": "Debugger events",
@@ -567,7 +569,8 @@
         "event_type",
         "event_type",
         "description"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Events/{Sid}": {
       "description": "Debugger events",
@@ -617,7 +620,8 @@
         "event_type",
         "event_type",
         "description"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

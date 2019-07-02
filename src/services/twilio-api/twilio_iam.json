@@ -168,7 +168,8 @@
       "x-default-output-properties": [
         "identity",
         "expiration"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Accounts/{AccountSid}/Tokens/refresh": {
       "description": "TODO: Resource-level docs",
@@ -216,7 +217,8 @@
       "x-default-output-properties": [
         "identity",
         "expiration"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Accounts/{AccountSid}/Tokens/validate": {
       "description": "TODO: Resource-level docs",
@@ -267,7 +269,8 @@
         "valid",
         "code",
         "message"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Accounts/{AccountSid}/authenticate": {
       "description": "TODO: Resource-level docs",
@@ -311,7 +314,8 @@
       ],
       "x-default-output-properties": [
         "url"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Accounts/{AccountSid}/saml2": {
       "description": "TODO: Resource-level docs",
@@ -376,7 +380,8 @@
       ],
       "x-default-output-properties": [
         "redirect_to"
-      ]
+      ],
+      "x-path-type": "list"
     }
   },
   "tags": [

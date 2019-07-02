@@ -838,7 +838,8 @@
         "sid",
         "unique_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/PhoneNumbers": {
       "description": "TODO: Resource-level docs",
@@ -991,7 +992,8 @@
         "sid",
         "friendly_name",
         "phone_number"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/PhoneNumbers/{Sid}": {
       "delete": {
@@ -1151,7 +1153,8 @@
         "sid",
         "friendly_name",
         "phone_number"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Sessions": {
       "description": "TODO: Resource-level docs",
@@ -1345,7 +1348,8 @@
         "unique_name",
         "date_started",
         "date_ended"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Sessions/{SessionSid}/Interactions": {
       "description": "TODO: Resource-level docs",
@@ -1444,7 +1448,8 @@
         "sid",
         "type",
         "data"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Sessions/{SessionSid}/Interactions/{Sid}": {
       "delete": {
@@ -1571,7 +1576,8 @@
         "sid",
         "type",
         "data"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants": {
       "description": "TODO: Resource-level docs",
@@ -1758,7 +1764,8 @@
         "friendly_name",
         "identifier",
         "proxy_identifier"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{ParticipantSid}/MessageInteractions": {
       "description": "TODO: Resource-level docs",
@@ -1951,7 +1958,8 @@
         "sid",
         "type",
         "data"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{ParticipantSid}/MessageInteractions/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -2036,7 +2044,8 @@
         "sid",
         "type",
         "data"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{Sid}": {
       "delete": {
@@ -2164,7 +2173,8 @@
         "friendly_name",
         "identifier",
         "proxy_identifier"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Sessions/{Sid}": {
       "delete": {
@@ -2351,7 +2361,8 @@
         "unique_name",
         "date_started",
         "date_ended"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/ShortCodes": {
       "description": "TODO: Resource-level docs",
@@ -2486,7 +2497,8 @@
         "sid",
         "short_code",
         "iso_country"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/ShortCodes/{Sid}": {
       "delete": {
@@ -2646,7 +2658,8 @@
         "sid",
         "short_code",
         "iso_country"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{Sid}": {
       "delete": {
@@ -2849,7 +2862,8 @@
         "sid",
         "unique_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

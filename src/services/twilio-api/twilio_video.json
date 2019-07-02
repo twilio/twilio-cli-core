@@ -1029,7 +1029,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/CompositionHooks/{Sid}": {
       "delete": {
@@ -1259,7 +1260,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/CompositionSettings/Default": {
       "description": "TODO: Resource-level docs",
@@ -1380,7 +1382,8 @@
         "friendly_name",
         "aws_storage_enabled",
         "encryption_enabled"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Compositions": {
       "description": "TODO: Resource-level docs",
@@ -1640,7 +1643,8 @@
         "status",
         "resolution",
         "format"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Compositions/{CompositionSid}/Media": {
       "description": "Composition media files",
@@ -1705,7 +1709,8 @@
       ],
       "x-default-output-properties": [
         "redirect_to"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Compositions/{Sid}": {
       "delete": {
@@ -1785,7 +1790,8 @@
         "status",
         "resolution",
         "format"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/RecordingSettings/Default": {
       "description": "TODO: Resource-level docs",
@@ -1906,7 +1912,8 @@
         "friendly_name",
         "aws_storage_enabled",
         "encryption_enabled"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Recordings": {
       "description": "Single-track, single-media recordings",
@@ -2060,7 +2067,8 @@
         "type",
         "duration",
         "codec"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Recordings/{RecordingSid}/Media": {
       "description": "Recording media files",
@@ -2125,7 +2133,8 @@
       ],
       "x-default-output-properties": [
         "redirect_to"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Recordings/{Sid}": {
       "delete": {
@@ -2207,7 +2216,8 @@
         "type",
         "duration",
         "codec"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Rooms": {
       "description": "Video rooms with one or more participants",
@@ -2457,7 +2467,8 @@
         "sid",
         "unique_name",
         "status"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Rooms/{RoomSid}/Participants": {
       "description": "Participants in video rooms",
@@ -2586,7 +2597,8 @@
         "sid",
         "identity",
         "status"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/PublishedTracks": {
       "description": "Audio or video tracks being published by a participant",
@@ -2686,7 +2698,8 @@
         "name",
         "enabled",
         "kind"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/PublishedTracks/{Sid}": {
       "description": "Audio or video tracks being published by a participant",
@@ -2760,7 +2773,8 @@
         "name",
         "enabled",
         "kind"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/SubscribeRules": {
       "description": "TODO: Resource-level docs",
@@ -2878,7 +2892,8 @@
         "participant_sid",
         "room_sid",
         "rules"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/SubscribedTracks": {
       "description": "TODO: Resource-level docs",
@@ -2978,7 +2993,8 @@
         "name",
         "enabled",
         "kind"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/SubscribedTracks/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -3052,7 +3068,8 @@
         "name",
         "enabled",
         "kind"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Rooms/{RoomSid}/Participants/{Sid}": {
       "description": "Participants in video rooms",
@@ -3174,7 +3191,8 @@
         "sid",
         "identity",
         "status"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Rooms/{RoomSid}/Recordings": {
       "description": "TODO: Resource-level docs",
@@ -3311,7 +3329,8 @@
         "type",
         "duration",
         "codec"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Rooms/{RoomSid}/Recordings/{Sid}": {
       "delete": {
@@ -3417,7 +3436,8 @@
         "type",
         "duration",
         "codec"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Rooms/{RoomSid}/Recordings/{Sid}/Media": {
       "description": "TODO: Resource-level docs",
@@ -3494,7 +3514,8 @@
       ],
       "x-default-output-properties": [
         "redirect_to"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Rooms/{Sid}": {
       "description": "Video rooms with one or more participants",
@@ -3593,7 +3614,8 @@
         "sid",
         "unique_name",
         "status"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

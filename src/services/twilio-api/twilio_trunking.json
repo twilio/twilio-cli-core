@@ -707,7 +707,8 @@
         "sid",
         "friendly_name",
         "domain_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Trunks/{Sid}": {
       "delete": {
@@ -905,7 +906,8 @@
         "sid",
         "friendly_name",
         "domain_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Trunks/{TrunkSid}/CredentialLists": {
       "description": "List of credentials for accessing a trunk",
@@ -1040,7 +1042,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Trunks/{TrunkSid}/CredentialLists/{Sid}": {
       "delete": {
@@ -1143,7 +1146,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Trunks/{TrunkSid}/IpAccessControlLists": {
       "description": "List of IP addresses for accessing a trunk",
@@ -1278,7 +1282,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Trunks/{TrunkSid}/IpAccessControlLists/{Sid}": {
       "delete": {
@@ -1381,7 +1386,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Trunks/{TrunkSid}/OriginationUrls": {
       "description": "Network element entry points into your communications infrastructure",
@@ -1552,7 +1558,8 @@
         "sip_url",
         "priority",
         "weight"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Trunks/{TrunkSid}/OriginationUrls/{Sid}": {
       "delete": {
@@ -1751,7 +1758,8 @@
         "sip_url",
         "priority",
         "weight"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Trunks/{TrunkSid}/PhoneNumbers": {
       "description": "Phone numbers associated with trunks",
@@ -1886,7 +1894,8 @@
         "sid",
         "friendly_name",
         "phone_number"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Trunks/{TrunkSid}/PhoneNumbers/{Sid}": {
       "delete": {
@@ -1989,7 +1998,8 @@
         "sid",
         "friendly_name",
         "phone_number"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Trunks/{TrunkSid}/TerminatingSipDomains": {
       "description": "TODO: Resource-level docs",
@@ -2124,7 +2134,8 @@
         "sid",
         "friendly_name",
         "domain_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Trunks/{TrunkSid}/TerminatingSipDomains/{Sid}": {
       "delete": {
@@ -2227,7 +2238,8 @@
         "sid",
         "friendly_name",
         "domain_name"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

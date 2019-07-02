@@ -348,7 +348,8 @@
       ],
       "x-default-output-properties": [
         "form_type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services": {
       "description": "TODO: Resource-level docs",
@@ -455,7 +456,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Entities": {
       "description": "TODO: Resource-level docs",
@@ -587,7 +589,8 @@
         "sid",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Entities/{Identity}": {
       "delete": {
@@ -684,7 +687,8 @@
         "sid",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Entities/{Identity}/Factors": {
       "description": "TODO: Resource-level docs",
@@ -858,7 +862,8 @@
         "friendly_name",
         "status",
         "factor_type"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Entities/{Identity}/Factors/{FactorSid}/Challenges": {
       "description": "TODO: Resource-level docs",
@@ -957,7 +962,8 @@
         "status",
         "responded_reason",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Entities/{Identity}/Factors/{FactorSid}/Challenges/{Sid}": {
       "delete": {
@@ -1172,7 +1178,8 @@
         "status",
         "responded_reason",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Entities/{Identity}/Factors/{Sid}": {
       "delete": {
@@ -1360,7 +1367,8 @@
         "friendly_name",
         "status",
         "factor_type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{Sid}": {
       "delete": {
@@ -1484,7 +1492,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [
