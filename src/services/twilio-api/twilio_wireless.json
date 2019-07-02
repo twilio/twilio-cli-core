@@ -188,12 +188,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "rate_plan_sid": {

@@ -25,30 +25,18 @@
             "type": "integer"
           },
           "date_completed": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "format": "date-time",
-                "type": "string"
-              }
-            ]
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
           },
           "date_created": {
             "format": "date-time",
             "type": "string"
           },
           "date_deleted": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "format": "date-time",
-                "type": "string"
-              }
-            ]
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
           },
           "duration": {
             "type": "integer"
@@ -61,12 +49,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "resolution": {
@@ -144,15 +126,9 @@
             "type": "string"
           },
           "date_updated": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "format": "date-time",
-                "type": "string"
-              }
-            ]
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
           },
           "enabled": {
             "type": "boolean"
@@ -177,15 +153,9 @@
             "type": "string"
           },
           "status_callback": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "format": "uri",
-                "type": "string"
-              }
-            ]
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
           },
           "status_callback_method": {
             "enum": [
@@ -286,25 +256,13 @@
             "type": "string"
           },
           "duration": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "grouping_sids": {
             "type": "object"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "offset": {
@@ -418,14 +376,8 @@
             "type": "string"
           },
           "duration": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "enable_turn": {
             "type": "boolean"
@@ -435,12 +387,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "max_participants": {
@@ -532,14 +478,8 @@
             "type": "string"
           },
           "duration": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "end_time": {
             "format": "date-time",
@@ -549,12 +489,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "room_sid": {
@@ -751,25 +685,13 @@
             "type": "string"
           },
           "duration": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "grouping_sids": {
             "type": "object"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "offset": {

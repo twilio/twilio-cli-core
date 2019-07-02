@@ -88,12 +88,6 @@
             "type": "object"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "notifications": {
@@ -165,12 +159,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "members_count": {
@@ -287,14 +275,8 @@
             "type": "string"
           },
           "last_consumed_message_index": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "last_consumption_timestamp": {
             "format": "date-time",
@@ -473,12 +455,6 @@
             "type": "integer"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "role_sid": {
@@ -521,22 +497,10 @@
             "type": "string"
           },
           "last_consumed_message_index": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "member_sid": {
@@ -560,14 +524,8 @@
             "type": "string"
           },
           "unread_messages_count": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -659,12 +617,6 @@
             "type": "object"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "media": {
@@ -753,12 +705,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "message_types": {
@@ -812,12 +758,6 @@
             "type": "string"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "members_count": {
@@ -984,14 +924,8 @@
             "type": "string"
           },
           "last_consumed_message_index": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "last_consumption_timestamp": {
             "format": "date-time",
@@ -1179,12 +1113,6 @@
             "type": "integer"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "role_sid": {
@@ -1294,22 +1222,10 @@
             "type": "string"
           },
           "last_consumed_message_index": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "member_sid": {
@@ -1340,14 +1256,8 @@
             "type": "string"
           },
           "unread_messages_count": {
-            "anyOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "nullable": true,
+            "type": "integer"
           },
           "url": {
             "format": "uri",
@@ -2668,14 +2578,8 @@
             "name": "LastConsumedMessageIndex",
             "required": false,
             "schema": {
-              "anyOf": [
-                {
-                  "type": "null"
-                },
-                {
-                  "type": "integer"
-                }
-              ]
+              "nullable": true,
+              "type": "integer"
             }
           }
         ],
@@ -6242,14 +6146,8 @@
             "name": "LastConsumedMessageIndex",
             "required": false,
             "schema": {
-              "anyOf": [
-                {
-                  "type": "null"
-                },
-                {
-                  "type": "integer"
-                }
-              ]
+              "nullable": true,
+              "type": "integer"
             }
           },
           {
@@ -6496,14 +6394,8 @@
             "name": "LastConsumedMessageIndex",
             "required": false,
             "schema": {
-              "anyOf": [
-                {
-                  "type": "null"
-                },
-                {
-                  "type": "integer"
-                }
-              ]
+              "nullable": true,
+              "type": "integer"
             }
           },
           {

@@ -4,12 +4,6 @@
       "pricing.v1.messaging": {
         "properties": {
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "name": {
@@ -75,18 +69,21 @@
                   "type": "string"
                 },
                 "prices": {
-                  "properties": {
-                    "base_price": {
-                      "type": "number"
+                  "items": {
+                    "properties": {
+                      "base_price": {
+                        "type": "number"
+                      },
+                      "current_price": {
+                        "type": "number"
+                      },
+                      "number_type": {
+                        "type": "string"
+                      }
                     },
-                    "current_price": {
-                      "type": "number"
-                    },
-                    "number_type": {
-                      "type": "string"
-                    }
+                    "type": "object"
                   },
-                  "type": "object"
+                  "type": "array"
                 }
               },
               "type": "object"
@@ -106,12 +103,6 @@
       "pricing.v1.phone_number": {
         "properties": {
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "name": {
@@ -177,12 +168,6 @@
       "pricing.v1.voice": {
         "properties": {
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "name": {
@@ -219,34 +204,13 @@
             "items": {
               "properties": {
                 "base_price": {
-                  "anyOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
+                  "type": "number"
                 },
                 "current_price": {
-                  "anyOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
+                  "type": "number"
                 },
                 "number_type": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
+                  "type": "string"
                 }
               },
               "type": "object"
@@ -265,8 +229,13 @@
                 "current_price": {
                   "type": "number"
                 },
+                "friendly_name": {
+                  "type": "string"
+                },
                 "prefixes": {
-                  "items": "string",
+                  "items": {
+                    "type": "string"
+                  },
                   "type": "array"
                 }
               },
@@ -292,34 +261,13 @@
           "inbound_call_price": {
             "properties": {
               "base_price": {
-                "anyOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "number"
               },
               "current_price": {
-                "anyOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "number"
               },
               "number_type": {
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "string"
               }
             },
             "type": "object"
@@ -354,12 +302,6 @@
       "pricing.v2.voice": {
         "properties": {
           "links": {
-            "patternProperties": {
-              "^.+$": {
-                "format": "uri",
-                "type": "string"
-              }
-            },
             "type": "object"
           },
           "name": {
@@ -396,34 +338,13 @@
             "items": {
               "properties": {
                 "base_price": {
-                  "anyOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
+                  "type": "number"
                 },
                 "current_price": {
-                  "anyOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
+                  "type": "number"
                 },
                 "number_type": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
+                  "type": "string"
                 }
               },
               "type": "object"
@@ -443,11 +364,18 @@
                   "type": "number"
                 },
                 "destination_prefixes": {
-                  "items": "string",
+                  "items": {
+                    "type": "string"
+                  },
                   "type": "array"
                 },
+                "friendly_name": {
+                  "type": "string"
+                },
                 "origination_prefixes": {
-                  "items": "string",
+                  "items": {
+                    "type": "string"
+                  },
                   "type": "array"
                 }
               },
@@ -476,34 +404,13 @@
           "inbound_call_price": {
             "properties": {
               "base_price": {
-                "anyOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "number"
               },
               "current_price": {
-                "anyOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "number"
               },
               "number_type": {
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                "type": "string"
               }
             },
             "type": "object"
