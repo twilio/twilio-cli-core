@@ -795,7 +795,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Assistants/{AssistantSid}/Defaults": {
       "description": "TODO: Resource-level docs",
@@ -887,7 +888,8 @@
       ],
       "x-default-output-properties": [
         "data"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{AssistantSid}/Dialogues/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -947,7 +949,8 @@
       "x-default-output-properties": [
         "sid",
         "data"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{AssistantSid}/FieldTypes": {
       "description": "TODO: Resource-level docs",
@@ -1088,7 +1091,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Assistants/{AssistantSid}/FieldTypes/{FieldTypeSid}/FieldValues": {
       "description": "TODO: Resource-level docs",
@@ -1274,7 +1278,8 @@
         "sid",
         "value",
         "language"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Assistants/{AssistantSid}/FieldTypes/{FieldTypeSid}/FieldValues/{Sid}": {
       "delete": {
@@ -1401,7 +1406,8 @@
         "sid",
         "value",
         "language"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{AssistantSid}/FieldTypes/{Sid}": {
       "delete": {
@@ -1570,7 +1576,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{AssistantSid}/ModelBuilds": {
       "description": "TODO: Resource-level docs",
@@ -1713,7 +1720,8 @@
         "unique_name",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Assistants/{AssistantSid}/ModelBuilds/{Sid}": {
       "delete": {
@@ -1874,7 +1882,8 @@
         "unique_name",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{AssistantSid}/Queries": {
       "description": "TODO: Resource-level docs",
@@ -2067,7 +2076,8 @@
         "query",
         "status",
         "language"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Assistants/{AssistantSid}/Queries/{Sid}": {
       "delete": {
@@ -2240,7 +2250,8 @@
         "query",
         "status",
         "language"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{AssistantSid}/StyleSheet": {
       "description": "TODO: Resource-level docs",
@@ -2332,7 +2343,8 @@
       ],
       "x-default-output-properties": [
         "data"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{AssistantSid}/Tasks": {
       "description": "TODO: Resource-level docs",
@@ -2492,7 +2504,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Assistants/{AssistantSid}/Tasks/{Sid}": {
       "delete": {
@@ -2680,7 +2693,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{AssistantSid}/Tasks/{TaskSid}/Actions": {
       "description": "TODO: Resource-level docs",
@@ -2796,7 +2810,8 @@
       ],
       "x-default-output-properties": [
         "data"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{AssistantSid}/Tasks/{TaskSid}/Fields": {
       "description": "TODO: Resource-level docs",
@@ -2961,7 +2976,8 @@
         "sid",
         "unique_name",
         "field_type"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Assistants/{AssistantSid}/Tasks/{TaskSid}/Fields/{Sid}": {
       "delete": {
@@ -3088,7 +3104,8 @@
         "sid",
         "unique_name",
         "field_type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{AssistantSid}/Tasks/{TaskSid}/Samples": {
       "description": "TODO: Resource-level docs",
@@ -3272,7 +3289,8 @@
         "tagged_text",
         "language",
         "source_channel"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Assistants/{AssistantSid}/Tasks/{TaskSid}/Samples/{Sid}": {
       "delete": {
@@ -3487,7 +3505,8 @@
         "tagged_text",
         "language",
         "source_channel"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{AssistantSid}/Tasks/{TaskSid}/Statistics": {
       "description": "TODO: Resource-level docs",
@@ -3547,7 +3566,8 @@
       "x-default-output-properties": [
         "samples_count",
         "fields_count"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{AssistantSid}/Webhooks": {
       "description": "TODO: Resource-level docs",
@@ -3709,7 +3729,8 @@
         "events",
         "wehbook_url",
         "webhook_method"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Assistants/{AssistantSid}/Webhooks/{Sid}": {
       "delete": {
@@ -3899,7 +3920,8 @@
         "events",
         "wehbook_url",
         "webhook_method"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Assistants/{Sid}": {
       "delete": {
@@ -4087,7 +4109,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

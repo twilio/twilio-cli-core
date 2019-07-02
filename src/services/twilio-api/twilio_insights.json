@@ -199,7 +199,8 @@
         "processing_state",
         "direction",
         "duration"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

@@ -480,7 +480,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/MessagingConfigurations": {
       "description": "TODO: Resource-level docs",
@@ -627,7 +628,8 @@
         "messaging_service_sid",
         "date_created",
         "date_updated"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/MessagingConfigurations/{Country}": {
       "delete": {
@@ -784,7 +786,8 @@
         "messaging_service_sid",
         "date_created",
         "date_updated"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/RateLimits": {
       "description": "TODO: Resource-level docs",
@@ -929,7 +932,8 @@
         "description",
         "date_created",
         "date_updated"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/RateLimits/{RateLimitSid}/Buckets": {
       "description": "TODO: Resource-level docs",
@@ -1099,7 +1103,8 @@
         "interval",
         "date_created",
         "date_updated"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/RateLimits/{RateLimitSid}/Buckets/{Sid}": {
       "delete": {
@@ -1309,7 +1314,8 @@
         "interval",
         "date_created",
         "date_updated"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/RateLimits/{Sid}": {
       "delete": {
@@ -1473,7 +1479,8 @@
         "description",
         "date_created",
         "date_updated"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/VerificationCheck": {
       "description": "TODO: Resource-level docs",
@@ -1573,7 +1580,8 @@
         "status",
         "valid",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Verifications": {
       "description": "TODO: Resource-level docs",
@@ -1706,7 +1714,8 @@
         "status",
         "valid",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Verifications/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -1825,7 +1834,8 @@
         "status",
         "valid",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{Sid}": {
       "delete": {
@@ -2003,7 +2013,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

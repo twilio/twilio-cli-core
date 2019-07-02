@@ -383,7 +383,8 @@
         "to",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Faxes/{FaxSid}/Media": {
       "description": "TODO: Resource-level docs",
@@ -469,7 +470,8 @@
       "x-default-output-properties": [
         "content_type",
         "url"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Faxes/{FaxSid}/Media/{Sid}": {
       "delete": {
@@ -571,7 +573,8 @@
       "x-default-output-properties": [
         "content_type",
         "url"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Faxes/{Sid}": {
       "delete": {
@@ -700,7 +703,8 @@
         "to",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

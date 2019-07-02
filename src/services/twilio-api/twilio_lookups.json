@@ -139,7 +139,8 @@
         "caller_name",
         "country_code",
         "carrier"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

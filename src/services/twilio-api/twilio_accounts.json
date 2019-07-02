@@ -220,7 +220,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Credentials/AWS/{Sid}": {
       "delete": {
@@ -344,7 +345,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Credentials/PublicKeys": {
       "description": "User provided public keys",
@@ -472,7 +474,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Credentials/PublicKeys/{Sid}": {
       "delete": {
@@ -596,7 +599,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

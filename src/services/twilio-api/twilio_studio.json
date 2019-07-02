@@ -502,7 +502,8 @@
         "friendly_name",
         "status",
         "version"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Flows/{FlowSid}/Engagements": {
       "description": "[DEPRECATED] Excecutions of Studio flows",
@@ -653,7 +654,8 @@
         "contact_sid",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Flows/{FlowSid}/Engagements/{EngagementSid}/Context": {
       "description": "[DEPRECATED] JSON context for engagements",
@@ -712,7 +714,8 @@
       ],
       "x-default-output-properties": [
         "context"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Flows/{FlowSid}/Engagements/{EngagementSid}/Steps": {
       "description": "Steps within a Studio flow",
@@ -812,7 +815,8 @@
         "name",
         "transitioned_from",
         "transitioned_to"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Flows/{FlowSid}/Engagements/{EngagementSid}/Steps/{Sid}": {
       "description": "Steps within a Studio flow",
@@ -886,7 +890,8 @@
         "name",
         "transitioned_from",
         "transitioned_to"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Flows/{FlowSid}/Engagements/{EngagementSid}/Steps/{StepSid}/Context": {
       "description": "JSON context for individual steps",
@@ -957,7 +962,8 @@
       ],
       "x-default-output-properties": [
         "context"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Flows/{FlowSid}/Engagements/{Sid}": {
       "delete": {
@@ -1061,7 +1067,8 @@
         "contact_sid",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Flows/{FlowSid}/Executions": {
       "description": "Executions of Studio flows",
@@ -1232,7 +1239,8 @@
         "contact_sid",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Flows/{FlowSid}/Executions/{ExecutionSid}/Context": {
       "description": "JSON context for executions",
@@ -1291,7 +1299,8 @@
       ],
       "x-default-output-properties": [
         "context"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps": {
       "description": "Individual steps within an execution",
@@ -1390,7 +1399,8 @@
         "sid",
         "name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps/{Sid}": {
       "description": "Individual steps within an execution",
@@ -1463,7 +1473,8 @@
         "sid",
         "name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps/{StepSid}/Context": {
       "description": "JSON context for an individual step within an execution",
@@ -1534,7 +1545,8 @@
       ],
       "x-default-output-properties": [
         "context"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Flows/{FlowSid}/Executions/{Sid}": {
       "delete": {
@@ -1638,7 +1650,8 @@
         "contact_sid",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Flows/{Sid}": {
       "delete": {
@@ -1718,7 +1731,8 @@
         "friendly_name",
         "status",
         "version"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

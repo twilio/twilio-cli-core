@@ -639,7 +639,8 @@
         "sid",
         "friendly_name",
         "type"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Credentials/{Sid}": {
       "delete": {
@@ -808,7 +809,8 @@
         "sid",
         "friendly_name",
         "type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services": {
       "description": "TODO: Resource-level docs",
@@ -1036,7 +1038,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Bindings": {
       "description": "TODO: Resource-level docs",
@@ -1282,7 +1285,8 @@
         "endpoint",
         "binding_type",
         "address"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Bindings/{Sid}": {
       "delete": {
@@ -1387,7 +1391,8 @@
         "endpoint",
         "binding_type",
         "address"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Notifications": {
       "description": "TODO: Resource-level docs",
@@ -1605,7 +1610,8 @@
         "sid",
         "priority",
         "title"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Segments": {
       "description": "TODO: Resource-level docs",
@@ -1692,7 +1698,8 @@
         "sid",
         "unique_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Users": {
       "description": "TODO: Resource-level docs",
@@ -1857,7 +1864,8 @@
         "sid",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Users/{Identity}": {
       "delete": {
@@ -1960,7 +1968,8 @@
         "sid",
         "identity",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Users/{Identity}/Bindings": {
       "description": "TODO: Resource-level docs",
@@ -2209,7 +2218,8 @@
         "endpoint",
         "binding_type",
         "address"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Users/{Identity}/Bindings/{Sid}": {
       "delete": {
@@ -2338,7 +2348,8 @@
         "endpoint",
         "binding_type",
         "address"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Users/{Identity}/SegmentMemberships": {
       "description": "TODO: Resource-level docs",
@@ -2407,7 +2418,8 @@
       "x-default-output-properties": [
         "identity",
         "segment"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Users/{Identity}/SegmentMemberships/{Segment}": {
       "delete": {
@@ -2527,7 +2539,8 @@
       "x-default-output-properties": [
         "identity",
         "segment"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{Sid}": {
       "delete": {
@@ -2762,7 +2775,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

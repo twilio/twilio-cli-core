@@ -549,7 +549,8 @@
         "outbound_sms_prices",
         "inbound_sms_prices",
         "price_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Messaging/Countries/{IsoCountry}": {
       "description": "Messaging pricing by country",
@@ -596,7 +597,8 @@
         "outbound_sms_prices",
         "inbound_sms_prices",
         "price_unit"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/PhoneNumbers/Countries": {
       "description": "Phone number pricing by country",
@@ -669,7 +671,8 @@
       "x-default-output-properties": [
         "country",
         "price_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/PhoneNumbers/Countries/{IsoCountry}": {
       "description": "Phone number pricing by country",
@@ -714,7 +717,8 @@
       "x-default-output-properties": [
         "country",
         "price_unit"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Voice/Countries": {
       "description": "Voice pricing by country",
@@ -787,7 +791,8 @@
       "x-default-output-properties": [
         "country",
         "price_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Voice/Countries/{IsoCountry}": {
       "description": "Voice pricing by country",
@@ -832,7 +837,8 @@
       "x-default-output-properties": [
         "country",
         "price_unit"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Voice/Numbers/{Number}": {
       "description": "Voice pricing for a specific phone number",
@@ -879,7 +885,8 @@
         "outbound_call_price",
         "inbound_call_price",
         "price_unit"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Voice/Countries": {
       "description": "Voice pricing by country",
@@ -952,7 +959,8 @@
       "x-default-output-properties": [
         "country",
         "price_unit"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v2/Voice/Countries/{IsoCountry}": {
       "description": "Voice pricing by country",
@@ -997,7 +1005,8 @@
       "x-default-output-properties": [
         "country",
         "price_unit"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Voice/Numbers/{DestinationNumber}": {
       "description": "Voice pricing for a specific phone number",
@@ -1052,7 +1061,8 @@
         "country",
         "inbound_call_price",
         "price_unit"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

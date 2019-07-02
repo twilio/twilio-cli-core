@@ -903,7 +903,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{MessagingServiceSid}/Broadcasts": {
       "description": "TODO: Resource-level docs",
@@ -995,7 +996,8 @@
         "sid",
         "body",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{MessagingServiceSid}/Messages": {
       "description": "TODO: Resource-level docs",
@@ -1178,7 +1180,8 @@
         "from",
         "to",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{MessagingServiceSid}/Messages/{Sid}": {
       "delete": {
@@ -1282,7 +1285,8 @@
         "from",
         "to",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/AlphaSenders": {
       "description": "TODO: Resource-level docs",
@@ -1413,7 +1417,8 @@
       "x-default-output-properties": [
         "sid",
         "alpha_sender"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/AlphaSenders/{Sid}": {
       "delete": {
@@ -1515,7 +1520,8 @@
       "x-default-output-properties": [
         "sid",
         "alpha_sender"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/PhoneNumbers": {
       "description": "TODO: Resource-level docs",
@@ -1650,7 +1656,8 @@
         "sid",
         "phone_number",
         "country_code"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/PhoneNumbers/{Sid}": {
       "delete": {
@@ -1753,7 +1760,8 @@
         "sid",
         "phone_number",
         "country_code"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/ShortCodes": {
       "description": "TODO: Resource-level docs",
@@ -1888,7 +1896,8 @@
         "sid",
         "short_code",
         "country_code"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/ShortCodes/{Sid}": {
       "delete": {
@@ -1991,7 +2000,8 @@
         "sid",
         "short_code",
         "country_code"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{Sid}": {
       "delete": {
@@ -2268,7 +2278,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Sessions": {
       "description": "TODO: Resource-level docs",
@@ -2422,7 +2433,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Sessions/Webhooks": {
       "description": "TODO: Resource-level docs",
@@ -2553,7 +2565,8 @@
         "webhook_method",
         "pre_webhook_url",
         "post_webhook_url"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Sessions/{SessionSid}/Messages": {
       "description": "TODO: Resource-level docs",
@@ -2724,7 +2737,8 @@
         "index",
         "author",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Sessions/{SessionSid}/Messages/{Sid}": {
       "delete": {
@@ -2923,7 +2937,8 @@
         "index",
         "author",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Sessions/{SessionSid}/Participants": {
       "description": "TODO: Resource-level docs",
@@ -3104,7 +3119,8 @@
         "twilio_address",
         "user_address",
         "type"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Sessions/{SessionSid}/Participants/{Sid}": {
       "delete": {
@@ -3286,7 +3302,8 @@
         "twilio_address",
         "user_address",
         "type"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Sessions/{SessionSid}/Webhooks": {
       "description": "TODO: Resource-level docs",
@@ -3516,7 +3533,8 @@
       "x-default-output-properties": [
         "sid",
         "target"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Sessions/{SessionSid}/Webhooks/{Sid}": {
       "delete": {
@@ -3751,7 +3769,8 @@
       "x-default-output-properties": [
         "sid",
         "target"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Sessions/{Sid}": {
       "delete": {
@@ -3913,7 +3932,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [

@@ -3518,7 +3518,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/BulkExports/Exports/{ResourceType}/Configuration": {
       "description": "TODO: Resource-level docs",
@@ -3621,7 +3622,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/BulkExports/Exports/{ResourceType}/Days": {
       "description": "TODO: Resource-level docs",
@@ -3701,7 +3703,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/BulkExports/Exports/{ResourceType}/Days/{Day}": {
       "description": "TODO: Resource-level docs",
@@ -3752,7 +3755,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/DeployedDevices/Fleets": {
       "description": "TODO: Resource-level docs",
@@ -3855,7 +3859,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/DeployedDevices/Fleets/{FleetSid}/Certificates": {
       "description": "TODO: Resource-level docs",
@@ -4016,7 +4021,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/DeployedDevices/Fleets/{FleetSid}/Certificates/{Sid}": {
       "delete": {
@@ -4184,7 +4190,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/DeployedDevices/Fleets/{FleetSid}/Deployments": {
       "description": "TODO: Resource-level docs",
@@ -4324,7 +4331,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/DeployedDevices/Fleets/{FleetSid}/Deployments/{Sid}": {
       "delete": {
@@ -4492,7 +4500,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/DeployedDevices/Fleets/{FleetSid}/Devices": {
       "description": "TODO: Resource-level docs",
@@ -4671,7 +4680,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/DeployedDevices/Fleets/{FleetSid}/Devices/{Sid}": {
       "delete": {
@@ -4857,7 +4867,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/DeployedDevices/Fleets/{FleetSid}/Keys": {
       "description": "TODO: Resource-level docs",
@@ -5009,7 +5020,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/DeployedDevices/Fleets/{FleetSid}/Keys/{Sid}": {
       "delete": {
@@ -5177,7 +5189,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/DeployedDevices/Fleets/{Sid}": {
       "delete": {
@@ -5309,7 +5322,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Flex/Configuration": {
       "description": "TODO: Resource-level docs",
@@ -5374,7 +5388,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Flex/FlexFlows": {
       "description": "TODO: Resource-level docs",
@@ -5545,7 +5560,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Flex/FlexFlows/{Sid}": {
       "delete": {
@@ -5723,7 +5739,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Flex/WebChannels": {
       "description": "TODO: Resource-level docs",
@@ -5817,7 +5834,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Flex/WebChannels/Instance": {
       "description": "TODO: Resource-level docs",
@@ -5884,7 +5902,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Flex/WebChannels/Users": {
       "description": "TODO: Resource-level docs",
@@ -5938,7 +5957,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Flex/Worker/Instance": {
       "description": "TODO: Resource-level docs",
@@ -6034,7 +6054,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/HostedNumbers/AuthorizationDocuments": {
       "description": "TODO: Resource-level docs",
@@ -6217,7 +6238,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/HostedNumbers/AuthorizationDocuments/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -6377,7 +6399,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/HostedNumbers/AuthorizationDocuments/{SigningDocumentSid}/DependentHostedNumberOrders": {
       "description": "TODO: Resource-level docs",
@@ -6519,7 +6542,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/HostedNumbers/HostedNumberOrders": {
       "description": "TODO: Resource-level docs",
@@ -6890,7 +6914,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/HostedNumbers/HostedNumberOrders/{Sid}": {
       "delete": {
@@ -7112,7 +7137,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Numbers/ActiveNumbers": {
       "description": "TODO: Resource-level docs",
@@ -7688,7 +7714,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Numbers/ActiveNumbers/{Sid}": {
       "delete": {
@@ -7916,7 +7943,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Numbers/AvailableNumbers": {
       "description": "TODO: Resource-level docs",
@@ -8417,7 +8445,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/PortIn/Orders": {
       "description": "TODO: Resource-level docs",
@@ -8658,7 +8687,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/PortIn/Orders/AuthorizationDocuments": {
       "description": "TODO: Resource-level docs",
@@ -8690,7 +8720,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/PortIn/Orders/AuthorizationDocuments/{Sid}": {
       "delete": {
@@ -8765,7 +8796,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/PortIn/Orders/{PortOrderSid}/Numbers": {
       "description": "TODO: Resource-level docs",
@@ -8944,7 +8976,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/PortIn/Orders/{PortOrderSid}/Numbers/{Sid}": {
       "delete": {
@@ -9109,7 +9142,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/PortIn/Orders/{Sid}": {
       "delete": {
@@ -9348,7 +9382,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Studio/Flows": {
       "description": "TODO: Resource-level docs",
@@ -9418,7 +9453,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Studio/Flows/{FlowSid}/Engagements": {
       "description": "TODO: Resource-level docs",
@@ -9564,7 +9600,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Studio/Flows/{FlowSid}/Engagements/{EngagementSid}/Steps": {
       "description": "TODO: Resource-level docs",
@@ -9659,7 +9696,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Studio/Flows/{FlowSid}/Engagements/{EngagementSid}/Steps/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -9728,7 +9766,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Studio/Flows/{FlowSid}/Engagements/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -9785,7 +9824,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Studio/Flows/{Sid}": {
       "delete": {
@@ -9860,7 +9900,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Sync/Services": {
       "description": "TODO: Resource-level docs",
@@ -9991,7 +10032,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Sync/Services/{ServiceSid}/Documents": {
       "description": "TODO: Resource-level docs",
@@ -10128,7 +10170,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Sync/Services/{ServiceSid}/Documents/{DocumentSid}/Permissions": {
       "description": "TODO: Resource-level docs",
@@ -10223,7 +10266,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Sync/Services/{ServiceSid}/Documents/{DocumentSid}/Permissions/{Identity}": {
       "delete": {
@@ -10424,7 +10468,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Sync/Services/{ServiceSid}/Documents/{Sid}": {
       "delete": {
@@ -10580,7 +10625,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Sync/Services/{ServiceSid}/Lists": {
       "description": "TODO: Resource-level docs",
@@ -10708,7 +10754,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Sync/Services/{ServiceSid}/Lists/{ListSid}/Items": {
       "description": "TODO: Resource-level docs",
@@ -10895,7 +10942,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Sync/Services/{ServiceSid}/Lists/{ListSid}/Items/{Index}": {
       "delete": {
@@ -11078,7 +11126,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Sync/Services/{ServiceSid}/Lists/{ListSid}/Permissions": {
       "description": "TODO: Resource-level docs",
@@ -11173,7 +11222,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Sync/Services/{ServiceSid}/Lists/{ListSid}/Permissions/{Identity}": {
       "delete": {
@@ -11374,7 +11424,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Sync/Services/{ServiceSid}/Lists/{Sid}": {
       "delete": {
@@ -11473,7 +11524,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Sync/Services/{ServiceSid}/Maps": {
       "description": "TODO: Resource-level docs",
@@ -11601,7 +11653,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Sync/Services/{ServiceSid}/Maps/{MapSid}/Items": {
       "description": "TODO: Resource-level docs",
@@ -11797,7 +11850,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Sync/Services/{ServiceSid}/Maps/{MapSid}/Items/{Key}": {
       "delete": {
@@ -11980,7 +12034,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Sync/Services/{ServiceSid}/Maps/{MapSid}/Permissions": {
       "description": "TODO: Resource-level docs",
@@ -12075,7 +12130,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Sync/Services/{ServiceSid}/Maps/{MapSid}/Permissions/{Identity}": {
       "delete": {
@@ -12276,7 +12332,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Sync/Services/{ServiceSid}/Maps/{Sid}": {
       "delete": {
@@ -12375,7 +12432,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/Sync/Services/{Sid}": {
       "delete": {
@@ -12523,7 +12581,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/TrustedComms/Business/PhoneCalls": {
       "description": "TODO: Resource-level docs",
@@ -12874,7 +12933,8 @@
         "to",
         "reason",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/TrustedComms/CPS": {
       "description": "TODO: Resource-level docs",
@@ -12909,7 +12969,8 @@
       "x-default-output-properties": [
         "phone_number",
         "cps_url"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/TrustedComms/CurrentCall": {
       "description": "TODO: Resource-level docs",
@@ -12947,7 +13008,8 @@
         "to",
         "reason",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/TrustedComms/Devices": {
       "description": "TODO: Resource-level docs",
@@ -13002,7 +13064,8 @@
         "sid",
         "phone_number",
         "binding_sid"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/Verification/Services": {
       "description": "TODO: Resource-level docs",
@@ -13114,7 +13177,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Verification/Services/{ServiceSid}/VerificationCheck": {
       "description": "TODO: Resource-level docs",
@@ -13177,7 +13241,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Verification/Services/{ServiceSid}/Verifications": {
       "description": "TODO: Resource-level docs",
@@ -13249,7 +13314,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/Verification/Services/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -13348,7 +13414,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/iam/Accounts/{AccountSid}/Tokens": {
       "description": "TODO: Resource-level docs",
@@ -13393,7 +13460,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/iam/Accounts/{AccountSid}/Tokens/refresh": {
       "description": "TODO: Resource-level docs",
@@ -13438,7 +13506,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/iam/Accounts/{AccountSid}/Tokens/validate": {
       "description": "TODO: Resource-level docs",
@@ -13483,7 +13552,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/iam/Accounts/{AccountSid}/authenticate": {
       "description": "TODO: Resource-level docs",
@@ -13525,7 +13595,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/iam/Accounts/{AccountSid}/saml2": {
       "description": "TODO: Resource-level docs",
@@ -13588,7 +13659,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/insights/Calls/Report": {
       "description": "TODO: Resource-level docs",
@@ -13641,7 +13713,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/insights/Calls/Report/Aspects": {
       "description": "TODO: Resource-level docs",
@@ -13711,7 +13784,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/insights/Calls/Report/Aspects/{Aspect}": {
       "description": "TODO: Resource-level docs",
@@ -13873,7 +13947,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/insights/Calls/{CallSid}/Events": {
       "description": "TODO: Resource-level docs",
@@ -13983,7 +14058,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/insights/Calls/{CallSid}/Metrics": {
       "description": "TODO: Resource-level docs",
@@ -14066,7 +14142,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/insights/Calls/{CallSid}/Summary": {
       "description": "TODO: Resource-level docs",
@@ -14111,7 +14188,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/marketplace/AvailableAddOns": {
       "description": "TODO: Resource-level docs",
@@ -14181,7 +14259,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/marketplace/AvailableAddOns/{AvailableAddOnSid}/Extensions": {
       "description": "TODO: Resource-level docs",
@@ -14264,7 +14343,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/marketplace/AvailableAddOns/{AvailableAddOnSid}/Extensions/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -14321,7 +14401,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/marketplace/AvailableAddOns/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -14366,7 +14447,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/marketplace/InstalledAddOns": {
       "description": "TODO: Resource-level docs",
@@ -14499,7 +14581,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/marketplace/InstalledAddOns/{InstalledAddOnSid}/Extensions": {
       "description": "TODO: Resource-level docs",
@@ -14582,7 +14665,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/marketplace/InstalledAddOns/{InstalledAddOnSid}/Extensions/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -14696,7 +14780,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/marketplace/InstalledAddOns/{Sid}": {
       "delete": {
@@ -14825,7 +14910,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/payment/Credentials/ACICommerceGateway": {
       "description": "TODO: Resource-level docs",
@@ -14949,7 +15035,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/payment/Credentials/ACICommerceGateway/{Sid}": {
       "delete": {
@@ -15078,7 +15165,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/payment/Credentials/Stripe": {
       "description": "TODO: Resource-level docs",
@@ -15202,7 +15290,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/payment/Credentials/Stripe/{Sid}": {
       "delete": {
@@ -15331,7 +15420,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants": {
       "description": "TODO: Resource-level docs",
@@ -15498,7 +15588,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/understand/Assistants/{AssistantSid}/Dialogues/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -15555,7 +15646,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{AssistantSid}/FallbackActions": {
       "description": "TODO: Resource-level docs",
@@ -15645,7 +15737,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{AssistantSid}/FieldTypes": {
       "description": "TODO: Resource-level docs",
@@ -15782,7 +15875,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/understand/Assistants/{AssistantSid}/FieldTypes/{FieldTypeSid}/FieldValues": {
       "description": "TODO: Resource-level docs",
@@ -15964,7 +16058,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/understand/Assistants/{AssistantSid}/FieldTypes/{FieldTypeSid}/FieldValues/{Sid}": {
       "delete": {
@@ -16087,7 +16182,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{AssistantSid}/FieldTypes/{Sid}": {
       "delete": {
@@ -16252,7 +16348,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{AssistantSid}/InitiationActions": {
       "description": "TODO: Resource-level docs",
@@ -16342,7 +16439,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{AssistantSid}/ModelBuilds": {
       "description": "TODO: Resource-level docs",
@@ -16480,7 +16578,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/understand/Assistants/{AssistantSid}/ModelBuilds/{Sid}": {
       "delete": {
@@ -16636,7 +16735,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{AssistantSid}/Queries": {
       "description": "TODO: Resource-level docs",
@@ -16833,7 +16933,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/understand/Assistants/{AssistantSid}/Queries/{Sid}": {
       "delete": {
@@ -17001,7 +17102,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{AssistantSid}/StyleSheet": {
       "description": "TODO: Resource-level docs",
@@ -17091,7 +17193,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{AssistantSid}/Tasks": {
       "description": "TODO: Resource-level docs",
@@ -17247,7 +17350,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/understand/Assistants/{AssistantSid}/Tasks/{Sid}": {
       "delete": {
@@ -17431,7 +17535,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{AssistantSid}/Tasks/{TaskSid}/Actions": {
       "description": "TODO: Resource-level docs",
@@ -17545,7 +17650,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{AssistantSid}/Tasks/{TaskSid}/Fields": {
       "description": "TODO: Resource-level docs",
@@ -17706,7 +17812,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/understand/Assistants/{AssistantSid}/Tasks/{TaskSid}/Fields/{Sid}": {
       "delete": {
@@ -17829,7 +17936,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{AssistantSid}/Tasks/{TaskSid}/Samples": {
       "description": "TODO: Resource-level docs",
@@ -18008,7 +18116,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/understand/Assistants/{AssistantSid}/Tasks/{TaskSid}/Samples/{Sid}": {
       "delete": {
@@ -18218,7 +18327,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{AssistantSid}/Tasks/{TaskSid}/Statistics": {
       "description": "TODO: Resource-level docs",
@@ -18275,7 +18385,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/understand/Assistants/{Sid}": {
       "delete": {
@@ -18459,7 +18570,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/wireless/Commands": {
       "description": "TODO: Resource-level docs",
@@ -18654,7 +18766,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/wireless/Commands/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -18699,7 +18812,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/wireless/RatePlans": {
       "description": "TODO: Resource-level docs",
@@ -18886,7 +19000,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/wireless/RatePlans/{Sid}": {
       "delete": {
@@ -19015,7 +19130,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/wireless/Sims": {
       "description": "TODO: Resource-level docs",
@@ -19131,7 +19247,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/wireless/Sims/{Sid}": {
       "description": "TODO: Resource-level docs",
@@ -19435,7 +19552,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     },
     "/wireless/Sims/{SimSid}/Usage": {
       "description": "TODO: Resource-level docs",
@@ -19498,7 +19616,8 @@
           "url": "https://preview.twilio.com"
         }
       ],
-      "x-default-output-properties": []
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
     }
   },
   "tags": [

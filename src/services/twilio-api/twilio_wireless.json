@@ -664,7 +664,8 @@
         "status",
         "direction",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Commands/{Sid}": {
       "delete": {
@@ -746,7 +747,8 @@
         "status",
         "direction",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/RatePlans": {
       "description": "Capabilities and restrictions for SIMs",
@@ -947,7 +949,8 @@
         "unique_name",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/RatePlans/{Sid}": {
       "delete": {
@@ -1081,7 +1084,8 @@
         "unique_name",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Sims": {
       "description": "Individual wireless SIMs",
@@ -1212,7 +1216,8 @@
         "unique_name",
         "friendly_name",
         "status"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Sims/{Sid}": {
       "delete": {
@@ -1587,7 +1592,8 @@
         "unique_name",
         "friendly_name",
         "status"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Sims/{SimSid}/DataSessions": {
       "description": "Data session information for SIMs",
@@ -1696,7 +1702,8 @@
         "packets_downloaded",
         "start",
         "end"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Sims/{SimSid}/UsageRecords": {
       "description": "Usage information for SIMs",
@@ -1815,7 +1822,8 @@
       ],
       "x-default-output-properties": [
         "period"
-      ]
+      ],
+      "x-path-type": "list"
     }
   },
   "tags": [

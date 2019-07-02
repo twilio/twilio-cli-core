@@ -582,7 +582,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Assets": {
       "description": "A wrapper that represents a static file.",
@@ -714,7 +715,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Assets/{AssetSid}/Versions": {
       "description": "The content of an Asset.",
@@ -885,7 +887,8 @@
         "path",
         "visibility",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Assets/{AssetSid}/Versions/{Sid}": {
       "description": "The content of an Asset.",
@@ -959,7 +962,8 @@
         "path",
         "visibility",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Assets/{Sid}": {
       "description": "A wrapper that represents a static file.",
@@ -1077,7 +1081,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Builds": {
       "description": "A collection of Function Versions, Asset Versions, and Dependencies that form a deployable unit.",
@@ -1239,7 +1244,8 @@
         "sid",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Builds/{Sid}": {
       "description": "A collection of Function Versions, Asset Versions, and Dependencies that form a deployable unit.",
@@ -1300,7 +1306,8 @@
         "sid",
         "status",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Environments": {
       "description": "Represents a deployed Build of a given set of Functions and/or Assets at a specific URL.",
@@ -1442,7 +1449,8 @@
         "unique_name",
         "domain_name",
         "build_sid"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Deployments": {
       "description": "An association of a Build with an Environment.",
@@ -1601,7 +1609,8 @@
         "sid",
         "build_sid",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Deployments/{Sid}": {
       "description": "An association of a Build with an Environment.",
@@ -1674,7 +1683,8 @@
         "sid",
         "build_sid",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Variables": {
       "description": "A key and value pair that is specific to an Environment.",
@@ -1839,7 +1849,8 @@
         "sid",
         "key",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Variables/{Sid}": {
       "description": "A key and value pair that is specific to an Environment.",
@@ -1990,7 +2001,8 @@
         "sid",
         "key",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Environments/{Sid}": {
       "description": "Represents a deployed Build of a given set of Functions and/or Assets at a specific URL.",
@@ -2052,7 +2064,8 @@
         "unique_name",
         "domain_name",
         "build_sid"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Functions": {
       "description": "A wrapper that represents a Serverless JavaScript function.",
@@ -2184,7 +2197,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Functions/{FunctionSid}/Versions": {
       "description": "The content of a Function.",
@@ -2355,7 +2369,8 @@
         "path",
         "visibility",
         "date_created"
-      ]
+      ],
+      "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Functions/{FunctionSid}/Versions/{Sid}": {
       "description": "The content of a Function.",
@@ -2429,7 +2444,8 @@
         "path",
         "visibility",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Functions/{Sid}": {
       "description": "A wrapper that represents a Serverless JavaScript function.",
@@ -2547,7 +2563,8 @@
         "sid",
         "friendly_name",
         "date_created"
-      ]
+      ],
+      "x-path-type": "instance"
     },
     "/v1/Services/{Sid}": {
       "description": "Container for Serverless application Environments.",
@@ -2650,7 +2667,8 @@
         "sid",
         "unique_name",
         "friendly_name"
-      ]
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [
