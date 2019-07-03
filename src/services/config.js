@@ -17,6 +17,7 @@ class ConfigData {
   constructor() {
     this.projects = [];
     this.activeProject = null;
+    this.emailConfig = {};
   }
 
   getProjectFromEnvironment() {
@@ -92,6 +93,7 @@ class ConfigData {
 
   loadFromObject(configObj) {
     this.activeProject = configObj.activeProject;
+    this.emailConfig = configObj.emailConfig || {};
     configObj.projects = configObj.projects || [];
     configObj.projects.forEach(project => {
       this.addProject(project.id, project.accountSid, project.region);
