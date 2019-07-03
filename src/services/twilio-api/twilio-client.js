@@ -75,6 +75,7 @@ class TwilioApiClient {
     const { body } = await this.request(opts);
     const items = this.getResponseItems(body);
 
+    // If there's another page of results, "Let's Get It".
     const nextPageUri = (body.meta && body.meta.nextPageUrl) || body.nextPageUri;
 
     if (nextPageUri) {
@@ -85,6 +86,7 @@ class TwilioApiClient {
         uri: nextPageUri
       });
 
+      // Append all the items from the subsequent page(s).
       items.push(...nextItems);
     }
 
@@ -92,6 +94,7 @@ class TwilioApiClient {
   }
 
   getResponseItems(responseBody) {
+    // Find any properties that are arrays. We expect this to be exactly 1.
     const arrayProps = Object.values(responseBody).filter(Array.isArray);
 
     if (arrayProps.length === 1) {
@@ -108,8 +111,10 @@ class TwilioApiClient {
    *
    * @param {object} opts - The options argument
    * @param {string} opts.method - The http method
-   * @param {string} opts.host - The request host
    * @param {string} opts.path - The request path
+   * @param {string} [opts.host] - The request host
+   * @param {string} [opts.region] - The request region
+   * @param {string} [opts.uri] - The request uri
    * @param {string} [opts.username] - The username used for auth
    * @param {string} [opts.password] - The password used for auth
    * @param {object} [opts.headers] - The request headers
@@ -118,13 +123,18 @@ class TwilioApiClient {
    * @param {boolean} [opts.allowRedirects] - Should the client follow redirects
    */
   async request(opts) {
-    opts = opts || {};
+    opts = Object.assign({}, opts);
+
+    opts.username = opts.username || this.username;
+    opts.password = opts.password || this.password;
+    opts.region = opts.region || this.region;
     opts.headers = opts.headers || {};
+    opts.data = opts.data || {};
 
     opts.headers['User-Agent'] = `twilio-api-client/${pkg.version} (node.js ${process.version})`;
     opts.headers['Accept-Charset'] = 'utf-8';
 
-    if (opts.method === 'POST' && !opts.headers['Content-Type']) {
+    if (opts.method.toLowerCase() === 'post' && !opts.headers['Content-Type']) {
       opts.headers['Content-Type'] = 'application/x-www-form-urlencoded';
     }
 
@@ -138,25 +148,11 @@ class TwilioApiClient {
       }
     }
 
-    if (this.region) {
-      const parts = opts.host.split('.');
-
-      // From 'https://api.twilio.com/' to 'https://api.{region}.twilio.com/'
-      if (parts.length > 1 && parts[1] !== this.region) {
-        parts.splice(1, 0, this.region);
-        opts.host = parts.join('.');
-      }
-    }
-
-    const { statusCode, body } = await this.apiClient.request({
-      ...opts,
-      username: opts.username || this.username,
-      password: opts.password || this.password
-    });
+    const { statusCode, body } = await this.apiClient.request(opts);
 
     if (statusCode < 200 || statusCode >= 300) {
       const parsed = JSON.parse(body);
-      throw new TwilioCliError(`Error code ${parsed.code} from Twilio: ${parsed.message}. See ${parsed.moreInfo} for more info.`, parsed.code);
+      throw new TwilioCliError(`Error code ${parsed.code} from Twilio: ${parsed.message}. See ${parsed.more_info} for more info.`, parsed.code);
     }
 
     return { statusCode, body };

@@ -4,15 +4,19 @@ const { camelCase } = require('../naming-conventions');
 const STRING_FORMAT_TO_CONVERT_FUNC_MAP = {
   'date-time': 'convertDateTime',
   'date-time-rfc-2822': 'convertDateTime',
-  'uri': 'convertUri'
+  uri: 'convertUri'
 };
 
 /**
- * A Twilio extension of the JSON Schema converter.
+ * A Twilio extension of the JSON Schema converter. We do additional date-time
+ * conversion and also camelCase object property names (keys).
  */
 class TwilioSchemaConverter extends JsonSchemaConverter {
   convertObjectProperty(propSchema, propName, propValue) {
-    propValue = this.convertSchema(propSchema, propValue);
+    // Convert the property *and* camelCase the key to make it more JSON-ic.
+    if (propValue !== undefined) {
+      propValue = this.convertSchema(propSchema, propValue);
+    }
 
     return { propName: camelCase(propName), propValue };
   }
@@ -32,6 +36,7 @@ class TwilioSchemaConverter extends JsonSchemaConverter {
   }
 
   convertDateTime(schema, value) {
+    // The date constructor accepts both ISO 8601 and RFC 2822 date-time formats.
     const dateValue = new Date(value);
 
     if (isNaN(dateValue)) {
@@ -43,6 +48,7 @@ class TwilioSchemaConverter extends JsonSchemaConverter {
   }
 
   convertUri(schema, value) {
+    // We don't currently do any URI conversion. This just keeps from logging non-helpful debug.
     return value;
   }
 }

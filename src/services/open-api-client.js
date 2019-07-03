@@ -1,5 +1,5 @@
 const { logger } = require('./messaging/logging');
-const { camelCase, capitalize } = require('./naming-conventions');
+const { pascalCase } = require('./naming-conventions');
 const { doesObjectHaveProperty, translateKeys } = require('./javascript-utilities');
 const JsonSchemaConverter = require('./api-schema/json-converter');
 
@@ -10,24 +10,29 @@ class OpenApiClient {
     this.converter = converter || new JsonSchemaConverter();
   }
 
-  /**
-   * Makes a request to the Twilio API using the configured http client.
-   * Authentication information is automatically added if none is provided.
-   *
-   * @param {object} opts - The options argument
-   * @param {string} opts.method - The http method
-   * @param {string} opts.path - The request path
-   * @param {string} opts.domain - The request domain
-   * @param {string} [opts.host] - The request host
-   * @param {string} [opts.uri] - The request uri
-   * @param {object} [opts.data] - The request data
-   */
   async request(opts) {
-    opts = opts || {};
+    opts = Object.assign({}, opts);
 
     const domain = this.apiBrowser.domains[opts.domain];
+
+    if (!domain) {
+      throw new Error(`Domain name not found: ${opts.domain}`);
+    }
+
     const path = domain.paths[opts.path];
+
+    if (!path) {
+      throw new Error(`Path not found: ${opts.domain}.${opts.path}`);
+    }
+
     const operation = path.operations[opts.method];
+
+    if (!operation) {
+      throw new Error(`Operation not found: ${opts.domain}.${opts.path}.${opts.method}`);
+    }
+
+    // Normalize the request data keys to pascal-case (i.e., upper camel-case).
+    opts.data = translateKeys(opts.data, pascalCase);
 
     const isPost = (opts.method.toLowerCase() === 'post');
     const params = this.getParams(opts, operation);
@@ -40,22 +45,30 @@ class OpenApiClient {
       opts.host = path.server;
     }
 
-    const response = await this.httpClient.request({
-      ...opts,
-      uri: opts.host + opts.uri,
-      params: (isPost ? null : params),
-      data: (isPost ? params : null)
-    });
+    if (opts.region) {
+      const parts = opts.host.split('.');
+
+      // From 'https://api.twilio.com/' to 'https://api.{region}.twilio.com/'
+      if (parts.length > 1 && parts[1] !== opts.region) {
+        parts.splice(1, 0, opts.region);
+        opts.host = parts.join('.');
+      }
+    }
+
+    opts.uri = opts.host + opts.uri;
+    opts.params = (isPost ? null : params);
+    opts.data = (isPost ? params : null);
+
+    const response = await this.httpClient.request(opts);
 
     return this.parseResponse(domain, operation, response, opts);
   }
 
   getParams(opts, operation) {
-    opts.data = translateKeys(opts.data, camelCase);
-    opts.data = translateKeys(opts.data, capitalize);
-
     const params = {};
     operation.parameters.forEach(parameter => {
+      // Build the actual request params from the spec's query parameters. This
+      // effectively drops all params that are not in the spec.
       if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, parameter.name)) {
         params[parameter.name] = opts.data[parameter.name];
       }
@@ -65,6 +78,8 @@ class OpenApiClient {
   }
 
   getUri(opts) {
+    // Evaluate the request path by replacing path parameters with their value
+    // from the request data.
     return opts.path.replace(/{(.+?)}/g, (fullMatch, pathNode) => {
       let value = '';
 
@@ -134,10 +149,20 @@ class OpenApiClient {
     // https://swagger.io/docs/specification/using-ref/
     const [remote, local] = ref.split('#');
 
+    if (remote) {
+      logger.debug(`Remote refs are not yet supported. Assuming local ref: ${remote}`);
+    }
+
     let node = domain;
     local.split('/').filter(n => n).forEach(nodeName => {
-      node = node[nodeName];
+      if (doesObjectHaveProperty(node, nodeName)) {
+        node = node[nodeName];
+      }
     });
+
+    if (!node) {
+      logger.debug(`Ref not found: ${ref}`);
+    }
 
     return node;
   }

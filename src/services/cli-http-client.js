@@ -83,6 +83,8 @@ class CliRequestClient {
     this.logger.debug('User-Agent: ' + options.headers['User-Agent']);
     this.logger.debug('-- END Twilio API Request --');
 
+    this.lastRequest = options;
+
     return this.http(options);
   }
 }

@@ -32,9 +32,12 @@ const capitalize = input => {
   return input.trim().replace(/^[a-z]/, g => g[0].toUpperCase()); // upper the first character
 };
 
+const pascalCase = input => capitalize(camelCase(input));
+
 module.exports = {
   kebabCase,
   camelCase,
   snakeCase,
-  capitalize
+  capitalize,
+  pascalCase
 };

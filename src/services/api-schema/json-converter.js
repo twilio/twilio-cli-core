@@ -10,12 +10,11 @@ const SCHEMA_TYPE_TO_CONVERT_FUNC_MAP = {
 };
 
 /**
- * A JSON Schema validator that implements validation as defined here:
- * http://json-schema.org
+ * A JSON Schema conversion orchestrator. It accepts a JSON schema and value
+ * and converts any fields that require ... conversion.
  */
 class JsonSchemaConverter {
   constructor() {
-    this.errors = [];
     this.logger = logger;
   }
 
@@ -76,7 +75,9 @@ class JsonSchemaConverter {
   }
 
   convertObjectProperty(propSchema, propName, propValue) {
-    propValue = this.convertSchema(propSchema, propValue);
+    if (propValue !== undefined) {
+      propValue = this.convertSchema(propSchema, propValue);
+    }
 
     return { propName, propValue };
   }
