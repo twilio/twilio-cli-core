@@ -16,8 +16,8 @@ class ConfigDataProject {
 class ConfigData {
   constructor() {
     this.projects = [];
-    this.activeProject = null;
     this.emailConfig = {};
+    this.activeProject = null;
   }
 
   getProjectFromEnvironment() {
