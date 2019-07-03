@@ -92,7 +92,7 @@ class ConfigData {
   }
 
   loadFromObject(configObj) {
-    this.email = configObj.emailConfig || {};
+    this.email = configObj.email || {};
     this.activeProject = configObj.activeProject;
     configObj.projects = configObj.projects || [];
     configObj.projects.forEach(project => {
