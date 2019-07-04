@@ -16,6 +16,7 @@ class ConfigDataProject {
 class ConfigData {
   constructor() {
     this.projects = [];
+    this.email = {};
     this.activeProject = null;
   }
 
@@ -91,6 +92,7 @@ class ConfigData {
   }
 
   loadFromObject(configObj) {
+    this.email = configObj.email || {};
     this.activeProject = configObj.activeProject;
     configObj.projects = configObj.projects || [];
     configObj.projects.forEach(project => {
