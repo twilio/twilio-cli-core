@@ -1,6 +1,12 @@
 twilio-cli-core changelog
 =====================
 
+[2019-07-05] Version 2.0.1
+---------------------------
+**Library**
+- [PR #27](https://github.com/twilio/twilio-cli-core/pull/27): Add a TwilioAPI client based on the Twilio OpenAPI spec. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2019-07-05] Version 2.0.0
 ---------------------------
 **Library**
