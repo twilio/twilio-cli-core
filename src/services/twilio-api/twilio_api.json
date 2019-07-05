@@ -4177,6 +4177,9 @@
           "api_version": {
             "type": "string"
           },
+          "as_of": {
+            "type": "string"
+          },
           "category": {
             "enum": [
               "agent-conference",
@@ -4473,6 +4476,9 @@
             "type": "string"
           },
           "api_version": {
+            "type": "string"
+          },
+          "as_of": {
             "type": "string"
           },
           "category": {
@@ -4773,6 +4779,9 @@
           "api_version": {
             "type": "string"
           },
+          "as_of": {
+            "type": "string"
+          },
           "category": {
             "enum": [
               "agent-conference",
@@ -5069,6 +5078,9 @@
             "type": "string"
           },
           "api_version": {
+            "type": "string"
+          },
+          "as_of": {
             "type": "string"
           },
           "category": {
@@ -5369,6 +5381,9 @@
           "api_version": {
             "type": "string"
           },
+          "as_of": {
+            "type": "string"
+          },
           "category": {
             "enum": [
               "agent-conference",
@@ -5665,6 +5680,9 @@
             "type": "string"
           },
           "api_version": {
+            "type": "string"
+          },
+          "as_of": {
             "type": "string"
           },
           "category": {
@@ -5965,6 +5983,9 @@
           "api_version": {
             "type": "string"
           },
+          "as_of": {
+            "type": "string"
+          },
           "category": {
             "enum": [
               "agent-conference",
@@ -6263,6 +6284,9 @@
           "api_version": {
             "type": "string"
           },
+          "as_of": {
+            "type": "string"
+          },
           "category": {
             "enum": [
               "agent-conference",
@@ -6559,6 +6583,9 @@
             "type": "string"
           },
           "api_version": {
+            "type": "string"
+          },
+          "as_of": {
             "type": "string"
           },
           "category": {

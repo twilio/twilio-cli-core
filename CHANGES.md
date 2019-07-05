@@ -1,6 +1,15 @@
 twilio-cli-core changelog
 =====================
 
+[2019-07-05] Version 1.6.1
+---------------------------
+**Api**
+- Add new property `as_of` date to Usage Record API calls
+
+**Wireless**
+- Added Usage Records resource.
+
+
 [2019-07-02] Version 1.6.0
 ----------------------------
 **Library**

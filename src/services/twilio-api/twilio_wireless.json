@@ -1,6 +1,26 @@
 {
   "components": {
     "schemas": {
+      "wireless.v1.account_usage_record": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "commands": {
+            "type": "object"
+          },
+          "data": {
+            "type": "object"
+          },
+          "period": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
       "wireless.v1.command": {
         "properties": {
           "account_sid": {
@@ -1796,6 +1816,114 @@
                     "usage_records": {
                       "items": {
                         "$ref": "#/components/schemas/wireless.v1.sim.usage_record"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://wireless.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "period"
+      ],
+      "x-path-type": "list"
+    },
+    "/v1/UsageRecords": {
+      "description": "Aggregated Usage information for all SIMs on an Account",
+      "get": {
+        "description": null,
+        "parameters": [
+          {
+            "description": "Only include usage that has occurred on or before this date.",
+            "in": "query",
+            "name": "End",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Only include usage that has occurred on or after this date.",
+            "in": "query",
+            "name": "Start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The time-based grouping that results are aggregated by.",
+            "in": "query",
+            "name": "Granularity",
+            "required": false,
+            "schema": {
+              "enum": [
+                "hourly",
+                "daily",
+                "all"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "usage_records": {
+                      "items": {
+                        "$ref": "#/components/schemas/wireless.v1.account_usage_record"
                       },
                       "type": "array"
                     }
