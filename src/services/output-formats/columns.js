@@ -1,11 +1,12 @@
 const chalk = require('chalk');
 const columnify = require('columnify');
+const { capitalize } = require('../naming-conventions');
 
 function headingTransform(heading) {
-  const capitalizeWords = ['Id', 'Sid'];
+  const capitalizeWords = ['Id', 'Sid', 'Iso', 'Sms', 'Url'];
 
   heading = heading.replace(/([A-Z])/g, ' $1');
-  heading = heading.charAt(0).toUpperCase() + heading.slice(1);
+  heading = capitalize(heading);
   heading = heading
     .split(' ')
     .map(word => (capitalizeWords.indexOf(word) > -1 ? word.toUpperCase() : word))

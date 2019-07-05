@@ -1,4 +1,4 @@
-const { TwilioApiBrowser } = require('../../src/services/twilio-api');
+const { TwilioApiBrowser } = require('../../../src/services/twilio-api');
 
 const { expect, test } = require('@twilio/cli-test');
 

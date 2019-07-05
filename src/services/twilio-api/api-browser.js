@@ -30,7 +30,8 @@ class TwilioApiBrowser {
   }
 
   loadDomains(apiSpec) {
-    const domains = apiSpec;
+    // Clone the spec since we'll be modifying it.
+    const domains = JSON.parse(JSON.stringify(apiSpec));
 
     Object.values(domains).forEach(spec => {
       Object.values(spec.paths).forEach(path => {

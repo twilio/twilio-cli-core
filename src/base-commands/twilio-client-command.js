@@ -2,6 +2,7 @@ const chalk = require('chalk');
 const { flags } = require('@oclif/command');
 const BaseCommand = require('./base-command');
 const CliRequestClient = require('../services/cli-http-client');
+const { TwilioApiClient } = require('../services/twilio-api');
 const { TwilioCliError } = require('../services/error');
 const { HELP_ENVIRONMENT_VARIABLES, UNEXPECTED_ERROR } = require('../services/messaging/help-messages');
 
@@ -9,7 +10,8 @@ class TwilioClientCommand extends BaseCommand {
   constructor(argv, config, secureStorage) {
     super(argv, config, secureStorage);
     this.httpClient = undefined;
-    this.twilioClient = undefined;
+    this.twilio = undefined;
+    this.twilioApi = undefined;
 
     // Ensure the 'runCommand' function is defined in the child class.
     if (!this.runCommand || typeof this.runCommand !== 'function') {
@@ -46,11 +48,6 @@ class TwilioClientCommand extends BaseCommand {
       }
 
       this.httpClient = new CliRequestClient(this.id, this.logger);
-      this.twilioClient = require('twilio')(this.currentProject.apiKey, this.currentProject.apiSecret, {
-        accountSid: this.currentProject.accountSid,
-        region: this.currentProject.region,
-        httpClient: this.httpClient
-      });
 
       // Run the 'abstract' command executor.
       return await this.runCommand();
@@ -112,6 +109,28 @@ class TwilioClientCommand extends BaseCommand {
     }
 
     return results;
+  }
+
+  get twilioClient() {
+    if (!this.twilio) {
+      this.twilio = this.buildClient(require('twilio'));
+    }
+    return this.twilio;
+  }
+
+  get twilioApiClient() {
+    if (!this.twilioApi) {
+      this.twilioApi = this.buildClient(TwilioApiClient);
+    }
+    return this.twilioApi;
+  }
+
+  buildClient(ClientClass) {
+    return new ClientClass(this.currentProject.apiKey, this.currentProject.apiSecret, {
+      accountSid: this.currentProject.accountSid,
+      region: this.currentProject.region,
+      httpClient: this.httpClient
+    });
   }
 }
 
