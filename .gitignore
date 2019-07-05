@@ -7,3 +7,10 @@
 node_modules
 coverage
 *.glksave
+twilio-cli-*.tgz
+.DS_Store
+*.env
+.env
+
+### Backup package.json files created during release ###
+*.bak
