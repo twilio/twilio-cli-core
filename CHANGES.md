@@ -1,6 +1,12 @@
 twilio-cli-core changelog
 =====================
 
+[2019-07-05] Version 2.0.0
+---------------------------
+**Library**
+- [PR #24](https://github.com/twilio/twilio-cli-core/pull/24): breaking: Make the API browser more generic. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+
+
 [2019-07-05] Version 1.6.1
 ---------------------------
 **Api**
