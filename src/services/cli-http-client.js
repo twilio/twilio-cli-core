@@ -85,7 +85,12 @@ class CliRequestClient {
 
     this.lastRequest = options;
 
-    return this.http(options);
+    const response = await this.http(options);
+
+    this.logger.debug('response.statusCode: ' + response.statusCode);
+    this.logger.debug('response.headers: ' + JSON.stringify(response.headers));
+
+    return response;
   }
 }
 
