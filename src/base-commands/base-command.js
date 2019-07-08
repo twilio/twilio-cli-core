@@ -62,6 +62,12 @@ class BaseCommand extends Command {
 
   output(fullData, properties, options) {
     const dataArray = fullData.constructor === Array ? fullData : [fullData];
+
+    if (dataArray.length === 0) {
+      this.logger.info('No results');
+      return;
+    }
+
     const limitedData = properties ? this.getLimitedData(dataArray, properties) : null;
 
     process.stdout.write(this.outputProcessor(dataArray, limitedData || dataArray, options) + '\n');

@@ -88,6 +88,12 @@ describe('base-commands', () => {
         expect(ctx.stderr).to.contain('"barn" is not a valid property name.');
       });
 
+      outputTest.stderr().it('should output a message when the array is empty', async ctx => {
+        ctx.testCmd.output([]);
+        expect(ctx.stdout).to.be.empty;
+        expect(ctx.stderr).to.contain('No results');
+      });
+
       test
         .twilioCliEnv(Config)
         .do(async ctx => {
