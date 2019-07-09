@@ -1,5 +1,9 @@
 const os = require('os');
 const pkg = require('../../package.json');
+const { TwilioCliError } = require('../services/error');
+const { NETWORK_ERROR } = require('../services/messaging/help-messages');
+
+const NETWORK_ERROR_CODES = new Set(['ETIMEDOUT', 'ESOCKETTIMEDOUT']);
 
 class CliRequestClient {
   constructor(commandName, logger, http) {
@@ -85,12 +89,20 @@ class CliRequestClient {
 
     this.lastRequest = options;
 
-    const response = await this.http(options);
+    try {
+      const response = await this.http(options);
 
-    this.logger.debug('response.statusCode: ' + response.statusCode);
-    this.logger.debug('response.headers: ' + JSON.stringify(response.headers));
+      this.logger.debug('response.statusCode: ' + response.statusCode);
+      this.logger.debug('response.headers: ' + JSON.stringify(response.headers));
 
-    return response;
+      return response;
+    } catch (error) {
+      if (NETWORK_ERROR_CODES.has(error.code)) {
+        throw new TwilioCliError(NETWORK_ERROR);
+      }
+
+      throw error;
+    }
   }
 }
 

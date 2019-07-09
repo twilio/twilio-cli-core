@@ -1,6 +1,9 @@
 const { expect, test } = require('@twilio/cli-test');
 const CliRequestClient = require('../../src/services/cli-http-client');
+const { TwilioCliError } = require('../../src/services/error');
 const { Logger, LoggingLevel } = require('../../src/services/messaging/logging');
+
+require('chai').use(require('chai-as-promised'));
 
 describe('services', () => {
   describe('cli-http-client', () => {
@@ -27,5 +30,25 @@ describe('services', () => {
       expect(response.statusCode).to.equal(200);
       expect(response.body).to.equal('{}');
     });
+
+    test
+      .nock('https://foo.com', api => {
+        api.get('/bar').delay(100).reply(200);
+      })
+      .it('throws a TwilioCliError on response timeouts', async () => {
+        const client = new CliRequestClient('bleh', logger);
+        const request = client.request({ method: 'GET', uri: 'https://foo.com/bar', timeout: 1 });
+        await expect(request).to.be.rejectedWith(TwilioCliError);
+      });
+
+    test
+      .nock('https://foo.com', api => {
+        api.get('/bar').replyWithError({ code: 'ETIMEDOUT' });
+      })
+      .it('throws a TwilioCliError on connection timeouts', async () => {
+        const client = new CliRequestClient('bleh', logger);
+        const request = client.request({ method: 'GET', uri: 'https://foo.com/bar' });
+        await expect(request).to.be.rejectedWith(TwilioCliError);
+      });
   });
 });
