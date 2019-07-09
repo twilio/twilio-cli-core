@@ -70,7 +70,13 @@ class OpenApiClient {
       // Build the actual request params from the spec's query parameters. This
       // effectively drops all params that are not in the spec.
       if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, parameter.name)) {
-        params[parameter.name] = opts.data[parameter.name];
+        let value = opts.data[parameter.name];
+
+        if (parameter.schema.type === 'boolean') {
+          value = value.toString();
+        }
+
+        params[parameter.name] = value;
       }
     });
 

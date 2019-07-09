@@ -151,11 +151,28 @@ describe('services', () => {
         });
 
       test
-        .it('handles bad domains', async () => {
+        .it('handles bad paths', async () => {
           await expect(client.create({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/AWESOME!!!!'
           })).to.be.rejectedWith('not found');
+        });
+
+      test
+        .nock('https://api.twilio.com', api => {
+          api.post(`/2010-04-01/Accounts/${accountSid}/Addresses.json`).reply(201, {
+            verified: 'true'
+          });
+        })
+        .it('handles boolean parameters', async () => {
+          const response = await client.create({
+            domain: 'api',
+            path: '/2010-04-01/Accounts/{AccountSid}/Addresses.json',
+            data: { emergencyEnabled: true }
+          });
+
+          expect(response).to.eql({ verified: 'true' });
+          expect(httpClient.lastRequest.formData).to.eql({ EmergencyEnabled: 'true' });
         });
     });
   });
