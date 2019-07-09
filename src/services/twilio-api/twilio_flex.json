@@ -1,72 +1,6 @@
 {
   "components": {
     "schemas": {
-      "flex.v1.channel": {
-        "properties": {
-          "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "flex_flow_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^FO[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "task_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^WT[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "url": {
-            "format": "uri",
-            "type": "string"
-          },
-          "user_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^US[0-9a-fA-F]{32}$",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "flex.v1.channel_user": {
-        "properties": {
-          "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "chat_channel_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "identity": {
-            "type": "string"
-          },
-          "role": {
-            "type": "string"
-          },
-          "url": {
-            "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "flex.v1.configuration": {
         "properties": {
           "account_sid": {
@@ -270,55 +204,6 @@
             "maxLength": 34,
             "minLength": 34,
             "pattern": "^FO[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "url": {
-            "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "flex.v1.public_configuration": {
-        "properties": {
-          "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "public_attributes": {
-            "type": "object"
-          },
-          "runtime_domain": {
-            "format": "uri",
-            "type": "string"
-          },
-          "url": {
-            "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "flex.v1.web_channel": {
-        "properties": {
-          "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "flex_flow_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^FO[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "url": {

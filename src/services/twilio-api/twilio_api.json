@@ -3326,15 +3326,6 @@
         },
         "type": "object"
       },
-      "api.v2010.account.recording.recording_add_on_result.recording_add_on_result_payload.recording_add_on_result_payload_data": {
-        "properties": {
-          "redirect_to": {
-            "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "api.v2010.account.recording.recording_transcription": {
         "properties": {
           "account_sid": {
@@ -3886,50 +3877,6 @@
         },
         "type": "object"
       },
-      "api.v2010.account.sip.sip_ip_access_control_list.sip_address": {
-        "properties": {
-          "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "cidr_prefix_length": {
-            "type": "integer"
-          },
-          "date_created": {
-            "format": "date-time-rfc-2822",
-            "type": "string"
-          },
-          "date_updated": {
-            "format": "date-time-rfc-2822",
-            "type": "string"
-          },
-          "friendly_name": {
-            "type": "string"
-          },
-          "ip_access_control_list_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AL[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "ip_address": {
-            "type": "string"
-          },
-          "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IP[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "uri": {
-            "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "api.v2010.account.sip.sip_ip_access_control_list.sip_ip_address": {
         "properties": {
           "account_sid": {
@@ -3969,99 +3916,6 @@
           },
           "uri": {
             "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "api.v2010.account.sip.sip_region": {
-        "properties": {
-          "features": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          },
-          "friendly_name": {
-            "type": "string"
-          },
-          "region": {
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "api.v2010.account.sms": {
-        "properties": {},
-        "type": "object"
-      },
-      "api.v2010.account.sms.sms_message": {
-        "properties": {
-          "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "api_version": {
-            "type": "string"
-          },
-          "body": {
-            "type": "string"
-          },
-          "date_created": {
-            "format": "date-time-rfc-2822",
-            "type": "string"
-          },
-          "date_sent": {
-            "format": "date-time-rfc-2822",
-            "type": "string"
-          },
-          "date_updated": {
-            "format": "date-time-rfc-2822",
-            "type": "string"
-          },
-          "direction": {
-            "enum": [
-              "inbound",
-              "outbound-api",
-              "outbound-call",
-              "outbound-reply"
-            ],
-            "type": "string"
-          },
-          "from": {
-            "type": "string"
-          },
-          "num_segments": {
-            "type": "string"
-          },
-          "price": {
-            "type": "number"
-          },
-          "price_unit": {
-            "type": "string"
-          },
-          "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^(SM|MM)[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "status": {
-            "enum": [
-              "queued",
-              "sending",
-              "sent",
-              "failed",
-              "received"
-            ],
-            "type": "string"
-          },
-          "to": {
-            "type": "string"
-          },
-          "uri": {
             "type": "string"
           }
         },

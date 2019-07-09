@@ -92,15 +92,6 @@
         },
         "type": "object"
       },
-      "video.v1.composition.composition_media": {
-        "properties": {
-          "redirect_to": {
-            "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "video.v1.composition_hook": {
         "properties": {
           "account_sid": {
@@ -304,15 +295,6 @@
             "type": "string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "video.v1.recording.recording_media": {
-        "properties": {
-          "redirect_to": {
             "format": "uri",
             "type": "string"
           }
@@ -739,15 +721,6 @@
             "type": "string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "video.v1.room.room_recording.room_recording_media": {
-        "properties": {
-          "redirect_to": {
             "format": "uri",
             "type": "string"
           }
