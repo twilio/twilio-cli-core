@@ -307,7 +307,7 @@
         "description": "Fetch the forms for a specific Form Type.",
         "parameters": [
           {
-            "description": "The Type of this Form",
+            "description": "The Type of this Form. One of `form-app-push`, `form-sms` or `form-totp`.",
             "in": "path",
             "name": "FormType",
             "required": true,
@@ -418,7 +418,7 @@
         "description": "Create a new Service for the Account",
         "parameters": [
           {
-            "description": "A human readable description of this resource.",
+            "description": "A human readable description of this resource, up to 64 characters.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -465,7 +465,7 @@
         "description": "Retrieve a list of all Entities for a Service.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -539,7 +539,7 @@
         "description": "Create a new Entity for the Service",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -551,7 +551,7 @@
             }
           },
           {
-            "description": "Unique identity of the Entity",
+            "description": "Customer unique identity for the Entity of the Service",
             "in": "query",
             "name": "Identity",
             "required": true,
@@ -597,7 +597,7 @@
         "description": "Delete a specific Entity.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -609,7 +609,7 @@
             }
           },
           {
-            "description": "Unique identity of the Entity",
+            "description": "Customer unique identity for the Entity of the Service",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -637,7 +637,7 @@
         "description": "Fetch a specific Entity.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -649,7 +649,7 @@
             }
           },
           {
-            "description": "Unique identity of the Entity",
+            "description": "Customer unique identity for the Entity of the Service",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -696,7 +696,7 @@
         "description": "Retrieve a list of all Factors for an Entity.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -708,7 +708,7 @@
             }
           },
           {
-            "description": "Unique identity of the Entity",
+            "description": "Customer unique identity for the Entity owner of the Factor",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -779,7 +779,7 @@
         "description": "Create a new Factor for the Entity",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -791,7 +791,7 @@
             }
           },
           {
-            "description": "Unique identity of the Entity",
+            "description": "Customer unique identity for the Entity owner of the Factor",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -800,7 +800,7 @@
             }
           },
           {
-            "description": "A unique binding for this Factor",
+            "description": "A unique binding for this Factor that identifies it. E.g. a phone number for `sms` factors. Required when creating a new Factor. This value is never returned because it can contain customer secrets.",
             "in": "query",
             "name": "Binding",
             "required": true,
@@ -818,7 +818,7 @@
             }
           },
           {
-            "description": "The Type of this Factor",
+            "description": "The Type of this Factor. One of `app-push`, `sms`, `totp`, etc.",
             "in": "query",
             "name": "FactorType",
             "required": true,
@@ -871,7 +871,7 @@
         "description": "Create a new Challenge for the Factor",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -883,7 +883,7 @@
             }
           },
           {
-            "description": "Unique identity of the Entity",
+            "description": "Customer unique identity for the Entity owner of the Challenge",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -892,7 +892,7 @@
             }
           },
           {
-            "description": "Factor Sid.",
+            "description": "The unique SID identifier of the Factor.",
             "in": "path",
             "name": "FactorSid",
             "required": true,
@@ -904,7 +904,7 @@
             }
           },
           {
-            "description": "The future date in which this Challenge will expire",
+            "description": "The future date in which this Challenge will expire, given in ISO 8601 format (https://en.wikipedia.org/wiki/ISO_8601).",
             "in": "query",
             "name": "ExpirationDate",
             "required": false,
@@ -914,7 +914,7 @@
             }
           },
           {
-            "description": "Public details provided to contextualize the Challenge",
+            "description": "Details provided to give context about the Challenge. Shown to the end user.",
             "in": "query",
             "name": "Details",
             "required": false,
@@ -923,7 +923,7 @@
             }
           },
           {
-            "description": "Hidden details provided to contextualize the Challenge",
+            "description": "Details provided to give context about the Challenge. Not shown to the end user.",
             "in": "query",
             "name": "HiddenDetails",
             "required": false,
@@ -970,7 +970,7 @@
         "description": "Delete a specific Challenge.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -982,7 +982,7 @@
             }
           },
           {
-            "description": "Unique identity of the Entity",
+            "description": "Customer unique identity for the Entity owner of the Challenge",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -991,7 +991,7 @@
             }
           },
           {
-            "description": "Factor Sid.",
+            "description": "The unique SID identifier of the Factor.",
             "in": "path",
             "name": "FactorSid",
             "required": true,
@@ -1003,7 +1003,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies this Challenge.",
+            "description": "A 34 character string that uniquely identifies this Challenge.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1031,7 +1031,7 @@
         "description": "Fetch a specific Challenge.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1043,7 +1043,7 @@
             }
           },
           {
-            "description": "Unique identity of the Entity",
+            "description": "Customer unique identity for the Entity owner of the Challenge",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1052,7 +1052,7 @@
             }
           },
           {
-            "description": "Factor Sid.",
+            "description": "The unique SID identifier of the Factor.",
             "in": "path",
             "name": "FactorSid",
             "required": true,
@@ -1064,7 +1064,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies this Challenge, or `latest`.",
+            "description": "A 34 character string that uniquely identifies this Challenge. It also allows the keyword `latest` to fetch the most recent active Challenge created for a Factor.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1097,7 +1097,7 @@
         "description": "Verify a specific Challenge.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1109,7 +1109,7 @@
             }
           },
           {
-            "description": "Unique identity of the Entity",
+            "description": "Customer unique identity for the Entity owner of the Challenge",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1118,7 +1118,7 @@
             }
           },
           {
-            "description": "Factor Sid.",
+            "description": "The unique SID identifier of the Factor.",
             "in": "path",
             "name": "FactorSid",
             "required": true,
@@ -1130,7 +1130,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies this Challenge, or `latest`.",
+            "description": "A 34 character string that uniquely identifies this Challenge. It also allows the keyword `latest` to fetch the most recent active Challenge created for a Factor.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1139,7 +1139,7 @@
             }
           },
           {
-            "description": "Optional payload to verify the Challenge",
+            "description": "The optional payload needed to verify the Challenge. E.g., a TOTP would use the numeric code.",
             "in": "query",
             "name": "AuthPayload",
             "required": false,
@@ -1186,7 +1186,7 @@
         "description": "Delete a specific Factor.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1198,7 +1198,7 @@
             }
           },
           {
-            "description": "Unique identity of the Entity",
+            "description": "Customer unique identity for the Entity owner of the Factor",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1207,7 +1207,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies this Factor.",
+            "description": "A 34 character string that uniquely identifies this Factor.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1238,7 +1238,7 @@
         "description": "Fetch a specific Factor.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1250,7 +1250,7 @@
             }
           },
           {
-            "description": "Unique identity of the Entity",
+            "description": "Customer unique identity for the Entity owner of the Factor",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1259,7 +1259,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies this Factor.",
+            "description": "A 34 character string that uniquely identifies this Factor.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1295,7 +1295,7 @@
         "description": "Update a specific Factor. This endpoint can be used to Verify a Factor if passed an `AuthPayload` param.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1307,7 +1307,7 @@
             }
           },
           {
-            "description": "Unique identity of the Entity",
+            "description": "Customer unique identity for the Entity owner of the Factor",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1316,7 +1316,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies this Factor.",
+            "description": "A 34 character string that uniquely identifies this Factor.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1328,7 +1328,7 @@
             }
           },
           {
-            "description": "Optional payload to verify the Factor for the first time",
+            "description": "The optional payload needed to verify the Factor for the first time. E.g. for a TOTP, the numeric code.",
             "in": "query",
             "name": "AuthPayload",
             "required": false,
@@ -1375,7 +1375,7 @@
         "description": "Delete a specific Service.",
         "parameters": [
           {
-            "description": "A string that uniquely identifies this Service.",
+            "description": "A 34 character string that uniquely identifies this Service.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1406,7 +1406,7 @@
         "description": "Fetch a specific Service.",
         "parameters": [
           {
-            "description": "A string that uniquely identifies this Service.",
+            "description": "A 34 character string that uniquely identifies this Service.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1442,7 +1442,7 @@
         "description": "Update a specific Service.",
         "parameters": [
           {
-            "description": "A string that uniquely identifies this Service.",
+            "description": "A 34 character string that uniquely identifies this Service.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1454,7 +1454,7 @@
             }
           },
           {
-            "description": "A human readable description of this resource.",
+            "description": "A human readable description of this resource, up to 64 characters.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,

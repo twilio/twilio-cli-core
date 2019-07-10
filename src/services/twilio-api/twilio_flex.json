@@ -241,7 +241,7 @@
     "/v1/Configuration": {
       "description": "Configuration for a Flex instance",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "Pinned UI version",
@@ -274,7 +274,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -312,7 +312,7 @@
     "/v1/FlexFlows": {
       "description": "Flex flow",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "Human readable description of this FlexFlow",
@@ -383,7 +383,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "Human readable description of this FlexFlow",
@@ -395,7 +395,7 @@
             }
           },
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the chat service",
             "in": "query",
             "name": "ChatServiceSid",
             "required": true,
@@ -407,7 +407,7 @@
             }
           },
           {
-            "description": "Channel type",
+            "description": "Channel type (web | facebook | sms)",
             "in": "query",
             "name": "ChannelType",
             "required": true,
@@ -424,7 +424,7 @@
             }
           },
           {
-            "description": "Channel contact Identity",
+            "description": "Channel contact Identity (number / contact)",
             "in": "query",
             "name": "ContactIdentity",
             "required": false,
@@ -442,7 +442,7 @@
             }
           },
           {
-            "description": "Integration type",
+            "description": "Integration type (studio | external | task)",
             "in": "query",
             "name": "IntegrationType",
             "required": false,
@@ -456,7 +456,7 @@
             }
           },
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow for Studio integration type",
             "in": "query",
             "name": "Integration.flowSid",
             "required": false,
@@ -468,7 +468,7 @@
             }
           },
           {
-            "description": "External Webhook Url",
+            "description": "External Webhook Url for External integration type",
             "in": "query",
             "name": "Integration.url",
             "required": false,
@@ -478,7 +478,7 @@
             }
           },
           {
-            "description": "Workspace Sid for a new task",
+            "description": "Workspace Sid for a new task for Task integration type",
             "in": "query",
             "name": "Integration.workspaceSid",
             "required": false,
@@ -490,7 +490,7 @@
             }
           },
           {
-            "description": "Workflow Sid for a new task",
+            "description": "Workflow Sid for a new task for Task integration type",
             "in": "query",
             "name": "Integration.workflowSid",
             "required": false,
@@ -502,7 +502,7 @@
             }
           },
           {
-            "description": "Task Channel for a new task",
+            "description": "Task Channel for a new task for Task integration type (default is 'default')",
             "in": "query",
             "name": "Integration.channel",
             "required": false,
@@ -511,7 +511,7 @@
             }
           },
           {
-            "description": "Task timeout in seconds for a new task",
+            "description": "Task timeout in seconds for a new task for Task integration type (default 86400)",
             "in": "query",
             "name": "Integration.timeout",
             "required": false,
@@ -520,7 +520,7 @@
             }
           },
           {
-            "description": "Task priority for a new task",
+            "description": "Task priority for a new task for Task integration type (default 0)",
             "in": "query",
             "name": "Integration.priority",
             "required": false,
@@ -529,7 +529,7 @@
             }
           },
           {
-            "description": "Flag for task creation",
+            "description": "Flag for task creation, either creating task with the channel, or if true create task whwn first message arrives (for Task integration type)",
             "in": "query",
             "name": "Integration.creationOnMessage",
             "required": false,
@@ -538,7 +538,7 @@
             }
           },
           {
-            "description": "Long Lived flag for new Channel",
+            "description": "Default Flag defining whether the new channels created are long lived or not",
             "in": "query",
             "name": "LongLived",
             "required": false,
@@ -582,7 +582,7 @@
     },
     "/v1/FlexFlows/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the FlexFlow",
@@ -613,7 +613,7 @@
       },
       "description": "Flex flow",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the FlexFlow",
@@ -649,7 +649,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the FlexFlow",
@@ -673,7 +673,7 @@
             }
           },
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the chat service",
             "in": "query",
             "name": "ChatServiceSid",
             "required": false,
@@ -685,7 +685,7 @@
             }
           },
           {
-            "description": "Channel type",
+            "description": "Channel type (web | facebook | sms)",
             "in": "query",
             "name": "ChannelType",
             "required": false,
@@ -702,7 +702,7 @@
             }
           },
           {
-            "description": "Channel contact Identity",
+            "description": "Channel contact Identity (number / contact)",
             "in": "query",
             "name": "ContactIdentity",
             "required": false,
@@ -720,7 +720,7 @@
             }
           },
           {
-            "description": "Integration type",
+            "description": "Integration type (studio | external | task)",
             "in": "query",
             "name": "IntegrationType",
             "required": false,
@@ -734,7 +734,7 @@
             }
           },
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow for Studio integration type",
             "in": "query",
             "name": "Integration.flowSid",
             "required": false,
@@ -746,7 +746,7 @@
             }
           },
           {
-            "description": "External Webhook Url",
+            "description": "External Webhook Url for External integration type",
             "in": "query",
             "name": "Integration.url",
             "required": false,
@@ -756,7 +756,7 @@
             }
           },
           {
-            "description": "Workspace Sid for a new task",
+            "description": "Workspace Sid for a new task for Task integration type",
             "in": "query",
             "name": "Integration.workspaceSid",
             "required": false,
@@ -768,7 +768,7 @@
             }
           },
           {
-            "description": "Workflow Sid for a new task",
+            "description": "Workflow Sid for a new task for Task integration type",
             "in": "query",
             "name": "Integration.workflowSid",
             "required": false,
@@ -780,7 +780,7 @@
             }
           },
           {
-            "description": "Task Channel for a new task",
+            "description": "Task Channel for a new task for Task integration type (default is 'default')",
             "in": "query",
             "name": "Integration.channel",
             "required": false,
@@ -789,7 +789,7 @@
             }
           },
           {
-            "description": "Task timeout in seconds for a new task",
+            "description": "Task timeout in seconds for a new task for Task integration type (default 86400)",
             "in": "query",
             "name": "Integration.timeout",
             "required": false,
@@ -798,7 +798,7 @@
             }
           },
           {
-            "description": "Task priority for a new task",
+            "description": "Task priority for a new task for Task integration type (default 0)",
             "in": "query",
             "name": "Integration.priority",
             "required": false,
@@ -807,7 +807,7 @@
             }
           },
           {
-            "description": "Flag for task creation",
+            "description": "Flag for task creation, either creating task with the channel, or if true create task whwn first message arrives (for Task integration type)",
             "in": "query",
             "name": "Integration.creationOnMessage",
             "required": false,
@@ -816,7 +816,7 @@
             }
           },
           {
-            "description": "Long Lived flag for new Channel",
+            "description": "Default Flag defining whether the new channels created are long lived or not",
             "in": "query",
             "name": "LongLived",
             "required": false,

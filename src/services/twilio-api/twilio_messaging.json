@@ -545,7 +545,7 @@
     "/v1/Services": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -606,7 +606,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A human readable descriptive text for this resource, up to 64 characters.",
@@ -618,7 +618,7 @@
             }
           },
           {
-            "description": "A webhook request is made to the Inbound Request URL when a message is received by any phone number or shortcode associated to your Messaging Service.",
+            "description": "A [webhook request](https://www.twilio.com/docs/api/twiml/sms/twilio_request) is made to the Inbound Request URL when a message is received by any phone number or shortcode associated to your Messaging Service. Set to `null` to disable inbound messaging.",
             "in": "query",
             "name": "InboundRequestUrl",
             "required": false,
@@ -628,7 +628,7 @@
             }
           },
           {
-            "description": "The HTTP method used when making requests to the Inbound Request URL.",
+            "description": "The HTTP method used when making requests to the Inbound Request URL. Either `GET` or `POST`. Default value is `POST`.",
             "in": "query",
             "name": "InboundMethod",
             "required": false,
@@ -661,7 +661,7 @@
             }
           },
           {
-            "description": "The HTTP method used when requesting the Fallback URL.",
+            "description": "The HTTP method used when requesting the Fallback URL. Either `GET` or `POST`. Default value is `POST`.",
             "in": "query",
             "name": "FallbackMethod",
             "required": false,
@@ -684,7 +684,7 @@
             }
           },
           {
-            "description": "A webhook request is made to the Status Callback to pass status updates about your messages.",
+            "description": "A webhook request is made to the Status Callback to pass [status updates](https://www.twilio.com/docs/api/rest/message#sms-status-values) about your messages. These status updates let you know if your accepted message were successfully sent and delivered or if a [delivery related error](https://www.twilio.com/docs/api/rest/message#error-values) may have occurred.",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -694,7 +694,7 @@
             }
           },
           {
-            "description": "Configuration to enable or disable Sticky Sender on your Service Instance.",
+            "description": "Configuration to enable or disable Sticky Sender on your Service Instance. Possible values are `true` and `false`. Default value is `true`.",
             "in": "query",
             "name": "StickySender",
             "required": false,
@@ -703,7 +703,7 @@
             }
           },
           {
-            "description": "Configuration to enable or disable MMS Converter on your Service Instance.",
+            "description": "Configuration to enable or disable MMS Converter on your Service Instance. Possible values are `true` and `false`. Default value is `true`.",
             "in": "query",
             "name": "MmsConverter",
             "required": false,
@@ -712,7 +712,7 @@
             }
           },
           {
-            "description": "Configuration to enable or disable Smart Encoding.",
+            "description": "Configuration to enable or disable [Smart Encoding](https://www.twilio.com/docs/api/messaging/services-and-copilot#smart-encoding). Possible values are `true` and `false`. Default value is `true`.",
             "in": "query",
             "name": "SmartEncoding",
             "required": false,
@@ -721,7 +721,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ScanMessageContent",
             "required": false,
@@ -735,7 +735,7 @@
             }
           },
           {
-            "description": "Configuration to enable or disable Fallback to Long Code.",
+            "description": "Configuration to enable or disable [Fallback to Long Code](https://www.twilio.com/docs/api/messaging/services-and-copilot#fallback-to-long-code). Possible values are `true` and `false`. Default value is `false`.",
             "in": "query",
             "name": "FallbackToLongCode",
             "required": false,
@@ -744,7 +744,7 @@
             }
           },
           {
-            "description": "Configuration to enable or disable Area Code Geomatch.",
+            "description": "Configuration to enable or disable [Area Code Geomatch](https://www.twilio.com/docs/api/messaging/services-and-copilot#area-code-geomatch). Possible values are `true` and `false`. Default value is `false`.",
             "in": "query",
             "name": "AreaCodeGeomatch",
             "required": false,
@@ -753,7 +753,7 @@
             }
           },
           {
-            "description": "Configuration to set the validity period of all messages sent from your Service, in seconds.",
+            "description": "Configuration to set the [validity period](https://www.twilio.com/docs/api/messaging/services-and-copilot#validity-period) of all messages sent from your Service, in seconds. Acceptable integers range from `1` to `14,400`.  Default value is `14,400`.",
             "in": "query",
             "name": "ValidityPeriod",
             "required": false,
@@ -762,7 +762,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SynchronousValidation",
             "required": false,
@@ -806,10 +806,10 @@
     "/v1/Services/{ServiceSid}/AlphaSenders": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -880,10 +880,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -895,7 +895,7 @@
             }
           },
           {
-            "description": "An Alphanumeric Sender ID string, up to 11 characters.",
+            "description": "An Alphanumeric Sender ID string, up to 11 characters. Valid characters are A-Z, a-z, 0-9, space and dash ( - ). An Alphanumeric Sender ID string cannot be comprised of only numbers.",
             "in": "query",
             "name": "AlphaSender",
             "required": true,
@@ -937,10 +937,10 @@
     },
     "/v1/Services/{ServiceSid}/AlphaSenders/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -952,7 +952,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -980,10 +980,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -995,7 +995,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1041,10 +1041,10 @@
     "/v1/Services/{ServiceSid}/PhoneNumbers": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1115,10 +1115,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1176,10 +1176,10 @@
     },
     "/v1/Services/{ServiceSid}/PhoneNumbers/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1191,7 +1191,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1219,10 +1219,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1234,7 +1234,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1281,10 +1281,10 @@
     "/v1/Services/{ServiceSid}/ShortCodes": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Service to read the resource from",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1355,10 +1355,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Service to create the resource under",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to create the resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1370,7 +1370,7 @@
             }
           },
           {
-            "description": "SID of the ShortCode being added to the Service.",
+            "description": "SID of the ShortCode resource being added to the Service.",
             "in": "query",
             "name": "ShortCodeSid",
             "required": true,
@@ -1416,10 +1416,10 @@
     },
     "/v1/Services/{ServiceSid}/ShortCodes/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Service to delete the resource from",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to delete the resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1431,7 +1431,7 @@
             }
           },
           {
-            "description": "The unique string that identifies this resource",
+            "description": "The Twilio-provided string that uniquely identifies the ShortCode resource to delete",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1459,10 +1459,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Service to fetch the resource from",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to fetch the resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1474,7 +1474,7 @@
             }
           },
           {
-            "description": "The unique string that identifies this resource",
+            "description": "The Twilio-provided string that uniquely identifies the ShortCode resource to fetch",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1520,10 +1520,10 @@
     },
     "/v1/Services/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1551,10 +1551,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1587,10 +1587,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1602,7 +1602,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -1611,7 +1611,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "InboundRequestUrl",
             "required": false,
@@ -1621,7 +1621,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "InboundMethod",
             "required": false,
@@ -1644,7 +1644,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "FallbackUrl",
             "required": false,
@@ -1654,7 +1654,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "FallbackMethod",
             "required": false,
@@ -1677,7 +1677,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -1687,7 +1687,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "StickySender",
             "required": false,
@@ -1696,7 +1696,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "MmsConverter",
             "required": false,
@@ -1705,7 +1705,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SmartEncoding",
             "required": false,
@@ -1714,7 +1714,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ScanMessageContent",
             "required": false,
@@ -1728,7 +1728,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "FallbackToLongCode",
             "required": false,
@@ -1737,7 +1737,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "AreaCodeGeomatch",
             "required": false,
@@ -1746,7 +1746,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ValidityPeriod",
             "required": false,
@@ -1755,7 +1755,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SynchronousValidation",
             "required": false,
@@ -1799,7 +1799,7 @@
     "/v1/Sessions": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -1860,10 +1860,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the SMS Service this session belongs to.",
+            "description": "The unique id of the [SMS Service](https://www.twilio.com/docs/sms/services/api) this session belongs to.",
             "in": "query",
             "name": "MessagingServiceSid",
             "required": true,
@@ -1872,7 +1872,7 @@
             }
           },
           {
-            "description": "The human-readable name of this session.",
+            "description": "The human-readable name of this session. Optional.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -1881,7 +1881,7 @@
             }
           },
           {
-            "description": "An optional string metadata field you can use to store any data you wish.",
+            "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
             "in": "query",
             "name": "Attributes",
             "required": false,
@@ -1910,7 +1910,7 @@
             }
           },
           {
-            "description": "Identity of the session's creator.",
+            "description": "Identity of the session's creator. If the Session was created through the API, the value will be `system`",
             "in": "query",
             "name": "CreatedBy",
             "required": false,
@@ -1954,7 +1954,7 @@
     "/v1/Sessions/Webhooks": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -1977,7 +1977,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The HTTP method to be used when sending a webhook request.",
@@ -2019,7 +2019,7 @@
             }
           },
           {
-            "description": "The number of retries in case of pre-event webhook request failures.",
+            "description": "The number of retries in case of pre-event webhook request failures. Maximum 3 retries are allowed, the default value is 0.",
             "in": "query",
             "name": "PreWebhookRetryCount",
             "required": false,
@@ -2028,7 +2028,7 @@
             }
           },
           {
-            "description": "The number of retries in case of post-event webhook request failures.",
+            "description": "The number of retries in case of post-event webhook request failures. Maximum 3 retries are allowed, the default value is 0.",
             "in": "query",
             "name": "PostWebhookRetryCount",
             "required": false,
@@ -2037,7 +2037,7 @@
             }
           },
           {
-            "description": "The routing target of the webhook.",
+            "description": "The routing target of the webhook. Can be ordinary or route internally to Flex",
             "in": "query",
             "name": "Target",
             "required": false,
@@ -2086,10 +2086,10 @@
     "/v1/Sessions/{SessionSid}/Messages": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this message.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this message.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2160,10 +2160,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this message.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this message.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2175,7 +2175,7 @@
             }
           },
           {
-            "description": "The identity of the message's author.",
+            "description": "The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the message's author. Defaults to `system`.",
             "in": "query",
             "name": "Author",
             "required": false,
@@ -2184,7 +2184,7 @@
             }
           },
           {
-            "description": "A string metadata field you can use to store any data you wish.",
+            "description": "A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.",
             "in": "query",
             "name": "Attributes",
             "required": false,
@@ -2203,7 +2203,7 @@
             }
           },
           {
-            "description": "The date that this resource was last updated.",
+            "description": "The date that this resource was last updated. `null` if the message has not been edited.",
             "in": "query",
             "name": "DateUpdated",
             "required": false,
@@ -2257,10 +2257,10 @@
     },
     "/v1/Sessions/{SessionSid}/Messages/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this message.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this message.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2300,10 +2300,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this message.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this message.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2348,10 +2348,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this message.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this message.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2375,7 +2375,7 @@
             }
           },
           {
-            "description": "The identity of the message's author.",
+            "description": "The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the message's author. Defaults to `system`.",
             "in": "query",
             "name": "Author",
             "required": false,
@@ -2384,7 +2384,7 @@
             }
           },
           {
-            "description": "A string metadata field you can use to store any data you wish.",
+            "description": "A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.",
             "in": "query",
             "name": "Attributes",
             "required": false,
@@ -2403,7 +2403,7 @@
             }
           },
           {
-            "description": "The date that this resource was last updated.",
+            "description": "The date that this resource was last updated. `null` if the message has not been edited.",
             "in": "query",
             "name": "DateUpdated",
             "required": false,
@@ -2458,10 +2458,10 @@
     "/v1/Sessions/{SessionSid}/Participants": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this participant.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this participant.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2532,10 +2532,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this participant.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this participant.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2547,7 +2547,7 @@
             }
           },
           {
-            "description": "An optional string metadata field you can use to store any data you wish.",
+            "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
             "in": "query",
             "name": "Attributes",
             "required": false,
@@ -2556,7 +2556,7 @@
             }
           },
           {
-            "description": "The address of the Twilio phone number that the participant is in contact with.",
+            "description": "The address of the Twilio phone number (or WhatsApp number, or Messenger Page ID) that the participant is in contact with. This field, together with user_address, is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).",
             "in": "query",
             "name": "TwilioAddress",
             "required": false,
@@ -2565,7 +2565,7 @@
             }
           },
           {
-            "description": "The date that this resource was created.",
+            "description": "The date that this resource was created. This is most often useful when bulk-importing messages from another system, as the provided value will be trusted and displayed on SDK clients.",
             "in": "query",
             "name": "DateCreated",
             "required": false,
@@ -2575,7 +2575,7 @@
             }
           },
           {
-            "description": "The date that this resource was last updated.",
+            "description": "The date that this resource was last updated. This is most often provided when bulk-importing messages from another system, as the provided value will be trusted and displayed on SDK clients.",
             "in": "query",
             "name": "DateUpdated",
             "required": false,
@@ -2585,7 +2585,7 @@
             }
           },
           {
-            "description": "A unique string identifier for the session participant as Chat User.",
+            "description": "A unique string identifier for the session participant as [Chat User](https://www.twilio.com/docs/api/chat/rest/users). This parameter is non-null if (and only if) the participant is using the Programmable Chat SDK to communicate.",
             "in": "query",
             "name": "Identity",
             "required": false,
@@ -2594,7 +2594,7 @@
             }
           },
           {
-            "description": "The address of the participant's device.",
+            "description": "The address of the participant's device, e.g. a phone number or Messenger ID. Together with the Twilio Address, this determines a participant uniquely. This field (with twilio_address) is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).",
             "in": "query",
             "name": "UserAddress",
             "required": false,
@@ -2639,10 +2639,10 @@
     },
     "/v1/Sessions/{SessionSid}/Participants/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this participant.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this participant.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2682,10 +2682,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this participant.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this participant.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2730,10 +2730,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this participant.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this participant.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2757,7 +2757,7 @@
             }
           },
           {
-            "description": "An optional string metadata field you can use to store any data you wish.",
+            "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
             "in": "query",
             "name": "Attributes",
             "required": false,
@@ -2766,7 +2766,7 @@
             }
           },
           {
-            "description": "The date that this resource was created.",
+            "description": "The date that this resource was created. This is useful when bulk-importing messages from another system, as the provided value will be trusted and displayed on SDK clients.",
             "in": "query",
             "name": "DateCreated",
             "required": false,
@@ -2823,10 +2823,10 @@
     "/v1/Sessions/{SessionSid}/Webhooks": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this webhook.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this webhook.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2897,10 +2897,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this webhook.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this webhook.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2984,7 +2984,7 @@
             }
           },
           {
-            "description": "The number of retries in case of webhook request failures.",
+            "description": "The number of retries in case of webhook request failures. Maximum 3 retries are allowed, the default value is 0.",
             "in": "query",
             "name": "Configuration.retryCount",
             "required": false,
@@ -2993,7 +2993,7 @@
             }
           },
           {
-            "description": "The message index for which and it's successors the webhook will be replayed.",
+            "description": "The message index for which and it's successors the webhook will be replayed. Not set by default",
             "in": "query",
             "name": "Configuration.replayAfter",
             "required": false,
@@ -3002,7 +3002,7 @@
             }
           },
           {
-            "description": "The flag whether buffering should be applied to messages.",
+            "description": "The flag whether buffering should be applied to messages. Not set by default",
             "in": "query",
             "name": "Configuration.bufferMessages",
             "required": false,
@@ -3011,7 +3011,7 @@
             }
           },
           {
-            "description": "The period of buffering messages.",
+            "description": "The period of buffering messages. Default is 3000 ms.",
             "in": "query",
             "name": "Configuration.bufferWindow",
             "required": false,
@@ -3053,10 +3053,10 @@
     },
     "/v1/Sessions/{SessionSid}/Webhooks/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this webhook.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this webhook.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -3096,10 +3096,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this webhook.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this webhook.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -3144,10 +3144,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique id of the Session for this webhook.",
+            "description": "The unique id of the [Session](https://www.twilio.com/docs/sessions/api/session) for this webhook.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -3229,7 +3229,7 @@
             }
           },
           {
-            "description": "The number of retries in case of webhook request failures.",
+            "description": "The number of retries in case of webhook request failures. Maximum 3 retries are allowed, the default value is 0.",
             "in": "query",
             "name": "Configuration.retryCount",
             "required": false,
@@ -3238,7 +3238,7 @@
             }
           },
           {
-            "description": "The flag whether buffering should be applied to messages.",
+            "description": "The flag whether buffering should be applied to messages. Not set by default",
             "in": "query",
             "name": "Configuration.bufferMessages",
             "required": false,
@@ -3247,7 +3247,7 @@
             }
           },
           {
-            "description": "The period of buffering messages.",
+            "description": "The period of buffering messages. Default is 3000 ms.",
             "in": "query",
             "name": "Configuration.bufferWindow",
             "required": false,
@@ -3289,7 +3289,7 @@
     },
     "/v1/Sessions/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource.",
@@ -3320,7 +3320,7 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource.",
@@ -3356,7 +3356,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource.",
@@ -3371,7 +3371,7 @@
             }
           },
           {
-            "description": "The human-readable name of this session.",
+            "description": "The human-readable name of this session. Optional.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -3380,7 +3380,7 @@
             }
           },
           {
-            "description": "An optional string metadata field you can use to store any data you wish.",
+            "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
             "in": "query",
             "name": "Attributes",
             "required": false,
@@ -3409,7 +3409,7 @@
             }
           },
           {
-            "description": "Identity of the session's creator.",
+            "description": "Identity of the session's creator. If the Session was created through the API, the value will be `system`",
             "in": "query",
             "name": "CreatedBy",
             "required": false,

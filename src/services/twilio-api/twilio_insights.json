@@ -140,10 +140,10 @@
     "/v1/Voice/{CallSid}/Summary": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -155,7 +155,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ProcessingState",
             "required": false,

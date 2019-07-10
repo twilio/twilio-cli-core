@@ -2298,10 +2298,10 @@
     "/BulkExports/Exports/{ResourceType}": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ResourceType",
             "required": true,
@@ -2341,10 +2341,10 @@
     "/BulkExports/Exports/{ResourceType}/Configuration": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ResourceType",
             "required": true,
@@ -2374,10 +2374,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ResourceType",
             "required": true,
@@ -2386,7 +2386,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Enabled",
             "required": false,
@@ -2395,7 +2395,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "WebhookUrl",
             "required": false,
@@ -2405,7 +2405,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "WebhookMethod",
             "required": false,
@@ -2445,10 +2445,10 @@
     "/BulkExports/Exports/{ResourceType}/Days": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ResourceType",
             "required": true,
@@ -2526,10 +2526,10 @@
     "/BulkExports/Exports/{ResourceType}/Days/{Day}": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ResourceType",
             "required": true,
@@ -2538,7 +2538,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Day",
             "required": true,
@@ -2642,7 +2642,7 @@
         "description": "Create a new Fleet for scoping of deployed devices within your account.",
         "parameters": [
           {
-            "description": "A human readable description for this Fleet.",
+            "description": "Provides a human readable descriptive text for this Fleet, up to 256 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -2685,7 +2685,7 @@
         "description": "Retrieve a list of all Certificate credentials belonging to the Fleet.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -2697,7 +2697,7 @@
             }
           },
           {
-            "description": "Find all Certificates authenticating specified Device.",
+            "description": "Filters the resulting list of Certificates by a unique string identifier of an authenticated Device.",
             "in": "query",
             "name": "DeviceSid",
             "required": false,
@@ -2771,7 +2771,7 @@
         "description": "Enroll a new Certificate credential to the Fleet, optionally giving it a friendly name and assigning to a Device.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -2783,7 +2783,7 @@
             }
           },
           {
-            "description": "The public certificate data.",
+            "description": "Provides a URL encoded representation of the public certificate in PEM format.",
             "in": "query",
             "name": "CertificateData",
             "required": true,
@@ -2792,7 +2792,7 @@
             }
           },
           {
-            "description": "The human readable description for this Certificate.",
+            "description": "Provides a human readable descriptive text for this Certificate credential, up to 256 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -2801,7 +2801,7 @@
             }
           },
           {
-            "description": "The unique identifier of a Device to be authenticated.",
+            "description": "Provides the unique string identifier of an existing Device to become authenticated with this Certificate credential.",
             "in": "query",
             "name": "DeviceSid",
             "required": false,
@@ -2846,7 +2846,7 @@
         "description": "Unregister a specific Certificate credential from the Fleet, effectively disallowing any inbound client connections that are presenting it.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -2858,7 +2858,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies the Certificate.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Certificate credential resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2889,7 +2889,7 @@
         "description": "Fetch information about a specific Certificate credential in the Fleet.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -2901,7 +2901,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies the Certificate.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Certificate credential resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2937,7 +2937,7 @@
         "description": "Update the given properties of a specific Certificate credential in the Fleet, giving it a friendly name or assigning to a Device.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -2949,7 +2949,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies the Certificate.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Certificate credential resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2961,7 +2961,7 @@
             }
           },
           {
-            "description": "The human readable description for this Certificate.",
+            "description": "Provides a human readable descriptive text for this Certificate credential, up to 256 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -2970,7 +2970,7 @@
             }
           },
           {
-            "description": "The unique identifier of a Device to be authenticated.",
+            "description": "Provides the unique string identifier of an existing Device to become authenticated with this Certificate credential.",
             "in": "query",
             "name": "DeviceSid",
             "required": false,
@@ -3016,7 +3016,7 @@
         "description": "Retrieve a list of all Deployments belonging to the Fleet.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3090,7 +3090,7 @@
         "description": "Create a new Deployment in the Fleet, optionally giving it a friendly name and linking to a specific Twilio Sync service instance.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3102,7 +3102,7 @@
             }
           },
           {
-            "description": "A human readable description for this Deployment.",
+            "description": "Provides a human readable descriptive text for this Deployment, up to 256 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -3111,7 +3111,7 @@
             }
           },
           {
-            "description": "The unique identifier of the Sync service instance.",
+            "description": "Provides the unique string identifier of the Twilio Sync service instance that will be linked to and accessible by this Deployment.",
             "in": "query",
             "name": "SyncServiceSid",
             "required": false,
@@ -3156,7 +3156,7 @@
         "description": "Delete a specific Deployment from the Fleet, leaving associated devices effectively undeployed.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3168,7 +3168,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies the Deployment.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Deployment resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3199,7 +3199,7 @@
         "description": "Fetch information about a specific Deployment in the Fleet.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3211,7 +3211,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies the Deployment.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Deployment resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3247,7 +3247,7 @@
         "description": "Update the given properties of a specific Deployment credential in the Fleet, giving it a friendly name or linking to a specific Twilio Sync service instance.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3259,7 +3259,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies the Deployment.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Deployment resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3271,7 +3271,7 @@
             }
           },
           {
-            "description": "A human readable description for this Deployment.",
+            "description": "Provides a human readable descriptive text for this Deployment, up to 64 characters long",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -3280,7 +3280,7 @@
             }
           },
           {
-            "description": "The unique identifier of the Sync service instance.",
+            "description": "Provides the unique string identifier of the Twilio Sync service instance that will be linked to and accessible by this Deployment.",
             "in": "query",
             "name": "SyncServiceSid",
             "required": false,
@@ -3326,7 +3326,7 @@
         "description": "Retrieve a list of all Devices belonging to the Fleet.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3338,7 +3338,7 @@
             }
           },
           {
-            "description": "Find all Devices grouped under the specified Deployment.",
+            "description": "Filters the resulting list of Devices by a unique string identifier of the Deployment they are associated with.",
             "in": "query",
             "name": "DeploymentSid",
             "required": false,
@@ -3412,7 +3412,7 @@
         "description": "Create a new Device in the Fleet, optionally giving it a unique name, friendly name, and assigning to a Deployment and/or human identity.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3424,7 +3424,7 @@
             }
           },
           {
-            "description": "A unique, addressable name of this Device.",
+            "description": "Provides a unique and addressable name to be assigned to this Device, to be used in addition to SID, up to 128 characters long.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -3433,7 +3433,7 @@
             }
           },
           {
-            "description": "A human readable description for this Device.",
+            "description": "Provides a human readable descriptive text to be assigned to this Device, up to 256 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -3442,7 +3442,7 @@
             }
           },
           {
-            "description": "An identifier of the Device user.",
+            "description": "Provides an arbitrary string identifier representing a human user to be associated with this Device, up to 256 characters long.",
             "in": "query",
             "name": "Identity",
             "required": false,
@@ -3451,7 +3451,7 @@
             }
           },
           {
-            "description": "The unique SID of the Deployment group.",
+            "description": "Specifies the unique string identifier of the Deployment group that this Device is going to be associated with.",
             "in": "query",
             "name": "DeploymentSid",
             "required": false,
@@ -3463,7 +3463,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Enabled",
             "required": false,
@@ -3505,7 +3505,7 @@
         "description": "Delete a specific Device from the Fleet, also removing it from associated Deployments.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3517,7 +3517,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies the Device.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Device resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3548,7 +3548,7 @@
         "description": "Fetch information about a specific Device in the Fleet.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3560,7 +3560,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies the Device.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Device resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3596,7 +3596,7 @@
         "description": "Update the given properties of a specific Device in the Fleet, giving it a friendly name, assigning to a Deployment, or a human identity.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3608,7 +3608,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies the Device.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Device resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3620,7 +3620,7 @@
             }
           },
           {
-            "description": "A human readable description for this Device.",
+            "description": "Provides a human readable descriptive text to be assigned to this Device, up to 256 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -3629,7 +3629,7 @@
             }
           },
           {
-            "description": "An identifier of the Device user.",
+            "description": "Provides an arbitrary string identifier representing a human user to be associated with this Device, up to 256 characters long.",
             "in": "query",
             "name": "Identity",
             "required": false,
@@ -3638,7 +3638,7 @@
             }
           },
           {
-            "description": "The unique SID of the Deployment group.",
+            "description": "Specifies the unique string identifier of the Deployment group that this Device is going to be associated with.",
             "in": "query",
             "name": "DeploymentSid",
             "required": false,
@@ -3650,7 +3650,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Enabled",
             "required": false,
@@ -3693,7 +3693,7 @@
         "description": "Retrieve a list of all Keys credentials belonging to the Fleet.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3705,7 +3705,7 @@
             }
           },
           {
-            "description": "Find all Keys authenticating specified Device.",
+            "description": "Filters the resulting list of Keys by a unique string identifier of an authenticated Device.",
             "in": "query",
             "name": "DeviceSid",
             "required": false,
@@ -3779,7 +3779,7 @@
         "description": "Create a new Key credential in the Fleet, optionally giving it a friendly name and assigning to a Device.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3791,7 +3791,7 @@
             }
           },
           {
-            "description": "The human readable description for this Key.",
+            "description": "Provides a human readable descriptive text for this Key credential, up to 256 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -3800,7 +3800,7 @@
             }
           },
           {
-            "description": "The unique identifier of a Key to be authenticated.",
+            "description": "Provides the unique string identifier of an existing Device to become authenticated with this Key credential.",
             "in": "query",
             "name": "DeviceSid",
             "required": false,
@@ -3845,7 +3845,7 @@
         "description": "Delete a specific Key credential from the Fleet, effectively disallowing any inbound client connections that are presenting it.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3857,7 +3857,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies the Key.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Key credential resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3888,7 +3888,7 @@
         "description": "Fetch information about a specific Key credential in the Fleet.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3900,7 +3900,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies the Key.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Key credential resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3936,7 +3936,7 @@
         "description": "Update the given properties of a specific Key credential in the Fleet, giving it a friendly name or assigning to a Device.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FleetSid",
             "required": true,
@@ -3948,7 +3948,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies the Key.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Key credential resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3960,7 +3960,7 @@
             }
           },
           {
-            "description": "The human readable description for this Key.",
+            "description": "Provides a human readable descriptive text for this Key credential, up to 256 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -3969,7 +3969,7 @@
             }
           },
           {
-            "description": "The unique identifier of a Key to be authenticated.",
+            "description": "Provides the unique string identifier of an existing Device to become authenticated with this Key credential.",
             "in": "query",
             "name": "DeviceSid",
             "required": false,
@@ -4014,7 +4014,7 @@
         "description": "Delete a specific Fleet from your account, also destroys all nested resources: Devices, Deployments, Certificates, Keys.",
         "parameters": [
           {
-            "description": "A string that uniquely identifies the Fleet.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Fleet resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4045,7 +4045,7 @@
         "description": "Fetch information about a specific Fleet in your account.",
         "parameters": [
           {
-            "description": "A string that uniquely identifies the Fleet.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Fleet resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4081,7 +4081,7 @@
         "description": "Update the friendly name property of a specific Fleet in your account.",
         "parameters": [
           {
-            "description": "A string that uniquely identifies the Fleet.",
+            "description": "Provides a 34 character string that uniquely identifies the requested Fleet resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4093,7 +4093,7 @@
             }
           },
           {
-            "description": "A human readable description for this Fleet.",
+            "description": "Provides a human readable descriptive text for this Fleet, up to 256 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -4102,7 +4102,7 @@
             }
           },
           {
-            "description": "A default Deployment SID.",
+            "description": "Provides a string identifier of a Deployment that is going to be used as a default one for this Fleet.",
             "in": "query",
             "name": "DefaultDeploymentSid",
             "required": false,
@@ -4148,7 +4148,7 @@
         "description": "Retrieve a list of AuthorizationDocuments belonging to the account initiating the request.",
         "parameters": [
           {
-            "description": "Email.",
+            "description": "Email that this AuthorizationDocument will be sent to for signing.",
             "in": "query",
             "name": "Email",
             "required": false,
@@ -4157,7 +4157,7 @@
             }
           },
           {
-            "description": "The Status of this AuthorizationDocument.",
+            "description": "Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -4235,7 +4235,7 @@
         "description": "Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.",
         "parameters": [
           {
-            "description": "A list of HostedNumberOrder sids.",
+            "description": "A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform.",
             "in": "query",
             "name": "HostedNumberOrderSids",
             "required": true,
@@ -4247,7 +4247,7 @@
             }
           },
           {
-            "description": "Address sid.",
+            "description": "A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument.",
             "in": "query",
             "name": "AddressSid",
             "required": true,
@@ -4259,7 +4259,7 @@
             }
           },
           {
-            "description": "Email.",
+            "description": "Email that this AuthorizationDocument will be sent to for signing.",
             "in": "query",
             "name": "Email",
             "required": true,
@@ -4268,7 +4268,7 @@
             }
           },
           {
-            "description": "Title of signee of this Authorization Document.",
+            "description": "The title of the person authorized to sign the Authorization Document for this phone number.",
             "in": "query",
             "name": "ContactTitle",
             "required": true,
@@ -4277,7 +4277,7 @@
             }
           },
           {
-            "description": "Authorization Document's signee's phone number.",
+            "description": "The contact phone number of the person authorized to sign the Authorization Document.",
             "in": "query",
             "name": "ContactPhoneNumber",
             "required": true,
@@ -4286,7 +4286,7 @@
             }
           },
           {
-            "description": "A list of emails.",
+            "description": "Email recipients who will be informed when an Authorization Document has been sent and signed.",
             "in": "query",
             "name": "CcEmails",
             "required": false,
@@ -4332,7 +4332,7 @@
         "description": "Fetch a specific AuthorizationDocument.",
         "parameters": [
           {
-            "description": "AuthorizationDocument sid.",
+            "description": "A 34 character string that uniquely identifies this AuthorizationDocument.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4368,7 +4368,7 @@
         "description": "Updates a specific AuthorizationDocument.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4380,7 +4380,7 @@
             }
           },
           {
-            "description": "A list of HostedNumberOrder sids.",
+            "description": "A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform.",
             "in": "query",
             "name": "HostedNumberOrderSids",
             "required": false,
@@ -4392,7 +4392,7 @@
             }
           },
           {
-            "description": "Address sid.",
+            "description": "A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument.",
             "in": "query",
             "name": "AddressSid",
             "required": false,
@@ -4404,7 +4404,7 @@
             }
           },
           {
-            "description": "Email.",
+            "description": "Email that this AuthorizationDocument will be sent to for signing.",
             "in": "query",
             "name": "Email",
             "required": false,
@@ -4413,7 +4413,7 @@
             }
           },
           {
-            "description": "A list of emails.",
+            "description": "Email recipients who will be informed when an Authorization Document has been sent and signed",
             "in": "query",
             "name": "CcEmails",
             "required": false,
@@ -4425,7 +4425,7 @@
             }
           },
           {
-            "description": "The Status of this AuthorizationDocument.",
+            "description": "Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -4441,7 +4441,7 @@
             }
           },
           {
-            "description": "Title of signee of this Authorization Document.",
+            "description": "The title of the person authorized to sign the Authorization Document for this phone number.",
             "in": "query",
             "name": "ContactTitle",
             "required": false,
@@ -4450,7 +4450,7 @@
             }
           },
           {
-            "description": "Authorization Document's signee's phone number.",
+            "description": "The contact phone number of the person authorized to sign the Authorization Document.",
             "in": "query",
             "name": "ContactPhoneNumber",
             "required": false,
@@ -4493,7 +4493,7 @@
         "description": "Retrieve a list of dependent HostedNumberOrders belonging to the AuthorizationDocument.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "SigningDocumentSid",
             "required": true,
@@ -4505,7 +4505,7 @@
             }
           },
           {
-            "description": "The Status of this HostedNumberOrder.",
+            "description": "Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -4525,7 +4525,7 @@
             }
           },
           {
-            "description": "An E164 formatted phone number.",
+            "description": "An E164 formatted phone number hosted by this HostedNumberOrder.",
             "in": "query",
             "name": "PhoneNumber",
             "required": false,
@@ -4534,7 +4534,7 @@
             }
           },
           {
-            "description": "IncomingPhoneNumber sid.",
+            "description": "A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder.",
             "in": "query",
             "name": "IncomingPhoneNumberSid",
             "required": false,
@@ -4546,7 +4546,7 @@
             }
           },
           {
-            "description": "A human readable description of this resource.",
+            "description": "A human readable description of this resource, up to 64 characters.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -4555,7 +4555,7 @@
             }
           },
           {
-            "description": "A unique, developer assigned name of this HostedNumberOrder.",
+            "description": "Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -4636,7 +4636,7 @@
         "description": "Retrieve a list of HostedNumberOrders belonging to the account initiating the request.",
         "parameters": [
           {
-            "description": "The Status of this HostedNumberOrder.",
+            "description": "The Status of this HostedNumberOrder. One of `received`, `pending-verification`, `verified`, `pending-loa`, `carrier-processing`, `testing`, `completed`, `failed`, or `action-required`.",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -4656,7 +4656,7 @@
             }
           },
           {
-            "description": "An E164 formatted phone number.",
+            "description": "An E164 formatted phone number hosted by this HostedNumberOrder.",
             "in": "query",
             "name": "PhoneNumber",
             "required": false,
@@ -4665,7 +4665,7 @@
             }
           },
           {
-            "description": "IncomingPhoneNumber sid.",
+            "description": "A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder.",
             "in": "query",
             "name": "IncomingPhoneNumberSid",
             "required": false,
@@ -4677,7 +4677,7 @@
             }
           },
           {
-            "description": "A human readable description of this resource.",
+            "description": "A human readable description of this resource, up to 64 characters.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -4686,7 +4686,7 @@
             }
           },
           {
-            "description": "A unique, developer assigned name of this HostedNumberOrder.",
+            "description": "Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -4757,7 +4757,7 @@
         "description": "Host a phone number's capability on Twilio's platform.",
         "parameters": [
           {
-            "description": "An E164 formatted phone number.",
+            "description": "The number to host in [+E.164](https://en.wikipedia.org/wiki/E.164) format",
             "in": "query",
             "name": "PhoneNumber",
             "required": true,
@@ -4766,7 +4766,7 @@
             }
           },
           {
-            "description": "Specify SMS capability to host.",
+            "description": "Used to specify that the SMS capability will be hosted on Twilio's platform.",
             "in": "query",
             "name": "SmsCapability",
             "required": true,
@@ -4775,7 +4775,7 @@
             }
           },
           {
-            "description": "Account Sid.",
+            "description": "This defaults to the AccountSid of the authorization the user is using. This can be provided to specify a subaccount to add the HostedNumberOrder to.",
             "in": "query",
             "name": "AccountSid",
             "required": false,
@@ -4787,7 +4787,7 @@
             }
           },
           {
-            "description": "A human readable description of this resource.",
+            "description": "A 64 character string that is a human readable text that describes this resource.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -4796,7 +4796,7 @@
             }
           },
           {
-            "description": "A unique, developer assigned name of this HostedNumberOrder.",
+            "description": "Optional. Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -4805,7 +4805,7 @@
             }
           },
           {
-            "description": "A list of emails.",
+            "description": "Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to.",
             "in": "query",
             "name": "CcEmails",
             "required": false,
@@ -4817,7 +4817,7 @@
             }
           },
           {
-            "description": "SMS URL.",
+            "description": "The URL that Twilio should request when somebody sends an SMS to the phone number. This will be copied onto the IncomingPhoneNumber resource.",
             "in": "query",
             "name": "SmsUrl",
             "required": false,
@@ -4827,7 +4827,7 @@
             }
           },
           {
-            "description": "SMS Method.",
+            "description": "The HTTP method that should be used to request the SmsUrl. Must be either `GET` or `POST`.  This will be copied onto the IncomingPhoneNumber resource.",
             "in": "query",
             "name": "SmsMethod",
             "required": false,
@@ -4850,7 +4850,7 @@
             }
           },
           {
-            "description": "SMS Fallback URL.",
+            "description": "A URL that Twilio will request if an error occurs requesting or executing the TwiML defined by SmsUrl. This will be copied onto the IncomingPhoneNumber resource.",
             "in": "query",
             "name": "SmsFallbackUrl",
             "required": false,
@@ -4860,7 +4860,7 @@
             }
           },
           {
-            "description": "SMS Fallback Method.",
+            "description": "The HTTP method that should be used to request the SmsFallbackUrl. Must be either `GET` or `POST`. This will be copied onto the IncomingPhoneNumber resource.",
             "in": "query",
             "name": "SmsFallbackMethod",
             "required": false,
@@ -4883,7 +4883,7 @@
             }
           },
           {
-            "description": "Status Callback URL.",
+            "description": "Optional. The Status Callback URL attached to the IncomingPhoneNumber resource.",
             "in": "query",
             "name": "StatusCallbackUrl",
             "required": false,
@@ -4893,7 +4893,7 @@
             }
           },
           {
-            "description": "Status Callback Method.",
+            "description": "Optional. The Status Callback Method attached to the IncomingPhoneNumber resource.",
             "in": "query",
             "name": "StatusCallbackMethod",
             "required": false,
@@ -4916,7 +4916,7 @@
             }
           },
           {
-            "description": "SMS Application Sid.",
+            "description": "Optional. The 34 character sid of the application Twilio should use to handle SMS messages sent to this number. If a `SmsApplicationSid` is present, Twilio will ignore all of the SMS urls above and use those set on the application.",
             "in": "query",
             "name": "SmsApplicationSid",
             "required": false,
@@ -4928,7 +4928,7 @@
             }
           },
           {
-            "description": "Address sid.",
+            "description": "Optional. A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number.",
             "in": "query",
             "name": "AddressSid",
             "required": false,
@@ -4940,7 +4940,7 @@
             }
           },
           {
-            "description": "Email.",
+            "description": "Optional. Email of the owner of this phone number that is being hosted.",
             "in": "query",
             "name": "Email",
             "required": false,
@@ -4949,7 +4949,7 @@
             }
           },
           {
-            "description": "Verification Type.",
+            "description": "Optional. The method used for verifying ownership of the number to be hosted. One of phone-call (default) or phone-bill.",
             "in": "query",
             "name": "VerificationType",
             "required": false,
@@ -4962,7 +4962,7 @@
             }
           },
           {
-            "description": "Verification Document Sid",
+            "description": "Optional. The unique sid identifier of the Identity Document that represents the document for verifying ownership of the number to be hosted. Required when VerificationType is phone-bill.",
             "in": "query",
             "name": "VerificationDocumentSid",
             "required": false,
@@ -5007,7 +5007,7 @@
         "description": "Cancel the HostedNumberOrder (only available when the status is in `received`).",
         "parameters": [
           {
-            "description": "HostedNumberOrder sid.",
+            "description": "A 34 character string that uniquely identifies this HostedNumberOrder.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -5038,7 +5038,7 @@
         "description": "Fetch a specific HostedNumberOrder.",
         "parameters": [
           {
-            "description": "HostedNumberOrder sid.",
+            "description": "A 34 character string that uniquely identifies this HostedNumberOrder.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -5074,7 +5074,7 @@
         "description": "Updates a specific HostedNumberOrder.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -5086,7 +5086,7 @@
             }
           },
           {
-            "description": "A human readable description of this resource.",
+            "description": "A 64 character string that is a human readable text that describes this resource.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -5095,7 +5095,7 @@
             }
           },
           {
-            "description": "A unique, developer assigned name of this HostedNumberOrder.",
+            "description": "Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -5104,7 +5104,7 @@
             }
           },
           {
-            "description": "Email.",
+            "description": "Email of the owner of this phone number that is being hosted.",
             "in": "query",
             "name": "Email",
             "required": false,
@@ -5113,7 +5113,7 @@
             }
           },
           {
-            "description": "A list of emails.",
+            "description": "Optional. A list of emails that LOA document for this HostedNumberOrder will be carbon copied to.",
             "in": "query",
             "name": "CcEmails",
             "required": false,
@@ -5125,7 +5125,7 @@
             }
           },
           {
-            "description": "The Status of this HostedNumberOrder.",
+            "description": "User can only post to `pending-verification` status to transition the HostedNumberOrder to initiate a verification call or verification of ownership with a copy of a phone bill.",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -5145,7 +5145,7 @@
             }
           },
           {
-            "description": "A verification code.",
+            "description": "A verification code that is given to the user via a phone call to the phone number that is being hosted.",
             "in": "query",
             "name": "VerificationCode",
             "required": false,
@@ -5154,7 +5154,7 @@
             }
           },
           {
-            "description": "Verification Type.",
+            "description": "Optional. The method used for verifying ownership of the number to be hosted. One of phone-call (default) or phone-bill.",
             "in": "query",
             "name": "VerificationType",
             "required": false,
@@ -5167,7 +5167,7 @@
             }
           },
           {
-            "description": "Verification Document Sid",
+            "description": "Optional. The unique sid identifier of the Identity Document that represents the document for verifying ownership of the number to be hosted. Required when VerificationType is phone-bill.",
             "in": "query",
             "name": "VerificationDocumentSid",
             "required": false,
@@ -5188,7 +5188,7 @@
             }
           },
           {
-            "description": "The number of seconds, between 0 and 60, to delay before initiating the verification call.",
+            "description": "The number of seconds, between 0 and 60, to delay before initiating the verification call. Defaults to 0.",
             "in": "query",
             "name": "CallDelay",
             "required": false,
@@ -5228,7 +5228,7 @@
     "/Sync/Services": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -5289,10 +5289,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -5301,7 +5301,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "WebhookUrl",
             "required": false,
@@ -5311,7 +5311,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ReachabilityWebhooksEnabled",
             "required": false,
@@ -5320,7 +5320,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "AclEnabled",
             "required": false,
@@ -5360,10 +5360,10 @@
     "/Sync/Services/{ServiceSid}/Documents": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5434,10 +5434,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5449,7 +5449,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -5458,7 +5458,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Data",
             "required": false,
@@ -5501,7 +5501,7 @@
         "description": "Retrieve a list of all Permissions applying to a Sync Document.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5513,7 +5513,7 @@
             }
           },
           {
-            "description": "Sync Document SID or unique name.",
+            "description": "Identifier of the Sync Document. Either a SID or a unique name.",
             "in": "path",
             "name": "DocumentSid",
             "required": true,
@@ -5596,7 +5596,7 @@
         "description": "Delete a specific Sync Document Permission.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5608,7 +5608,7 @@
             }
           },
           {
-            "description": "Sync Document SID or unique name.",
+            "description": "Identifier of the Sync Document. Either a SID or a unique name.",
             "in": "path",
             "name": "DocumentSid",
             "required": true,
@@ -5620,7 +5620,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync Document Permission applies.",
+            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -5648,7 +5648,7 @@
         "description": "Fetch a specific Sync Document Permission.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5660,7 +5660,7 @@
             }
           },
           {
-            "description": "Sync Document SID or unique name.",
+            "description": "Identifier of the Sync Document. Either a SID or a unique name.",
             "in": "path",
             "name": "DocumentSid",
             "required": true,
@@ -5672,7 +5672,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync Document Permission applies.",
+            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -5705,7 +5705,7 @@
         "description": "Update an identity's access to a specific Sync Document.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID.",
+            "description": "The unique SID identifier of the Sync Service Instance.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5717,7 +5717,7 @@
             }
           },
           {
-            "description": "Sync Document SID or unique name.",
+            "description": "Identifier of the Sync Document. Either a SID or a unique name.",
             "in": "path",
             "name": "DocumentSid",
             "required": true,
@@ -5729,7 +5729,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync Document Permission applies.",
+            "description": "Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -5738,7 +5738,7 @@
             }
           },
           {
-            "description": "Read access.",
+            "description": "Boolean flag specifying whether the identity can read the Sync Document.",
             "in": "query",
             "name": "Read",
             "required": true,
@@ -5747,7 +5747,7 @@
             }
           },
           {
-            "description": "Write access.",
+            "description": "Boolean flag specifying whether the identity can update the Sync Document.",
             "in": "query",
             "name": "Write",
             "required": true,
@@ -5756,7 +5756,7 @@
             }
           },
           {
-            "description": "Manage access.",
+            "description": "Boolean flag specifying whether the identity can delete the Sync Document.",
             "in": "query",
             "name": "Manage",
             "required": true,
@@ -5795,10 +5795,10 @@
     },
     "/Sync/Services/{ServiceSid}/Documents/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5810,7 +5810,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -5838,10 +5838,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5853,7 +5853,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -5886,10 +5886,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5901,7 +5901,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -5913,7 +5913,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Data",
             "required": true,
@@ -5953,10 +5953,10 @@
     "/Sync/Services/{ServiceSid}/Lists": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6027,10 +6027,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6042,7 +6042,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -6082,10 +6082,10 @@
     "/Sync/Services/{ServiceSid}/Lists/{ListSid}/Items": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6097,7 +6097,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -6109,7 +6109,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Order",
             "required": false,
@@ -6122,7 +6122,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "From",
             "required": false,
@@ -6131,7 +6131,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Bounds",
             "required": false,
@@ -6203,10 +6203,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6218,7 +6218,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -6230,7 +6230,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Data",
             "required": true,
@@ -6269,10 +6269,10 @@
     },
     "/Sync/Services/{ServiceSid}/Lists/{ListSid}/Items/{Index}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6284,7 +6284,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -6296,7 +6296,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Index",
             "required": true,
@@ -6321,10 +6321,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6336,7 +6336,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -6348,7 +6348,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Index",
             "required": true,
@@ -6378,10 +6378,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6393,7 +6393,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -6405,7 +6405,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Index",
             "required": true,
@@ -6414,7 +6414,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Data",
             "required": true,
@@ -6457,7 +6457,7 @@
         "description": "Retrieve a list of all Permissions applying to a Sync List.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6469,7 +6469,7 @@
             }
           },
           {
-            "description": "Sync List SID or unique name.",
+            "description": "Identifier of the Sync List. Either a SID or a unique name.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -6552,7 +6552,7 @@
         "description": "Delete a specific Sync List Permission.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6564,7 +6564,7 @@
             }
           },
           {
-            "description": "Sync List SID or unique name.",
+            "description": "Identifier of the Sync List. Either a SID or a unique name.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -6576,7 +6576,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync List Permission applies.",
+            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -6604,7 +6604,7 @@
         "description": "Fetch a specific Sync List Permission.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6616,7 +6616,7 @@
             }
           },
           {
-            "description": "Sync List SID or unique name.",
+            "description": "Identifier of the Sync List. Either a SID or a unique name.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -6628,7 +6628,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync List Permission applies.",
+            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -6661,7 +6661,7 @@
         "description": "Update an identity's access to a specific Sync List.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID.",
+            "description": "The unique SID identifier of the Sync Service Instance.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6673,7 +6673,7 @@
             }
           },
           {
-            "description": "Sync List SID or unique name.",
+            "description": "Identifier of the Sync List. Either a SID or a unique name.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -6685,7 +6685,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync List Permission applies.",
+            "description": "Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -6694,7 +6694,7 @@
             }
           },
           {
-            "description": "Read access.",
+            "description": "Boolean flag specifying whether the identity can read the Sync List.",
             "in": "query",
             "name": "Read",
             "required": true,
@@ -6703,7 +6703,7 @@
             }
           },
           {
-            "description": "Write access.",
+            "description": "Boolean flag specifying whether the identity can create, update and delete Items of the Sync List.",
             "in": "query",
             "name": "Write",
             "required": true,
@@ -6712,7 +6712,7 @@
             }
           },
           {
-            "description": "Manage access.",
+            "description": "Boolean flag specifying whether the identity can delete the Sync List.",
             "in": "query",
             "name": "Manage",
             "required": true,
@@ -6751,10 +6751,10 @@
     },
     "/Sync/Services/{ServiceSid}/Lists/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6766,7 +6766,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -6794,10 +6794,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6809,7 +6809,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -6852,10 +6852,10 @@
     "/Sync/Services/{ServiceSid}/Maps": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6926,10 +6926,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6941,7 +6941,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -6981,10 +6981,10 @@
     "/Sync/Services/{ServiceSid}/Maps/{MapSid}/Items": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6996,7 +6996,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -7008,7 +7008,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Order",
             "required": false,
@@ -7021,7 +7021,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "From",
             "required": false,
@@ -7030,7 +7030,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Bounds",
             "required": false,
@@ -7102,10 +7102,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7117,7 +7117,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -7129,7 +7129,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Key",
             "required": true,
@@ -7138,7 +7138,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Data",
             "required": true,
@@ -7177,10 +7177,10 @@
     },
     "/Sync/Services/{ServiceSid}/Maps/{MapSid}/Items/{Key}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7192,7 +7192,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -7204,7 +7204,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Key",
             "required": true,
@@ -7229,10 +7229,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7244,7 +7244,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -7256,7 +7256,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Key",
             "required": true,
@@ -7286,10 +7286,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7301,7 +7301,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -7313,7 +7313,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Key",
             "required": true,
@@ -7322,7 +7322,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Data",
             "required": true,
@@ -7365,7 +7365,7 @@
         "description": "Retrieve a list of all Permissions applying to a Sync Map.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7377,7 +7377,7 @@
             }
           },
           {
-            "description": "Sync Map SID or unique name.",
+            "description": "Identifier of the Sync Map. Either a SID or a unique name.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -7460,7 +7460,7 @@
         "description": "Delete a specific Sync Map Permission.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7472,7 +7472,7 @@
             }
           },
           {
-            "description": "Sync Map SID or unique name.",
+            "description": "Identifier of the Sync Map. Either a SID or a unique name.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -7484,7 +7484,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync Map Permission applies.",
+            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -7512,7 +7512,7 @@
         "description": "Fetch a specific Sync Map Permission.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7524,7 +7524,7 @@
             }
           },
           {
-            "description": "Sync Map SID or unique name.",
+            "description": "Identifier of the Sync Map. Either a SID or a unique name.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -7536,7 +7536,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync Map Permission applies.",
+            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -7569,7 +7569,7 @@
         "description": "Update an identity's access to a specific Sync Map.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID.",
+            "description": "The unique SID identifier of the Sync Service Instance.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7581,7 +7581,7 @@
             }
           },
           {
-            "description": "Sync Map SID or unique name.",
+            "description": "Identifier of the Sync Map. Either a SID or a unique name.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -7593,7 +7593,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync Map Permission applies.",
+            "description": "Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -7602,7 +7602,7 @@
             }
           },
           {
-            "description": "Read access.",
+            "description": "Boolean flag specifying whether the identity can read the Sync Map.",
             "in": "query",
             "name": "Read",
             "required": true,
@@ -7611,7 +7611,7 @@
             }
           },
           {
-            "description": "Write access.",
+            "description": "Boolean flag specifying whether the identity can create, update and delete Items of the Sync Map.",
             "in": "query",
             "name": "Write",
             "required": true,
@@ -7620,7 +7620,7 @@
             }
           },
           {
-            "description": "Manage access.",
+            "description": "Boolean flag specifying whether the identity can delete the Sync Map.",
             "in": "query",
             "name": "Manage",
             "required": true,
@@ -7659,10 +7659,10 @@
     },
     "/Sync/Services/{ServiceSid}/Maps/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7674,7 +7674,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -7702,10 +7702,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7717,7 +7717,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -7759,10 +7759,10 @@
     },
     "/Sync/Services/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -7790,10 +7790,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -7826,10 +7826,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -7841,7 +7841,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "WebhookUrl",
             "required": false,
@@ -7851,7 +7851,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -7860,7 +7860,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ReachabilityWebhooksEnabled",
             "required": false,
@@ -7869,7 +7869,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "AclEnabled",
             "required": false,
@@ -7912,7 +7912,7 @@
         "description": "Initiates a Branded Call.",
         "parameters": [
           {
-            "description": "Twilio number from which to originate the call",
+            "description": "The phone number to use as the caller id, given in E.164 format (https://en.wikipedia.org/wiki/E.164). It must be a Twilio number that has been set up as a Branded Number in the Business Profile section for your account.",
             "in": "query",
             "name": "From",
             "required": true,
@@ -7921,7 +7921,7 @@
             }
           },
           {
-            "description": "The terminating Phone Number",
+            "description": "The terminating Phone Number, given in E.164 format (https://en.wikipedia.org/wiki/E.164).",
             "in": "query",
             "name": "To",
             "required": true,
@@ -7930,7 +7930,7 @@
             }
           },
           {
-            "description": "The business reason for this phone call",
+            "description": "The business reason for this phone call that will appear in the terminating device's screen.",
             "in": "query",
             "name": "Reason",
             "required": false,
@@ -7939,7 +7939,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "ApplicationSid",
             "required": false,
@@ -7951,7 +7951,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "CallerId",
             "required": false,
@@ -7960,7 +7960,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "FallbackMethod",
             "required": false,
@@ -7983,7 +7983,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "FallbackUrl",
             "required": false,
@@ -7993,7 +7993,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "MachineDetection",
             "required": false,
@@ -8002,7 +8002,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "MachineDetectionSilenceTimeout",
             "required": false,
@@ -8011,7 +8011,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "MachineDetectionSpeechEndThreshold",
             "required": false,
@@ -8020,7 +8020,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "MachineDetectionSpeechThreshold",
             "required": false,
@@ -8029,7 +8029,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "MachineDetectionTimeout",
             "required": false,
@@ -8038,7 +8038,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "Method",
             "required": false,
@@ -8061,7 +8061,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "Record",
             "required": false,
@@ -8070,7 +8070,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "RecordingChannels",
             "required": false,
@@ -8079,7 +8079,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "RecordingStatusCallback",
             "required": false,
@@ -8088,7 +8088,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "RecordingStatusCallbackEvent",
             "required": false,
@@ -8100,7 +8100,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "RecordingStatusCallbackMethod",
             "required": false,
@@ -8123,7 +8123,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "SendDigits",
             "required": false,
@@ -8132,7 +8132,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "SipAuthPassword",
             "required": false,
@@ -8141,7 +8141,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "SipAuthUsername",
             "required": false,
@@ -8150,7 +8150,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -8160,7 +8160,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "StatusCallbackEvent",
             "required": false,
@@ -8172,7 +8172,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "StatusCallbackMethod",
             "required": false,
@@ -8195,7 +8195,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "Timeout",
             "required": false,
@@ -8204,7 +8204,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "Trim",
             "required": false,
@@ -8213,7 +8213,7 @@
             }
           },
           {
-            "description": "Refers to the Voice API Initiate Call parameter",
+            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "Url",
             "required": false,
@@ -8339,7 +8339,7 @@
         "description": "Registers a new Device and Push Token against Trusted Comms API. This works specially for iOS devices, which don't allow the SDK to know when there's an incoming call, nor the originating number.",
         "parameters": [
           {
-            "description": "The end user Phone Number",
+            "description": "The end user Phone Number linked to the device, given in E.164 format (https://en.wikipedia.org/wiki/E.164). The SDK or partner app is responsible of verifying this phone number veracity.",
             "in": "query",
             "name": "PhoneNumber",
             "required": true,
@@ -8348,7 +8348,7 @@
             }
           },
           {
-            "description": "The Push Token for this Phone Number",
+            "description": "The Push Token for this Phone Number, linked to the correct SDK's application, certificate and keys.",
             "in": "query",
             "name": "PushToken",
             "required": true,
@@ -8456,7 +8456,7 @@
         "description": "Create a new Verification Service.",
         "parameters": [
           {
-            "description": "Friendly name of the service",
+            "description": "A 1-64 character string with friendly name of service",
             "in": "query",
             "name": "Name",
             "required": true,
@@ -8465,7 +8465,7 @@
             }
           },
           {
-            "description": "Length of verification code. Valid values are 4-10",
+            "description": "The length of the verification code to be generated. Must be an integer value between 4-10",
             "in": "query",
             "name": "CodeLength",
             "required": false,
@@ -8508,7 +8508,7 @@
         "description": "challenge a specific Verification Check.",
         "parameters": [
           {
-            "description": "A string that uniquely identifies the Service.",
+            "description": "A 34 character string that uniquely identifies the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8520,7 +8520,7 @@
             }
           },
           {
-            "description": "The verification string",
+            "description": "The 4-10 character string being verified",
             "in": "query",
             "name": "Code",
             "required": true,
@@ -8529,7 +8529,7 @@
             }
           },
           {
-            "description": "To phonenumber",
+            "description": "The To phonenumber of the phone being verified",
             "in": "query",
             "name": "To",
             "required": false,
@@ -8572,7 +8572,7 @@
         "description": "Create a new Verification for a To number using a Service",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8584,7 +8584,7 @@
             }
           },
           {
-            "description": "To phonenumber",
+            "description": "The To phonenumber of the phone being verified",
             "in": "query",
             "name": "To",
             "required": true,
@@ -8593,7 +8593,7 @@
             }
           },
           {
-            "description": "sms or call",
+            "description": "The method in which the phone will be verified. Either sms or call",
             "in": "query",
             "name": "Channel",
             "required": true,
@@ -8602,7 +8602,7 @@
             }
           },
           {
-            "description": "A custom message for this verification",
+            "description": "A character string containing a custom message for this verification",
             "in": "query",
             "name": "CustomMessage",
             "required": false,
@@ -8645,7 +8645,7 @@
         "description": "Fetch specific Verification Service Instance.",
         "parameters": [
           {
-            "description": "Verification Service Instance SID.",
+            "description": "The unique SID identifier of Verification Service Instance.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -8681,7 +8681,7 @@
         "description": "Update a specific Phone Verification Service.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -8693,7 +8693,7 @@
             }
           },
           {
-            "description": "Friendly name of the service",
+            "description": "A 1-64 character string with friendly name of service",
             "in": "query",
             "name": "Name",
             "required": false,
@@ -8702,7 +8702,7 @@
             }
           },
           {
-            "description": "Length of verification code. Valid values are 4-10",
+            "description": "The length of the verification code to be generated. Must be an integer value between 4-10",
             "in": "query",
             "name": "CodeLength",
             "required": false,
@@ -8816,7 +8816,7 @@
         "description": "Retrieve a list of Extensions for the Available Add-on.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AvailableAddOnSid",
             "required": true,
@@ -8900,7 +8900,7 @@
         "description": "Fetch an instance of an Extension for the Available Add-on.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AvailableAddOnSid",
             "required": true,
@@ -8912,7 +8912,7 @@
             }
           },
           {
-            "description": "The unique Extension Sid",
+            "description": "The Extension Sid that uniquely identifies this resource",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -8958,7 +8958,7 @@
         "description": "Fetch an instance of an Add-on currently available to be installed.",
         "parameters": [
           {
-            "description": "The unique Available Add-on Sid",
+            "description": "The Available Add-on Sid that uniquely identifies this resource",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -9065,7 +9065,7 @@
         "description": "Install an Add-on for the Account specified.",
         "parameters": [
           {
-            "description": "A string that uniquely identifies the Add-on to install",
+            "description": "A 34 character string that uniquely identifies the Add-on to be installed.",
             "in": "query",
             "name": "AvailableAddOnSid",
             "required": true,
@@ -9077,7 +9077,7 @@
             }
           },
           {
-            "description": "A boolean reflecting your acceptance of the Terms of Service",
+            "description": "A boolean that reflects your decision whether to accept the Terms of Service",
             "in": "query",
             "name": "AcceptTermsOfService",
             "required": true,
@@ -9086,7 +9086,7 @@
             }
           },
           {
-            "description": "The JSON object representing the configuration",
+            "description": "The JSON object representing the configuration of the new Add-on installation.",
             "in": "query",
             "name": "Configuration",
             "required": false,
@@ -9095,7 +9095,7 @@
             }
           },
           {
-            "description": "The string that uniquely identifies this Add-on installation",
+            "description": "The human-readable string that uniquely identifies this Add-on installation for an Account.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -9138,7 +9138,7 @@
         "description": "Retrieve a list of Extensions for the Installed Add-on.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "InstalledAddOnSid",
             "required": true,
@@ -9222,7 +9222,7 @@
         "description": "Fetch an instance of an Extension for the Installed Add-on.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "InstalledAddOnSid",
             "required": true,
@@ -9234,7 +9234,7 @@
             }
           },
           {
-            "description": "The unique Extension Sid",
+            "description": "The Extension Sid that uniquely identifies this resource",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -9270,7 +9270,7 @@
         "description": "Update an Extension for an Add-on installation.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "InstalledAddOnSid",
             "required": true,
@@ -9282,7 +9282,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -9294,7 +9294,7 @@
             }
           },
           {
-            "description": "A Boolean indicating if the Extension will be invoked",
+            "description": "A Boolean indicating if the Extension will be invoked.",
             "in": "query",
             "name": "Enabled",
             "required": true,
@@ -9336,7 +9336,7 @@
         "description": "Remove an Add-on installation from your account",
         "parameters": [
           {
-            "description": "The Installed Add-on Sid to delete",
+            "description": "The Installed Add-on Sid that uniquely identifies the resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -9367,7 +9367,7 @@
         "description": "Fetch an instance of an Add-on currently installed on this Account.",
         "parameters": [
           {
-            "description": "The unique Installed Add-on Sid",
+            "description": "The Installed Add-on Sid that uniquely identifies this resource",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -9403,7 +9403,7 @@
         "description": "Update an Add-on installation for the Account specified.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -9415,7 +9415,7 @@
             }
           },
           {
-            "description": "The JSON object representing the configuration",
+            "description": "Valid JSON object that conform to the configuration schema exposed by the associated Available Add-on resource. This is only required by Add-ons that need to be configured",
             "in": "query",
             "name": "Configuration",
             "required": false,
@@ -9424,7 +9424,7 @@
             }
           },
           {
-            "description": "The string that uniquely identifies this Add-on installation",
+            "description": "The human-readable string that uniquely identifies this Add-on installation for an Account.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -9464,7 +9464,7 @@
     "/understand/Assistants": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -9525,7 +9525,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A text description for the Assistant. It is non-unique and can up to 255 characters long.",
@@ -9632,10 +9632,10 @@
     "/understand/Assistants/{AssistantSid}/Dialogues/{Sid}": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -9647,7 +9647,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -9690,10 +9690,10 @@
     "/understand/Assistants/{AssistantSid}/FallbackActions": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -9726,10 +9726,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -9741,7 +9741,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "FallbackActions",
             "required": false,
@@ -9781,10 +9781,10 @@
     "/understand/Assistants/{AssistantSid}/FieldTypes": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -9855,10 +9855,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -9919,10 +9919,10 @@
     "/understand/Assistants/{AssistantSid}/FieldTypes/{FieldTypeSid}/FieldValues": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -9934,7 +9934,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FieldTypeSid",
             "required": true,
@@ -9946,7 +9946,7 @@
             }
           },
           {
-            "description": "An ISO language-country string of the value. For example: en-US",
+            "description": "An ISO language-country string of the value. For example: *en-US*",
             "in": "query",
             "name": "Language",
             "required": false,
@@ -10014,10 +10014,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10029,7 +10029,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FieldTypeSid",
             "required": true,
@@ -10101,10 +10101,10 @@
     },
     "/understand/Assistants/{AssistantSid}/FieldTypes/{FieldTypeSid}/FieldValues/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10116,7 +10116,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FieldTypeSid",
             "required": true,
@@ -10128,7 +10128,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -10156,10 +10156,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10171,7 +10171,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "FieldTypeSid",
             "required": true,
@@ -10183,7 +10183,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -10225,10 +10225,10 @@
     },
     "/understand/Assistants/{AssistantSid}/FieldTypes/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10240,7 +10240,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -10268,10 +10268,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10283,7 +10283,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -10316,10 +10316,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10331,7 +10331,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -10392,10 +10392,10 @@
     "/understand/Assistants/{AssistantSid}/InitiationActions": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10428,10 +10428,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10443,7 +10443,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "InitiationActions",
             "required": false,
@@ -10483,10 +10483,10 @@
     "/understand/Assistants/{AssistantSid}/ModelBuilds": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10557,10 +10557,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10572,7 +10572,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -10621,10 +10621,10 @@
     },
     "/understand/Assistants/{AssistantSid}/ModelBuilds/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10636,7 +10636,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -10664,10 +10664,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10679,7 +10679,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -10712,10 +10712,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -10727,7 +10727,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -10779,7 +10779,7 @@
     "/understand/Assistants/{AssistantSid}/Queries": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the parent Assistant.",
@@ -10883,7 +10883,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the parent Assistant.",
@@ -10916,7 +10916,7 @@
             }
           },
           {
-            "description": "Constraints the query to a set of tasks. Useful when you need to constrain the paths the user can take. Tasks should be comma separated task-unique-name-1, task-unique-name-2",
+            "description": "Constraints the query to a set of tasks. Useful when you need to constrain the paths the user can take. Tasks should be comma separated *task-unique-name-1*, *task-unique-name-2*",
             "in": "query",
             "name": "Tasks",
             "required": false,
@@ -10937,7 +10937,7 @@
             }
           },
           {
-            "description": "Constraints the query to a given Field with an task. Useful when you know the Field you are expecting. It accepts one field in the format task-unique-name-1:field-unique-name",
+            "description": "Constraints the query to a given Field with an task. Useful when you know the Field you are expecting. It accepts one field in the format *task-unique-name-1*:*field-unique-name*",
             "in": "query",
             "name": "Field",
             "required": false,
@@ -10976,7 +10976,7 @@
     },
     "/understand/Assistants/{AssistantSid}/Queries/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -11019,7 +11019,7 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -11067,7 +11067,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the parent Assistant.",
@@ -11237,7 +11237,7 @@
     "/understand/Assistants/{AssistantSid}/Tasks": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -11311,7 +11311,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -11393,7 +11393,7 @@
     },
     "/understand/Assistants/{AssistantSid}/Tasks/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -11436,7 +11436,7 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -11484,7 +11484,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -11694,7 +11694,7 @@
     "/understand/Assistants/{AssistantSid}/Tasks/{TaskSid}/Fields": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -11780,7 +11780,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the parent Assistant.",
@@ -11807,7 +11807,7 @@
             }
           },
           {
-            "description": "The unique name or sid of the FieldType. It can be any Built-in Field Type or the unique_name or sid of a custom Field Type.",
+            "description": "The unique name or sid of the FieldType. It can be any [Built-in Field Type](https://www.twilio.com/docs/assistant/api/built-in-field-types) or the unique_name or the Field Type sid of a custom Field Type.",
             "in": "query",
             "name": "FieldType",
             "required": true,
@@ -11855,7 +11855,7 @@
     },
     "/understand/Assistants/{AssistantSid}/Tasks/{TaskSid}/Fields/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -11910,7 +11910,7 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -11980,7 +11980,7 @@
     "/understand/Assistants/{AssistantSid}/Tasks/{TaskSid}/Samples": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -12075,7 +12075,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -12120,7 +12120,7 @@
             }
           },
           {
-            "description": "The communication channel the sample was captured. It can be: voice, sms, chat, alexa, google-assistant, or slack. If not included the value will be null",
+            "description": "The communication channel the sample was captured. It can be: *voice*, *sms*, *chat*, *alexa*, *google-assistant*, or *slack*. If not included the value will be null",
             "in": "query",
             "name": "SourceChannel",
             "required": false,
@@ -12159,7 +12159,7 @@
     },
     "/understand/Assistants/{AssistantSid}/Tasks/{TaskSid}/Samples/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -12214,7 +12214,7 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -12274,7 +12274,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Assistant.",
@@ -12331,7 +12331,7 @@
             }
           },
           {
-            "description": "The communication channel the sample was captured. It can be: voice, sms, chat, alexa, google-assistant, or slack. If not included the value will be null",
+            "description": "The communication channel the sample was captured. It can be: *voice*, *sms*, *chat*, *alexa*, *google-assistant*, or *slack*. If not included the value will be null",
             "in": "query",
             "name": "SourceChannel",
             "required": false,
@@ -12371,7 +12371,7 @@
     "/understand/Assistants/{AssistantSid}/Tasks/{TaskSid}/Statistics": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the parent Assistant.",
@@ -12428,7 +12428,7 @@
     },
     "/understand/Assistants/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource.",
@@ -12459,7 +12459,7 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource.",
@@ -12495,7 +12495,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource.",
@@ -12614,10 +12614,10 @@
     "/wireless/Commands": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Device",
             "required": false,
@@ -12626,7 +12626,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Sim",
             "required": false,
@@ -12635,7 +12635,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -12644,7 +12644,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Direction",
             "required": false,
@@ -12712,10 +12712,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Command",
             "required": true,
@@ -12724,7 +12724,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Device",
             "required": false,
@@ -12733,7 +12733,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Sim",
             "required": false,
@@ -12742,7 +12742,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "CallbackMethod",
             "required": false,
@@ -12751,7 +12751,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "CallbackUrl",
             "required": false,
@@ -12761,7 +12761,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "CommandMode",
             "required": false,
@@ -12770,7 +12770,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "IncludeSid",
             "required": false,
@@ -12810,10 +12810,10 @@
     "/wireless/Commands/{Sid}": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -12856,7 +12856,7 @@
     "/wireless/RatePlans": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -12917,10 +12917,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -12929,7 +12929,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -12938,7 +12938,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "DataEnabled",
             "required": false,
@@ -12947,7 +12947,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "DataLimit",
             "required": false,
@@ -12956,7 +12956,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "DataMetering",
             "required": false,
@@ -12965,7 +12965,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "MessagingEnabled",
             "required": false,
@@ -12974,7 +12974,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "VoiceEnabled",
             "required": false,
@@ -12983,7 +12983,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "CommandsEnabled",
             "required": false,
@@ -12992,7 +12992,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "NationalRoamingEnabled",
             "required": false,
@@ -13001,7 +13001,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "InternationalRoaming",
             "required": false,
@@ -13043,10 +13043,10 @@
     },
     "/wireless/RatePlans/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -13074,10 +13074,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -13110,10 +13110,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -13125,7 +13125,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -13134,7 +13134,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -13174,10 +13174,10 @@
     "/wireless/Sims": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -13186,7 +13186,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Iccid",
             "required": false,
@@ -13195,7 +13195,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "RatePlan",
             "required": false,
@@ -13204,7 +13204,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "EId",
             "required": false,
@@ -13213,7 +13213,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SimRegistrationCode",
             "required": false,
@@ -13291,10 +13291,10 @@
     "/wireless/Sims/{Sid}": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -13327,10 +13327,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -13342,7 +13342,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -13351,7 +13351,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "CallbackMethod",
             "required": false,
@@ -13360,7 +13360,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "CallbackUrl",
             "required": false,
@@ -13370,7 +13370,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -13379,7 +13379,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "RatePlan",
             "required": false,
@@ -13391,7 +13391,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -13400,7 +13400,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "CommandsCallbackMethod",
             "required": false,
@@ -13423,7 +13423,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "CommandsCallbackUrl",
             "required": false,
@@ -13433,7 +13433,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SmsFallbackMethod",
             "required": false,
@@ -13456,7 +13456,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SmsFallbackUrl",
             "required": false,
@@ -13466,7 +13466,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SmsMethod",
             "required": false,
@@ -13489,7 +13489,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SmsUrl",
             "required": false,
@@ -13499,7 +13499,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "VoiceFallbackMethod",
             "required": false,
@@ -13522,7 +13522,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "VoiceFallbackUrl",
             "required": false,
@@ -13532,7 +13532,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "VoiceMethod",
             "required": false,
@@ -13555,7 +13555,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "VoiceUrl",
             "required": false,
@@ -13596,10 +13596,10 @@
     "/wireless/Sims/{SimSid}/Usage": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "SimSid",
             "required": true,
@@ -13611,7 +13611,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "End",
             "required": false,
@@ -13620,7 +13620,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Start",
             "required": false,

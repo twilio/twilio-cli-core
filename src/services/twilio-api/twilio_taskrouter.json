@@ -1392,10 +1392,10 @@
     "/v1/Workspaces": {
       "description": "Containers for other Taskrouter resources",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "Filter by a workspace's friendly name.",
+            "description": "Filter by a workspace's friendly name. This is a human readable description of this Workspace (for example \"Customer Support\" or \"2014 Election Campaign\")",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -1463,10 +1463,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "Human readable description of this workspace",
+            "description": "Human readable description of this workspace (for example \"Customer Support\" or \"2014 Election Campaign\")",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -1475,7 +1475,7 @@
             }
           },
           {
-            "description": "If provided, the Workspace will publish events to this URL.",
+            "description": "If provided, the Workspace will publish events to this URL. You can use this to gather data for reporting. See Workspace Events for more information.",
             "in": "query",
             "name": "EventCallbackUrl",
             "required": false,
@@ -1485,7 +1485,7 @@
             }
           },
           {
-            "description": "Use this parameter to receive webhooks on EventCallbackUrl for specific events on a workspace.",
+            "description": "Use this parameter to receive webhooks on EventCallbackUrl for specific events on a workspace. For example if 'EventsFilter=task.created,task.canceled,worker.activity.update', then TaskRouter will webhook to EventCallbackUrl only when a task is created, canceled or a worker activity is updated.",
             "in": "query",
             "name": "EventsFilter",
             "required": false,
@@ -1494,7 +1494,7 @@
             }
           },
           {
-            "description": "Multi tasking allows workers to handle multiple tasks simultaneously.",
+            "description": "Multi tasking allows workers to handle multiple tasks simultaneously. When enabled (MultiTaskEnabled=true), each worker will be eligible to receive parallel reservations up to the per-channel maximums defined in the Workers section. Default is disabled (MultiTaskEnabled=false), where each worker will only receive a new reservation when the previous task is completed. Learn more by visiting [Multitasking][/docs/taskrouter/multitasking].",
             "in": "query",
             "name": "MultiTaskEnabled",
             "required": false,
@@ -1503,7 +1503,7 @@
             }
           },
           {
-            "description": "One of the available template names.",
+            "description": "One of the available template names. Will pre-configure this Workspace with the Workflow and Activities specified in the template. \"NONE\" will create a Workspace with a set of default activities and nothing else. \"FIFO\" will configure TaskRouter with a set of default activities and a single task queue for first-in, first-out distribution, useful if you want to see a simple TaskRouter configuration when getting started. Defaults to \"NONE\".",
             "in": "query",
             "name": "Template",
             "required": false,
@@ -1512,7 +1512,7 @@
             }
           },
           {
-            "description": "Use this parameter to configure whether to prioritize LIFO or FIFO when workers are receiving Tasks from combination of LIFO and FIFO TaskQueues.",
+            "description": "Use this parameter to configure whether to prioritize LIFO or FIFO when workers are receiving Tasks from combination of LIFO and FIFO TaskQueues. Default is FIFO. [Click here][/docs/taskrouter/queue-ordering-last-first-out-lifo] to learn more about LIFO and the use of the parameter.",
             "in": "query",
             "name": "PrioritizeQueueOrder",
             "required": false,
@@ -1559,10 +1559,10 @@
     },
     "/v1/Workspaces/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1590,10 +1590,10 @@
       },
       "description": "Containers for other Taskrouter resources",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1626,10 +1626,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1653,7 +1653,7 @@
             }
           },
           {
-            "description": "The Workspace will publish events to this URL.",
+            "description": "The Workspace will publish events to this URL. You can use this to gather data for reporting. See [Events][/docs/taskrouter/api/events] for more information.",
             "in": "query",
             "name": "EventCallbackUrl",
             "required": false,
@@ -1663,7 +1663,7 @@
             }
           },
           {
-            "description": "Use this parameter to receive webhooks on EventCallbackUrl for specific events on a workspace.",
+            "description": "Use this parameter to receive webhooks on EventCallbackUrl for specific events on a workspace. For example if 'EventsFilter=task.created,task.canceled,worker.activity.update', then TaskRouter will webhook to EventCallbackUrl only when a task is created, canceled or a worker activity is updated.",
             "in": "query",
             "name": "EventsFilter",
             "required": false,
@@ -1672,7 +1672,7 @@
             }
           },
           {
-            "description": "Human readable description of this workspace",
+            "description": "Human readable description of this workspace (for example \"Sales Call Center\" or \"Customer Support Team\")",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -1681,7 +1681,7 @@
             }
           },
           {
-            "description": "Enable or Disable Multitasking by passing either true or False with the POST request.",
+            "description": "Enable or Disable Multitasking by passing either *true* or *False* with the POST request. Learn more by visiting [Multitasking][/docs/taskrouter/multitasking].",
             "in": "query",
             "name": "MultiTaskEnabled",
             "required": false,
@@ -1702,7 +1702,7 @@
             }
           },
           {
-            "description": "Use this parameter to configure whether to prioritize LIFO or FIFO when workers are receiving Tasks from combination of LIFO and FIFO TaskQueues.",
+            "description": "Use this parameter to configure whether to prioritize LIFO or FIFO when workers are receiving Tasks from combination of LIFO and FIFO TaskQueues. Default is FIFO. [Click here][/docs/taskrouter/queue-ordering-last-first-out-lifo] to learn more about LIFO and the use of the parameter.",
             "in": "query",
             "name": "PrioritizeQueueOrder",
             "required": false,
@@ -1750,10 +1750,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Activities": {
       "description": "Statuses of workers",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -1774,7 +1774,7 @@
             }
           },
           {
-            "description": "Filter by activities that are available or unavailable.",
+            "description": "Filter by activities that are available or unavailable. (Note: This can be 'true', '1'' or 'yes' to indicate a true value. All other values will represent false)",
             "in": "query",
             "name": "Available",
             "required": false,
@@ -1842,10 +1842,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -1857,7 +1857,7 @@
             }
           },
           {
-            "description": "A human-readable name for the Activity, such as 'On Call', 'Break', 'Email', etc.",
+            "description": "A human-readable name for the Activity, such as 'On Call', 'Break', 'Email', etc. Must be unique in this Workspace. These names will be used to calculate and expose statistics about workers, and give you visibility into the state of each of your workers.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -1866,7 +1866,7 @@
             }
           },
           {
-            "description": "Boolean value indicating whether the worker should be eligible to receive a Task when they occupy this Activity.",
+            "description": "Boolean value indicating whether the worker should be eligible to receive a Task when they occupy this Activity. For example, a call center might have an activity named 'On Call' with an availability set to 'false'. Note: This can be 'true', '1' or 'yes' to indicate a true value. All other values will represent false. Defaults to false.",
             "in": "query",
             "name": "Available",
             "required": false,
@@ -1909,10 +1909,10 @@
     },
     "/v1/Workspaces/{WorkspaceSid}/Activities/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -1924,7 +1924,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1952,10 +1952,10 @@
       },
       "description": "Statuses of workers",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -1967,7 +1967,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2000,10 +2000,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -2015,7 +2015,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2027,7 +2027,7 @@
             }
           },
           {
-            "description": "A human-readable name for the Activity, such as 'on-call', 'break', 'email', etc.",
+            "description": "A human-readable name for the Activity, such as 'on-call', 'break', 'email', etc. These names will be used to calculate and expose statistics about workers, and give you visibility into the state of each of your workers.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -2071,10 +2071,10 @@
     "/v1/Workspaces/{WorkspaceSid}/CumulativeStatistics": {
       "description": "Cumulative statistics for workspaces",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -2086,7 +2086,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by an end date.",
+            "description": "Filter cumulative statistics by an end date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp",
             "in": "query",
             "name": "EndDate",
             "required": false,
@@ -2096,7 +2096,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by up to 'x' minutes in the past.",
+            "description": "Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.",
             "in": "query",
             "name": "Minutes",
             "required": false,
@@ -2105,7 +2105,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a start date.",
+            "description": "Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp",
             "in": "query",
             "name": "StartDate",
             "required": false,
@@ -2115,7 +2115,7 @@
             }
           },
           {
-            "description": "Filter real-time and cumulative statistics by TaskChannel.",
+            "description": "Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -2124,7 +2124,7 @@
             }
           },
           {
-            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds.",
+            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds. Ex: \"5,30\" would show splits of tasks that were canceled or accepted before or after 5 seconds and respectively, 30 seconds. This is great for showing short abandoned tasks or tasks that failed to meet your SLA.",
             "in": "query",
             "name": "SplitByWaitTime",
             "required": false,
@@ -2169,7 +2169,7 @@
     "/v1/Workspaces/{WorkspaceSid}/Events": {
       "description": "Log events for reporting and auditing",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "Filter events by those pertaining to a particular workspace",
@@ -2184,7 +2184,7 @@
             }
           },
           {
-            "description": "Filter events by an end date.",
+            "description": "Filter events by an end date. This is helpful for defining a range of events to capture. Input is a GMT ISO 8601 Timestamp.",
             "in": "query",
             "name": "EndDate",
             "required": false,
@@ -2203,7 +2203,7 @@
             }
           },
           {
-            "description": "Filter events by up to 'x' minutes in the past.",
+            "description": "Filter events by up to 'x' minutes in the past. This is helpful for events for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.",
             "in": "query",
             "name": "Minutes",
             "required": false,
@@ -2224,7 +2224,7 @@
             }
           },
           {
-            "description": "Filter events by a start date.",
+            "description": "Filter events by a start date. This is helpful for defining a range of events to capture. Input is a GMT ISO 8601 Timestamp.",
             "in": "query",
             "name": "StartDate",
             "required": false,
@@ -2376,10 +2376,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Events/{Sid}": {
       "description": "Log events for reporting and auditing",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -2391,7 +2391,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2438,10 +2438,10 @@
     "/v1/Workspaces/{WorkspaceSid}/RealTimeStatistics": {
       "description": "Real time statistics for workspaces",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -2453,7 +2453,7 @@
             }
           },
           {
-            "description": "Filter real-time and cumulative statistics by TaskChannel.",
+            "description": "Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -2497,10 +2497,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Statistics": {
       "description": "Workspace statistics",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -2512,7 +2512,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by up to 'x' minutes in the past.",
+            "description": "Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.",
             "in": "query",
             "name": "Minutes",
             "required": false,
@@ -2521,7 +2521,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a start date.",
+            "description": "Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp",
             "in": "query",
             "name": "StartDate",
             "required": false,
@@ -2531,7 +2531,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by an end date.",
+            "description": "Filter cumulative statistics by an end date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp",
             "in": "query",
             "name": "EndDate",
             "required": false,
@@ -2541,7 +2541,7 @@
             }
           },
           {
-            "description": "Filter real-time and cumulative statistics by TaskChannel.",
+            "description": "Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -2550,7 +2550,7 @@
             }
           },
           {
-            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds.",
+            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds. Ex: \"5,30\" would show splits of tasks that were canceled or accepted before or after 5 seconds and respectively, 30 seconds. This is great for showing short abandoned tasks or tasks that failed to meet your SLA.",
             "in": "query",
             "name": "SplitByWaitTime",
             "required": false,
@@ -2592,7 +2592,7 @@
     "/v1/Workspaces/{WorkspaceSid}/TaskChannels": {
       "description": "Types of tasks",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Workspace that this TaskChannel belongs to.",
@@ -2666,7 +2666,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Workspace that this TaskChannel belongs to.",
@@ -2699,7 +2699,7 @@
             }
           },
           {
-            "description": "If true then prioritize longest idle workers",
+            "description": "A boolean that if true; mean that the channel will prioritize workers that have been idle",
             "in": "query",
             "name": "ChannelOptimizedRouting",
             "required": false,
@@ -2742,7 +2742,7 @@
     },
     "/v1/Workspaces/{WorkspaceSid}/TaskChannels/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Workspace that this TaskChannel belongs to.",
@@ -2785,7 +2785,7 @@
       },
       "description": "Types of tasks",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Workspace that this TaskChannel belongs to.",
@@ -2833,7 +2833,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The unique ID of the Workspace that this TaskChannel belongs to.",
@@ -2869,7 +2869,7 @@
             }
           },
           {
-            "description": "If true then prioritize longest idle workers",
+            "description": "A boolean that if true; mean that the channel will prioritize workers that have been idle",
             "in": "query",
             "name": "ChannelOptimizedRouting",
             "required": false,
@@ -2913,10 +2913,10 @@
     "/v1/Workspaces/{WorkspaceSid}/TaskQueues": {
       "description": "Tasks categorized and assigned to workers",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -2928,7 +2928,7 @@
             }
           },
           {
-            "description": "Filter by a human readable description of a TaskQueue",
+            "description": "Filter by a human readable description of a TaskQueue (for example \"Customer Support\" or \"2014 Election Campaign\")",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -2946,7 +2946,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "WorkerSid",
             "required": false,
@@ -3017,10 +3017,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -3032,7 +3032,7 @@
             }
           },
           {
-            "description": "Human readable description of this TaskQueue",
+            "description": "Human readable description of this TaskQueue (for example \"Support \u2013 Tier 1\", \"Sales\" or \"Escalation\")",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -3041,7 +3041,7 @@
             }
           },
           {
-            "description": "A string describing the Worker selection criteria for any Tasks that enter this TaskQueue.",
+            "description": "A string describing the Worker selection criteria for any Tasks that enter this TaskQueue. For example `'\"language\" == \"spanish\"'` If no TargetWorkers parameter is provided, Tasks will wait in this TaskQueue until they are either deleted or moved to another TaskQueue. Additional examples on how to describing Worker selection criteria below. Defaults to 1==1.",
             "in": "query",
             "name": "TargetWorkers",
             "required": false,
@@ -3050,7 +3050,7 @@
             }
           },
           {
-            "description": "The maximum amount of workers to create reservations for the assignment of a task while in this queue.",
+            "description": "The maximum amount of workers to create reservations for the assignment of a task while in this queue. Defaults to 1, with a Maximum of 50.",
             "in": "query",
             "name": "MaxReservedWorkers",
             "required": false,
@@ -3059,7 +3059,7 @@
             }
           },
           {
-            "description": "TaskOrder will determine which order the Tasks will be assigned to Workers.",
+            "description": "TaskOrder will determine which order the Tasks will be assigned to Workers. Set this parameter to LIFO to assign most recently created Task first or FIFO to assign the oldest Task. Default is FIFO. [Click here](https://www.twilio.com/docs/api/taskrouter/last-first-out-lifo) to learn more.",
             "in": "query",
             "name": "TaskOrder",
             "required": false,
@@ -3131,10 +3131,10 @@
     "/v1/Workspaces/{WorkspaceSid}/TaskQueues/Statistics": {
       "description": "Task queue statistics",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -3146,7 +3146,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by an end date.",
+            "description": "Filter cumulative statistics by an end date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp.",
             "in": "query",
             "name": "EndDate",
             "required": false,
@@ -3156,7 +3156,7 @@
             }
           },
           {
-            "description": "Filter the TaskQueue stats based on a TaskQueue's name",
+            "description": "Filter the TaskQueue stats based on a TaskQueue's name (only for list resource)",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -3165,7 +3165,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by up to 'x' minutes in the past.",
+            "description": "Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.",
             "in": "query",
             "name": "Minutes",
             "required": false,
@@ -3174,7 +3174,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a start date.",
+            "description": "Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp.",
             "in": "query",
             "name": "StartDate",
             "required": false,
@@ -3184,7 +3184,7 @@
             }
           },
           {
-            "description": "Filter real-time and cumulative statistics by TaskChannel.",
+            "description": "Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -3193,7 +3193,7 @@
             }
           },
           {
-            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds.",
+            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds. Ex: \"5,30\" would show splits of tasks that were canceled or accepted before or after 5 seconds and respectively, 30 seconds. This is great for showing short abandoned tasks or tasks that failed to meet your SLA.",
             "in": "query",
             "name": "SplitByWaitTime",
             "required": false,
@@ -3272,10 +3272,10 @@
     },
     "/v1/Workspaces/{WorkspaceSid}/TaskQueues/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -3287,7 +3287,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3315,10 +3315,10 @@
       },
       "description": "Tasks categorized and assigned to workers",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -3330,7 +3330,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3363,10 +3363,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -3378,7 +3378,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3390,7 +3390,7 @@
             }
           },
           {
-            "description": "Human readable description of this TaskQueue",
+            "description": "Human readable description of this TaskQueue (for example \"Support \u2013 Tier 1\", \"Sales\" or \"Escalation\")",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -3399,7 +3399,7 @@
             }
           },
           {
-            "description": "A string describing the Worker selection criteria for any Tasks that enter this TaskQueue.",
+            "description": "A string describing the Worker selection criteria for any Tasks that enter this TaskQueue. For example '\"language\" == \"spanish\"' If no TargetWorkers parameter is provided, Tasks will wait in this queue until they are either deleted or moved to another queue. Additional examples on how to describing Worker selection criteria below.",
             "in": "query",
             "name": "TargetWorkers",
             "required": false,
@@ -3432,7 +3432,7 @@
             }
           },
           {
-            "description": "The maximum amount of workers to create reservations for the assignment of a task while in this queue.",
+            "description": "The maximum amount of workers to create reservations for the assignment of a task while in this queue. Maximum of 50.",
             "in": "query",
             "name": "MaxReservedWorkers",
             "required": false,
@@ -3441,7 +3441,7 @@
             }
           },
           {
-            "description": "TaskOrder will determine which order the Tasks will be assigned to Workers.",
+            "description": "TaskOrder will determine which order the Tasks will be assigned to Workers. Set this parameter to LIFO to assign most recently created Task first or FIFO to assign the oldest Task. Default is FIFO. [Click here](https://www.twilio.com/docs/api/taskrouter/last-first-out-lifo) to learn more.",
             "in": "query",
             "name": "TaskOrder",
             "required": false,
@@ -3489,10 +3489,10 @@
     "/v1/Workspaces/{WorkspaceSid}/TaskQueues/{TaskQueueSid}/CumulativeStatistics": {
       "description": "Cumulative statistics for task queues",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -3504,7 +3504,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "TaskQueueSid",
             "required": true,
@@ -3516,7 +3516,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by an end date.",
+            "description": "Filter cumulative statistics by an end date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp.",
             "in": "query",
             "name": "EndDate",
             "required": false,
@@ -3526,7 +3526,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by up to 'x' minutes in the past.",
+            "description": "Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.",
             "in": "query",
             "name": "Minutes",
             "required": false,
@@ -3535,7 +3535,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a start date.",
+            "description": "Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp.",
             "in": "query",
             "name": "StartDate",
             "required": false,
@@ -3545,7 +3545,7 @@
             }
           },
           {
-            "description": "Filter real-time and cumulative statistics by TaskChannel.",
+            "description": "Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -3554,7 +3554,7 @@
             }
           },
           {
-            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds.",
+            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds. Ex: \"5,30\" would show splits of tasks that were canceled or accepted before or after 5 seconds and respectively, 30 seconds. This is great for showing short abandoned tasks or tasks that failed to meet your SLA.",
             "in": "query",
             "name": "SplitByWaitTime",
             "required": false,
@@ -3599,10 +3599,10 @@
     "/v1/Workspaces/{WorkspaceSid}/TaskQueues/{TaskQueueSid}/RealTimeStatistics": {
       "description": "Real time statistics for task queues",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -3614,7 +3614,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "TaskQueueSid",
             "required": true,
@@ -3626,7 +3626,7 @@
             }
           },
           {
-            "description": "Filter real-time and cumulative statistics by TaskChannel.",
+            "description": "Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -3670,10 +3670,10 @@
     "/v1/Workspaces/{WorkspaceSid}/TaskQueues/{TaskQueueSid}/Statistics": {
       "description": "Task queue statistics",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -3685,7 +3685,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "TaskQueueSid",
             "required": true,
@@ -3697,7 +3697,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by an end date.",
+            "description": "Filter cumulative statistics by an end date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp.",
             "in": "query",
             "name": "EndDate",
             "required": false,
@@ -3707,7 +3707,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by up to 'x' minutes in the past.",
+            "description": "Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.",
             "in": "query",
             "name": "Minutes",
             "required": false,
@@ -3716,7 +3716,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a start date.",
+            "description": "Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp.",
             "in": "query",
             "name": "StartDate",
             "required": false,
@@ -3726,7 +3726,7 @@
             }
           },
           {
-            "description": "Filter real-time and cumulative statistics by TaskChannel.",
+            "description": "Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -3735,7 +3735,7 @@
             }
           },
           {
-            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds.",
+            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds. Ex: \"5,30\" would show splits of tasks that were canceled or accepted before or after 5 seconds and respectively, 30 seconds. This is great for showing short abandoned tasks or tasks that failed to meet your SLA.",
             "in": "query",
             "name": "SplitByWaitTime",
             "required": false,
@@ -3777,10 +3777,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Tasks": {
       "description": "Items of work (calls, chats, etc.)",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -3801,7 +3801,7 @@
             }
           },
           {
-            "description": "Returns the list of all Tasks in the workspace with the specified AssignmentStatus.",
+            "description": "Returns the list of all Tasks in the workspace with the specified AssignmentStatus. Allowed AssignmentStatus values are pending, reserved, assigned, canceled, and completed.",
             "in": "query",
             "name": "AssignmentStatus",
             "required": false,
@@ -3864,7 +3864,7 @@
             }
           },
           {
-            "description": "Use this parameter to control the order of the Tasks returned.",
+            "description": "Use this parameter to control the order of the Tasks returned. The value should be passed in `Attribute:Order` format, where Attribute can be either `Priority` or `DateCreated` and Order can be either `asc` or `desc`. For example, `Priority:desc` returns Tasks ordered by Priority in descending order. To sort the Tasks by Priority and DateCreated pass `Priority:desc,DateCreated:asc`. By Default Tasks are returned sorted by DateCreated in ascending order.",
             "in": "query",
             "name": "Ordering",
             "required": false,
@@ -3873,7 +3873,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "HasAddons",
             "required": false,
@@ -3941,10 +3941,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -3956,7 +3956,7 @@
             }
           },
           {
-            "description": "The amount of time in seconds the task is allowed to live up to a maximum of 2 weeks.",
+            "description": "The amount of time in seconds the task is allowed to live up to a maximum of 2 weeks. Defaults to 24 hours. On timeout, `task.canceled` event will fire with description \"Task TTL Exceeded\".",
             "in": "query",
             "name": "Timeout",
             "required": false,
@@ -3965,7 +3965,7 @@
             }
           },
           {
-            "description": "Override priority for the Task.",
+            "description": "Override priority for the Task. When supplied, the Task will take on the given priority unless it matches a Workflow Target with a Priority set. When not supplied, the Task will take on the priority of the matching Workflow Target.",
             "in": "query",
             "name": "Priority",
             "required": false,
@@ -3974,7 +3974,7 @@
             }
           },
           {
-            "description": "When MultiTasking is enabled specify the type of the task by passing either TaskChannel Unique Name or Task Channel Sid.",
+            "description": "When MultiTasking is enabled specify the type of the task by passing either TaskChannel Unique Name or Task Channel Sid. Default value is \"default\"",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -3983,7 +3983,7 @@
             }
           },
           {
-            "description": "The WorkflowSid for the Workflow that you would like to handle routing for this Task.",
+            "description": "The WorkflowSid for the Workflow that you would like to handle routing for this Task. If there is only one Workflow defined for the Workspace that you are posting a task to, then this is an optional parameter, and that single workflow will be used.",
             "in": "query",
             "name": "WorkflowSid",
             "required": false,
@@ -3995,7 +3995,7 @@
             }
           },
           {
-            "description": "Url-encoded JSON string describing the attributes of this task.",
+            "description": "Url-encoded JSON string describing the attributes of this task. This data will be passed back to the Workflow's AssignmentCallbackURL when the Task is assigned to a Worker. An example task: `{ \"task_type\": \"call\", \"twilio_call_sid\": \"CAxxx\", \"customer_ticket_number\": \"12345\" }`",
             "in": "query",
             "name": "Attributes",
             "required": false,
@@ -4040,10 +4040,10 @@
     },
     "/v1/Workspaces/{WorkspaceSid}/Tasks/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -4055,7 +4055,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4083,10 +4083,10 @@
       },
       "description": "Items of work (calls, chats, etc.)",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -4098,7 +4098,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4131,10 +4131,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -4146,7 +4146,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4167,7 +4167,7 @@
             }
           },
           {
-            "description": "A 'pending' or 'reserved' Task may be canceled by posting AssignmentStatus='canceled'.",
+            "description": "A 'pending' or 'reserved' Task may be canceled by posting AssignmentStatus='canceled'. Post AssignmentStatus='wrapping' to move Task to 'wrapup' state and AssignmentStatus='completed' to move a Task to 'completed' state.",
             "in": "query",
             "name": "AssignmentStatus",
             "required": false,
@@ -4184,7 +4184,7 @@
             }
           },
           {
-            "description": "This is only required if the Task is canceled or completed.",
+            "description": "This is only required if the Task is canceled or completed. This logs the reason the task was either canceled or completed and queues the task for deletion after 5 minutes.",
             "in": "query",
             "name": "Reason",
             "required": false,
@@ -4193,7 +4193,7 @@
             }
           },
           {
-            "description": "Override priority for the Task.",
+            "description": "Override priority for the Task. When supplied, the Task will take on the given priority unless it matches a Workflow Target with a Priority set.",
             "in": "query",
             "name": "Priority",
             "required": false,
@@ -4202,7 +4202,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -4248,10 +4248,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations": {
       "description": "Tasks reserved for workers",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -4263,7 +4263,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -4368,10 +4368,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{Sid}": {
       "description": "Tasks reserved for workers",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -4383,7 +4383,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -4395,7 +4395,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4428,10 +4428,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -4443,7 +4443,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -4455,7 +4455,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4679,7 +4679,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -4689,7 +4689,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "StatusCallbackMethod",
             "required": false,
@@ -4712,7 +4712,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "StatusCallbackEvent",
             "required": false,
@@ -4739,7 +4739,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Record",
             "required": false,
@@ -4748,7 +4748,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Muted",
             "required": false,
@@ -4757,7 +4757,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Beep",
             "required": false,
@@ -4766,7 +4766,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "StartConferenceOnEnter",
             "required": false,
@@ -4775,7 +4775,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "EndConferenceOnExit",
             "required": false,
@@ -4784,7 +4784,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "WaitUrl",
             "required": false,
@@ -4794,7 +4794,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "WaitMethod",
             "required": false,
@@ -4817,7 +4817,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "EarlyMedia",
             "required": false,
@@ -4826,7 +4826,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "MaxParticipants",
             "required": false,
@@ -4835,7 +4835,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceStatusCallback",
             "required": false,
@@ -4845,7 +4845,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceStatusCallbackMethod",
             "required": false,
@@ -4868,7 +4868,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceStatusCallbackEvent",
             "required": false,
@@ -4889,7 +4889,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceRecord",
             "required": false,
@@ -4898,7 +4898,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceTrim",
             "required": false,
@@ -4907,7 +4907,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "RecordingChannels",
             "required": false,
@@ -4916,7 +4916,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "RecordingStatusCallback",
             "required": false,
@@ -4926,7 +4926,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "RecordingStatusCallbackMethod",
             "required": false,
@@ -4949,7 +4949,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceRecordingStatusCallback",
             "required": false,
@@ -4959,7 +4959,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceRecordingStatusCallbackMethod",
             "required": false,
@@ -4982,7 +4982,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Region",
             "required": false,
@@ -4991,7 +4991,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SipAuthUsername",
             "required": false,
@@ -5000,7 +5000,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SipAuthPassword",
             "required": false,
@@ -5056,7 +5056,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "EndConferenceOnCustomerExit",
             "required": false,
@@ -5065,7 +5065,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "BeepOnCustomerEntrance",
             "required": false,
@@ -5110,10 +5110,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workers": {
       "description": "Workers who can handle tasks",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -5146,7 +5146,7 @@
             }
           },
           {
-            "description": "Filter by workers that are available or unavailable.",
+            "description": "Filter by workers that are available or unavailable. (Note: This can be 'true', '1' or 'yes' to indicate a true value. All other values will represent false)",
             "in": "query",
             "name": "Available",
             "required": false,
@@ -5164,7 +5164,7 @@
             }
           },
           {
-            "description": "Filter by workers that would match an expression on a TaskQueue.",
+            "description": "Filter by workers that would match an expression on a TaskQueue. This is helpful for debugging which workers would match a potential queue.",
             "in": "query",
             "name": "TargetWorkersExpression",
             "required": false,
@@ -5253,10 +5253,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -5277,7 +5277,7 @@
             }
           },
           {
-            "description": "A valid Activity describing the worker's initial state.",
+            "description": "A valid Activity describing the worker's initial state. See Activities for more information. If not provided, new Workers will be use the DefaultActivitySid configured on the Workspace.",
             "in": "query",
             "name": "ActivitySid",
             "required": false,
@@ -5289,7 +5289,7 @@
             }
           },
           {
-            "description": "JSON object describing this worker.",
+            "description": "JSON object describing this worker. For example: `{ 'email: 'Bob@foo.com', 'phone': '8675309' }`. This data will be passed to the Assignment Callback URL whenever TaskRouter assigns a Task to this worker. Defaults to {}.",
             "in": "query",
             "name": "Attributes",
             "required": false,
@@ -5333,10 +5333,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workers/CumulativeStatistics": {
       "description": "Cumulative statistics for workers",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -5348,7 +5348,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a end date.",
+            "description": "Filter cumulative statistics by a end date. This is helpful for defining a range of statistics to capture. Input is a string of the format: yyyy-MM-dd'T'HH:mm:ss'Z'.",
             "in": "query",
             "name": "EndDate",
             "required": false,
@@ -5358,7 +5358,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by up to 'x' minutes in the past.",
+            "description": "Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.",
             "in": "query",
             "name": "Minutes",
             "required": false,
@@ -5367,7 +5367,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a start date.",
+            "description": "Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a string of the format: yyyy-MM-dd'T'HH:mm:ss'Z'.",
             "in": "query",
             "name": "StartDate",
             "required": false,
@@ -5377,7 +5377,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by TaskChannel.",
+            "description": "Filter cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -5424,10 +5424,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workers/RealTimeStatistics": {
       "description": "Real time statistics for workers",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -5439,7 +5439,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by TaskChannel.",
+            "description": "Filter cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -5481,10 +5481,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workers/Statistics": {
       "description": "Worker statistics",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -5496,7 +5496,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by up to 'x' minutes in the past.",
+            "description": "Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.",
             "in": "query",
             "name": "Minutes",
             "required": false,
@@ -5505,7 +5505,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a start date.",
+            "description": "Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a string of the format: yyyy-MM-dd'T'HH:mm:ss'Z'.",
             "in": "query",
             "name": "StartDate",
             "required": false,
@@ -5515,7 +5515,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a end date.",
+            "description": "Filter cumulative statistics by a end date. This is helpful for defining a range of statistics to capture. Input is a string of the format: yyyy-MM-dd'T'HH:mm:ss'Z'.",
             "in": "query",
             "name": "EndDate",
             "required": false,
@@ -5546,7 +5546,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -5555,7 +5555,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by TaskChannel.",
+            "description": "Filter cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -5596,10 +5596,10 @@
     },
     "/v1/Workspaces/{WorkspaceSid}/Workers/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -5611,7 +5611,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -5639,10 +5639,10 @@
       },
       "description": "Workers who can handle tasks",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -5654,7 +5654,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -5687,10 +5687,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -5702,7 +5702,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -5714,7 +5714,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ActivitySid",
             "required": false,
@@ -5726,7 +5726,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Attributes",
             "required": false,
@@ -5735,7 +5735,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -5744,7 +5744,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "RejectPendingReservations",
             "required": false,
@@ -5788,10 +5788,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Channels": {
       "description": "Configures capacity for workers",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -5803,7 +5803,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkerSid",
             "required": true,
@@ -5888,10 +5888,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Channels/{Sid}": {
       "description": "Configures capacity for workers",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -5903,7 +5903,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkerSid",
             "required": true,
@@ -5915,7 +5915,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -5948,10 +5948,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -5963,7 +5963,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkerSid",
             "required": true,
@@ -5975,7 +5975,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -5987,7 +5987,7 @@
             }
           },
           {
-            "description": "The total number of Tasks worker should handle for this TaskChannel type.",
+            "description": "The total number of Tasks worker should handle for this TaskChannel type. TaskRouter will only create reservations for Tasks of this TaskChannel type up to the capacity configured. If the capacity is 0, no new reservations will be created",
             "in": "query",
             "name": "Capacity",
             "required": false,
@@ -5996,7 +5996,7 @@
             }
           },
           {
-            "description": "Toggle the availability of the WorkerChannel.",
+            "description": "Toggle the availability of the WorkerChannel. Set this to 'False' to make worker unavailable to receive any new Tasks of this TaskChannel type.",
             "in": "query",
             "name": "Available",
             "required": false,
@@ -6040,10 +6040,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Reservations": {
       "description": "Current and past reservations for a worker",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -6055,7 +6055,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkerSid",
             "required": true,
@@ -6067,7 +6067,7 @@
             }
           },
           {
-            "description": "Filter by a worker's reservation status",
+            "description": "Filter by a worker's reservation status (pending, accepted, rejected, timeout, canceled, rescinded)",
             "in": "query",
             "name": "ReservationStatus",
             "required": false,
@@ -6159,10 +6159,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Reservations/{Sid}": {
       "description": "Current and past reservations for a worker",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -6174,7 +6174,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkerSid",
             "required": true,
@@ -6186,7 +6186,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -6219,10 +6219,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -6234,7 +6234,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkerSid",
             "required": true,
@@ -6246,7 +6246,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -6319,7 +6319,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "DequeueRecord",
             "required": false,
@@ -6328,7 +6328,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "DequeueTimeout",
             "required": false,
@@ -6337,7 +6337,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "DequeueTo",
             "required": false,
@@ -6346,7 +6346,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "DequeueStatusCallbackUrl",
             "required": false,
@@ -6365,7 +6365,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "CallRecord",
             "required": false,
@@ -6374,7 +6374,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "CallTimeout",
             "required": false,
@@ -6383,7 +6383,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "CallTo",
             "required": false,
@@ -6421,7 +6421,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "RedirectCallSid",
             "required": false,
@@ -6433,7 +6433,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "RedirectAccept",
             "required": false,
@@ -6442,7 +6442,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "RedirectUrl",
             "required": false,
@@ -6452,7 +6452,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "To",
             "required": false,
@@ -6461,7 +6461,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "From",
             "required": false,
@@ -6470,7 +6470,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -6480,7 +6480,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "StatusCallbackMethod",
             "required": false,
@@ -6503,7 +6503,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "StatusCallbackEvent",
             "required": false,
@@ -6521,7 +6521,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Timeout",
             "required": false,
@@ -6530,7 +6530,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Record",
             "required": false,
@@ -6539,7 +6539,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Muted",
             "required": false,
@@ -6548,7 +6548,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Beep",
             "required": false,
@@ -6557,7 +6557,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "StartConferenceOnEnter",
             "required": false,
@@ -6566,7 +6566,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "EndConferenceOnExit",
             "required": false,
@@ -6575,7 +6575,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "WaitUrl",
             "required": false,
@@ -6585,7 +6585,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "WaitMethod",
             "required": false,
@@ -6608,7 +6608,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "EarlyMedia",
             "required": false,
@@ -6617,7 +6617,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "MaxParticipants",
             "required": false,
@@ -6626,7 +6626,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceStatusCallback",
             "required": false,
@@ -6636,7 +6636,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceStatusCallbackMethod",
             "required": false,
@@ -6659,7 +6659,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceStatusCallbackEvent",
             "required": false,
@@ -6680,7 +6680,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceRecord",
             "required": false,
@@ -6689,7 +6689,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceTrim",
             "required": false,
@@ -6698,7 +6698,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "RecordingChannels",
             "required": false,
@@ -6707,7 +6707,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "RecordingStatusCallback",
             "required": false,
@@ -6717,7 +6717,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "RecordingStatusCallbackMethod",
             "required": false,
@@ -6740,7 +6740,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceRecordingStatusCallback",
             "required": false,
@@ -6750,7 +6750,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "ConferenceRecordingStatusCallbackMethod",
             "required": false,
@@ -6773,7 +6773,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Region",
             "required": false,
@@ -6782,7 +6782,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SipAuthUsername",
             "required": false,
@@ -6791,7 +6791,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SipAuthPassword",
             "required": false,
@@ -6800,7 +6800,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "DequeueStatusCallbackEvent",
             "required": false,
@@ -6812,7 +6812,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "PostWorkActivitySid",
             "required": false,
@@ -6824,7 +6824,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "EndConferenceOnCustomerExit",
             "required": false,
@@ -6833,7 +6833,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "BeepOnCustomerEntrance",
             "required": false,
@@ -6877,10 +6877,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Statistics": {
       "description": "Worker statistics",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -6892,7 +6892,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkerSid",
             "required": true,
@@ -6904,7 +6904,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by up to 'x' minutes in the past.",
+            "description": "Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.",
             "in": "query",
             "name": "Minutes",
             "required": false,
@@ -6913,7 +6913,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a start date.",
+            "description": "Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a string of the format: yyyy-MM-dd'T'HH:mm:ss'Z'.",
             "in": "query",
             "name": "StartDate",
             "required": false,
@@ -6923,7 +6923,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a end date.",
+            "description": "Filter cumulative statistics by a end date. This is helpful for defining a range of statistics to capture. Input is a string of the format: yyyy-MM-dd'T'HH:mm:ss'Z'.",
             "in": "query",
             "name": "EndDate",
             "required": false,
@@ -6933,7 +6933,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by TaskChannel.",
+            "description": "Filter cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -6975,10 +6975,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workflows": {
       "description": "Controls how tasks will be prioritized and routed into queues",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -6990,7 +6990,7 @@
             }
           },
           {
-            "description": "Human readable description of this Workflow",
+            "description": "Human readable description of this Workflow (for example \"Customer Support\" or \"2014 Election Campaign\")",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -7058,10 +7058,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -7073,7 +7073,7 @@
             }
           },
           {
-            "description": "A string representing a human readable name for this Workflow.",
+            "description": "A string representing a human readable name for this Workflow. Examples include 'Inbound Call Workflow' or '2014 Outbound Campaign'.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -7082,7 +7082,7 @@
             }
           },
           {
-            "description": "JSON document configuring the rules for this Workflow.",
+            "description": "JSON document configuring the rules for this Workflow. See [Configuring Workflows](https://www.twilio.com/docs/api/taskrouter/workflow-configuration) for more information.",
             "in": "query",
             "name": "Configuration",
             "required": true,
@@ -7091,7 +7091,7 @@
             }
           },
           {
-            "description": "A valid URL for the application that will process task assignment events.",
+            "description": "A valid URL for the application that will process task assignment events. See [Handling Task Assignment Callback](https://www.twilio.com/docs/api/taskrouter/handling-assignment-callbacks) for more details.",
             "in": "query",
             "name": "AssignmentCallbackUrl",
             "required": false,
@@ -7111,7 +7111,7 @@
             }
           },
           {
-            "description": "An integer value controlling how long in seconds TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker.",
+            "description": "An integer value controlling how long in seconds TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker. See Task Assignment Callback for more information. Defaults to 120 seconds. Maximum value is 86400 (24 hours)",
             "in": "query",
             "name": "TaskReservationTimeout",
             "required": false,
@@ -7154,10 +7154,10 @@
     },
     "/v1/Workspaces/{WorkspaceSid}/Workflows/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -7169,7 +7169,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -7197,10 +7197,10 @@
       },
       "description": "Controls how tasks will be prioritized and routed into queues",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -7212,7 +7212,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -7245,10 +7245,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -7260,7 +7260,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -7272,7 +7272,7 @@
             }
           },
           {
-            "description": "A string representing a human readable name for this Workflow.",
+            "description": "A string representing a human readable name for this Workflow. Examples include 'Customer Support' or 'Sales Team'.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -7281,7 +7281,7 @@
             }
           },
           {
-            "description": "A valid URL for the application that will process task assignment events.",
+            "description": "A valid URL for the application that will process task assignment events. See [Handling Task Assignment Callback](https://www.twilio.com/docs/api/taskrouter/handling-assignment-callbacks) for more details.",
             "in": "query",
             "name": "AssignmentCallbackUrl",
             "required": false,
@@ -7301,7 +7301,7 @@
             }
           },
           {
-            "description": "JSON document configuring the rules for this Workflow.",
+            "description": "JSON document configuring the rules for this Workflow. See [Configuring Workflows](https://www.twilio.com/docs/api/taskrouter/workflow-configuration) for more information.",
             "in": "query",
             "name": "Configuration",
             "required": false,
@@ -7310,7 +7310,7 @@
             }
           },
           {
-            "description": "An integer value controlling how long in seconds TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker.",
+            "description": "An integer value controlling how long in seconds TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker. Defaults to 120 seconds. Maximum value is 86400 (24 hours)",
             "in": "query",
             "name": "TaskReservationTimeout",
             "required": false,
@@ -7354,10 +7354,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}/CumulativeStatistics": {
       "description": "Cumulative statistics for workflows",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -7369,7 +7369,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkflowSid",
             "required": true,
@@ -7381,7 +7381,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by an end date.",
+            "description": "Filter cumulative statistics by an end date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp",
             "in": "query",
             "name": "EndDate",
             "required": false,
@@ -7391,7 +7391,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by up to 'x' minutes in the past.",
+            "description": "Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.",
             "in": "query",
             "name": "Minutes",
             "required": false,
@@ -7400,7 +7400,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a start date.",
+            "description": "Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp",
             "in": "query",
             "name": "StartDate",
             "required": false,
@@ -7410,7 +7410,7 @@
             }
           },
           {
-            "description": "Filter real-time and cumulative statistics by TaskChannel.",
+            "description": "Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -7419,7 +7419,7 @@
             }
           },
           {
-            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds.",
+            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds. Ex: \"5,30\" would show splits of tasks that were canceled or accepted before or after 5 seconds and respectively, 30 seconds. This is great for showing short abandoned tasks or tasks that failed to meet your SLA.",
             "in": "query",
             "name": "SplitByWaitTime",
             "required": false,
@@ -7464,10 +7464,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}/RealTimeStatistics": {
       "description": "Real time statistics for workflows",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -7479,7 +7479,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkflowSid",
             "required": true,
@@ -7491,7 +7491,7 @@
             }
           },
           {
-            "description": "Filter real-time and cumulative statistics by TaskChannel.",
+            "description": "Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -7535,10 +7535,10 @@
     "/v1/Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}/Statistics": {
       "description": "Workflow statistics",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -7550,7 +7550,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "WorkflowSid",
             "required": true,
@@ -7562,7 +7562,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by up to 'x' minutes in the past.",
+            "description": "Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.",
             "in": "query",
             "name": "Minutes",
             "required": false,
@@ -7571,7 +7571,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by a start date.",
+            "description": "Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp",
             "in": "query",
             "name": "StartDate",
             "required": false,
@@ -7581,7 +7581,7 @@
             }
           },
           {
-            "description": "Filter cumulative statistics by an end date.",
+            "description": "Filter cumulative statistics by an end date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp",
             "in": "query",
             "name": "EndDate",
             "required": false,
@@ -7591,7 +7591,7 @@
             }
           },
           {
-            "description": "Filter real-time and cumulative statistics by TaskChannel.",
+            "description": "Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name (\"voice\", \"sms\", \"default\", etc.) or a TaskChannelSid.",
             "in": "query",
             "name": "TaskChannel",
             "required": false,
@@ -7600,7 +7600,7 @@
             }
           },
           {
-            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds.",
+            "description": "A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds. Ex: \"5,30\" would show splits of tasks that were canceled or accepted before or after 5 seconds and respectively, 30 seconds. This is great for showing short abandoned tasks or tasks that failed to meet your SLA.",
             "in": "query",
             "name": "SplitByWaitTime",
             "required": false,

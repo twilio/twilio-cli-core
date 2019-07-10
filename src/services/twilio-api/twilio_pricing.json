@@ -479,7 +479,7 @@
     "/v1/Messaging/Countries": {
       "description": "Messaging pricing by country",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -555,10 +555,10 @@
     "/v1/Messaging/Countries/{IsoCountry}": {
       "description": "Messaging pricing by country",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The ISO country code",
+            "description": "The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the pricing information to fetch.",
             "in": "path",
             "name": "IsoCountry",
             "required": true,
@@ -603,7 +603,7 @@
     "/v1/PhoneNumbers/Countries": {
       "description": "Phone number pricing by country",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -677,10 +677,10 @@
     "/v1/PhoneNumbers/Countries/{IsoCountry}": {
       "description": "Phone number pricing by country",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The ISO country code",
+            "description": "The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the pricing information to fetch.",
             "in": "path",
             "name": "IsoCountry",
             "required": true,
@@ -723,7 +723,7 @@
     "/v1/Voice/Countries": {
       "description": "Voice pricing by country",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -797,10 +797,10 @@
     "/v1/Voice/Countries/{IsoCountry}": {
       "description": "Voice pricing by country",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The ISO country code",
+            "description": "The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the pricing information to fetch.",
             "in": "path",
             "name": "IsoCountry",
             "required": true,
@@ -843,10 +843,10 @@
     "/v1/Voice/Numbers/{Number}": {
       "description": "Voice pricing for a specific phone number",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The phone number to fetch",
+            "description": "The phone number to fetch.",
             "in": "path",
             "name": "Number",
             "required": true,
@@ -891,7 +891,7 @@
     "/v2/Voice/Countries": {
       "description": "Voice pricing by country",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -968,7 +968,7 @@
         "description": "Fetch a specific Country.",
         "parameters": [
           {
-            "description": "The ISO country code of the pricing information to fetch",
+            "description": "The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the origin-based voice pricing information to fetch.",
             "in": "path",
             "name": "IsoCountry",
             "required": true,
@@ -1014,7 +1014,7 @@
         "description": "Fetch pricing information for a specific destination and, optionally, origination phone number.",
         "parameters": [
           {
-            "description": "The destination number for which to fetch pricing information",
+            "description": "The destination phone number, in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, for which to fetch the origin-based voice pricing information. E.164 format consists of a + followed by the country code and subscriber number.",
             "in": "path",
             "name": "DestinationNumber",
             "required": true,
@@ -1023,7 +1023,7 @@
             }
           },
           {
-            "description": "The origination number for which to fetch pricing information",
+            "description": "The origination phone number, in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, for which to fetch the origin-based voice pricing information. E.164 format consists of a + followed by the country code and subscriber number.",
             "in": "query",
             "name": "OriginationNumber",
             "required": false,
