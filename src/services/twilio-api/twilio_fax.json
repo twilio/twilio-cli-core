@@ -164,7 +164,7 @@
         "description": "Retrieve a list of all faxes.",
         "parameters": [
           {
-            "description": "Retrieve only those faxes sent from this phone number",
+            "description": "Retrieve only those faxes sent from this phone number, specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.",
             "in": "query",
             "name": "From",
             "required": false,
@@ -173,7 +173,7 @@
             }
           },
           {
-            "description": "Retrieve only those faxes sent to this phone number",
+            "description": "Retrieve only those faxes sent to this phone number, specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.",
             "in": "query",
             "name": "To",
             "required": false,
@@ -182,7 +182,7 @@
             }
           },
           {
-            "description": "Retrieve only faxes created on or before this date",
+            "description": "Retrieve only those faxes with a `date_created` that is before or equal to this value, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "DateCreatedOnOrBefore",
             "required": false,
@@ -192,7 +192,7 @@
             }
           },
           {
-            "description": "Retrieve only faxes created after this date",
+            "description": "Retrieve only those faxes with a `date_created` that is later than this value, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "DateCreatedAfter",
             "required": false,
@@ -264,7 +264,7 @@
         "description": "Create a new fax to send to a phone number or SIP endpoint.",
         "parameters": [
           {
-            "description": "The phone number to receive the fax",
+            "description": "The phone number to receive the fax in [E.164](https://www.twilio.com/docs/glossary/what-e164) format or the recipient's SIP URI.",
             "in": "query",
             "name": "To",
             "required": true,
@@ -273,7 +273,7 @@
             }
           },
           {
-            "description": "The Twilio-hosted URL of the PDF that contains the fax",
+            "description": "The Twilio-hosted URL of the PDF that contains the fax. See our [security](https://www.twilio.com/docs/security) page for information on how to ensure the request for your media comes from Twilio.",
             "in": "query",
             "name": "MediaUrl",
             "required": true,
@@ -283,7 +283,7 @@
             }
           },
           {
-            "description": "The quality of this fax",
+            "description": "The [Fax Quality value](https://www.twilio.com/docs/api/fax/rest/faxes-resource#fax-quality-values) that describes the fax quality. Can be: `standard`, `fine`, or `superfine` and defaults to `fine`.",
             "in": "query",
             "name": "Quality",
             "required": false,
@@ -297,7 +297,7 @@
             }
           },
           {
-            "description": "The URL we should call to send status information to your application",
+            "description": "The URL we should call using the `POST` method to send [status information](https://www.twilio.com/docs/api/fax/rest/faxes-resource#fax-status-callback) to your application when the status of the fax changes.",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -307,7 +307,7 @@
             }
           },
           {
-            "description": "The number the fax was sent from",
+            "description": "The number the fax was sent from. Can be the phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format or the SIP `from` value. The caller ID displayed to the recipient uses this value. If this is a phone number, it must be a Twilio number or a verified outgoing caller id from your account. If `to` is a SIP address, this can be any alphanumeric string (and also the characters `+`, `_`, `.`, and `-`), which will be used in the `from` header of the SIP request.",
             "in": "query",
             "name": "From",
             "required": false,
@@ -316,7 +316,7 @@
             }
           },
           {
-            "description": "The username for SIP authentication",
+            "description": "The username to use with the `sip_auth_password` to authenticate faxes sent to a SIP address.",
             "in": "query",
             "name": "SipAuthUsername",
             "required": false,
@@ -325,7 +325,7 @@
             }
           },
           {
-            "description": "The password for SIP authentication",
+            "description": "The password to use with `sip_auth_username` to authenticate faxes sent to a SIP address.",
             "in": "query",
             "name": "SipAuthPassword",
             "required": false,
@@ -334,7 +334,7 @@
             }
           },
           {
-            "description": "Whether to store a copy of the sent media",
+            "description": "Whether to store a copy of the sent media on our servers for later retrieval. Can be: `true` or `false` and the default is `true`.",
             "in": "query",
             "name": "StoreMedia",
             "required": false,
@@ -343,7 +343,7 @@
             }
           },
           {
-            "description": "How long in minutes to try to send the fax",
+            "description": "How long in minutes from when the fax is initiated that we should try to send the fax.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -392,7 +392,7 @@
         "description": "Retrieve a list of all fax media instances for the specified fax.",
         "parameters": [
           {
-            "description": "The SID of the fax with the FaxMedia resources to read",
+            "description": "The SID of the fax with the FaxMedia resources to read.",
             "in": "path",
             "name": "FaxSid",
             "required": true,
@@ -478,7 +478,7 @@
         "description": "Delete a specific fax media instance.",
         "parameters": [
           {
-            "description": "The SID of the fax with the FaxMedia resource to delete",
+            "description": "The SID of the fax with the FaxMedia resource to delete.",
             "in": "path",
             "name": "FaxSid",
             "required": true,
@@ -490,7 +490,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the FaxMedia resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -521,7 +521,7 @@
         "description": "Fetch a specific fax media instance.",
         "parameters": [
           {
-            "description": "The SID of the fax with the FaxMedia resource to fetch",
+            "description": "The SID of the fax with the FaxMedia resource to fetch.",
             "in": "path",
             "name": "FaxSid",
             "required": true,
@@ -533,7 +533,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource to fetch",
+            "description": "The Twilio-provided string that uniquely identifies the FaxMedia resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -581,7 +581,7 @@
         "description": "Delete a specific fax and its associated media.",
         "parameters": [
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Fax resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -612,7 +612,7 @@
         "description": "Fetch a specific fax.",
         "parameters": [
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Fax resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -648,7 +648,7 @@
         "description": "Update a specific fax.",
         "parameters": [
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Fax resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -660,7 +660,7 @@
             }
           },
           {
-            "description": "The new status of the resource",
+            "description": "The new [status](https://www.twilio.com/docs/api/fax/rest/faxes-resource#fax-status-values) of the resource. Can be only `canceled`. This may fail if transmission has already started.",
             "in": "query",
             "name": "Status",
             "required": false,

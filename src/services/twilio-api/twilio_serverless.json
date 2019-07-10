@@ -460,7 +460,7 @@
   "openapi": "3.0.1",
   "paths": {
     "/v1/Services": {
-      "description": "Container for Serverless application Environments.",
+      "description": "The top-level resource for a Serverless application, which serves as a container for the application Environments.",
       "get": {
         "description": "Retrieve a list of all Services.",
         "parameters": [],
@@ -526,7 +526,7 @@
         "description": "Create a new Service.",
         "parameters": [
           {
-            "description": "A unique, addressable name of this Service.",
+            "description": "A unique, addressable name of this Service which forms part of the domain name, fewer than 256 characters. Required.",
             "in": "query",
             "name": "UniqueName",
             "required": true,
@@ -535,7 +535,7 @@
             }
           },
           {
-            "description": "A human-readable description of this Service.",
+            "description": "A human-readable description of this Service, fewer than 256 characters. Required",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -544,7 +544,7 @@
             }
           },
           {
-            "description": "Whether to inject Account credentials into a Function invocation context.",
+            "description": "A boolean value that indicates whether to inject Account credentials into a Function invocation context. Optional, default `false`.",
             "in": "query",
             "name": "IncludeCredentials",
             "required": false,
@@ -586,12 +586,12 @@
       "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Assets": {
-      "description": "A wrapper that represents a static file.",
+      "description": "A wrapper that represents a static file and groups the different Versions of this static file.",
       "get": {
         "description": "Retrieve a list of all Assets.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for these Assets.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -665,7 +665,7 @@
         "description": "Create a new Asset.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Asset.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -677,7 +677,7 @@
             }
           },
           {
-            "description": "A human-readable description of this Asset.",
+            "description": "A human-readable description of this Asset, fewer than 256 characters. Required.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -724,7 +724,7 @@
         "description": "Retrieve a list of all Asset Versions.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for these Asset Versions.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -736,7 +736,7 @@
             }
           },
           {
-            "description": "Asset Sid.",
+            "description": "The unique SID identifier of the Asset that is the parent for these Asset Versions.",
             "in": "path",
             "name": "AssetSid",
             "required": true,
@@ -810,7 +810,7 @@
         "description": "Create a new Asset Version.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Asset Version.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -822,7 +822,7 @@
             }
           },
           {
-            "description": "Asset Sid.",
+            "description": "The unique SID identifier of the Asset that is the parent for this Asset Version.",
             "in": "path",
             "name": "AssetSid",
             "required": true,
@@ -834,7 +834,7 @@
             }
           },
           {
-            "description": "The URL-friendly string by which this Asset Version can be referenced.",
+            "description": "The URL-friendly string by which this Asset Version can be referenced. (Example: `/assets/example`) Required.",
             "in": "query",
             "name": "Path",
             "required": true,
@@ -843,7 +843,7 @@
             }
           },
           {
-            "description": "The access control which determines how the Asset Version can be accessed.",
+            "description": "The access control which determines how the Asset Version can be accessed. One of `public`, `protected`, or `private`. Required.",
             "in": "query",
             "name": "Visibility",
             "required": true,
@@ -896,7 +896,7 @@
         "description": "Retrieve a specific Asset Version.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Asset Version.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -908,7 +908,7 @@
             }
           },
           {
-            "description": "Asset Sid.",
+            "description": "The unique SID identifier of the Asset that is the parent for this Asset Version.",
             "in": "path",
             "name": "AssetSid",
             "required": true,
@@ -920,7 +920,7 @@
             }
           },
           {
-            "description": "Asset Version Sid.",
+            "description": "The unique SID identifier of this Asset Version.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -966,12 +966,12 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Assets/{Sid}": {
-      "description": "A wrapper that represents a static file.",
+      "description": "A wrapper that represents a static file and groups the different Versions of this static file.",
       "get": {
         "description": "Retrieve a specific Asset.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Asset.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -983,7 +983,7 @@
             }
           },
           {
-            "description": "Asset Sid.",
+            "description": "The unique SID identifier of this Asset.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1019,7 +1019,7 @@
         "description": "Update a specific Asset.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Asset.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1031,7 +1031,7 @@
             }
           },
           {
-            "description": "Asset Sid.",
+            "description": "The unique SID identifier of this Asset.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1043,7 +1043,7 @@
             }
           },
           {
-            "description": "A human-readable description of this Asset.",
+            "description": "A human-readable description of this Asset, fewer than 256 characters. Required.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -1090,7 +1090,7 @@
         "description": "Retrieve a list of all Builds.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for these Builds.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1164,7 +1164,7 @@
         "description": "Create a new Build. At least one Function Version or Asset Version is required.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Build.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1176,7 +1176,7 @@
             }
           },
           {
-            "description": "List of Asset Version Sids.",
+            "description": "The list of Asset Version Sids that are included in this Build. Optional.",
             "in": "query",
             "name": "AssetVersions",
             "required": false,
@@ -1191,7 +1191,7 @@
             }
           },
           {
-            "description": "List of Function Version Sids.",
+            "description": "The list of Function Version Sids that are included in this Build. Optional.",
             "in": "query",
             "name": "FunctionVersions",
             "required": false,
@@ -1206,7 +1206,7 @@
             }
           },
           {
-            "description": "List of Dependencies.",
+            "description": "The list of Dependencies that are included in this Build, each described by a `name` and a `version` in a JSON object. Optional.",
             "in": "query",
             "name": "Dependencies",
             "required": false,
@@ -1253,7 +1253,7 @@
         "description": "Retrieve a specific Build.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Build.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1265,7 +1265,7 @@
             }
           },
           {
-            "description": "Build Sid.",
+            "description": "The unique SID identifier of this Build.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1315,7 +1315,7 @@
         "description": "Retrieve a list of all Environments.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for these Environments.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1389,7 +1389,7 @@
         "description": "Create a new Environment.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Environment.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1401,7 +1401,7 @@
             }
           },
           {
-            "description": "A unique, addressable name of this Environment.",
+            "description": "A unique, addressable name of this Environment, fewer than 256 characters. Required.",
             "in": "query",
             "name": "UniqueName",
             "required": true,
@@ -1410,7 +1410,7 @@
             }
           },
           {
-            "description": "A URL-friendly name that represents this Environment.",
+            "description": "A URL-friendly name that represents this Environment and forms part of the domain name, fewer than 32 characters. Required.",
             "in": "query",
             "name": "DomainSuffix",
             "required": false,
@@ -1453,12 +1453,12 @@
       "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Deployments": {
-      "description": "An association of a Build with an Environment.",
+      "description": "An association of a Build with an Environment so that the Build is published in the Environment.",
       "get": {
         "description": "Retrieve a list of all Deployments.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for these Deployments.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1470,7 +1470,7 @@
             }
           },
           {
-            "description": "Environment Sid.",
+            "description": "The unique SID identifier of the Environment for these Deployments.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1544,7 +1544,7 @@
         "description": "Create a new Deployment.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Deployment.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1556,7 +1556,7 @@
             }
           },
           {
-            "description": "Environment Sid.",
+            "description": "The unique SID identifier of the Environment for this Deployment.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1568,7 +1568,7 @@
             }
           },
           {
-            "description": "Build Sid.",
+            "description": "The unique SID identifier of the Build to be deployed for this Deployment. Required.",
             "in": "query",
             "name": "BuildSid",
             "required": true,
@@ -1613,12 +1613,12 @@
       "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Deployments/{Sid}": {
-      "description": "An association of a Build with an Environment.",
+      "description": "An association of a Build with an Environment so that the Build is published in the Environment.",
       "get": {
         "description": "Retrieve a specific Deployment.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Deployment.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1630,7 +1630,7 @@
             }
           },
           {
-            "description": "Environment Sid.",
+            "description": "The unique SID identifier of the Environment for this Deployment.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1642,7 +1642,7 @@
             }
           },
           {
-            "description": "Deployment Sid.",
+            "description": "The unique SID identifier of this Deployment.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1692,7 +1692,7 @@
         "description": "Retrieve a list of all Variables.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for these Variables.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1704,7 +1704,7 @@
             }
           },
           {
-            "description": "Environment Sid.",
+            "description": "The unique SID identifier of the Environment in which these Variables exist.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1778,7 +1778,7 @@
         "description": "Create a new Variable.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Variable.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1790,7 +1790,7 @@
             }
           },
           {
-            "description": "Environment Sid.",
+            "description": "The unique SID identifier of the Environment in which this Variable exists.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1802,7 +1802,7 @@
             }
           },
           {
-            "description": "A string by which this Variable can be referenced.",
+            "description": "A string by which this Variable can be referenced, fewer than 128 characters. Required.",
             "in": "query",
             "name": "Key",
             "required": true,
@@ -1811,7 +1811,7 @@
             }
           },
           {
-            "description": "A string that contains the actual value of this Variable.",
+            "description": "A string that contains the actual value of this Variable, less than 450 bytes. Required.",
             "in": "query",
             "name": "Value",
             "required": true,
@@ -1858,7 +1858,7 @@
         "description": "Retrieve a specific Variable.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Variable.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1870,7 +1870,7 @@
             }
           },
           {
-            "description": "Environment Sid.",
+            "description": "The unique SID identifier of the Environment in which this Variable exists.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1882,7 +1882,7 @@
             }
           },
           {
-            "description": "Variable Sid.",
+            "description": "The unique SID identifier of this Variable.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1918,7 +1918,7 @@
         "description": "Update a specific Variable.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Variable.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1930,7 +1930,7 @@
             }
           },
           {
-            "description": "Environment Sid.",
+            "description": "The unique SID identifier of the Environment in which this Variable exists.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1942,7 +1942,7 @@
             }
           },
           {
-            "description": "Variable Sid.",
+            "description": "The unique SID identifier of this Variable.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1954,7 +1954,7 @@
             }
           },
           {
-            "description": "A string by which this Variable can be referenced.",
+            "description": "A string by which this Variable can be referenced, fewer than 128 characters. Optional.",
             "in": "query",
             "name": "Key",
             "required": false,
@@ -1963,7 +1963,7 @@
             }
           },
           {
-            "description": "A string that contains the actual value of this Variable.",
+            "description": "A string that contains the actual value of this Variable, less than 450 bytes. Optional.",
             "in": "query",
             "name": "Value",
             "required": false,
@@ -2010,7 +2010,7 @@
         "description": "Retrieve a specific Environment.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Environment.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2022,7 +2022,7 @@
             }
           },
           {
-            "description": "Environment Sid.",
+            "description": "The unique SID identifier of this Environment.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2068,12 +2068,12 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Functions": {
-      "description": "A wrapper that represents a Serverless JavaScript function.",
+      "description": "A wrapper that represents a Serverless JavaScript function and groups the different  and groups the different Versions of this code.",
       "get": {
         "description": "Retrieve a list of all Functions.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for these Functions.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2147,7 +2147,7 @@
         "description": "Create a new Function.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Function.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2159,7 +2159,7 @@
             }
           },
           {
-            "description": "A human-readable description of this Function.",
+            "description": "A human-readable description of this Function, fewer than 256 characters. Required.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -2206,7 +2206,7 @@
         "description": "Retrieve a list of all Function Versions.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for these Function Versions.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2218,7 +2218,7 @@
             }
           },
           {
-            "description": "Function Sid.",
+            "description": "The unique SID identifier of the Function that is the parent for this Function Version.",
             "in": "path",
             "name": "FunctionSid",
             "required": true,
@@ -2292,7 +2292,7 @@
         "description": "Create a new Function Version.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Function Version.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2304,7 +2304,7 @@
             }
           },
           {
-            "description": "Function Sid.",
+            "description": "The unique SID identifier of the Function that is the parent for this Function Version.",
             "in": "path",
             "name": "FunctionSid",
             "required": true,
@@ -2316,7 +2316,7 @@
             }
           },
           {
-            "description": "The URL-friendly string by which this Function Version can be referenced.",
+            "description": "The URL-friendly string by which this Function Version can be referenced. (Example: `/functions/example`) Required.",
             "in": "query",
             "name": "Path",
             "required": true,
@@ -2325,7 +2325,7 @@
             }
           },
           {
-            "description": "The access control which determines how the Function Version can be accessed.",
+            "description": "The access control which determines how the Function Version can be accessed. One of `public`, `protected`, or `private`. Required.",
             "in": "query",
             "name": "Visibility",
             "required": true,
@@ -2378,7 +2378,7 @@
         "description": "Retrieve a specific Function Version.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Function Version.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2390,7 +2390,7 @@
             }
           },
           {
-            "description": "Function Sid.",
+            "description": "The unique SID identifier of the Function that is the parent for this Function Version.",
             "in": "path",
             "name": "FunctionSid",
             "required": true,
@@ -2402,7 +2402,7 @@
             }
           },
           {
-            "description": "Function Version Sid.",
+            "description": "The unique SID identifier of this Function Version.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2448,12 +2448,12 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Functions/{Sid}": {
-      "description": "A wrapper that represents a Serverless JavaScript function.",
+      "description": "A wrapper that represents a Serverless JavaScript function and groups the different  and groups the different Versions of this code.",
       "get": {
         "description": "Retrieve a specific Function.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Function.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2465,7 +2465,7 @@
             }
           },
           {
-            "description": "Function Sid.",
+            "description": "The unique SID identifier of this Function.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2501,7 +2501,7 @@
         "description": "Update a specific Function.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of the Service for this Function.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2513,7 +2513,7 @@
             }
           },
           {
-            "description": "Function Sid.",
+            "description": "The unique SID identifier of this Function.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2525,7 +2525,7 @@
             }
           },
           {
-            "description": "A human-readable description of this Function.",
+            "description": "A human-readable description of this Function, fewer than 256 characters. Required.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -2567,12 +2567,12 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{Sid}": {
-      "description": "Container for Serverless application Environments.",
+      "description": "The top-level resource for a Serverless application, which serves as a container for the application Environments.",
       "get": {
         "description": "Retrieve a specific Service.",
         "parameters": [
           {
-            "description": "Serverless Service Sid or unique name.",
+            "description": "Identifier of the Serverless Service Instance. Either a SID or UniqueName.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2608,7 +2608,7 @@
         "description": "Update a specific Service.",
         "parameters": [
           {
-            "description": "Service Sid.",
+            "description": "The unique SID identifier of this Service.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2620,7 +2620,7 @@
             }
           },
           {
-            "description": "Whether to inject Account credentials into a Function invocation context.",
+            "description": "A boolean value that indicates whether to inject Account credentials into a Function invocation context. Optional.",
             "in": "query",
             "name": "IncludeCredentials",
             "required": false,
@@ -2629,7 +2629,7 @@
             }
           },
           {
-            "description": "A human-readable description of this Service.",
+            "description": "A human-readable description of this Service, fewer than 256 characters. Optional",
             "in": "query",
             "name": "FriendlyName",
             "required": false,

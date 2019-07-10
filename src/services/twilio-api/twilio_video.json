@@ -758,7 +758,7 @@
         "description": "List of all Recording Composition Hooks.",
         "parameters": [
           {
-            "description": "Only show Composition Hooks enabled or disabled.",
+            "description": "Only show Composition Hooks that are enabled or disabled.",
             "in": "query",
             "name": "Enabled",
             "required": false,
@@ -767,7 +767,7 @@
             }
           },
           {
-            "description": "Only show Composition Hooks created on or after this ISO8601 date-time with timezone.",
+            "description": "Only show Composition Hooks created on or after this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.",
             "in": "query",
             "name": "DateCreatedAfter",
             "required": false,
@@ -777,7 +777,7 @@
             }
           },
           {
-            "description": "Only show Composition Hooks created before this ISO8601 date-time with timezone.",
+            "description": "Only show Composition Hooks created before this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.",
             "in": "query",
             "name": "DateCreatedBefore",
             "required": false,
@@ -787,7 +787,7 @@
             }
           },
           {
-            "description": "Only show Composition Hooks with friendly name that match this name.",
+            "description": "Only show Composition Hooks with friendly name that match this case-insensitive string, of up to 100 characters in length. Filtering by partial friendly names is allowed, using wildcards (e.g. `*my*hook*`).",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -855,10 +855,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "Friendly name of the Composition Hook to be shown in the console.",
+            "description": "Friendly name of the Composition Hook to be shown in the console, must be unique per account and up to 100 characters.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -867,7 +867,7 @@
             }
           },
           {
-            "description": "Boolean flag indicating if the Composition Hook is active.",
+            "description": "Boolean flag indicating if the Composition Hook is active. Possible values are `true` or `false`. When `true`, the Composition Hook will be triggered for every completed Group Room on this account. When `false`, the Composition Hook never triggers.",
             "in": "query",
             "name": "Enabled",
             "required": false,
@@ -876,7 +876,7 @@
             }
           },
           {
-            "description": "The JSON video layout description.",
+            "description": "A JSON object defining the video layout of the Composition Hook in terms of regions. See the section [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for further information.",
             "in": "query",
             "name": "VideoLayout",
             "required": false,
@@ -885,7 +885,7 @@
             }
           },
           {
-            "description": "A list of audio sources related to this Composition Hook.",
+            "description": "An array of audio sources to merge. All the specified sources must belong to the same Group Room. It can include zero or more Track names. These can be specified using wildcards (e.g. `student*`). The use of `[*]` has semantics \"all if any\" meaning zero or more (i.e. all) depending on whether the Group Room had audio tracks.",
             "in": "query",
             "name": "AudioSources",
             "required": false,
@@ -897,7 +897,7 @@
             }
           },
           {
-            "description": "A list of audio sources excluded related to this Composition Hook.",
+            "description": "An array of audio sources to exclude from the Composition Hook. Any new Composition triggered by the Composition Hook shall include all audio sources specified in `AudioSources` except for the ones specified in `AudioSourcesExcluded`. This parameter may include zero or more Track names. These can be specified using wildcards (e.g. `student*`).",
             "in": "query",
             "name": "AudioSourcesExcluded",
             "required": false,
@@ -909,7 +909,7 @@
             }
           },
           {
-            "description": "Pixel resolution of the composed video.",
+            "description": "A string representing the number of pixels for rows (width) and columns (height) of the generated composed video. This string must have the format `{width}x{height}`. This parameter must comply with the following constraints: \n\n* `width >= 16 && width <= 1280`\n* `height >= 16 && height <= 1280`\n* `width * height <= 921,600`\n\nTypical values are: \n\n* HD = `1280x720`\n* PAL = `1024x576`\n* VGA = `640x480`\n* CIF = `320x240`\n\nNote that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `640x480`.",
             "in": "query",
             "name": "Resolution",
             "required": false,
@@ -918,7 +918,7 @@
             }
           },
           {
-            "description": "Container format of the Composition Hook media file. Any of the following: `mp4`, `webm`.",
+            "description": "Container format of the Composition media files created by the Composition Hook. Can be any of the following: `mp4`, `webm`. The use of `mp4` or `webm` makes mandatory the specification of `AudioSources` and/or one `VideoLayout` element containing a valid `video_sources` list, otherwise an error is fired. Defaults to `webm`.",
             "in": "query",
             "name": "Format",
             "required": false,
@@ -931,7 +931,7 @@
             }
           },
           {
-            "description": "A URL that Twilio sends asynchronous webhook requests to on every composition event.",
+            "description": "A URL that Twilio sends asynchronous webhook requests to on every composition event. If not provided, status callback events will not be dispatched.",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -941,7 +941,7 @@
             }
           },
           {
-            "description": "HTTP method Twilio should use when requesting the above URL.",
+            "description": "HTTP method Twilio should use when requesting the above URL. Defaults to `POST`.",
             "in": "query",
             "name": "StatusCallbackMethod",
             "required": false,
@@ -964,7 +964,7 @@
             }
           },
           {
-            "description": "Boolean flag for clipping intervals that have no media.",
+            "description": "When activated, clips all the intervals where there is no active media in the Compositions triggered by the Composition Hook. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `true`.",
             "in": "query",
             "name": "Trim",
             "required": false,
@@ -1074,10 +1074,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "A 34-character string that uniquely identifies the Composition Hook to update, specified as a path parameter.",
+            "description": "`HKxx\u2026xx` The system-generated 34-character string that uniquely identifies the Composition Hook to update, specified as a path parameter.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1089,7 +1089,7 @@
             }
           },
           {
-            "description": "Friendly name of the Composition Hook to be shown in the console.",
+            "description": "Friendly name of the Composition Hook to be shown in the console, must be unique per account and up to 100 characters.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -1098,7 +1098,7 @@
             }
           },
           {
-            "description": "Boolean flag indicating if the Composition Hook is active.",
+            "description": "Boolean flag indicating if the Composition Hook is active. Possible values are `true` or `false`. When `true`, the Composition Hook will be triggered for every completed Group Room on this account. When `false`, the Composition Hook never triggers.",
             "in": "query",
             "name": "Enabled",
             "required": false,
@@ -1107,7 +1107,7 @@
             }
           },
           {
-            "description": "The JSON video layout description.",
+            "description": "A JSON object defining the video layout of the Composition Hook in terms of regions. See the section [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for further information.",
             "in": "query",
             "name": "VideoLayout",
             "required": false,
@@ -1116,7 +1116,7 @@
             }
           },
           {
-            "description": "A list of audio sources related to this Composition Hook.",
+            "description": "An array of audio sources to merge. All the specified sources must belong to the same Group Room. It can include zero or more Track names. These can be specified using wildcards (e.g. `student*`). The use of `[*]` has semantics \"all if any\" meaning zero or more (i.e. all) depending on whether the Group Room had audio tracks.",
             "in": "query",
             "name": "AudioSources",
             "required": false,
@@ -1128,7 +1128,7 @@
             }
           },
           {
-            "description": "A list of audio sources excluded related to this Composition Hook.",
+            "description": "An array of audio sources to exclude from the Composition Hook. Any new Composition triggered by the Composition Hook shall include all audio sources specified in `AudioSources` except for the ones specified in `AudioSourcesExcluded`. This parameter may include zero or more Track names. These can be specified using wildcards (e.g. `student*`).",
             "in": "query",
             "name": "AudioSourcesExcluded",
             "required": false,
@@ -1140,7 +1140,7 @@
             }
           },
           {
-            "description": "Boolean flag for clipping intervals that have no media.",
+            "description": "When activated, clips all the intervals where there is no active media in the Compositions triggered by the Composition Hook. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `true`.",
             "in": "query",
             "name": "Trim",
             "required": false,
@@ -1149,7 +1149,7 @@
             }
           },
           {
-            "description": "Container format of the Composition Hook media file. Any of the following: `mp4`, `webm`.",
+            "description": "Container format of the Composition media files created by the Composition Hook. Can be any of the following: `mp4`, `webm`. The use of `mp4` or `webm` makes mandatory the specification of `AudioSources` and/or one `VideoLayout` element containing a valid `video_sources` list, otherwise an error is fired. Defaults to `webm`.",
             "in": "query",
             "name": "Format",
             "required": false,
@@ -1162,7 +1162,7 @@
             }
           },
           {
-            "description": "Pixel resolution of the composed video.",
+            "description": "A string representing the number of pixels for rows (width) and columns (height) of the generated composed video. This string must have the format `{width}x{height}`. This parameter must comply with the following constraints: `width >= 16 && width <= 1280`, `height >= 16 && height <= 1280`, `width * height <= 921,600`. Typical values are: HD = `1280x720`, PAL = `1024x576`, VGA = `640x480`, CIF = `320x240`. Note that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `640x480`.",
             "in": "query",
             "name": "Resolution",
             "required": false,
@@ -1171,7 +1171,7 @@
             }
           },
           {
-            "description": "A URL that Twilio sends asynchronous webhook requests to on every composition event.",
+            "description": "A URL that Twilio sends asynchronous webhook requests to on every composition event. If not provided, status callback events will not be dispatched.",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -1181,7 +1181,7 @@
             }
           },
           {
-            "description": "HTTP method Twilio should use when requesting the above URL.",
+            "description": "HTTP method Twilio should use when requesting the above URL. Defaults to `POST`.",
             "in": "query",
             "name": "StatusCallbackMethod",
             "required": false,
@@ -1239,7 +1239,7 @@
     "/v1/CompositionSettings/Default": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -1262,7 +1262,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "Friendly name of the configuration to be shown in the console",
@@ -1274,7 +1274,7 @@
             }
           },
           {
-            "description": "SID of the Stored Credential resource CRxx",
+            "description": "SID of the Stored Credential resource `CRxx`",
             "in": "query",
             "name": "AwsCredentialsSid",
             "required": false,
@@ -1286,7 +1286,7 @@
             }
           },
           {
-            "description": "SID of the Public Key resource CRxx",
+            "description": "SID of the Public Key resource `CRxx`",
             "in": "query",
             "name": "EncryptionKeySid",
             "required": false,
@@ -1298,7 +1298,7 @@
             }
           },
           {
-            "description": "Identity of the external location where the compositions should be stored. We only support DNS-compliant URLs like http://<my-bucket>.s3-<aws-region>.amazonaws.com/compositions, where compositions is the path where you want compositions to be stored.",
+            "description": "Identity of the external location where the compositions should be stored. We only support DNS-compliant URLs like `http://<my-bucket>.s3-<aws-region>.amazonaws.com/compositions`,  where `compositions` is the path where you want compositions to be stored.",
             "in": "query",
             "name": "AwsS3Url",
             "required": false,
@@ -1308,7 +1308,7 @@
             }
           },
           {
-            "description": "true|false When set to true, all Compositions will be written to the AwsS3Url specified above. When set to false, all Compositions will be stored in Twilio's cloud.",
+            "description": "`true|false` When set to `true`, all Compositions will be written to the `AwsS3Url` specified above. When set to `false`, all Compositions will be stored in Twilio's cloud.",
             "in": "query",
             "name": "AwsStorageEnabled",
             "required": false,
@@ -1317,7 +1317,7 @@
             }
           },
           {
-            "description": "true|false When set to true, all Compositions will be stored encrypted.",
+            "description": "`true|false` When set to `true`, all Compositions will be stored encrypted. Dafault value is `false`",
             "in": "query",
             "name": "EncryptionEnabled",
             "required": false,
@@ -1380,7 +1380,7 @@
             }
           },
           {
-            "description": "Only show Compositions created on or after this ISO8601 date-time with timezone.",
+            "description": "Only show Compositions created on or after this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.",
             "in": "query",
             "name": "DateCreatedAfter",
             "required": false,
@@ -1390,7 +1390,7 @@
             }
           },
           {
-            "description": "Only show Compositions created before this ISO8601 date-time with timezone.",
+            "description": "Only show Compositions created before this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.",
             "in": "query",
             "name": "DateCreatedBefore",
             "required": false,
@@ -1471,10 +1471,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "Twilio Room SID.",
+            "description": "Group Room SID owning the media tracks to be used as Composition sources.",
             "in": "query",
             "name": "RoomSid",
             "required": true,
@@ -1486,7 +1486,7 @@
             }
           },
           {
-            "description": "The JSON video layout description.",
+            "description": "A JSON object defining the video layout of the Composition in terms of regions. See the section [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) below for further information.",
             "in": "query",
             "name": "VideoLayout",
             "required": false,
@@ -1495,7 +1495,7 @@
             }
           },
           {
-            "description": "A list of audio sources related to this Composition.",
+            "description": "An array of audio sources to merge. All the specified sources must belong to the same Group Room. It can include: \n\n* Zero or more `RecordingTrackSid`\n* Zero or more `MediaTrackSid`\n* Zero or more `ParticipantSid`\n* Zero or more Track names. These can be specified using wildcards (e.g. `student*`). The use of `[*]` has semantics \"all if any\" meaning zero or more (i.e. all) depending on whether the target room had audio tracks.",
             "in": "query",
             "name": "AudioSources",
             "required": false,
@@ -1510,7 +1510,7 @@
             }
           },
           {
-            "description": "A list of audio sources excluded related to this Composition.",
+            "description": "An array of audio sources to exclude from the Composition. Any new Composition shall include all audio sources specified in `AudioSources` except for the ones specified in `AudioSourcesExcluded`. This parameter may include: \n\n* Zero or more `RecordingTrackSid`\n* Zero or more `MediaTrackSid`\n* Zero or more `ParticipantSid`\n* Zero or more Track names. These can be specified using wildcards (e.g. `student*`)",
             "in": "query",
             "name": "AudioSourcesExcluded",
             "required": false,
@@ -1522,7 +1522,7 @@
             }
           },
           {
-            "description": "Pixel resolution of the composed video.",
+            "description": "A string representing the number of pixels for rows (width) and columns (height) of the generated composed video. This string must have the format `{width}x{height}`. This parameter must comply with the following constraints: \n\n* `width >= 16 && width <= 1280`\n* `height >= 16 && height <= 1280`\n* `width * height <= 921,600`\n\nTypical values are: \n\n* HD = `1280x720`\n* PAL = `1024x576`\n* VGA = `640x480`\n* CIF = `320x240`\n\nNote that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `640x480`.",
             "in": "query",
             "name": "Resolution",
             "required": false,
@@ -1531,7 +1531,7 @@
             }
           },
           {
-            "description": "Container format of the Composition media file. Any of the following: `mp4`, `webm`.",
+            "description": "Container format of the Composition media file. Can be any of the following: `mp4`, `webm`. The use of `mp4` or `webm` makes mandatory the specification of `AudioSources` and/or one `VideoLayout` element containing a valid `video_sources` list, otherwise an error is fired. Defaults to `webm`.",
             "in": "query",
             "name": "Format",
             "required": false,
@@ -1544,7 +1544,7 @@
             }
           },
           {
-            "description": "A URL that Twilio sends asynchronous webhook requests to on every composition event.",
+            "description": "A URL that Twilio sends asynchronous webhook requests to on every composition event. If not provided, status callback events will not be dispatched.",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -1554,7 +1554,7 @@
             }
           },
           {
-            "description": "HTTP method Twilio should use when requesting the above URL.",
+            "description": "HTTP method Twilio should use when requesting the above URL. Defaults to `POST`.",
             "in": "query",
             "name": "StatusCallbackMethod",
             "required": false,
@@ -1577,7 +1577,7 @@
             }
           },
           {
-            "description": "Boolean flag for clipping intervals that have no media.",
+            "description": "When activated, clips all the Composition intervals where there is no active media. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `true`.",
             "in": "query",
             "name": "Trim",
             "required": false,
@@ -1703,7 +1703,7 @@
     "/v1/RecordingSettings/Default": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -1726,7 +1726,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "Friendly name of the configuration to be shown in the console",
@@ -1738,7 +1738,7 @@
             }
           },
           {
-            "description": "SID of the Stored Credential resource CRxx",
+            "description": "SID of the Stored Credential resource `CRxx`",
             "in": "query",
             "name": "AwsCredentialsSid",
             "required": false,
@@ -1750,7 +1750,7 @@
             }
           },
           {
-            "description": "SID of the Public Key resource CRxx",
+            "description": "SID of the Public Key resource `CRxx`",
             "in": "query",
             "name": "EncryptionKeySid",
             "required": false,
@@ -1762,7 +1762,7 @@
             }
           },
           {
-            "description": "Identity of the external location where the recordings should be stored. We only support DNS-compliant URLs like http://<my-bucket>.s3-<aws-region>.amazonaws.com/recordings, where recordings is the path where you want recordings to be stored.",
+            "description": "Identity of the external location where the recordings should be stored. We only support DNS-compliant URLs like `http://<my-bucket>.s3-<aws-region>.amazonaws.com/recordings`, where `recordings` is the path where you want recordings to be stored.",
             "in": "query",
             "name": "AwsS3Url",
             "required": false,
@@ -1772,7 +1772,7 @@
             }
           },
           {
-            "description": "true|false When set to true, all Recordings will be written to the AwsS3Url specified above. When set to false, all Recordings will be stored in Twilio's cloud.",
+            "description": "`true|false` When set to `true`, all Recordings will be written to the `AwsS3Url` specified above. When set to `false`, all Recordings will be stored in Twilio's cloud.",
             "in": "query",
             "name": "AwsStorageEnabled",
             "required": false,
@@ -1781,7 +1781,7 @@
             }
           },
           {
-            "description": "true|false When set to true, all Recordings will be stored encrypted.",
+            "description": "`true|false` When set to `true`, all Recordings will be stored encrypted. Dafault value is `false`",
             "in": "query",
             "name": "EncryptionEnabled",
             "required": false,
@@ -1843,7 +1843,7 @@
             }
           },
           {
-            "description": "Only show the Recordings with the given source Sid.",
+            "description": "Only show the Recordings with the given source Sid (you can use this to filter Recordings by `TrackSid` for Video Room Recordings.",
             "in": "query",
             "name": "SourceSid",
             "required": false,
@@ -1855,7 +1855,7 @@
             }
           },
           {
-            "description": "Only show Recordings that have this GroupingSid.",
+            "description": "Only show Recordings that have this GroupingSid, which may include a ParticipantSid and/or a RoomSid.",
             "in": "query",
             "name": "GroupingSid",
             "required": false,
@@ -1870,7 +1870,7 @@
             }
           },
           {
-            "description": "Only show Recordings that started on or after this ISO8601 date-time with timezone.",
+            "description": "Only show Recordings that started on or after this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.",
             "in": "query",
             "name": "DateCreatedAfter",
             "required": false,
@@ -1880,7 +1880,7 @@
             }
           },
           {
-            "description": "Only show Recordings that started before this ISO8601 date-time with timezone.",
+            "description": "Only show Recordings that started before this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.",
             "in": "query",
             "name": "DateCreatedBefore",
             "required": false,
@@ -1890,7 +1890,7 @@
             }
           },
           {
-            "description": "Only show Recordings that have this media type.",
+            "description": "Only show Recordings that have this media type. Can be either `audio` or `video`.",
             "in": "query",
             "name": "MediaType",
             "required": false,
@@ -2063,10 +2063,10 @@
     "/v1/Rooms": {
       "description": "Video rooms with one or more participants",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "Only show Rooms with the given status.",
+            "description": "Only show Rooms with the given status: `in-progress` (default), or `completed`",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -2089,7 +2089,7 @@
             }
           },
           {
-            "description": "Only show Rooms that started on or after this date, given as YYYY-MM-DD.",
+            "description": "Only show Rooms that started on or after this date, given as `YYYY-MM-DD`.",
             "in": "query",
             "name": "DateCreatedAfter",
             "required": false,
@@ -2099,7 +2099,7 @@
             }
           },
           {
-            "description": "Only show Rooms that started before this date, given as YYYY-MM-DD.",
+            "description": "Only show Rooms that started before this date, given as `YYYY-MM-DD`.",
             "in": "query",
             "name": "DateCreatedBefore",
             "required": false,
@@ -2168,10 +2168,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "Use Twilio Network Traversal for TURN service.",
+            "description": "Deprecated.  Enable [Twilio's Network Traversal TURN service](https://www.twilio.com/stun-turn). TURN service is used when direct peer-to-peer media connections cannot be established due to firewall restrictions. This setting only applies to Rooms with type `peer-to-peer`.",
             "in": "query",
             "name": "EnableTurn",
             "required": false,
@@ -2180,7 +2180,7 @@
             }
           },
           {
-            "description": "Type of room, either peer-to-peer, group-small or group.",
+            "description": "Type of room, either `peer-to-peer`, `group-small` or `group`. Will be `group` by default.",
             "in": "query",
             "name": "Type",
             "required": false,
@@ -2194,7 +2194,7 @@
             }
           },
           {
-            "description": "Name of the Room.",
+            "description": "Name of the Room.  This is unique for `in-progress` rooms. If not provided, Room name will be set to the Room Sid.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -2203,7 +2203,7 @@
             }
           },
           {
-            "description": "A URL that Twilio sends asynchronous webhook requests to on every room event.",
+            "description": "A URL that Twilio sends asynchronous webhook requests to on every room event. If not provided, status callback events will not be dispatched.",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -2213,7 +2213,7 @@
             }
           },
           {
-            "description": "HTTP method Twilio should use when requesting the above URL.",
+            "description": "HTTP method Twilio should use when requesting the above URL. Defaults to `POST`.",
             "in": "query",
             "name": "StatusCallbackMethod",
             "required": false,
@@ -2236,7 +2236,7 @@
             }
           },
           {
-            "description": "Maximum number of Participants in the Room.",
+            "description": "Maximum number of Participants in the Room. Peer-to-peer rooms can have a maximum of 10 Participants. Small Group rooms can have a max of 4 Participants. Group rooms can have a max of 50 Participants",
             "in": "query",
             "name": "MaxParticipants",
             "required": false,
@@ -2245,7 +2245,7 @@
             }
           },
           {
-            "description": "Start Participant recording when connected.",
+            "description": "Start Participant recording when connected. ***This feature is not available in `peer-to-peer` rooms.***",
             "in": "query",
             "name": "RecordParticipantsOnConnect",
             "required": false,
@@ -2254,7 +2254,7 @@
             }
           },
           {
-            "description": "An array of video codecs supported when publishing a Track in the Room.",
+            "description": "An array of video codecs supported when publishing a Track in the Room.  `VP8` and `H264` codecs are supported.  ***This feature is not available in `peer-to-peer` rooms***",
             "in": "query",
             "name": "VideoCodecs",
             "required": false,
@@ -2270,7 +2270,7 @@
             }
           },
           {
-            "description": "Region for the media server in Group Rooms.",
+            "description": "Region for the media server in Group Rooms.  Default region is `us1`.  See the list of [available Media Regions.](https://www.twilio.com/docs/api/video/ip-address-whitelisting#group-rooms-media-servers)***This feature is not available in `peer-to-peer` rooms.***",
             "in": "query",
             "name": "MediaRegion",
             "required": false,
@@ -2314,7 +2314,7 @@
     "/v1/Rooms/{RoomSid}/Participants": {
       "description": "Participants in video rooms",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A system-generated 34-character string that uniquely identifies this Room.",
@@ -2329,7 +2329,7 @@
             }
           },
           {
-            "description": "Only show Participants with the given Status.",
+            "description": "Only show Participants with the given Status.  For `in-progress` Rooms the default Status is `connected`, for `completed` Rooms only `disconnected` Participants are returned.",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -2351,7 +2351,7 @@
             }
           },
           {
-            "description": "Only show Participants that started after this date, given as an UTC ISO 8601 Timestamp.",
+            "description": "Only show Participants that started after this date, given as an [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC).",
             "in": "query",
             "name": "DateCreatedAfter",
             "required": false,
@@ -2361,7 +2361,7 @@
             }
           },
           {
-            "description": "Only show Participants that started before this date, given as an UTC ISO 8601 Timestamp.",
+            "description": "Only show Participants that started before this date, given as an [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC).",
             "in": "query",
             "name": "DateCreatedBefore",
             "required": false,
@@ -2623,7 +2623,7 @@
         "description": "Returns a list of Subscribe Rules for the Participant.",
         "parameters": [
           {
-            "description": "Unique Room identifier where the Subscribe Rules apply",
+            "description": "Unique Room identifier where the Subscribe Rules apply.",
             "in": "path",
             "name": "RoomSid",
             "required": true,
@@ -2671,7 +2671,7 @@
         "description": "Update the Subscribe Rules for the Participant",
         "parameters": [
           {
-            "description": "Unique Room identifier where the Subscribe Rules apply",
+            "description": "Unique Room identifier where the Subscribe Rules apply.",
             "in": "path",
             "name": "RoomSid",
             "required": true,
@@ -2695,7 +2695,7 @@
             }
           },
           {
-            "description": "A JSON-encoded array of Subscribe Rules.",
+            "description": "A JSON-encoded array of Subscribe Rules. See the [Specifying Subscribe Rules](https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr) section for further information.",
             "in": "query",
             "name": "Rules",
             "required": false,
@@ -2915,7 +2915,7 @@
     "/v1/Rooms/{RoomSid}/Participants/{Sid}": {
       "description": "Participants in video rooms",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A system-generated 34-character string that uniquely identifies a Room.",
@@ -2963,7 +2963,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A system-generated 34-character string that uniquely identifies a Room.",
@@ -3038,10 +3038,10 @@
     "/v1/Rooms/{RoomSid}/Recordings": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "RoomSid",
             "required": true,
@@ -3053,7 +3053,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -3068,7 +3068,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "SourceSid",
             "required": false,
@@ -3080,7 +3080,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "DateCreatedAfter",
             "required": false,
@@ -3090,7 +3090,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "DateCreatedBefore",
             "required": false,
@@ -3175,10 +3175,10 @@
     },
     "/v1/Rooms/{RoomSid}/Recordings/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "RoomSid",
             "required": true,
@@ -3190,7 +3190,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3218,10 +3218,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "RoomSid",
             "required": true,
@@ -3233,7 +3233,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3283,7 +3283,7 @@
     "/v1/Rooms/{Sid}": {
       "description": "Video rooms with one or more participants",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The Room Sid or name that uniquely identifies this resource.",
@@ -3319,7 +3319,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "The Room Sid or name that uniquely identifies this resource.",
@@ -3334,7 +3334,7 @@
             }
           },
           {
-            "description": "Set to completed to end the Room.",
+            "description": "Set to `completed` to end the Room.",
             "in": "query",
             "name": "Status",
             "required": true,

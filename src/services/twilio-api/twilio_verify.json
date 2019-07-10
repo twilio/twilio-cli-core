@@ -388,7 +388,7 @@
         "description": "Create a new Verification Service.",
         "parameters": [
           {
-            "description": "A string to describe the verification service",
+            "description": "A descriptive string that you create to describe the verification service. It can be up to 64 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -397,7 +397,7 @@
             }
           },
           {
-            "description": "The length of the verification code to generate",
+            "description": "The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.",
             "in": "query",
             "name": "CodeLength",
             "required": false,
@@ -406,7 +406,7 @@
             }
           },
           {
-            "description": "Whether to perform a lookup with each verification",
+            "description": "Whether to perform a lookup with each verification started and return info about the phone number.",
             "in": "query",
             "name": "LookupEnabled",
             "required": false,
@@ -415,7 +415,7 @@
             }
           },
           {
-            "description": "Whether to skip sending SMS verifications to landlines",
+            "description": "Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.",
             "in": "query",
             "name": "SkipSmsToLandlines",
             "required": false,
@@ -424,7 +424,7 @@
             }
           },
           {
-            "description": "Whether to ask the user to press a number before delivering the verify code in a phone call",
+            "description": "Whether to ask the user to press a number before delivering the verify code in a phone call.",
             "in": "query",
             "name": "DtmfInputRequired",
             "required": false,
@@ -433,7 +433,7 @@
             }
           },
           {
-            "description": "The name of an alternative text-to-speech service to use in phone calls",
+            "description": "The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.",
             "in": "query",
             "name": "TtsName",
             "required": false,
@@ -442,7 +442,7 @@
             }
           },
           {
-            "description": "Whether to pass PSD2 transaction parameters when starting a verification",
+            "description": "Whether to pass PSD2 transaction parameters when starting a verification.",
             "in": "query",
             "name": "Psd2Enabled",
             "required": false,
@@ -489,7 +489,7 @@
         "description": "Retrieve a list of all Messaging Configurations for a Service.",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) that the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -563,7 +563,7 @@
         "description": "Create a new MessagingConfiguration for a service.",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) that the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -575,7 +575,7 @@
             }
           },
           {
-            "description": "The ISO-3166-1 country code of the country or `all`.",
+            "description": "The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`.",
             "in": "query",
             "name": "Country",
             "required": true,
@@ -584,7 +584,7 @@
             }
           },
           {
-            "description": "The SID of the Messaging Service used for this configuration.",
+            "description": "The SID of the [Messaging Service](https://www.twilio.com/docs/api/messaging/services) to be used to send SMS to the country of this configuration.",
             "in": "query",
             "name": "MessagingServiceSid",
             "required": true,
@@ -636,7 +636,7 @@
         "description": "Delete a specific MessagingConfiguration.",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) that the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -648,7 +648,7 @@
             }
           },
           {
-            "description": "The ISO-3166-1 country code of the country or `all`.",
+            "description": "The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`.",
             "in": "path",
             "name": "Country",
             "required": true,
@@ -676,7 +676,7 @@
         "description": "Fetch a specific MessagingConfiguration.",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) that the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -688,7 +688,7 @@
             }
           },
           {
-            "description": "The ISO-3166-1 country code of the country or `all`.",
+            "description": "The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`.",
             "in": "path",
             "name": "Country",
             "required": true,
@@ -721,7 +721,7 @@
         "description": "Update a specific MessagingConfiguration",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) that the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -733,7 +733,7 @@
             }
           },
           {
-            "description": "The ISO-3166-1 country code of the country or `all`.",
+            "description": "The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`.",
             "in": "path",
             "name": "Country",
             "required": true,
@@ -742,7 +742,7 @@
             }
           },
           {
-            "description": "The SID of the Messaging Service used for this configuration.",
+            "description": "The SID of the [Messaging Service](https://www.twilio.com/docs/api/messaging/services) to be used to send SMS to the country of this configuration.",
             "in": "query",
             "name": "MessagingServiceSid",
             "required": true,
@@ -795,7 +795,7 @@
         "description": "Retrieve a list of all Rate Limits for a service.",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -869,7 +869,7 @@
         "description": "Create a new Rate Limit for a Service",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -881,7 +881,7 @@
             }
           },
           {
-            "description": "A unique, developer assigned name of this Rate Limit.",
+            "description": "Provides a unique and addressable name to be assigned to this Rate Limit, assigned by the developer, to be optionally used in addition to SID.",
             "in": "query",
             "name": "UniqueName",
             "required": true,
@@ -941,7 +941,7 @@
         "description": "Retrieve a list of all Buckets for a Rate Limit.",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -953,7 +953,7 @@
             }
           },
           {
-            "description": "Rate Limit Sid.",
+            "description": "The Twilio-provided string that uniquely identifies the Rate Limit resource.",
             "in": "path",
             "name": "RateLimitSid",
             "required": true,
@@ -1027,7 +1027,7 @@
         "description": "Create a new Bucket for a Rate Limit",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1039,7 +1039,7 @@
             }
           },
           {
-            "description": "Rate Limit Sid.",
+            "description": "The Twilio-provided string that uniquely identifies the Rate Limit resource.",
             "in": "path",
             "name": "RateLimitSid",
             "required": true,
@@ -1051,7 +1051,7 @@
             }
           },
           {
-            "description": "Max number of requests.",
+            "description": "Maximum number of requests permitted in during the interval.",
             "in": "query",
             "name": "Max",
             "required": true,
@@ -1111,7 +1111,7 @@
         "description": "Delete a specific Bucket.",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1123,7 +1123,7 @@
             }
           },
           {
-            "description": "Rate Limit Sid.",
+            "description": "The Twilio-provided string that uniquely identifies the Rate Limit resource.",
             "in": "path",
             "name": "RateLimitSid",
             "required": true,
@@ -1135,7 +1135,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies this Bucket.",
+            "description": "A 34 character string that uniquely identifies this Bucket.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1166,7 +1166,7 @@
         "description": "Fetch a specific Bucket.",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1178,7 +1178,7 @@
             }
           },
           {
-            "description": "Rate Limit Sid.",
+            "description": "The Twilio-provided string that uniquely identifies the Rate Limit resource.",
             "in": "path",
             "name": "RateLimitSid",
             "required": true,
@@ -1190,7 +1190,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies this Bucket.",
+            "description": "A 34 character string that uniquely identifies this Bucket.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1226,7 +1226,7 @@
         "description": "Update a specific Bucket.",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1238,7 +1238,7 @@
             }
           },
           {
-            "description": "Rate Limit Sid.",
+            "description": "The Twilio-provided string that uniquely identifies the Rate Limit resource.",
             "in": "path",
             "name": "RateLimitSid",
             "required": true,
@@ -1250,7 +1250,7 @@
             }
           },
           {
-            "description": "A string that uniquely identifies this Bucket.",
+            "description": "A 34 character string that uniquely identifies this Bucket.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1262,7 +1262,7 @@
             }
           },
           {
-            "description": "Max number of requests.",
+            "description": "Maximum number of requests permitted in during the interval.",
             "in": "query",
             "name": "Max",
             "required": false,
@@ -1322,7 +1322,7 @@
         "description": "Delete a specific Rate Limit.",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1334,7 +1334,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Rate Limit resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1365,7 +1365,7 @@
         "description": "Fetch a specific Rate Limit.",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1377,7 +1377,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Rate Limit resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1413,7 +1413,7 @@
         "description": "Update a specific Rate Limit.",
         "parameters": [
           {
-            "description": "The SID of the Service that the resource is associated with",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1425,7 +1425,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Rate Limit resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1488,7 +1488,7 @@
         "description": "challenge a specific Verification Check.",
         "parameters": [
           {
-            "description": "The SID of the verification Service to create the resource under",
+            "description": "The SID of the verification [Service](https://www.twilio.com/docs/chat/rest/services) to create the resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1500,7 +1500,7 @@
             }
           },
           {
-            "description": "The verification string",
+            "description": "The 4-10 character string being verified.",
             "in": "query",
             "name": "Code",
             "required": true,
@@ -1509,7 +1509,7 @@
             }
           },
           {
-            "description": "The phone number to verify",
+            "description": "The phone number to verify. Either this parameter or the `verification_sid` must be specified",
             "in": "query",
             "name": "To",
             "required": false,
@@ -1518,7 +1518,7 @@
             }
           },
           {
-            "description": "A SID that uniquely identifies the Verification Check",
+            "description": "A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number must be specified.",
             "in": "query",
             "name": "VerificationSid",
             "required": false,
@@ -1530,7 +1530,7 @@
             }
           },
           {
-            "description": "The amount of the associated PSD2 compliant transaction.",
+            "description": "The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.",
             "in": "query",
             "name": "Amount",
             "required": false,
@@ -1539,7 +1539,7 @@
             }
           },
           {
-            "description": "The payee of the associated PSD2 compliant transaction",
+            "description": "The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.",
             "in": "query",
             "name": "Payee",
             "required": false,
@@ -1589,7 +1589,7 @@
         "description": "Create a new Verification for a To number using a Service",
         "parameters": [
           {
-            "description": "The SID of the verification Service to create the resource under",
+            "description": "The SID of the verification [Service](https://www.twilio.com/docs/chat/rest/services) to create the resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1601,7 +1601,7 @@
             }
           },
           {
-            "description": "The phone number to verify",
+            "description": "The phone number to verify.",
             "in": "query",
             "name": "To",
             "required": true,
@@ -1610,7 +1610,7 @@
             }
           },
           {
-            "description": "The verification method to use",
+            "description": "The verification method to use. Can be: `sms` or `call`.",
             "in": "query",
             "name": "Channel",
             "required": true,
@@ -1619,7 +1619,7 @@
             }
           },
           {
-            "description": "The text of a custom message to use for the verification",
+            "description": "The text of a custom message to use for the verification.",
             "in": "query",
             "name": "CustomMessage",
             "required": false,
@@ -1628,7 +1628,7 @@
             }
           },
           {
-            "description": "The digits to send after a phone call is answered",
+            "description": "The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits).",
             "in": "query",
             "name": "SendDigits",
             "required": false,
@@ -1637,7 +1637,7 @@
             }
           },
           {
-            "description": "The locale to use for the verification SMS or call",
+            "description": "The locale to use for the verification SMS or call. Can be: `af`, `ar`, `ca`, `cs`, `da`, `de`, `el`, `en`, `es`, `fi`, `fr`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `ko`, `ms`, `nb`, `nl`, `pl`, `pt`, `pr-BR`, `ro`, `ru`, `sv`, `th`, `tl`, `tr`, `vi`, `zh`, `zh-CN`, or `zh-HK.`",
             "in": "query",
             "name": "Locale",
             "required": false,
@@ -1646,7 +1646,7 @@
             }
           },
           {
-            "description": "A pre-generated code",
+            "description": "A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive.",
             "in": "query",
             "name": "CustomCode",
             "required": false,
@@ -1655,7 +1655,7 @@
             }
           },
           {
-            "description": "The amount of the associated PSD2 compliant transaction.",
+            "description": "The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.",
             "in": "query",
             "name": "Amount",
             "required": false,
@@ -1664,7 +1664,7 @@
             }
           },
           {
-            "description": "The payee of the associated PSD2 compliant transaction",
+            "description": "The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.",
             "in": "query",
             "name": "Payee",
             "required": false,
@@ -1673,7 +1673,7 @@
             }
           },
           {
-            "description": "The custom key-value pairs of Programmable Rate Limits.",
+            "description": "The custom key-value pairs of Programmable Rate Limits. Keys should be the unique_name configured while creating you Rate Limit along with the associated values for each particular request. You may include multiple Rate Limit values in each request.",
             "in": "query",
             "name": "RateLimits",
             "required": false,
@@ -1723,7 +1723,7 @@
         "description": "Fetch a specific Verification",
         "parameters": [
           {
-            "description": "The SID of the verification Service to fetch the resource from",
+            "description": "The SID of the verification [Service](https://www.twilio.com/docs/chat/rest/services) to fetch the resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1735,7 +1735,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Verification resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1768,7 +1768,7 @@
         "description": "Update a Verification status",
         "parameters": [
           {
-            "description": "The SID of the verification Service to update the resource from",
+            "description": "The SID of the verification [Service](https://www.twilio.com/docs/chat/rest/services) to update the resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1780,7 +1780,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Verification resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1789,7 +1789,7 @@
             }
           },
           {
-            "description": "The new status of the resource",
+            "description": "The new status of the resource. Can be: `pending`, `approved`, `denied`, or `expired`.",
             "in": "query",
             "name": "Status",
             "required": true,
@@ -1842,7 +1842,7 @@
         "description": "Delete a specific Verification Service Instance.",
         "parameters": [
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Verification Service resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1873,7 +1873,7 @@
         "description": "Fetch specific Verification Service Instance.",
         "parameters": [
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Verification Service resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1909,7 +1909,7 @@
         "description": "Update a specific Phone Verification Service.",
         "parameters": [
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Service resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1921,7 +1921,7 @@
             }
           },
           {
-            "description": "A string to describe the verification service",
+            "description": "A descriptive string that you create to describe the verification service. It can be up to 64 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -1930,7 +1930,7 @@
             }
           },
           {
-            "description": "The length of the verification code to generate",
+            "description": "The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.",
             "in": "query",
             "name": "CodeLength",
             "required": false,
@@ -1939,7 +1939,7 @@
             }
           },
           {
-            "description": "Whether to perform a lookup with each verification",
+            "description": "Whether to perform a lookup with each verification started and return info about the phone number.",
             "in": "query",
             "name": "LookupEnabled",
             "required": false,
@@ -1948,7 +1948,7 @@
             }
           },
           {
-            "description": "Whether to skip sending SMS verifications to landlines",
+            "description": "Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.",
             "in": "query",
             "name": "SkipSmsToLandlines",
             "required": false,
@@ -1957,7 +1957,7 @@
             }
           },
           {
-            "description": "Whether to ask the user to press a number before delivering the verify code in a phone call",
+            "description": "Whether to ask the user to press a number before delivering the verify code in a phone call.",
             "in": "query",
             "name": "DtmfInputRequired",
             "required": false,
@@ -1966,7 +1966,7 @@
             }
           },
           {
-            "description": "The name of an alternative text-to-speech service to use in phone calls",
+            "description": "The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.",
             "in": "query",
             "name": "TtsName",
             "required": false,
@@ -1975,7 +1975,7 @@
             }
           },
           {
-            "description": "Whether to pass PSD2 transaction parameters when starting a verification",
+            "description": "Whether to pass PSD2 transaction parameters when starting a verification.",
             "in": "query",
             "name": "Psd2Enabled",
             "required": false,

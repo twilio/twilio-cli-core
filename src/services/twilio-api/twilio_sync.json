@@ -520,7 +520,7 @@
     "/v1/Services": {
       "description": "Containers for sync objects",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -581,7 +581,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "Human-readable name for this service instance",
@@ -603,7 +603,7 @@
             }
           },
           {
-            "description": "true or false - controls whether this instance fires webhooks when client endpoints connect to Sync",
+            "description": "`true` or `false` - controls whether this instance fires webhooks when client endpoints connect to Sync Defaults to false.",
             "in": "query",
             "name": "ReachabilityWebhooksEnabled",
             "required": false,
@@ -612,7 +612,7 @@
             }
           },
           {
-            "description": "true or false - determines whether token identities must be granted access to Sync objects via the Permissions API in this Service.",
+            "description": "`true` or `false` - determines whether token identities must be granted access to Sync objects via the [Permissions API](https://www.twilio.com/docs/api/sync/rest/sync-rest-api-permissions) in this Service.",
             "in": "query",
             "name": "AclEnabled",
             "required": false,
@@ -621,7 +621,7 @@
             }
           },
           {
-            "description": "true or false - Determines whether transient disconnections (i.e. an immediate reconnect succeeds) cause reachability webhooks.",
+            "description": "`true` or `false` - If false, every endpoint disconnection immediately yields a reachability webhook (if enabled). If true, then 'disconnection' webhook events will only be fired after a configurable delay. Intervening reconnections would effectively cancel that webhook. Defaults to false.",
             "in": "query",
             "name": "ReachabilityDebouncingEnabled",
             "required": false,
@@ -630,7 +630,7 @@
             }
           },
           {
-            "description": "Determines how long an identity must be offline before reachability webhooks fire.",
+            "description": "Reachability webhook delay period in milliseconds. Determines the delay after which a Sync identity is declared actually offline, measured from the moment the last running client disconnects. If all endpoints remain offline throughout this delay, then reachability webhooks will be fired (if enabled). A reconnection by any endpoint during this window \u2014 from the same identity \u2014 means no reachability webhook would be fired. Must be between 1000 and 30000. Defaults to 5000.",
             "in": "query",
             "name": "ReachabilityDebouncingWindow",
             "required": false,
@@ -674,10 +674,10 @@
     "/v1/Services/{ServiceSid}/Documents": {
       "description": "Sync document objects",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -748,10 +748,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -781,7 +781,7 @@
             }
           },
           {
-            "description": "Time-to-live of this Document in seconds, defaults to no expiration.",
+            "description": "Time-to-live of this Document in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -828,7 +828,7 @@
         "description": "Retrieve a list of all Permissions applying to a Sync Document.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID or unique name.",
+            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -840,7 +840,7 @@
             }
           },
           {
-            "description": "Sync Document SID or unique name.",
+            "description": "Identifier of the Sync Document. Either a SID or a unique name.",
             "in": "path",
             "name": "DocumentSid",
             "required": true,
@@ -928,7 +928,7 @@
         "description": "Delete a specific Sync Document Permission.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID or unique name.",
+            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -940,7 +940,7 @@
             }
           },
           {
-            "description": "Sync Document SID or unique name.",
+            "description": "Identifier of the Sync Document. Either a SID or a unique name.",
             "in": "path",
             "name": "DocumentSid",
             "required": true,
@@ -952,7 +952,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync Document Permission applies.",
+            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -980,7 +980,7 @@
         "description": "Fetch a specific Sync Document Permission.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID or unique name.",
+            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -992,7 +992,7 @@
             }
           },
           {
-            "description": "Sync Document SID or unique name.",
+            "description": "Identifier of the Sync Document. Either a SID or a unique name.",
             "in": "path",
             "name": "DocumentSid",
             "required": true,
@@ -1004,7 +1004,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync Document Permission applies.",
+            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1037,7 +1037,7 @@
         "description": "Update an identity's access to a specific Sync Document.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID or unique name.",
+            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1049,7 +1049,7 @@
             }
           },
           {
-            "description": "Sync Document SID or unique name.",
+            "description": "Identifier of the Sync Document. Either a SID or a unique name.",
             "in": "path",
             "name": "DocumentSid",
             "required": true,
@@ -1061,7 +1061,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync Document Permission applies.",
+            "description": "Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1070,7 +1070,7 @@
             }
           },
           {
-            "description": "Read access.",
+            "description": "Boolean flag specifying whether the identity can read the Sync Document.",
             "in": "query",
             "name": "Read",
             "required": true,
@@ -1079,7 +1079,7 @@
             }
           },
           {
-            "description": "Write access.",
+            "description": "Boolean flag specifying whether the identity can update the Sync Document.",
             "in": "query",
             "name": "Write",
             "required": true,
@@ -1088,7 +1088,7 @@
             }
           },
           {
-            "description": "Manage access.",
+            "description": "Boolean flag specifying whether the identity can delete the Sync Document.",
             "in": "query",
             "name": "Manage",
             "required": true,
@@ -1132,10 +1132,10 @@
     },
     "/v1/Services/{ServiceSid}/Documents/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1147,7 +1147,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1175,10 +1175,10 @@
       },
       "description": "Sync document objects",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1190,7 +1190,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1223,10 +1223,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1238,7 +1238,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1250,7 +1250,7 @@
             }
           },
           {
-            "description": "Contains an arbitrary JSON object to be stored in this Document.",
+            "description": "Contains an arbitrary JSON object to be stored in this Document. Serialized to string to respect HTTP form input, up to 16KB.",
             "in": "query",
             "name": "Data",
             "required": false,
@@ -1259,7 +1259,7 @@
             }
           },
           {
-            "description": "New time-to-live of this Document in seconds.",
+            "description": "New time-to-live of this Document in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -1303,10 +1303,10 @@
     "/v1/Services/{ServiceSid}/Lists": {
       "description": "Sync list objects",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1377,10 +1377,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1401,7 +1401,7 @@
             }
           },
           {
-            "description": "Alias for collection_ttl",
+            "description": "Alias for collection_ttl. If both are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -1410,7 +1410,7 @@
             }
           },
           {
-            "description": "Time-to-live of this List in seconds, defaults to no expiration.",
+            "description": "Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -1454,10 +1454,10 @@
     "/v1/Services/{ServiceSid}/Lists/{ListSid}/Items": {
       "description": "Items in a sync list",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1469,7 +1469,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -1481,7 +1481,7 @@
             }
           },
           {
-            "description": "A string; asc or desc",
+            "description": "A string; `asc` or `desc`",
             "in": "query",
             "name": "Order",
             "required": false,
@@ -1494,7 +1494,7 @@
             }
           },
           {
-            "description": "An integer representing Item index offset.",
+            "description": "An integer representing Item index offset (inclusive). If not present, query is performed from the start or end, depending on the Order query parameter.",
             "in": "query",
             "name": "From",
             "required": false,
@@ -1503,7 +1503,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Bounds",
             "required": false,
@@ -1575,10 +1575,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1590,7 +1590,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -1611,7 +1611,7 @@
             }
           },
           {
-            "description": "Alias for item_ttl",
+            "description": "Alias for item_ttl. If both are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -1620,7 +1620,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item in seconds, defaults to no expiration.",
+            "description": "Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the list item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.",
             "in": "query",
             "name": "ItemTtl",
             "required": false,
@@ -1629,7 +1629,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item's parent List in seconds, defaults to no expiration.",
+            "description": "Time-to-live of this item's parent List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the list item's data or ttl is updated in the same request.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -1672,10 +1672,10 @@
     },
     "/v1/Services/{ServiceSid}/Lists/{ListSid}/Items/{Index}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1687,7 +1687,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -1699,7 +1699,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Index",
             "required": true,
@@ -1724,10 +1724,10 @@
       },
       "description": "Items in a sync list",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1739,7 +1739,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -1751,7 +1751,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Index",
             "required": true,
@@ -1781,10 +1781,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1796,7 +1796,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -1808,7 +1808,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Index",
             "required": true,
@@ -1826,7 +1826,7 @@
             }
           },
           {
-            "description": "Alias for item_ttl",
+            "description": "Alias for item_ttl. If both are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -1835,7 +1835,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item in seconds, defaults to no expiration.",
+            "description": "Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the list item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.",
             "in": "query",
             "name": "ItemTtl",
             "required": false,
@@ -1844,7 +1844,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item's parent List in seconds, defaults to no expiration.",
+            "description": "Time-to-live of this item's parent List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the list item's data or ttl is updated in the same request.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -1891,7 +1891,7 @@
         "description": "Retrieve a list of all Permissions applying to a Sync List.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID or unique name.",
+            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1903,7 +1903,7 @@
             }
           },
           {
-            "description": "Sync List SID or unique name.",
+            "description": "Identifier of the Sync List. Either a SID or a unique name.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -1991,7 +1991,7 @@
         "description": "Delete a specific Sync List Permission.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID or unique name.",
+            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2003,7 +2003,7 @@
             }
           },
           {
-            "description": "Sync List SID or unique name.",
+            "description": "Identifier of the Sync List. Either a SID or a unique name.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -2015,7 +2015,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync List Permission applies.",
+            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -2043,7 +2043,7 @@
         "description": "Fetch a specific Sync List Permission.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID or unique name.",
+            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2055,7 +2055,7 @@
             }
           },
           {
-            "description": "Sync List SID or unique name.",
+            "description": "Identifier of the Sync List. Either a SID or a unique name.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -2067,7 +2067,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync List Permission applies.",
+            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -2100,7 +2100,7 @@
         "description": "Update an identity's access to a specific Sync List.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID or unique name.",
+            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2112,7 +2112,7 @@
             }
           },
           {
-            "description": "Sync List SID or unique name.",
+            "description": "Identifier of the Sync List. Either a SID or a unique name.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -2124,7 +2124,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync List Permission applies.",
+            "description": "Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -2133,7 +2133,7 @@
             }
           },
           {
-            "description": "Read access.",
+            "description": "Boolean flag specifying whether the identity can read the Sync List.",
             "in": "query",
             "name": "Read",
             "required": true,
@@ -2142,7 +2142,7 @@
             }
           },
           {
-            "description": "Write access.",
+            "description": "Boolean flag specifying whether the identity can create, update and delete Items of the Sync List.",
             "in": "query",
             "name": "Write",
             "required": true,
@@ -2151,7 +2151,7 @@
             }
           },
           {
-            "description": "Manage access.",
+            "description": "Boolean flag specifying whether the identity can delete the Sync List.",
             "in": "query",
             "name": "Manage",
             "required": true,
@@ -2195,10 +2195,10 @@
     },
     "/v1/Services/{ServiceSid}/Lists/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2210,7 +2210,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2238,10 +2238,10 @@
       },
       "description": "Sync list objects",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2253,7 +2253,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2286,10 +2286,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2301,7 +2301,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2313,7 +2313,7 @@
             }
           },
           {
-            "description": "Alias for collection_ttl",
+            "description": "Alias for collection_ttl. If both are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -2322,7 +2322,7 @@
             }
           },
           {
-            "description": "Time-to-live of this List in seconds, defaults to no expiration.",
+            "description": "Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -2366,10 +2366,10 @@
     "/v1/Services/{ServiceSid}/Maps": {
       "description": "Sync map objects",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2440,10 +2440,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2464,7 +2464,7 @@
             }
           },
           {
-            "description": "Alias for collection_ttl",
+            "description": "Alias for collection_ttl. If both are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -2473,7 +2473,7 @@
             }
           },
           {
-            "description": "Time-to-live of this Map in seconds, defaults to no expiration.",
+            "description": "Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -2517,10 +2517,10 @@
     "/v1/Services/{ServiceSid}/Maps/{MapSid}/Items": {
       "description": "Keys in a sync map",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2532,7 +2532,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2544,7 +2544,7 @@
             }
           },
           {
-            "description": "A string; asc or desc. Map Items are ordered lexicographically by Item key.",
+            "description": "A string; asc or desc. Map Items are [ordered lexicographically](https://en.wikipedia.org/wiki/Lexicographical_order) by Item key.",
             "in": "query",
             "name": "Order",
             "required": false,
@@ -2557,7 +2557,7 @@
             }
           },
           {
-            "description": "The Item key offset (including the specified key).",
+            "description": "The Item key offset (including the specified key). If not present, query is performed from the start or end, depending on the Order query parameter.",
             "in": "query",
             "name": "From",
             "required": false,
@@ -2566,7 +2566,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "query",
             "name": "Bounds",
             "required": false,
@@ -2638,10 +2638,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2653,7 +2653,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2665,7 +2665,7 @@
             }
           },
           {
-            "description": "The unique user-defined key of this Map Item.",
+            "description": "The unique user-defined key of this Map Item. Up to 320 characters long.",
             "in": "query",
             "name": "Key",
             "required": true,
@@ -2683,7 +2683,7 @@
             }
           },
           {
-            "description": "Alias for item_ttl",
+            "description": "Alias for item_ttl. If both are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -2692,7 +2692,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item in seconds, defaults to no expiration.",
+            "description": "Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the map item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.",
             "in": "query",
             "name": "ItemTtl",
             "required": false,
@@ -2701,7 +2701,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item's parent Map in seconds, defaults to no expiration.",
+            "description": "Time-to-live of this item's parent Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the map item's data or ttl is updated in the same request.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -2744,10 +2744,10 @@
     },
     "/v1/Services/{ServiceSid}/Maps/{MapSid}/Items/{Key}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2759,7 +2759,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2771,7 +2771,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Key",
             "required": true,
@@ -2796,10 +2796,10 @@
       },
       "description": "Keys in a sync map",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2811,7 +2811,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2823,7 +2823,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Key",
             "required": true,
@@ -2853,10 +2853,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2868,7 +2868,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2880,7 +2880,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Key",
             "required": true,
@@ -2889,7 +2889,7 @@
             }
           },
           {
-            "description": "Contains an arbitrary JSON object to be stored in this Map Item.",
+            "description": "Contains an arbitrary JSON object to be stored in this Map Item. Serialized to string to respect HTTP form input, up to 16KB.",
             "in": "query",
             "name": "Data",
             "required": false,
@@ -2898,7 +2898,7 @@
             }
           },
           {
-            "description": "Alias for item_ttl",
+            "description": "Alias for item_ttl. If both are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -2907,7 +2907,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item in seconds, defaults to no expiration.",
+            "description": "Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the map item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.",
             "in": "query",
             "name": "ItemTtl",
             "required": false,
@@ -2916,7 +2916,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item's parent Map in seconds, defaults to no expiration.",
+            "description": "Time-to-live of this item's parent Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the map item's data or ttl is updated in the same request.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -2963,7 +2963,7 @@
         "description": "Retrieve a list of all Permissions applying to a Sync Map.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID or unique name.",
+            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2975,7 +2975,7 @@
             }
           },
           {
-            "description": "Sync Map SID or unique name.",
+            "description": "Identifier of the Sync Map. Either a SID or a unique name.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -3063,7 +3063,7 @@
         "description": "Delete a specific Sync Map Permission.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID or unique name",
+            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3075,7 +3075,7 @@
             }
           },
           {
-            "description": "Sync Map SID or unique name.",
+            "description": "Identifier of the Sync Map. Either a SID or a unique name.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -3087,7 +3087,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync Map Permission applies.",
+            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -3115,7 +3115,7 @@
         "description": "Fetch a specific Sync Map Permission.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID or unique name.",
+            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3127,7 +3127,7 @@
             }
           },
           {
-            "description": "Sync Map SID or unique name.",
+            "description": "Identifier of the Sync Map. Either a SID or a unique name.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -3139,7 +3139,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync Map Permission applies.",
+            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -3172,7 +3172,7 @@
         "description": "Update an identity's access to a specific Sync Map.",
         "parameters": [
           {
-            "description": "Sync Service Instance SID or unique name.",
+            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3184,7 +3184,7 @@
             }
           },
           {
-            "description": "Sync Map SID or unique name.",
+            "description": "Identifier of the Sync Map. Either a SID or a unique name.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -3196,7 +3196,7 @@
             }
           },
           {
-            "description": "Identity of the user to whom the Sync Map Permission applies.",
+            "description": "Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -3205,7 +3205,7 @@
             }
           },
           {
-            "description": "Read access.",
+            "description": "Boolean flag specifying whether the identity can read the Sync Map.",
             "in": "query",
             "name": "Read",
             "required": true,
@@ -3214,7 +3214,7 @@
             }
           },
           {
-            "description": "Write access.",
+            "description": "Boolean flag specifying whether the identity can create, update and delete Items of the Sync Map.",
             "in": "query",
             "name": "Write",
             "required": true,
@@ -3223,7 +3223,7 @@
             }
           },
           {
-            "description": "Manage access.",
+            "description": "Boolean flag specifying whether the identity can delete the Sync Map.",
             "in": "query",
             "name": "Manage",
             "required": true,
@@ -3267,10 +3267,10 @@
     },
     "/v1/Services/{ServiceSid}/Maps/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3282,7 +3282,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3310,10 +3310,10 @@
       },
       "description": "Sync map objects",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3325,7 +3325,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3358,10 +3358,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3373,7 +3373,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3385,7 +3385,7 @@
             }
           },
           {
-            "description": "Alias for collection_ttl",
+            "description": "Alias for collection_ttl. If both are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -3394,7 +3394,7 @@
             }
           },
           {
-            "description": "New time-to-live of this Map in seconds.",
+            "description": "New time-to-live of this Map in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -3441,7 +3441,7 @@
         "description": "Retrieve a list of all Streams in a Service Instance.",
         "parameters": [
           {
-            "description": "Service Instance SID or unique name.",
+            "description": "Identifier of the Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3515,7 +3515,7 @@
         "description": "Create a new Stream.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3527,7 +3527,7 @@
             }
           },
           {
-            "description": "Stream unique name.",
+            "description": "The unique and addressable name of this Stream. Optional, up to 320 characters long.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -3536,7 +3536,7 @@
             }
           },
           {
-            "description": "Stream TTL.",
+            "description": "Time-to-live of this Stream in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -3582,7 +3582,7 @@
         "description": "Delete a specific Stream.",
         "parameters": [
           {
-            "description": "Service Instance SID or unique name.",
+            "description": "Identifier of the Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3594,7 +3594,7 @@
             }
           },
           {
-            "description": "Stream SID or unique name.",
+            "description": "Identifier of the Stream. Either a SID or a unique name.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3625,7 +3625,7 @@
         "description": "Fetch a specific Stream.",
         "parameters": [
           {
-            "description": "Service Instance SID or unique name.",
+            "description": "Identifier of the Service Instance. Either a SID or 'default'.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3637,7 +3637,7 @@
             }
           },
           {
-            "description": "Stream SID or unique name.",
+            "description": "Identifier of the Stream. Either a SID or a unique name.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3673,7 +3673,7 @@
         "description": "Update a specific Stream.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3685,7 +3685,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3697,7 +3697,7 @@
             }
           },
           {
-            "description": "Stream TTL.",
+            "description": "New time-to-live of this Stream in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -3744,7 +3744,7 @@
         "description": "Create a new Stream Message.",
         "parameters": [
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3756,7 +3756,7 @@
             }
           },
           {
-            "description": null,
+            "description": "",
             "in": "path",
             "name": "StreamSid",
             "required": true,
@@ -3768,7 +3768,7 @@
             }
           },
           {
-            "description": "Stream Message body.",
+            "description": "The body of the Stream Message. Arbitrary JSON object, maximum size 4KB.",
             "in": "query",
             "name": "Data",
             "required": true,
@@ -3809,7 +3809,7 @@
     },
     "/v1/Services/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A unique identifier for this service instance.",
@@ -3840,7 +3840,7 @@
       },
       "description": "Containers for sync objects",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A unique identifier for this service instance.",
@@ -3876,7 +3876,7 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
             "description": "A unique identifier for this service instance.",
@@ -3910,7 +3910,7 @@
             }
           },
           {
-            "description": "True or false - controls whether this instance fires webhooks when client endpoints connect to Sync",
+            "description": "True or false - controls whether this instance fires webhooks when client endpoints connect to Sync Defaults to false.",
             "in": "query",
             "name": "ReachabilityWebhooksEnabled",
             "required": false,
@@ -3919,7 +3919,7 @@
             }
           },
           {
-            "description": "true or false - determines whether token identities must be granted access to Sync objects via the Permissions API in this Service.",
+            "description": "`true` or `false` - determines whether token identities must be granted access to Sync objects via the [Permissions API](https://www.twilio.com/docs/api/sync/rest/sync-rest-api-permissions) in this Service.",
             "in": "query",
             "name": "AclEnabled",
             "required": false,
@@ -3928,7 +3928,7 @@
             }
           },
           {
-            "description": "true or false - Determines whether transient disconnections (i.e. an immediate reconnect succeeds) cause reachability webhooks.",
+            "description": "`true` or `false` - If false, every endpoint disconnection immediately yields a reachability webhook (if enabled). If true, then 'disconnection' webhook events will only be fired after a configurable delay. Intervening reconnections would effectively cancel that webhook. Defaults to false.",
             "in": "query",
             "name": "ReachabilityDebouncingEnabled",
             "required": false,
@@ -3937,7 +3937,7 @@
             }
           },
           {
-            "description": "Determines how long an identity must be offline before reachability webhooks fire.",
+            "description": "Reachability webhook delay period in milliseconds. Determines the delay after which a Sync identity is declared actually offline, measured from the moment the last running client disconnects. If all endpoints remain offline throughout this delay, then reachability webhooks will be fired (if enabled). A reconnection by any endpoint during this window \u2014 from the same identity \u2014 means no reachability webhook would be fired. Must be between 1000 and 30000. Defaults to 5000.",
             "in": "query",
             "name": "ReachabilityDebouncingWindow",
             "required": false,

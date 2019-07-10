@@ -511,7 +511,7 @@
         "description": "Retrieve a list of all Engagements for the Flow.",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -585,7 +585,7 @@
         "description": "Triggers a new Engagement for the Flow",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -597,7 +597,7 @@
             }
           },
           {
-            "description": "The Contact phone number to start a Studio Flow Engagement.",
+            "description": "The Contact phone number to start a Studio Flow Engagement, available as variable {{contact.channel.address}}.",
             "in": "query",
             "name": "To",
             "required": true,
@@ -606,7 +606,7 @@
             }
           },
           {
-            "description": "The Twilio phone number to send messages or initiate calls from during the Flow Engagement.",
+            "description": "The Twilio phone number to send messages or initiate calls from during the Flow Engagement, available as variable {{flow.channel.address}}",
             "in": "query",
             "name": "From",
             "required": true,
@@ -615,7 +615,7 @@
             }
           },
           {
-            "description": "JSON data that will be added to your flow's context and can accessed as variables inside your flow.",
+            "description": "JSON data that will be added to your flow's context and can accessed as variables inside your flow. For example, if you pass in Parameters={'name':'Zeke'} then inside a widget you can reference the variable {{flow.data.name}} which will return the string 'Zeke'. Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string.",
             "in": "query",
             "name": "Parameters",
             "required": false,
@@ -663,7 +663,7 @@
         "description": "Retrieve the most recent context for an Engagement.",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -675,7 +675,7 @@
             }
           },
           {
-            "description": "Engagement Sid.",
+            "description": "The unique SID identifier of the Engagement.",
             "in": "path",
             "name": "EngagementSid",
             "required": true,
@@ -723,7 +723,7 @@
         "description": "Retrieve a list of all Steps for an Engagement.",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -735,7 +735,7 @@
             }
           },
           {
-            "description": "Engagement Sid.",
+            "description": "The unique SID identifier of the Engagement.",
             "in": "path",
             "name": "EngagementSid",
             "required": true,
@@ -824,7 +824,7 @@
         "description": "Retrieve a Step.",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -836,7 +836,7 @@
             }
           },
           {
-            "description": "Engagement Sid.",
+            "description": "The unique SID identifier of the Engagement.",
             "in": "path",
             "name": "EngagementSid",
             "required": true,
@@ -848,7 +848,7 @@
             }
           },
           {
-            "description": "Step Sid.",
+            "description": "The unique SID identifier of the Step.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -899,7 +899,7 @@
         "description": "Retrieve the context for an Engagement Step.",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -911,7 +911,7 @@
             }
           },
           {
-            "description": "Engagement Sid.",
+            "description": "The unique SID identifier of the Engagement.",
             "in": "path",
             "name": "EngagementSid",
             "required": true,
@@ -923,7 +923,7 @@
             }
           },
           {
-            "description": "Step Sid.",
+            "description": "The unique SID identifier of the Step.",
             "in": "path",
             "name": "StepSid",
             "required": true,
@@ -970,7 +970,7 @@
         "description": "Delete this Engagement and all Steps relating to it.",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -982,7 +982,7 @@
             }
           },
           {
-            "description": "Engagement Sid.",
+            "description": "The unique SID identifier of the Engagement.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1013,7 +1013,7 @@
         "description": "Retrieve an Engagement",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1025,7 +1025,7 @@
             }
           },
           {
-            "description": "Engagement Sid.",
+            "description": "The unique SID identifier of the Engagement.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1076,7 +1076,7 @@
         "description": "Retrieve a list of all Executions for the Flow.",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1088,7 +1088,7 @@
             }
           },
           {
-            "description": "Only show Executions that started on or after this ISO8601 date-time.",
+            "description": "Only show Executions that started on or after this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.",
             "in": "query",
             "name": "DateCreatedFrom",
             "required": false,
@@ -1098,7 +1098,7 @@
             }
           },
           {
-            "description": "Only show Executions that started before this this ISO8601 date-time.",
+            "description": "Only show Executions that started before this this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.",
             "in": "query",
             "name": "DateCreatedTo",
             "required": false,
@@ -1170,7 +1170,7 @@
         "description": "Triggers a new Execution for the Flow",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1182,7 +1182,7 @@
             }
           },
           {
-            "description": "The Contact phone number to start a Studio Flow Execution.",
+            "description": "The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`.",
             "in": "query",
             "name": "To",
             "required": true,
@@ -1191,7 +1191,7 @@
             }
           },
           {
-            "description": "The Twilio phone number to send messages or initiate calls from during the Flow Execution.",
+            "description": "The Twilio phone number to send messages or initiate calls from during the Flow Execution, available as variable `{{flow.channel.address}}`.",
             "in": "query",
             "name": "From",
             "required": true,
@@ -1200,7 +1200,7 @@
             }
           },
           {
-            "description": "JSON data that will be added to your flow's context and can accessed as variables inside your flow.",
+            "description": "JSON data that will be added to your flow's context and can accessed as variables inside your flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, then inside a widget you can reference the variable `{{flow.data.name}}` which will return the string \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string.",
             "in": "query",
             "name": "Parameters",
             "required": false,
@@ -1248,7 +1248,7 @@
         "description": "Retrieve the most recent context for an Execution.",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1260,7 +1260,7 @@
             }
           },
           {
-            "description": "Execution Sid.",
+            "description": "The unique SID identifier of the Execution.",
             "in": "path",
             "name": "ExecutionSid",
             "required": true,
@@ -1308,7 +1308,7 @@
         "description": "Retrieve a list of all Steps for an Execution.",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1320,7 +1320,7 @@
             }
           },
           {
-            "description": "Execution Sid.",
+            "description": "The unique SID identifier of the Execution.",
             "in": "path",
             "name": "ExecutionSid",
             "required": true,
@@ -1408,7 +1408,7 @@
         "description": "Retrieve a Step.",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1420,7 +1420,7 @@
             }
           },
           {
-            "description": "Execution Sid.",
+            "description": "The unique SID identifier of the Execution.",
             "in": "path",
             "name": "ExecutionSid",
             "required": true,
@@ -1432,7 +1432,7 @@
             }
           },
           {
-            "description": "Step Sid.",
+            "description": "The unique SID identifier of the Step.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1482,7 +1482,7 @@
         "description": "Retrieve the context for an Execution Step.",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1494,7 +1494,7 @@
             }
           },
           {
-            "description": "Execution Sid.",
+            "description": "The unique SID identifier of the Execution.",
             "in": "path",
             "name": "ExecutionSid",
             "required": true,
@@ -1506,7 +1506,7 @@
             }
           },
           {
-            "description": "Step Sid.",
+            "description": "The unique SID identifier of the Step.",
             "in": "path",
             "name": "StepSid",
             "required": true,
@@ -1553,7 +1553,7 @@
         "description": "Delete this Execution and all Steps relating to it.",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1565,7 +1565,7 @@
             }
           },
           {
-            "description": "Execution Sid.",
+            "description": "The unique SID identifier of the Execution.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1596,7 +1596,7 @@
         "description": "Retrieve an Execution",
         "parameters": [
           {
-            "description": "Flow Sid.",
+            "description": "The unique SID identifier of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1608,7 +1608,7 @@
             }
           },
           {
-            "description": "Execution Sid.",
+            "description": "The unique SID identifier of the Execution.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1658,7 +1658,7 @@
         "description": "Delete a specific Flow.",
         "parameters": [
           {
-            "description": "A string that uniquely identifies this Flow.",
+            "description": "A 34 character string that uniquely identifies this Flow.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1689,7 +1689,7 @@
         "description": "Retrieve a specific Flow.",
         "parameters": [
           {
-            "description": "A string that uniquely identifies this Flow.",
+            "description": "A 34 character string that uniquely identifies this Flow.",
             "in": "path",
             "name": "Sid",
             "required": true,

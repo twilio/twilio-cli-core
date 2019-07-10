@@ -638,7 +638,7 @@
     "/v1/Assistants": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -699,10 +699,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "A string to describe the new resource",
+            "description": "A descriptive string that you create to describe the new resource. It is not unique and can be up to 255 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -711,7 +711,7 @@
             }
           },
           {
-            "description": "Whether queries should be logged and kept after training",
+            "description": "Whether queries should be logged and kept after training. Can be: `true` or `false` and defaults to `true`. If `true`, queries are stored for 30 days, and then deleted. If `false`, no queries are stored.",
             "in": "query",
             "name": "LogQueries",
             "required": false,
@@ -720,7 +720,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the new resource",
+            "description": "An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the `sid` in the URL path to address the resource. The first 64 characters must be unique.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -729,7 +729,7 @@
             }
           },
           {
-            "description": "Reserved",
+            "description": "Reserved.",
             "in": "query",
             "name": "CallbackUrl",
             "required": false,
@@ -739,7 +739,7 @@
             }
           },
           {
-            "description": "Reserved",
+            "description": "Reserved.",
             "in": "query",
             "name": "CallbackEvents",
             "required": false,
@@ -748,7 +748,7 @@
             }
           },
           {
-            "description": "A JSON string that defines the Assistant's style sheet",
+            "description": "The JSON string that defines the Assistant's [style sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet)",
             "in": "query",
             "name": "StyleSheet",
             "required": false,
@@ -757,7 +757,7 @@
             }
           },
           {
-            "description": "A JSON object that defines the Assistant's default tasks for various scenarios",
+            "description": "A JSON object that defines the Assistant's [default tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios, including initiation actions and fallback tasks.",
             "in": "query",
             "name": "Defaults",
             "required": false,
@@ -801,10 +801,10 @@
     "/v1/Assistants/{AssistantSid}/Defaults": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to fetch",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -837,10 +837,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to update",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -852,7 +852,7 @@
             }
           },
           {
-            "description": "A JSON string that describes the default task links.",
+            "description": "A JSON string that describes the default task links for the `assistant_initiation`, `collect`, and `fallback` situations.",
             "in": "query",
             "name": "Defaults",
             "required": false,
@@ -894,10 +894,10 @@
     "/v1/Assistants/{AssistantSid}/Dialogues/{Sid}": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to fetch",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -909,7 +909,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Dialogue resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -955,10 +955,10 @@
     "/v1/Assistants/{AssistantSid}/FieldTypes": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant with the FieldType resources to read",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to read.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1029,10 +1029,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the new resource",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1044,7 +1044,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the new resource",
+            "description": "An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the `sid` in the URL path to address the resource. The first 64 characters must be unique.",
             "in": "query",
             "name": "UniqueName",
             "required": true,
@@ -1053,7 +1053,7 @@
             }
           },
           {
-            "description": "A string to describe the new resource",
+            "description": "A descriptive string that you create to describe the new resource. It is not unique and can be up to 255 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -1097,10 +1097,10 @@
     "/v1/Assistants/{AssistantSid}/FieldTypes/{FieldTypeSid}/FieldValues": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the FieldType associated with the resources to read",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the FieldType associated with the resources to read.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1112,7 +1112,7 @@
             }
           },
           {
-            "description": "The SID of the Field Type associated with the Field Value to read",
+            "description": "The SID of the Field Type associated with the Field Value to read.",
             "in": "path",
             "name": "FieldTypeSid",
             "required": true,
@@ -1124,7 +1124,7 @@
             }
           },
           {
-            "description": "The ISO language-country tag that identifies the language of the value",
+            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US`, `nl-NL`",
             "in": "query",
             "name": "Language",
             "required": false,
@@ -1192,10 +1192,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the FieldType associated with the new resource",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the FieldType associated with the new resource.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1207,7 +1207,7 @@
             }
           },
           {
-            "description": "The SID of the Field Type associated with the Field Value",
+            "description": "The SID of the Field Type associated with the Field Value.",
             "in": "path",
             "name": "FieldTypeSid",
             "required": true,
@@ -1219,7 +1219,7 @@
             }
           },
           {
-            "description": "The ISO language-country tag that identifies the language of the value",
+            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US`, `nl-NL`",
             "in": "query",
             "name": "Language",
             "required": true,
@@ -1228,7 +1228,7 @@
             }
           },
           {
-            "description": "The Field Value data",
+            "description": "The Field Value data.",
             "in": "query",
             "name": "Value",
             "required": true,
@@ -1237,7 +1237,7 @@
             }
           },
           {
-            "description": "The string value that indicates which word the field value is a synonym of",
+            "description": "The string value that indicates which word the field value is a synonym of.",
             "in": "query",
             "name": "SynonymOf",
             "required": false,
@@ -1283,10 +1283,10 @@
     },
     "/v1/Assistants/{AssistantSid}/FieldTypes/{FieldTypeSid}/FieldValues/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the FieldType associated with the resources to delete",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the FieldType associated with the resources to delete.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1298,7 +1298,7 @@
             }
           },
           {
-            "description": "The SID of the Field Type associated with the Field Value to delete",
+            "description": "The SID of the Field Type associated with the Field Value to delete.",
             "in": "path",
             "name": "FieldTypeSid",
             "required": true,
@@ -1310,7 +1310,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the FieldValue resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1338,10 +1338,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the FieldType associated with the resource to fetch",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the FieldType associated with the resource to fetch.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1353,7 +1353,7 @@
             }
           },
           {
-            "description": "The SID of the Field Type associated with  the Field Value to fetch",
+            "description": "The SID of the Field Type associated with the Field Value to fetch.",
             "in": "path",
             "name": "FieldTypeSid",
             "required": true,
@@ -1365,7 +1365,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the FieldValue resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1411,10 +1411,10 @@
     },
     "/v1/Assistants/{AssistantSid}/FieldTypes/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant with the FieldType resources to delete",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1426,7 +1426,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the FieldType resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1454,10 +1454,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to fetch",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1469,7 +1469,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the FieldType resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1502,10 +1502,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant with the FieldType resource to update",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the to update.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1517,7 +1517,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the FieldType resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1529,7 +1529,7 @@
             }
           },
           {
-            "description": "A string to describe the resource",
+            "description": "A descriptive string that you create to describe the resource. It is not unique and can be up to 255 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -1538,7 +1538,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the resource",
+            "description": "An application-defined string that uniquely identifies the resource. It can be used as an alternative to the `sid` in the URL path to address the resource. The first 64 characters must be unique.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -1582,10 +1582,10 @@
     "/v1/Assistants/{AssistantSid}/ModelBuilds": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resources to read",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to read.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1656,10 +1656,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the new resource",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1671,7 +1671,7 @@
             }
           },
           {
-            "description": "The URL we should call using a POST method to send status information to your application",
+            "description": "The URL we should call using a POST method to send status information to your application.",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -1681,7 +1681,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the new resource",
+            "description": "An application-defined string that uniquely identifies the new resource. This value must be a unique string of no more than 64 characters. It can be used as an alternative to the `sid` in the URL path to address the resource.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -1725,10 +1725,10 @@
     },
     "/v1/Assistants/{AssistantSid}/ModelBuilds/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resources to delete",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1740,7 +1740,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the ModelBuild resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1768,10 +1768,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to fetch",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1783,7 +1783,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the ModelBuild resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1816,10 +1816,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to update",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1831,7 +1831,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource to update",
+            "description": "The Twilio-provided string that uniquely identifies the ModelBuild resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1843,7 +1843,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the resource",
+            "description": "An application-defined string that uniquely identifies the resource. This value must be a unique string of no more than 64 characters. It can be used as an alternative to the `sid` in the URL path to address the resource.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -1888,10 +1888,10 @@
     "/v1/Assistants/{AssistantSid}/Queries": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resources to read",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to read.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -1903,7 +1903,7 @@
             }
           },
           {
-            "description": "The ISO language-country string that specifies the language used by the Query resources to read",
+            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used by the Query resources to read. For example: `en-US`.",
             "in": "query",
             "name": "Language",
             "required": false,
@@ -1912,7 +1912,7 @@
             }
           },
           {
-            "description": "The SID or unique name of the Model Build to be queried",
+            "description": "The SID or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.",
             "in": "query",
             "name": "ModelBuild",
             "required": false,
@@ -1924,7 +1924,7 @@
             }
           },
           {
-            "description": "The status of the resources to read",
+            "description": "The status of the resources to read. Can be: `pending_review`, `reviewed`, or `discarded`",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -1992,10 +1992,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the new resource",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2007,7 +2007,7 @@
             }
           },
           {
-            "description": "The ISO language-country string that specifies the language used for the new query",
+            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the new query. For example: `en-US`.",
             "in": "query",
             "name": "Language",
             "required": true,
@@ -2016,7 +2016,7 @@
             }
           },
           {
-            "description": "The end-user's natural language input",
+            "description": "The end-user's natural language input. It can be up to 2048 characters long.",
             "in": "query",
             "name": "Query",
             "required": true,
@@ -2025,7 +2025,7 @@
             }
           },
           {
-            "description": "The list of tasks to limit the new query to",
+            "description": "The list of tasks to limit the new query to. Tasks are expressed as a comma-separated list of task `unique_name` values. For example, `task-unique_name-1, task-unique_name-2`. Listing specific tasks is useful to constrain the paths that a user can take.",
             "in": "query",
             "name": "Tasks",
             "required": false,
@@ -2034,7 +2034,7 @@
             }
           },
           {
-            "description": "The SID or unique name of the Model Build to be queried",
+            "description": "The SID or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.",
             "in": "query",
             "name": "ModelBuild",
             "required": false,
@@ -2081,10 +2081,10 @@
     },
     "/v1/Assistants/{AssistantSid}/Queries/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resources to delete",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2096,7 +2096,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Query resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2124,10 +2124,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to fetch",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2139,7 +2139,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Query resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2172,10 +2172,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to update",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2187,7 +2187,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource to update",
+            "description": "The Twilio-provided string that uniquely identifies the Query resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2199,7 +2199,7 @@
             }
           },
           {
-            "description": "The SID of an optional reference to the Sample created from the query",
+            "description": "The SID of an optional reference to the [Sample](https://www.twilio.com/docs/autopilot/api/task-sample) created from the query.",
             "in": "query",
             "name": "SampleSid",
             "required": false,
@@ -2211,7 +2211,7 @@
             }
           },
           {
-            "description": "The new status of the resource",
+            "description": "The new status of the resource. Can be: `pending_review`, `reviewed`, or `discarded`",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -2259,7 +2259,7 @@
         "description": "Returns Style sheet JSON object for the Assistant",
         "parameters": [
           {
-            "description": "The SID of the Assistant with the StyleSheet resource to fetch",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2295,7 +2295,7 @@
         "description": "Updates the style sheet for an Assistant identified by `assistant_sid`.",
         "parameters": [
           {
-            "description": "The SID of the Assistant with the StyleSheet resource to update",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2307,7 +2307,7 @@
             }
           },
           {
-            "description": "The JSON string that describes the style sheet object",
+            "description": "The JSON string that describes the style sheet object.",
             "in": "query",
             "name": "StyleSheet",
             "required": false,
@@ -2349,10 +2349,10 @@
     "/v1/Assistants/{AssistantSid}/Tasks": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resources to read",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to read.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2423,10 +2423,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the new resource",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2438,7 +2438,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the resource",
+            "description": "An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the `sid` in the URL path to address the resource. This value must be unique and 64 characters or less in length.",
             "in": "query",
             "name": "UniqueName",
             "required": true,
@@ -2447,7 +2447,7 @@
             }
           },
           {
-            "description": " descriptive string that you create to describe the new resource",
+            "description": "A descriptive string that you create to describe the new resource. It is not unique and can be up to 255 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -2456,7 +2456,7 @@
             }
           },
           {
-            "description": "The JSON string that specifies the actions that instruct the Assistant on how to perform the task",
+            "description": "The JSON string that specifies the [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant on how to perform the task. It is optional and not unique.",
             "in": "query",
             "name": "Actions",
             "required": false,
@@ -2465,7 +2465,7 @@
             }
           },
           {
-            "description": "The URL from which the Assistant can fetch actions",
+            "description": "The URL from which the Assistant can fetch actions.",
             "in": "query",
             "name": "ActionsUrl",
             "required": false,
@@ -2509,10 +2509,10 @@
     },
     "/v1/Assistants/{AssistantSid}/Tasks/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resources to delete",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2524,7 +2524,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource to delete",
+            "description": "The Twilio-provided string that uniquely identifies the Task resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2552,10 +2552,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to fetch",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2567,7 +2567,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource to fetch",
+            "description": "The Twilio-provided string that uniquely identifies the Task resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2600,10 +2600,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to update",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2615,7 +2615,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Task resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2627,7 +2627,7 @@
             }
           },
           {
-            "description": "A string to describe the resource",
+            "description": "A descriptive string that you create to describe the resource. It is not unique and can be up to 255 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -2636,7 +2636,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the resource",
+            "description": "An application-defined string that uniquely identifies the resource. This value must be 64 characters or less in length and be unique. It can be used as an alternative to the `sid` in the URL path to address the resource.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -2645,7 +2645,7 @@
             }
           },
           {
-            "description": "The JSON string that specifies the actions that instruct the Assistant on how to perform the task",
+            "description": "The JSON string that specifies the [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant on how to perform the task.",
             "in": "query",
             "name": "Actions",
             "required": false,
@@ -2654,7 +2654,7 @@
             }
           },
           {
-            "description": "The URL from which the Assistant can fetch actions",
+            "description": "The URL from which the Assistant can fetch actions.",
             "in": "query",
             "name": "ActionsUrl",
             "required": false,
@@ -2702,7 +2702,7 @@
         "description": "Returns JSON actions for the Task.",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the Task for which the task actions to fetch were defined",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task for which the task actions to fetch were defined.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2714,7 +2714,7 @@
             }
           },
           {
-            "description": "The SID of the Task for which the task actions to fetch were defined",
+            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) for which the task actions to fetch were defined.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -2750,7 +2750,7 @@
         "description": "Updates the actions of an Task identified by {TaskSid} or {TaskUniqueName}.",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the Task for which the task actions to update were defined",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task for which the task actions to update were defined.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2762,7 +2762,7 @@
             }
           },
           {
-            "description": "The SID of the Task for which the task actions to update were defined",
+            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) for which the task actions to update were defined.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -2774,7 +2774,7 @@
             }
           },
           {
-            "description": "The JSON string that specifies the actions that instruct the Assistant on how to perform the task",
+            "description": "The JSON string that specifies the [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant on how to perform the task.",
             "in": "query",
             "name": "Actions",
             "required": false,
@@ -2816,10 +2816,10 @@
     "/v1/Assistants/{AssistantSid}/Tasks/{TaskSid}/Fields": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the Task associated with the resources to read.",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resources to read.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2831,7 +2831,7 @@
             }
           },
           {
-            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resources to read",
+            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resources to read.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -2902,10 +2902,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the Task associated with the new resource",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the new resource.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2917,7 +2917,7 @@
             }
           },
           {
-            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the new Field resource",
+            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the new Field resource.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -2929,7 +2929,7 @@
             }
           },
           {
-            "description": "The Field Type of this field",
+            "description": "The Field Type of the new field. Can be: a [Built-in Field Type](https://www.twilio.com/docs/assistant/api/built-in-field-types), the `unique_name`, or the `sid` of a custom Field Type.",
             "in": "query",
             "name": "FieldType",
             "required": true,
@@ -2938,7 +2938,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the new resource",
+            "description": "An application-defined string that uniquely identifies the new resource. This value must be a unique string of no more than 64 characters. It can be used as an alternative to the `sid` in the URL path to address the resource.",
             "in": "query",
             "name": "UniqueName",
             "required": true,
@@ -2981,10 +2981,10 @@
     },
     "/v1/Assistants/{AssistantSid}/Tasks/{TaskSid}/Fields/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the Task associated with the resources to delete",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resources to delete.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -2996,7 +2996,7 @@
             }
           },
           {
-            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resource to delete",
+            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resource to delete.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -3008,7 +3008,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Field resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3036,10 +3036,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the Task associated with the resource to fetch",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resource to fetch.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -3051,7 +3051,7 @@
             }
           },
           {
-            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resource to fetch",
+            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resource to fetch.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -3063,7 +3063,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Field resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3110,10 +3110,10 @@
     "/v1/Assistants/{AssistantSid}/Tasks/{TaskSid}/Samples": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the Task associated with the resources to read",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resources to read.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -3125,7 +3125,7 @@
             }
           },
           {
-            "description": "The SID of the Task associated with the Sample resources to read",
+            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resources to read.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -3137,7 +3137,7 @@
             }
           },
           {
-            "description": "The ISO language-country string that specifies the language used for the sample",
+            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the sample. For example: `en-US`.",
             "in": "query",
             "name": "Language",
             "required": false,
@@ -3205,10 +3205,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the Task associated with the new resource",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the new resource.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -3220,7 +3220,7 @@
             }
           },
           {
-            "description": "The SID of the Task associated with the Sample resource to create",
+            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to create.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -3232,7 +3232,7 @@
             }
           },
           {
-            "description": "The ISO language-country string that specifies the language used for the new sample",
+            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the new sample. For example: `en-US`.",
             "in": "query",
             "name": "Language",
             "required": true,
@@ -3241,7 +3241,7 @@
             }
           },
           {
-            "description": "The text example of how end users might express the task",
+            "description": "The text example of how end users might express the task. The sample can contain [Field tag blocks](https://www.twilio.com/docs/autopilot/api/task-sample#field-tagging).",
             "in": "query",
             "name": "TaggedText",
             "required": true,
@@ -3250,7 +3250,7 @@
             }
           },
           {
-            "description": "The communication channel from which the new sample was captured",
+            "description": "The communication channel from which the new sample was captured. Can be: `voice`, `sms`, `chat`, `alexa`, `google-assistant`, `slack`, or null if not included.",
             "in": "query",
             "name": "SourceChannel",
             "required": false,
@@ -3294,10 +3294,10 @@
     },
     "/v1/Assistants/{AssistantSid}/Tasks/{TaskSid}/Samples/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the Task associated with the resources to delete",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resources to delete.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -3309,7 +3309,7 @@
             }
           },
           {
-            "description": "The SID of the Task associated with the Sample resource to delete",
+            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to delete.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -3321,7 +3321,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Sample resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3349,10 +3349,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the Task associated with the resource to fetch",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resource to fetch.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -3364,7 +3364,7 @@
             }
           },
           {
-            "description": "The SID of the Task associated with the Sample resource to create",
+            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to create.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -3376,7 +3376,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Sample resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3409,10 +3409,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the Task associated with the resource to update",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the Task associated with the resource to update.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -3424,7 +3424,7 @@
             }
           },
           {
-            "description": "The SID of the Task associated with the Sample resource to update",
+            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) associated with the Sample resource to update.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -3436,7 +3436,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Sample resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3448,7 +3448,7 @@
             }
           },
           {
-            "description": "The ISO language-country string that specifies the language used for the sample",
+            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the sample. For example: `en-US`.",
             "in": "query",
             "name": "Language",
             "required": false,
@@ -3457,7 +3457,7 @@
             }
           },
           {
-            "description": "The text example of how end users might express the task",
+            "description": "The text example of how end users might express the task. The sample can contain [Field tag blocks](https://www.twilio.com/docs/autopilot/api/task-sample#field-tagging).",
             "in": "query",
             "name": "TaggedText",
             "required": false,
@@ -3466,7 +3466,7 @@
             }
           },
           {
-            "description": "The communication channel from which the sample was captured",
+            "description": "The communication channel from which the sample was captured. Can be: `voice`, `sms`, `chat`, `alexa`, `google-assistant`, `slack`, or null if not included.",
             "in": "query",
             "name": "SourceChannel",
             "required": false,
@@ -3511,10 +3511,10 @@
     "/v1/Assistants/{AssistantSid}/Tasks/{TaskSid}/Statistics": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to fetch",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -3526,7 +3526,7 @@
             }
           },
           {
-            "description": "The SID of the Task that is associated with the resource to fetch",
+            "description": "The SID of the [Task](https://www.twilio.com/docs/autopilot/api/task) that is associated with the resource to fetch.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -3572,10 +3572,10 @@
     "/v1/Assistants/{AssistantSid}/Webhooks": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resources to read",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to read.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -3646,10 +3646,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the new resource",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the new resource.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -3661,7 +3661,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the resource",
+            "description": "An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the `sid` in the URL path to address the resource. This value must be unique and 64 characters or less in length.",
             "in": "query",
             "name": "UniqueName",
             "required": true,
@@ -3734,10 +3734,10 @@
     },
     "/v1/Assistants/{AssistantSid}/Webhooks/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resources to delete",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resources to delete.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -3749,7 +3749,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource to delete",
+            "description": "The Twilio-provided string that uniquely identifies the Webhook resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3777,10 +3777,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to fetch",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to fetch.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -3792,7 +3792,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource to fetch",
+            "description": "The Twilio-provided string that uniquely identifies the Webhook resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3825,10 +3825,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Assistant that is the parent of the resource to update",
+            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) that is the parent of the resource to update.",
             "in": "path",
             "name": "AssistantSid",
             "required": true,
@@ -3840,7 +3840,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Webhook resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3852,7 +3852,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the resource",
+            "description": "An application-defined string that uniquely identifies the new resource. It can be used as an alternative to the `sid` in the URL path to address the resource. This value must be unique and 64 characters or less in length.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -3925,10 +3925,10 @@
     },
     "/v1/Assistants/{Sid}": {
       "delete": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Assistant resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3956,10 +3956,10 @@
       },
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Assistant resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3992,10 +3992,10 @@
         ]
       },
       "post": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Assistant resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4007,7 +4007,7 @@
             }
           },
           {
-            "description": "A string to describe the resource",
+            "description": "A descriptive string that you create to describe the resource. It is not unique and can be up to 255 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -4016,7 +4016,7 @@
             }
           },
           {
-            "description": "Whether queries should be logged and kept after training",
+            "description": "Whether queries should be logged and kept after training. Can be: `true` or `false` and defaults to `true`. If `true`, queries are stored for 30 days, and then deleted. If `false`, no queries are stored.",
             "in": "query",
             "name": "LogQueries",
             "required": false,
@@ -4025,7 +4025,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the resource",
+            "description": "An application-defined string that uniquely identifies the resource. It can be used as an alternative to the `sid` in the URL path to address the resource. The first 64 characters must be unique.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -4034,7 +4034,7 @@
             }
           },
           {
-            "description": "Reserved",
+            "description": "Reserved.",
             "in": "query",
             "name": "CallbackUrl",
             "required": false,
@@ -4044,7 +4044,7 @@
             }
           },
           {
-            "description": "Reserved",
+            "description": "Reserved.",
             "in": "query",
             "name": "CallbackEvents",
             "required": false,
@@ -4053,7 +4053,7 @@
             }
           },
           {
-            "description": "A JSON string that defines the Assistant's style sheet",
+            "description": "The JSON string that defines the Assistant's [style sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet)",
             "in": "query",
             "name": "StyleSheet",
             "required": false,
@@ -4062,7 +4062,7 @@
             }
           },
           {
-            "description": "A JSON object that defines the Assistant's [default tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios",
+            "description": "A JSON object that defines the Assistant's [default tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios, including initiation actions and fallback tasks.",
             "in": "query",
             "name": "Defaults",
             "required": false,

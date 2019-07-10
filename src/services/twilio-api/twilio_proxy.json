@@ -721,7 +721,7 @@
         "description": "Create a new Service for Twilio Proxy",
         "parameters": [
           {
-            "description": "An application-defined string that uniquely identifies the resource",
+            "description": "An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**",
             "in": "query",
             "name": "UniqueName",
             "required": true,
@@ -730,7 +730,7 @@
             }
           },
           {
-            "description": "Default TTL for a Session, in seconds",
+            "description": "The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.",
             "in": "query",
             "name": "DefaultTtl",
             "required": false,
@@ -739,7 +739,7 @@
             }
           },
           {
-            "description": "The URL we should call when the interaction status changes",
+            "description": "The URL we should call when the interaction status changes.",
             "in": "query",
             "name": "CallbackUrl",
             "required": false,
@@ -749,7 +749,7 @@
             }
           },
           {
-            "description": "Where a proxy number must be located relative to the participant identifier",
+            "description": "Where a proxy number must be located relative to the participant identifier. Can be: `country`, `area-code`, or `extended-area-code`. The default value is `country` and more specific areas than `country` are only available in North America.",
             "in": "query",
             "name": "GeoMatchLevel",
             "required": false,
@@ -764,7 +764,7 @@
             }
           },
           {
-            "description": "The preference for Proxy Number selection for the Service instance",
+            "description": "The preference for Proxy Number selection in the Service instance. Can be: `prefer-sticky` or `avoid-sticky` and the default is `prefer-sticky`. `prefer-sticky` means that we will try and select the same Proxy Number for a given participant if they have previous [Sessions](https://www.twilio.com/docs/proxy/api/session), but we will not fail if that Proxy Number cannot be used.  `avoid-sticky` means that we will try to use different Proxy Numbers as long as that is possible within a given pool rather than try and use a previously assigned number.",
             "in": "query",
             "name": "NumberSelectionBehavior",
             "required": false,
@@ -777,7 +777,7 @@
             }
           },
           {
-            "description": "The URL we call on each interaction",
+            "description": "The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.",
             "in": "query",
             "name": "InterceptCallbackUrl",
             "required": false,
@@ -787,7 +787,7 @@
             }
           },
           {
-            "description": "The URL we call when an inbound call or SMS action occurs on a closed or non-existent Session",
+            "description": "The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.",
             "in": "query",
             "name": "OutOfSessionCallbackUrl",
             "required": false,
@@ -797,7 +797,7 @@
             }
           },
           {
-            "description": "The SID of the Chat Service Instance",
+            "description": "The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.",
             "in": "query",
             "name": "ChatInstanceSid",
             "required": false,
@@ -847,7 +847,7 @@
         "description": "Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service. A maximum of 100 records will be returned per page.",
         "parameters": [
           {
-            "description": "The SID of the parent Service resource of the PhoneNumber resource to read",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the PhoneNumber resources to read.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -921,7 +921,7 @@
         "description": "Add a Phone Number to a Service's Proxy Number Pool.",
         "parameters": [
           {
-            "description": "The SID of the resource's parent Service",
+            "description": "The SID parent [Service](https://www.twilio.com/docs/proxy/api/service) resource of the new PhoneNumber resource.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -933,7 +933,7 @@
             }
           },
           {
-            "description": "The SID of a Twilio IncomingPhoneNumber resource",
+            "description": "The SID of a Twilio [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incoming-phone-numbers) resource that represents the Twilio Number you would like to assign to your Proxy Service.",
             "in": "query",
             "name": "Sid",
             "required": false,
@@ -945,7 +945,7 @@
             }
           },
           {
-            "description": "The phone number in E.164 format",
+            "description": "The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.",
             "in": "query",
             "name": "PhoneNumber",
             "required": false,
@@ -954,7 +954,7 @@
             }
           },
           {
-            "description": "Whether the new phone number should be reserved",
+            "description": "Whether the new phone number should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.",
             "in": "query",
             "name": "IsReserved",
             "required": false,
@@ -1000,7 +1000,7 @@
         "description": "Delete a specific Phone Number from a Service.",
         "parameters": [
           {
-            "description": "The SID of the parent Service resource of the PhoneNumber resource to delete",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the PhoneNumber resource to delete.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1012,7 +1012,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the PhoneNumber resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1043,7 +1043,7 @@
         "description": "Fetch a specific Phone Number.",
         "parameters": [
           {
-            "description": "The SID of the parent Service resource of the PhoneNumber resource to fetch",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the PhoneNumber resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1055,7 +1055,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the PhoneNumber resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1091,7 +1091,7 @@
         "description": "Update a specific Proxy Number.",
         "parameters": [
           {
-            "description": "The SID of the parent Service resource of the PhoneNumber resource to update",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the PhoneNumber resource to update.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1103,7 +1103,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the PhoneNumber resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1115,7 +1115,7 @@
             }
           },
           {
-            "description": "Whether the new phone number should be reserved",
+            "description": "Whether the phone number should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.",
             "in": "query",
             "name": "IsReserved",
             "required": false,
@@ -1162,7 +1162,7 @@
         "description": "Retrieve a list of all Sessions for the Service. A maximum of 100 records will be returned per page.",
         "parameters": [
           {
-            "description": "The SID of the Service to fetch the resource from",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to read.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1236,7 +1236,7 @@
         "description": "Create a new Session",
         "parameters": [
           {
-            "description": "The SID of the parent Service resource",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1248,7 +1248,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the resource",
+            "description": "An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -1257,7 +1257,7 @@
             }
           },
           {
-            "description": "The ISO 8601 date when the Session should expire",
+            "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session should expire. If this is value is present, it overrides the `ttl` value.",
             "in": "query",
             "name": "DateExpiry",
             "required": false,
@@ -1267,7 +1267,7 @@
             }
           },
           {
-            "description": "When the session will expire",
+            "description": "The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -1276,7 +1276,7 @@
             }
           },
           {
-            "description": "The Mode of the Session",
+            "description": "The Mode of the Session. Can be: `message-only`, `voice-only`, or `voice-and-message` and the default value is `voice-and-message`.",
             "in": "query",
             "name": "Mode",
             "required": false,
@@ -1290,7 +1290,7 @@
             }
           },
           {
-            "description": "Session status",
+            "description": "The initial status of the Session. Can be: `open`, `in-progress`, `closed`, `failed`, or `unknown`. The default is `open` on create.",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -1306,7 +1306,7 @@
             }
           },
           {
-            "description": "The Participant objects to include in the new session",
+            "description": "The Participant objects to include in the new session.",
             "in": "query",
             "name": "Participants",
             "required": false,
@@ -1357,7 +1357,7 @@
         "description": "Retrieve a list of all Interactions for a Session. A maximum of 100 records will be returned per page.",
         "parameters": [
           {
-            "description": "The SID of the parent Service to read the resource from",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) to read the resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1369,7 +1369,7 @@
             }
           },
           {
-            "description": "The SID of the parent Session to read the resource from",
+            "description": "The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) to read the resources from.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -1456,7 +1456,7 @@
         "description": "Delete a specific Interaction.",
         "parameters": [
           {
-            "description": "The SID of the parent Service of the resource to delete",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to delete.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1468,7 +1468,7 @@
             }
           },
           {
-            "description": "he SID of the parent Session of the resource to delete",
+            "description": "The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to delete.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -1480,7 +1480,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Interaction resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1511,7 +1511,7 @@
         "description": "Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).",
         "parameters": [
           {
-            "description": "The SID of the parent Service of the resource to fetch",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1523,7 +1523,7 @@
             }
           },
           {
-            "description": "he SID of the parent Session of the resource to fetch",
+            "description": "The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to fetch.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -1535,7 +1535,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Interaction resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1585,7 +1585,7 @@
         "description": "Retrieve a list of all Participants in a Session.",
         "parameters": [
           {
-            "description": "The SID of the parent Service of the resource to read",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resources to read.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1597,7 +1597,7 @@
             }
           },
           {
-            "description": "The SID of the parent Session of the resource to read",
+            "description": "The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resources to read.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -1671,7 +1671,7 @@
         "description": "Add a new Participant to the Session",
         "parameters": [
           {
-            "description": "The SID of the parent Service resource",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1683,7 +1683,7 @@
             }
           },
           {
-            "description": "The SID of the parent Session resource",
+            "description": "The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -1695,7 +1695,7 @@
             }
           },
           {
-            "description": "The phone number of the Participant",
+            "description": "The phone number of the Participant.",
             "in": "query",
             "name": "Identifier",
             "required": true,
@@ -1704,7 +1704,7 @@
             }
           },
           {
-            "description": "The string that you assigned to describe the participant",
+            "description": "The string that you assigned to describe the participant. This value must be 255 characters or fewer. **This value should not have PII.**",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -1713,7 +1713,7 @@
             }
           },
           {
-            "description": "The proxy phone number to use for the Participant",
+            "description": "The proxy phone number to use for the Participant. If not specified, Proxy will select a number from the pool.",
             "in": "query",
             "name": "ProxyIdentifier",
             "required": false,
@@ -1722,7 +1722,7 @@
             }
           },
           {
-            "description": "The Proxy Identifier Sid",
+            "description": "The SID of the Proxy Identifier to assign to the Participant.",
             "in": "query",
             "name": "ProxyIdentifierSid",
             "required": false,
@@ -1770,10 +1770,10 @@
     "/v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{ParticipantSid}/MessageInteractions": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Service to read the resource from",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) to read the resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1785,7 +1785,7 @@
             }
           },
           {
-            "description": "The SID of the parent Session",
+            "description": "The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) to read the resources from.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -1797,7 +1797,7 @@
             }
           },
           {
-            "description": "The SID of the Participant resource",
+            "description": "The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) to read the resources from.",
             "in": "path",
             "name": "ParticipantSid",
             "required": true,
@@ -1871,7 +1871,7 @@
         "description": "Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will always be empty.",
         "parameters": [
           {
-            "description": "The SID of the parent Service resource",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1883,7 +1883,7 @@
             }
           },
           {
-            "description": "The SID of the parent Session resource",
+            "description": "The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -1895,7 +1895,7 @@
             }
           },
           {
-            "description": "The SID of the Participant resource",
+            "description": "The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) resource.",
             "in": "path",
             "name": "ParticipantSid",
             "required": true,
@@ -1907,7 +1907,7 @@
             }
           },
           {
-            "description": "Message body",
+            "description": "The message to send to the participant",
             "in": "query",
             "name": "Body",
             "required": false,
@@ -1916,7 +1916,7 @@
             }
           },
           {
-            "description": "Reserved",
+            "description": "Reserved. Not currently supported.",
             "in": "query",
             "name": "MediaUrl",
             "required": false,
@@ -1964,10 +1964,10 @@
     "/v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{ParticipantSid}/MessageInteractions/{Sid}": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": null,
+        "description": "",
         "parameters": [
           {
-            "description": "The SID of the Service to fetch the resource from",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1979,7 +1979,7 @@
             }
           },
           {
-            "description": "The SID of the parent Session",
+            "description": "The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to fetch.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -1991,7 +1991,7 @@
             }
           },
           {
-            "description": "The SID of the Participant resource",
+            "description": "The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) resource.",
             "in": "path",
             "name": "ParticipantSid",
             "required": true,
@@ -2003,7 +2003,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the MessageInteraction resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2052,7 +2052,7 @@
         "description": "Delete a specific Participant. This is a soft-delete. The participant remains associated with the session and cannot be re-added. Participants are only permanently deleted when the [Session](https://www.twilio.com/docs/proxy/api/session) is deleted.",
         "parameters": [
           {
-            "description": "The SID of the parent Service of the resource to delete",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to delete.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2064,7 +2064,7 @@
             }
           },
           {
-            "description": "The SID of the parent Session of the resource to delete",
+            "description": "The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to delete.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2076,7 +2076,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Participant resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2107,7 +2107,7 @@
         "description": "Fetch a specific Participant.",
         "parameters": [
           {
-            "description": "The SID of the parent Service of the resource to fetch",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2119,7 +2119,7 @@
             }
           },
           {
-            "description": "The SID of the parent Session of the resource to fetch",
+            "description": "The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to fetch.",
             "in": "path",
             "name": "SessionSid",
             "required": true,
@@ -2131,7 +2131,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Participant resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2181,7 +2181,7 @@
         "description": "Delete a specific Session.",
         "parameters": [
           {
-            "description": "The SID of the Service to delete the resource from",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to delete.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2193,7 +2193,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Session resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2224,7 +2224,7 @@
         "description": "Fetch a specific Session.",
         "parameters": [
           {
-            "description": "The SID of the Service to fetch the resource from",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2236,7 +2236,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Session resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2272,7 +2272,7 @@
         "description": "Update a specific Session.",
         "parameters": [
           {
-            "description": "The SID of the Service to update the resource from",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to update.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2284,7 +2284,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Session resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2296,7 +2296,7 @@
             }
           },
           {
-            "description": "The ISO 8601 date when the Session should expire",
+            "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session should expire. If this is value is present, it overrides the `ttl` value.",
             "in": "query",
             "name": "DateExpiry",
             "required": false,
@@ -2306,7 +2306,7 @@
             }
           },
           {
-            "description": "When the session will expire",
+            "description": "The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -2315,7 +2315,7 @@
             }
           },
           {
-            "description": "The new status of the resource",
+            "description": "The new status of the resource. Can be: `in-progress` to re-open a session or `closed` to close a session.",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -2370,7 +2370,7 @@
         "description": "Retrieve a list of all Short Codes in the Proxy Number Pool for the Service. A maximum of 100 records will be returned per page.",
         "parameters": [
           {
-            "description": "The SID of the parent Service to read the resource from",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) to read the resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2444,7 +2444,7 @@
         "description": "Add a Short Code to the Proxy Number Pool for the Service.",
         "parameters": [
           {
-            "description": "The SID of the parent Service resource",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2456,7 +2456,7 @@
             }
           },
           {
-            "description": "The SID of a Twilio ShortCode resource",
+            "description": "The SID of a Twilio [ShortCode](https://www.twilio.com/docs/sms/api/short-code) resource that represents the short code you would like to assign to your Proxy Service.",
             "in": "query",
             "name": "Sid",
             "required": true,
@@ -2505,7 +2505,7 @@
         "description": "Delete a specific Short Code from a Service.",
         "parameters": [
           {
-            "description": "The SID of the parent Service to delete the ShortCode resource from",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource to delete the ShortCode resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2517,7 +2517,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the ShortCode resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2548,7 +2548,7 @@
         "description": "Fetch a specific Short Code.",
         "parameters": [
           {
-            "description": "The SID of the parent Service to fetch the resource from",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) to fetch the resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2560,7 +2560,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the ShortCode resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2596,7 +2596,7 @@
         "description": "Update a specific Short Code.",
         "parameters": [
           {
-            "description": "The SID of the Service to update the resource from",
+            "description": "The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) of the resource to update.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2608,7 +2608,7 @@
             }
           },
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the ShortCode resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2620,7 +2620,7 @@
             }
           },
           {
-            "description": "Whether the short code should be reserved for manual assignment to participants only",
+            "description": "Whether the short code should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.",
             "in": "query",
             "name": "IsReserved",
             "required": false,
@@ -2666,7 +2666,7 @@
         "description": "Delete a specific Service.",
         "parameters": [
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Service resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2697,7 +2697,7 @@
         "description": "Fetch a specific Service.",
         "parameters": [
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Service resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2733,7 +2733,7 @@
         "description": "Update a specific Service.",
         "parameters": [
           {
-            "description": "The unique string that identifies the resource",
+            "description": "The Twilio-provided string that uniquely identifies the Service resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2745,7 +2745,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the resource",
+            "description": "An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -2754,7 +2754,7 @@
             }
           },
           {
-            "description": "Default TTL for a Session, in seconds",
+            "description": "The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.",
             "in": "query",
             "name": "DefaultTtl",
             "required": false,
@@ -2763,7 +2763,7 @@
             }
           },
           {
-            "description": "The URL we should call when the interaction status changes",
+            "description": "The URL we should call when the interaction status changes.",
             "in": "query",
             "name": "CallbackUrl",
             "required": false,
@@ -2773,7 +2773,7 @@
             }
           },
           {
-            "description": "Where a proxy number must be located relative to the participant identifier",
+            "description": "Where a proxy number must be located relative to the participant identifier. Can be: `country`, `area-code`, or `extended-area-code`. The default value is `country` and more specific areas than `country` are only available in North America.",
             "in": "query",
             "name": "GeoMatchLevel",
             "required": false,
@@ -2788,7 +2788,7 @@
             }
           },
           {
-            "description": "The preference for Proxy Number selection for the Service instance",
+            "description": "The preference for Proxy Number selection in the Service instance. Can be: `prefer-sticky` or `avoid-sticky` and the default is `prefer-sticky`. `prefer-sticky` means that we will try and select the same Proxy Number for a given participant if they have previous [Sessions](https://www.twilio.com/docs/proxy/api/session), but we will not fail if that Proxy Number cannot be used.  `avoid-sticky` means that we will try to use different Proxy Numbers as long as that is possible within a given pool rather than try and use a previously assigned number.",
             "in": "query",
             "name": "NumberSelectionBehavior",
             "required": false,
@@ -2801,7 +2801,7 @@
             }
           },
           {
-            "description": "The URL we call on each interaction",
+            "description": "The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.",
             "in": "query",
             "name": "InterceptCallbackUrl",
             "required": false,
@@ -2811,7 +2811,7 @@
             }
           },
           {
-            "description": "The URL we call when an inbound call or SMS action occurs on a closed or non-existent Session",
+            "description": "The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.",
             "in": "query",
             "name": "OutOfSessionCallbackUrl",
             "required": false,
@@ -2821,7 +2821,7 @@
             }
           },
           {
-            "description": "The SID of the Chat Service Instance",
+            "description": "The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.",
             "in": "query",
             "name": "ChatInstanceSid",
             "required": false,
