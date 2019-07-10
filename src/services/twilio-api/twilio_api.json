@@ -7897,15 +7897,6 @@
             }
           },
           {
-            "description": "A descriptive string that you create to describe the new application. It can be up to 64 characters long.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`. The default value is the account's default API version.",
             "in": "query",
             "name": "ApiVersion",
@@ -8105,6 +8096,15 @@
             "required": false,
             "schema": {
               "format": "uri",
+              "type": "string"
+            }
+          },
+          {
+            "description": "A descriptive string that you create to describe the new application. It can be up to 64 characters long.",
+            "in": "query",
+            "name": "FriendlyName",
+            "required": false,
+            "schema": {
               "type": "string"
             }
           }
