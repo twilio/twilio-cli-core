@@ -11,11 +11,11 @@
     "chalk": "^2.4.2",
     "columnify": "^1.5.4",
     "fs-extra": "^7.0.1",
-    "inquirer": "^6.4.1",
+    "inquirer": "^6.5.0",
     "request": "^2.88.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",
-    "twilio": "^3.33.0"
+    "twilio": "^3.33.1"
   },
   "peerDependencies": {
     "keytar": "^4.11.0"
