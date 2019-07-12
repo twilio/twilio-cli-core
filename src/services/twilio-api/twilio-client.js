@@ -1,5 +1,4 @@
 const pkg = require('../../../package.json');
-const { TwilioCliError } = require('../error');
 const { doesObjectHaveProperty } = require('../javascript-utilities');
 const { logger } = require('../messaging/logging');
 const OpenApiClient = require('../open-api-client');
@@ -148,14 +147,7 @@ class TwilioApiClient {
       }
     }
 
-    const { statusCode, body } = await this.apiClient.request(opts);
-
-    if (statusCode < 200 || statusCode >= 300) {
-      const parsed = JSON.parse(body);
-      throw new TwilioCliError(`Error code ${parsed.code} from Twilio: ${parsed.message}. See ${parsed.more_info} for more info.`, parsed.code);
-    }
-
-    return { statusCode, body };
+    return this.apiClient.request(opts);
   }
 }
 
