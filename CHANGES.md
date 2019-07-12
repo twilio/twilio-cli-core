@@ -1,6 +1,15 @@
 twilio-cli-core changelog
 =====================
 
+[2019-07-12] Version 2.0.3
+---------------------------
+**Library**
+- [PR #38](https://github.com/twilio/twilio-cli-core/pull/38): Move the non-2XX error handling down to the CliRequestClient. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Preview**
+- Added endpoint to brand a call without initiating it, so it can be initiated manually by the Customer
+
+
 [2019-07-10] Version 2.0.2
 ---------------------------
 **Library**

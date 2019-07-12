@@ -966,6 +966,48 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Assets/{Sid}": {
+      "delete": {
+        "description": "Delete an Asset.",
+        "parameters": [
+          {
+            "description": "The unique SID identifier of the Service for these Assets.",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZS[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique SID identifier of this Asset.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZH[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
       "description": "A wrapper that represents a static file and groups the different Versions of this static file.",
       "get": {
         "description": "Retrieve a specific Asset.",
@@ -2448,6 +2490,48 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Functions/{Sid}": {
+      "delete": {
+        "description": "Delete a Function.",
+        "parameters": [
+          {
+            "description": "The unique SID identifier of the Service for these Functions.",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZS[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique SID identifier of this Function.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZH[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
       "description": "A wrapper that represents a Serverless JavaScript function and groups the different  and groups the different Versions of this code.",
       "get": {
         "description": "Retrieve a specific Function.",
