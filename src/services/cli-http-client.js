@@ -65,35 +65,28 @@ class CliRequestClient {
       forever: opts.forever !== false
     };
 
-    this.logger.debug('-- BEGIN Twilio API Request --');
-    this.logger.debug(options.method + ' ' + options.url);
-
     if (opts.data) {
       options.formData = opts.data;
-      if (options.formData) {
-        this.logger.debug('Form data:');
-        this.logger.debug(options.formData);
-      }
     }
 
     if (opts.params) {
       options.qs = opts.params;
       options.useQuerystring = true;
-      if (options.qs && Object.keys(options.qs).length > 0) {
-        this.logger.debug('Querystring:');
-        this.logger.debug(options.qs);
-      }
     }
-    this.logger.debug('User-Agent: ' + options.headers['User-Agent']);
-    this.logger.debug('-- END Twilio API Request --');
 
     this.lastRequest = options;
+    this.logRequest(options);
 
     try {
       const response = await this.http(options);
 
       this.logger.debug('response.statusCode: ' + response.statusCode);
       this.logger.debug('response.headers: ' + JSON.stringify(response.headers));
+
+      if (response.statusCode < 200 || response.statusCode >= 300) {
+        const parsed = JSON.parse(response.body);
+        throw new TwilioCliError(`Error code ${parsed.code} from Twilio: ${parsed.message}. See ${parsed.more_info} for more info.`, parsed.code);
+      }
 
       return response;
     } catch (error) {
@@ -103,6 +96,24 @@ class CliRequestClient {
 
       throw error;
     }
+  }
+
+  logRequest(options) {
+    this.logger.debug('-- BEGIN Twilio API Request --');
+    this.logger.debug(options.method + ' ' + options.url);
+
+    if (options.formData) {
+      this.logger.debug('Form data:');
+      this.logger.debug(options.formData);
+    }
+
+    if (options.qs && Object.keys(options.qs).length > 0) {
+      this.logger.debug('Querystring:');
+      this.logger.debug(options.qs);
+    }
+
+    this.logger.debug('User-Agent: ' + options.headers['User-Agent']);
+    this.logger.debug('-- END Twilio API Request --');
   }
 }
 
