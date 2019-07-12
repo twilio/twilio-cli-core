@@ -3,8 +3,6 @@ const { logger } = require('../../../src/services/messaging/logging');
 const { TwilioApiClient } = require('../../../src/services/twilio-api');
 const CliRequestClient = require('../../../src/services/cli-http-client');
 
-require('chai').use(require('chai-as-promised'));
-
 const accountSid = constants.FAKE_ACCOUNT_SID;
 const callSid = 'CA12345678901234567890123456789012';
 const callStartTime = '2018-01-01';

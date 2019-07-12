@@ -3,8 +3,6 @@ const CliRequestClient = require('../../src/services/cli-http-client');
 const { TwilioCliError } = require('../../src/services/error');
 const { Logger, LoggingLevel } = require('../../src/services/messaging/logging');
 
-require('chai').use(require('chai-as-promised'));
-
 describe('services', () => {
   describe('cli-http-client', () => {
     const logger = new Logger({
