@@ -20,6 +20,14 @@ class JsonSchemaConverter {
 
   convertSchema(schema, value) {
     if (schema) {
+      if (!value) {
+        if (!schema.nullable) {
+          this.logger.debug('Null value found when nullable not allowed by schema: ' + JSON.stringify(schema));
+        }
+
+        return value;
+      }
+
       const convertFunc = SCHEMA_TYPE_TO_CONVERT_FUNC_MAP[schema.type];
 
       if (convertFunc) {
@@ -33,14 +41,6 @@ class JsonSchemaConverter {
   }
 
   convertArray(schema, value) {
-    if (!value) {
-      if (!schema.nullable) {
-        this.logger.debug('Null array found when nullable not allowed by schema: ' + JSON.stringify(schema));
-      }
-
-      return value;
-    }
-
     // Recurse into the value using the schema's items schema.
     return value.map(item => this.convertSchema(schema.items, item));
   }
