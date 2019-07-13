@@ -80,8 +80,8 @@ describe('services', () => {
         expect(ctx.stderr).to.contain('bugs');
       });
 
-      test.stderr().it('handles null arrays when nullable not allowed', ctx => {
-        const schema = { type: 'array' };
+      test.stderr().it('handles null values when nullable not allowed', ctx => {
+        const schema = { type: 'object' };
         const input = null;
         const expected = input;
 
@@ -91,7 +91,7 @@ describe('services', () => {
         expect(ctx.stderr).to.contain('nullable');
       });
 
-      test.stderr().it('handles null arrays when nullable is allowed', ctx => {
+      test.stderr().it('handles null values when nullable is allowed', ctx => {
         const schema = { type: 'array', nullable: true };
         const input = null;
         const expected = input;
