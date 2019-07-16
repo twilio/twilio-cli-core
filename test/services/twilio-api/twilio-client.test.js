@@ -23,7 +23,7 @@ describe('services', () => {
             calls: [{
               sid: callSid
             }],
-            next_page_uri: '/nextPageOfResults'
+            next_page_uri: 'https://api.twilio.com/nextPageOfResults'
           });
           api.get('/nextPageOfResults').reply(200, {
             calls: [{

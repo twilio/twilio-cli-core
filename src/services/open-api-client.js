@@ -37,10 +37,6 @@ class OpenApiClient {
     const isPost = (opts.method.toLowerCase() === 'post');
     const params = this.getParams(opts, operation);
 
-    if (!opts.uri) {
-      opts.uri = this.getUri(opts);
-    }
-
     if (!opts.host) {
       opts.host = path.server;
     }
@@ -55,7 +51,11 @@ class OpenApiClient {
       }
     }
 
-    opts.uri = opts.host + opts.uri;
+    if (!opts.uri) {
+      opts.uri = this.getUri(opts);
+      opts.uri = opts.host + opts.uri;
+    }
+
     opts.params = (isPost ? null : params);
     opts.data = (isPost ? params : null);
 
