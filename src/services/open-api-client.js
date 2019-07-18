@@ -71,10 +71,12 @@ class OpenApiClient {
   getParams(opts, operation) {
     const params = {};
     operation.parameters.forEach(parameter => {
+      // I'm assuming that the parameter.name will need to be converted to kabob case
+      const cliParamName = parameter.name.replace('>', '-after').replace('<', '-before');
       // Build the actual request params from the spec's query parameters. This
       // effectively drops all params that are not in the spec.
-      if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, parameter.name)) {
-        let value = opts.data[parameter.name];
+      if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, cliParamName)) {
+        let value = opts.data[cliParamName];
 
         if (parameter.schema.type === 'boolean') {
           value = value.toString();
