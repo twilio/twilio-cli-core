@@ -71,11 +71,11 @@ class OpenApiClient {
   getParams(opts, operation) {
     const params = {};
     operation.parameters.forEach(parameter => {
+      const replaceSymbolName = parameter.name.replace('>', 'After').replace('<', 'Before');
       // Build the actual request params from the spec's query parameters. This
       // effectively drops all params that are not in the spec.
-      if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, parameter.name)) {
-        let value = opts.data[parameter.name];
-
+      if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, replaceSymbolName)) {
+        let value = opts.data[replaceSymbolName];
         if (parameter.schema.type === 'boolean') {
           value = value.toString();
         }
