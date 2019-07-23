@@ -71,7 +71,7 @@ class OpenApiClient {
   getParams(opts, operation) {
     const params = {};
     operation.parameters.forEach(parameter => {
-      const cliParamName = parameter.name.replace('>', '-after').replace('<', '-before');
+      const cliParamName = parameter.name.replace('DateSent>', 'date-sent-after').replace('DateSent<', 'date-sent-before');
       // Build the actual request params from the spec's query parameters. This
       // effectively drops all params that are not in the spec.
       if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, cliParamName)) {
