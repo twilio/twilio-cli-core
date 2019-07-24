@@ -388,7 +388,7 @@
         "description": "Create a new Verification Service.",
         "parameters": [
           {
-            "description": "A descriptive string that you create to describe the verification service. It can be up to 64 characters long.",
+            "description": "A descriptive string that you create to describe the verification service. It can be up to 64 characters long. **This value should not contain PII.**",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -881,7 +881,7 @@
             }
           },
           {
-            "description": "Provides a unique and addressable name to be assigned to this Rate Limit, assigned by the developer, to be optionally used in addition to SID.",
+            "description": "Provides a unique and addressable name to be assigned to this Rate Limit, assigned by the developer, to be optionally used in addition to SID. **This value should not contain PII.**",
             "in": "query",
             "name": "UniqueName",
             "required": true,
@@ -1921,7 +1921,7 @@
             }
           },
           {
-            "description": "A descriptive string that you create to describe the verification service. It can be up to 64 characters long.",
+            "description": "A descriptive string that you create to describe the verification service. It can be up to 64 characters long. **This value should not contain PII.**",
             "in": "query",
             "name": "FriendlyName",
             "required": false,

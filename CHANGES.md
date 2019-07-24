@@ -1,6 +1,17 @@
 twilio-cli-core changelog
 =====================
 
+[2019-07-24] Version 2.0.4
+---------------------------
+**Library**
+- [PR #42](https://github.com/twilio/twilio-cli-core/pull/42): Bump lodash.template from 4.4.0 to 4.5.0. Thanks to [@dependabot[bot]](https://github.com/dependabot[bot])!
+- [PR #37](https://github.com/twilio/twilio-cli-core/pull/37): Bump lodash from 4.17.11 to 4.17.14. Thanks to [@dependabot[bot]](https://github.com/dependabot[bot])!
+- [PR #39](https://github.com/twilio/twilio-cli-core/pull/39): Debug log on null response values if nullable not allowed. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Insights**
+- Added `properties` to summary.
+
+
 [2019-07-12] Version 2.0.3
 ---------------------------
 **Library**

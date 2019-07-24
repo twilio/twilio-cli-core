@@ -104,9 +104,6 @@
           "path": {
             "type": "string"
           },
-          "pre_signed_upload_url": {
-            "type": "object"
-          },
           "service_sid": {
             "maxLength": 34,
             "minLength": 34,
@@ -403,9 +400,6 @@
           },
           "path": {
             "type": "string"
-          },
-          "pre_signed_upload_url": {
-            "type": "object"
           },
           "service_sid": {
             "maxLength": 34,
@@ -792,77 +786,6 @@
                     }
                   },
                   "type": "object"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "post": {
-        "description": "Create a new Asset Version.",
-        "parameters": [
-          {
-            "description": "The unique SID identifier of the Service for this Asset Version.",
-            "in": "path",
-            "name": "ServiceSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ZS[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The unique SID identifier of the Asset that is the parent for this Asset Version.",
-            "in": "path",
-            "name": "AssetSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ZH[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL-friendly string by which this Asset Version can be referenced. (Example: `/assets/example`) Required.",
-            "in": "query",
-            "name": "Path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The access control which determines how the Asset Version can be accessed. One of `public`, `protected`, or `private`. Required.",
-            "in": "query",
-            "name": "Visibility",
-            "required": true,
-            "schema": {
-              "enum": [
-                "public",
-                "private",
-                "protected"
-              ],
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/serverless.v1.service.asset.asset_version"
                 }
               }
             }
@@ -1895,6 +1818,60 @@
       "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Variables/{Sid}": {
+      "delete": {
+        "description": "Delete a specific Variable.",
+        "parameters": [
+          {
+            "description": "The unique SID identifier of the Service for this Variable.",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZS[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique SID identifier of the Environment in which this Variable exists.",
+            "in": "path",
+            "name": "EnvironmentSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZE[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique SID identifier of this Variable.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZV[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
       "description": "A key and value pair that is specific to an Environment.",
       "get": {
         "description": "Retrieve a specific Variable.",
@@ -2047,6 +2024,48 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Environments/{Sid}": {
+      "delete": {
+        "description": "Delete a specific Environment.",
+        "parameters": [
+          {
+            "description": "The unique SID identifier of the Service for this Environment.",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZS[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique SID identifier of this Environment.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZE[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
       "description": "Represents a deployed Build of a given set of Functions and/or Assets at a specific URL.",
       "get": {
         "description": "Retrieve a specific Environment.",
@@ -2330,77 +2349,6 @@
           "Preview"
         ]
       },
-      "post": {
-        "description": "Create a new Function Version.",
-        "parameters": [
-          {
-            "description": "The unique SID identifier of the Service for this Function Version.",
-            "in": "path",
-            "name": "ServiceSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ZS[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The unique SID identifier of the Function that is the parent for this Function Version.",
-            "in": "path",
-            "name": "FunctionSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ZH[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL-friendly string by which this Function Version can be referenced. (Example: `/functions/example`) Required.",
-            "in": "query",
-            "name": "Path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The access control which determines how the Function Version can be accessed. One of `public`, `protected`, or `private`. Required.",
-            "in": "query",
-            "name": "Visibility",
-            "required": true,
-            "schema": {
-              "enum": [
-                "public",
-                "private",
-                "protected"
-              ],
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/serverless.v1.service.function.function_version"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
       "servers": [
         {
           "url": "https://serverless.twilio.com"
@@ -2651,6 +2599,36 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{Sid}": {
+      "delete": {
+        "description": "Delete a Service.",
+        "parameters": [
+          {
+            "description": "Identifier of the Serverless Service Instance. Either a SID or UniqueName.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZS[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
       "description": "The top-level resource for a Serverless application, which serves as a container for the application Environments.",
       "get": {
         "description": "Retrieve a specific Service.",

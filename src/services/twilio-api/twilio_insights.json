@@ -86,6 +86,9 @@
             ],
             "type": "string"
           },
+          "properties": {
+            "type": "object"
+          },
           "sdk_edge": {
             "type": "object"
           },
