@@ -27,7 +27,9 @@ class TwilioClientCommand extends BaseCommand {
 
       const reportUnconfigured = (verb, message = '') => {
         const projParam = this.flags.project ? ' -p ' + this.flags.project : '';
-        throw new TwilioCliError(`To ${verb} the project, run: ` + chalk.whiteBright('twilio projects:add' + projParam) + message);
+        throw new TwilioCliError(
+          `To ${verb} the project, run: ` + chalk.whiteBright('twilio projects:add' + projParam) + message
+        );
       };
 
       if (!this.currentProject) {
@@ -127,7 +129,7 @@ class TwilioClientCommand extends BaseCommand {
 
   buildClient(ClientClass) {
     return new ClientClass(this.currentProject.apiKey, this.currentProject.apiSecret, {
-      accountSid: this.currentProject.accountSid,
+      accountSid: this.flags['sub-account-sid'] || this.currentProject.accountSid,
       region: this.currentProject.region,
       httpClient: this.httpClient
     });
@@ -139,6 +141,9 @@ TwilioClientCommand.flags = Object.assign(
     project: flags.string({
       char: 'p',
       description: 'Shorthand identifier for your Twilio project.'
+    }),
+    'sub-account-sid': flags.string({
+      description: 'access resources for the specified sub-account'
     })
   },
   BaseCommand.flags

@@ -20,7 +20,10 @@ describe('base-commands', () => {
 
     ThrowingClientCommand.flags = TwilioClientCommand.flags;
 
-    const setUpTest = (args = [], { setUpUserConfig = undefined, mockSecureStorage = true, commandClass: CommandClass = TestClientCommand } = {}) => {
+    const setUpTest = (
+      args = [],
+      { setUpUserConfig = undefined, mockSecureStorage = true, commandClass: CommandClass = TestClientCommand } = {}
+    ) => {
       return test
         .do(ctx => {
           ctx.userConfig = new ConfigData();
@@ -52,19 +55,28 @@ describe('base-commands', () => {
         });
     };
 
-    setUpTest()
-      .it('should not allow construction of the base class', async ctx => {
-        expect(() => new TwilioClientCommand([], ctx.fakeConfig)).to.throw('runCommand');
-      });
+    setUpTest().it('should not allow construction of the base class', async ctx => {
+      expect(() => new TwilioClientCommand([], ctx.fakeConfig)).to.throw('runCommand');
+    });
 
-    setUpTest(['-l', 'debug'])
-      .it('should create a client for the active project', async ctx => {
+    setUpTest(['-l', 'debug']).it('should create a client for the active project', async ctx => {
+      expect(ctx.stderr).to.contain('MyFirstProject');
+      expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+      expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
+      expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'MyFirstProject');
+      expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
+    });
+
+    setUpTest(['-l', 'debug', '--sub-account-sid', 'ACbaccbaccbaccbaccbaccbaccbaccbacc']).it(
+      'should create a client for the active project with a subaccount',
+      async ctx => {
         expect(ctx.stderr).to.contain('MyFirstProject');
-        expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(ctx.testCmd.twilioClient.accountSid).to.equal('ACbaccbaccbaccbaccbaccbaccbaccbacc');
         expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
         expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'MyFirstProject');
         expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
-      });
+      }
+    );
 
     setUpTest(['-l', 'debug'], { setUpUserConfig: () => 0 })
       .exit(1)
@@ -82,19 +94,20 @@ describe('base-commands', () => {
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       });
 
-    setUpTest(['-p', 'twilio-cli-unit-testing'])
-      .it('should create a client for a non-default project', async ctx => {
-        expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
-        expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
-        expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'twilio-cli-unit-testing');
-        expect(ctx.testCmd.twilioClient.region).to.equal('stage');
-      });
+    setUpTest(['-p', 'twilio-cli-unit-testing']).it('should create a client for a non-default project', async ctx => {
+      expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+      expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
+      expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'twilio-cli-unit-testing');
+      expect(ctx.testCmd.twilioClient.region).to.equal('stage');
+    });
 
     setUpTest(['-p', 'twilio-cli-unit-testing'], { mockSecureStorage: false })
       .exit(1)
       .it('should handle a secure storage error', async ctx => {
         expect(ctx.stderr).to.contain('Could not get credentials for project "twilio-cli-unit-testing"');
-        expect(ctx.stderr).to.contain('To reconfigure the project, run: twilio projects:add -p twilio-cli-unit-testing');
+        expect(ctx.stderr).to.contain(
+          'To reconfigure the project, run: twilio projects:add -p twilio-cli-unit-testing'
+        );
       });
 
     setUpTest([], { commandClass: ThrowingClientCommand })
