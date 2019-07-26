@@ -1,5 +1,5 @@
 const { logger } = require('./messaging/logging');
-const { pascalCase } = require('./naming-conventions');
+const { kebabCase, pascalCase } = require('./naming-conventions');
 const { doesObjectHaveProperty, translateKeys } = require('./javascript-utilities');
 const JsonSchemaConverter = require('./api-schema/json-converter');
 
@@ -67,7 +67,8 @@ class OpenApiClient {
   getParams(opts, operation) {
     const params = {};
     operation.parameters.forEach(parameter => {
-      const cliParamName = parameter.name.replace('DateSent>', 'date-sent-after').replace('DateSent<', 'date-sent-before');
+      const replaceSymbolName = parameter.name.replace('>', 'After').replace('<', 'Before');
+      const cliParamName = kebabCase(replaceSymbolName);
       // Build the actual request params from the spec's query parameters. This
       // effectively drops all params that are not in the spec.
       if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, cliParamName)) {
