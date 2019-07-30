@@ -44,6 +44,36 @@ describe('services', () => {
         });
 
       test
+        .nock('https://studio.twilio.com', api => {
+          /* eslint-disable camelcase */
+          api.get('/v1/Flows').reply(200, {
+            flows: [{
+              friendly_name: 'drizzle'
+            }],
+            meta: {
+              next_page_url: 'https://studio.twilio.com/nextPageOfResults'
+            }
+          });
+          api.get('/nextPageOfResults').reply(200, {
+            flows: [{
+              friendly_name: 'trickle'
+            }],
+            meta: {
+              next_page_url: null
+            }
+          });
+          /* eslint-enable camelcase */
+        })
+        .it('can list resources with metadata', async () => {
+          const response = await client.list({
+            domain: 'studio',
+            path: '/v1/Flows'
+          });
+
+          expect(response).to.eql([{ friendlyName: 'drizzle' }, { friendlyName: 'trickle' }]);
+        });
+
+      test
         .nock('https://api.twilio.com', api => {
           api.post(`/2010-04-01/Accounts/${accountSid}/Calls.json`).reply(201, {
             status: 'ringing'

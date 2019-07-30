@@ -41,21 +41,25 @@ class OpenApiClient {
       opts.uri = this.getUri(opts);
     }
 
-    if (!opts.host) {
-      opts.host = path.server;
-    }
-
-    if (opts.region) {
-      const parts = opts.host.split('.');
-
-      // From 'https://api.twilio.com/' to 'https://api.{region}.twilio.com/'
-      if (parts.length > 1 && parts[1] !== opts.region) {
-        parts.splice(1, 0, opts.region);
-        opts.host = parts.join('.');
+    // If the URI is relative, determine the host and prepend it.
+    if (opts.uri.startsWith('/')) {
+      if (!opts.host) {
+        opts.host = path.server;
       }
+
+      if (opts.region) {
+        const parts = opts.host.split('.');
+
+        // From 'https://api.twilio.com/' to 'https://api.{region}.twilio.com/'
+        if (parts.length > 1 && parts[1] !== opts.region) {
+          parts.splice(1, 0, opts.region);
+          opts.host = parts.join('.');
+        }
+      }
+
+      opts.uri = opts.host + opts.uri;
     }
 
-    opts.uri = opts.host + opts.uri;
     opts.params = (isPost ? null : params);
     opts.data = (isPost ? params : null);
 
