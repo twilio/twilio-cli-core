@@ -2928,7 +2928,7 @@
           {
             "description": "The absolute url the webhook request should be sent to.",
             "in": "query",
-            "name": "Configuration.url",
+            "name": "Configuration.Url",
             "required": false,
             "schema": {
               "type": "string"
@@ -2937,7 +2937,7 @@
           {
             "description": "The HTTP method to be used when sending a webhook request.",
             "in": "query",
-            "name": "Configuration.method",
+            "name": "Configuration.Method",
             "required": false,
             "schema": {
               "enum": [
@@ -2950,7 +2950,7 @@
           {
             "description": "The list of events, firing webhook event for this Session.",
             "in": "query",
-            "name": "Configuration.filters",
+            "name": "Configuration.Filters",
             "required": false,
             "schema": {
               "items": {
@@ -2962,7 +2962,7 @@
           {
             "description": "The list of keywords, firing webhook event for this Session.",
             "in": "query",
-            "name": "Configuration.triggers",
+            "name": "Configuration.Triggers",
             "required": false,
             "schema": {
               "items": {
@@ -2974,7 +2974,7 @@
           {
             "description": "The studio flow sid, where the webhook should be sent to.",
             "in": "query",
-            "name": "Configuration.flowSid",
+            "name": "Configuration.FlowSid",
             "required": false,
             "schema": {
               "maxLength": 34,
@@ -2986,7 +2986,7 @@
           {
             "description": "The number of retries in case of webhook request failures. Maximum 3 retries are allowed, the default value is 0.",
             "in": "query",
-            "name": "Configuration.retryCount",
+            "name": "Configuration.RetryCount",
             "required": false,
             "schema": {
               "type": "integer"
@@ -2995,7 +2995,7 @@
           {
             "description": "The message index for which and it's successors the webhook will be replayed. Not set by default",
             "in": "query",
-            "name": "Configuration.replayAfter",
+            "name": "Configuration.ReplayAfter",
             "required": false,
             "schema": {
               "type": "integer"
@@ -3004,7 +3004,7 @@
           {
             "description": "The flag whether buffering should be applied to messages. Not set by default",
             "in": "query",
-            "name": "Configuration.bufferMessages",
+            "name": "Configuration.BufferMessages",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -3013,7 +3013,7 @@
           {
             "description": "The period of buffering messages. Default is 3000 ms.",
             "in": "query",
-            "name": "Configuration.bufferWindow",
+            "name": "Configuration.BufferWindow",
             "required": false,
             "schema": {
               "type": "integer"
@@ -3173,7 +3173,7 @@
           {
             "description": "The absolute url the webhook request should be sent to.",
             "in": "query",
-            "name": "Configuration.url",
+            "name": "Configuration.Url",
             "required": false,
             "schema": {
               "type": "string"
@@ -3182,7 +3182,7 @@
           {
             "description": "The HTTP method to be used when sending a webhook request.",
             "in": "query",
-            "name": "Configuration.method",
+            "name": "Configuration.Method",
             "required": false,
             "schema": {
               "enum": [
@@ -3195,7 +3195,7 @@
           {
             "description": "The list of events, firing webhook event for this Session.",
             "in": "query",
-            "name": "Configuration.filters",
+            "name": "Configuration.Filters",
             "required": false,
             "schema": {
               "items": {
@@ -3207,7 +3207,7 @@
           {
             "description": "The list of keywords, firing webhook event for this Session.",
             "in": "query",
-            "name": "Configuration.triggers",
+            "name": "Configuration.Triggers",
             "required": false,
             "schema": {
               "items": {
@@ -3219,7 +3219,7 @@
           {
             "description": "The studio flow sid, where the webhook should be sent to.",
             "in": "query",
-            "name": "Configuration.flowSid",
+            "name": "Configuration.FlowSid",
             "required": false,
             "schema": {
               "maxLength": 34,
@@ -3231,7 +3231,7 @@
           {
             "description": "The number of retries in case of webhook request failures. Maximum 3 retries are allowed, the default value is 0.",
             "in": "query",
-            "name": "Configuration.retryCount",
+            "name": "Configuration.RetryCount",
             "required": false,
             "schema": {
               "type": "integer"
@@ -3240,7 +3240,7 @@
           {
             "description": "The flag whether buffering should be applied to messages. Not set by default",
             "in": "query",
-            "name": "Configuration.bufferMessages",
+            "name": "Configuration.BufferMessages",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -3249,7 +3249,7 @@
           {
             "description": "The period of buffering messages. Default is 3000 ms.",
             "in": "query",
-            "name": "Configuration.bufferWindow",
+            "name": "Configuration.BufferWindow",
             "required": false,
             "schema": {
               "type": "integer"
