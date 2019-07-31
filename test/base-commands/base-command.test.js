@@ -121,5 +121,13 @@ describe('base-commands', () => {
           expect(ctx.stdout).to.contain('FOO\tBAR\nfoo\tbar\n2\t2');
         });
     });
+
+    describe('getPromptMessage', () => {
+      baseCommandTest.it('adds a colon to the end of the message', ctx => {
+        expect(ctx.testCmd.getPromptMessage('Name: ')).to.equal('Name:');
+        expect(ctx.testCmd.getPromptMessage('Number.')).to.equal('Number:');
+        expect(ctx.testCmd.getPromptMessage('  Address  ')).to.equal('Address:');
+      });
+    });
   });
 });
