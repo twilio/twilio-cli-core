@@ -10,15 +10,21 @@ describe('base-commands', () => {
       }
     }
 
-    TestClientCommand.flags = TwilioClientCommand.flags;
-
     class ThrowingClientCommand extends TwilioClientCommand {
       async runCommand() {
         throw new Error('We were so wrong!');
       }
     }
 
+    class AccountSidClientCommand extends TwilioClientCommand {
+      async runCommand() {
+        // no-op
+      }
+    }
+
+    TestClientCommand.flags = TwilioClientCommand.flags;
     ThrowingClientCommand.flags = TwilioClientCommand.flags;
+    AccountSidClientCommand.flags = Object.assign({}, TwilioClientCommand.flags, TwilioClientCommand.accountSidFlag);
 
     const setUpTest = (
       args = [],
@@ -67,8 +73,8 @@ describe('base-commands', () => {
       expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
     });
 
-    setUpTest(['-l', 'debug', '--sub-account-sid', 'ACbaccbaccbaccbaccbaccbaccbaccbacc']).it(
-      'should create a client for the active project with a subaccount',
+    setUpTest(['-l', 'debug', '--account-sid', 'ACbaccbaccbaccbaccbaccbaccbaccbacc'], { commandClass: AccountSidClientCommand }).it(
+      'should create a client for the active project with a different account SID',
       async ctx => {
         expect(ctx.stderr).to.contain('MyFirstProject');
         expect(ctx.testCmd.twilioClient.accountSid).to.equal('ACbaccbaccbaccbaccbaccbaccbaccbacc');
