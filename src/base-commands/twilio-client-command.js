@@ -6,6 +6,9 @@ const { TwilioApiClient } = require('../services/twilio-api');
 const { TwilioCliError } = require('../services/error');
 const { HELP_ENVIRONMENT_VARIABLES, UNEXPECTED_ERROR } = require('../services/messaging/help-messages');
 
+// 'account-sid' is a special snowflake
+const ACCOUNT_SID = 'account-sid';
+
 class TwilioClientCommand extends BaseCommand {
   constructor(argv, config, secureStorage) {
     super(argv, config, secureStorage);
@@ -129,7 +132,7 @@ class TwilioClientCommand extends BaseCommand {
 
   buildClient(ClientClass) {
     return new ClientClass(this.currentProject.apiKey, this.currentProject.apiSecret, {
-      accountSid: this.flags['sub-account-sid'] || this.currentProject.accountSid,
+      accountSid: this.flags[ACCOUNT_SID] || this.currentProject.accountSid,
       region: this.currentProject.region,
       httpClient: this.httpClient
     });
@@ -141,12 +144,15 @@ TwilioClientCommand.flags = Object.assign(
     project: flags.string({
       char: 'p',
       description: 'Shorthand identifier for your Twilio project.'
-    }),
-    'sub-account-sid': flags.string({
-      description: 'access resources for the specified sub-account'
     })
   },
   BaseCommand.flags
 );
+
+TwilioClientCommand.accountSidFlag = {
+  [ACCOUNT_SID]: flags.string({
+    description: 'Access resources for the specified account.'
+  })
+};
 
 module.exports = TwilioClientCommand;
