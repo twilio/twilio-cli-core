@@ -100,6 +100,11 @@ class BaseCommand extends Command {
 
     return limitedData;
   }
+
+  getPromptMessage(message) {
+    // Drop the trailing period and put a colon at the end of the message.
+    return message.trim().replace(/[.:]?$/, ':');
+  }
 }
 
 BaseCommand.flags = {
