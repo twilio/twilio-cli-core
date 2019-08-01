@@ -7573,7 +7573,7 @@
             }
           },
           {
-            "description": "A descriptive string that you create to describe the resource. It can be up to 64 characters long.",
+            "description": "A descriptive string that you create to describe the resource. It can be up to 256 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -7582,7 +7582,7 @@
             }
           },
           {
-            "description": "An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service.",
+            "description": "An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 256 characters or less in length and unique within the Service.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
