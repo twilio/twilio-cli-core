@@ -8,158 +8,158 @@ const FAKE_AUTH_TOKEN = '1234567890abcdefghijklmnopqrstuvwxyz';
 
 describe('services', () => {
   describe('config', () => {
-    describe('ConfigData.addProject', () => {
-      test.it('should add a new project', () => {
+    describe('ConfigData.addProfile', () => {
+      test.it('should add a new profile', () => {
         const configData = new ConfigData();
-        configData.addProject('newProject', constants.FAKE_ACCOUNT_SID, 'dev');
+        configData.addProfile('newProfile', constants.FAKE_ACCOUNT_SID, 'dev');
 
-        expect(configData.projects[0].id).to.equal('newProject');
-        expect(configData.projects[0].accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
-        expect(configData.projects[0].region).to.equal('dev');
+        expect(configData.profiles[0].id).to.equal('newProfile');
+        expect(configData.profiles[0].accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(configData.profiles[0].region).to.equal('dev');
       });
 
-      test.it('should update an existing project', () => {
+      test.it('should update an existing profile', () => {
         const configData = new ConfigData();
-        configData.addProject('activeProject', constants.FAKE_ACCOUNT_SID, 'dev');
-        configData.addProject('activeProject', 'new-account-sid');
+        configData.addProfile('activeProfile', constants.FAKE_ACCOUNT_SID, 'dev');
+        configData.addProfile('activeProfile', 'new-account-sid');
 
-        expect(configData.projects[0].id).to.equal('activeProject');
-        expect(configData.projects[0].accountSid).to.equal('new-account-sid');
-        expect(configData.projects[0].region).to.equal(undefined);
+        expect(configData.profiles[0].id).to.equal('activeProfile');
+        expect(configData.profiles[0].accountSid).to.equal('new-account-sid');
+        expect(configData.profiles[0].region).to.equal(undefined);
       });
     });
 
-    describe('ConfigData.getProjectById', () => {
-      test.it('should return undefined if no projects', () => {
+    describe('ConfigData.getProfileById', () => {
+      test.it('should return undefined if no profiles', () => {
         const configData = new ConfigData();
-        const project = configData.getProjectById('DOES_NOT_EXIST');
-        expect(project).to.equal(undefined);
+        const profile = configData.getProfileById('DOES_NOT_EXIST');
+        expect(profile).to.equal(undefined);
       });
-      test.it('should return undefined if no projects, even with env vars', () => {
+      test.it('should return undefined if no profiles, even with env vars', () => {
         const configData = new ConfigData();
         process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
         process.env.TWILIO_AUTH_TOKEN = FAKE_AUTH_TOKEN;
 
-        const project = configData.getProjectById('DOES_NOT_EXIST');
-        expect(project).to.equal(undefined);
+        const profile = configData.getProfileById('DOES_NOT_EXIST');
+        expect(profile).to.equal(undefined);
       });
-      test.it('should return first project if it exists, and no env vars', () => {
+      test.it('should return first profile if it exists, and no env vars', () => {
         const configData = new ConfigData();
-        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
 
-        const project = configData.getProjectById();
-        expect(project.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
-        expect(project.apiKey).to.equal(undefined);
-        expect(project.apiSecret).to.equal(undefined);
+        const profile = configData.getProfileById();
+        expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiKey).to.equal(undefined);
+        expect(profile.apiSecret).to.equal(undefined);
       });
-      test.it('return the active project if there are multiple projects', () => {
+      test.it('return the active profile if there are multiple profiles', () => {
         const configData = new ConfigData();
-        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
-        configData.addProject('secondProject', 'new_account_SID');
-        configData.addProject('thirdProject', 'newest_account_SID');
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile('secondProfile', 'new_account_SID');
+        configData.addProfile('thirdProfile', 'newest_account_SID');
 
-        configData.activeProject = 'secondProject';
-        const project = configData.getProjectById();
-        expect(project.accountSid).to.equal('new_account_SID');
-        expect(project.apiKey).to.equal(undefined);
-        expect(project.apiSecret).to.equal(undefined);
+        configData.activeProfile = 'secondProfile';
+        const profile = configData.getProfileById();
+        expect(profile.accountSid).to.equal('new_account_SID');
+        expect(profile.apiKey).to.equal(undefined);
+        expect(profile.apiSecret).to.equal(undefined);
       });
-      test.it('should return project populated from AccountSid/AuthToken env vars', () => {
+      test.it('should return profile populated from AccountSid/AuthToken env vars', () => {
         const configData = new ConfigData();
-        configData.addProject('envProject', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile('envProfile', constants.FAKE_ACCOUNT_SID);
 
         process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
         process.env.TWILIO_AUTH_TOKEN = FAKE_AUTH_TOKEN;
 
-        const project = configData.getProjectById();
-        expect(project.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
-        expect(project.apiKey).to.equal(constants.FAKE_ACCOUNT_SID);
-        expect(project.apiSecret).to.equal(FAKE_AUTH_TOKEN);
+        const profile = configData.getProfileById();
+        expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiKey).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiSecret).to.equal(FAKE_AUTH_TOKEN);
       });
 
-      test.it('should return project populated from AccountSid/ApiKey env vars', () => {
+      test.it('should return profile populated from AccountSid/ApiKey env vars', () => {
         const configData = new ConfigData();
-        configData.addProject('envProject', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile('envProfile', constants.FAKE_ACCOUNT_SID);
 
         process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
         process.env.TWILIO_AUTH_TOKEN = 'api key should take precedence';
         process.env.TWILIO_API_KEY = constants.FAKE_API_KEY;
         process.env.TWILIO_API_SECRET = constants.FAKE_API_SECRET;
 
-        const project = configData.getProjectById();
-        expect(project.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
-        expect(project.apiKey).to.equal(constants.FAKE_API_KEY);
-        expect(project.apiSecret).to.equal(constants.FAKE_API_SECRET);
+        const profile = configData.getProfileById();
+        expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiKey).to.equal(constants.FAKE_API_KEY);
+        expect(profile.apiSecret).to.equal(constants.FAKE_API_SECRET);
       });
     });
 
-    describe('ConfigData.getActiveProject', () => {
-      test.it('should return first project when no active project is set', () => {
+    describe('ConfigData.getActiveProfile', () => {
+      test.it('should return first profile when no active profile is set', () => {
         const configData = new ConfigData();
-        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
-        configData.addProject('secondProject', 'new_account_SID');
-        configData.addProject('thirdProject', 'newest_account_SID');
-        const active = configData.getActiveProject();
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile('secondProfile', 'new_account_SID');
+        configData.addProfile('thirdProfile', 'newest_account_SID');
+        const active = configData.getActiveProfile();
 
-        expect(active.id).to.equal('firstProject');
+        expect(active.id).to.equal('firstProfile');
         expect(active.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
       });
-      test.it('should return active project when active project has been set', () => {
+      test.it('should return active profile when active profile has been set', () => {
         const configData = new ConfigData();
-        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
-        configData.addProject('secondProject', 'new_account_SID');
-        configData.addProject('thirdProject', 'newest_account_SID');
-        configData.activeProject = 'secondProject';
-        const active = configData.getActiveProject();
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile('secondProfile', 'new_account_SID');
+        configData.addProfile('thirdProfile', 'newest_account_SID');
+        configData.activeProfile = 'secondProfile';
+        const active = configData.getActiveProfile();
 
-        expect(active.id).to.equal('secondProject');
+        expect(active.id).to.equal('secondProfile');
         expect(active.accountSid).to.equal('new_account_SID');
       });
-      test.it('should return undefined if project does not exist and there are no projects configured', () => {
+      test.it('should return undefined if profile does not exist and there are no profiles configured', () => {
         const configData = new ConfigData();
-        const active = configData.getActiveProject();
+        const active = configData.getActiveProfile();
         expect(active).to.equal(undefined);
       });
     });
 
-    describe('ConfigData.removeProject', () => {
-      test.it('remove a project that does not exist', () => {
+    describe('ConfigData.removeProfile', () => {
+      test.it('remove a profile that does not exist', () => {
         const configData = new ConfigData();
-        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
-        configData.addProject('secondProject', 'new_account_SID');
-        configData.addProject('thirdProject', 'newest_account_SID');
-        const fakeProject = {
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile('secondProfile', 'new_account_SID');
+        configData.addProfile('thirdProfile', 'newest_account_SID');
+        const fakeProfile = {
           id: 'DOES_NOT_EXIST',
           accountSid: 'fake_SID'
         };
-        const originalLength = configData.projects.length;
-        configData.removeProject(fakeProject);
+        const originalLength = configData.profiles.length;
+        configData.removeProfile(fakeProfile);
 
-        expect(configData.projects.length).to.equal(originalLength);
+        expect(configData.profiles.length).to.equal(originalLength);
       });
-      test.it('removes project', () => {
+      test.it('removes profile', () => {
         const configData = new ConfigData();
-        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
-        configData.addProject('secondProject', 'new_account_SID');
-        configData.addProject('thirdProject', 'newest_account_SID');
-        const project = configData.getProjectById('secondProject');
-        configData.removeProject(project);
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile('secondProfile', 'new_account_SID');
+        configData.addProfile('thirdProfile', 'newest_account_SID');
+        const profile = configData.getProfileById('secondProfile');
+        configData.removeProfile(profile);
 
-        expect(configData.projects[1].id).to.equal('thirdProject');
-        expect(configData.projects[1].accountSid).to.equal('newest_account_SID');
+        expect(configData.profiles[1].id).to.equal('thirdProfile');
+        expect(configData.profiles[1].accountSid).to.equal('newest_account_SID');
       });
-      test.it('removes active project', () => {
+      test.it('removes active profile', () => {
         const configData = new ConfigData();
-        configData.addProject('firstProject', constants.FAKE_ACCOUNT_SID);
-        configData.addProject('secondProject', 'new_account_SID');
-        configData.addProject('thirdProject', 'newest_account_SID');
-        const project = configData.getProjectById('firstProject');
-        configData.activeProject = 'firstProject';
-        configData.removeProject(project);
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile('secondProfile', 'new_account_SID');
+        configData.addProfile('thirdProfile', 'newest_account_SID');
+        const profile = configData.getProfileById('firstProfile');
+        configData.activeProfile = 'firstProfile';
+        configData.removeProfile(profile);
 
-        expect(configData.projects[1].id).to.equal('thirdProject');
-        expect(configData.projects[1].accountSid).to.equal('newest_account_SID');
-        expect(configData.activeProject).to.equal(null);
+        expect(configData.profiles[1].id).to.equal('thirdProfile');
+        expect(configData.profiles[1].accountSid).to.equal('newest_account_SID');
+        expect(configData.activeProfile).to.equal(null);
       });
     });
 
@@ -169,7 +169,7 @@ describe('services', () => {
       test.it('saves and loads user configuration', async () => {
         const config = new Config(tempConfigDir.name);
         const userConfig = await config.load();
-        userConfig.addProject('myProject', constants.FAKE_ACCOUNT_SID, 'stage');
+        userConfig.addProfile('myProfile', constants.FAKE_ACCOUNT_SID, 'stage');
 
         const saveMessage = await config.save(userConfig);
         expect(saveMessage).to.contain(`${tempConfigDir.name}${path.sep}config.json`);

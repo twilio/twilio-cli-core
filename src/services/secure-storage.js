@@ -45,18 +45,18 @@ class SecureStorage {
     return keytar;
   }
 
-  async saveCredentials(projectId, username, password) {
-    await this.keytar.setPassword(CLI_NAME, projectId, username + '|' + password);
+  async saveCredentials(profileId, username, password) {
+    await this.keytar.setPassword(CLI_NAME, profileId, username + '|' + password);
   }
 
-  async removeCredentials(projectId) {
-    return this.keytar.deletePassword(CLI_NAME, projectId);
+  async removeCredentials(profileId) {
+    return this.keytar.deletePassword(CLI_NAME, profileId);
   }
 
-  async getCredentials(projectId) {
+  async getCredentials(profileId) {
     let credentials = null;
     try {
-      credentials = await this.keytar.getPassword(CLI_NAME, projectId);
+      credentials = await this.keytar.getPassword(CLI_NAME, profileId);
     } catch (e) {
       return { apiKey: 'error', apiSecret: e.message };
     }

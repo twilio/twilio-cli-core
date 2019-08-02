@@ -26,30 +26,30 @@ class TwilioClientCommand extends BaseCommand {
     await super.run();
 
     try {
-      this.currentProject = this.userConfig.getProjectById(this.flags.project);
+      this.currentProfile = this.userConfig.getProfileById(this.flags.profile);
 
       const reportUnconfigured = (verb, message = '') => {
-        const projParam = this.flags.project ? ' -p ' + this.flags.project : '';
+        const profileParam = this.flags.profile ? ' -p ' + this.flags.profile : '';
         throw new TwilioCliError(
-          `To ${verb} the project, run: ` + chalk.whiteBright('twilio projects:add' + projParam) + message
+          `To ${verb} the profile, run: ` + chalk.whiteBright('twilio profiles:add' + profileParam) + message
         );
       };
 
-      if (!this.currentProject) {
-        this.logger.error('No project configured.');
+      if (!this.currentProfile) {
+        this.logger.error('No profile configured.');
         reportUnconfigured('add', '\n\n' + HELP_ENVIRONMENT_VARIABLES);
       }
 
-      this.logger.debug('Using project: ' + this.currentProject.id);
+      this.logger.debug('Using profile: ' + this.currentProfile.id);
 
-      if (!this.currentProject.apiKey || !this.currentProject.apiSecret) {
-        const creds = await this.secureStorage.getCredentials(this.currentProject.id);
+      if (!this.currentProfile.apiKey || !this.currentProfile.apiSecret) {
+        const creds = await this.secureStorage.getCredentials(this.currentProfile.id);
         if (creds.apiKey === 'error') {
-          this.logger.error(`Could not get credentials for project "${this.currentProject.id}".`);
+          this.logger.error(`Could not get credentials for profile "${this.currentProfile.id}".`);
           reportUnconfigured('reconfigure');
         }
-        this.currentProject.apiKey = creds.apiKey;
-        this.currentProject.apiSecret = creds.apiSecret;
+        this.currentProfile.apiKey = creds.apiKey;
+        this.currentProfile.apiSecret = creds.apiSecret;
       }
 
       this.httpClient = new CliRequestClient(this.id, this.logger);
@@ -131,9 +131,9 @@ class TwilioClientCommand extends BaseCommand {
   }
 
   buildClient(ClientClass) {
-    return new ClientClass(this.currentProject.apiKey, this.currentProject.apiSecret, {
-      accountSid: this.flags[ACCOUNT_SID] || this.currentProject.accountSid,
-      region: this.currentProject.region,
+    return new ClientClass(this.currentProfile.apiKey, this.currentProfile.apiSecret, {
+      accountSid: this.flags[ACCOUNT_SID] || this.currentProfile.accountSid,
+      region: this.currentProfile.region,
       httpClient: this.httpClient
     });
   }
@@ -141,9 +141,9 @@ class TwilioClientCommand extends BaseCommand {
 
 TwilioClientCommand.flags = Object.assign(
   {
-    project: flags.string({
+    profile: flags.string({
       char: 'p',
-      description: 'Shorthand identifier for your Twilio project.'
+      description: 'Shorthand identifier for your Twilio profile.'
     })
   },
   BaseCommand.flags
