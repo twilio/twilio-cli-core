@@ -1,6 +1,15 @@
 twilio-cli-core changelog
 =====================
 
+[2019-08-02] Version 3.0.0
+---------------------------
+**Library**
+- [PR #49](https://github.com/twilio/twilio-cli-core/pull/49): breaking: Switch naming from 'project(s)' to 'profile(s)'. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+
+**Preview**
+- Added support for the header `Twilio-Sandbox-Mode` to mock all Voice dependencies
+
+
 [2019-07-31] Version 2.0.5
 ---------------------------
 **Library**

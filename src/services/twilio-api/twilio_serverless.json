@@ -1213,6 +1213,48 @@
       "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Builds/{Sid}": {
+      "delete": {
+        "description": "Delete a Build.",
+        "parameters": [
+          {
+            "description": "The unique SID identifier of the Service for the Build.",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZS[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique SID identifier of this Build.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZB[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
       "description": "A collection of Function Versions, Asset Versions, and Dependencies that form a deployable unit.",
       "get": {
         "description": "Retrieve a specific Build.",
