@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@oclif/test": "^1.2.4",
-    "@twilio/cli-test": "^1.0.1",
+    "@twilio/cli-test": "^2.0.0",
     "chai": "^4.2.0",
     "eslint": "^4.19.1",
     "eslint-config-oclif": "^1.5.1",
