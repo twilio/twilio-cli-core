@@ -1,6 +1,13 @@
 twilio-cli-core changelog
 =====================
 
+[2019-08-02] Version 3.0.1
+---------------------------
+**Library**
+- [PR #51](https://github.com/twilio/twilio-cli-core/pull/51): Add user prompt config storage and utils. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #50](https://github.com/twilio/twilio-cli-core/pull/50): Change 'Twilio profile' to just 'profile' for the flag description. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2019-08-02] Version 3.0.0
 ---------------------------
 **Library**
