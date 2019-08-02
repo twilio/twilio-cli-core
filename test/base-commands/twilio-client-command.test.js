@@ -36,8 +36,8 @@ describe('base-commands', () => {
           if (setUpUserConfig) {
             setUpUserConfig(ctx.userConfig);
           } else {
-            ctx.userConfig.addProject('MyFirstProject', constants.FAKE_ACCOUNT_SID);
-            ctx.userConfig.addProject('twilio-cli-unit-testing', constants.FAKE_ACCOUNT_SID, 'stage');
+            ctx.userConfig.addProfile('MyFirstProfile', constants.FAKE_ACCOUNT_SID);
+            ctx.userConfig.addProfile('twilio-cli-unit-testing', constants.FAKE_ACCOUNT_SID, 'stage');
           }
         })
         .twilioCliEnv(Config)
@@ -48,10 +48,10 @@ describe('base-commands', () => {
             ctx.fakeConfig,
             mockSecureStorage ?
               {
-                async getCredentials(projectId) {
+                async getCredentials(profileId) {
                   return {
                     apiKey: constants.FAKE_API_KEY,
-                    apiSecret: constants.FAKE_API_SECRET + projectId
+                    apiSecret: constants.FAKE_API_SECRET + profileId
                   };
                 }
               } :
@@ -65,42 +65,42 @@ describe('base-commands', () => {
       expect(() => new TwilioClientCommand([], ctx.fakeConfig)).to.throw('runCommand');
     });
 
-    setUpTest(['-l', 'debug']).it('should create a client for the active project', async ctx => {
-      expect(ctx.stderr).to.contain('MyFirstProject');
+    setUpTest(['-l', 'debug']).it('should create a client for the active profile', async ctx => {
+      expect(ctx.stderr).to.contain('MyFirstProfile');
       expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
       expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
-      expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'MyFirstProject');
+      expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'MyFirstProfile');
       expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
     });
 
     setUpTest(['-l', 'debug', '--account-sid', 'ACbaccbaccbaccbaccbaccbaccbaccbacc'], { commandClass: AccountSidClientCommand }).it(
-      'should create a client for the active project with a different account SID',
+      'should create a client for the active profile with a different account SID',
       async ctx => {
-        expect(ctx.stderr).to.contain('MyFirstProject');
+        expect(ctx.stderr).to.contain('MyFirstProfile');
         expect(ctx.testCmd.twilioClient.accountSid).to.equal('ACbaccbaccbaccbaccbaccbaccbaccbacc');
         expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
-        expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'MyFirstProject');
+        expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'MyFirstProfile');
         expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
       }
     );
 
     setUpTest(['-l', 'debug'], { setUpUserConfig: () => 0 })
       .exit(1)
-      .it('should fail for a non-existent active project', async ctx => {
-        expect(ctx.stderr).to.contain('No project configured');
-        expect(ctx.stderr).to.contain('To add the project, run: twilio projects:add');
+      .it('should fail for a non-existent active profile', async ctx => {
+        expect(ctx.stderr).to.contain('No profile configured');
+        expect(ctx.stderr).to.contain('To add the profile, run: twilio profiles:add');
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       });
 
     setUpTest(['-p', 'alt', '-l', 'debug'])
       .exit(1)
-      .it('should fail for a non-existent project', async ctx => {
-        expect(ctx.stderr).to.contain('No project configured');
-        expect(ctx.stderr).to.contain('To add the project, run: twilio projects:add -p alt');
+      .it('should fail for a non-existent profile', async ctx => {
+        expect(ctx.stderr).to.contain('No profile configured');
+        expect(ctx.stderr).to.contain('To add the profile, run: twilio profiles:add -p alt');
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       });
 
-    setUpTest(['-p', 'twilio-cli-unit-testing']).it('should create a client for a non-default project', async ctx => {
+    setUpTest(['-p', 'twilio-cli-unit-testing']).it('should create a client for a non-default profile', async ctx => {
       expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
       expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
       expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'twilio-cli-unit-testing');
@@ -110,9 +110,9 @@ describe('base-commands', () => {
     setUpTest(['-p', 'twilio-cli-unit-testing'], { mockSecureStorage: false })
       .exit(1)
       .it('should handle a secure storage error', async ctx => {
-        expect(ctx.stderr).to.contain('Could not get credentials for project "twilio-cli-unit-testing"');
+        expect(ctx.stderr).to.contain('Could not get credentials for profile "twilio-cli-unit-testing"');
         expect(ctx.stderr).to.contain(
-          'To reconfigure the project, run: twilio projects:add -p twilio-cli-unit-testing'
+          'To reconfigure the profile, run: twilio profiles:add -p twilio-cli-unit-testing'
         );
       });
 

@@ -1,3 +1,7 @@
+/* eslint no-warning-comments: "off" */
+// TODO: Remove the above eslint directive when this file
+// is free of TODO's.
+
 const fs = require('fs-extra');
 const path = require('path');
 const shell = require('shelljs');
@@ -5,7 +9,7 @@ const MessageTemplates = require('./messaging/templates');
 
 const CLI_NAME = 'twilio-cli';
 
-class ConfigDataProject {
+class ConfigDataProfile {
   constructor(id, accountSid, region) {
     this.id = id;
     this.accountSid = accountSid;
@@ -15,12 +19,12 @@ class ConfigDataProject {
 
 class ConfigData {
   constructor() {
-    this.projects = [];
+    this.profiles = [];
     this.email = {};
-    this.activeProject = null;
+    this.activeProfile = null;
   }
 
-  getProjectFromEnvironment() {
+  getProfileFromEnvironment() {
     const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_API_KEY, TWILIO_API_SECRET } = process.env;
     if (!TWILIO_ACCOUNT_SID) return;
 
@@ -43,60 +47,61 @@ class ConfigData {
       };
   }
 
-  getProjectById(projectId) {
-    let project;
+  getProfileById(profileId) {
+    let profile;
 
-    if (!projectId) {
-      project = this.getProjectFromEnvironment();
+    if (!profileId) {
+      profile = this.getProfileFromEnvironment();
     }
-    if (!project) {
-      if (projectId) {
-        project = this.projects.find(project => project.id === projectId);
+    if (!profile) {
+      if (profileId) {
+        profile = this.profiles.find(profile => profile.id === profileId);
       } else {
-        project = this.getActiveProject();
+        profile = this.getActiveProfile();
       }
     }
-    return project;
+    return profile;
   }
 
-  getActiveProject() {
-    let project;
-    if (this.projects.length > 0) {
-      if (this.activeProject) {
-        project = this.projects.find(project => project.id === this.activeProject);
+  getActiveProfile() {
+    let profile;
+    if (this.profiles.length > 0) {
+      if (this.activeProfile) {
+        profile = this.profiles.find(profile => profile.id === this.activeProfile);
       }
-      if (!project) {
-        project = this.projects[0];
+      if (!profile) {
+        profile = this.profiles[0];
       }
     }
-    return project;
+    return profile;
   }
 
-  removeProject(projectToRemove) {
-    this.projects = this.projects.filter(project => {
-      return project.id !== projectToRemove.id;
+  removeProfile(profileToRemove) {
+    this.profiles = this.profiles.filter(profile => {
+      return profile.id !== profileToRemove.id;
     });
-    if (projectToRemove.id === this.activeProject) {
-      this.activeProject = null;
+    if (profileToRemove.id === this.activeProfile) {
+      this.activeProfile = null;
     }
   }
 
-  addProject(id, accountSid, region) {
-    const existing = this.getProjectById(id);
+  addProfile(id, accountSid, region) {
+    const existing = this.getProfileById(id);
     if (existing) {
       existing.accountSid = accountSid;
       existing.region = region;
     } else {
-      this.projects.push(new ConfigDataProject(id, accountSid, region));
+      this.profiles.push(new ConfigDataProfile(id, accountSid, region));
     }
   }
 
   loadFromObject(configObj) {
     this.email = configObj.email || {};
-    this.activeProject = configObj.activeProject;
-    configObj.projects = configObj.projects || [];
-    configObj.projects.forEach(project => {
-      this.addProject(project.id, project.accountSid, project.region);
+    // TODO: Add versioning so we can drop the legacy "projects" naming.
+    this.activeProfile = configObj.activeProject;
+    configObj.profiles = configObj.projects || [];
+    configObj.profiles.forEach(profile => {
+      this.addProfile(profile.id, profile.accountSid, profile.region);
     });
   }
 }
@@ -118,10 +123,17 @@ class Config {
     return configData;
   }
 
-  async save(userConfig) {
+  async save(configData) {
+    // TODO: Add versioning so we can drop the legacy "projects" naming.
+    configData = {
+      projects: configData.profiles,
+      activeProject: configData.activeProfile,
+      email: configData.email
+    };
+
     // Migrate to 'fs.mkdirSync' with 'recursive: true' when no longer supporting Node8.
     shell.mkdir('-p', this.configDir);
-    await fs.writeJSON(this.filePath, userConfig, { flag: 'w' });
+    await fs.writeJSON(this.filePath, configData, { flag: 'w' });
 
     return MessageTemplates.configSaved({ path: this.filePath });
   }

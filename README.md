@@ -10,7 +10,7 @@ The base command class for _all_ twilio-cli commands. Includes support for confi
 
 ### TwilioClientCommand
 
-A base command class for commands that need a Twilio client to make API requests. Handles loading credentials from the project configuration.
+A base command class for commands that need a Twilio client to make API requests. Handles loading credentials from the profile configuration.
 
 ## Services
 
@@ -28,7 +28,7 @@ A custom http client for the Twilio helper library to allow us to log API reques
 
 ### Config
 
-Manages the CLI configuration options, such as Twilio projects and credentials.
+Manages the CLI configuration options, such as Twilio profiles and credentials.
 
 ### Logger
 
