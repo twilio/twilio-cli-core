@@ -143,7 +143,7 @@ TwilioClientCommand.flags = Object.assign(
   {
     profile: flags.string({
       char: 'p',
-      description: 'Shorthand identifier for your Twilio profile.'
+      description: 'Shorthand identifier for your profile.'
     })
   },
   BaseCommand.flags
