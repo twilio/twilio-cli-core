@@ -162,6 +162,16 @@ describe('services', () => {
         expect(configData.activeProfile).to.equal(null);
       });
     });
+    describe('ConfigData.prompts', () => {
+      test.it('should store prompt acks', () => {
+        const configData = new ConfigData();
+
+        expect(configData.isPromptAcked('prompt-1')).to.be.false;
+        configData.ackPrompt('prompt-1');
+        expect(configData.isPromptAcked('prompt-1')).to.be.true;
+        expect(configData.isPromptAcked('prompt-2')).to.be.false;
+      });
+    });
 
     describe('Config', () => {
       const tempConfigDir = tmp.dirSync({ unsafeCleanup: true });
@@ -170,6 +180,7 @@ describe('services', () => {
         const config = new Config(tempConfigDir.name);
         const userConfig = await config.load();
         userConfig.addProfile('myProfile', constants.FAKE_ACCOUNT_SID, 'stage');
+        userConfig.ackPrompt('impromptu');
 
         const saveMessage = await config.save(userConfig);
         expect(saveMessage).to.contain(`${tempConfigDir.name}${path.sep}config.json`);
