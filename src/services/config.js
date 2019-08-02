@@ -19,8 +19,9 @@ class ConfigDataProfile {
 
 class ConfigData {
   constructor() {
-    this.profiles = [];
     this.email = {};
+    this.prompts = {};
+    this.profiles = [];
     this.activeProfile = null;
   }
 
@@ -95,8 +96,26 @@ class ConfigData {
     }
   }
 
+  isPromptAcked(promptId) {
+    const prompt = this.prompts[promptId];
+
+    return Boolean(prompt && prompt.acked);
+  }
+
+  ackPrompt(promptId) {
+    let prompt = this.prompts[promptId];
+
+    if (!prompt) {
+      prompt = {};
+      this.prompts[promptId] = prompt;
+    }
+
+    prompt.acked = true;
+  }
+
   loadFromObject(configObj) {
     this.email = configObj.email || {};
+    this.prompts = configObj.prompts || {};
     // TODO: Add versioning so we can drop the legacy "projects" naming.
     this.activeProfile = configObj.activeProject;
     configObj.profiles = configObj.projects || [];
@@ -124,11 +143,12 @@ class Config {
   }
 
   async save(configData) {
-    // TODO: Add versioning so we can drop the legacy "projects" naming.
     configData = {
+      email: configData.email,
+      prompts: configData.prompts,
+      // TODO: Add versioning so we can drop the legacy "projects" naming.
       projects: configData.profiles,
-      activeProject: configData.activeProfile,
-      email: configData.email
+      activeProject: configData.activeProfile
     };
 
     // Migrate to 'fs.mkdirSync' with 'recursive: true' when no longer supporting Node8.
