@@ -458,7 +458,7 @@
           {
             "description": "The unique SID identifier of the Flow for Studio integration type",
             "in": "query",
-            "name": "Integration.FlowSid",
+            "name": "Integration.flowSid",
             "required": false,
             "schema": {
               "maxLength": 34,
@@ -470,7 +470,7 @@
           {
             "description": "External Webhook Url for External integration type",
             "in": "query",
-            "name": "Integration.Url",
+            "name": "Integration.url",
             "required": false,
             "schema": {
               "format": "uri",
@@ -480,7 +480,7 @@
           {
             "description": "Workspace Sid for a new task for Task integration type",
             "in": "query",
-            "name": "Integration.WorkspaceSid",
+            "name": "Integration.workspaceSid",
             "required": false,
             "schema": {
               "maxLength": 34,
@@ -492,7 +492,7 @@
           {
             "description": "Workflow Sid for a new task for Task integration type",
             "in": "query",
-            "name": "Integration.WorkflowSid",
+            "name": "Integration.workflowSid",
             "required": false,
             "schema": {
               "maxLength": 34,
@@ -504,7 +504,7 @@
           {
             "description": "Task Channel for a new task for Task integration type (default is 'default')",
             "in": "query",
-            "name": "Integration.Channel",
+            "name": "Integration.channel",
             "required": false,
             "schema": {
               "type": "string"
@@ -513,7 +513,7 @@
           {
             "description": "Task timeout in seconds for a new task for Task integration type (default 86400)",
             "in": "query",
-            "name": "Integration.Timeout",
+            "name": "Integration.timeout",
             "required": false,
             "schema": {
               "type": "integer"
@@ -522,7 +522,7 @@
           {
             "description": "Task priority for a new task for Task integration type (default 0)",
             "in": "query",
-            "name": "Integration.Priority",
+            "name": "Integration.priority",
             "required": false,
             "schema": {
               "type": "integer"
@@ -531,7 +531,7 @@
           {
             "description": "Flag for task creation, either creating task with the channel, or if true create task whwn first message arrives (for Task integration type)",
             "in": "query",
-            "name": "Integration.CreationOnMessage",
+            "name": "Integration.creationOnMessage",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -736,7 +736,7 @@
           {
             "description": "The unique SID identifier of the Flow for Studio integration type",
             "in": "query",
-            "name": "Integration.FlowSid",
+            "name": "Integration.flowSid",
             "required": false,
             "schema": {
               "maxLength": 34,
@@ -748,7 +748,7 @@
           {
             "description": "External Webhook Url for External integration type",
             "in": "query",
-            "name": "Integration.Url",
+            "name": "Integration.url",
             "required": false,
             "schema": {
               "format": "uri",
@@ -758,7 +758,7 @@
           {
             "description": "Workspace Sid for a new task for Task integration type",
             "in": "query",
-            "name": "Integration.WorkspaceSid",
+            "name": "Integration.workspaceSid",
             "required": false,
             "schema": {
               "maxLength": 34,
@@ -770,7 +770,7 @@
           {
             "description": "Workflow Sid for a new task for Task integration type",
             "in": "query",
-            "name": "Integration.WorkflowSid",
+            "name": "Integration.workflowSid",
             "required": false,
             "schema": {
               "maxLength": 34,
@@ -782,7 +782,7 @@
           {
             "description": "Task Channel for a new task for Task integration type (default is 'default')",
             "in": "query",
-            "name": "Integration.Channel",
+            "name": "Integration.channel",
             "required": false,
             "schema": {
               "type": "string"
@@ -791,7 +791,7 @@
           {
             "description": "Task timeout in seconds for a new task for Task integration type (default 86400)",
             "in": "query",
-            "name": "Integration.Timeout",
+            "name": "Integration.timeout",
             "required": false,
             "schema": {
               "type": "integer"
@@ -800,7 +800,7 @@
           {
             "description": "Task priority for a new task for Task integration type (default 0)",
             "in": "query",
-            "name": "Integration.Priority",
+            "name": "Integration.priority",
             "required": false,
             "schema": {
               "type": "integer"
@@ -809,7 +809,7 @@
           {
             "description": "Flag for task creation, either creating task with the channel, or if true create task whwn first message arrives (for Task integration type)",
             "in": "query",
-            "name": "Integration.CreationOnMessage",
+            "name": "Integration.creationOnMessage",
             "required": false,
             "schema": {
               "type": "boolean"
