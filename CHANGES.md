@@ -1,6 +1,12 @@
 twilio-cli-core changelog
 =====================
 
+[2019-08-05] Version 3.0.2
+---------------------------
+**Conversations**
+- Switch library_visibility to public for Conversations Resources
+
+
 [2019-08-02] Version 3.0.1
 ---------------------------
 **Library**

@@ -15,7 +15,7 @@
     "request": "^2.88.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",
-    "twilio": "^3.33.2"
+    "twilio": "^3.33.3"
   },
   "peerDependencies": {
     "keytar": "^4.11.0"
