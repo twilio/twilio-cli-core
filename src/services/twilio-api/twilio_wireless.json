@@ -864,7 +864,7 @@
             }
           },
           {
-            "description": "Network-enforced limit specifying the total Megabytes of data usage (download and upload combined) allowed during one month on the 'home' (T-Mobile USA) network. Metering begins on the day of activation and ends on the same day of the following month.  Max value is 2TB. Default value is `1000`.",
+            "description": "Network-enforced limit specifying the total Megabytes of data usage (download and upload combined) allowed during one month on the home network. Metering begins on the day of activation and ends on the same day of the following month.  Max value is 2TB.",
             "in": "query",
             "name": "DataLimit",
             "required": false,
@@ -873,7 +873,7 @@
             }
           },
           {
-            "description": "The model by which to meter data usage, in accordance with the available [data metering models](https://www.twilio.com/docs/wireless/api/rate-plan#payg-vs-quota-data-plans). Valid options are `payg` and `quota-1`, `quota-10`, and `quota-50`. Defaults to `payg`.",
+            "description": "The model by which to meter data usage, in accordance with the two available [data metering models](https://www.twilio.com/docs/api/wireless/rest-api/rate-plan#explanation-of-pooled-vs-individual). Valid options are `pooled` and `individual`.",
             "in": "query",
             "name": "DataMetering",
             "required": false,
@@ -900,7 +900,7 @@
             }
           },
           {
-            "description": "Defines whether SIMs can roam onto networks other than the 'home' (T-Mobile USA) network in the United States. See ['national' roaming](https://www.twilio.com/docs/api/wireless/rest-api/rate-plan#national-roaming).",
+            "description": "Defines whether SIMs can roam onto other networks in the SIM's home country. See ['national' roaming](https://www.twilio.com/docs/api/wireless/rest-api/rate-plan#national-roaming).",
             "in": "query",
             "name": "NationalRoamingEnabled",
             "required": false,
@@ -909,7 +909,7 @@
             }
           },
           {
-            "description": "Defines whether SIMs are capable of using GPRS/3G/4G/LTE data connectivity and messaging outside of the United States. Acceptable values are `data` and `messaging`.",
+            "description": "",
             "in": "query",
             "name": "InternationalRoaming",
             "required": false,
@@ -921,7 +921,7 @@
             }
           },
           {
-            "description": "Network-enforced limit specifying the total Megabytes of national roaming data usage (download and upload combined) allowed during one month on networks in the United States other than the 'home' (T-Mobile USA) network. See ['national' roaming](https://www.twilio.com/docs/api/wireless/rest-api/rate-plan#national-roaming). Max value is 2TB.",
+            "description": "Network-enforced limit specifying the total Megabytes of national roaming data usage (download and upload combined) allowed during one month.  Max value is 2TB. If unspecified, the default value is the lesser of `DataLimit` and 1000MB.",
             "in": "query",
             "name": "NationalRoamingDataLimit",
             "required": false,
@@ -930,7 +930,7 @@
             }
           },
           {
-            "description": "Network-enforced limit specifying the total Megabytes of international roaming (non-US) data usage (download and upload combined) allowed during one month. Max value is 2TB. Default value is the lesser of `DataLimit` and `1000`MB.",
+            "description": "",
             "in": "query",
             "name": "InternationalRoamingDataLimit",
             "required": false,
@@ -977,7 +977,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this resource.",
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1008,7 +1008,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this resource.",
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1044,7 +1044,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this resource.",
+            "description": "",
             "in": "path",
             "name": "Sid",
             "required": true,
