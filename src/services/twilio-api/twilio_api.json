@@ -535,17 +535,6 @@
             "type": "boolean"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "friendly_name": {
@@ -590,17 +579,6 @@
             "type": "boolean"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "friendly_name": {
@@ -645,17 +623,6 @@
             "type": "boolean"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "friendly_name": {
@@ -700,17 +667,6 @@
             "type": "boolean"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "friendly_name": {
@@ -755,17 +711,6 @@
             "type": "boolean"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "friendly_name": {
@@ -810,17 +755,6 @@
             "type": "boolean"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "friendly_name": {
@@ -865,17 +799,6 @@
             "type": "boolean"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "friendly_name": {
@@ -1704,17 +1627,6 @@
             "type": "boolean"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "date_created": {
@@ -2017,17 +1929,6 @@
             "type": "boolean"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "date_created": {
@@ -2222,17 +2123,6 @@
             "type": "boolean"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "date_created": {
@@ -2427,17 +2317,6 @@
             "type": "boolean"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "date_created": {

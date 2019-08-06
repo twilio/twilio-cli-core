@@ -501,17 +501,6 @@
             "type": "integer"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "cc_emails": {
@@ -624,17 +613,6 @@
             "type": "integer"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "cc_emails": {

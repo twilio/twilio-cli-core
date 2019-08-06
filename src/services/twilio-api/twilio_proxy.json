@@ -82,17 +82,6 @@
             "type": "string"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "date_created": {
@@ -580,17 +569,6 @@
             "type": "string"
           },
           "capabilities": {
-            "properties": {
-              "mms": {
-                "type": "boolean"
-              },
-              "sms": {
-                "type": "boolean"
-              },
-              "voice": {
-                "type": "boolean"
-              }
-            },
             "type": "object"
           },
           "date_created": {
