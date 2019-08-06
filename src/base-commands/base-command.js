@@ -78,16 +78,25 @@ class BaseCommand extends Command {
     const propNames = properties.split(',').map(p => p.trim());
     const limitedData = dataArray.map(fullItem => {
       const limitedItem = {};
+
       propNames.forEach(p => {
-        if (fullItem[p] === undefined) {
+        let propValue = fullItem[p];
+
+        if (propValue === undefined) {
           invalidPropertyNames.add(p);
-        } else if (fullItem[p] instanceof Date) {
-          const dateString = fullItem[p].toString();
-          limitedItem[p] = this.sanitizeDateString(dateString);
-        } else {
-          limitedItem[p] = fullItem[p];
+          return;
         }
+
+        if (propValue instanceof Date) {
+          const dateString = propValue.toString();
+          propValue = this.sanitizeDateString(dateString);
+        } else if (typeof propValue === 'object') {
+          propValue = JSON.stringify(propValue);
+        }
+
+        limitedItem[p] = propValue;
       });
+
       return limitedItem;
     });
 
