@@ -44,6 +44,46 @@ describe('services', () => {
         });
 
       test
+        .nock('https://api.twilio.com', api => {
+          /* eslint-disable camelcase */
+          api.get(`/2010-04-01/Accounts/${accountSid}/Calls.json?StartTime%3E=${callStartTime}`).reply(200, {
+            calls: [{
+              sid: callSid
+            }]
+          });
+          /* eslint-enable camelcase */
+        })
+        .it('test greater than inequality conversion', async () => {
+          const response = await client.list({
+            domain: 'api',
+            path: '/2010-04-01/Accounts/{AccountSid}/Calls.json',
+            data: { startTimeAfter: callStartTime } // CLI is startTimeAfter
+          });
+
+          expect(response).to.eql([{ sid: callSid }]);
+        });
+
+      test
+        .nock('https://api.twilio.com', api => {
+          /* eslint-disable camelcase */
+          api.get(`/2010-04-01/Accounts/${accountSid}/Calls.json?StartTime%3C=${callStartTime}`).reply(200, {
+            calls: [{
+              sid: callSid
+            }]
+          });
+          /* eslint-enable camelcase */
+        })
+        .it('test less than inequality conversion', async () => {
+          const response = await client.list({
+            domain: 'api',
+            path: '/2010-04-01/Accounts/{AccountSid}/Calls.json',
+            data: { startTimeBefore: callStartTime } // CLI is startTimeBefore
+          });
+
+          expect(response).to.eql([{ sid: callSid }]);
+        });
+
+      test
         .nock('https://studio.twilio.com', api => {
           /* eslint-disable camelcase */
           api.get('/v1/Flows').reply(200, {

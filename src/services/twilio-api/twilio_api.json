@@ -10601,9 +10601,49 @@
             }
           },
           {
+            "description": "Only include calls that started on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`.",
+            "in": "query",
+            "name": "StartTime<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Only include calls that started on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`.",
+            "in": "query",
+            "name": "StartTime>",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
             "description": "Only include calls that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.",
             "in": "query",
             "name": "EndTime",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Only include calls that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.",
+            "in": "query",
+            "name": "EndTime<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Only include calls that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.",
+            "in": "query",
+            "name": "EndTime>",
             "required": false,
             "schema": {
               "format": "date-time",
@@ -11425,6 +11465,26 @@
               "format": "date-time",
               "type": "string"
             }
+          },
+          {
+            "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.",
+            "in": "query",
+            "name": "MessageDate<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.",
+            "in": "query",
+            "name": "MessageDate>",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -11658,6 +11718,26 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
             "in": "query",
             "name": "DateCreated",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
+            "in": "query",
+            "name": "DateCreated<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
+            "in": "query",
+            "name": "DateCreated>",
             "required": false,
             "schema": {
               "format": "date-time",
@@ -12356,9 +12436,49 @@
             }
           },
           {
+            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.",
+            "in": "query",
+            "name": "DateCreated<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.",
+            "in": "query",
+            "name": "DateCreated>",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
             "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.",
             "in": "query",
             "name": "DateUpdated",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.",
+            "in": "query",
+            "name": "DateUpdated<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.",
+            "in": "query",
+            "name": "DateUpdated>",
             "required": false,
             "schema": {
               "format": "date-time",
@@ -13387,6 +13507,26 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
             "in": "query",
             "name": "DateCreated",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
+            "in": "query",
+            "name": "DateCreated<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
+            "in": "query",
+            "name": "DateCreated>",
             "required": false,
             "schema": {
               "format": "date-time",
@@ -17130,6 +17270,26 @@
               "format": "date-time",
               "type": "string"
             }
+          },
+          {
+            "description": "The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.",
+            "in": "query",
+            "name": "DateSent<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.",
+            "in": "query",
+            "name": "DateSent>",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -17484,6 +17644,26 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for media generated at or after midnight on a date.",
             "in": "query",
             "name": "DateCreated",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for media generated at or after midnight on a date.",
+            "in": "query",
+            "name": "DateCreated<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for media generated at or after midnight on a date.",
+            "in": "query",
+            "name": "DateCreated>",
             "required": false,
             "schema": {
               "format": "date-time",
@@ -17881,6 +18061,26 @@
             "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.",
             "in": "query",
             "name": "MessageDate",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.",
+            "in": "query",
+            "name": "MessageDate<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.",
+            "in": "query",
+            "name": "MessageDate>",
             "required": false,
             "schema": {
               "format": "date-time",
@@ -19032,6 +19232,26 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
             "in": "query",
             "name": "DateCreated",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
+            "in": "query",
+            "name": "DateCreated<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
+            "in": "query",
+            "name": "DateCreated>",
             "required": false,
             "schema": {
               "format": "date-time",
