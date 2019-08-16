@@ -4,6 +4,7 @@ const { logger } = require('../messaging/logging');
 const OpenApiClient = require('../open-api-client');
 const TwilioApiBrowser = require('./api-browser');
 const TwilioSchemaConverter = require('../api-schema/twilio-converter');
+const readline = require('readline');
 
 // AccountSid is a special snowflake
 const ACCOUNT_SID_FLAG = 'AccountSid';
@@ -68,27 +69,45 @@ class TwilioApiClient {
     return statusCode === 204;
   }
 
+  getKey() {
+    readline.emitKeypressEvents(process.stdin); // listen for stdin events
+    // process.stdin.setRawMode(true); //setting RawMode to true gets rid of standard keypress events
+    var verdict;
+    process.stdin.on('keypress', (str, key) => { // start listener for keypress
+      if (key.name === 'm') {
+        verdict = true;
+        // Need to return out of this function.
+      }
+    });
+    return verdict;
+  }
+
   async list(opts) {
     opts.method = 'get';
-
     const { body } = await this.request(opts);
-    const items = this.getResponseItems(body);
-
+    var items = this.getResponseItems(body);
     // If there's another page of results, "Let's Get It".
     const nextPageUri = (body.meta && body.meta.nextPageUrl) || body.nextPageUri;
-
-    if (nextPageUri) {
+    const keyPress = this.getKey(); // should return true 'm' key is pressed
+    if (nextPageUri && process.stdin.isTTY === true && keyPress === true) {
+      const newItems = await this.list({
+        domain: opts.domain,
+        host: opts.host,
+        path: opts.path,
+        uri: nextPageUri
+      });
+      // rewrite items to load next 50 items in the list
+      items = newItems;
+    }
+    if (nextPageUri && !process.stdin.isTTY) {
       const nextItems = await this.list({
         domain: opts.domain,
         host: opts.host,
         path: opts.path,
         uri: nextPageUri
       });
-
-      // Append all the items from the subsequent page(s).
       items.push(...nextItems);
     }
-
     return items;
   }
 
