@@ -1,7 +1,3 @@
-/* eslint no-warning-comments: "off" */
-// TODO: Remove the above eslint directive when this file
-// is free of TODO's.
-
 const fs = require('fs-extra');
 const path = require('path');
 const shell = require('shelljs');
@@ -54,14 +50,29 @@ class ConfigData {
     if (!profileId) {
       profile = this.getProfileFromEnvironment();
     }
+
     if (!profile) {
       if (profileId) {
+        // Clean the profile ID.
+        profileId = this.sanitize(profileId);
         profile = this.profiles.find(profile => profile.id === profileId);
       } else {
         profile = this.getActiveProfile();
       }
     }
+
     return profile;
+  }
+
+  setActiveProfile(profileId) {
+    if (profileId) {
+      const profile = this.getProfileById(profileId);
+
+      if (profile) {
+        this.activeProfile = profile.id;
+        return profile;
+      }
+    }
   }
 
   getActiveProfile() {
@@ -87,6 +98,11 @@ class ConfigData {
   }
 
   addProfile(id, accountSid, region) {
+    // Clean all the inputs.
+    id = this.sanitize(id);
+    accountSid = this.sanitize(accountSid);
+    region = this.sanitize(region);
+
     const existing = this.getProfileById(id);
     if (existing) {
       existing.accountSid = accountSid;
@@ -116,12 +132,15 @@ class ConfigData {
   loadFromObject(configObj) {
     this.email = configObj.email || {};
     this.prompts = configObj.prompts || {};
-    // TODO: Add versioning so we can drop the legacy "projects" naming.
-    this.activeProfile = configObj.activeProject;
+    // Note the historical 'projects' naming.
     configObj.profiles = configObj.projects || [];
-    configObj.profiles.forEach(profile => {
-      this.addProfile(profile.id, profile.accountSid, profile.region);
-    });
+    configObj.profiles.forEach(profile => this.addProfile(profile.id, profile.accountSid, profile.region));
+    this.setActiveProfile(configObj.activeProject);
+  }
+
+  sanitize(string) {
+    // Trim whitespace if given a non-null string.
+    return string ? string.trim() : string;
   }
 }
 
@@ -146,7 +165,7 @@ class Config {
     configData = {
       email: configData.email,
       prompts: configData.prompts,
-      // TODO: Add versioning so we can drop the legacy "projects" naming.
+      // Note the historical 'projects' naming.
       projects: configData.profiles,
       activeProject: configData.activeProfile
     };

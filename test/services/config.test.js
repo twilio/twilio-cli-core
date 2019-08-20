@@ -25,7 +25,7 @@ describe('services', () => {
 
         expect(configData.profiles[0].id).to.equal('activeProfile');
         expect(configData.profiles[0].accountSid).to.equal('new-account-sid');
-        expect(configData.profiles[0].region).to.equal(undefined);
+        expect(configData.profiles[0].region).to.be.undefined;
       });
     });
 
@@ -33,7 +33,7 @@ describe('services', () => {
       test.it('should return undefined if no profiles', () => {
         const configData = new ConfigData();
         const profile = configData.getProfileById('DOES_NOT_EXIST');
-        expect(profile).to.equal(undefined);
+        expect(profile).to.be.undefined;
       });
       test.it('should return undefined if no profiles, even with env vars', () => {
         const configData = new ConfigData();
@@ -41,7 +41,7 @@ describe('services', () => {
         process.env.TWILIO_AUTH_TOKEN = FAKE_AUTH_TOKEN;
 
         const profile = configData.getProfileById('DOES_NOT_EXIST');
-        expect(profile).to.equal(undefined);
+        expect(profile).to.be.undefined;
       });
       test.it('should return first profile if it exists, and no env vars', () => {
         const configData = new ConfigData();
@@ -49,20 +49,20 @@ describe('services', () => {
 
         const profile = configData.getProfileById();
         expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
-        expect(profile.apiKey).to.equal(undefined);
-        expect(profile.apiSecret).to.equal(undefined);
+        expect(profile.apiKey).to.be.undefined;
+        expect(profile.apiSecret).to.be.undefined;
       });
       test.it('return the active profile if there are multiple profiles', () => {
         const configData = new ConfigData();
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
         configData.addProfile('secondProfile', 'new_account_SID');
         configData.addProfile('thirdProfile', 'newest_account_SID');
+        configData.setActiveProfile('secondProfile');
 
-        configData.activeProfile = 'secondProfile';
         const profile = configData.getProfileById();
         expect(profile.accountSid).to.equal('new_account_SID');
-        expect(profile.apiKey).to.equal(undefined);
-        expect(profile.apiSecret).to.equal(undefined);
+        expect(profile.apiKey).to.be.undefined;
+        expect(profile.apiSecret).to.be.undefined;
       });
       test.it('should return profile populated from AccountSid/AuthToken env vars', () => {
         const configData = new ConfigData();
@@ -93,7 +93,7 @@ describe('services', () => {
       });
     });
 
-    describe('ConfigData.getActiveProfile', () => {
+    describe('ConfigData.activeProfile', () => {
       test.it('should return first profile when no active profile is set', () => {
         const configData = new ConfigData();
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
@@ -109,16 +109,22 @@ describe('services', () => {
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
         configData.addProfile('secondProfile', 'new_account_SID');
         configData.addProfile('thirdProfile', 'newest_account_SID');
-        configData.activeProfile = 'secondProfile';
+        configData.setActiveProfile('secondProfile');
         const active = configData.getActiveProfile();
 
         expect(active.id).to.equal('secondProfile');
         expect(active.accountSid).to.equal('new_account_SID');
       });
+      test.it('should not allow the active profile to not exist', () => {
+        const configData = new ConfigData();
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        expect(configData.setActiveProfile('secondProfile')).to.be.undefined;
+        expect(configData.getActiveProfile().id).to.equal('firstProfile');
+      });
       test.it('should return undefined if profile does not exist and there are no profiles configured', () => {
         const configData = new ConfigData();
         const active = configData.getActiveProfile();
-        expect(active).to.equal(undefined);
+        expect(active).to.be.undefined;
       });
     });
 
@@ -153,8 +159,7 @@ describe('services', () => {
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
         configData.addProfile('secondProfile', 'new_account_SID');
         configData.addProfile('thirdProfile', 'newest_account_SID');
-        const profile = configData.getProfileById('firstProfile');
-        configData.activeProfile = 'firstProfile';
+        const profile = configData.setActiveProfile('firstProfile');
         configData.removeProfile(profile);
 
         expect(configData.profiles[1].id).to.equal('thirdProfile');
@@ -176,10 +181,11 @@ describe('services', () => {
     describe('Config', () => {
       const tempConfigDir = tmp.dirSync({ unsafeCleanup: true });
 
-      test.it('saves and loads user configuration', async () => {
+      test.it('saves and loads user configuration with space trimmed', async () => {
         const config = new Config(tempConfigDir.name);
         const userConfig = await config.load();
-        userConfig.addProfile('myProfile', constants.FAKE_ACCOUNT_SID, 'stage');
+        userConfig.addProfile('  profile  \t', 'sid  \n ', '    stage');
+        userConfig.setActiveProfile('\tprofile\t');
         userConfig.ackPrompt('impromptu');
 
         const saveMessage = await config.save(userConfig);
@@ -187,6 +193,7 @@ describe('services', () => {
 
         const loadedConfig = await config.load();
         expect(loadedConfig).to.deep.equal(userConfig);
+        expect(loadedConfig.getActiveProfile().id).to.equal('profile');
       });
 
       test.it('works with config dirs that did not exist', async () => {
