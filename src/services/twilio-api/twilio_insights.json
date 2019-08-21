@@ -50,24 +50,6 @@
             "nullable": true,
             "type": "integer"
           },
-          "direction": {
-            "enum": [
-              "inbound",
-              "outbound_api",
-              "outbound_dial",
-              "trunking_originating",
-              "trunking_terminating"
-            ],
-            "type": "string"
-          },
-          "disconnected_by": {
-            "enum": [
-              "callee",
-              "caller",
-              "unknown"
-            ],
-            "type": "string"
-          },
           "duration": {
             "nullable": true,
             "type": "integer"
@@ -200,7 +182,6 @@
         "call_type",
         "call_state",
         "processing_state",
-        "direction",
         "duration"
       ],
       "x-path-type": "instance"

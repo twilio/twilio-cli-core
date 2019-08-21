@@ -1488,7 +1488,7 @@
         "description": "challenge a specific Verification Check.",
         "parameters": [
           {
-            "description": "The SID of the verification [Service](https://www.twilio.com/docs/chat/rest/services) to create the resource under.",
+            "description": "The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1589,7 +1589,7 @@
         "description": "Create a new Verification for a To number using a Service",
         "parameters": [
           {
-            "description": "The SID of the verification [Service](https://www.twilio.com/docs/chat/rest/services) to create the resource under.",
+            "description": "The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1723,7 +1723,7 @@
         "description": "Fetch a specific Verification",
         "parameters": [
           {
-            "description": "The SID of the verification [Service](https://www.twilio.com/docs/chat/rest/services) to fetch the resource from.",
+            "description": "The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to fetch the resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1768,7 +1768,7 @@
         "description": "Update a Verification status",
         "parameters": [
           {
-            "description": "The SID of the verification [Service](https://www.twilio.com/docs/chat/rest/services) to update the resource from.",
+            "description": "The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to update the resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1789,7 +1789,7 @@
             }
           },
           {
-            "description": "The new status of the resource. Can be: `pending`, `approved`, `denied`, or `expired`.",
+            "description": "The new status of the resource. Can be: `canceled` or `approved`.",
             "in": "query",
             "name": "Status",
             "required": true,

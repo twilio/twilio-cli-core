@@ -372,6 +372,7 @@
       ],
       "x-default-output-properties": [
         "sid",
+        "chat_service_sid",
         "friendly_name",
         "date_created"
       ],
@@ -1739,6 +1740,7 @@
       ],
       "x-default-output-properties": [
         "sid",
+        "chat_service_sid",
         "friendly_name",
         "date_created"
       ],

@@ -51,6 +51,9 @@
           "webhook_url": {
             "format": "uri",
             "type": "string"
+          },
+          "webhooks_from_rest_enabled": {
+            "type": "boolean"
           }
         },
         "type": "object"
@@ -636,6 +639,15 @@
             "required": false,
             "schema": {
               "type": "integer"
+            }
+          },
+          {
+            "description": "`true` or `false` - controls whether this instance fires webhooks when Sync objects are updated through REST. Defaults to false.",
+            "in": "query",
+            "name": "WebhooksFromRestEnabled",
+            "required": false,
+            "schema": {
+              "type": "boolean"
             }
           }
         ],
@@ -3943,6 +3955,15 @@
             "required": false,
             "schema": {
               "type": "integer"
+            }
+          },
+          {
+            "description": "`true` or `false` - controls whether this instance fires webhooks when Sync objects are updated through REST. Defaults to false.",
+            "in": "query",
+            "name": "WebhooksFromRestEnabled",
+            "required": false,
+            "schema": {
+              "type": "boolean"
             }
           }
         ],

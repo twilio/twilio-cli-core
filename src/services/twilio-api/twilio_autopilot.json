@@ -1124,7 +1124,7 @@
             }
           },
           {
-            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US`, `nl-NL`",
+            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US`",
             "in": "query",
             "name": "Language",
             "required": false,
@@ -1219,7 +1219,7 @@
             }
           },
           {
-            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US`, `nl-NL`",
+            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US`",
             "in": "query",
             "name": "Language",
             "required": true,
