@@ -37,50 +37,10 @@ describe('services', () => {
           const response = await client.list({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Calls.json',
-            data: { startTime: callStartTime }
+            data: { StartTime: callStartTime }
           });
 
           expect(response).to.eql([{ sid: callSid }, { sid: callSid }]);
-        });
-
-      test
-        .nock('https://api.twilio.com', api => {
-          /* eslint-disable camelcase */
-          api.get(`/2010-04-01/Accounts/${accountSid}/Calls.json?StartTime%3E=${callStartTime}`).reply(200, {
-            calls: [{
-              sid: callSid
-            }]
-          });
-          /* eslint-enable camelcase */
-        })
-        .it('test greater than inequality conversion', async () => {
-          const response = await client.list({
-            domain: 'api',
-            path: '/2010-04-01/Accounts/{AccountSid}/Calls.json',
-            data: { startTimeAfter: callStartTime } // CLI is startTimeAfter
-          });
-
-          expect(response).to.eql([{ sid: callSid }]);
-        });
-
-      test
-        .nock('https://api.twilio.com', api => {
-          /* eslint-disable camelcase */
-          api.get(`/2010-04-01/Accounts/${accountSid}/Calls.json?StartTime%3C=${callStartTime}`).reply(200, {
-            calls: [{
-              sid: callSid
-            }]
-          });
-          /* eslint-enable camelcase */
-        })
-        .it('test less than inequality conversion', async () => {
-          const response = await client.list({
-            domain: 'api',
-            path: '/2010-04-01/Accounts/{AccountSid}/Calls.json',
-            data: { startTimeBefore: callStartTime } // CLI is startTimeBefore
-          });
-
-          expect(response).to.eql([{ sid: callSid }]);
         });
 
       test
@@ -123,7 +83,7 @@ describe('services', () => {
           const response = await client.create({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Calls.json',
-            data: { to: '123', from: '456', junk: 'disregard' }
+            data: { To: '123', From: '456', Junk: 'disregard' }
           });
 
           expect(response).to.eql({ status: 'ringing' });
@@ -140,7 +100,7 @@ describe('services', () => {
           const response = await client.fetch({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json',
-            data: { sid: callSid }
+            pathParams: { Sid: callSid }
           });
 
           expect(response).to.eql({ status: 'in-progress' });
@@ -156,7 +116,8 @@ describe('services', () => {
           const response = await client.update({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json',
-            data: { sid: callSid, status: 'canceled' }
+            pathParams: { Sid: callSid },
+            data: { Status: 'canceled' }
           });
 
           expect(response).to.eql({ status: 'canceled' });
@@ -171,7 +132,7 @@ describe('services', () => {
           const response = await client.remove({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json',
-            data: { sid: callSid }
+            pathParams: { Sid: callSid }
           });
 
           expect(response).to.be.true;
@@ -236,7 +197,7 @@ describe('services', () => {
           const response = await client.create({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Addresses.json',
-            data: { emergencyEnabled: true }
+            data: { EmergencyEnabled: true }
           });
 
           expect(response).to.eql({ verified: 'true' });

@@ -118,6 +118,7 @@ class TwilioApiClient {
    * @param {string} [opts.password] - The password used for auth
    * @param {object} [opts.headers] - The request headers
    * @param {object} [opts.data] - The request data
+   * @param {object} [opts.pathParams] - The request path parameter values
    * @param {int} [opts.timeout] - The request timeout in milliseconds
    * @param {boolean} [opts.allowRedirects] - Should the client follow redirects
    */
@@ -129,6 +130,7 @@ class TwilioApiClient {
     opts.region = opts.region || this.region;
     opts.headers = opts.headers || {};
     opts.data = opts.data || {};
+    opts.pathParams = opts.pathParams || {};
 
     opts.headers['User-Agent'] = `twilio-api-client/${pkg.version} (node.js ${process.version})`;
     opts.headers['Accept-Charset'] = 'utf-8';
@@ -142,8 +144,8 @@ class TwilioApiClient {
     }
 
     if (!opts.uri) {
-      if (opts.path.includes(ACCOUNT_SID_FLAG) && !doesObjectHaveProperty(opts.data, ACCOUNT_SID_FLAG)) {
-        opts.data[ACCOUNT_SID_FLAG] = this.accountSid;
+      if (opts.path.includes(ACCOUNT_SID_FLAG) && !doesObjectHaveProperty(opts.pathParams, ACCOUNT_SID_FLAG)) {
+        opts.pathParams[ACCOUNT_SID_FLAG] = this.accountSid;
       }
     }
 
