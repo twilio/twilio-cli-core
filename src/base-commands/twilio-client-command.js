@@ -4,6 +4,7 @@ const BaseCommand = require('./base-command');
 const CliRequestClient = require('../services/cli-http-client');
 const { TwilioApiClient } = require('../services/twilio-api');
 const { TwilioCliError } = require('../services/error');
+const { camelCase } = require('../services/naming-conventions');
 const { HELP_ENVIRONMENT_VARIABLES, UNEXPECTED_ERROR } = require('../services/messaging/help-messages');
 
 // 'account-sid' is a special snowflake
@@ -79,10 +80,9 @@ class TwilioClientCommand extends BaseCommand {
 
     let updatedProperties = null;
     Object.keys(this.constructor.PropertyFlags).forEach(propName => {
-      if (this.flags[propName]) {
+      if (this.flags[propName] !== undefined) {
         updatedProperties = updatedProperties || {};
-        // Convert kebab-case to camelCase
-        const paramName = propName.replace(/-([a-z])/g, g => g[1].toUpperCase());
+        const paramName = camelCase(propName);
         updatedProperties[paramName] = this.flags[propName];
       }
     });
@@ -97,6 +97,7 @@ class TwilioClientCommand extends BaseCommand {
     };
 
     updatedProperties = updatedProperties || this.parseProperties();
+    this.logger.debug('Updated properties:');
     this.logger.debug(updatedProperties);
 
     if (updatedProperties) {
