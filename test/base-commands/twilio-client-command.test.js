@@ -61,11 +61,11 @@ describe('base-commands', () => {
         });
     };
 
-    setUpTest().it('should not allow construction of the base class', async ctx => {
+    setUpTest().it('should not allow construction of the base class', ctx => {
       expect(() => new TwilioClientCommand([], ctx.fakeConfig)).to.throw('runCommand');
     });
 
-    setUpTest(['-l', 'debug']).it('should create a client for the active profile', async ctx => {
+    setUpTest(['-l', 'debug']).it('should create a client for the active profile', ctx => {
       expect(ctx.stderr).to.contain('MyFirstProfile');
       expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
       expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
@@ -75,7 +75,7 @@ describe('base-commands', () => {
 
     setUpTest(['-l', 'debug', '--account-sid', 'ACbaccbaccbaccbaccbaccbaccbaccbacc'], { commandClass: AccountSidClientCommand }).it(
       'should create a client for the active profile with a different account SID',
-      async ctx => {
+      ctx => {
         expect(ctx.stderr).to.contain('MyFirstProfile');
         expect(ctx.testCmd.twilioClient.accountSid).to.equal('ACbaccbaccbaccbaccbaccbaccbaccbacc');
         expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
@@ -86,7 +86,7 @@ describe('base-commands', () => {
 
     setUpTest(['-l', 'debug'], { setUpUserConfig: () => 0 })
       .exit(1)
-      .it('should fail for a non-existent active profile', async ctx => {
+      .it('should fail for a non-existent active profile', ctx => {
         expect(ctx.stderr).to.contain('No profile configured');
         expect(ctx.stderr).to.contain('To add the profile, run: twilio profiles:add');
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
@@ -94,13 +94,13 @@ describe('base-commands', () => {
 
     setUpTest(['-p', 'alt', '-l', 'debug'])
       .exit(1)
-      .it('should fail for a non-existent profile', async ctx => {
+      .it('should fail for a non-existent profile', ctx => {
         expect(ctx.stderr).to.contain('No profile configured');
         expect(ctx.stderr).to.contain('To add the profile, run: twilio profiles:add -p alt');
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       });
 
-    setUpTest(['-p', 'twilio-cli-unit-testing']).it('should create a client for a non-default profile', async ctx => {
+    setUpTest(['-p', 'twilio-cli-unit-testing']).it('should create a client for a non-default profile', ctx => {
       expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
       expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
       expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'twilio-cli-unit-testing');
@@ -109,7 +109,7 @@ describe('base-commands', () => {
 
     setUpTest(['-p', 'twilio-cli-unit-testing'], { mockSecureStorage: false })
       .exit(1)
-      .it('should handle a secure storage error', async ctx => {
+      .it('should handle a secure storage error', ctx => {
         expect(ctx.stderr).to.contain('Could not get credentials for profile "twilio-cli-unit-testing"');
         expect(ctx.stderr).to.contain(
           'To reconfigure the profile, run: twilio profiles:add -p twilio-cli-unit-testing'
@@ -118,17 +118,17 @@ describe('base-commands', () => {
 
     setUpTest([], { commandClass: ThrowingClientCommand })
       .exit(1)
-      .it('should catch unhandled errors', async ctx => {
+      .it('should catch unhandled errors', ctx => {
         expect(ctx.stderr).to.contain('unexpected error');
       });
 
     describe('parseProperties', () => {
-      setUpTest().it('should ignore empty PropertyFlags', async ctx => {
+      setUpTest().it('should ignore empty PropertyFlags', ctx => {
         const updatedProperties = ctx.testCmd.parseProperties();
         expect(updatedProperties).to.be.null;
       });
 
-      setUpTest().it('should ignore empty command flags', async ctx => {
+      setUpTest().it('should ignore missing command flags', ctx => {
         ctx.testCmd.constructor.PropertyFlags = {
           'friendly-name': {},
           'sms-url': {}
@@ -138,7 +138,7 @@ describe('base-commands', () => {
         expect(updatedProperties).to.be.null;
       });
 
-      setUpTest().it('should parse options into API resource properties', async ctx => {
+      setUpTest().it('should parse options into API resource properties', ctx => {
         ctx.testCmd.constructor.PropertyFlags = {
           'friendly-name': {},
           'sms-url': {}
@@ -151,6 +151,14 @@ describe('base-commands', () => {
         const updatedProperties = ctx.testCmd.parseProperties();
         expect(updatedProperties.friendlyName).to.equal('Casper');
         expect(updatedProperties.smsUrl).to.equal('https://localhost:5000/sms');
+      });
+
+      setUpTest().it('should parse empty command flags', ctx => {
+        ctx.testCmd.constructor.PropertyFlags = { 'sms-url': {} };
+        ctx.testCmd.flags = { 'sms-url': '' };
+
+        const updatedProperties = ctx.testCmd.parseProperties();
+        expect(updatedProperties.smsUrl).to.be.empty;
       });
     });
 
