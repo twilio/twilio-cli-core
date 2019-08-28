@@ -98,7 +98,18 @@
       "description": "User provided AWS keys",
       "get": {
         "description": "Retrieves a collection of AWS Credentials belonging to the account used to make the request",
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -352,7 +363,18 @@
       "description": "User provided public keys",
       "get": {
         "description": "Retrieves a collection of Public Key Credentials belonging to the account used to make the request",
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
