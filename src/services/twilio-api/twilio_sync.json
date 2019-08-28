@@ -524,7 +524,18 @@
       "description": "Containers for sync objects",
       "get": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -699,6 +710,16 @@
               "pattern": "^IS[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -861,6 +882,16 @@
               "minLength": 34,
               "pattern": "^ET[0-9a-fA-F]{32}$",
               "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
             }
           }
         ],
@@ -1328,6 +1359,16 @@
               "pattern": "^IS[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -1525,6 +1566,16 @@
                 "exclusive"
               ],
               "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
             }
           }
         ],
@@ -1924,6 +1975,16 @@
               "minLength": 34,
               "pattern": "^ES[0-9a-fA-F]{32}$",
               "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
             }
           }
         ],
@@ -2391,6 +2452,16 @@
               "pattern": "^IS[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -2588,6 +2659,16 @@
                 "exclusive"
               ],
               "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
             }
           }
         ],
@@ -2996,6 +3077,16 @@
               "minLength": 34,
               "pattern": "^MP[0-9a-fA-F]{32}$",
               "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
             }
           }
         ],
@@ -3462,6 +3553,16 @@
               "minLength": 34,
               "pattern": "^IS[0-9a-fA-F]{32}$",
               "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
             }
           }
         ],
