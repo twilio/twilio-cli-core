@@ -636,7 +636,18 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all Services for Twilio Proxy. A maximum of 100 records will be returned per page.",
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -834,6 +845,16 @@
               "minLength": 34,
               "pattern": "^KS[0-9a-fA-F]{32}$",
               "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
             }
           }
         ],
@@ -1150,6 +1171,16 @@
               "pattern": "^KS[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -1356,6 +1387,16 @@
               "minLength": 34,
               "pattern": "^KC[0-9a-fA-F]{32}$",
               "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
             }
           }
         ],
@@ -1585,6 +1626,16 @@
               "pattern": "^KC[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -1784,6 +1835,16 @@
               "minLength": 34,
               "pattern": "^KP[0-9a-fA-F]{32}$",
               "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
             }
           }
         ],
@@ -2357,6 +2418,16 @@
               "minLength": 34,
               "pattern": "^KS[0-9a-fA-F]{32}$",
               "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
             }
           }
         ],
