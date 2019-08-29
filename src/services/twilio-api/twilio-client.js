@@ -5,8 +5,13 @@ const OpenApiClient = require('../open-api-client');
 const TwilioApiBrowser = require('./api-browser');
 const TwilioSchemaConverter = require('../api-schema/twilio-converter');
 
-// AccountSid is a special snowflake
-const ACCOUNT_SID_FLAG = 'AccountSid';
+// Special snowflakes
+const TwilioApiFlags = {
+  ACCOUNT_SID: 'AccountSid',
+  PAGE_SIZE: 'page-size',
+  LIMIT: 'limit',
+  NO_LIMIT: 'no-limit'
+};
 
 class TwilioApiClient {
   constructor(username, password, opts) {
@@ -69,27 +74,59 @@ class TwilioApiClient {
   }
 
   async list(opts) {
-    opts.method = 'get';
+    const items = [];
+    const limit = this.getLimit(opts.data);
 
-    const { body } = await this.request(opts);
-    const items = this.getResponseItems(body);
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      opts.method = 'get';
 
-    // If there's another page of results, "Let's Get It".
-    const nextPageUri = (body.meta && body.meta.nextPageUrl) || body.nextPageUri;
+      // eslint-disable-next-line no-await-in-loop
+      const { body } = await this.request(opts);
+      const pageItems = this.getResponseItems(body);
 
-    if (nextPageUri) {
-      const nextItems = await this.list({
+      // Append all the items from the next page.
+      items.push(...pageItems);
+
+      if (limit !== undefined && items.length >= limit) {
+        logger.debug(`Limiting result set to ${limit} record(s)`);
+        return items.slice(0, limit);
+      }
+
+      // If there's another page of results, "Let's Get It".
+      const nextPageUri = (body.meta && body.meta.nextPageUrl) || body.nextPageUri;
+
+      if (!nextPageUri) {
+        break;
+      }
+
+      opts = {
         domain: opts.domain,
         host: opts.host,
         path: opts.path,
         uri: nextPageUri
-      });
-
-      // Append all the items from the subsequent page(s).
-      items.push(...nextItems);
+      };
     }
 
     return items;
+  }
+
+  getLimit(options) {
+    // 'no-limit' outranks 'limit' so begone.
+    if (!options || options[TwilioApiFlags.NO_LIMIT]) {
+      return;
+    }
+
+    const limit = options[TwilioApiFlags.LIMIT];
+
+    if (limit !== undefined) {
+      if (options[TwilioApiFlags.PAGE_SIZE] > limit) {
+        logger.debug(`Reducing page size to ${limit}`);
+        options[TwilioApiFlags.PAGE_SIZE] = limit;
+      }
+    }
+
+    return limit;
   }
 
   getResponseItems(responseBody) {
@@ -142,8 +179,8 @@ class TwilioApiClient {
     }
 
     if (!opts.uri) {
-      if (opts.path.includes(ACCOUNT_SID_FLAG) && !doesObjectHaveProperty(opts.data, ACCOUNT_SID_FLAG)) {
-        opts.data[ACCOUNT_SID_FLAG] = this.accountSid;
+      if (opts.path.includes(TwilioApiFlags.ACCOUNT_SID) && !doesObjectHaveProperty(opts.data, TwilioApiFlags.ACCOUNT_SID)) {
+        opts.data[TwilioApiFlags.ACCOUNT_SID] = this.accountSid;
       }
     }
 
@@ -151,4 +188,7 @@ class TwilioApiClient {
   }
 }
 
-module.exports = TwilioApiClient;
+module.exports = {
+  TwilioApiClient,
+  TwilioApiFlags
+};

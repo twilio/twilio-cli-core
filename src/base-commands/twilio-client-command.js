@@ -2,13 +2,14 @@ const chalk = require('chalk');
 const { flags } = require('@oclif/command');
 const BaseCommand = require('./base-command');
 const CliRequestClient = require('../services/cli-http-client');
-const { TwilioApiClient } = require('../services/twilio-api');
+const { TwilioApiClient, TwilioApiFlags } = require('../services/twilio-api');
 const { TwilioCliError } = require('../services/error');
-const { camelCase } = require('../services/naming-conventions');
+const { translateValues } = require('../services/javascript-utilities');
+const { camelCase, kebabCase } = require('../services/naming-conventions');
 const { HELP_ENVIRONMENT_VARIABLES } = require('../services/messaging/help-messages');
 
-// 'account-sid' is a special snowflake
-const ACCOUNT_SID = 'account-sid';
+// CLI flags are kebab-cased, whereas API flags are PascalCased.
+const CliFlags = translateValues(TwilioApiFlags, kebabCase);
 
 class TwilioClientCommand extends BaseCommand {
   constructor(argv, config, secureStorage) {
@@ -110,7 +111,7 @@ class TwilioClientCommand extends BaseCommand {
 
   buildClient(ClientClass) {
     return new ClientClass(this.currentProfile.apiKey, this.currentProfile.apiSecret, {
-      accountSid: this.flags[ACCOUNT_SID] || this.currentProfile.accountSid,
+      accountSid: this.flags[CliFlags.ACCOUNT_SID] || this.currentProfile.accountSid,
       region: this.currentProfile.region,
       httpClient: this.httpClient
     });
@@ -128,8 +129,21 @@ TwilioClientCommand.flags = Object.assign(
 );
 
 TwilioClientCommand.accountSidFlag = {
-  [ACCOUNT_SID]: flags.string({
+  [CliFlags.ACCOUNT_SID]: flags.string({
     description: 'Access resources for the specified account.'
+  })
+};
+
+TwilioClientCommand.limitFlags = {
+  [CliFlags.LIMIT]: flags.string({
+    description: `The maximum number of resources to return. Use '--${CliFlags.NO_LIMIT}' to disable.`,
+    default: 50,
+    exclusive: [CliFlags.NO_LIMIT]
+  }),
+  [CliFlags.NO_LIMIT]: flags.boolean({
+    default: false,
+    hidden: true,
+    exclusive: [CliFlags.LIMIT]
   })
 };
 
