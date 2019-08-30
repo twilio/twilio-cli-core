@@ -44,6 +44,33 @@ describe('services', () => {
         });
 
       test
+        .nock('https://api.twilio.com', api => {
+          /* eslint-disable camelcase */
+          api.get(`/2010-04-01/Accounts/${accountSid}/Calls.json?PageSize=1`).reply(200, {
+            calls: [{
+              sid: callSid
+            }],
+            next_page_uri: '/nextPageOfResults'
+          });
+          api.get('/nextPageOfResults').reply(200, {
+            calls: [{
+              sid: callSid
+            }],
+            next_page_uri: '/nextPageOfResults'
+          });
+          /* eslint-enable camelcase */
+        })
+        .it('can list resources with page and limit restrictions', async () => {
+          const response = await client.list({
+            domain: 'api',
+            path: '/2010-04-01/Accounts/{AccountSid}/Calls.json',
+            data: { Limit: 2, PageSize: 1 }
+          });
+
+          expect(response).to.eql([{ sid: callSid }, { sid: callSid }]);
+        });
+
+      test
         .nock('https://studio.twilio.com', api => {
           /* eslint-disable camelcase */
           api.get('/v1/Flows').reply(200, {
@@ -203,6 +230,40 @@ describe('services', () => {
           expect(response).to.eql({ verified: 'true' });
           expect(httpClient.lastRequest.formData).to.eql({ EmergencyEnabled: 'true' });
         });
+
+      /* eslint-disable max-nested-callbacks */
+      describe('getLimit', () => {
+        test.it('gets the limit', () => {
+          const limit = client.getLimit({ Limit: 10 });
+          expect(limit).to.equal(10);
+        });
+
+        test.it('drops the limit if no-limit is truthy', () => {
+          const limit = client.getLimit({
+            Limit: 10,
+            NoLimit: true
+          });
+          expect(limit).to.be.undefined;
+        });
+
+        test.it('adjusts the page size if greater than the limit', () => {
+          const options = {
+            Limit: 10,
+            PageSize: 20
+          };
+
+          const limit = client.getLimit(options);
+          expect(limit).to.equal(10);
+          expect(options.PageSize).to.equal(10);
+        });
+
+        test.it('does not set the page size if not provided', () => {
+          const options = { Limit: 10 };
+          const limit = client.getLimit(options);
+          expect(limit).to.equal(10);
+          expect(options.PageSize).to.be.undefined;
+        });
+      });
     });
   });
 });
