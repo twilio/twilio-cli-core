@@ -6,34 +6,61 @@ const doesObjectHaveProperty = (obj, propertyName) => {
 };
 
 /**
- * Recursively translates the keys of the object using the given key translator function.
+ * Recursively translates the keys and values of the object using the given translator functions.
  *
  * @param {object} obj - The object to have its keys translated
- * @param {function(key)} keyFunc - The function to translate and return each key
- * @returns {*} Input obj with keys translated
+ * @param {function(object)} [keyFunc] - The function to translate and return each key
+ * @param {function(object)} [valueFunc] - The function to translate and return each value
+ * @returns {*} Input obj with keys and/or values translated
  */
-const translateKeys = (obj, keyFunc) => {
-  if (!obj || typeof obj !== 'object') {
+const translateObject = (obj, keyFunc, valueFunc) => {
+  if (!obj) {
     return obj;
   }
 
   if (Array.isArray(obj)) {
-    return obj.map(item => translateKeys(item, keyFunc));
+    return obj.map(item => translateObject(item, keyFunc, valueFunc));
   }
 
-  const jsonObj = typeof obj.toJSON === 'function' ? obj.toJSON() : obj;
+  if (typeof obj === 'object') {
+    const jsonObj = typeof obj.toJSON === 'function' ? obj.toJSON() : obj;
 
-  const translated = {};
-  for (const oldKey in jsonObj) {
-    if (doesObjectHaveProperty(obj, oldKey)) {
-      const newKey = keyFunc(oldKey);
-      const value = obj[oldKey];
+    const translated = {};
+    for (const oldKey in jsonObj) {
+      if (doesObjectHaveProperty(obj, oldKey)) {
+        const newKey = keyFunc ? keyFunc(oldKey) : oldKey;
+        const value = obj[oldKey];
 
-      translated[newKey] = translateKeys(value, keyFunc);
+        translated[newKey] = translateObject(value, keyFunc, valueFunc);
+      }
     }
+
+    return translated;
   }
 
-  return translated;
+  return valueFunc ? valueFunc(obj) : obj;
+};
+
+/**
+ * Recursively translates the keys of the object using the given key translator function.
+ *
+ * @param {object} obj - The object to have its keys translated
+ * @param {function(object)} keyFunc - The function to translate and return each key
+ * @returns {*} Input obj with keys translated
+ */
+const translateKeys = (obj, keyFunc) => {
+  return translateObject(obj, keyFunc, null);
+};
+
+/**
+ * Recursively translates the values of the object using the given values translator function.
+ *
+ * @param {object} obj - The object to have its values translated
+ * @param {function(object)} valueFunc - The function to translate and return each value
+ * @returns {*} Input obj with values translated
+ */
+const translateValues = (obj, valueFunc) => {
+  return translateObject(obj, null, valueFunc);
 };
 
 const sleep = ms => {
@@ -51,7 +78,9 @@ const splitArray = (array, testFunc) => {
 
 module.exports = {
   doesObjectHaveProperty,
+  translateObject,
   translateKeys,
+  translateValues,
   sleep,
   splitArray
 };

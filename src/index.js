@@ -12,7 +12,6 @@ module.exports = {
     logging: require('./services/messaging/logging'),
     templating: require('./services/messaging/templating'),
     namingConventions: require('./services/naming-conventions'),
-    ResourcePathParser: require('./services/resource-path-parser'),
     outputFormats: require('./services/output-formats'),
     secureStorage: require('./services/secure-storage')
   },

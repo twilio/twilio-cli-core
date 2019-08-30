@@ -1,4 +1,4 @@
-const { doesObjectHaveProperty, translateKeys, sleep, splitArray } = require('../../src/services/javascript-utilities');
+const { doesObjectHaveProperty, translateKeys, translateValues, sleep, splitArray } = require('../../src/services/javascript-utilities');
 
 const { expect, test } = require('@twilio/cli-test');
 
@@ -60,6 +60,38 @@ describe('services', () => {
         };
 
         expect(translateKeys(actual, keyFunc)).to.eql(expected);
+      });
+    });
+
+    describe('translateValues', () => {
+      const valueFunc = key => key.toUpperCase();
+
+      test.it('should translate the values of a complex object', () => {
+        const actual = {
+          nullValue: null,
+          anArray: ['a', 'b', 'c'],
+          nested: { level2: { level3: 'value' } },
+          custom: {
+            one: 'wOn',
+            two: 'too',
+            three: 'thr33',
+            toJSON() {
+              return { one: this.one, two: this.two };
+            }
+          }
+        };
+
+        const expected = {
+          nullValue: null,
+          anArray: ['A', 'B', 'C'],
+          nested: { level2: { level3: 'VALUE' } },
+          custom: {
+            one: 'WON',
+            two: 'TOO'
+          }
+        };
+
+        expect(translateValues(actual, valueFunc)).to.eql(expected);
       });
     });
 
