@@ -1,5 +1,8 @@
 const { Command, flags } = require('@oclif/command');
+const { CLIError } = require('@oclif/errors');
 const { Config, ConfigData } = require('../services/config');
+const { TwilioCliError } = require('../services/error');
+const { UNEXPECTED_ERROR } = require('../services/messaging/help-messages');
 const { logger, LoggingLevel } = require('../services/messaging/logging');
 const { OutputFormats } = require('../services/output-formats');
 const { SecureStorage } = require('../services/secure-storage');
@@ -45,6 +48,25 @@ class BaseCommand extends Command {
   async loadConfig() {
     this.configFile = new Config(this.config.configDir);
     this.userConfig = await this.configFile.load();
+  }
+
+  async catch(error) {
+    if (error instanceof CLIError) {
+      return super.catch(error);
+    }
+
+    if (error instanceof TwilioCliError) {
+      // User/API errors
+      this.logger.error(error.message);
+      this.logger.debug(error.stack);
+      this.exit(error.exitCode || 1);
+    } else {
+      // System errors
+      this.logger.error(UNEXPECTED_ERROR);
+      this.logger.debug(error.message);
+      this.logger.debug(error.stack);
+      this.exit(1);
+    }
   }
 
   /**
