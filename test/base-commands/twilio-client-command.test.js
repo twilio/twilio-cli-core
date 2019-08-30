@@ -5,21 +5,17 @@ const { Config, ConfigData } = require('../../src/services/config');
 describe('base-commands', () => {
   describe('twilio-client-command', () => {
     class TestClientCommand extends TwilioClientCommand {
-      async runCommand() {
-        // no-op
-      }
     }
 
     class ThrowingClientCommand extends TwilioClientCommand {
-      async runCommand() {
+      async run() {
+        await super.run();
+
         throw new Error('We were so wrong!');
       }
     }
 
     class AccountSidClientCommand extends TwilioClientCommand {
-      async runCommand() {
-        // no-op
-      }
     }
 
     TestClientCommand.flags = TwilioClientCommand.flags;
@@ -57,13 +53,15 @@ describe('base-commands', () => {
               } :
               undefined
           );
-          return ctx.testCmd.run();
+
+          // This is essentially what oclif does behind the scenes.
+          try {
+            await ctx.testCmd.run();
+          } catch (e) {
+            await ctx.testCmd.catch(e);
+          }
         });
     };
-
-    setUpTest().it('should not allow construction of the base class', ctx => {
-      expect(() => new TwilioClientCommand([], ctx.fakeConfig)).to.throw('runCommand');
-    });
 
     setUpTest(['-l', 'debug']).it('should create a client for the active profile', ctx => {
       expect(ctx.stderr).to.contain('MyFirstProfile');
