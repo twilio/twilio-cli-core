@@ -1,6 +1,5 @@
 const { logger } = require('./messaging/logging');
-const { pascalCase } = require('./naming-conventions');
-const { doesObjectHaveProperty, translateKeys } = require('./javascript-utilities');
+const { doesObjectHaveProperty } = require('./javascript-utilities');
 const JsonSchemaConverter = require('./api-schema/json-converter');
 
 class OpenApiClient {
@@ -30,9 +29,6 @@ class OpenApiClient {
     if (!operation) {
       throw new Error(`Operation not found: ${opts.domain}.${opts.path}.${opts.method}`);
     }
-
-    // Normalize the request data keys to pascal-case (i.e., upper camel-case).
-    opts.data = translateKeys(opts.data, pascalCase);
 
     const isPost = (opts.method.toLowerCase() === 'post');
     const params = this.getParams(opts, operation);
@@ -71,11 +67,10 @@ class OpenApiClient {
   getParams(opts, operation) {
     const params = {};
     operation.parameters.forEach(parameter => {
-      const replaceSymbolName = parameter.name.replace('>', 'After').replace('<', 'Before');
       // Build the actual request params from the spec's query parameters. This
       // effectively drops all params that are not in the spec.
-      if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, replaceSymbolName)) {
-        let value = opts.data[replaceSymbolName];
+      if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, parameter.name)) {
+        let value = opts.data[parameter.name];
         if (parameter.schema.type === 'boolean') {
           value = value.toString();
         }
@@ -92,8 +87,8 @@ class OpenApiClient {
     return opts.path.replace(/{(.+?)}/g, (fullMatch, pathNode) => {
       let value = '';
 
-      if (doesObjectHaveProperty(opts.data, pathNode)) {
-        value = opts.data[pathNode];
+      if (doesObjectHaveProperty(opts.pathParams, pathNode)) {
+        value = opts.pathParams[pathNode];
       }
 
       logger.debug(`pathNode=${pathNode}, value=${value}`);
