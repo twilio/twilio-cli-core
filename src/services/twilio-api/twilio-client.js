@@ -8,9 +8,9 @@ const TwilioSchemaConverter = require('../api-schema/twilio-converter');
 // Special snowflakes
 const TwilioApiFlags = {
   ACCOUNT_SID: 'AccountSid',
-  PAGE_SIZE: 'page-size',
-  LIMIT: 'limit',
-  NO_LIMIT: 'no-limit'
+  PAGE_SIZE: 'PageSize',
+  LIMIT: 'Limit',
+  NO_LIMIT: 'NoLimit'
 };
 
 class TwilioApiClient {
@@ -155,6 +155,7 @@ class TwilioApiClient {
    * @param {string} [opts.password] - The password used for auth
    * @param {object} [opts.headers] - The request headers
    * @param {object} [opts.data] - The request data
+   * @param {object} [opts.pathParams] - The request path parameter values
    * @param {int} [opts.timeout] - The request timeout in milliseconds
    * @param {boolean} [opts.allowRedirects] - Should the client follow redirects
    */
@@ -166,6 +167,7 @@ class TwilioApiClient {
     opts.region = opts.region || this.region;
     opts.headers = opts.headers || {};
     opts.data = opts.data || {};
+    opts.pathParams = opts.pathParams || {};
 
     opts.headers['User-Agent'] = `twilio-api-client/${pkg.version} (node.js ${process.version})`;
     opts.headers['Accept-Charset'] = 'utf-8';
@@ -179,8 +181,8 @@ class TwilioApiClient {
     }
 
     if (!opts.uri) {
-      if (opts.path.includes(TwilioApiFlags.ACCOUNT_SID) && !doesObjectHaveProperty(opts.data, TwilioApiFlags.ACCOUNT_SID)) {
-        opts.data[TwilioApiFlags.ACCOUNT_SID] = this.accountSid;
+      if (opts.path.includes(TwilioApiFlags.ACCOUNT_SID) && !doesObjectHaveProperty(opts.pathParams, TwilioApiFlags.ACCOUNT_SID)) {
+        opts.pathParams[TwilioApiFlags.ACCOUNT_SID] = this.accountSid;
       }
     }
 
