@@ -1,7 +1,8 @@
 const TwilioApiBrowser = require('./api-browser');
-const TwilioApiClient = require('./twilio-client');
+const { TwilioApiClient, TwilioApiFlags } = require('./twilio-client');
 
 module.exports = {
   TwilioApiBrowser,
-  TwilioApiClient
+  TwilioApiClient,
+  TwilioApiFlags
 };
