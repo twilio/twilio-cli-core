@@ -1,6 +1,8 @@
 let keytar; // Lazy-loaded below.
 const { CLI_NAME } = require('./config');
-const { logger } = require('../services/messaging/logging');
+const { TwilioCliError } = require('./error');
+const { HELP_ENVIRONMENT_VARIABLES } = require('./messaging/help-messages');
+const { requireNative } = require('./require-native');
 
 const STORAGE_LOCATIONS = {
   KEYCHAIN: 'keychain',
@@ -21,27 +23,15 @@ class SecureStorage {
 
   get keytar() {
     if (!keytar) {
-      // Since keytar is a native module (compiled for the specific version of
-      // Node it was installed with), we don't want plugins that depend on us
-      // to depend on it. Otherwise, they'd need to reinstall each time Node
-      // changes since it requires keytar be reinstalled. For this reason, we
-      // don't expect to find keytar under the normal dependency tree. It
-      // should exist with the CLI's dependencies. We'll attempt to find out
-      // where that is based on the location of the script that kicked off the
-      // process. Resolve any symlinks along the way to find the "real" path
-      // and then load up the module. If this fails for whatever reason,
-      // fallback to the standard location (and log some debug).
-      try {
-        const realAppPath = require('fs').realpathSync(process.argv[1]);
-        const realKeytarPath = require.resolve('keytar', { paths: [realAppPath] });
+      keytar = requireNative('keytar');
 
-        keytar = require(realKeytarPath);
-      } catch (error) {
-        logger.debug('Failed to find the keytar module with the CLI: ' + error.message);
-
-        keytar = require('keytar');
+      // If we can't load up keytar, tell the user that maybe they should just
+      // stick to env vars.
+      if (!keytar) {
+        throw new TwilioCliError('Secure credential storage failed to load.\n\n' + HELP_ENVIRONMENT_VARIABLES);
       }
     }
+
     return keytar;
   }
 
@@ -58,6 +48,10 @@ class SecureStorage {
     try {
       credentials = await this.keytar.getPassword(CLI_NAME, profileId);
     } catch (e) {
+      if (e instanceof TwilioCliError) {
+        throw e;
+      }
+
       return { apiKey: 'error', apiSecret: e.message };
     }
 
