@@ -598,7 +598,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "Human-readable name for this service instance",
+            "description": "A string that you assign to describe the resource.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -607,7 +607,7 @@
             }
           },
           {
-            "description": "A URL that will receive event updates when objects are manipulated.",
+            "description": "The URL we should call when Sync objects are manipulated.",
             "in": "query",
             "name": "WebhookUrl",
             "required": false,
@@ -617,7 +617,7 @@
             }
           },
           {
-            "description": "`true` or `false` - controls whether this instance fires webhooks when client endpoints connect to Sync Defaults to false.",
+            "description": "Whether the service instance should call `webhook_url` when client endpoints connect to Sync. The default is `false`.",
             "in": "query",
             "name": "ReachabilityWebhooksEnabled",
             "required": false,
@@ -626,7 +626,7 @@
             }
           },
           {
-            "description": "`true` or `false` - determines whether token identities must be granted access to Sync objects via the [Permissions API](https://www.twilio.com/docs/api/sync/rest/sync-rest-api-permissions) in this Service.",
+            "description": "Whether token identities in the Service must be granted access to Sync objects by using the [Permissions](https://www.twilio.com/docs/sync/api/permissions) resource.",
             "in": "query",
             "name": "AclEnabled",
             "required": false,
@@ -635,7 +635,7 @@
             }
           },
           {
-            "description": "`true` or `false` - If false, every endpoint disconnection immediately yields a reachability webhook (if enabled). If true, then 'disconnection' webhook events will only be fired after a configurable delay. Intervening reconnections would effectively cancel that webhook. Defaults to false.",
+            "description": "Whether every `endpoint_disconnected` event should occur after a configurable delay. The default is `false`, where the `endpoint_disconnected` event occurs immediately after disconnection. When `true`, intervening reconnections can prevent the `endpoint_disconnected` event.",
             "in": "query",
             "name": "ReachabilityDebouncingEnabled",
             "required": false,
@@ -644,7 +644,7 @@
             }
           },
           {
-            "description": "Reachability webhook delay period in milliseconds. Determines the delay after which a Sync identity is declared actually offline, measured from the moment the last running client disconnects. If all endpoints remain offline throughout this delay, then reachability webhooks will be fired (if enabled). A reconnection by any endpoint during this window \u2014 from the same identity \u2014 means no reachability webhook would be fired. Must be between 1000 and 30000. Defaults to 5000.",
+            "description": "The reachability event delay in milliseconds if `reachability_debouncing_enabled` = `true`.  Must be between 1,000 and 30,000 and defaults to 5,000. This is the number of milliseconds after the last running client disconnects, and a Sync identity is declared offline, before the `webhook_url` is called if all endpoints remain offline. A reconnection from the same identity by any endpoint during this interval prevents the call to `webhook_url`.",
             "in": "query",
             "name": "ReachabilityDebouncingWindow",
             "required": false,
@@ -653,7 +653,7 @@
             }
           },
           {
-            "description": "`true` or `false` - controls whether this instance fires webhooks when Sync objects are updated through REST. Defaults to false.",
+            "description": "Whether the Service instance should call `webhook_url` when the REST API is used to update Sync objects. The default is `false`.",
             "in": "query",
             "name": "WebhooksFromRestEnabled",
             "required": false,
@@ -695,12 +695,12 @@
       "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Documents": {
-      "description": "Sync document objects",
+      "description": "Sync Document objects",
       "get": {
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resources to read.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -784,7 +784,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Document resource in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -796,7 +796,7 @@
             }
           },
           {
-            "description": "Human-readable name for this document",
+            "description": "An application-defined string that uniquely identifies the Sync Document",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -805,7 +805,7 @@
             }
           },
           {
-            "description": "JSON data to be stored in this document",
+            "description": "A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16KB in length.",
             "in": "query",
             "name": "Data",
             "required": false,
@@ -814,7 +814,7 @@
             }
           },
           {
-            "description": "Time-to-live of this Document in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
+            "description": "How long, in seconds, before the Sync Document expires and is deleted (the Sync Document's time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Document does not expire. The Sync Document might not be deleted immediately after it expires.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -861,7 +861,7 @@
         "description": "Retrieve a list of all Permissions applying to a Sync Document.",
         "parameters": [
           {
-            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resources to read.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -873,7 +873,7 @@
             }
           },
           {
-            "description": "Identifier of the Sync Document. Either a SID or a unique name.",
+            "description": "The SID of the Sync Document with the Document Permission resources to read. Can be the Document resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "DocumentSid",
             "required": true,
@@ -971,7 +971,7 @@
         "description": "Delete a specific Sync Document Permission.",
         "parameters": [
           {
-            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to delete.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -983,7 +983,7 @@
             }
           },
           {
-            "description": "Identifier of the Sync Document. Either a SID or a unique name.",
+            "description": "The SID of the Sync Document with the Document Permission resource to delete. Can be the Document resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "DocumentSid",
             "required": true,
@@ -995,7 +995,7 @@
             }
           },
           {
-            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
+            "description": "The application-defined string that uniquely identifies the User's Document Permission resource to delete.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1023,7 +1023,7 @@
         "description": "Fetch a specific Sync Document Permission.",
         "parameters": [
           {
-            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1035,7 +1035,7 @@
             }
           },
           {
-            "description": "Identifier of the Sync Document. Either a SID or a unique name.",
+            "description": "The SID of the Sync Document with the Document Permission resource to fetch. Can be the Document resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "DocumentSid",
             "required": true,
@@ -1047,7 +1047,7 @@
             }
           },
           {
-            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
+            "description": "The application-defined string that uniquely identifies the User's Document Permission resource to fetch.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1080,7 +1080,7 @@
         "description": "Update an identity's access to a specific Sync Document.",
         "parameters": [
           {
-            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to update.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1092,7 +1092,7 @@
             }
           },
           {
-            "description": "Identifier of the Sync Document. Either a SID or a unique name.",
+            "description": "The SID of the Sync Document with the Document Permission resource to update. Can be the Document resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "DocumentSid",
             "required": true,
@@ -1104,7 +1104,7 @@
             }
           },
           {
-            "description": "Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer.",
+            "description": "The application-defined string that uniquely identifies the User's Document Permission resource to update.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1113,7 +1113,7 @@
             }
           },
           {
-            "description": "Boolean flag specifying whether the identity can read the Sync Document.",
+            "description": "Whether the identity can read the Sync Document.",
             "in": "query",
             "name": "Read",
             "required": true,
@@ -1122,7 +1122,7 @@
             }
           },
           {
-            "description": "Boolean flag specifying whether the identity can update the Sync Document.",
+            "description": "Whether the identity can update the Sync Document.",
             "in": "query",
             "name": "Write",
             "required": true,
@@ -1131,7 +1131,7 @@
             }
           },
           {
-            "description": "Boolean flag specifying whether the identity can delete the Sync Document.",
+            "description": "Whether the identity can delete the Sync Document.",
             "in": "query",
             "name": "Manage",
             "required": true,
@@ -1178,7 +1178,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resource to delete.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1190,7 +1190,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Document resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1216,12 +1216,12 @@
           "Beta"
         ]
       },
-      "description": "Sync document objects",
+      "description": "Sync Document objects",
       "get": {
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1233,7 +1233,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Document resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1269,7 +1269,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resource to update.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1281,7 +1281,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Document resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1293,7 +1293,7 @@
             }
           },
           {
-            "description": "Contains an arbitrary JSON object to be stored in this Document. Serialized to string to respect HTTP form input, up to 16KB.",
+            "description": "A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16KB in length.",
             "in": "query",
             "name": "Data",
             "required": false,
@@ -1302,7 +1302,7 @@
             }
           },
           {
-            "description": "New time-to-live of this Document in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
+            "description": "How long, in seconds, before the Sync Document expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Document resource does not expire. The Document resource might not be deleted immediately after it expires.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -1349,7 +1349,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resources to read.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1433,7 +1433,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Sync List in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1445,7 +1445,7 @@
             }
           },
           {
-            "description": "Human-readable name for this list",
+            "description": "An application-defined string that uniquely identifies the resource. This value must be unique within its Service and it can be up to 320 characters long. The `unique_name` value can be used as an alternative to the `sid` in the URL path to address the resource.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -1463,7 +1463,7 @@
             }
           },
           {
-            "description": "Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
+            "description": "How long, in seconds, before the Sync List expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync List does not expire. The Sync List might not be deleted immediately after it expires.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -1510,7 +1510,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the List Item resources to read.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1522,7 +1522,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync List with the List Items to read. Can be the Sync List resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -1534,7 +1534,7 @@
             }
           },
           {
-            "description": "A string; `asc` or `desc`",
+            "description": "How to order the List Items returned by their `index` value. Can be: `asc` (ascending) or `desc` (descending) and the default is ascending.",
             "in": "query",
             "name": "Order",
             "required": false,
@@ -1547,7 +1547,7 @@
             }
           },
           {
-            "description": "An integer representing Item index offset (inclusive). If not present, query is performed from the start or end, depending on the Order query parameter.",
+            "description": "The `index` of the first Sync List Item resource to read. See also `bounds`.",
             "in": "query",
             "name": "From",
             "required": false,
@@ -1556,7 +1556,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to include the List Item referenced by the `from` parameter. Can be: `inclusive` to include the List Item referenced by the `from` parameter or `exclusive` to start with the next List Item. The default value is `inclusive`.",
             "in": "query",
             "name": "Bounds",
             "required": false,
@@ -1641,7 +1641,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new List Item in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1653,7 +1653,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync List to add the new List Item to. Can be the Sync List resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -1665,7 +1665,7 @@
             }
           },
           {
-            "description": "Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a JSON object, up to 16KB.",
+            "description": "A JSON string that represents an arbitrary, schema-less object that the List Item stores. Can be up to 16KB in length.",
             "in": "query",
             "name": "Data",
             "required": true,
@@ -1674,7 +1674,7 @@
             }
           },
           {
-            "description": "Alias for item_ttl. If both are provided, this value is ignored.",
+            "description": "An alias for `item_ttl`. If both parameters are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -1683,7 +1683,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the list item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.",
+            "description": "How long, in seconds, before the List Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the List Item does not expire. The List Item might not be deleted immediately after it expires.",
             "in": "query",
             "name": "ItemTtl",
             "required": false,
@@ -1692,7 +1692,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item's parent List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the list item's data or ttl is updated in the same request.",
+            "description": "How long, in seconds, before the List Item's parent Sync List expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync List does not expire. The Sync List might not be deleted immediately after it expires.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -1738,7 +1738,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Item resource to delete.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1750,7 +1750,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync List with the Sync List Item resource to delete. Can be the Sync List resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -1762,7 +1762,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The index of the Sync List Item resource to delete.",
             "in": "path",
             "name": "Index",
             "required": true,
@@ -1790,7 +1790,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Item resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1802,7 +1802,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync List with the Sync List Item resource to fetch. Can be the Sync List resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -1814,7 +1814,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The index of the Sync List Item resource to fetch.",
             "in": "path",
             "name": "Index",
             "required": true,
@@ -1847,7 +1847,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Item resource to update.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1859,7 +1859,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync List with the Sync List Item resource to update. Can be the Sync List resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -1871,7 +1871,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The index of the Sync List Item resource to update.",
             "in": "path",
             "name": "Index",
             "required": true,
@@ -1880,7 +1880,7 @@
             }
           },
           {
-            "description": "Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a JSON object, up to 16KB.",
+            "description": "A JSON string that represents an arbitrary, schema-less object that the List Item stores. Can be up to 16KB in length.",
             "in": "query",
             "name": "Data",
             "required": false,
@@ -1889,7 +1889,7 @@
             }
           },
           {
-            "description": "Alias for item_ttl. If both are provided, this value is ignored.",
+            "description": "An alias for `item_ttl`. If both parameters are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -1898,7 +1898,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the list item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.",
+            "description": "How long, in seconds, before the List Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the List Item does not expire. The List Item might not be deleted immediately after it expires.",
             "in": "query",
             "name": "ItemTtl",
             "required": false,
@@ -1907,7 +1907,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item's parent List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the list item's data or ttl is updated in the same request.",
+            "description": "How long, in seconds, before the List Item's parent Sync List expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync List does not expire. The Sync List might not be deleted immediately after it expires.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -1949,12 +1949,12 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Lists/{ListSid}/Permissions": {
-      "description": "Permissions for sync list items",
+      "description": "Permissions for Sync list items",
       "get": {
         "description": "Retrieve a list of all Permissions applying to a Sync List.",
         "parameters": [
           {
-            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resources to read.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1966,7 +1966,7 @@
             }
           },
           {
-            "description": "Identifier of the Sync List. Either a SID or a unique name.",
+            "description": "The SID of the Sync List with the Sync List Permission resources to read. Can be the Sync List resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -2064,7 +2064,7 @@
         "description": "Delete a specific Sync List Permission.",
         "parameters": [
           {
-            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to delete.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2076,7 +2076,7 @@
             }
           },
           {
-            "description": "Identifier of the Sync List. Either a SID or a unique name.",
+            "description": "The SID of the Sync List with the Sync List Permission resource to delete. Can be the Sync List resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -2088,7 +2088,7 @@
             }
           },
           {
-            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
+            "description": "The application-defined string that uniquely identifies the User's Sync List Permission resource to delete.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -2111,12 +2111,12 @@
           "Beta"
         ]
       },
-      "description": "Permissions for sync list items",
+      "description": "Permissions for Sync list items",
       "get": {
         "description": "Fetch a specific Sync List Permission.",
         "parameters": [
           {
-            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2128,7 +2128,7 @@
             }
           },
           {
-            "description": "Identifier of the Sync List. Either a SID or a unique name.",
+            "description": "The SID of the Sync List with the Sync List Permission resource to fetch. Can be the Sync List resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -2140,7 +2140,7 @@
             }
           },
           {
-            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
+            "description": "The application-defined string that uniquely identifies the User's Sync List Permission resource to fetch.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -2173,7 +2173,7 @@
         "description": "Update an identity's access to a specific Sync List.",
         "parameters": [
           {
-            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to update.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2185,7 +2185,7 @@
             }
           },
           {
-            "description": "Identifier of the Sync List. Either a SID or a unique name.",
+            "description": "The SID of the Sync List with the Sync List Permission resource to update. Can be the Sync List resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "ListSid",
             "required": true,
@@ -2197,7 +2197,7 @@
             }
           },
           {
-            "description": "Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer.",
+            "description": "The application-defined string that uniquely identifies the User's Sync List Permission resource to update.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -2206,7 +2206,7 @@
             }
           },
           {
-            "description": "Boolean flag specifying whether the identity can read the Sync List.",
+            "description": "Whether the identity can read the Sync List and its Items.",
             "in": "query",
             "name": "Read",
             "required": true,
@@ -2215,7 +2215,7 @@
             }
           },
           {
-            "description": "Boolean flag specifying whether the identity can create, update and delete Items of the Sync List.",
+            "description": "Whether the identity can create, update and delete Items of the Sync List.",
             "in": "query",
             "name": "Write",
             "required": true,
@@ -2224,7 +2224,7 @@
             }
           },
           {
-            "description": "Boolean flag specifying whether the identity can delete the Sync List.",
+            "description": "Whether the identity can delete the Sync List.",
             "in": "query",
             "name": "Manage",
             "required": true,
@@ -2271,7 +2271,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resource to delete.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2283,7 +2283,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync List resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2314,7 +2314,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2326,7 +2326,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync List resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2362,7 +2362,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resource to update.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2374,7 +2374,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync List resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2386,7 +2386,7 @@
             }
           },
           {
-            "description": "Alias for collection_ttl. If both are provided, this value is ignored.",
+            "description": "An alias for `collection_ttl`. If both are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -2395,7 +2395,7 @@
             }
           },
           {
-            "description": "Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
+            "description": "How long, in seconds, before the Sync List expires (time-to-live) and is deleted. Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync List does not expire. The Sync List might not be deleted immediately after it expires.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -2442,7 +2442,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resources to read.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2526,7 +2526,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the Sync Map in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2538,7 +2538,7 @@
             }
           },
           {
-            "description": "Human-readable name for this map",
+            "description": "An application-defined string that uniquely identifies the resource. It can be used as an alternative to the `sid` in the URL path to address the resource.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -2547,7 +2547,7 @@
             }
           },
           {
-            "description": "Alias for collection_ttl. If both are provided, this value is ignored.",
+            "description": "An alias for `collection_ttl`. If both parameters are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -2556,7 +2556,7 @@
             }
           },
           {
-            "description": "Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
+            "description": "How long, in seconds, before the Sync Map expires (time-to-live) and is deleted. Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Map does not expire. The Sync Map might not be deleted immediately after it expires.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -2603,7 +2603,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Map Item resources to read.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2615,7 +2615,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync Map with the Sync Map Item resource to fetch. Can be the Sync Map's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2627,7 +2627,7 @@
             }
           },
           {
-            "description": "A string; asc or desc. Map Items are [ordered lexicographically](https://en.wikipedia.org/wiki/Lexicographical_order) by Item key.",
+            "description": "How to order the Map Items returned by their `key` value. Can be: `asc` (ascending) or `desc` (descending) and the default is ascending. Map Items are [ordered lexicographically](https://en.wikipedia.org/wiki/Lexicographical_order) by Item key.",
             "in": "query",
             "name": "Order",
             "required": false,
@@ -2640,7 +2640,7 @@
             }
           },
           {
-            "description": "The Item key offset (including the specified key). If not present, query is performed from the start or end, depending on the Order query parameter.",
+            "description": "The `key` of the first Sync Map Item resource to read. See also `bounds`.",
             "in": "query",
             "name": "From",
             "required": false,
@@ -2649,7 +2649,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to include the Map Item referenced by the `from` parameter. Can be: `inclusive` to include the Map Item referenced by the `from` parameter or `exclusive` to start with the next Map Item. The default value is `inclusive`.",
             "in": "query",
             "name": "Bounds",
             "required": false,
@@ -2734,7 +2734,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the Map Item in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2746,7 +2746,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync Map to add the new Map Item to.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2758,7 +2758,7 @@
             }
           },
           {
-            "description": "The unique user-defined key of this Map Item. Up to 320 characters long.",
+            "description": "The unique, user-defined key for the Map Item. Can be up to 320 characters long.",
             "in": "query",
             "name": "Key",
             "required": true,
@@ -2767,7 +2767,7 @@
             }
           },
           {
-            "description": "Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a JSON object, up to 16KB.",
+            "description": "A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16KB in length.",
             "in": "query",
             "name": "Data",
             "required": true,
@@ -2776,7 +2776,7 @@
             }
           },
           {
-            "description": "Alias for item_ttl. If both are provided, this value is ignored.",
+            "description": "An alias for `item_ttl`. If both parameters are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -2785,7 +2785,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the map item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.",
+            "description": "How long, in seconds, before the Map Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Map Item does not expire.  The Map Item might not be deleted immediately after it expires.",
             "in": "query",
             "name": "ItemTtl",
             "required": false,
@@ -2794,7 +2794,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item's parent Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the map item's data or ttl is updated in the same request.",
+            "description": "How long, in seconds, before the Map Item's parent Sync Map expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync Map does not expire. The Sync Map might not be deleted immediately after it expires.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -2840,7 +2840,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Item resource to delete.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2852,7 +2852,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync Map with the Sync Map Item resource to delete. Can be the Sync Map's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2864,7 +2864,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The `key` value of the Sync Map Item resource to delete.",
             "in": "path",
             "name": "Key",
             "required": true,
@@ -2892,7 +2892,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Item resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2904,7 +2904,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync Map with the Sync Map Item resource to fetch. Can be the Sync Map's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2916,7 +2916,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The `key` value of the Sync Map Item resource to fetch.",
             "in": "path",
             "name": "Key",
             "required": true,
@@ -2949,7 +2949,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Item resource to update.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2961,7 +2961,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync Map with the Sync Map Item resource to update. Can be the Sync Map's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2973,7 +2973,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The `key` value of the Sync Map Item resource to update. ",
             "in": "path",
             "name": "Key",
             "required": true,
@@ -2982,7 +2982,7 @@
             }
           },
           {
-            "description": "Contains an arbitrary JSON object to be stored in this Map Item. Serialized to string to respect HTTP form input, up to 16KB.",
+            "description": "A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16KB in length.",
             "in": "query",
             "name": "Data",
             "required": false,
@@ -2991,7 +2991,7 @@
             }
           },
           {
-            "description": "Alias for item_ttl. If both are provided, this value is ignored.",
+            "description": "An alias for `item_ttl`. If both parameters are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -3000,7 +3000,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the map item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.",
+            "description": "How long, in seconds, before the Map Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Map Item does not expire. The Map Item might not be deleted immediately after it expires.",
             "in": "query",
             "name": "ItemTtl",
             "required": false,
@@ -3009,7 +3009,7 @@
             }
           },
           {
-            "description": "Time-to-live of this item's parent Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the map item's data or ttl is updated in the same request.",
+            "description": "How long, in seconds, before the Map Item's parent Sync Map expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync Map does not expire. This parameter can only be used when the Map Item's `data` or `ttl` is updated in the same request. The Sync Map might not be deleted immediately after it expires.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -3051,12 +3051,12 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Maps/{MapSid}/Permissions": {
-      "description": "Permissions for sync map keys",
+      "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all Permissions applying to a Sync Map.",
         "parameters": [
           {
-            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resources to read. Can be the Service's `sid` value or `default`.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3068,7 +3068,7 @@
             }
           },
           {
-            "description": "Identifier of the Sync Map. Either a SID or a unique name.",
+            "description": "The SID of the Sync Map with the Permission resources to read. Can be the Sync Map's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -3166,7 +3166,7 @@
         "description": "Delete a specific Sync Map Permission.",
         "parameters": [
           {
-            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to delete. Can be the Service's `sid` value or `default`.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3178,7 +3178,7 @@
             }
           },
           {
-            "description": "Identifier of the Sync Map. Either a SID or a unique name.",
+            "description": "The SID of the Sync Map with the Sync Map Permission resource to delete. Can be the Sync Map's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -3190,7 +3190,7 @@
             }
           },
           {
-            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
+            "description": "The application-defined string that uniquely identifies the User's Sync Map Permission resource to delete.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -3213,12 +3213,12 @@
           "Beta"
         ]
       },
-      "description": "Permissions for sync map keys",
+      "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch a specific Sync Map Permission.",
         "parameters": [
           {
-            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to fetch. Can be the Service's `sid` value or `default`.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3230,7 +3230,7 @@
             }
           },
           {
-            "description": "Identifier of the Sync Map. Either a SID or a unique name.",
+            "description": "The SID of the Sync Map with the Sync Map Permission resource to fetch. Can be the Sync Map's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -3242,7 +3242,7 @@
             }
           },
           {
-            "description": "Arbitrary string identifier representing a user associated with an FPA token, assigned by the developer.",
+            "description": "The application-defined string that uniquely identifies the User's Sync Map Permission resource to fetch.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -3275,7 +3275,7 @@
         "description": "Update an identity's access to a specific Sync Map.",
         "parameters": [
           {
-            "description": "Identifier of the Sync Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to update. Can be the Service's `sid` value or `default`.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3287,7 +3287,7 @@
             }
           },
           {
-            "description": "Identifier of the Sync Map. Either a SID or a unique name.",
+            "description": "The SID of the Sync Map with the Sync Map Permission resource to update. Can be the Sync Map's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -3299,7 +3299,7 @@
             }
           },
           {
-            "description": "Arbitrary string identifier representing a human user associated with an FPA token, assigned by the developer.",
+            "description": "The application-defined string that uniquely identifies the User's Sync Map Permission resource to update.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -3308,7 +3308,7 @@
             }
           },
           {
-            "description": "Boolean flag specifying whether the identity can read the Sync Map.",
+            "description": "Whether the identity can read the Sync Map and its Items.",
             "in": "query",
             "name": "Read",
             "required": true,
@@ -3317,7 +3317,7 @@
             }
           },
           {
-            "description": "Boolean flag specifying whether the identity can create, update and delete Items of the Sync Map.",
+            "description": "Whether the identity can create, update and delete Items of the Sync Map.",
             "in": "query",
             "name": "Write",
             "required": true,
@@ -3326,7 +3326,7 @@
             }
           },
           {
-            "description": "Boolean flag specifying whether the identity can delete the Sync Map.",
+            "description": "Whether the identity can delete the Sync Map.",
             "in": "query",
             "name": "Manage",
             "required": true,
@@ -3373,7 +3373,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resource to delete.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3385,7 +3385,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync Map resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3416,7 +3416,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3428,7 +3428,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync Map resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3464,7 +3464,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resource to update.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3476,7 +3476,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync Map resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3488,7 +3488,7 @@
             }
           },
           {
-            "description": "Alias for collection_ttl. If both are provided, this value is ignored.",
+            "description": "An alias for `collection_ttl`. If both parameters are provided, this value is ignored.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -3497,7 +3497,7 @@
             }
           },
           {
-            "description": "New time-to-live of this Map in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
+            "description": "How long, in seconds, before the Sync Map expires (time-to-live) and is deleted. Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Map does not expire. The Sync Map might not be deleted immediately after it expires.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -3544,7 +3544,7 @@
         "description": "Retrieve a list of all Streams in a Service Instance.",
         "parameters": [
           {
-            "description": "Identifier of the Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Stream resources to read.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3628,7 +3628,7 @@
         "description": "Create a new Stream.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Stream in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3640,7 +3640,7 @@
             }
           },
           {
-            "description": "The unique and addressable name of this Stream. Optional, up to 320 characters long.",
+            "description": "An application-defined string that uniquely identifies the resource. This value must be unique within its Service and it can be up to 320 characters long. The `unique_name` value can be used as an alternative to the `sid` in the URL path to address the resource.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -3649,7 +3649,7 @@
             }
           },
           {
-            "description": "Time-to-live of this Stream in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
+            "description": "How long, in seconds, before the Stream expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Stream does not expire. The Stream might not be deleted immediately after it expires.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -3695,7 +3695,7 @@
         "description": "Delete a specific Stream.",
         "parameters": [
           {
-            "description": "Identifier of the Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Stream resource to delete.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3707,7 +3707,7 @@
             }
           },
           {
-            "description": "Identifier of the Stream. Either a SID or a unique name.",
+            "description": "The SID of the Stream resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3738,7 +3738,7 @@
         "description": "Fetch a specific Stream.",
         "parameters": [
           {
-            "description": "Identifier of the Service Instance. Either a SID or 'default'.",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Stream resource to fetch.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3750,7 +3750,7 @@
             }
           },
           {
-            "description": "Identifier of the Stream. Either a SID or a unique name.",
+            "description": "The SID of the Stream resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3786,7 +3786,7 @@
         "description": "Update a specific Stream.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Stream resource to update.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3798,7 +3798,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Stream resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3810,7 +3810,7 @@
             }
           },
           {
-            "description": "New time-to-live of this Stream in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.",
+            "description": "How long, in seconds, before the Stream expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Stream does not expire. The Sync Map might not be deleted immediately after it expires.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -3857,7 +3857,7 @@
         "description": "Create a new Stream Message.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Stream Message in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -3869,7 +3869,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Sync Stream to create the new Stream Message resource for.",
             "in": "path",
             "name": "StreamSid",
             "required": true,
@@ -3881,7 +3881,7 @@
             }
           },
           {
-            "description": "The body of the Stream Message. Arbitrary JSON object, maximum size 4KB.",
+            "description": "A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message body. Can be up to 4KB in length.",
             "in": "query",
             "name": "Data",
             "required": true,
@@ -3925,7 +3925,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "A unique identifier for this service instance.",
+            "description": "The SID of the Service resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3956,7 +3956,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "A unique identifier for this service instance.",
+            "description": "The SID of the Service resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3992,7 +3992,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "A unique identifier for this service instance.",
+            "description": "The SID of the Service resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4004,7 +4004,7 @@
             }
           },
           {
-            "description": "A URL that will receive event updates when objects are manipulated.",
+            "description": "The URL we should call when Sync objects are manipulated.",
             "in": "query",
             "name": "WebhookUrl",
             "required": false,
@@ -4014,7 +4014,7 @@
             }
           },
           {
-            "description": "Human-readable name for this service instance",
+            "description": "A string that you assign to describe the resource.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -4023,7 +4023,7 @@
             }
           },
           {
-            "description": "True or false - controls whether this instance fires webhooks when client endpoints connect to Sync Defaults to false.",
+            "description": "Whether the service instance should call `webhook_url` when client endpoints connect to Sync. The default is `false`.",
             "in": "query",
             "name": "ReachabilityWebhooksEnabled",
             "required": false,
@@ -4032,7 +4032,7 @@
             }
           },
           {
-            "description": "`true` or `false` - determines whether token identities must be granted access to Sync objects via the [Permissions API](https://www.twilio.com/docs/api/sync/rest/sync-rest-api-permissions) in this Service.",
+            "description": "Whether token identities in the Service must be granted access to Sync objects by using the [Permissions](https://www.twilio.com/docs/sync/api/permissions) resource.",
             "in": "query",
             "name": "AclEnabled",
             "required": false,
@@ -4041,7 +4041,7 @@
             }
           },
           {
-            "description": "`true` or `false` - If false, every endpoint disconnection immediately yields a reachability webhook (if enabled). If true, then 'disconnection' webhook events will only be fired after a configurable delay. Intervening reconnections would effectively cancel that webhook. Defaults to false.",
+            "description": "Whether every `endpoint_disconnected` event should occur after a configurable delay. The default is `false`, where the `endpoint_disconnected` event occurs immediately after disconnection. When `true`, intervening reconnections can prevent the `endpoint_disconnected` event.",
             "in": "query",
             "name": "ReachabilityDebouncingEnabled",
             "required": false,
@@ -4050,7 +4050,7 @@
             }
           },
           {
-            "description": "Reachability webhook delay period in milliseconds. Determines the delay after which a Sync identity is declared actually offline, measured from the moment the last running client disconnects. If all endpoints remain offline throughout this delay, then reachability webhooks will be fired (if enabled). A reconnection by any endpoint during this window \u2014 from the same identity \u2014 means no reachability webhook would be fired. Must be between 1000 and 30000. Defaults to 5000.",
+            "description": "The reachability event delay in milliseconds if `reachability_debouncing_enabled` = `true`.  Must be between 1,000 and 30,000 and defaults to 5,000. This is the number of milliseconds after the last running client disconnects, and a Sync identity is declared offline, before the webhook is called if all endpoints remain offline. A reconnection from the same identity by any endpoint during this interval prevents the webhook from being called.",
             "in": "query",
             "name": "ReachabilityDebouncingWindow",
             "required": false,
@@ -4059,7 +4059,7 @@
             }
           },
           {
-            "description": "`true` or `false` - controls whether this instance fires webhooks when Sync objects are updated through REST. Defaults to false.",
+            "description": "Whether the Service instance should call `webhook_url` when the REST API is used to update Sync objects. The default is `false`.",
             "in": "query",
             "name": "WebhooksFromRestEnabled",
             "required": false,

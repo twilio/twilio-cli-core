@@ -97,6 +97,12 @@
             "format": "date-time",
             "type": "string"
           },
+          "features_enabled": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
           "integrations": {
             "items": {
               "type": "object"
@@ -124,6 +130,15 @@
           "runtime_domain": {
             "format": "uri",
             "type": "string"
+          },
+          "serverless_service_sids": {
+            "items": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZS[0-9a-fA-F]{32}$",
+              "type": "string"
+            },
+            "type": "array"
           },
           "service_version": {
             "type": "string"

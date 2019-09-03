@@ -457,7 +457,7 @@
         "description": "Retrieve a list of Commands from your account.",
         "parameters": [
           {
-            "description": "Only return Commands to or from this SIM.",
+            "description": "The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/wireless/api/sim) to read.",
             "in": "query",
             "name": "Sim",
             "required": false,
@@ -466,7 +466,7 @@
             }
           },
           {
-            "description": "Only return Commands with this status value.",
+            "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -495,7 +495,7 @@
             }
           },
           {
-            "description": "Only return Commands with this transport value.",
+            "description": "Only return Commands with this transport value. Can be: `sms` or `ip`.",
             "in": "query",
             "name": "Transport",
             "required": false,
@@ -580,7 +580,7 @@
         "description": "Send a Command to a Sim.",
         "parameters": [
           {
-            "description": "The message body of the Command (in text mode) or a Base64 encoded byte string in binary mode.",
+            "description": "The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.",
             "in": "query",
             "name": "Command",
             "required": true,
@@ -589,7 +589,7 @@
             }
           },
           {
-            "description": "The Sid or UniqueName of the [SIM](https://www.twilio.com/docs/api/wireless/rest-api/sim) to send the Command to.",
+            "description": "The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim) to send the Command to.",
             "in": "query",
             "name": "Sim",
             "required": false,
@@ -598,7 +598,7 @@
             }
           },
           {
-            "description": "The HTTP method Twilio will use when making a request to the callback URL (valid options are GET or POST). Defaults to POST.",
+            "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
             "in": "query",
             "name": "CallbackMethod",
             "required": false,
@@ -621,7 +621,7 @@
             }
           },
           {
-            "description": "Twilio will make a request to this URL when the Command has finished sending (delivered or failed).",
+            "description": "The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.",
             "in": "query",
             "name": "CallbackUrl",
             "required": false,
@@ -631,7 +631,7 @@
             }
           },
           {
-            "description": "A string representing which mode to send the SMS message using. May be `text` or `binary`. If omitted, the default SMS mode is `text`.",
+            "description": "The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.",
             "in": "query",
             "name": "CommandMode",
             "required": false,
@@ -644,7 +644,7 @@
             }
           },
           {
-            "description": "When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once. The options for inclusion are `none`, `start` and `end`. The default behavior is `none`. When using `start` or `end`, the CommandSid will be prepended or appended to the message body, with a space character separating the CommandSid and the message body. The length of the CommandSid contributes toward the 160 character limit, i.e. the SMS body must be 128 characters or less before the Command Sid is included.",
+            "description": "Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.",
             "in": "query",
             "name": "IncludeSid",
             "required": false,
@@ -653,7 +653,7 @@
             }
           },
           {
-            "description": "A boolean representing whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. Defaults to true.",
+            "description": "Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.",
             "in": "query",
             "name": "DeliveryReceiptRequested",
             "required": false,
@@ -702,7 +702,7 @@
         "description": "Delete a Command instance from your account.",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this resource.",
+            "description": "The SID of the Command resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -733,7 +733,7 @@
         "description": "Fetch a Command instance from your account.",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this resource.",
+            "description": "The SID of the Command resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -858,7 +858,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "A user-provided string that uniquely identifies this resource as an alternative to the Sid.",
+            "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -867,7 +867,7 @@
             }
           },
           {
-            "description": "A user-provided string that identifies this resource. Non-unique.",
+            "description": "A descriptive string that you create to describe the resource. It does not have to be unique.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -876,7 +876,7 @@
             }
           },
           {
-            "description": "Defines whether SIMs are capable of using GPRS/3G/LTE data connectivity.",
+            "description": "Whether SIMs can use GPRS/3G/4G/LTE data connectivity.",
             "in": "query",
             "name": "DataEnabled",
             "required": false,
@@ -885,7 +885,7 @@
             }
           },
           {
-            "description": "Network-enforced limit specifying the total Megabytes of data usage (download and upload combined) allowed during one month on the 'home' (T-Mobile USA) network. Metering begins on the day of activation and ends on the same day of the following month.  Max value is 2TB. Default value is `1000`.",
+            "description": "The total data usage (download and upload combined) in Megabytes that the Network allows during one month on the home network (T-Mobile USA). The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB and the default value is `1000`.",
             "in": "query",
             "name": "DataLimit",
             "required": false,
@@ -894,7 +894,7 @@
             }
           },
           {
-            "description": "The model by which to meter data usage, in accordance with the available [data metering models](https://www.twilio.com/docs/wireless/api/rate-plan#payg-vs-quota-data-plans). Valid options are `payg` and `quota-1`, `quota-10`, and `quota-50`. Defaults to `payg`.",
+            "description": "The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/wireless/api/rate-plan#payg-vs-quota-data-plans).",
             "in": "query",
             "name": "DataMetering",
             "required": false,
@@ -903,7 +903,7 @@
             }
           },
           {
-            "description": "Defines whether SIMs are capable of making and sending and receiving SMS messages via either [Commands](https://www.twilio.com/docs/wireless/api/commands) or Programmable SMS APIs.",
+            "description": "Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/wireless/api/commands).",
             "in": "query",
             "name": "MessagingEnabled",
             "required": false,
@@ -912,7 +912,7 @@
             }
           },
           {
-            "description": "Defines whether SIMs are capable of making and receiving voice calls.",
+            "description": "Whether SIMs can make and receive voice calls.",
             "in": "query",
             "name": "VoiceEnabled",
             "required": false,
@@ -921,7 +921,7 @@
             }
           },
           {
-            "description": "Defines whether SIMs can roam onto networks other than the 'home' (T-Mobile USA) network in the United States. See ['national' roaming](https://www.twilio.com/docs/api/wireless/rest-api/rate-plan#national-roaming).",
+            "description": "Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/wireless/api/rate-plan#national-roaming).",
             "in": "query",
             "name": "NationalRoamingEnabled",
             "required": false,
@@ -930,7 +930,7 @@
             }
           },
           {
-            "description": "Defines whether SIMs are capable of using GPRS/3G/4G/LTE data connectivity and messaging outside of the United States. Acceptable values are `data` and `messaging`.",
+            "description": "The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can be: `data`, `voice`, and `messaging`.",
             "in": "query",
             "name": "InternationalRoaming",
             "required": false,
@@ -942,7 +942,7 @@
             }
           },
           {
-            "description": "Network-enforced limit specifying the total Megabytes of national roaming data usage (download and upload combined) allowed during one month on networks in the United States other than the 'home' (T-Mobile USA) network. See ['national' roaming](https://www.twilio.com/docs/api/wireless/rest-api/rate-plan#national-roaming). Max value is 2TB.",
+            "description": "The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/wireless/api/rate-plan#national-roaming) for more info.",
             "in": "query",
             "name": "NationalRoamingDataLimit",
             "required": false,
@@ -951,7 +951,7 @@
             }
           },
           {
-            "description": "Network-enforced limit specifying the total Megabytes of international roaming (non-US) data usage (download and upload combined) allowed during one month. Max value is 2TB. Default value is the lesser of `DataLimit` and `1000`MB.",
+            "description": "The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB.",
             "in": "query",
             "name": "InternationalRoamingDataLimit",
             "required": false,
@@ -998,7 +998,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this resource.",
+            "description": "The SID of the RatePlan resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1029,7 +1029,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this resource.",
+            "description": "The SID of the RatePlan resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1065,7 +1065,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this resource.",
+            "description": "The SID of the RatePlan resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1077,7 +1077,7 @@
             }
           },
           {
-            "description": "A user-provided string that uniquely identifies this resource as an alternative to the Sid.",
+            "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -1086,7 +1086,7 @@
             }
           },
           {
-            "description": "A user-provided string that identifies this resource. Non-unique.",
+            "description": "A descriptive string that you create to describe the resource. It does not have to be unique.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -1134,7 +1134,7 @@
         "description": "Retrieve a list of Sims from your account.",
         "parameters": [
           {
-            "description": "Only return Sims with this status.",
+            "description": "Only return Sim resources with this status.",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -1153,7 +1153,7 @@
             }
           },
           {
-            "description": "Return Sims with this Iccid. Currently this should be a list with maximum size 1.",
+            "description": "Only return Sim resources with this ICCID. Currently this should be a list with maximum size 1.",
             "in": "query",
             "name": "Iccid",
             "required": false,
@@ -1162,7 +1162,7 @@
             }
           },
           {
-            "description": "Only return Sims with this Rate Plan.",
+            "description": "The `sid` or `unique_name` of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rate-plan) used by the Sim resources to read.",
             "in": "query",
             "name": "RatePlan",
             "required": false,
@@ -1171,7 +1171,7 @@
             }
           },
           {
-            "description": "Only return Sims with this EID.",
+            "description": "Deprecated.",
             "in": "query",
             "name": "EId",
             "required": false,
@@ -1180,7 +1180,7 @@
             }
           },
           {
-            "description": "Only return Sims with this registration code.",
+            "description": "Only return Sim resources with this registration code.",
             "in": "query",
             "name": "SimRegistrationCode",
             "required": false,
@@ -1272,10 +1272,10 @@
     },
     "/v1/Sims/{Sid}": {
       "delete": {
-        "description": "Delete a Sim instance from your account.",
+        "description": "Delete a Sim resource from your account.",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this resource.",
+            "description": "The SID of the Sim resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1303,10 +1303,10 @@
       },
       "description": "Individual wireless SIMs",
       "get": {
-        "description": "Fetch a Sim instance from your account.",
+        "description": "Fetch a Sim resource from your account.",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this resource.",
+            "description": "The SID of the Sim resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1339,10 +1339,10 @@
         ]
       },
       "post": {
-        "description": "Updates the given properties of a Sim instance from your account.",
+        "description": "Updates the given properties of a Sim resource from your account.",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this resource.",
+            "description": "The SID of the Sim resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1354,7 +1354,7 @@
             }
           },
           {
-            "description": "A user-provided string that uniquely identifies this resource as an alternative to the `Sid`.",
+            "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the `sid` in the URL path to address the resource.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -1363,7 +1363,7 @@
             }
           },
           {
-            "description": "The HTTP method Twilio will use when making a request to the callback URL (valid options are GET or POST). Defaults to POST.",
+            "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
             "in": "query",
             "name": "CallbackMethod",
             "required": false,
@@ -1386,7 +1386,7 @@
             }
           },
           {
-            "description": "Twilio will make a request to this URL when the Sim has finished updating. In the case of a transition from the Sim's `new` status to its `ready` status, or from any status to its `deactivated` status, you will receive two callbacks. One when the Sim moves to its intermediary status (`ready` or `deactivated`), and a second when it transitions to its final status (`active` or `canceled`).",
+            "description": "The URL we call using the `callback_url` when the SIM has finished updating. When the SIM transitions from `new` to `ready` or from any status to `deactivated`, we call this URL when the status changes to an intermediate status (`ready` or `deactivated`) and again when the status changes to its final status (`active` or `canceled`).",
             "in": "query",
             "name": "CallbackUrl",
             "required": false,
@@ -1396,7 +1396,7 @@
             }
           },
           {
-            "description": "A user-provided string that identifies this resource. Non-unique.",
+            "description": "A descriptive string that you create to describe the resource. It does not need to be unique.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -1405,7 +1405,7 @@
             }
           },
           {
-            "description": "The Sid or UniqueName of the [RatePlan](https://www.twilio.com/docs/api/wireless/rest-api/rate-plan) that this Sim should use.",
+            "description": "The `sid` or `unique_name` of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rate-plan) that this SIM should use.",
             "in": "query",
             "name": "RatePlan",
             "required": false,
@@ -1417,7 +1417,7 @@
             }
           },
           {
-            "description": "A string representing the status of the Sim. Valid options depend on the current state of the Sim, but may include `ready`, `active`, `suspended` or `deactivated`.",
+            "description": "The new status of the resource. Can be: `ready`, `active`, `suspended` or `deactivated`; however the SIM might support additional values.",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -1436,7 +1436,7 @@
             }
           },
           {
-            "description": "A string representing the HTTP method to use when making a request to `CommandsCallbackUrl`.  Can be one of `POST` or `GET`. Defaults to `POST`.",
+            "description": "The HTTP method we use to call `commands_callback_url`.  Can be: `POST` or `GET`, and the default is `POST`.",
             "in": "query",
             "name": "CommandsCallbackMethod",
             "required": false,
@@ -1459,7 +1459,7 @@
             }
           },
           {
-            "description": "The URL that will receive a webhook when this Sim originates a [Command](https://www.twilio.com/docs/api/wireless/rest-api/command). Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+            "description": "The URL we call using the `commands_callback_method` when the SIM originates a [Command](https://www.twilio.com/docs/wireless/api/commands). Your server should respond with an HTTP status code in the 200 range; any response body is ignored.",
             "in": "query",
             "name": "CommandsCallbackUrl",
             "required": false,
@@ -1469,7 +1469,7 @@
             }
           },
           {
-            "description": "The HTTP method Twilio will use when requesting the sms_fallback_url. Either `GET` or `POST`.",
+            "description": "The HTTP method we use to call `sms_fallback_url`. Can be: `GET` or `POST`.",
             "in": "query",
             "name": "SmsFallbackMethod",
             "required": false,
@@ -1492,7 +1492,7 @@
             }
           },
           {
-            "description": "The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by `sms_url`.",
+            "description": "The URL we call using the `sms_fallback_method` when an error occurs while retrieving or executing the TwiML requested from `sms_url`.",
             "in": "query",
             "name": "SmsFallbackUrl",
             "required": false,
@@ -1502,7 +1502,7 @@
             }
           },
           {
-            "description": "The HTTP method Twilio will use when requesting the above Url. Either `GET` or `POST`.",
+            "description": "The HTTP method we use to call `sms_url`. Can be: `GET` or `POST`.",
             "in": "query",
             "name": "SmsMethod",
             "required": false,
@@ -1525,7 +1525,7 @@
             }
           },
           {
-            "description": "The URL Twilio will request when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/api/wireless/rest-api/command).",
+            "description": "The URL we call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/wireless/api/commands).",
             "in": "query",
             "name": "SmsUrl",
             "required": false,
@@ -1535,7 +1535,7 @@
             }
           },
           {
-            "description": "The HTTP method Twilio will use when requesting the voice_fallback_url. Either `GET` or `POST`.",
+            "description": "The HTTP method we use to call `voice_fallback_url`. Can be: `GET` or `POST`.",
             "in": "query",
             "name": "VoiceFallbackMethod",
             "required": false,
@@ -1558,7 +1558,7 @@
             }
           },
           {
-            "description": "The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by `voice_url`.",
+            "description": "The URL we call using the `voice_fallback_method` when an error occurs while retrieving or executing the TwiML requested from `voice_url`.",
             "in": "query",
             "name": "VoiceFallbackUrl",
             "required": false,
@@ -1568,7 +1568,7 @@
             }
           },
           {
-            "description": "The HTTP method Twilio will use when requesting the above Url. Either `GET` or `POST`.",
+            "description": "The HTTP method we use when we call `voice_url`. Can be: `GET` or `POST`.",
             "in": "query",
             "name": "VoiceMethod",
             "required": false,
@@ -1591,7 +1591,7 @@
             }
           },
           {
-            "description": "The URL Twilio will request when the SIM-connected device makes a call.",
+            "description": "The URL we call using the `voice_method` when the SIM-connected device makes a voice call.",
             "in": "query",
             "name": "VoiceUrl",
             "required": false,
@@ -1601,7 +1601,7 @@
             }
           },
           {
-            "description": "Pass `resetting` to initiate a connectivity reset on a Sim, this is the only valid value for this parameter.",
+            "description": "Initiate a connectivity reset on the SIM. Set to `resetting` to initiate a connectivity reset on the SIM. No other value is valid.",
             "in": "query",
             "name": "ResetStatus",
             "required": false,
@@ -1652,7 +1652,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim) with the Data Sessions to read.",
             "in": "path",
             "name": "SimSid",
             "required": true,
@@ -1664,7 +1664,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The date that the record ended, given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.",
             "in": "query",
             "name": "End",
             "required": false,
@@ -1674,7 +1674,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The date that the Data Session started, given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.",
             "in": "query",
             "name": "Start",
             "required": false,
@@ -1772,7 +1772,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim)  to read the usage from.",
             "in": "path",
             "name": "SimSid",
             "required": true,
@@ -1784,7 +1784,7 @@
             }
           },
           {
-            "description": "Only include usage that has occurred on or before this date. Format is [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm).",
+            "description": "Only include usage that occurred on or before this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html).",
             "in": "query",
             "name": "End",
             "required": false,
@@ -1794,7 +1794,7 @@
             }
           },
           {
-            "description": "Only include usage that has occurred on or after this date. Format is [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm).",
+            "description": "Only include usage that has occurred on or after this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html).",
             "in": "query",
             "name": "Start",
             "required": false,
@@ -1804,7 +1804,7 @@
             }
           },
           {
-            "description": "The time-based grouping that results are aggregated by. Valid values are `daily`, `hourly`, `all`. `all` will return one Usage Record for the entire period.",
+            "description": "How to summarize the usage by time. Can be: `daily`, `hourly`, or `all`. A value of `all` returns one Usage Record that describes the usage for the entire period.",
             "in": "query",
             "name": "Granularity",
             "required": false,
@@ -1902,7 +1902,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "Only include usage that has occurred on or before this date. Format is [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm).",
+            "description": "Only include usage that has occurred on or before this date. Format is [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html).",
             "in": "query",
             "name": "End",
             "required": false,
@@ -1912,7 +1912,7 @@
             }
           },
           {
-            "description": "Only include usage that has occurred on or after this date. Format is [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm).",
+            "description": "Only include usage that has occurred on or after this date. Format is [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html).",
             "in": "query",
             "name": "Start",
             "required": false,
@@ -1922,7 +1922,7 @@
             }
           },
           {
-            "description": "The time-based grouping that results are aggregated by. Valid values are `daily`, `hourly`, `all`. `all` will return one Usage Record for the entire period.",
+            "description": "How to summarize the usage by time. Can be: `daily`, `hourly`, or `all`. A value of `all` returns one Usage Record that describes the usage for the entire period.",
             "in": "query",
             "name": "Granularity",
             "required": false,

@@ -12,7 +12,7 @@
     "chalk": "^2.4.2",
     "columnify": "^1.5.4",
     "fs-extra": "^7.0.1",
-    "inquirer": "^6.5.1",
+    "inquirer": "^6.5.2",
     "request": "^2.88.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",

@@ -9,6 +9,9 @@
             "pattern": "^AC[0-9a-fA-F]{32}$",
             "type": "string"
           },
+          "attributes": {
+            "type": "string"
+          },
           "chat_service_sid": {
             "maxLength": 34,
             "minLength": 34,
@@ -56,6 +59,9 @@
             "pattern": "^AC[0-9a-fA-F]{32}$",
             "type": "string"
           },
+          "attributes": {
+            "type": "string"
+          },
           "author": {
             "type": "string"
           },
@@ -98,6 +104,9 @@
             "maxLength": 34,
             "minLength": 34,
             "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "attributes": {
             "type": "string"
           },
           "conversation_sid": {
@@ -350,6 +359,15 @@
             "description": "The unique id of the [SMS Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.",
             "in": "query",
             "name": "MessagingServiceSid",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
+            "in": "query",
+            "name": "Attributes",
             "required": false,
             "schema": {
               "type": "string"
@@ -641,6 +659,15 @@
               "format": "date-time",
               "type": "string"
             }
+          },
+          {
+            "description": "A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
+            "in": "query",
+            "name": "Attributes",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -832,6 +859,15 @@
               "format": "date-time",
               "type": "string"
             }
+          },
+          {
+            "description": "A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
+            "in": "query",
+            "name": "Attributes",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1014,6 +1050,15 @@
               "format": "date-time",
               "type": "string"
             }
+          },
+          {
+            "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
+            "in": "query",
+            "name": "Attributes",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1183,6 +1228,15 @@
             "required": false,
             "schema": {
               "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
+            "in": "query",
+            "name": "Attributes",
+            "required": false,
+            "schema": {
               "type": "string"
             }
           }
@@ -1750,6 +1804,15 @@
             "required": false,
             "schema": {
               "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
+            "in": "query",
+            "name": "Attributes",
+            "required": false,
+            "schema": {
               "type": "string"
             }
           }

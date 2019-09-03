@@ -522,7 +522,7 @@
         "description": "Retrieve a list of all Engagements for the Flow.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow to read Engagements from.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -606,7 +606,7 @@
         "description": "Triggers a new Engagement for the Flow",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -618,7 +618,7 @@
             }
           },
           {
-            "description": "The Contact phone number to start a Studio Flow Engagement, available as variable {{contact.channel.address}}.",
+            "description": "The Contact phone number to start a Studio Flow Engagement, available as variable `{{contact.channel.address}}`.",
             "in": "query",
             "name": "To",
             "required": true,
@@ -627,7 +627,7 @@
             }
           },
           {
-            "description": "The Twilio phone number to send messages or initiate calls from during the Flow Engagement, available as variable {{flow.channel.address}}",
+            "description": "The Twilio phone number to send messages or initiate calls from during the Flow Engagement. Available as variable `{{flow.channel.address}}`",
             "in": "query",
             "name": "From",
             "required": true,
@@ -636,7 +636,7 @@
             }
           },
           {
-            "description": "JSON data that will be added to your flow's context and can accessed as variables inside your flow. For example, if you pass in Parameters={'name':'Zeke'} then inside a widget you can reference the variable {{flow.data.name}} which will return the string 'Zeke'. Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string.",
+            "description": "A JSON string we will add to your flow's context and that you can access as variables inside your flow. For example, if you pass in `Parameters={'name':'Zeke'}` then inside a widget you can reference the variable `{{flow.data.name}}` which will return the string 'Zeke'. Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string.",
             "in": "query",
             "name": "Parameters",
             "required": false,
@@ -684,7 +684,7 @@
         "description": "Retrieve the most recent context for an Engagement.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -696,7 +696,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Engagement.",
+            "description": "The SID of the Engagement.",
             "in": "path",
             "name": "EngagementSid",
             "required": true,
@@ -744,7 +744,7 @@
         "description": "Retrieve a list of all Steps for an Engagement.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow with the Step to read.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -756,7 +756,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Engagement.",
+            "description": "The SID of the Engagement with the Step to read.",
             "in": "path",
             "name": "EngagementSid",
             "required": true,
@@ -855,7 +855,7 @@
         "description": "Retrieve a Step.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow with the Step to fetch.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -867,7 +867,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Engagement.",
+            "description": "The SID of the Engagement with the Step to fetch.",
             "in": "path",
             "name": "EngagementSid",
             "required": true,
@@ -879,7 +879,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Step.",
+            "description": "The SID of the Step resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -930,7 +930,7 @@
         "description": "Retrieve the context for an Engagement Step.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow with the Step to fetch.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -942,7 +942,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Engagement.",
+            "description": "The SID of the Engagement with the Step to fetch.",
             "in": "path",
             "name": "EngagementSid",
             "required": true,
@@ -954,7 +954,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Step.",
+            "description": "The SID of the Step to fetch",
             "in": "path",
             "name": "StepSid",
             "required": true,
@@ -1001,7 +1001,7 @@
         "description": "Delete this Engagement and all Steps relating to it.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow to delete Engagements from.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1013,7 +1013,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Engagement.",
+            "description": "The SID of the Engagement resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1044,7 +1044,7 @@
         "description": "Retrieve an Engagement",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1056,7 +1056,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Engagement.",
+            "description": "The SID of the Engagement resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1107,7 +1107,7 @@
         "description": "Retrieve a list of all Executions for the Flow.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow with the Execution resources to read.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1119,7 +1119,7 @@
             }
           },
           {
-            "description": "Only show Executions that started on or after this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.",
+            "description": "Only show Execution resources starting on or after this [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.",
             "in": "query",
             "name": "DateCreatedFrom",
             "required": false,
@@ -1129,7 +1129,7 @@
             }
           },
           {
-            "description": "Only show Executions that started before this this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.",
+            "description": "Only show Execution resources starting before this [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.",
             "in": "query",
             "name": "DateCreatedTo",
             "required": false,
@@ -1211,7 +1211,7 @@
         "description": "Triggers a new Execution for the Flow",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Excecution's Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1232,7 +1232,7 @@
             }
           },
           {
-            "description": "The Twilio phone number to send messages or initiate calls from during the Flow Execution, available as variable `{{flow.channel.address}}`.",
+            "description": "The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`.",
             "in": "query",
             "name": "From",
             "required": true,
@@ -1241,7 +1241,7 @@
             }
           },
           {
-            "description": "JSON data that will be added to your flow's context and can accessed as variables inside your flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, then inside a widget you can reference the variable `{{flow.data.name}}` which will return the string \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string.",
+            "description": "JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.",
             "in": "query",
             "name": "Parameters",
             "required": false,
@@ -1289,7 +1289,7 @@
         "description": "Retrieve the most recent context for an Execution.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow with the Execution context to fetch.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1301,7 +1301,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Execution.",
+            "description": "The SID of the Execution context to fetch.",
             "in": "path",
             "name": "ExecutionSid",
             "required": true,
@@ -1349,7 +1349,7 @@
         "description": "Retrieve a list of all Steps for an Execution.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow with the Steps to read.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1361,7 +1361,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Execution.",
+            "description": "The SID of the Execution with the Steps to read.",
             "in": "path",
             "name": "ExecutionSid",
             "required": true,
@@ -1459,7 +1459,7 @@
         "description": "Retrieve a Step.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow with the Step to fetch.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1471,7 +1471,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Execution.",
+            "description": "The SID of the Execution resource with the Step to fetch.",
             "in": "path",
             "name": "ExecutionSid",
             "required": true,
@@ -1483,7 +1483,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Step.",
+            "description": "The SID of the ExecutionStep resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1533,7 +1533,7 @@
         "description": "Retrieve the context for an Execution Step.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow with the Step to fetch.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1545,7 +1545,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Execution.",
+            "description": "The SID of the Execution resource with the Step to fetch.",
             "in": "path",
             "name": "ExecutionSid",
             "required": true,
@@ -1557,7 +1557,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Step.",
+            "description": "The SID of the Step to fetch.",
             "in": "path",
             "name": "StepSid",
             "required": true,
@@ -1601,10 +1601,10 @@
     },
     "/v1/Flows/{FlowSid}/Executions/{Sid}": {
       "delete": {
-        "description": "Delete this Execution and all Steps relating to it.",
+        "description": "Delete the Execution and all Steps relating to it.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow with the Execution resources to delete.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1616,7 +1616,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Execution.",
+            "description": "The SID of the Execution resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1647,7 +1647,7 @@
         "description": "Retrieve an Execution",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flow.",
+            "description": "The SID of the Flow with the Execution resource to fetch",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -1659,7 +1659,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Execution.",
+            "description": "The SID of the Execution resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1709,7 +1709,7 @@
         "description": "Delete a specific Flow.",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this Flow.",
+            "description": "The SID of the Flow resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1740,7 +1740,7 @@
         "description": "Retrieve a specific Flow.",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies this Flow.",
+            "description": "The SID of the Flow resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
