@@ -12532,6 +12532,15 @@
               ],
               "type": "string"
             }
+          },
+          {
+            "description": "TwiML instructions for the call Twilio will use without fetching Twiml from url. Twiml and url parameters are mutually exclusive",
+            "in": "query",
+            "name": "Twiml",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {

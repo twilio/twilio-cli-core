@@ -1,6 +1,12 @@
 twilio-cli-core changelog
 =====================
 
+[2019-09-04] Version 4.0.1
+---------------------------
+**Api**
+-  Pass Twiml in call update request
+
+
 [2019-09-03] Version 4.0.0
 ---------------------------
 **Library**
