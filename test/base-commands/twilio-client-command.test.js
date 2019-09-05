@@ -39,20 +39,16 @@ describe('base-commands', () => {
         .twilioCliEnv(Config)
         .stderr()
         .do(async ctx => {
-          ctx.testCmd = new CommandClass(
-            args,
-            ctx.fakeConfig,
-            mockSecureStorage ?
-              {
-                async getCredentials(profileId) {
-                  return {
-                    apiKey: constants.FAKE_API_KEY,
-                    apiSecret: constants.FAKE_API_SECRET + profileId
-                  };
-                }
-              } :
-              undefined
-          );
+          ctx.testCmd = new CommandClass(args, ctx.fakeConfig);
+          ctx.testCmd.secureStorage =
+            {
+              async getCredentials(profileId) {
+                return {
+                  apiKey: mockSecureStorage ? constants.FAKE_API_KEY : 'error',
+                  apiSecret: constants.FAKE_API_SECRET + profileId
+                };
+              }
+            };
 
           // This is essentially what oclif does behind the scenes.
           try {

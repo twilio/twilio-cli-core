@@ -12,11 +12,11 @@ const DEFAULT_LOG_LEVEL = 'info';
 const DEFAULT_OUTPUT_FORMAT = 'columns';
 
 class BaseCommand extends Command {
-  constructor(argv, config, secureStorage) {
+  constructor(argv, config) {
     super(argv, config);
     this.configFile = new Config('');
     this.userConfig = new ConfigData();
-    this.secureStorage = secureStorage || new SecureStorage();
+    this.secureStorage = new SecureStorage();
   }
 
   get inquirer() {
