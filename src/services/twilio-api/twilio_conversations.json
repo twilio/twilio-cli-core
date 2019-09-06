@@ -320,7 +320,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "post": {
@@ -391,7 +391,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "servers": [
@@ -429,7 +429,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "post": {
@@ -505,7 +505,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "servers": [
@@ -604,7 +604,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "post": {
@@ -687,7 +687,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "servers": [
@@ -743,7 +743,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "description": "TODO: Resource-level docs",
@@ -792,7 +792,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "post": {
@@ -887,7 +887,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "servers": [
@@ -986,7 +986,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "post": {
@@ -1078,7 +1078,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "servers": [
@@ -1132,7 +1132,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "description": "TODO: Resource-level docs",
@@ -1181,7 +1181,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "post": {
@@ -1258,7 +1258,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "servers": [
@@ -1355,7 +1355,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "post": {
@@ -1472,7 +1472,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "servers": [
@@ -1526,7 +1526,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "description": "TODO: Resource-level docs",
@@ -1575,7 +1575,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "post": {
@@ -1681,7 +1681,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "servers": [
@@ -1723,7 +1723,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "description": "TODO: Resource-level docs",
@@ -1760,7 +1760,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "post": {
@@ -1834,7 +1834,7 @@
           }
         ],
         "tags": [
-          "Preview"
+          "Beta"
         ]
       },
       "servers": [
@@ -1853,8 +1853,8 @@
   },
   "tags": [
     {
-      "description": "PLEASE NOTE that this is a Preview product that is subject to change. Use it with caution. If you currently do not have developer preview access, please contact help@twilio.com.",
-      "name": "Preview"
+      "description": "PLEASE NOTE that this is a Beta product that is subject to change. Use it with caution.",
+      "name": "Beta"
     }
   ]
 }

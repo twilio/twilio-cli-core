@@ -5,7 +5,7 @@
   "author": "Twilio @twilio",
   "bugs": "https://github.com/twilio/twilio-cli/issues",
   "dependencies": {
-    "@oclif/command": "^1.5.18",
+    "@oclif/command": "^1.5.19",
     "@oclif/config": "^1.13.3",
     "@oclif/errors": "^1.2.2",
     "@oclif/plugin-help": "^2.2.1",

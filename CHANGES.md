@@ -1,6 +1,12 @@
 twilio-cli-core changelog
 =====================
 
+[2019-09-06] Version 4.0.2
+---------------------------
+**Library**
+- [PR #64](https://github.com/twilio/twilio-cli-core/pull/64): Remove implicit test dependency on keytar presence. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2019-09-04] Version 4.0.1
 ---------------------------
 **Api**
