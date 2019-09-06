@@ -12,8 +12,8 @@ const { HELP_ENVIRONMENT_VARIABLES } = require('../services/messaging/help-messa
 const CliFlags = translateValues(TwilioApiFlags, kebabCase);
 
 class TwilioClientCommand extends BaseCommand {
-  constructor(argv, config, secureStorage) {
-    super(argv, config, secureStorage);
+  constructor(argv, config) {
+    super(argv, config);
     this.httpClient = undefined;
     this.twilio = undefined;
     this.twilioApi = undefined;
