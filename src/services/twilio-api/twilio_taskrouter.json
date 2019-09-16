@@ -2802,9 +2802,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^TC[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -2845,9 +2842,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^TC[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -2893,9 +2887,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^TC[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6020,9 +6011,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WC[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -6080,9 +6068,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WC[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },

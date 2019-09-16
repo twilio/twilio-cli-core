@@ -1977,9 +1977,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2085,9 +2082,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2167,9 +2161,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2222,9 +2213,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2296,9 +2284,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2404,9 +2389,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2486,9 +2468,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2541,9 +2520,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2601,9 +2577,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3102,9 +3075,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -3145,9 +3115,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -3193,9 +3160,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3786,9 +3750,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -3829,9 +3790,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -3877,9 +3835,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3969,9 +3924,6 @@
             "name": "UserSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -5865,9 +5817,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -5973,9 +5922,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6055,9 +6001,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6110,9 +6053,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6184,9 +6124,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6292,9 +6229,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6423,9 +6357,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6435,9 +6366,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -6478,9 +6406,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6490,9 +6415,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -6538,9 +6460,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6550,9 +6469,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6673,9 +6589,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6782,9 +6695,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6912,9 +6822,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6967,9 +6874,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7027,9 +6931,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7158,9 +7059,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7254,9 +7152,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7395,9 +7290,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7450,9 +7342,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7510,9 +7399,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7649,9 +7535,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -7692,9 +7575,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -7740,9 +7620,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -8363,9 +8240,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -8406,9 +8280,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -8454,9 +8325,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -8547,9 +8415,6 @@
             "name": "UserSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -8674,9 +8539,6 @@
             "name": "UserSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -8729,9 +8591,6 @@
             "name": "UserSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -8804,9 +8663,6 @@
             "name": "UserSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -8913,9 +8769,6 @@
             "name": "UserSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -8925,9 +8778,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -8973,9 +8823,6 @@
             "name": "UserSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^US[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -8985,9 +8832,6 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
