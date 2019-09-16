@@ -2362,9 +2362,6 @@
             "name": "RoomSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RM[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2502,9 +2499,6 @@
             "name": "RoomSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RM[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2514,9 +2508,6 @@
             "name": "ParticipantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^PA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2613,9 +2604,6 @@
             "name": "RoomSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RM[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2625,9 +2613,6 @@
             "name": "ParticipantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^PA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2637,9 +2622,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MT[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -2688,9 +2670,6 @@
             "name": "RoomSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RM[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2700,9 +2679,6 @@
             "name": "ParticipantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^PA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -2736,9 +2712,6 @@
             "name": "RoomSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RM[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2748,9 +2721,6 @@
             "name": "ParticipantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^PA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2807,9 +2777,6 @@
             "name": "RoomSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RM[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2819,9 +2786,6 @@
             "name": "ParticipantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^PA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2918,9 +2882,6 @@
             "name": "RoomSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RM[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2930,9 +2891,6 @@
             "name": "ParticipantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^PA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2993,9 +2951,6 @@
             "name": "RoomSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RM[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3005,9 +2960,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^PA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -3041,9 +2993,6 @@
             "name": "RoomSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RM[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3053,9 +3002,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^PA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3371,9 +3317,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RM[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -3407,9 +3350,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RM[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },

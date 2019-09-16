@@ -382,15 +382,9 @@
             "type": "string"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^WN[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "sim_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^DE[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "start": {
@@ -418,9 +412,6 @@
             "type": "object"
           },
           "sim_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^DE[0-9a-fA-F]{32}$",
             "type": "string"
           }
         },
@@ -1003,9 +994,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -1034,9 +1022,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -1070,9 +1055,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -1280,9 +1262,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^DE[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -1311,9 +1290,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^DE[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -1347,9 +1323,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^DE[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -1410,9 +1383,6 @@
             "name": "RatePlan",
             "required": false,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -1657,9 +1627,6 @@
             "name": "SimSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^DE[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -1777,9 +1744,6 @@
             "name": "SimSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^DE[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },

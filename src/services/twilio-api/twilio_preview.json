@@ -260,9 +260,6 @@
             "type": "string"
           },
           "fleet_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^FL[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "friendly_name": {
@@ -301,9 +298,6 @@
             "type": "string"
           },
           "fleet_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^FL[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "friendly_name": {
@@ -358,9 +352,6 @@
             "type": "boolean"
           },
           "fleet_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^FL[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "friendly_name": {
@@ -408,9 +399,6 @@
             "type": "string"
           },
           "fleet_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^FL[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "friendly_name": {
@@ -2741,9 +2729,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2837,9 +2822,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2912,9 +2894,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -2955,9 +2934,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3003,9 +2979,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3082,9 +3055,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3166,9 +3136,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3232,9 +3199,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3275,9 +3239,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3323,9 +3284,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3402,9 +3360,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3498,9 +3453,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3591,9 +3543,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3603,9 +3552,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^TH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -3634,9 +3580,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3646,9 +3589,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^TH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -3682,9 +3622,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3694,9 +3631,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^TH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3779,9 +3713,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3875,9 +3806,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3941,9 +3869,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3984,9 +3909,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -4032,9 +3954,6 @@
             "name": "FleetSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -4110,9 +4029,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -4141,9 +4057,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -4177,9 +4090,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FL[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -5660,9 +5570,6 @@
             "name": "DocumentSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ET[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -5765,9 +5672,6 @@
             "name": "DocumentSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ET[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -5817,9 +5721,6 @@
             "name": "DocumentSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ET[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -5874,9 +5775,6 @@
             "name": "DocumentSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ET[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -5967,9 +5865,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ET[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -6010,9 +5905,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ET[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -6058,9 +5950,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ET[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6264,9 +6153,6 @@
             "name": "ListSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ES[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6395,9 +6281,6 @@
             "name": "ListSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ES[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6461,9 +6344,6 @@
             "name": "ListSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ES[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6513,9 +6393,6 @@
             "name": "ListSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ES[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6570,9 +6447,6 @@
             "name": "ListSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ES[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6646,9 +6520,6 @@
             "name": "ListSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ES[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6751,9 +6622,6 @@
             "name": "ListSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ES[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6803,9 +6671,6 @@
             "name": "ListSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ES[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6860,9 +6725,6 @@
             "name": "ListSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ES[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -6953,9 +6815,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ES[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -6996,9 +6855,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ES[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -7193,9 +7049,6 @@
             "name": "MapSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7324,9 +7177,6 @@
             "name": "MapSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7399,9 +7249,6 @@
             "name": "MapSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7451,9 +7298,6 @@
             "name": "MapSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7508,9 +7352,6 @@
             "name": "MapSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7584,9 +7425,6 @@
             "name": "MapSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7689,9 +7527,6 @@
             "name": "MapSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7741,9 +7576,6 @@
             "name": "MapSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7798,9 +7630,6 @@
             "name": "MapSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7891,9 +7720,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -7934,9 +7760,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -10002,9 +9825,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10014,9 +9834,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UK[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -10060,9 +9877,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -10096,9 +9910,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10151,9 +9962,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10235,9 +10043,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10299,9 +10104,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10311,9 +10113,6 @@
             "name": "FieldTypeSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10404,9 +10203,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10416,9 +10212,6 @@
             "name": "FieldTypeSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10446,9 +10239,6 @@
             "name": "SynonymOf",
             "required": false,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UC[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -10491,9 +10281,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10503,9 +10290,6 @@
             "name": "FieldTypeSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10515,9 +10299,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UC[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -10546,9 +10327,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10558,9 +10336,6 @@
             "name": "FieldTypeSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10570,9 +10345,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UC[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -10615,9 +10387,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10627,9 +10396,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -10658,9 +10424,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10670,9 +10433,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -10706,9 +10466,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10718,9 +10475,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10782,9 +10536,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -10818,9 +10569,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10873,9 +10621,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -10957,9 +10702,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11021,9 +10763,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11033,9 +10772,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UG[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -11064,9 +10800,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11076,9 +10809,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UG[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -11112,9 +10842,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11124,9 +10851,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UG[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11179,9 +10903,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11200,9 +10921,6 @@
             "name": "ModelBuild",
             "required": false,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UG[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11293,9 +11011,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11332,9 +11047,6 @@
             "name": "ModelBuild",
             "required": false,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UG[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11386,9 +11098,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11398,9 +11107,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -11429,9 +11135,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11441,9 +11144,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -11477,9 +11177,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11489,9 +11186,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UH[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11556,9 +11250,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -11592,9 +11283,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11647,9 +11335,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11731,9 +11416,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11813,9 +11495,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11825,9 +11504,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -11856,9 +11532,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11868,9 +11541,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -11904,9 +11574,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11916,9 +11583,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -11999,9 +11663,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12011,9 +11672,6 @@
             "name": "TaskSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -12047,9 +11705,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12059,9 +11714,6 @@
             "name": "TaskSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12114,9 +11766,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12126,9 +11775,6 @@
             "name": "TaskSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12210,9 +11856,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12222,9 +11865,6 @@
             "name": "TaskSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12285,9 +11925,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12297,9 +11934,6 @@
             "name": "TaskSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12309,9 +11943,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UE[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -12340,9 +11971,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12352,9 +11980,6 @@
             "name": "TaskSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12364,9 +11989,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UE[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -12410,9 +12032,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12422,9 +12041,6 @@
             "name": "TaskSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12515,9 +12131,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12527,9 +12140,6 @@
             "name": "TaskSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12599,9 +12209,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12611,9 +12218,6 @@
             "name": "TaskSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12654,9 +12258,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12666,9 +12267,6 @@
             "name": "TaskSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12714,9 +12312,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12726,9 +12321,6 @@
             "name": "TaskSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12811,9 +12403,6 @@
             "name": "AssistantSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12823,9 +12412,6 @@
             "name": "TaskSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UD[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -12868,9 +12454,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -12899,9 +12482,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -12935,9 +12515,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^UA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -13504,9 +13081,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -13535,9 +13109,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -13571,9 +13142,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -13762,9 +13330,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^DE[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -13798,9 +13363,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^DE[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -13847,9 +13409,6 @@
             "name": "RatePlan",
             "required": false,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WP[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -14067,9 +13626,6 @@
             "name": "SimSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^DE[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },

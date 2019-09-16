@@ -12235,9 +12235,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RE[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -12900,9 +12897,6 @@
             "name": "ConferenceSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CF[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -13952,9 +13946,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^RE[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -14090,9 +14081,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CF[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -19228,9 +19216,6 @@
             "name": "CallSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -19288,9 +19273,6 @@
             "name": "CallSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
