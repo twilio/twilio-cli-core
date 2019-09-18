@@ -2823,7 +2823,7 @@
             }
           },
           {
-            "description": "The Field Type of the new field. Can be: a [Built-in Field Type](https://www.twilio.com/docs/assistant/api/built-in-field-types), the `unique_name`, or the `sid` of a custom Field Type.",
+            "description": "The Field Type of the new field. Can be: a [Built-in Field Type](https://www.twilio.com/docs/autopilot/built-in-field-types), the `unique_name`, or the `sid` of a custom Field Type.",
             "in": "query",
             "name": "FieldType",
             "required": true,

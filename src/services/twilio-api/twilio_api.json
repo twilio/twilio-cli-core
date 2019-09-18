@@ -7139,7 +7139,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that is responsible for the Address resource to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -7248,7 +7248,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will be responsible for the new Address resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Address resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -7380,7 +7380,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the DependentPhoneNumber resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the DependentPhoneNumber resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -7487,7 +7487,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that is responsible for the Address resource to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -7530,7 +7530,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that is responsible for the Address resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -7578,7 +7578,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that is responsible for the Address resource to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -7713,7 +7713,7 @@
         "description": "Retrieve a list of applications representing an application within the requesting account",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Application resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -7804,7 +7804,7 @@
         "description": "Create a new application within your account",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -8065,7 +8065,7 @@
         "description": "Delete the application by the specified application sid",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Application resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -8108,7 +8108,7 @@
         "description": "Fetch the application specified by the provided sid",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Application resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -8156,7 +8156,7 @@
         "description": "Updates the application's properties",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Application resources to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -8430,7 +8430,7 @@
         "description": "Retrieve a list of authorized-connect-apps belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the AuthorizedConnectApp resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AuthorizedConnectApp resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -8525,7 +8525,7 @@
         "description": "Fetch an instance of an authorized-connect-app",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the AuthorizedConnectApp resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AuthorizedConnectApp resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -8586,7 +8586,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) requesting the available phone number Country resources.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the available phone number Country resources.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -8682,7 +8682,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) requesting the available phone number Country resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the available phone number Country resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -8741,7 +8741,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) requesting the AvailablePhoneNumber resources.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -8771,7 +8771,7 @@
             }
           },
           {
-            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-3). If specified, this value must have at least two characters.",
+            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
             "required": false,
@@ -8807,7 +8807,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
             "required": false,
@@ -8816,7 +8816,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
             "required": false,
@@ -8825,7 +8825,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
             "required": false,
@@ -8897,7 +8897,7 @@
             }
           },
           {
-            "description": "Limit results to a specific local access and transport area ([LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
+            "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
             "required": false,
@@ -9008,7 +9008,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) requesting the AvailablePhoneNumber resources.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -9038,7 +9038,7 @@
             }
           },
           {
-            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-3). If specified, this value must have at least two characters.",
+            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
             "required": false,
@@ -9074,7 +9074,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
             "required": false,
@@ -9083,7 +9083,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
             "required": false,
@@ -9092,7 +9092,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
             "required": false,
@@ -9164,7 +9164,7 @@
             }
           },
           {
-            "description": "Limit results to a specific local access and transport area ([LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
+            "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
             "required": false,
@@ -9275,7 +9275,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) requesting the AvailablePhoneNumber resources.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -9305,7 +9305,7 @@
             }
           },
           {
-            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-3). If specified, this value must have at least two characters.",
+            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
             "required": false,
@@ -9341,7 +9341,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
             "required": false,
@@ -9350,7 +9350,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
             "required": false,
@@ -9359,7 +9359,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
             "required": false,
@@ -9431,7 +9431,7 @@
             }
           },
           {
-            "description": "Limit results to a specific local access and transport area ([LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
+            "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
             "required": false,
@@ -9542,7 +9542,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) requesting the AvailablePhoneNumber resources.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -9572,7 +9572,7 @@
             }
           },
           {
-            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-3). If specified, this value must have at least two characters.",
+            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
             "required": false,
@@ -9608,7 +9608,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
             "required": false,
@@ -9617,7 +9617,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
             "required": false,
@@ -9626,7 +9626,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
             "required": false,
@@ -9698,7 +9698,7 @@
             }
           },
           {
-            "description": "Limit results to a specific local access and transport area ([LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
+            "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
             "required": false,
@@ -9809,7 +9809,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) requesting the AvailablePhoneNumber resources.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -9839,7 +9839,7 @@
             }
           },
           {
-            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-3). If specified, this value must have at least two characters.",
+            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
             "required": false,
@@ -9875,7 +9875,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
             "required": false,
@@ -9884,7 +9884,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
             "required": false,
@@ -9893,7 +9893,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
             "required": false,
@@ -9965,7 +9965,7 @@
             }
           },
           {
-            "description": "Limit results to a specific local access and transport area ([LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
+            "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
             "required": false,
@@ -10076,7 +10076,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) requesting the AvailablePhoneNumber resources.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -10106,7 +10106,7 @@
             }
           },
           {
-            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-3). If specified, this value must have at least two characters.",
+            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
             "required": false,
@@ -10142,7 +10142,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
             "required": false,
@@ -10151,7 +10151,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
             "required": false,
@@ -10160,7 +10160,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
             "required": false,
@@ -10232,7 +10232,7 @@
             }
           },
           {
-            "description": "Limit results to a specific local access and transport area ([LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
+            "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
             "required": false,
@@ -10343,7 +10343,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) requesting the AvailablePhoneNumber resources.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -10373,7 +10373,7 @@
             }
           },
           {
-            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-3). If specified, this value must have at least two characters.",
+            "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
             "required": false,
@@ -10409,7 +10409,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
             "required": false,
@@ -10418,7 +10418,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
             "required": false,
@@ -10427,7 +10427,7 @@
             }
           },
           {
-            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.",
+            "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
             "required": false,
@@ -10499,7 +10499,7 @@
             }
           },
           {
-            "description": "Limit results to a specific local access and transport area ([LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
+            "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
             "required": false,
@@ -10660,7 +10660,7 @@
         "description": "Retrieves a collection of calls made to and from your account",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Call resource(s) to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -10851,7 +10851,7 @@
         "description": "Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -11205,7 +11205,7 @@
         "description": "Create a FeedbackSummary resource for a call",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -11317,7 +11317,7 @@
         "description": "Delete a FeedbackSummary resource from a call",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -11360,7 +11360,7 @@
         "description": "Fetch a FeedbackSummary resource from a call",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -11423,7 +11423,7 @@
         "description": "Fetch a Feedback resource from a call",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -11471,7 +11471,7 @@
         "description": "Update a Feedback resource for a call",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -11564,7 +11564,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Call Notification resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call Notification resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -11576,7 +11576,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the Call Notification resources to read.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the Call Notification resources to read.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -11711,7 +11711,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Call Notification resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call Notification resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -11723,7 +11723,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the Call Notification resources to delete.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the Call Notification resources to delete.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -11766,7 +11766,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Call Notification resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call Notification resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -11778,7 +11778,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the Call Notification resource to fetch.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the Call Notification resource to fetch.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -11841,7 +11841,7 @@
         "description": "Retrieve a list of recordings belonging to the call used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -11853,7 +11853,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resources to read.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resources to read.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -11965,7 +11965,7 @@
         "description": "Create a recording for the call",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -11977,7 +11977,7 @@
             }
           },
           {
-            "description": "The SID of the [Call](https://www.twilio.com/docs/api/voice/call) to associate the resource with.",
+            "description": "The SID of the [Call](https://www.twilio.com/docs/voice/api/call) to associate the resource with.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -12091,7 +12091,7 @@
         "description": "Delete a recording from your account",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -12103,7 +12103,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resources to delete.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resources to delete.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -12146,7 +12146,7 @@
         "description": "Fetch an instance of a recording for a call",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -12158,7 +12158,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resource to fetch.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resource to fetch.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -12206,7 +12206,7 @@
         "description": "Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of recording sid to reference current active recording.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording resource to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resource to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -12218,7 +12218,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resource to update.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resource to update.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -12304,7 +12304,7 @@
         "description": "Delete a Call record from your account. Once the record is deleted, it will no longer appear in the API and Account Portal logs.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Call resource(s) to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -12347,7 +12347,7 @@
         "description": "Fetch the call specified by the provided Call SID",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Call resource(s) to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -12395,7 +12395,7 @@
         "description": "Initiates a call redirect or terminates a call",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Call resource(s) to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -12580,7 +12580,7 @@
         "description": "Retrieve a list of conferences belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Conference resource(s) to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -12759,7 +12759,7 @@
         "description": "Retrieve a list of participants belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Participant resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Participant resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -12880,7 +12880,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -13317,7 +13317,7 @@
         "description": "Kick a participant from a given conference",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Participant resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Participant resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -13341,7 +13341,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resources to delete.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resources to delete.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -13372,7 +13372,7 @@
         "description": "Fetch an instance of a participant",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Participant resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Participant resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -13396,7 +13396,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resource to fetch.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resource to fetch.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -13432,7 +13432,7 @@
         "description": "Update the properties of the participant",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Participant resources to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Participant resources to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -13456,7 +13456,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resources to update.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resources to update.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -13663,7 +13663,7 @@
         "description": "Retrieve a list of recordings belonging to the call used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Conference Recording resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference Recording resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -13802,7 +13802,7 @@
         "description": "Delete a recording from your account",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Conference Recording resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference Recording resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -13857,7 +13857,7 @@
         "description": "Fetch an instance of a recording for a call",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Conference Recording resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference Recording resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -13917,7 +13917,7 @@
         "description": "Changes the status of the recording to paused, stopped, or in-progress. Note: To use `Twilio.CURRENT`, pass it as recording sid.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Conference Recording resource to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference Recording resource to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -14016,7 +14016,7 @@
         "description": "Fetch an instance of a conference",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Conference resource(s) to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -14064,7 +14064,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Conference resource(s) to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -14168,7 +14168,7 @@
         "description": "Retrieve a list of connect-apps belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the ConnectApp resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -14262,7 +14262,7 @@
         "description": "Delete an instance of a connect-app",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the ConnectApp resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -14305,7 +14305,7 @@
         "description": "Fetch an instance of a connect-app",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the ConnectApp resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -14353,7 +14353,7 @@
         "description": "Update a connect-app with the specified parameters",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the ConnectApp resources to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resources to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -14510,7 +14510,7 @@
         "description": "Retrieve a list of incoming-phone-numbers belonging to the account used to make the request.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the IncomingPhoneNumber resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -14628,7 +14628,7 @@
         "description": "Purchase a phone-number for the account.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -14986,7 +14986,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -15104,7 +15104,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -15403,7 +15403,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -15521,7 +15521,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -15820,7 +15820,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -15938,7 +15938,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -16237,7 +16237,7 @@
         "description": "Retrieve a list of Add-on installations currently assigned to this Number.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -16331,7 +16331,7 @@
         "description": "Assign an Add-on installation to the Number specified.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -16406,7 +16406,7 @@
         "description": "Retrieve a list of Extensions for the Assigned Add-on.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -16527,7 +16527,7 @@
         "description": "Fetch an instance of an Extension for the Assigned Add-on.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -16613,7 +16613,7 @@
         "description": "Remove the assignment of an Add-on installation from the Number specified.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -16668,7 +16668,7 @@
         "description": "Fetch an instance of an Add-on installation currently assigned to this Number.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -16742,7 +16742,7 @@
         "description": "Delete a phone-numbers belonging to the account used to make the request.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the IncomingPhoneNumber resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -16785,7 +16785,7 @@
         "description": "Fetch an incoming-phone-number belonging to the account used to make the request.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the IncomingPhoneNumber resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -16833,7 +16833,7 @@
         "description": "Update an incoming-phone-number instance.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -16857,7 +16857,7 @@
             }
           },
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).",
             "in": "query",
             "name": "AccountSid",
             "required": false,
@@ -17197,7 +17197,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Key resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -17279,7 +17279,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will be responsible for the new Key resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -17337,7 +17337,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Key resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -17380,7 +17380,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Key resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -17428,7 +17428,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Key resources to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -17499,7 +17499,7 @@
         "description": "Retrieve a list of messages belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Message resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -17629,7 +17629,7 @@
         "description": "Send a message from the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -17681,7 +17681,7 @@
             }
           },
           {
-            "description": "Whether to confirm delivery of the message. Set this value to `true` if you are sending messages that have a trackable user action and you intend to confirm delivery of the message using the [Message Feedback API](https://www.twilio.com/docs/sms/api/message-feedback). This parameter is `false` by default.",
+            "description": "Whether to confirm delivery of the message. Set this value to `true` if you are sending messages that have a trackable user action and you intend to confirm delivery of the message using the [Message Feedback API](https://www.twilio.com/docs/sms/api/message-feedback-resource). This parameter is `false` by default.",
             "in": "query",
             "name": "ProvideFeedback",
             "required": false,
@@ -17717,7 +17717,7 @@
             }
           },
           {
-            "description": "A Twilio phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, an [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), or a [Channel Endpoint address](https://www.twilio.com/docs/sms/channels#channel-addresses) that is enabled for the type of message you want to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-codes) purchased from Twilio also work here. You cannot, for example, spoof messages from a private cell phone number. If you are using `messaging_service_sid`, this parameter must be empty.",
+            "description": "A Twilio phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, an [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), or a [Channel Endpoint address](https://www.twilio.com/docs/sms/channels#channel-addresses) that is enabled for the type of message you want to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-code) purchased from Twilio also work here. You cannot, for example, spoof messages from a private cell phone number. If you are using `messaging_service_sid`, this parameter must be empty.",
             "in": "query",
             "name": "From",
             "required": false,
@@ -17801,7 +17801,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -17825,7 +17825,7 @@
             }
           },
           {
-            "description": "Whether the feedback has arrived. Can be: `unconfirmed` or `confirmed`. If `provide_feedback`=`true` in [the initial HTTP POST](https://www.twilio.com/docs/sms/api/message#create-a-message-resource), the initial value of this property is `unconfirmed`. After the message arrives, update the value to `confirmed`.",
+            "description": "Whether the feedback has arrived. Can be: `unconfirmed` or `confirmed`. If `provide_feedback`=`true` in [the initial HTTP POST](https://www.twilio.com/docs/sms/api/message-resource#create-a-message-resource), the initial value of this property is `unconfirmed`. After the message arrives, update the value to `confirmed`.",
             "in": "query",
             "name": "Outcome",
             "required": false,
@@ -17876,7 +17876,7 @@
         "description": "Retrieve a list of medias belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Media resource(s) to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18013,7 +18013,7 @@
         "description": "Delete media from your account. Once delete, you will no longer be billed",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Media resource(s) to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18068,7 +18068,7 @@
         "description": "Fetch a single media instance belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Media resource(s) to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18141,7 +18141,7 @@
         "description": "Deletes a message record from your account",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Message resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18184,7 +18184,7 @@
         "description": "Fetch a message belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Message resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18232,7 +18232,7 @@
         "description": "To redact a message-body from a post-flight message record, post to the message instance resource with an empty body",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Message resources to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18306,7 +18306,7 @@
         "description": "Retrieve a list of notifications belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Notification resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Notification resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18441,7 +18441,7 @@
         "description": "Delete a notification identified by the NotificationSid from an accounts log",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Notification resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Notification resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18484,7 +18484,7 @@
         "description": "Fetch a notification belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Notification resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Notification resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18547,7 +18547,7 @@
         "description": "Retrieve a list of outgoing-caller-ids belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the OutgoingCallerId resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18647,7 +18647,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for the new caller ID resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for the new caller ID resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18765,7 +18765,7 @@
         "description": "Delete the caller-id specified from the account",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the OutgoingCallerId resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18808,7 +18808,7 @@
         "description": "Fetch an outgoing-caller-id belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the OutgoingCallerId resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18856,7 +18856,7 @@
         "description": "Updates the caller-id",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the OutgoingCallerId resources to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -18927,7 +18927,7 @@
         "description": "Retrieve a list of queues belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for creating this Call.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for creating this Call.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19009,7 +19009,7 @@
         "description": "Create a queue",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19078,7 +19078,7 @@
         "description": "Retrieve the members of the queue",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Member resource(s) to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Member resource(s) to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19187,7 +19187,7 @@
         "description": "Fetch a specific member from the queue",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Member resource(s) to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Member resource(s) to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19211,7 +19211,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resource(s) to fetch.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resource(s) to fetch.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -19244,7 +19244,7 @@
         "description": "Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Member resource(s) to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Member resource(s) to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19268,7 +19268,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resource(s) to update.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resource(s) to update.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -19348,7 +19348,7 @@
         "description": "Remove an empty queue",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Queue resource(s) to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource(s) to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19391,7 +19391,7 @@
         "description": "Fetch an instance of a queue identified by the QueueSid",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Queue resource(s) to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource(s) to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19439,7 +19439,7 @@
         "description": "Update the queue with the new parameters",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Queue resource(s) to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource(s) to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19520,7 +19520,7 @@
         "description": "Retrieve a list of recordings belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19562,7 +19562,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resources to read.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resources to read.",
             "in": "query",
             "name": "CallSid",
             "required": false,
@@ -19672,7 +19672,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Transcription resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19780,7 +19780,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Transcription resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19835,7 +19835,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Transcription resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19910,7 +19910,7 @@
         "description": "Retrieve a list of results belonging to the recording",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording AddOnResult resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -20019,7 +20019,7 @@
         "description": "Retrieve a list of payloads belonging to the AddOnResult",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording AddOnResult Payload resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult Payload resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -20138,7 +20138,7 @@
         "description": "Delete a payload from the result along with all associated Data",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording AddOnResult Payload resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult Payload resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -20205,7 +20205,7 @@
         "description": "Fetch an instance of a result payload",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording AddOnResult Payload resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult Payload resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -20290,7 +20290,7 @@
         "description": "Delete a result and purge all associated Payloads",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording AddOnResult resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -20345,7 +20345,7 @@
         "description": "Fetch an instance of an AddOnResult",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording AddOnResult resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -20419,7 +20419,7 @@
         "description": "Delete a recording from your account",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -20462,7 +20462,7 @@
         "description": "Fetch an instance of a recording",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Recording resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -21197,7 +21197,7 @@
         "description": "Retrieve a list of domains belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the SipDomain resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -21279,7 +21279,7 @@
         "description": "Create a new Domain",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -21455,7 +21455,7 @@
         "description": "Retrieve a list of credential list mappings belonging to the domain used in the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the CredentialListMapping resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -21549,7 +21549,7 @@
         "description": "Create a new credential list mapping resource",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -21621,7 +21621,7 @@
         "description": "Delete a credential list mapping from the requested domain",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the CredentialListMapping resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -21676,7 +21676,7 @@
         "description": "Fetch a specific instance of a credential list mapping",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the CredentialListMapping resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -21749,7 +21749,7 @@
         "description": "Retrieve a list of IP Access Control List mappings belonging to the domain used in the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the IpAccessControlListMapping resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IpAccessControlListMapping resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -21843,7 +21843,7 @@
         "description": "Create a new IP Access Control List mapping",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -21915,7 +21915,7 @@
         "description": "Delete an IP Access Control List mapping from the requested domain",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the IpAccessControlListMapping resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IpAccessControlListMapping resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -21970,7 +21970,7 @@
         "description": "Fetch a specific instance of an IP Access Control List mapping",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the IpAccessControlListMapping resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IpAccessControlListMapping resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -22043,7 +22043,7 @@
         "description": "Retrieve a list of credential list mappings belonging to the domain used in the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the CredentialListMapping resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -22137,7 +22137,7 @@
         "description": "Create a new credential list mapping resource",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -22209,7 +22209,7 @@
         "description": "Delete a credential list mapping from the requested domain",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the CredentialListMapping resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -22264,7 +22264,7 @@
         "description": "Fetch a specific instance of a credential list mapping",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the CredentialListMapping resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -22337,7 +22337,7 @@
         "description": "Read multiple CredentialListMapping resources from an account.",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -22431,7 +22431,7 @@
         "description": "Create a CredentialListMapping resource for an account.",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -22503,7 +22503,7 @@
         "description": "Delete a CredentialListMapping resource from an account.",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -22558,7 +22558,7 @@
         "description": "Fetch a single CredentialListMapping resource from an account.",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -22924,7 +22924,7 @@
         "description": "Delete an instance of a Domain",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the SipDomain resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -22967,7 +22967,7 @@
         "description": "Fetch an instance of a Domain",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the SipDomain resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -23015,7 +23015,7 @@
         "description": "Update the attributes of a domain",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the SipDomain resource to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resource to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -23203,7 +23203,7 @@
         "description": "Retrieve a list of IpAccessControlLists that belong to the account used to make the request",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -23285,7 +23285,7 @@
         "description": "Create a new IpAccessControlList resource",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -23343,7 +23343,7 @@
         "description": "Read multiple IpAddress resources.",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -23437,7 +23437,7 @@
         "description": "Create a new IpAddress resource.",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -23525,7 +23525,7 @@
         "description": "Delete an IpAddress resource.",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -23580,7 +23580,7 @@
         "description": "Read one IpAddress resource.",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -23640,7 +23640,7 @@
         "description": "Update an IpAddress resource.",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -23740,7 +23740,7 @@
         "description": "Delete an IpAccessControlList from the requested account",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -23783,7 +23783,7 @@
         "description": "Fetch a specific instance of an IpAccessControlList",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -23831,7 +23831,7 @@
         "description": "Rename an IpAccessControlList",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/api/rest/account) responsible for this resource.",
+            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -23901,7 +23901,7 @@
         "description": "Retrieve a list of short-codes belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the ShortCode resource(s) to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -24015,7 +24015,7 @@
         "description": "Fetch an instance of a short code",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the ShortCode resource(s) to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -24063,7 +24063,7 @@
         "description": "Update a short code with the following parameters",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the ShortCode resource(s) to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -24291,7 +24291,7 @@
         "description": "Create a new Signing Key for the account making the request.",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will be responsible for the new Key resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -24510,7 +24510,7 @@
         "description": "Create a new token",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -24568,7 +24568,7 @@
         "description": "Retrieve a list of transcriptions belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Transcription resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -24664,7 +24664,7 @@
         "description": "Delete a transcription from the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Transcription resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -24707,7 +24707,7 @@
         "description": "Fetch an instance of a Transcription",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the Transcription resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -24770,7 +24770,7 @@
         "description": "Retrieve a list of usage-records belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageRecord resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -24782,7 +24782,7 @@
             }
           },
           {
-            "description": "The [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
+            "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
             "required": false,
@@ -25151,7 +25151,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageRecord resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -25163,7 +25163,7 @@
             }
           },
           {
-            "description": "The [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
+            "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
             "required": false,
@@ -25532,7 +25532,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageRecord resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -25544,7 +25544,7 @@
             }
           },
           {
-            "description": "The [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
+            "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
             "required": false,
@@ -25913,7 +25913,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageRecord resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -25925,7 +25925,7 @@
             }
           },
           {
-            "description": "The [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
+            "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
             "required": false,
@@ -26294,7 +26294,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageRecord resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -26306,7 +26306,7 @@
             }
           },
           {
-            "description": "The [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
+            "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
             "required": false,
@@ -26675,7 +26675,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageRecord resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -26687,7 +26687,7 @@
             }
           },
           {
-            "description": "The [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
+            "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
             "required": false,
@@ -27056,7 +27056,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageRecord resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -27068,7 +27068,7 @@
             }
           },
           {
-            "description": "The [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
+            "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
             "required": false,
@@ -27437,7 +27437,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageRecord resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -27449,7 +27449,7 @@
             }
           },
           {
-            "description": "The [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
+            "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
             "required": false,
@@ -27818,7 +27818,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageRecord resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -27830,7 +27830,7 @@
             }
           },
           {
-            "description": "The [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
+            "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
             "required": false,
@@ -28199,7 +28199,7 @@
         "description": "Retrieve a list of usage-triggers belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageTrigger resources to read.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -28226,7 +28226,7 @@
             }
           },
           {
-            "description": "The trigger field of the UsageTriggers to read.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/api/rest/usage-records#usage-count-price).",
+            "description": "The trigger field of the UsageTriggers to read.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price).",
             "in": "query",
             "name": "TriggerBy",
             "required": false,
@@ -28240,7 +28240,7 @@
             }
           },
           {
-            "description": "The usage category of the UsageTriggers to read. Must be a supported [usage categories](https://www.twilio.com/docs/api/rest/usage-records#usage-categories).",
+            "description": "The usage category of the UsageTriggers to read. Must be a supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories).",
             "in": "query",
             "name": "UsageCategory",
             "required": false,
@@ -28564,7 +28564,7 @@
         "description": "Create a new UsageTrigger",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that will create the resource.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -28595,7 +28595,7 @@
             }
           },
           {
-            "description": "The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/api/rest/usage-records#usage-categories) for this value.",
+            "description": "The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value.",
             "in": "query",
             "name": "UsageCategory",
             "required": true,
@@ -28896,7 +28896,7 @@
             }
           },
           {
-            "description": "The field in the [UsageRecord](https://www.twilio.com/docs/api/rest/usage-records) resource that should fire the trigger.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/api/rest/usage-records#usage-count-price).  The default is `usage`.",
+            "description": "The field in the [UsageRecord](https://www.twilio.com/docs/usage/api/usage-record) resource that should fire the trigger.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price).  The default is `usage`.",
             "in": "query",
             "name": "TriggerBy",
             "required": false,
@@ -28948,7 +28948,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageTrigger resources to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resources to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -28991,7 +28991,7 @@
         "description": "Fetch and instance of a usage-trigger",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageTrigger resource to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -29039,7 +29039,7 @@
         "description": "Update an instance of a usage trigger",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the UsageTrigger resources to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resources to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,

@@ -16,14 +16,14 @@
     "request": "^2.88.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",
-    "twilio": "^3.34.0"
+    "twilio": "^3.35.0"
   },
   "optionalDependencies": {
     "keytar": "^4.13.0"
   },
   "devDependencies": {
     "@oclif/test": "^1.2.5",
-    "@twilio/cli-test": "^2.0.0",
+    "@twilio/cli-test": "^2.0.1",
     "chai": "^4.2.0",
     "eslint": "^4.19.1",
     "eslint-config-oclif": "^1.5.1",

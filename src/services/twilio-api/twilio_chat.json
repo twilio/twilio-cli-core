@@ -5350,7 +5350,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to read the Binding resources from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the Binding resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5379,7 +5379,7 @@
             }
           },
           {
-            "description": "The [User](https://www.twilio.com/docs/chat/rest/users)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.",
+            "description": "The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.",
             "in": "query",
             "name": "Identity",
             "required": false,
@@ -5476,7 +5476,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to delete the Binding resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the Binding resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5519,7 +5519,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to fetch the Binding resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the Binding resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5581,7 +5581,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to read the Channel resources from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the Channel resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5681,7 +5681,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to create the Channel resource under.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the Channel resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5800,7 +5800,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to read the Invite resources from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the Invite resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5821,7 +5821,7 @@
             }
           },
           {
-            "description": "The [User](https://www.twilio.com/docs/chat/rest/users)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.",
+            "description": "The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.",
             "in": "query",
             "name": "Identity",
             "required": false,
@@ -5905,7 +5905,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to create the Invite resource under.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the Invite resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -5926,7 +5926,7 @@
             }
           },
           {
-            "description": "The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/users) within the [Service](https://www.twilio.com/docs/chat/rest/services). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info.",
+            "description": "The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info.",
             "in": "query",
             "name": "Identity",
             "required": true,
@@ -5935,7 +5935,7 @@
             }
           },
           {
-            "description": "The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) assigned to the new member.",
+            "description": "The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) assigned to the new member.",
             "in": "query",
             "name": "RoleSid",
             "required": false,
@@ -5984,7 +5984,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to delete the Invite resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the Invite resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6036,7 +6036,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to fetch the Invite resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the Invite resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6107,7 +6107,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to read the Member resources from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the Member resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6128,7 +6128,7 @@
             }
           },
           {
-            "description": "The [User](https://www.twilio.com/docs/chat/rest/users)'s `identity` value of the Member resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.",
+            "description": "The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the Member resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.",
             "in": "query",
             "name": "Identity",
             "required": false,
@@ -6212,7 +6212,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to create the Member resource under.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the Member resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6233,7 +6233,7 @@
             }
           },
           {
-            "description": "The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/users) within the [Service](https://www.twilio.com/docs/chat/rest/services). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info.",
+            "description": "The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info.",
             "in": "query",
             "name": "Identity",
             "required": true,
@@ -6242,7 +6242,7 @@
             }
           },
           {
-            "description": "The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/api/services).",
+            "description": "The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/rest/service-resource).",
             "in": "query",
             "name": "RoleSid",
             "required": false,
@@ -6254,7 +6254,7 @@
             }
           },
           {
-            "description": "The index of the last [Message](https://www.twilio.com/docs/chat/rest/messages) in the [Channel](https://www.twilio.com/docs/chat/channels) that the Member has read. This parameter should only be used when recreating a Member from a backup/separate source.",
+            "description": "The index of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) in the [Channel](https://www.twilio.com/docs/chat/channels) that the Member has read. This parameter should only be used when recreating a Member from a backup/separate source.",
             "in": "query",
             "name": "LastConsumedMessageIndex",
             "required": false,
@@ -6264,7 +6264,7 @@
             }
           },
           {
-            "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/messages) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).",
+            "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).",
             "in": "query",
             "name": "LastConsumptionTimestamp",
             "required": false,
@@ -6340,7 +6340,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to delete the Member resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the Member resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6389,7 +6389,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to fetch the Member resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the Member resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6443,7 +6443,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to update the Member resource in.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to update the Member resource in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6473,7 +6473,7 @@
             }
           },
           {
-            "description": "The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/api/services).",
+            "description": "The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/rest/service-resource).",
             "in": "query",
             "name": "RoleSid",
             "required": false,
@@ -6485,7 +6485,7 @@
             }
           },
           {
-            "description": "The index of the last [Message](https://www.twilio.com/docs/chat/rest/messages) that the Member has read within the [Channel](https://www.twilio.com/docs/chat/channels).",
+            "description": "The index of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) that the Member has read within the [Channel](https://www.twilio.com/docs/chat/channels).",
             "in": "query",
             "name": "LastConsumedMessageIndex",
             "required": false,
@@ -6495,7 +6495,7 @@
             }
           },
           {
-            "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/messages) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).",
+            "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).",
             "in": "query",
             "name": "LastConsumptionTimestamp",
             "required": false,
@@ -6572,7 +6572,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to read the Message resources from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the Message resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6678,7 +6678,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to create the Message resource under.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the Message resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6805,7 +6805,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to delete the Message resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the Message resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6857,7 +6857,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to fetch the Message resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the Message resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -6914,7 +6914,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to update the Message resource in.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to update the Message resource in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7042,7 +7042,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) with the Channel to read the resources from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) with the Channel to read the resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7135,7 +7135,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) with the Channel to create the Webhook resource under.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) with the Channel to create the Webhook resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7273,7 +7273,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) with the Channel to delete the Webhook resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) with the Channel to delete the Webhook resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7325,7 +7325,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) with the Channel to fetch the Webhook resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) with the Channel to fetch the Webhook resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7382,7 +7382,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) with the Channel that has the Webhook resource to update.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) with the Channel that has the Webhook resource to update.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7518,7 +7518,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to delete the resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7558,7 +7558,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to fetch the Channel resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the Channel resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7603,7 +7603,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to update the Channel resource in.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to update the Channel resource in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7718,7 +7718,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to read the Role resources from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the Role resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7802,7 +7802,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to create the Role resource under.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the Role resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7823,7 +7823,7 @@
             }
           },
           {
-            "description": "The type of role. Can be: `channel` for [Channel](https://www.twilio.com/docs/chat/api/channels) roles or `deployment` for [Service](https://www.twilio.com/docs/chat/api/services) roles.",
+            "description": "The type of role. Can be: `channel` for [Channel](https://www.twilio.com/docs/chat/channels) roles or `deployment` for [Service](https://www.twilio.com/docs/chat/rest/service-resource) roles.",
             "in": "query",
             "name": "Type",
             "required": true,
@@ -7885,7 +7885,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to delete the Role resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the Role resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7928,7 +7928,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to fetch the Role resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the Role resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -7976,7 +7976,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to update the Role resource in.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to update the Role resource in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8050,7 +8050,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to read the User resources from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the User resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8134,7 +8134,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to create the User resource under.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the User resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8146,7 +8146,7 @@
             }
           },
           {
-            "description": "The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/users) within the [Service](https://www.twilio.com/docs/chat/rest/services). This value is often a username or email address. See the Identity documentation for more info.",
+            "description": "The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). This value is often a username or email address. See the Identity documentation for more info.",
             "in": "query",
             "name": "Identity",
             "required": true,
@@ -8155,7 +8155,7 @@
             }
           },
           {
-            "description": "The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) to assign to the new User.",
+            "description": "The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the new User.",
             "in": "query",
             "name": "RoleSid",
             "required": false,
@@ -8223,7 +8223,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to delete the User resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the User resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8263,7 +8263,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to fetch the User resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the User resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8308,7 +8308,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to update the User resource in.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to update the User resource in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8329,7 +8329,7 @@
             }
           },
           {
-            "description": "The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) to assign to the User.",
+            "description": "The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the User.",
             "in": "query",
             "name": "RoleSid",
             "required": false,
@@ -8398,7 +8398,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to read the User Binding resources from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the User Binding resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8410,7 +8410,7 @@
             }
           },
           {
-            "description": "The SID of the [User](https://www.twilio.com/docs/chat/rest/users) with the User Binding resources to read.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.",
+            "description": "The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resources to read.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.",
             "in": "path",
             "name": "UserSid",
             "required": true,
@@ -8522,7 +8522,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to delete the User Binding resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the User Binding resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8534,7 +8534,7 @@
             }
           },
           {
-            "description": "The SID of the [User](https://www.twilio.com/docs/chat/rest/users) with the User Binding resources to delete.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.",
+            "description": "The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resources to delete.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.",
             "in": "path",
             "name": "UserSid",
             "required": true,
@@ -8574,7 +8574,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to fetch the User Binding resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the User Binding resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8586,7 +8586,7 @@
             }
           },
           {
-            "description": "The SID of the [User](https://www.twilio.com/docs/chat/rest/users) with the User Binding resource to fetch.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.",
+            "description": "The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resource to fetch.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.",
             "in": "path",
             "name": "UserSid",
             "required": true,
@@ -8646,7 +8646,7 @@
         "description": "List all Channels for a given User.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to read the User Channel resources from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the User Channel resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8658,7 +8658,7 @@
             }
           },
           {
-            "description": "The SID of the [User](https://www.twilio.com/docs/chat/rest/users) to read the User Channel resources from. This value can be either the `sid` or the `identity` of the User resource.",
+            "description": "The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) to read the User Channel resources from. This value can be either the `sid` or the `identity` of the User resource.",
             "in": "path",
             "name": "UserSid",
             "required": true,
@@ -8752,7 +8752,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to fetch the User Channel resource from.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the User Channel resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8764,7 +8764,7 @@
             }
           },
           {
-            "description": "The SID of the [User](https://www.twilio.com/docs/chat/rest/users) to fetch the User Channel resource from. This value can be either the `sid` or the `identity` of the User resource.",
+            "description": "The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) to fetch the User Channel resource from. This value can be either the `sid` or the `identity` of the User resource.",
             "in": "path",
             "name": "UserSid",
             "required": true,
@@ -8806,7 +8806,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/services) to update the User Channel resource in.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to update the User Channel resource in.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -8818,7 +8818,7 @@
             }
           },
           {
-            "description": "The SID of the [User](https://www.twilio.com/docs/chat/rest/users) to update the User Channel resource from. This value can be either the `sid` or the `identity` of the User resource.",
+            "description": "The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) to update the User Channel resource from. This value can be either the `sid` or the `identity` of the User resource.",
             "in": "path",
             "name": "UserSid",
             "required": true,
@@ -8973,7 +8973,7 @@
             }
           },
           {
-            "description": "The service role assigned to users when they are added to the service. See the [Role resource](https://www.twilio.com/docs/chat/api/roles) for more info about roles.",
+            "description": "The service role assigned to users when they are added to the service. See the [Role resource](https://www.twilio.com/docs/chat/rest/role-resource) for more info about roles.",
             "in": "query",
             "name": "DefaultServiceRoleSid",
             "required": false,
@@ -8985,7 +8985,7 @@
             }
           },
           {
-            "description": "The channel role assigned to users when they are added to a channel. See the [Role resource](https://www.twilio.com/docs/chat/api/roles) for more info about roles.",
+            "description": "The channel role assigned to users when they are added to a channel. See the [Role resource](https://www.twilio.com/docs/chat/rest/role-resource) for more info about roles.",
             "in": "query",
             "name": "DefaultChannelRoleSid",
             "required": false,
@@ -8997,7 +8997,7 @@
             }
           },
           {
-            "description": "The channel role assigned to a channel creator when they join a new channel. See the [Role resource](https://www.twilio.com/docs/chat/api/roles) for more info about roles.",
+            "description": "The channel role assigned to a channel creator when they join a new channel. See the [Role resource](https://www.twilio.com/docs/chat/rest/role-resource) for more info about roles.",
             "in": "query",
             "name": "DefaultChannelCreatorRoleSid",
             "required": false,
