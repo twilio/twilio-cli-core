@@ -52,7 +52,8 @@
     "url": "https://github.com/twilio/twilio-cli-core.git"
   },
   "scripts": {
-    "posttest": "eslint --ignore-path .gitignore . && npm audit",
-    "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\""
+    "posttest": "eslint --ignore-path .gitignore . && npm run audit",
+    "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\"",
+    "audit": "if [ `npm --version | cut -d'.' -f1` -ge '6' ]; then npm audit; else echo 'npm audit is not available for npm < 6.0'; fi"
   }
 }
