@@ -4,6 +4,7 @@ const BaseCommand = require('../../src/base-commands/base-command');
 const { Logger, LoggingLevel } = require('../../src/services/messaging/logging');
 const { OutputFormats } = require('../../src/services/output-formats');
 const { Config } = require('../../src/services/config');
+const { TwilioCliError } = require('../../src/services/error');
 
 const baseCommandTest = test.twilioCliEnv().do(async ctx => {
   ctx.testCmd = new BaseCommand([], ctx.fakeConfig);
@@ -47,6 +48,23 @@ describe('base-commands', () => {
         expect(ctx.testCmd.logger.config.level).to.equal(LoggingLevel.debug);
         const expectedConfigFile = path.join(ctx.fakeConfig.configDir, 'config.json');
         expect(ctx.stderr).to.contain(`[DEBUG] Config File: ${expectedConfigFile}`);
+      });
+
+    baseCommandTest
+      .stderr()
+      .do(ctx => ctx.testCmd.catch(new TwilioCliError('oy!')))
+      .exit(1)
+      .it('can catch errors and exit', ctx => {
+        expect(ctx.stderr).to.contain('oy!');
+      });
+
+    test
+      .twilioCliEnv()
+      .do(ctx => {
+        ctx.testCmd = new BaseCommand([], ctx.fakeConfig);
+      })
+      .it('can catch errors before initialization', async ctx => {
+        await expect(ctx.testCmd.catch(new TwilioCliError('hey-o!'))).to.be.rejectedWith(TwilioCliError);
       });
 
     describe('sanitizeDateString', () => {

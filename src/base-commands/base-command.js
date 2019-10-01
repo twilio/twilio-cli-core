@@ -51,7 +51,7 @@ class BaseCommand extends Command {
   }
 
   async catch(error) {
-    if (error instanceof CLIError) {
+    if (!this.logger || error instanceof CLIError) {
       return super.catch(error);
     }
 
