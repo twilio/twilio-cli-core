@@ -339,7 +339,7 @@
   "openapi": "3.0.1",
   "paths": {
     "/v1/Channels": {
-      "description": "Flex Chat Channels",
+      "description": "Flex chat channels",
       "get": {
         "description": "",
         "parameters": [
@@ -416,7 +416,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The unique ID of the FlexFlow",
+            "description": "The SID of the FlexFlow.",
             "in": "query",
             "name": "FlexFlowSid",
             "required": true,
@@ -428,7 +428,7 @@
             }
           },
           {
-            "description": "Chat User identity",
+            "description": "The `identity` value that uniquely identifies the new resource's chat User.",
             "in": "query",
             "name": "Identity",
             "required": true,
@@ -437,7 +437,7 @@
             }
           },
           {
-            "description": "Customer friendly name (chat participant)",
+            "description": "The chat participant's friendly name.",
             "in": "query",
             "name": "ChatUserFriendlyName",
             "required": true,
@@ -446,7 +446,7 @@
             }
           },
           {
-            "description": "Chat channel friendly name",
+            "description": "The chat channel's friendly name.",
             "in": "query",
             "name": "ChatFriendlyName",
             "required": true,
@@ -455,7 +455,7 @@
             }
           },
           {
-            "description": "Target Contact Identity, for example phone number for SMS",
+            "description": "The Target Contact Identity, for example the phone number of an SMS.",
             "in": "query",
             "name": "Target",
             "required": false,
@@ -464,7 +464,7 @@
             }
           },
           {
-            "description": "Chat channel unique name",
+            "description": "The chat channel's unique name.",
             "in": "query",
             "name": "ChatUniqueName",
             "required": false,
@@ -473,7 +473,7 @@
             }
           },
           {
-            "description": "Pre-engagement data",
+            "description": "The pre-engagement data.",
             "in": "query",
             "name": "PreEngagementData",
             "required": false,
@@ -482,7 +482,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Taskrouter task",
+            "description": "The SID of the TaskRouter task.",
             "in": "query",
             "name": "TaskSid",
             "required": false,
@@ -494,7 +494,7 @@
             }
           },
           {
-            "description": "Task attributes to be added for the TaskRouter Task",
+            "description": "The task attributes to be added for the TaskRouter Task.",
             "in": "query",
             "name": "TaskAttributes",
             "required": false,
@@ -503,7 +503,7 @@
             }
           },
           {
-            "description": "Boolean flag determining whether channel is created as long lived or not",
+            "description": "Whether to create the channel as long-lived.",
             "in": "query",
             "name": "LongLived",
             "required": false,
@@ -550,7 +550,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flex Chat Channel",
+            "description": "The SID of the Flex chat channel resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -576,12 +576,12 @@
           "GA"
         ]
       },
-      "description": "Flex Chat Channels",
+      "description": "Flex chat channels",
       "get": {
         "description": "",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flex Chat Channel",
+            "description": "The SID of the Flex chat channel resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -632,7 +632,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "Pinned UI version",
+            "description": "The Pinned UI version of the Configuration resource to fetch.",
             "in": "query",
             "name": "UiVersion",
             "required": false,
@@ -703,7 +703,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "Human readable description of this FlexFlow",
+            "description": "The `friendly_name` of the FlexFlow resources to read.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -784,7 +784,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "Human readable description of this FlexFlow",
+            "description": "A descriptive string that you create to describe the FlexFlow resource.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -793,7 +793,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the chat service",
+            "description": "The SID of the chat service.",
             "in": "query",
             "name": "ChatServiceSid",
             "required": true,
@@ -805,7 +805,7 @@
             }
           },
           {
-            "description": "Channel type (web | facebook | sms)",
+            "description": "The channel type. Can be: `web`, `facebook`, or `sms`.",
             "in": "query",
             "name": "ChannelType",
             "required": true,
@@ -822,7 +822,7 @@
             }
           },
           {
-            "description": "Channel contact Identity (number / contact)",
+            "description": "The channel contact's Identity.",
             "in": "query",
             "name": "ContactIdentity",
             "required": false,
@@ -831,7 +831,7 @@
             }
           },
           {
-            "description": "Boolean flag for enabling or disabling the FlexFlow",
+            "description": "Whether the new FlexFlow is enabled.",
             "in": "query",
             "name": "Enabled",
             "required": false,
@@ -840,7 +840,7 @@
             }
           },
           {
-            "description": "Integration type (studio | external | task)",
+            "description": "The integration type. Can be: `studio`, `external`, or `task`.",
             "in": "query",
             "name": "IntegrationType",
             "required": false,
@@ -854,7 +854,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Flow for Studio integration type",
+            "description": "The SID of the Flow when `integration_type` is `studio`.",
             "in": "query",
             "name": "Integration.FlowSid",
             "required": false,
@@ -866,7 +866,7 @@
             }
           },
           {
-            "description": "External Webhook Url for External integration type",
+            "description": "The External Webhook URL when `integration_type` is `external`.",
             "in": "query",
             "name": "Integration.Url",
             "required": false,
@@ -876,7 +876,7 @@
             }
           },
           {
-            "description": "Workspace Sid for a new task for Task integration type",
+            "description": "The Workspace SID for a new task for Task `integration_type`.",
             "in": "query",
             "name": "Integration.WorkspaceSid",
             "required": false,
@@ -888,7 +888,7 @@
             }
           },
           {
-            "description": "Workflow Sid for a new task for Task integration type",
+            "description": "The Workflow SID for a new task when `integration_type` is `task`.",
             "in": "query",
             "name": "Integration.WorkflowSid",
             "required": false,
@@ -900,7 +900,7 @@
             }
           },
           {
-            "description": "Task Channel for a new task for Task integration type (default is 'default')",
+            "description": "The task channel for a new task when `integration_type` is `task`. The default is `default`.",
             "in": "query",
             "name": "Integration.Channel",
             "required": false,
@@ -909,7 +909,7 @@
             }
           },
           {
-            "description": "Task timeout in seconds for a new task for Task integration type (default 86400)",
+            "description": "The task timeout in seconds for a new task when `integration_type` is `task`. The default is `86,400` seconds (24 hours).",
             "in": "query",
             "name": "Integration.Timeout",
             "required": false,
@@ -918,7 +918,7 @@
             }
           },
           {
-            "description": "Task priority for a new task for Task integration type (default 0)",
+            "description": "The task priority of a new task when `integration_type` is `task`. The default priority is `0`.",
             "in": "query",
             "name": "Integration.Priority",
             "required": false,
@@ -927,7 +927,7 @@
             }
           },
           {
-            "description": "Flag for task creation, either creating task with the channel, or if true create task whwn first message arrives (for Task integration type)",
+            "description": "Whether to create a task when the first message arrives when `integration_type` is `task`. If `false`, the task is created with the channel.",
             "in": "query",
             "name": "Integration.CreationOnMessage",
             "required": false,
@@ -936,7 +936,7 @@
             }
           },
           {
-            "description": "Default Flag defining whether the new channels created are long lived or not",
+            "description": "Whether new channels are long-lived.",
             "in": "query",
             "name": "LongLived",
             "required": false,
@@ -983,7 +983,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The unique ID of the FlexFlow",
+            "description": "The SID of the FlexFlow resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1014,7 +1014,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The unique ID of the FlexFlow",
+            "description": "The SID of the FlexFlow resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1050,7 +1050,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The unique ID of the FlexFlow",
+            "description": "The SID of the FlexFlow resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1062,7 +1062,7 @@
             }
           },
           {
-            "description": "Human readable description of this FlexFlow",
+            "description": "A descriptive string that you create to describe the FlexFlow resource.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,
@@ -1071,7 +1071,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the chat service",
+            "description": "The SID of the chat service.",
             "in": "query",
             "name": "ChatServiceSid",
             "required": false,
@@ -1083,7 +1083,7 @@
             }
           },
           {
-            "description": "Channel type (web | facebook | sms)",
+            "description": "The channel type. Can be: `web`, `facebook`, or `sms`.",
             "in": "query",
             "name": "ChannelType",
             "required": false,
@@ -1100,7 +1100,7 @@
             }
           },
           {
-            "description": "Channel contact Identity (number / contact)",
+            "description": "The channel contact's Identity.",
             "in": "query",
             "name": "ContactIdentity",
             "required": false,
@@ -1109,7 +1109,7 @@
             }
           },
           {
-            "description": "Boolean flag for enabling or disabling the FlexFlow",
+            "description": "Whether the FlexFlow is enabled.",
             "in": "query",
             "name": "Enabled",
             "required": false,
@@ -1118,7 +1118,7 @@
             }
           },
           {
-            "description": "Integration type (studio | external | task)",
+            "description": "The integration type. Can be: `studio`, `external`, or `task`.",
             "in": "query",
             "name": "IntegrationType",
             "required": false,
@@ -1132,7 +1132,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Flow for Studio integration type",
+            "description": "The SID of the Flow when `integration_type` is `studio`.",
             "in": "query",
             "name": "Integration.FlowSid",
             "required": false,
@@ -1144,7 +1144,7 @@
             }
           },
           {
-            "description": "External Webhook Url for External integration type",
+            "description": "The External Webhook URL when `integration_type` is `external`.",
             "in": "query",
             "name": "Integration.Url",
             "required": false,
@@ -1154,7 +1154,7 @@
             }
           },
           {
-            "description": "Workspace Sid for a new task for Task integration type",
+            "description": "The Workspace SID for a new task when `integration_type` is `task`.",
             "in": "query",
             "name": "Integration.WorkspaceSid",
             "required": false,
@@ -1166,7 +1166,7 @@
             }
           },
           {
-            "description": "Workflow Sid for a new task for Task integration type",
+            "description": "The Workflow SID for a new task when `integration_type` is `task`.",
             "in": "query",
             "name": "Integration.WorkflowSid",
             "required": false,
@@ -1178,7 +1178,7 @@
             }
           },
           {
-            "description": "Task Channel for a new task for Task integration type (default is 'default')",
+            "description": "The task channel for a new task when `integration_type` is `task`. The default is `default`.",
             "in": "query",
             "name": "Integration.Channel",
             "required": false,
@@ -1187,7 +1187,7 @@
             }
           },
           {
-            "description": "Task timeout in seconds for a new task for Task integration type (default 86400)",
+            "description": "The task timeout in seconds for a new task when `integration_type` is `task`. The default is `86,400` seconds (24 hours).",
             "in": "query",
             "name": "Integration.Timeout",
             "required": false,
@@ -1196,7 +1196,7 @@
             }
           },
           {
-            "description": "Task priority for a new task for Task integration type (default 0)",
+            "description": "The task priority of a new task when `integration_type` is `task`. The default priority is `0`.",
             "in": "query",
             "name": "Integration.Priority",
             "required": false,
@@ -1205,7 +1205,7 @@
             }
           },
           {
-            "description": "Flag for task creation, either creating task with the channel, or if true create task whwn first message arrives (for Task integration type)",
+            "description": "Whether to create a task when the first message arrives when `integration_type` is `task`. If `false`, the task is created with the channel.",
             "in": "query",
             "name": "Integration.CreationOnMessage",
             "required": false,
@@ -1214,7 +1214,7 @@
             }
           },
           {
-            "description": "Default Flag defining whether the new channels created are long lived or not",
+            "description": "Whether new channels created are long-lived.",
             "in": "query",
             "name": "LongLived",
             "required": false,
@@ -1257,7 +1257,7 @@
       "x-path-type": "instance"
     },
     "/v1/WebChannels": {
-      "description": "Flex Web Chat Channel",
+      "description": "TODO: Resource-level docs",
       "get": {
         "description": "",
         "parameters": [
@@ -1334,7 +1334,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The unique ID of the FlexFlow",
+            "description": "The SID of the FlexFlow.",
             "in": "query",
             "name": "FlexFlowSid",
             "required": true,
@@ -1346,7 +1346,7 @@
             }
           },
           {
-            "description": "Chat identity",
+            "description": "The chat identity.",
             "in": "query",
             "name": "Identity",
             "required": true,
@@ -1355,7 +1355,7 @@
             }
           },
           {
-            "description": "Customer friendly name (chat participant)",
+            "description": "The chat participant's friendly name.",
             "in": "query",
             "name": "CustomerFriendlyName",
             "required": true,
@@ -1364,7 +1364,7 @@
             }
           },
           {
-            "description": "Chat channel friendly name",
+            "description": "The chat channel's friendly name.",
             "in": "query",
             "name": "ChatFriendlyName",
             "required": true,
@@ -1373,7 +1373,7 @@
             }
           },
           {
-            "description": "Chat channel unique name",
+            "description": "The chat channel's unique name.",
             "in": "query",
             "name": "ChatUniqueName",
             "required": false,
@@ -1382,7 +1382,7 @@
             }
           },
           {
-            "description": "Pre-engagement data",
+            "description": "The pre-engagement data.",
             "in": "query",
             "name": "PreEngagementData",
             "required": false,
@@ -1427,7 +1427,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flex Chat Channel",
+            "description": "The SID of the WebChannel resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1453,12 +1453,12 @@
           "GA"
         ]
       },
-      "description": "Flex Web Chat Channel",
+      "description": "TODO: Resource-level docs",
       "get": {
         "description": "",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Flex Chat Channel",
+            "description": "The SID of the WebChannel resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1494,7 +1494,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "The unique SID identifier of the chat channel",
+            "description": "The SID of the WebChannel resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1506,7 +1506,7 @@
             }
           },
           {
-            "description": "Chat status, can only used to make chat 'inactive'",
+            "description": "The chat status. Can only be `inactive`.",
             "in": "query",
             "name": "ChatStatus",
             "required": false,
@@ -1518,7 +1518,7 @@
             }
           },
           {
-            "description": "Post-engagement data",
+            "description": "The post-engagement data.",
             "in": "query",
             "name": "PostEngagementData",
             "required": false,

@@ -85,6 +85,12 @@
           "index": {
             "type": "integer"
           },
+          "media": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
+          },
           "sid": {
             "maxLength": 34,
             "minLength": 34,
@@ -668,6 +674,18 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The Media Sid to be attached to the new Message.",
+            "in": "query",
+            "name": "MediaSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ME[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1005,7 +1023,7 @@
             }
           },
           {
-            "description": "A unique string identifier for the conversation participant as [Chat User](https://www.twilio.com/docs/api/chat/rest/users). This parameter is non-null if (and only if) the participant is using the Programmable Chat SDK to communicate. Limited to 256 characters.",
+            "description": "A unique string identifier for the conversation participant as [Chat User](https://www.twilio.com/docs/chat/rest/user-resource). This parameter is non-null if (and only if) the participant is using the Programmable Chat SDK to communicate. Limited to 256 characters.",
             "in": "query",
             "name": "Identity",
             "required": false,

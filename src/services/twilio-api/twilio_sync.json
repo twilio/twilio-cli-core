@@ -808,7 +808,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the Sync Document expires and is deleted (the Sync Document's time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Document does not expire. The Sync Document might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the Sync Document expires and is deleted (the Sync Document's time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Document does not expire. The Sync Document will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -1254,7 +1254,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the Sync Document expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Document resource does not expire. The Document resource might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the Sync Document expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Document resource does not expire. The Document resource will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -1409,7 +1409,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the Sync List expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync List does not expire. The Sync List might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the Sync List expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync List does not expire. The Sync List will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -1617,7 +1617,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the List Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the List Item does not expire. The List Item might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the List Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the List Item does not expire. The List Item will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "ItemTtl",
             "required": false,
@@ -1626,7 +1626,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the List Item's parent Sync List expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync List does not expire. The Sync List might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the List Item's parent Sync List expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync List does not expire. The Sync List will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -1814,7 +1814,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the List Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the List Item does not expire. The List Item might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the List Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the List Item does not expire. The List Item will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "ItemTtl",
             "required": false,
@@ -1823,7 +1823,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the List Item's parent Sync List expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync List does not expire. The Sync List might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the List Item's parent Sync List expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync List does not expire. The Sync List will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -2269,7 +2269,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the Sync List expires (time-to-live) and is deleted. Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync List does not expire. The Sync List might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the Sync List expires (time-to-live) and is deleted. Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync List does not expire. The Sync List will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -2424,7 +2424,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the Sync Map expires (time-to-live) and is deleted. Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Map does not expire. The Sync Map might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the Sync Map expires (time-to-live) and is deleted. Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Map does not expire. The Sync Map will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -2641,7 +2641,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the Map Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Map Item does not expire.  The Map Item might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the Map Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Map Item does not expire.  The Map Item will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "ItemTtl",
             "required": false,
@@ -2650,7 +2650,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the Map Item's parent Sync Map expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync Map does not expire. The Sync Map might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the Map Item's parent Sync Map expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync Map does not expire. The Sync Map will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -2838,7 +2838,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the Map Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Map Item does not expire. The Map Item might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the Map Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Map Item does not expire. The Map Item will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "ItemTtl",
             "required": false,
@@ -2847,7 +2847,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the Map Item's parent Sync Map expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync Map does not expire. This parameter can only be used when the Map Item's `data` or `ttl` is updated in the same request. The Sync Map might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the Map Item's parent Sync Map expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync Map does not expire. This parameter can only be used when the Map Item's `data` or `ttl` is updated in the same request. The Sync Map will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -3293,7 +3293,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the Sync Map expires (time-to-live) and is deleted. Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Map does not expire. The Sync Map might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the Sync Map expires (time-to-live) and is deleted. Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Map does not expire. The Sync Map will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "CollectionTtl",
             "required": false,
@@ -3439,7 +3439,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the Stream expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Stream does not expire. The Stream might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the Stream expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Stream does not expire. The Stream will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "Ttl",
             "required": false,
@@ -3582,7 +3582,7 @@
             }
           },
           {
-            "description": "How long, in seconds, before the Stream expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Stream does not expire. The Sync Map might not be deleted immediately after it expires.",
+            "description": "How long, in seconds, before the Stream expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Stream does not expire. The Stream will be deleted automatically after it expires, but there can be a delay between the expiration time and the resources's deletion.",
             "in": "query",
             "name": "Ttl",
             "required": false,

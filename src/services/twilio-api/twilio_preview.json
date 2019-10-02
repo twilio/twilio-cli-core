@@ -7947,7 +7947,7 @@
         "description": "Brands a Call without actually placing it. Useful for cases when the Customer wants to initiate the call themselves right after calling this endpoint. This can be used also through a TwiML using `<Brand callerId=\"+1500123\" callReason=\"This is the call reason\" callSid=\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\">+1500456</Brand>`, and right after doing `<Dial callerId=\"+1500123\">+1500456</Dial>`",
         "parameters": [
           {
-            "description": "The phone number to use as the caller id, given in E.164 format (https://en.wikipedia.org/wiki/E.164). It must be a Twilio number that has been set up as a Branded Number in the Business Profile section for your account.",
+            "description": "The phone number to use as the caller id, given in [E.164 format](https://en.wikipedia.org/wiki/E.164). It must be a Twilio number that has been set up as a Branded Number in the Business Profile section for your account.",
             "in": "query",
             "name": "From",
             "required": true,
@@ -7956,7 +7956,7 @@
             }
           },
           {
-            "description": "The terminating Phone Number, given in E.164 format (https://en.wikipedia.org/wiki/E.164).",
+            "description": "The terminating Phone Number, given in [E.164 format](https://en.wikipedia.org/wiki/E.164).",
             "in": "query",
             "name": "To",
             "required": true,
@@ -7965,7 +7965,7 @@
             }
           },
           {
-            "description": "The business reason for this phone call that will appear in the terminating device's screen.",
+            "description": "The business reason for this phone call that will appear in the terminating device's screen. Max 50 characters.",
             "in": "query",
             "name": "Reason",
             "required": true,
@@ -7974,7 +7974,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The Call sid this Branded Call should link to.",
             "in": "query",
             "name": "CallSid",
             "required": false,
@@ -8033,7 +8033,7 @@
         "description": "Initiates a Branded Call.",
         "parameters": [
           {
-            "description": "The phone number to use as the caller id, given in E.164 format (https://en.wikipedia.org/wiki/E.164). It must be a Twilio number that has been set up as a Branded Number in the Business Profile section for your account.",
+            "description": "The phone number to use as the caller id, given in [E.164 format](https://en.wikipedia.org/wiki/E.164). It must be a Twilio number that has been set up as a Branded Number in the Business Profile section for your account.",
             "in": "query",
             "name": "From",
             "required": true,
@@ -8042,7 +8042,7 @@
             }
           },
           {
-            "description": "The terminating Phone Number, given in E.164 format (https://en.wikipedia.org/wiki/E.164).",
+            "description": "The terminating Phone Number, given in [E.164 format](https://en.wikipedia.org/wiki/E.164).",
             "in": "query",
             "name": "To",
             "required": true,
@@ -8051,7 +8051,7 @@
             }
           },
           {
-            "description": "The business reason for this phone call that will appear in the terminating device's screen.",
+            "description": "The business reason for this phone call that will appear in the terminating device's screen. Max 50 characters.",
             "in": "query",
             "name": "Reason",
             "required": false,
@@ -8060,7 +8060,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "ApplicationSid",
             "required": false,
@@ -8072,7 +8072,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "CallerId",
             "required": false,
@@ -8081,7 +8081,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "FallbackMethod",
             "required": false,
@@ -8104,7 +8104,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "FallbackUrl",
             "required": false,
@@ -8114,7 +8114,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "MachineDetection",
             "required": false,
@@ -8123,7 +8123,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "MachineDetectionSilenceTimeout",
             "required": false,
@@ -8132,7 +8132,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "MachineDetectionSpeechEndThreshold",
             "required": false,
@@ -8141,7 +8141,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "MachineDetectionSpeechThreshold",
             "required": false,
@@ -8150,7 +8150,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "MachineDetectionTimeout",
             "required": false,
@@ -8159,7 +8159,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "Method",
             "required": false,
@@ -8182,7 +8182,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "Record",
             "required": false,
@@ -8191,7 +8191,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "RecordingChannels",
             "required": false,
@@ -8200,7 +8200,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "RecordingStatusCallback",
             "required": false,
@@ -8209,7 +8209,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "RecordingStatusCallbackEvent",
             "required": false,
@@ -8221,7 +8221,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "RecordingStatusCallbackMethod",
             "required": false,
@@ -8244,7 +8244,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "SendDigits",
             "required": false,
@@ -8253,7 +8253,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "SipAuthPassword",
             "required": false,
@@ -8262,7 +8262,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "SipAuthUsername",
             "required": false,
@@ -8271,7 +8271,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -8281,7 +8281,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "StatusCallbackEvent",
             "required": false,
@@ -8293,7 +8293,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "StatusCallbackMethod",
             "required": false,
@@ -8316,7 +8316,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "Timeout",
             "required": false,
@@ -8325,7 +8325,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "Trim",
             "required": false,
@@ -8334,7 +8334,7 @@
             }
           },
           {
-            "description": "Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
+            "description": "Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)",
             "in": "query",
             "name": "Url",
             "required": false,
@@ -8382,7 +8382,7 @@
     "/TrustedComms/CPS": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": "Fetch a specific CPS given a phone number via `X-XCNAM-Sensitive-Phone-Number` header.",
+        "description": "Fetch a specific Call Placement Service (CPS) given a phone number via `X-XCNAM-Sensitive-Phone-Number` header.",
         "parameters": [],
         "responses": {
           "200": {
@@ -8460,7 +8460,7 @@
         "description": "Registers a new Device and Push Token against Trusted Comms API. This works specially for iOS devices, which don't allow the SDK to know when there's an incoming call, nor the originating number.",
         "parameters": [
           {
-            "description": "The end user Phone Number linked to the device, given in E.164 format (https://en.wikipedia.org/wiki/E.164). The SDK or partner app is responsible of verifying this phone number veracity.",
+            "description": "The end user Phone Number linked to the device, given in [E.164 format](https://en.wikipedia.org/wiki/E.164). The SDK or partner app is responsible of verifying this phone number veracity.",
             "in": "query",
             "name": "PhoneNumber",
             "required": true,

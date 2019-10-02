@@ -520,7 +520,7 @@
   "openapi": "3.0.1",
   "paths": {
     "/v1/Services": {
-      "description": "The top-level resource for a Serverless application, which serves as a container for the application Environments.",
+      "description": "The top-level resource for a Serverless application, which serves as a container for the application environments.",
       "get": {
         "description": "Retrieve a list of all Services.",
         "parameters": [
@@ -594,10 +594,10 @@
         ]
       },
       "post": {
-        "description": "Create a new Service.",
+        "description": "Create a new Service resource.",
         "parameters": [
           {
-            "description": "A unique, addressable name of this Service which forms part of the domain name, fewer than 256 characters. Required.",
+            "description": "An application-defined string that uniquely identifies the Service resource. It can be used as an alternative to the `sid` in the URL path to address the Service resource. This value must be 244 characters or less in length and be unique.",
             "in": "query",
             "name": "UniqueName",
             "required": true,
@@ -606,7 +606,7 @@
             }
           },
           {
-            "description": "A human-readable description of this Service, fewer than 256 characters. Required",
+            "description": "A descriptive string that you create to describe the Service resource. It can be up to 255 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -615,7 +615,7 @@
             }
           },
           {
-            "description": "A boolean value that indicates whether to inject Account credentials into a Function invocation context. Optional, default `false`.",
+            "description": "Whether to inject Account credentials into a function invocation context. The default value is `false`.",
             "in": "query",
             "name": "IncludeCredentials",
             "required": false,
@@ -657,12 +657,12 @@
       "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Assets": {
-      "description": "A wrapper that represents a static file and groups the different Versions of this static file.",
+      "description": "A wrapper that represents a static file and groups the different Versions of the static file.",
       "get": {
         "description": "Retrieve a list of all Assets.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for these Assets.",
+            "description": "The SID of the Service to read the Asset resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -740,10 +740,10 @@
         ]
       },
       "post": {
-        "description": "Create a new Asset.",
+        "description": "Create a new Asset resource.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Asset.",
+            "description": "The SID of the Service to create the Asset resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -752,7 +752,7 @@
             }
           },
           {
-            "description": "A human-readable description of this Asset, fewer than 256 characters. Required.",
+            "description": "A descriptive string that you create to describe the Asset resource. It can be up to 255 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -796,10 +796,10 @@
     "/v1/Services/{ServiceSid}/Assets/{AssetSid}/Versions": {
       "description": "The content of an Asset.",
       "get": {
-        "description": "Retrieve a list of all Asset Versions.",
+        "description": "Retrieve a list of all asset versions.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for these Asset Versions.",
+            "description": "The SID of the Service to read the AssetVersion resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -808,7 +808,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Asset that is the parent for these Asset Versions.",
+            "description": "The SID of the Asset resource that is the parent of the AssetVersion resources to read.",
             "in": "path",
             "name": "AssetSid",
             "required": true,
@@ -904,10 +904,10 @@
     "/v1/Services/{ServiceSid}/Assets/{AssetSid}/Versions/{Sid}": {
       "description": "The content of an Asset.",
       "get": {
-        "description": "Retrieve a specific Asset Version.",
+        "description": "Retrieve a specific asset version.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Asset Version.",
+            "description": "The SID of the Service to fetch the AssetVersion resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -916,7 +916,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Asset that is the parent for this Asset Version.",
+            "description": "The SID of the Asset resource that is the parent of the AssetVersion resource to fetch.",
             "in": "path",
             "name": "AssetSid",
             "required": true,
@@ -928,7 +928,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Asset Version.",
+            "description": "The SID of the AssetVersion resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -975,10 +975,10 @@
     },
     "/v1/Services/{ServiceSid}/Assets/{Sid}": {
       "delete": {
-        "description": "Delete an Asset.",
+        "description": "Delete an Asset resource.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for these Assets.",
+            "description": "The SID of the Service to delete the Asset resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -987,7 +987,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Asset.",
+            "description": "The SID of the Asset resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1013,12 +1013,12 @@
           "Preview"
         ]
       },
-      "description": "A wrapper that represents a static file and groups the different Versions of this static file.",
+      "description": "A wrapper that represents a static file and groups the different Versions of the static file.",
       "get": {
-        "description": "Retrieve a specific Asset.",
+        "description": "Retrieve a specific Asset resource.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Asset.",
+            "description": "The SID of the Service to fetch the Asset resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1027,7 +1027,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Asset.",
+            "description": "The SID of the Asset resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1060,10 +1060,10 @@
         ]
       },
       "post": {
-        "description": "Update a specific Asset.",
+        "description": "Update a specific Asset resource.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Asset.",
+            "description": "The SID of the Service to update the Asset resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1072,7 +1072,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Asset.",
+            "description": "The SID of the Asset resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1084,7 +1084,7 @@
             }
           },
           {
-            "description": "A human-readable description of this Asset, fewer than 256 characters. Required.",
+            "description": "A descriptive string that you create to describe the Asset resource. It can be up to 255 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -1126,12 +1126,12 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Builds": {
-      "description": "A collection of Function Versions, Asset Versions, and Dependencies that form a deployable unit.",
+      "description": "A collection of function versions, asset versions, and dependencies that form a deployable unit.",
       "get": {
         "description": "Retrieve a list of all Builds.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for these Builds.",
+            "description": "The SID of the Service to read the Build resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1209,10 +1209,10 @@
         ]
       },
       "post": {
-        "description": "Create a new Build. At least one Function Version or Asset Version is required.",
+        "description": "Create a new Build resource. At least one function version or asset version is required.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Build.",
+            "description": "The SID of the Service to create the Build resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1221,7 +1221,7 @@
             }
           },
           {
-            "description": "The list of Asset Version Sids that are included in this Build. Optional.",
+            "description": "The list of AssetVersion resource SIDs to include in the build.",
             "in": "query",
             "name": "AssetVersions",
             "required": false,
@@ -1236,7 +1236,7 @@
             }
           },
           {
-            "description": "The list of Function Version Sids that are included in this Build. Optional.",
+            "description": "The list of the Variable resource SIDs to include in the build.",
             "in": "query",
             "name": "FunctionVersions",
             "required": false,
@@ -1251,7 +1251,7 @@
             }
           },
           {
-            "description": "The list of Dependencies that are included in this Build, each described by a `name` and a `version` in a JSON object. Optional.",
+            "description": "A list of objects that describe the Dependencies included in the build. Each object contains the `name` and `version` of the dependency.",
             "in": "query",
             "name": "Dependencies",
             "required": false,
@@ -1294,10 +1294,10 @@
     },
     "/v1/Services/{ServiceSid}/Builds/{Sid}": {
       "delete": {
-        "description": "Delete a Build.",
+        "description": "Delete a Build resource.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for the Build.",
+            "description": "The SID of the Service to delete the Build resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1306,7 +1306,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Build.",
+            "description": "The SID of the Build resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1332,12 +1332,12 @@
           "Preview"
         ]
       },
-      "description": "A collection of Function Versions, Asset Versions, and Dependencies that form a deployable unit.",
+      "description": "A collection of function versions, asset versions, and dependencies that form a deployable unit.",
       "get": {
-        "description": "Retrieve a specific Build.",
+        "description": "Retrieve a specific Buildn resource.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Build.",
+            "description": "The SID of the Service to fetch the Build resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1346,7 +1346,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Build.",
+            "description": "The SID of the Build resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1391,12 +1391,12 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Environments": {
-      "description": "Represents a deployed Build of a given set of Functions and/or Assets at a specific URL.",
+      "description": "Represents a deployed build of a given set of Functions and/or Assets at a specific URL.",
       "get": {
-        "description": "Retrieve a list of all Environments.",
+        "description": "Retrieve a list of all environments.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for these Environments.",
+            "description": "The SID of the Service to read the Environment resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1474,10 +1474,10 @@
         ]
       },
       "post": {
-        "description": "Create a new Environment.",
+        "description": "Create a new environment.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Environment.",
+            "description": "The SID of the Service to create the Environment resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1486,7 +1486,7 @@
             }
           },
           {
-            "description": "A unique, addressable name of this Environment, fewer than 256 characters. Required.",
+            "description": "An application-defined string that uniquely identifies the Environment resource. It can be used as an alternative to the `sid` in the URL path to address the Environment resource. This value must have fewer than 256 characters.",
             "in": "query",
             "name": "UniqueName",
             "required": true,
@@ -1495,7 +1495,7 @@
             }
           },
           {
-            "description": "A URL-friendly name that represents this Environment and forms part of the domain name, fewer than 32 characters. Required.",
+            "description": "A URL-friendly name that represents the environment and forms part of the domain name. Must have fewer than 32 characters.",
             "in": "query",
             "name": "DomainSuffix",
             "required": false,
@@ -1538,12 +1538,12 @@
       "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Deployments": {
-      "description": "An association of a Build with an Environment so that the Build is published in the Environment.",
+      "description": "An association of a build with an environment so that the build is published in the environment.",
       "get": {
-        "description": "Retrieve a list of all Deployments.",
+        "description": "Retrieve a list of all deployments.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for these Deployments.",
+            "description": "The SID of the Service to read the Deployment resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1552,7 +1552,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Environment for these Deployments.",
+            "description": "The SID of the environment used by the Deployment resources to read.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1633,10 +1633,10 @@
         ]
       },
       "post": {
-        "description": "Create a new Deployment.",
+        "description": "Create a new deployment.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Deployment.",
+            "description": "The SID of the Service to create the Deployment resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1645,7 +1645,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Environment for this Deployment.",
+            "description": "The SID of the environment for the deployment.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1657,7 +1657,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Build to be deployed for this Deployment. Required.",
+            "description": "The SID of the build for the deployment.",
             "in": "query",
             "name": "BuildSid",
             "required": true,
@@ -1702,12 +1702,12 @@
       "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Deployments/{Sid}": {
-      "description": "An association of a Build with an Environment so that the Build is published in the Environment.",
+      "description": "An association of a build with an environment so that the build is published in the environment.",
       "get": {
-        "description": "Retrieve a specific Deployment.",
+        "description": "Retrieve a specific deployment.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Deployment.",
+            "description": "The SID of the Service to fetch the Deployment resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1716,7 +1716,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Environment for this Deployment.",
+            "description": "The SID of the environment used by the Deployment to fetch.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1728,7 +1728,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Deployment.",
+            "description": "The SID of the Deployment resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1773,12 +1773,12 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Logs": {
-      "description": "A record of an event that occurred related to a Function invocation.",
+      "description": "A record of an event that occurred related to a function invocation.",
       "get": {
-        "description": "Retrieve a list of all Logs.",
+        "description": "Retrieve a list of all logs.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for these Logs.",
+            "description": "The SID of the Service to read the Log resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1787,7 +1787,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Environment in which these Logs occurred.",
+            "description": "The SID of the environment with the Log resources to read.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1799,7 +1799,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Function whose invocation produced this Log.",
+            "description": "The SID of the function whose invocation produced the Log resources to read.",
             "in": "query",
             "name": "FunctionSid",
             "required": false,
@@ -1888,12 +1888,12 @@
       "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Logs/{Sid}": {
-      "description": "A record of an event that occurred related to a Function invocation.",
+      "description": "A record of an event that occurred related to a function invocation.",
       "get": {
-        "description": "Retrieve a specific Log.",
+        "description": "Retrieve a specific log.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Log.",
+            "description": "The SID of the Service to fetch the Log resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1902,7 +1902,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Environment in which this Log occurred.",
+            "description": "The SID of the environment with the Log resource to fetch.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1914,7 +1914,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Log.",
+            "description": "The SID of the Log resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1955,12 +1955,12 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Variables": {
-      "description": "A key and value pair that is specific to an Environment.",
+      "description": "A key and value pair that is specific to an environment.",
       "get": {
         "description": "Retrieve a list of all Variables.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for these Variables.",
+            "description": "The SID of the Service to read the Variable resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1969,7 +1969,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Environment in which these Variables exist.",
+            "description": "The SID of the environment with the Variable resources to read.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -2050,10 +2050,10 @@
         ]
       },
       "post": {
-        "description": "Create a new Variable.",
+        "description": "Create a new variable.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Variable.",
+            "description": "The SID of the Service to create the Variable resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2062,7 +2062,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Environment in which this Variable exists.",
+            "description": "The SID of the environment in which the variable exists.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -2074,7 +2074,7 @@
             }
           },
           {
-            "description": "A string by which this Variable can be referenced, fewer than 128 characters. Required.",
+            "description": "A string by which the Variable resource can be referenced. Must be less than 128 characters long.",
             "in": "query",
             "name": "Key",
             "required": true,
@@ -2083,7 +2083,7 @@
             }
           },
           {
-            "description": "A string that contains the actual value of this Variable, less than 450 bytes. Required.",
+            "description": "A string that contains the actual value of the variable. Must have less than 450 bytes.",
             "in": "query",
             "name": "Value",
             "required": true,
@@ -2126,10 +2126,10 @@
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Variables/{Sid}": {
       "delete": {
-        "description": "Delete a specific Variable.",
+        "description": "Delete a specific variable.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Variable.",
+            "description": "The SID of the Service to delete the Variable resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2138,7 +2138,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Environment in which this Variable exists.",
+            "description": "The SID of the environment with the Variables to delete.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -2150,7 +2150,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Variable.",
+            "description": "The SID of the Variable resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2176,12 +2176,12 @@
           "Preview"
         ]
       },
-      "description": "A key and value pair that is specific to an Environment.",
+      "description": "A key and value pair that is specific to an environment.",
       "get": {
-        "description": "Retrieve a specific Variable.",
+        "description": "Retrieve a specific variable.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Variable.",
+            "description": "The SID of the Service to fetch the Variable resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2190,7 +2190,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Environment in which this Variable exists.",
+            "description": "The SID of the environment with the Variable resource to fetch.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -2202,7 +2202,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Variable.",
+            "description": "The SID of the Variable resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2235,10 +2235,10 @@
         ]
       },
       "post": {
-        "description": "Update a specific Variable.",
+        "description": "Update a specific variable.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Variable.",
+            "description": "The SID of the Service to update the Variable resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2247,7 +2247,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Environment in which this Variable exists.",
+            "description": "The SID of the environment with the Variable resource to update.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -2259,7 +2259,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Variable.",
+            "description": "The SID of the Variable resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2271,7 +2271,7 @@
             }
           },
           {
-            "description": "A string by which this Variable can be referenced, fewer than 128 characters. Optional.",
+            "description": "A string by which the Variable resource can be referenced. Must be less than 128 characters long.",
             "in": "query",
             "name": "Key",
             "required": false,
@@ -2280,7 +2280,7 @@
             }
           },
           {
-            "description": "A string that contains the actual value of this Variable, less than 450 bytes. Optional.",
+            "description": "A string that contains the actual value of the variable. Must have less than 450 bytes.",
             "in": "query",
             "name": "Value",
             "required": false,
@@ -2323,10 +2323,10 @@
     },
     "/v1/Services/{ServiceSid}/Environments/{Sid}": {
       "delete": {
-        "description": "Delete a specific Environment.",
+        "description": "Delete a specific environment.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Environment.",
+            "description": "The SID of the Service to delete the Environment resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2335,7 +2335,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Environment.",
+            "description": "The SID of the Environment resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2361,12 +2361,12 @@
           "Preview"
         ]
       },
-      "description": "Represents a deployed Build of a given set of Functions and/or Assets at a specific URL.",
+      "description": "Represents a deployed build of a given set of Functions and/or Assets at a specific URL.",
       "get": {
-        "description": "Retrieve a specific Environment.",
+        "description": "Retrieve a specific environment.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Environment.",
+            "description": "The SID of the Service to fetch the Environment resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2375,7 +2375,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Environment.",
+            "description": "The SID of the Environment resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2426,7 +2426,7 @@
         "description": "Retrieve a list of all Functions.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for these Functions.",
+            "description": "The SID of the Service to read the Function resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2504,10 +2504,10 @@
         ]
       },
       "post": {
-        "description": "Create a new Function.",
+        "description": "Create a new Function resource.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Function.",
+            "description": "The SID of the Service to create the Function resource under.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2516,7 +2516,7 @@
             }
           },
           {
-            "description": "A human-readable description of this Function, fewer than 256 characters. Required.",
+            "description": "A descriptive string that you create to describe the Function resource. It can be up to 255 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -2560,10 +2560,10 @@
     "/v1/Services/{ServiceSid}/Functions/{FunctionSid}/Versions": {
       "description": "The content of a Function.",
       "get": {
-        "description": "Retrieve a list of all Function Versions.",
+        "description": "Retrieve a list of all FunctionVersion resources.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for these Function Versions.",
+            "description": "The SID of the Service to read the FunctionVersion resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2572,7 +2572,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Function that is the parent for this Function Version.",
+            "description": "The SID of the function that is the parent of the FunctionVersion resources to read.",
             "in": "path",
             "name": "FunctionSid",
             "required": true,
@@ -2668,10 +2668,10 @@
     "/v1/Services/{ServiceSid}/Functions/{FunctionSid}/Versions/{Sid}": {
       "description": "The content of a Function.",
       "get": {
-        "description": "Retrieve a specific Function Version.",
+        "description": "Retrieve a specific FunctionVersion resource.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Function Version.",
+            "description": "The SID of the Service to fetch the FunctionVersion resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2680,7 +2680,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of the Function that is the parent for this Function Version.",
+            "description": "The SID of the function that is the parent of the FunctionVersion resource to fetch.",
             "in": "path",
             "name": "FunctionSid",
             "required": true,
@@ -2692,7 +2692,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Function Version.",
+            "description": "The SID of the FunctionVersion resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2739,10 +2739,10 @@
     },
     "/v1/Services/{ServiceSid}/Functions/{Sid}": {
       "delete": {
-        "description": "Delete a Function.",
+        "description": "Delete a Function resource.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for these Functions.",
+            "description": "The SID of the Service to delete the Function resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2751,7 +2751,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Function.",
+            "description": "The SID of the Function resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2779,10 +2779,10 @@
       },
       "description": "A wrapper that represents a Serverless JavaScript function and groups the different  and groups the different Versions of this code.",
       "get": {
-        "description": "Retrieve a specific Function.",
+        "description": "Retrieve a specific Function resource.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Function.",
+            "description": "The SID of the Service to fetch the Function resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2791,7 +2791,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Function.",
+            "description": "The SID of the Function resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2824,10 +2824,10 @@
         ]
       },
       "post": {
-        "description": "Update a specific Function.",
+        "description": "Update a specific Function resource.",
         "parameters": [
           {
-            "description": "The unique SID identifier of the Service for this Function.",
+            "description": "The SID of the Service to update the Function resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2836,7 +2836,7 @@
             }
           },
           {
-            "description": "The unique SID identifier of this Function.",
+            "description": "The SID of the Function resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2848,7 +2848,7 @@
             }
           },
           {
-            "description": "A human-readable description of this Function, fewer than 256 characters. Required.",
+            "description": "A descriptive string that you create to describe the Function resource. It can be up to 255 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": true,
@@ -2891,10 +2891,10 @@
     },
     "/v1/Services/{Sid}": {
       "delete": {
-        "description": "Delete a Service.",
+        "description": "Delete a Service resource.",
         "parameters": [
           {
-            "description": "Identifier of the Serverless Service Instance. Either a SID or UniqueName.",
+            "description": "The `sid` or `unique_name` of the Service resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2917,12 +2917,12 @@
           "Preview"
         ]
       },
-      "description": "The top-level resource for a Serverless application, which serves as a container for the application Environments.",
+      "description": "The top-level resource for a Serverless application, which serves as a container for the application environments.",
       "get": {
-        "description": "Retrieve a specific Service.",
+        "description": "Retrieve a specific Service resource.",
         "parameters": [
           {
-            "description": "Identifier of the Serverless Service Instance. Either a SID or UniqueName.",
+            "description": "The `sid` or `unique_name` of the Service resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2952,10 +2952,10 @@
         ]
       },
       "post": {
-        "description": "Update a specific Service.",
+        "description": "Update a specific Service resource.",
         "parameters": [
           {
-            "description": "The unique SID identifier of this Service.",
+            "description": "The `sid` or `unique_name` of the Service resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2967,7 +2967,7 @@
             }
           },
           {
-            "description": "A boolean value that indicates whether to inject Account credentials into a Function invocation context. Optional.",
+            "description": "Whether to inject Account credentials into a function invocation context.",
             "in": "query",
             "name": "IncludeCredentials",
             "required": false,
@@ -2976,7 +2976,7 @@
             }
           },
           {
-            "description": "A human-readable description of this Service, fewer than 256 characters. Optional",
+            "description": "A descriptive string that you create to describe the Service resource. It can be up to 255 characters long.",
             "in": "query",
             "name": "FriendlyName",
             "required": false,

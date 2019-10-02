@@ -1,6 +1,18 @@
 twilio-cli-core changelog
 =====================
 
+[2019-10-02] Version 4.1.1
+--------------------------
+**Library**
+- [PR #68](https://github.com/twilio/twilio-cli-core/pull/68): Handle command errors before logger initialization. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Conversations**
+- Add media to Conversations Message resource
+
+**Supersim**
+- Add List endpoint to Sims resource for Super Sim Pilot
+
+
 [2019-09-18] Version 4.1.0
 ---------------------------
 **Library**

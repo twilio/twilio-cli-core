@@ -500,7 +500,7 @@
         "description": "Retrieve a list of all Messaging Configurations for a Service.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) that the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -584,7 +584,7 @@
         "description": "Create a new MessagingConfiguration for a service.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) that the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -605,7 +605,7 @@
             }
           },
           {
-            "description": "The SID of the [Messaging Service](https://www.twilio.com/docs/api/messaging/services) to be used to send SMS to the country of this configuration.",
+            "description": "The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration.",
             "in": "query",
             "name": "MessagingServiceSid",
             "required": true,
@@ -657,7 +657,7 @@
         "description": "Delete a specific MessagingConfiguration.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) that the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -697,7 +697,7 @@
         "description": "Fetch a specific MessagingConfiguration.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) that the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -742,7 +742,7 @@
         "description": "Update a specific MessagingConfiguration",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) that the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -763,7 +763,7 @@
             }
           },
           {
-            "description": "The SID of the [Messaging Service](https://www.twilio.com/docs/api/messaging/services) to be used to send SMS to the country of this configuration.",
+            "description": "The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration.",
             "in": "query",
             "name": "MessagingServiceSid",
             "required": true,
@@ -816,7 +816,7 @@
         "description": "Retrieve a list of all Rate Limits for a service.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -900,7 +900,7 @@
         "description": "Create a new Rate Limit for a Service",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -972,7 +972,7 @@
         "description": "Retrieve a list of all Buckets for a Rate Limit.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1068,7 +1068,7 @@
         "description": "Create a new Bucket for a Rate Limit",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1152,7 +1152,7 @@
         "description": "Delete a specific Bucket.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1207,7 +1207,7 @@
         "description": "Fetch a specific Bucket.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1267,7 +1267,7 @@
         "description": "Update a specific Bucket.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1363,7 +1363,7 @@
         "description": "Delete a specific Rate Limit.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1406,7 +1406,7 @@
         "description": "Fetch a specific Rate Limit.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1454,7 +1454,7 @@
         "description": "Update a specific Rate Limit.",
         "parameters": [
           {
-            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api-beta/service-beta) the resource is associated with.",
+            "description": "The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1550,7 +1550,7 @@
             }
           },
           {
-            "description": "The phone number to verify. Either this parameter or the `verification_sid` must be specified",
+            "description": "The phone number to verify. Either this parameter or the `verification_sid` must be specified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
             "in": "query",
             "name": "To",
             "required": false,
@@ -1642,7 +1642,7 @@
             }
           },
           {
-            "description": "The phone number to verify.",
+            "description": "The phone number to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
             "in": "query",
             "name": "To",
             "required": true,

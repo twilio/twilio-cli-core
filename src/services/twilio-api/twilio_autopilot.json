@@ -1866,7 +1866,7 @@
             }
           },
           {
-            "description": "The status of the resources to read. Can be: `pending_review`, `reviewed`, or `discarded`",
+            "description": "The status of the resources to read. Can be: `pending-review`, `reviewed`, or `discarded`",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -2139,7 +2139,7 @@
             }
           },
           {
-            "description": "The new status of the resource. Can be: `pending_review`, `reviewed`, or `discarded`",
+            "description": "The new status of the resource. Can be: `pending-review`, `reviewed`, or `discarded`",
             "in": "query",
             "name": "Status",
             "required": false,

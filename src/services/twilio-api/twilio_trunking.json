@@ -615,7 +615,7 @@
             }
           },
           {
-            "description": "The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking/getting-started#termination) for more information.",
+            "description": "The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information.",
             "in": "query",
             "name": "DomainName",
             "required": false,
@@ -624,7 +624,7 @@
             }
           },
           {
-            "description": "The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking/getting-started#disaster-recovery) for more information.",
+            "description": "The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information.",
             "in": "query",
             "name": "DisasterRecoveryUrl",
             "required": false,
@@ -657,7 +657,7 @@
             }
           },
           {
-            "description": "The recording settings for the trunk. Can be: `do-not-record`, `record-from-ringing`, `record-from-answer`. If set to `record-from-ringing` or `record-from-answer`, all calls going through the trunk will be recorded. The only way to change recording parameters is on a sub-resource of a Trunk after it has been created. e.g.`/Trunks/[Trunk_SID]/Recording -XPOST -d'Mode=record-from-answer'`. See [Recording](https://www.twilio.com/docs/sip-trunking/getting-started#recording) for more information.",
+            "description": "The recording settings for the trunk. Can be: `do-not-record`, `record-from-ringing`, `record-from-answer`. If set to `record-from-ringing` or `record-from-answer`, all calls going through the trunk will be recorded. The only way to change recording parameters is on a sub-resource of a Trunk after it has been created. e.g.`/Trunks/[Trunk_SID]/Recording -XPOST -d'Mode=record-from-answer'`. See [Recording](https://www.twilio.com/docs/sip-trunking#recording) for more information.",
             "in": "query",
             "name": "Recording",
             "required": false,
@@ -671,7 +671,7 @@
             }
           },
           {
-            "description": "Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking/getting-started#securetrunking) for more information.",
+            "description": "Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information.",
             "in": "query",
             "name": "Secure",
             "required": false,
@@ -814,7 +814,7 @@
             }
           },
           {
-            "description": "The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking/getting-started#termination) for more information.",
+            "description": "The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information.",
             "in": "query",
             "name": "DomainName",
             "required": false,
@@ -823,7 +823,7 @@
             }
           },
           {
-            "description": "The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking/getting-started#disaster-recovery) for more information.",
+            "description": "The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information.",
             "in": "query",
             "name": "DisasterRecoveryUrl",
             "required": false,
@@ -856,7 +856,7 @@
             }
           },
           {
-            "description": "The recording settings for the trunk. Can be: `do-not-record`, `record-from-ringing`, `record-from-answer`. If set to `record-from-ringing` or `record-from-answer`, all calls going through the trunk will be recorded. See [Recording](https://www.twilio.com/docs/sip-trunking/getting-started#recording) for more information.",
+            "description": "The recording settings for the trunk. Can be: `do-not-record`, `record-from-ringing`, `record-from-answer`. If set to `record-from-ringing` or `record-from-answer`, all calls going through the trunk will be recorded. See [Recording](https://www.twilio.com/docs/sip-trunking#recording) for more information.",
             "in": "query",
             "name": "Recording",
             "required": false,
@@ -870,7 +870,7 @@
             }
           },
           {
-            "description": "Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking/getting-started#securetrunking) for more information.",
+            "description": "Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information.",
             "in": "query",
             "name": "Secure",
             "required": false,
@@ -1022,7 +1022,7 @@
             }
           },
           {
-            "description": "The SID of the [Credential List](https://www.twilio.com/docs/api/rest/credential-list) that you want to associate with the trunk. Once associated, we will authenticate access to the trunk against this list.",
+            "description": "The SID of the [Credential List](https://www.twilio.com/docs/voice/sip/api/sip-credentiallist-resource) that you want to associate with the trunk. Once associated, we will authenticate access to the trunk against this list.",
             "in": "query",
             "name": "CredentialListSid",
             "required": true,
@@ -1272,7 +1272,7 @@
             }
           },
           {
-            "description": "The SID of the [IP Access Control List](https://www.twilio.com/docs/api/rest/ip-access-control-list) that you want to associate with the trunk.",
+            "description": "The SID of the [IP Access Control List](https://www.twilio.com/docs/voice/sip/api/sip-ipaccesscontrollist-resource) that you want to associate with the trunk.",
             "in": "query",
             "name": "IpAccessControlListSid",
             "required": true,
@@ -1904,7 +1904,7 @@
             }
           },
           {
-            "description": "The SID of the [Incoming Phone Number](https://www.twilio.com/docs/api/rest/incoming-phone-numbers) that you want to associate with the trunk.",
+            "description": "The SID of the [Incoming Phone Number](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) that you want to associate with the trunk.",
             "in": "query",
             "name": "PhoneNumberSid",
             "required": true,

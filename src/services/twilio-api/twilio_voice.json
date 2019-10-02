@@ -136,7 +136,7 @@
     "/v1/DialingPermissions/BulkCountryUpdates": {
       "description": "TODO: Resource-level docs",
       "post": {
-        "description": "Create a bulk update request to change voice dialing country permissions of one or more countries identified by the corresponding [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
+        "description": "Create a bulk update request to change voice dialing country permissions of one or more countries identified by the corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
         "parameters": [
           {
             "description": "URL encoded JSON array of update objects. example : `[ { \"iso_code\": \"GB\", \"low_risk_numbers_enabled\": \"true\", \"high_risk_special_numbers_enabled\":\"true\", \"high_risk_tollfraud_numbers_enabled\": \"false\" } ]`",
@@ -185,7 +185,7 @@
         "description": "Retrieve all voice dialing country permissions for this account",
         "parameters": [
           {
-            "description": "Filter to retrieve the country permissions by specifying the [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
+            "description": "Filter to retrieve the country permissions by specifying the [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
             "in": "query",
             "name": "IsoCode",
             "required": false,
@@ -325,7 +325,7 @@
         "description": "Retrieve voice dialing country permissions identified by the given ISO country code",
         "parameters": [
           {
-            "description": "The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
+            "description": "The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
             "in": "path",
             "name": "IsoCode",
             "required": true,
@@ -369,10 +369,10 @@
     "/v1/DialingPermissions/Countries/{IsoCode}/HighRiskSpecialPrefixes": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": "Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
+        "description": "Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
         "parameters": [
           {
-            "description": "The [ISO 3166-1 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) to identify the country permissions from which high-risk special service number prefixes are fetched",
+            "description": "The [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) to identify the country permissions from which high-risk special service number prefixes are fetched",
             "in": "path",
             "name": "IsoCode",
             "required": true,
