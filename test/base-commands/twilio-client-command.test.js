@@ -82,7 +82,7 @@ describe('base-commands', () => {
       .exit(1)
       .it('should fail for a non-existent active profile', ctx => {
         expect(ctx.stderr).to.contain('No profile configured');
-        expect(ctx.stderr).to.contain('To add the profile, run: twilio profiles:add');
+        expect(ctx.stderr).to.contain('To create the profile, run: twilio profiles:create');
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       });
 
@@ -90,7 +90,7 @@ describe('base-commands', () => {
       .exit(1)
       .it('should fail for a non-existent profile', ctx => {
         expect(ctx.stderr).to.contain('No profile configured');
-        expect(ctx.stderr).to.contain('To add the profile, run: twilio profiles:add -p alt');
+        expect(ctx.stderr).to.contain('To create the profile, run: twilio profiles:create -p alt');
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       });
 
@@ -106,7 +106,7 @@ describe('base-commands', () => {
       .it('should handle a secure storage error', ctx => {
         expect(ctx.stderr).to.contain('Could not get credentials for profile "twilio-cli-unit-testing"');
         expect(ctx.stderr).to.contain(
-          'To reconfigure the profile, run: twilio profiles:add -p twilio-cli-unit-testing'
+          'To reconfigure the profile, run: twilio profiles:create -p twilio-cli-unit-testing'
         );
       });
 
