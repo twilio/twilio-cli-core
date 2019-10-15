@@ -27,13 +27,13 @@ class TwilioClientCommand extends BaseCommand {
     const reportUnconfigured = (verb, message = '') => {
       const profileParam = this.flags.profile ? ' -p ' + this.flags.profile : '';
       throw new TwilioCliError(
-        `To ${verb} the profile, run: ` + chalk.whiteBright('twilio profiles:add' + profileParam) + message
+        `To ${verb} the profile, run: ` + chalk.whiteBright('twilio profiles:create' + profileParam) + message
       );
     };
 
     if (!this.currentProfile) {
       this.logger.error('No profile configured.');
-      reportUnconfigured('add', '\n\n' + HELP_ENVIRONMENT_VARIABLES);
+      reportUnconfigured('create', '\n\n' + HELP_ENVIRONMENT_VARIABLES);
     }
 
     this.logger.debug('Using profile: ' + this.currentProfile.id);
