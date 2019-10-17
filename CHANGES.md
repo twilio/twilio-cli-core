@@ -1,6 +1,27 @@
 twilio-cli-core changelog
 =====================
 
+[2019-10-17] Version 4.2.0
+--------------------------
+**Library**
+- [PR #70](https://github.com/twilio/twilio-cli-core/pull/70): Rename 'profiles:add' to 'profiles:create'. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #69](https://github.com/twilio/twilio-cli-core/pull/69): Auto-deploy using Travis CI upon tagged commit to master. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Api**
+- Add new property `attempt` to sms_messages
+- Fixed a typo in the documentation for Feedback outcome enum **(breaking change)**
+- Update the call price to be optional for deserializing **(breaking change)**
+
+**Flex**
+- Added `JanitorEnabled` attribute to Flex Flow
+- Change `features_enabled` Flex Configuration key to private **(breaking change)**
+
+**Supersim**
+- Add Fetch endpoint to Fleets resource for Super Sim Pilot
+- Allow assigning a Sim to a Fleet for Super Sim Pilot
+- Add Create endpoint to Fleets resource for Super Sim Pilot
+
+
 [2019-10-02] Version 4.1.1
 --------------------------
 **Library**

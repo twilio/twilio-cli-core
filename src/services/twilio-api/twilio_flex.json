@@ -97,12 +97,6 @@
             "format": "date-time",
             "type": "string"
           },
-          "features_enabled": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          },
           "integrations": {
             "items": {
               "type": "object"
@@ -261,6 +255,9 @@
               "task"
             ],
             "type": "string"
+          },
+          "janitor_enabled": {
+            "type": "boolean"
           },
           "long_lived": {
             "type": "boolean"
@@ -943,6 +940,15 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "description": "Boolean flag for enabling or disabling the Janitor",
+            "in": "query",
+            "name": "JanitorEnabled",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -1217,6 +1223,15 @@
             "description": "Whether new channels created are long-lived.",
             "in": "query",
             "name": "LongLived",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Boolean flag for enabling or disabling the Janitor",
+            "in": "query",
+            "name": "JanitorEnabled",
             "required": false,
             "schema": {
               "type": "boolean"

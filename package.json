@@ -16,7 +16,7 @@
     "request": "^2.88.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",
-    "twilio": "^3.35.1"
+    "twilio": "^3.36.0"
   },
   "optionalDependencies": {
     "keytar": "^4.13.0"

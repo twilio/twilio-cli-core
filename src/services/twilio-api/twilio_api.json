@@ -917,6 +917,7 @@
             "type": "string"
           },
           "price": {
+            "nullable": true,
             "type": "number"
           },
           "price_unit": {
@@ -2663,7 +2664,7 @@
           "outcome": {
             "enum": [
               "confirmed",
-              "umconfirmed"
+              "unconfirmed"
             ],
             "type": "string"
           },
@@ -13468,7 +13469,7 @@
             }
           },
           {
-            "description": "Whether the participant should be muted. Can be `true` or `false. `true` will mute the participant, and `false` will un-mute them. Anything value other than `true` or `false` is interpreted as `false`.",
+            "description": "Whether the participant should be muted. Can be `true` or `false`. `true` will mute the participant, and `false` will un-mute them. Anything value other than `true` or `false` is interpreted as `false`.",
             "in": "query",
             "name": "Muted",
             "required": false,
@@ -17832,7 +17833,7 @@
             "schema": {
               "enum": [
                 "confirmed",
-                "umconfirmed"
+                "unconfirmed"
               ],
               "type": "string"
             }
