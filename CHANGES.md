@@ -1,6 +1,12 @@
 twilio-cli-core changelog
 =====================
 
+[2019-10-17] Version 4.2.1
+--------------------------
+**Library**
+- [PR #71](https://github.com/twilio/twilio-cli-core/pull/71): Update npm key. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+
 [2019-10-17] Version 4.2.0
 --------------------------
 **Library**
