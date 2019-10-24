@@ -4312,7 +4312,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Workspace with the TaskReservation resources to read.",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -4324,7 +4324,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the reserved Task resource with the TaskReservation resources to read.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -4336,7 +4336,7 @@
             }
           },
           {
-            "description": "Returns the list of reservations for a task with a specified ReservationStatus",
+            "description": "Returns the list of reservations for a task with a specified ReservationStatus.  Can be: `pending`, `accepted`, `rejected`, or `timeout`.",
             "in": "query",
             "name": "ReservationStatus",
             "required": false,
@@ -4442,7 +4442,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Workspace with the TaskReservation resource to fetch.",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -4454,7 +4454,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the reserved Task resource with the TaskReservation resource to fetch.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -4466,7 +4466,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the TaskReservation resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4502,7 +4502,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Workspace with the TaskReservation resources to update.",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -4514,7 +4514,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the reserved Task resource with the TaskReservation resources to update.",
             "in": "path",
             "name": "TaskSid",
             "required": true,
@@ -4526,7 +4526,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the TaskReservation resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -4538,7 +4538,7 @@
             }
           },
           {
-            "description": "New reservation status",
+            "description": "The new status of the reservation. Can be: `pending`, `accepted`, `rejected`, or `timeout`.",
             "in": "query",
             "name": "ReservationStatus",
             "required": false,
@@ -4557,7 +4557,7 @@
             }
           },
           {
-            "description": "New worker activity sid if rejecting a reservation",
+            "description": "The new worker activity SID if rejecting a reservation.",
             "in": "query",
             "name": "WorkerActivitySid",
             "required": false,
@@ -4569,7 +4569,7 @@
             }
           },
           {
-            "description": "Assignment instruction for reservation",
+            "description": "The assignment instruction for reservation.",
             "in": "query",
             "name": "Instruction",
             "required": false,
@@ -4578,7 +4578,7 @@
             }
           },
           {
-            "description": "New worker activity sid after executing a Dequeue instruction",
+            "description": "The SID of the Activity resource to start after executing a Dequeue instruction.",
             "in": "query",
             "name": "DequeuePostWorkActivitySid",
             "required": false,
@@ -4590,7 +4590,7 @@
             }
           },
           {
-            "description": "Caller ID for the call to the worker when executing a Dequeue instruction",
+            "description": "The Caller ID of the call to the worker when executing a Dequeue instruction.",
             "in": "query",
             "name": "DequeueFrom",
             "required": false,
@@ -4599,7 +4599,7 @@
             }
           },
           {
-            "description": "Attribute to record both legs of a call when executing a Dequeue instruction",
+            "description": "Whether to record both legs of a call when executing a Dequeue instruction or which leg to record.",
             "in": "query",
             "name": "DequeueRecord",
             "required": false,
@@ -4608,7 +4608,7 @@
             }
           },
           {
-            "description": "Timeout for call when executing a Dequeue instruction",
+            "description": "Timeout for call when executing a Dequeue instruction.",
             "in": "query",
             "name": "DequeueTimeout",
             "required": false,
@@ -4617,7 +4617,7 @@
             }
           },
           {
-            "description": "Contact URI of the worker when executing a Dequeue instruction",
+            "description": "The Contact URI of the worker when executing a Dequeue instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
             "in": "query",
             "name": "DequeueTo",
             "required": false,
@@ -4626,7 +4626,7 @@
             }
           },
           {
-            "description": "Callback URL for completed call event when executing a Dequeue instruction",
+            "description": "The Callback URL for completed call event when executing a Dequeue instruction.",
             "in": "query",
             "name": "DequeueStatusCallbackUrl",
             "required": false,
@@ -4636,7 +4636,7 @@
             }
           },
           {
-            "description": "Caller ID for the outbound call when executing a Call instruction",
+            "description": "The Caller ID of the outbound call when executing a Call instruction.",
             "in": "query",
             "name": "CallFrom",
             "required": false,
@@ -4645,7 +4645,7 @@
             }
           },
           {
-            "description": "Attribute to record both legs of a call when executing a Call instruction",
+            "description": "Whether to record both legs of a call when executing a Call instruction or which leg to record.",
             "in": "query",
             "name": "CallRecord",
             "required": false,
@@ -4654,7 +4654,7 @@
             }
           },
           {
-            "description": "Timeout for call when executing a Call instruction",
+            "description": "Timeout for call when executing a Call instruction.",
             "in": "query",
             "name": "CallTimeout",
             "required": false,
@@ -4663,7 +4663,7 @@
             }
           },
           {
-            "description": "Contact URI of the worker when executing a Call instruction",
+            "description": "The Contact URI of the worker when executing a Call instruction.  Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
             "in": "query",
             "name": "CallTo",
             "required": false,
@@ -4672,7 +4672,7 @@
             }
           },
           {
-            "description": "TwiML URI executed on answering the worker's leg as a result of the Call instruction",
+            "description": "TwiML URI executed on answering the worker's leg as a result of the Call instruction.",
             "in": "query",
             "name": "CallUrl",
             "required": false,
@@ -4682,7 +4682,7 @@
             }
           },
           {
-            "description": "Callback URL for completed call event when executing a Call instruction",
+            "description": "The URL to call  for the completed call event when executing a Call instruction.",
             "in": "query",
             "name": "CallStatusCallbackUrl",
             "required": false,
@@ -4692,7 +4692,7 @@
             }
           },
           {
-            "description": "Flag to determine if reservation should be accepted when executing a Call instruction",
+            "description": "Whether to accept a reservation when executing a Call instruction.",
             "in": "query",
             "name": "CallAccept",
             "required": false,
@@ -4701,7 +4701,7 @@
             }
           },
           {
-            "description": "Call sid of the call parked in the queue when executing a Redirect instruction",
+            "description": "The Call SID of the call parked in the queue when executing a Redirect instruction.",
             "in": "query",
             "name": "RedirectCallSid",
             "required": false,
@@ -4713,7 +4713,7 @@
             }
           },
           {
-            "description": "Flag to determine if reservation should be accepted when executing a Redirect instruction",
+            "description": "Whether the reservation should be accepted when executing a Redirect instruction.",
             "in": "query",
             "name": "RedirectAccept",
             "required": false,
@@ -4722,7 +4722,7 @@
             }
           },
           {
-            "description": "TwiML URI to redirect the call to when executing the Redirect instruction",
+            "description": "TwiML URI to redirect the call to when executing the Redirect instruction.",
             "in": "query",
             "name": "RedirectUrl",
             "required": false,
@@ -4732,7 +4732,7 @@
             }
           },
           {
-            "description": "Contact URI of the worker when executing a Conference instruction",
+            "description": "The Contact URI of the worker when executing a Conference instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
             "in": "query",
             "name": "To",
             "required": false,
@@ -4741,7 +4741,7 @@
             }
           },
           {
-            "description": "Caller ID for the call to the worker when executing a Conference instruction",
+            "description": "The Caller ID of the call to the worker when executing a Conference instruction.",
             "in": "query",
             "name": "From",
             "required": false,
@@ -4750,7 +4750,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The URL we should call using the `status_callback_method` to send status information to your application.",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -4760,7 +4760,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The HTTP method we should use to call `status_callback`. Can be: `POST` or `GET` and the default is `POST`.",
             "in": "query",
             "name": "StatusCallbackMethod",
             "required": false,
@@ -4783,7 +4783,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The call progress events that we will send to `status_callback`. Can be: `initiated`, `ringing`, `answered`, or `completed`.",
             "in": "query",
             "name": "StatusCallbackEvent",
             "required": false,
@@ -4801,7 +4801,7 @@
             }
           },
           {
-            "description": "Timeout for call when executing a Conference instruction",
+            "description": "Timeout for call when executing a Conference instruction.",
             "in": "query",
             "name": "Timeout",
             "required": false,
@@ -4810,7 +4810,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to record the participant and their conferences, including the time between conferences. The default is `false`.",
             "in": "query",
             "name": "Record",
             "required": false,
@@ -4819,7 +4819,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether the agent is muted in the conference. The default is `false`.",
             "in": "query",
             "name": "Muted",
             "required": false,
@@ -4828,7 +4828,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to play a notification beep when the participant joins or when to play a beep. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`.",
             "in": "query",
             "name": "Beep",
             "required": false,
@@ -4837,7 +4837,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to start the conference when the participant joins, if it has not already started. The default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference.",
             "in": "query",
             "name": "StartConferenceOnEnter",
             "required": false,
@@ -4846,7 +4846,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to end the conference when the agent leaves.",
             "in": "query",
             "name": "EndConferenceOnExit",
             "required": false,
@@ -4855,7 +4855,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).",
             "in": "query",
             "name": "WaitUrl",
             "required": false,
@@ -4865,7 +4865,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.",
             "in": "query",
             "name": "WaitMethod",
             "required": false,
@@ -4888,7 +4888,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. The default is `true`.",
             "in": "query",
             "name": "EarlyMedia",
             "required": false,
@@ -4897,7 +4897,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.",
             "in": "query",
             "name": "MaxParticipants",
             "required": false,
@@ -4906,7 +4906,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.",
             "in": "query",
             "name": "ConferenceStatusCallback",
             "required": false,
@@ -4916,7 +4916,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
             "in": "query",
             "name": "ConferenceStatusCallbackMethod",
             "required": false,
@@ -4939,7 +4939,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The conference status events that we will send to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `speaker`.",
             "in": "query",
             "name": "ConferenceStatusCallbackEvent",
             "required": false,
@@ -4960,7 +4960,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to record the conference the participant is joining or when to record the conference. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.",
             "in": "query",
             "name": "ConferenceRecord",
             "required": false,
@@ -4969,7 +4969,7 @@
             }
           },
           {
-            "description": "",
+            "description": "How to trim the leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.",
             "in": "query",
             "name": "ConferenceTrim",
             "required": false,
@@ -4978,7 +4978,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`.",
             "in": "query",
             "name": "RecordingChannels",
             "required": false,
@@ -4987,7 +4987,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The URL that we should call using the `recording_status_callback_method` when the recording status changes.",
             "in": "query",
             "name": "RecordingStatusCallback",
             "required": false,
@@ -4997,7 +4997,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
             "in": "query",
             "name": "RecordingStatusCallbackMethod",
             "required": false,
@@ -5020,7 +5020,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.",
             "in": "query",
             "name": "ConferenceRecordingStatusCallback",
             "required": false,
@@ -5030,7 +5030,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
             "in": "query",
             "name": "ConferenceRecordingStatusCallbackMethod",
             "required": false,
@@ -5053,7 +5053,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.",
             "in": "query",
             "name": "Region",
             "required": false,
@@ -5062,7 +5062,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SIP username used for authentication.",
             "in": "query",
             "name": "SipAuthUsername",
             "required": false,
@@ -5071,7 +5071,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SIP password for authentication.",
             "in": "query",
             "name": "SipAuthPassword",
             "required": false,
@@ -5080,7 +5080,7 @@
             }
           },
           {
-            "description": "Call progress events sent via webhooks as a result of a Dequeue instruction",
+            "description": "The Call progress events sent via webhooks as a result of a Dequeue instruction.",
             "in": "query",
             "name": "DequeueStatusCallbackEvent",
             "required": false,
@@ -5092,7 +5092,7 @@
             }
           },
           {
-            "description": "New worker activity sid after executing a Conference instruction",
+            "description": "The new worker activity SID after executing a Conference instruction.",
             "in": "query",
             "name": "PostWorkActivitySid",
             "required": false,
@@ -5104,7 +5104,7 @@
             }
           },
           {
-            "description": "Supervisor mode when executing the Supervise instruction",
+            "description": "The Supervisor mode when executing the Supervise instruction.",
             "in": "query",
             "name": "SupervisorMode",
             "required": false,
@@ -5118,7 +5118,7 @@
             }
           },
           {
-            "description": "Supervisor sid/uri when executing the Supervise instruction",
+            "description": "The Supervisor SID/URI when executing the Supervise instruction.",
             "in": "query",
             "name": "Supervisor",
             "required": false,
@@ -5127,7 +5127,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to end the conference when the customer leaves.",
             "in": "query",
             "name": "EndConferenceOnCustomerExit",
             "required": false,
@@ -5136,7 +5136,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to play a notification beep when the customer joins.",
             "in": "query",
             "name": "BeepOnCustomerEntrance",
             "required": false,
@@ -6128,7 +6128,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Workspace with the WorkerReservation resources to read.",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -6140,7 +6140,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the reserved Worker resource with the WorkerReservation resources to read.",
             "in": "path",
             "name": "WorkerSid",
             "required": true,
@@ -6152,7 +6152,7 @@
             }
           },
           {
-            "description": "Filter by a worker's reservation status (pending, accepted, rejected, timeout, canceled, rescinded)",
+            "description": "Returns the list of reservations for a worker with a specified ReservationStatus. Can be: `pending`, `accepted`, `rejected`, `timeout`, `canceled`, or `rescinded`.",
             "in": "query",
             "name": "ReservationStatus",
             "required": false,
@@ -6257,7 +6257,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Workspace with the WorkerReservation resource to fetch.",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -6269,7 +6269,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the reserved Worker resource with the WorkerReservation resource to fetch.",
             "in": "path",
             "name": "WorkerSid",
             "required": true,
@@ -6281,7 +6281,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the WorkerReservation resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -6317,7 +6317,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Workspace with the WorkerReservation resources to update.",
             "in": "path",
             "name": "WorkspaceSid",
             "required": true,
@@ -6329,7 +6329,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the reserved Worker resource with the WorkerReservation resources to update.",
             "in": "path",
             "name": "WorkerSid",
             "required": true,
@@ -6341,7 +6341,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the WorkerReservation resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -6353,7 +6353,7 @@
             }
           },
           {
-            "description": "Yes",
+            "description": "The new status of the reservation. Can be: `pending`, `accepted`, `rejected`, `timeout`, `canceled`, or `rescinded`.",
             "in": "query",
             "name": "ReservationStatus",
             "required": false,
@@ -6372,7 +6372,7 @@
             }
           },
           {
-            "description": "No",
+            "description": "The new worker activity SID if rejecting a reservation.",
             "in": "query",
             "name": "WorkerActivitySid",
             "required": false,
@@ -6384,7 +6384,7 @@
             }
           },
           {
-            "description": "Yes",
+            "description": "The assignment instruction for the reservation.",
             "in": "query",
             "name": "Instruction",
             "required": false,
@@ -6393,7 +6393,7 @@
             }
           },
           {
-            "description": "No",
+            "description": "The SID of the Activity resource to start after executing a Dequeue instruction.",
             "in": "query",
             "name": "DequeuePostWorkActivitySid",
             "required": false,
@@ -6405,7 +6405,7 @@
             }
           },
           {
-            "description": "Yes",
+            "description": "The caller ID of the call to the worker when executing a Dequeue instruction.",
             "in": "query",
             "name": "DequeueFrom",
             "required": false,
@@ -6414,7 +6414,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to record both legs of a call when executing a Dequeue instruction or which leg to record.",
             "in": "query",
             "name": "DequeueRecord",
             "required": false,
@@ -6423,7 +6423,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The timeout for call when executing a Dequeue instruction.",
             "in": "query",
             "name": "DequeueTimeout",
             "required": false,
@@ -6432,7 +6432,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The contact URI of the worker when executing a Dequeue instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
             "in": "query",
             "name": "DequeueTo",
             "required": false,
@@ -6441,7 +6441,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The callback URL for completed call event when executing a Dequeue instruction.",
             "in": "query",
             "name": "DequeueStatusCallbackUrl",
             "required": false,
@@ -6451,7 +6451,7 @@
             }
           },
           {
-            "description": "Yes",
+            "description": "The Caller ID of the outbound call when executing a Call instruction.",
             "in": "query",
             "name": "CallFrom",
             "required": false,
@@ -6460,7 +6460,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to record both legs of a call when executing a Call instruction.",
             "in": "query",
             "name": "CallRecord",
             "required": false,
@@ -6469,7 +6469,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The timeout for a call when executing a Call instruction.",
             "in": "query",
             "name": "CallTimeout",
             "required": false,
@@ -6478,7 +6478,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The contact URI of the worker when executing a Call instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
             "in": "query",
             "name": "CallTo",
             "required": false,
@@ -6487,7 +6487,7 @@
             }
           },
           {
-            "description": "Yes",
+            "description": "TwiML URI executed on answering the worker's leg as a result of the Call instruction.",
             "in": "query",
             "name": "CallUrl",
             "required": false,
@@ -6497,7 +6497,7 @@
             }
           },
           {
-            "description": "No",
+            "description": "The URL to call for the completed call event when executing a Call instruction.",
             "in": "query",
             "name": "CallStatusCallbackUrl",
             "required": false,
@@ -6507,7 +6507,7 @@
             }
           },
           {
-            "description": "No",
+            "description": "Whether to accept a reservation when executing a Call instruction.",
             "in": "query",
             "name": "CallAccept",
             "required": false,
@@ -6516,7 +6516,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The Call SID of the call parked in the queue when executing a Redirect instruction.",
             "in": "query",
             "name": "RedirectCallSid",
             "required": false,
@@ -6528,7 +6528,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether the reservation should be accepted when executing a Redirect instruction.",
             "in": "query",
             "name": "RedirectAccept",
             "required": false,
@@ -6537,7 +6537,7 @@
             }
           },
           {
-            "description": "",
+            "description": "TwiML URI to redirect the call to when executing the Redirect instruction.",
             "in": "query",
             "name": "RedirectUrl",
             "required": false,
@@ -6547,7 +6547,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The Contact URI of the worker when executing a Conference instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
             "in": "query",
             "name": "To",
             "required": false,
@@ -6556,7 +6556,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The caller ID of the call to the worker when executing a Conference instruction.",
             "in": "query",
             "name": "From",
             "required": false,
@@ -6565,7 +6565,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The URL we should call using the `status_callback_method` to send status information to your application.",
             "in": "query",
             "name": "StatusCallback",
             "required": false,
@@ -6575,7 +6575,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The HTTP method we should use to call `status_callback`. Can be: `POST` or `GET` and the default is `POST`.",
             "in": "query",
             "name": "StatusCallbackMethod",
             "required": false,
@@ -6598,7 +6598,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The call progress events that we will send to `status_callback`. Can be: `initiated`, `ringing`, `answered`, or `completed`.",
             "in": "query",
             "name": "StatusCallbackEvent",
             "required": false,
@@ -6616,7 +6616,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The timeout for a call when executing a Conference instruction.",
             "in": "query",
             "name": "Timeout",
             "required": false,
@@ -6625,7 +6625,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to record the participant and their conferences, including the time between conferences. Can be `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "Record",
             "required": false,
@@ -6634,7 +6634,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether the agent is muted in the conference. Defaults to `false`.",
             "in": "query",
             "name": "Muted",
             "required": false,
@@ -6643,7 +6643,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to play a notification beep when the participant joins or when to play a beep. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`.",
             "in": "query",
             "name": "Beep",
             "required": false,
@@ -6652,7 +6652,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to start the conference when the participant joins, if it has not already started. Can be: `true` or `false` and the default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference.",
             "in": "query",
             "name": "StartConferenceOnEnter",
             "required": false,
@@ -6661,7 +6661,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to end the conference when the agent leaves.",
             "in": "query",
             "name": "EndConferenceOnExit",
             "required": false,
@@ -6670,7 +6670,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).",
             "in": "query",
             "name": "WaitUrl",
             "required": false,
@@ -6680,7 +6680,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.",
             "in": "query",
             "name": "WaitMethod",
             "required": false,
@@ -6703,7 +6703,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. The default is `true`.",
             "in": "query",
             "name": "EarlyMedia",
             "required": false,
@@ -6712,7 +6712,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The maximum number of participants allowed in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.",
             "in": "query",
             "name": "MaxParticipants",
             "required": false,
@@ -6721,7 +6721,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.",
             "in": "query",
             "name": "ConferenceStatusCallback",
             "required": false,
@@ -6731,7 +6731,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
             "in": "query",
             "name": "ConferenceStatusCallbackMethod",
             "required": false,
@@ -6754,7 +6754,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The conference status events that we will send to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `speaker`.",
             "in": "query",
             "name": "ConferenceStatusCallbackEvent",
             "required": false,
@@ -6775,7 +6775,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to record the conference the participant is joining or when to record the conference. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.",
             "in": "query",
             "name": "ConferenceRecord",
             "required": false,
@@ -6784,7 +6784,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.",
             "in": "query",
             "name": "ConferenceTrim",
             "required": false,
@@ -6793,7 +6793,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`.",
             "in": "query",
             "name": "RecordingChannels",
             "required": false,
@@ -6802,7 +6802,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The URL that we should call using the `recording_status_callback_method` when the recording status changes.",
             "in": "query",
             "name": "RecordingStatusCallback",
             "required": false,
@@ -6812,7 +6812,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
             "in": "query",
             "name": "RecordingStatusCallbackMethod",
             "required": false,
@@ -6835,7 +6835,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.",
             "in": "query",
             "name": "ConferenceRecordingStatusCallback",
             "required": false,
@@ -6845,7 +6845,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
             "in": "query",
             "name": "ConferenceRecordingStatusCallbackMethod",
             "required": false,
@@ -6868,7 +6868,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.",
             "in": "query",
             "name": "Region",
             "required": false,
@@ -6877,7 +6877,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SIP username used for authentication.",
             "in": "query",
             "name": "SipAuthUsername",
             "required": false,
@@ -6886,7 +6886,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SIP password for authentication.",
             "in": "query",
             "name": "SipAuthPassword",
             "required": false,
@@ -6895,7 +6895,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The call progress events sent via webhooks as a result of a Dequeue instruction.",
             "in": "query",
             "name": "DequeueStatusCallbackEvent",
             "required": false,
@@ -6907,7 +6907,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The new worker activity SID after executing a Conference instruction.",
             "in": "query",
             "name": "PostWorkActivitySid",
             "required": false,
@@ -6919,7 +6919,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to end the conference when the customer leaves.",
             "in": "query",
             "name": "EndConferenceOnCustomerExit",
             "required": false,
@@ -6928,7 +6928,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Whether to play a notification beep when the customer joins.",
             "in": "query",
             "name": "BeepOnCustomerEntrance",
             "required": false,

@@ -325,7 +325,7 @@
         "description": "Retrieve voice dialing country permissions identified by the given ISO country code",
         "parameters": [
           {
-            "description": "The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
+            "description": "The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the DialingPermissions Country resource to fetch",
             "in": "path",
             "name": "IsoCode",
             "required": true,
@@ -462,7 +462,7 @@
     "/v1/Settings": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": "Retrieve voice dialing permissions inheritance for this sub-account",
+        "description": "Retrieve voice dialing permissions inheritance for the sub-account",
         "parameters": [],
         "responses": {
           "200": {
@@ -485,10 +485,10 @@
         ]
       },
       "post": {
-        "description": "Update voice dialing permissions inheritance for this sub-account",
+        "description": "Update voice dialing permissions inheritance for the sub-account",
         "parameters": [
           {
-            "description": "`true` for this sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`.",
+            "description": "`true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`.",
             "in": "query",
             "name": "DialingPermissionsInheritance",
             "required": false,

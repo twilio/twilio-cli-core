@@ -10673,7 +10673,7 @@
             }
           },
           {
-            "description": "Only show calls to this phone number, SIP address, Client identifier or SIM SID.",
+            "description": "Only show calls made to this phone number, SIP address, Client identifier or SIM SID.",
             "in": "query",
             "name": "To",
             "required": false,
@@ -10732,6 +10732,16 @@
             }
           },
           {
+            "description": "Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.",
+            "in": "query",
+            "name": "EndTime",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
             "description": "Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.",
             "in": "query",
             "name": "StartTime<",
@@ -10745,16 +10755,6 @@
             "description": "Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.",
             "in": "query",
             "name": "StartTime>",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.",
-            "in": "query",
-            "name": "EndTime",
             "required": false,
             "schema": {
               "format": "date-time",
@@ -10948,7 +10948,7 @@
             }
           },
           {
-            "description": "The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call?code-sample=code-create-a-call-and-specify-a-statuscallbackevent). If an `application_sid` is present, this parameter is ignored.",
+            "description": "The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call-resource?code-sample=code-create-a-call-resource-and-specify-a-statuscallbackevent&code-sdk-version=json). If an `application_sid` is present, this parameter is ignored.",
             "in": "query",
             "name": "StatusCallbackEvent",
             "required": false,
@@ -11001,7 +11001,7 @@
             }
           },
           {
-            "description": "Set this parameter to `true` to record the phone call. The `recording_url` will be sent to the `status_callback` URL. The default is `false`.",
+            "description": "Whether to record the call. Can be `true` to record the phone call, or `false` to not. The default is `false`. The `recording_url` is sent to the `status_callback` URL.",
             "in": "query",
             "name": "Record",
             "required": false,
@@ -11069,7 +11069,7 @@
             }
           },
           {
-            "description": "Detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).",
+            "description": "Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).",
             "in": "query",
             "name": "MachineDetection",
             "required": false,
@@ -11577,7 +11577,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the Call Notification resources to read.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the Call Notification resources to read.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -11724,7 +11724,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the Call Notification resources to delete.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the Call Notification resources to delete.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -11779,7 +11779,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the Call Notification resource to fetch.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the Call Notification resource to fetch.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -11854,7 +11854,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resources to read.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -11978,7 +11978,7 @@
             }
           },
           {
-            "description": "The SID of the [Call](https://www.twilio.com/docs/voice/api/call) to associate the resource with.",
+            "description": "The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) to associate the resource with.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -12104,7 +12104,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resources to delete.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to delete.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -12159,7 +12159,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resource to fetch.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to fetch.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -12219,7 +12219,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resource to update.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to update.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -12360,7 +12360,7 @@
             }
           },
           {
-            "description": "The Twilio-provided string that uniquely identifies the Call resource to fetch",
+            "description": "The SID of the Call resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -12603,49 +12603,9 @@
             }
           },
           {
-            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.",
-            "in": "query",
-            "name": "DateCreated<",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.",
-            "in": "query",
-            "name": "DateCreated>",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
             "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.",
             "in": "query",
             "name": "DateUpdated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.",
-            "in": "query",
-            "name": "DateUpdated<",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.",
-            "in": "query",
-            "name": "DateUpdated>",
             "required": false,
             "schema": {
               "format": "date-time",
@@ -12672,6 +12632,46 @@
                 "in-progress",
                 "completed"
               ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.",
+            "in": "query",
+            "name": "DateCreated>",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.",
+            "in": "query",
+            "name": "DateCreated<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.",
+            "in": "query",
+            "name": "DateUpdated>",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.",
+            "in": "query",
+            "name": "DateUpdated<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
               "type": "string"
             }
           },
@@ -13342,7 +13342,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resources to delete.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to delete.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -13397,7 +13397,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resource to fetch.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to fetch.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -13457,7 +13457,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resources to update.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to update.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -17542,7 +17542,7 @@
           {
             "description": "The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.",
             "in": "query",
-            "name": "DateSent<",
+            "name": "DateSent>",
             "required": false,
             "schema": {
               "format": "date-time",
@@ -17552,7 +17552,7 @@
           {
             "description": "The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.",
             "in": "query",
-            "name": "DateSent>",
+            "name": "DateSent<",
             "required": false,
             "schema": {
               "format": "date-time",
@@ -18928,7 +18928,7 @@
         "description": "Retrieve a list of queues belonging to the account used to make the request",
         "parameters": [
           {
-            "description": "The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for creating this Call.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resources to read.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19212,7 +19212,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resource(s) to fetch.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to fetch.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -19269,7 +19269,7 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resource(s) to update.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to update.",
             "in": "path",
             "name": "CallSid",
             "required": true,
@@ -19349,7 +19349,7 @@
         "description": "Remove an empty queue",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource(s) to delete.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource to delete.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19392,7 +19392,7 @@
         "description": "Fetch an instance of a queue identified by the QueueSid",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource(s) to fetch.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource to fetch.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19440,7 +19440,7 @@
         "description": "Update the queue with the new parameters",
         "parameters": [
           {
-            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource(s) to update.",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource to update.",
             "in": "path",
             "name": "AccountSid",
             "required": true,
@@ -19543,27 +19543,7 @@
             }
           },
           {
-            "description": "Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.",
-            "in": "query",
-            "name": "DateCreated<",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.",
-            "in": "query",
-            "name": "DateCreated>",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resources to read.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read.",
             "in": "query",
             "name": "CallSid",
             "required": false,
@@ -19583,6 +19563,26 @@
               "maxLength": 34,
               "minLength": 34,
               "pattern": "^CF[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.",
+            "in": "query",
+            "name": "DateCreated<",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.",
+            "in": "query",
+            "name": "DateCreated>",
+            "required": false,
+            "schema": {
+              "format": "date-time",
               "type": "string"
             }
           },
