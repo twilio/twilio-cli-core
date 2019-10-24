@@ -23,13 +23,13 @@
   },
   "devDependencies": {
     "@oclif/test": "^1.2.5",
-    "@twilio/cli-test": "^2.0.1",
+    "@twilio/cli-test": "^2.0.2",
     "chai": "^4.2.0",
     "eslint": "^4.19.1",
     "eslint-config-oclif": "^1.5.1",
     "eslint-plugin-mocha": "^5.3.0",
     "mocha": "^5.2.0",
-    "nock": "^10.0.6",
+    "nock": "^11.6.0",
     "nyc": "^14.1.1",
     "sinon": "^6.3.5",
     "tmp": "0.0.33"
