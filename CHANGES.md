@@ -1,6 +1,35 @@
 twilio-cli-core changelog
 =====================
 
+[2019-10-30] Version 4.3.0
+--------------------------
+**Library**
+- [PR #73](https://github.com/twilio/twilio-cli-core/pull/73): Include TQ badge for potential contributors. Thanks to [@kwhinnery](https://github.com/kwhinnery)!
+- [PR #72](https://github.com/twilio/twilio-cli-core/pull/72): Update Open API definitions. Thanks to [@maylonpedroso](https://github.com/maylonpedroso)!
+
+**Api**
+- Add new usage categories to the public api `sms-messages-carrierfees` and `mms-messages-carrierfees`
+
+**Conversations**
+- Add ProjectedAddress to Conversations Participant resource
+
+**Preview**
+- Implemented different `Sid` for Current Calls (Verified by Twilio), instead of relying in `Call.Sid` from Voice API team **(breaking change)**
+
+**Supersim**
+- Add List endpoint to Commands resource for Super Sim Pilot
+- Add UsageRecords resource for the Super Sim Pilot
+- Add List endpoint to UsageRecords resource for the Super Sim Pilot
+- Allow assigning a Sim to a Fleet by Fleet SID or Unique Name for Super SIM Pilot
+- Add Update endpoint to Fleets resource for Super Sim Pilot
+- Add Fetch endpoint to Commands resource for Super Sim Pilot
+- Allow filtering the Sims resource List endpoint by Fleet
+- Add List endpoint to Fleets resource for Super Sim Pilot
+
+**Wireless**
+- Added `account_sid` to Sim update parameters.
+
+
 [2019-10-17] Version 4.2.1
 --------------------------
 **Library**

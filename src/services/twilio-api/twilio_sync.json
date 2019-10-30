@@ -626,7 +626,7 @@
             }
           },
           {
-            "description": "Whether token identities in the Service must be granted access to Sync objects by using the [Permissions](https://www.twilio.com/docs/sync/api/permissions) resource.",
+            "description": "Whether token identities in the Service must be granted access to Sync objects by using the [Permissions](https://www.twilio.com/docs/sync/api/sync-permissions) resource.",
             "in": "query",
             "name": "AclEnabled",
             "required": false,
@@ -1083,7 +1083,7 @@
             }
           },
           {
-            "description": "Whether the identity can read the Sync Document.",
+            "description": "Whether the identity can read the Sync Document. Default value is `false`.",
             "in": "query",
             "name": "Read",
             "required": true,
@@ -1092,7 +1092,7 @@
             }
           },
           {
-            "description": "Whether the identity can update the Sync Document.",
+            "description": "Whether the identity can update the Sync Document. Default value is `false`.",
             "in": "query",
             "name": "Write",
             "required": true,
@@ -1101,7 +1101,7 @@
             }
           },
           {
-            "description": "Whether the identity can delete the Sync Document.",
+            "description": "Whether the identity can delete the Sync Document. Default value is `false`.",
             "in": "query",
             "name": "Manage",
             "required": true,
@@ -2098,7 +2098,7 @@
             }
           },
           {
-            "description": "Whether the identity can read the Sync List and its Items.",
+            "description": "Whether the identity can read the Sync List and its Items. Default value is `false`.",
             "in": "query",
             "name": "Read",
             "required": true,
@@ -2107,7 +2107,7 @@
             }
           },
           {
-            "description": "Whether the identity can create, update and delete Items of the Sync List.",
+            "description": "Whether the identity can create, update, and delete Items in the Sync List. Default value is `false`.",
             "in": "query",
             "name": "Write",
             "required": true,
@@ -2116,7 +2116,7 @@
             }
           },
           {
-            "description": "Whether the identity can delete the Sync List.",
+            "description": "Whether the identity can delete the Sync List. Default value is `false`.",
             "in": "query",
             "name": "Manage",
             "required": true,
@@ -3122,7 +3122,7 @@
             }
           },
           {
-            "description": "Whether the identity can read the Sync Map and its Items.",
+            "description": "Whether the identity can read the Sync Map and its Items. Default value is `false`.",
             "in": "query",
             "name": "Read",
             "required": true,
@@ -3131,7 +3131,7 @@
             }
           },
           {
-            "description": "Whether the identity can create, update and delete Items of the Sync Map.",
+            "description": "Whether the identity can create, update, and delete Items in the Sync Map. Default value is `false`.",
             "in": "query",
             "name": "Write",
             "required": true,
@@ -3140,7 +3140,7 @@
             }
           },
           {
-            "description": "Whether the identity can delete the Sync Map.",
+            "description": "Whether the identity can delete the Sync Map. Default value is `false`.",
             "in": "query",
             "name": "Manage",
             "required": true,
@@ -3789,7 +3789,7 @@
             }
           },
           {
-            "description": "Whether token identities in the Service must be granted access to Sync objects by using the [Permissions](https://www.twilio.com/docs/sync/api/permissions) resource.",
+            "description": "Whether token identities in the Service must be granted access to Sync objects by using the [Permissions](https://www.twilio.com/docs/sync/api/sync-permissions) resource.",
             "in": "query",
             "name": "AclEnabled",
             "required": false,

@@ -1032,7 +1032,7 @@
             }
           },
           {
-            "description": "The address of the participant's device, e.g. a phone number or Messenger ID. Together with the Proxy address, this determines a participant uniquely. This field (with proxy_address) is only null when the participant is interacting from a Chat endpoint (see the 'identity' field). Limited to 256 characters.",
+            "description": "The address of the participant's device, e.g. a phone number or Messenger ID. Together with the Proxy address, this determines a participant uniquely. This field (with proxy_address) is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).",
             "in": "query",
             "name": "MessagingBinding.Address",
             "required": false,
@@ -1041,7 +1041,7 @@
             }
           },
           {
-            "description": "The address of the Twilio phone number (or WhatsApp number, or Messenger Page ID) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from a Chat endpoint (see the 'identity' field). Limited to 256 characters.",
+            "description": "The address of the Twilio phone number (or WhatsApp number, or Messenger Page ID) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).",
             "in": "query",
             "name": "MessagingBinding.ProxyAddress",
             "required": false,
@@ -1073,6 +1073,15 @@
             "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
             "in": "query",
             "name": "Attributes",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The address of the Twilio phone number that is used in Group MMS. Communication mask for the Chat participant with Identity.",
+            "in": "query",
+            "name": "MessagingBinding.ProjectedAddress",
             "required": false,
             "schema": {
               "type": "string"

@@ -171,6 +171,71 @@
         },
         "type": "object"
       },
+      "preview.bulk_exports.export.export_custom_job": {
+        "properties": {
+          "details": {
+            "type": "object"
+          },
+          "email": {
+            "type": "string"
+          },
+          "end_day": {
+            "type": "string"
+          },
+          "friendly_name": {
+            "type": "string"
+          },
+          "job_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^JS[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "resource_type": {
+            "type": "string"
+          },
+          "start_day": {
+            "type": "string"
+          },
+          "webhook_method": {
+            "type": "string"
+          },
+          "webhook_url": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "preview.bulk_exports.export.job": {
+        "properties": {
+          "details": {
+            "type": "object"
+          },
+          "end_day": {
+            "type": "string"
+          },
+          "friendly_name": {
+            "type": "string"
+          },
+          "job_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^JS[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "resource_type": {
+            "type": "string"
+          },
+          "start_day": {
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "preview.bulk_exports.export_configuration": {
         "properties": {
           "enabled": {
@@ -1247,6 +1312,30 @@
           "bg_color": {
             "type": "string"
           },
+          "brand_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BZ[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "branded_channel_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BW[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "business_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BX[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "call_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^CA[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "caller": {
             "type": "string"
           },
@@ -1263,13 +1352,19 @@
           "logo": {
             "type": "string"
           },
+          "phone_number_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^PN[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "reason": {
             "type": "string"
           },
           "sid": {
             "maxLength": 34,
             "minLength": 34,
-            "pattern": "^CA[0-9a-fA-F]{32}$",
+            "pattern": "^CQ[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "status": {
@@ -1337,7 +1432,7 @@
           "sid": {
             "maxLength": 34,
             "minLength": 34,
-            "pattern": "^CA[0-9a-fA-F]{32}$",
+            "pattern": "^CQ[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "status": {
@@ -1388,11 +1483,53 @@
             "pattern": "^AC[0-9a-fA-F]{32}$",
             "type": "string"
           },
+          "bg_color": {
+            "type": "string"
+          },
+          "brand_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BZ[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "branded_channel_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BW[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "business_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BX[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "call_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^CA[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "caller": {
+            "type": "string"
+          },
           "created_at": {
             "format": "date-time",
             "type": "string"
           },
+          "font_color": {
+            "type": "string"
+          },
           "from": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "phone_number_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^PN[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "reason": {
@@ -1401,7 +1538,10 @@
           "sid": {
             "maxLength": 34,
             "minLength": 34,
-            "pattern": "^CA[0-9a-fA-F]{32}$",
+            "pattern": "^CQ[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "status": {
             "type": "string"
           },
           "to": {
@@ -1409,6 +1549,9 @@
           },
           "url": {
             "format": "uri",
+            "type": "string"
+          },
+          "use_case": {
             "type": "string"
           }
         },
@@ -2313,6 +2456,82 @@
   },
   "openapi": "3.0.1",
   "paths": {
+    "/BulkExports/Exports/Jobs/{JobSid}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "JobSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^JS[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "JobSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^JS[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/preview.bulk_exports.export.job"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://preview.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [],
+      "x-path-type": "instance"
+    },
     "/BulkExports/Exports/{ResourceType}": {
       "description": "TODO: Resource-level docs",
       "get": {
@@ -2602,6 +2821,202 @@
       ],
       "x-default-output-properties": [],
       "x-path-type": "instance"
+    },
+    "/BulkExports/Exports/{ResourceType}/Jobs": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "The type of communication \u2013 Messages, Calls",
+            "in": "path",
+            "name": "ResourceType",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The token for the next page of job results, and may be null if there are no more pages",
+            "in": "query",
+            "name": "NextToken",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The token for the previous page of results, and may be null if this is the first page",
+            "in": "query",
+            "name": "PreviousToken",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "jobs": {
+                      "items": {
+                        "$ref": "#/components/schemas/preview.bulk_exports.export.export_custom_job"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "The type of communication \u2013 Messages, Calls",
+            "in": "path",
+            "name": "ResourceType",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "FriendlyName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "StartDay",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "EndDay",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "WebhookUrl",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "WebhookMethod",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "Email",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/preview.bulk_exports.export.export_custom_job"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://preview.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [],
+      "x-path-type": "list"
     },
     "/DeployedDevices/Fleets": {
       "description": "TODO: Resource-level docs",
@@ -7947,7 +8362,7 @@
         "description": "Brands a Call without actually placing it. Useful for cases when the Customer wants to initiate the call themselves right after calling this endpoint. This can be used also through a TwiML using `<Brand callerId=\"+1500123\" callReason=\"This is the call reason\" callSid=\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\">+1500456</Brand>`, and right after doing `<Dial callerId=\"+1500123\">+1500456</Dial>`",
         "parameters": [
           {
-            "description": "The phone number to use as the caller id, given in [E.164 format](https://en.wikipedia.org/wiki/E.164). It must be a Twilio number that has been set up as a Branded Number in the Business Profile section for your account.",
+            "description": "The phone number to use as the caller id, given in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). It must be a Twilio number that has been set up as a Branded Number in the Business Profile section for your account.",
             "in": "query",
             "name": "From",
             "required": true,
@@ -7956,7 +8371,7 @@
             }
           },
           {
-            "description": "The terminating Phone Number, given in [E.164 format](https://en.wikipedia.org/wiki/E.164).",
+            "description": "The terminating Phone Number, given in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
             "in": "query",
             "name": "To",
             "required": true,
@@ -8014,12 +8429,18 @@
       "x-default-output-properties": [
         "account_sid",
         "bg_color",
+        "brand_sid",
+        "branded_channel_sid",
+        "business_sid",
+        "call_sid",
         "caller",
         "created_at",
         "font_color",
         "from",
         "logo",
+        "phone_number_sid",
         "reason",
+        "sid",
         "status",
         "to",
         "url",
@@ -8033,7 +8454,7 @@
         "description": "Initiates a Branded Call.",
         "parameters": [
           {
-            "description": "The phone number to use as the caller id, given in [E.164 format](https://en.wikipedia.org/wiki/E.164). It must be a Twilio number that has been set up as a Branded Number in the Business Profile section for your account.",
+            "description": "The phone number to use as the caller id, given in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). It must be a Twilio number that has been set up as a Branded Number in the Business Profile section for your account.",
             "in": "query",
             "name": "From",
             "required": true,
@@ -8042,7 +8463,7 @@
             }
           },
           {
-            "description": "The terminating Phone Number, given in [E.164 format](https://en.wikipedia.org/wiki/E.164).",
+            "description": "The terminating Phone Number, given in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
             "in": "query",
             "name": "To",
             "required": true,
@@ -8370,12 +8791,24 @@
         }
       ],
       "x-default-output-properties": [
-        "sid",
         "account_sid",
+        "bg_color",
+        "brand_sid",
+        "branded_channel_sid",
+        "business_sid",
+        "call_sid",
+        "caller",
+        "created_at",
+        "font_color",
         "from",
-        "to",
+        "logo",
+        "phone_number_sid",
         "reason",
-        "date_created"
+        "sid",
+        "status",
+        "to",
+        "url",
+        "use_case"
       ],
       "x-path-type": "list"
     },
@@ -8410,8 +8843,9 @@
         }
       ],
       "x-default-output-properties": [
+        "cps_url",
         "phone_number",
-        "cps_url"
+        "url"
       ],
       "x-path-type": "instance"
     },
@@ -8446,11 +8880,20 @@
         }
       ],
       "x-default-output-properties": [
-        "sid",
+        "bg_color",
+        "caller",
+        "created_at",
+        "font_color",
         "from",
-        "to",
+        "logo",
+        "manager",
         "reason",
-        "date_created"
+        "shield_img",
+        "sid",
+        "status",
+        "to",
+        "url",
+        "use_case"
       ],
       "x-path-type": "instance"
     },
@@ -8460,7 +8903,7 @@
         "description": "Registers a new Device and Push Token against Trusted Comms API. This works specially for iOS devices, which don't allow the SDK to know when there's an incoming call, nor the originating number.",
         "parameters": [
           {
-            "description": "The end user Phone Number linked to the device, given in [E.164 format](https://en.wikipedia.org/wiki/E.164). The SDK or partner app is responsible of verifying this phone number veracity.",
+            "description": "The end user Phone Number linked to the device, given in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). The SDK or partner app is responsible of verifying this phone number veracity.",
             "in": "query",
             "name": "PhoneNumber",
             "required": true,
@@ -8504,9 +8947,10 @@
         }
       ],
       "x-default-output-properties": [
-        "sid",
+        "binding_sid",
         "phone_number",
-        "binding_sid"
+        "sid",
+        "url"
       ],
       "x-path-type": "list"
     },
