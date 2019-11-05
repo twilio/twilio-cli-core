@@ -29,7 +29,7 @@
     "eslint-config-oclif": "^1.5.1",
     "eslint-plugin-mocha": "^5.3.0",
     "mocha": "^5.2.0",
-    "nock": "^11.6.0",
+    "nock": "^11.7.0",
     "nyc": "^14.1.1",
     "sinon": "^6.3.5",
     "tmp": "0.0.33"
