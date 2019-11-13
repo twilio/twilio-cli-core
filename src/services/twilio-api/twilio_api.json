@@ -880,6 +880,7 @@
             "type": "string"
           },
           "direction": {
+            "nullable": true,
             "type": "string"
           },
           "duration": {
@@ -918,7 +919,7 @@
           },
           "price": {
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "type": "string"
@@ -11164,6 +11165,15 @@
             }
           },
           {
+            "description": "TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored.",
+            "in": "query",
+            "name": "Twiml",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls).",
             "in": "query",
             "name": "Url",
@@ -12931,7 +12941,7 @@
             }
           },
           {
-            "description": "The phone number, client id, or sip address to invite to the conference.",
+            "description": "The phone number, client id, or sip address to invite to the conference. [Custom parameters](https://www.twilio.com/docs/voice/api/conference-participant-resource#custom-parameters) may also be specified.",
             "in": "query",
             "name": "To",
             "required": true,
@@ -17738,6 +17748,18 @@
             }
           },
           {
+            "description": "Rich actions for Channels Messages.",
+            "in": "query",
+            "name": "PersistentAction",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
             "description": "A Twilio phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, an [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), or a [Channel Endpoint address](https://www.twilio.com/docs/sms/channels#channel-addresses) that is enabled for the type of message you want to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-code) purchased from Twilio also work here. You cannot, for example, spoof messages from a private cell phone number. If you are using `messaging_service_sid`, this parameter must be empty.",
             "in": "query",
             "name": "From",
@@ -17768,7 +17790,7 @@
             }
           },
           {
-            "description": "The URL of the media to send with the message. The media can be of type `gif`, `png`, and `jpeg` and will be formatted correctly on the recipient's device. [Other types](https://www.twilio.com/docs/sms/accepted-mime-types) of media are also accepted. The media size limit is 5MB. To send more than one image in the message body, provide multiple `media_url` parameters in the POST request. You can include up to 10 `media_url` parameters per message. You can send images in an SMS message in only the US and Canada.",
+            "description": "The URL of the media to send with the message. The media can be of type `gif`, `png`, and `jpeg` and will be formatted correctly on the recipient's device. The media size limit is 5MB for supported file types (JPEG, PNG, GIF) and 500KB for [other types](https://www.twilio.com/docs/sms/accepted-mime-types) of accepted media. To send more than one image in the message body, provide multiple `media_url` parameters in the POST request. You can include up to 10 `media_url` parameters per message. You can send images in an SMS message in only the US and Canada.",
             "in": "query",
             "name": "MediaUrl",
             "required": false,

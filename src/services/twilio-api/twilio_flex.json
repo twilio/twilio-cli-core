@@ -802,7 +802,7 @@
             }
           },
           {
-            "description": "The channel type. Can be: `web`, `facebook`, or `sms`.",
+            "description": "The channel type. Can be: `web`, `facebook`, `sms`, `whatsapp`, `line` or `custom`.",
             "in": "query",
             "name": "ChannelType",
             "required": true,
@@ -949,6 +949,15 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "description": "The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0.",
+            "in": "query",
+            "name": "Integration.RetryCount",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -1089,7 +1098,7 @@
             }
           },
           {
-            "description": "The channel type. Can be: `web`, `facebook`, or `sms`.",
+            "description": "The channel type. Can be: `web`, `facebook`, `sms`, `whatsapp`, `line` or `custom`.",
             "in": "query",
             "name": "ChannelType",
             "required": false,
@@ -1235,6 +1244,15 @@
             "required": false,
             "schema": {
               "type": "boolean"
+            }
+          },
+          {
+            "description": "The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0.",
+            "in": "query",
+            "name": "Integration.RetryCount",
+            "required": false,
+            "schema": {
+              "type": "integer"
             }
           }
         ],

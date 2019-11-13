@@ -9403,7 +9403,7 @@
         "description": "Retrieve a list of Extensions for the Available Add-on.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the AvailableAddOn resource with the extensions to read.",
             "in": "path",
             "name": "AvailableAddOnSid",
             "required": true,
@@ -9497,7 +9497,7 @@
         "description": "Fetch an instance of an Extension for the Available Add-on.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the AvailableAddOn resource with the extension to fetch.",
             "in": "path",
             "name": "AvailableAddOnSid",
             "required": true,
@@ -9509,7 +9509,7 @@
             }
           },
           {
-            "description": "The Extension Sid that uniquely identifies this resource",
+            "description": "The SID of the AvailableAddOn Extension resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -9555,7 +9555,7 @@
         "description": "Fetch an instance of an Add-on currently available to be installed.",
         "parameters": [
           {
-            "description": "The Available Add-on Sid that uniquely identifies this resource",
+            "description": "The SID of the AvailableAddOn resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -9673,7 +9673,7 @@
         "description": "Install an Add-on for the Account specified.",
         "parameters": [
           {
-            "description": "A 34 character string that uniquely identifies the Add-on to be installed.",
+            "description": "The SID of the AvaliableAddOn to install.",
             "in": "query",
             "name": "AvailableAddOnSid",
             "required": true,
@@ -9685,7 +9685,7 @@
             }
           },
           {
-            "description": "A boolean that reflects your decision whether to accept the Terms of Service",
+            "description": "Whether the Terms of Service were accepted.",
             "in": "query",
             "name": "AcceptTermsOfService",
             "required": true,
@@ -9694,7 +9694,7 @@
             }
           },
           {
-            "description": "The JSON object representing the configuration of the new Add-on installation.",
+            "description": "The JSON object that represents the configuration of the new Add-on being installed.",
             "in": "query",
             "name": "Configuration",
             "required": false,
@@ -9703,7 +9703,7 @@
             }
           },
           {
-            "description": "The human-readable string that uniquely identifies this Add-on installation for an Account.",
+            "description": "An application-defined string that uniquely identifies the resource. This value must be unique within the Account.",
             "in": "query",
             "name": "UniqueName",
             "required": false,
@@ -9746,7 +9746,7 @@
         "description": "Retrieve a list of Extensions for the Installed Add-on.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the InstalledAddOn resource with the extensions to read.",
             "in": "path",
             "name": "InstalledAddOnSid",
             "required": true,
@@ -9840,7 +9840,7 @@
         "description": "Fetch an instance of an Extension for the Installed Add-on.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the InstalledAddOn resource with the extension to fetch.",
             "in": "path",
             "name": "InstalledAddOnSid",
             "required": true,
@@ -9852,7 +9852,7 @@
             }
           },
           {
-            "description": "The Extension Sid that uniquely identifies this resource",
+            "description": "The SID of the InstalledAddOn Extension resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -9888,7 +9888,7 @@
         "description": "Update an Extension for an Add-on installation.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the InstalledAddOn resource with the extension to update.",
             "in": "path",
             "name": "InstalledAddOnSid",
             "required": true,
@@ -9900,7 +9900,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the InstalledAddOn Extension resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -9912,7 +9912,7 @@
             }
           },
           {
-            "description": "A Boolean indicating if the Extension will be invoked.",
+            "description": "Whether the Extension should be invoked.",
             "in": "query",
             "name": "Enabled",
             "required": true,
@@ -9954,7 +9954,7 @@
         "description": "Remove an Add-on installation from your account",
         "parameters": [
           {
-            "description": "The Installed Add-on Sid that uniquely identifies the resource to delete.",
+            "description": "The SID of the InstalledAddOn resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -9985,7 +9985,7 @@
         "description": "Fetch an instance of an Add-on currently installed on this Account.",
         "parameters": [
           {
-            "description": "The Installed Add-on Sid that uniquely identifies this resource",
+            "description": "The SID of the InstalledAddOn resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -10021,7 +10021,7 @@
         "description": "Update an Add-on installation for the Account specified.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the InstalledAddOn resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -10033,7 +10033,7 @@
             }
           },
           {
-            "description": "Valid JSON object that conform to the configuration schema exposed by the associated Available Add-on resource. This is only required by Add-ons that need to be configured",
+            "description": "Valid JSON object that conform to the configuration schema exposed by the associated AvailableAddOn resource. This is only required by Add-ons that need to be configured",
             "in": "query",
             "name": "Configuration",
             "required": false,
@@ -10042,7 +10042,7 @@
             }
           },
           {
-            "description": "The human-readable string that uniquely identifies this Add-on installation for an Account.",
+            "description": "An application-defined string that uniquely identifies the resource. This value must be unique within the Account.",
             "in": "query",
             "name": "UniqueName",
             "required": false,

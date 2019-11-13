@@ -197,7 +197,8 @@
           "channel": {
             "enum": [
               "sms",
-              "call"
+              "call",
+              "email"
             ],
             "type": "string"
           },
@@ -257,7 +258,8 @@
           "channel": {
             "enum": [
               "sms",
-              "call"
+              "call",
+              "email"
             ],
             "type": "string"
           },
@@ -1642,7 +1644,7 @@
             }
           },
           {
-            "description": "The phone number to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
+            "description": "The phone number or email to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
             "in": "query",
             "name": "To",
             "required": true,
@@ -1651,7 +1653,7 @@
             }
           },
           {
-            "description": "The verification method to use. Can be: `sms` or `call`.",
+            "description": "The verification method to use. Can be: `email`, `sms` or `call`.",
             "in": "query",
             "name": "Channel",
             "required": true,
@@ -1717,6 +1719,15 @@
             "description": "The custom key-value pairs of Programmable Rate Limits. Keys should be the unique_name configured while creating you Rate Limit along with the associated values for each particular request. You may include multiple Rate Limit values in each request.",
             "in": "query",
             "name": "RateLimits",
+            "required": false,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "description": "Channel specific configuration in json format: For email must include 'from' and 'from_name'.",
+            "in": "query",
+            "name": "ChannelConfiguration",
             "required": false,
             "schema": {
               "type": "object"
