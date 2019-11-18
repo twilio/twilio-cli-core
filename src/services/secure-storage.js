@@ -1,8 +1,6 @@
-let keytar; // Lazy-loaded below.
 const { CLI_NAME } = require('./config');
 const { TwilioCliError } = require('./error');
 const { HELP_ENVIRONMENT_VARIABLES } = require('./messaging/help-messages');
-const { requireNative } = require('./require-native');
 
 const STORAGE_LOCATIONS = {
   KEYCHAIN: 'keychain',
@@ -17,35 +15,39 @@ const PLATFORM_TO_LOCATION = {
 };
 
 class SecureStorage {
-  constructor(platform) {
+  constructor({ command, platform } = {}) {
+    this.command = command;
     this.platform = platform || process.platform;
+    this.keytar = null;
   }
 
-  get keytar() {
-    if (!keytar) {
-      keytar = requireNative('keytar');
-
-      // If we can't load up keytar, tell the user that maybe they should just
-      // stick to env vars.
-      if (!keytar) {
+  async loadKeytar() {
+    if (!this.keytar) {
+      try {
+        this.keytar = await this.command.install('keytar');
+      } catch (error) {
+        // If we can't load up keytar, tell the user that maybe they should just stick to env vars.
         throw new TwilioCliError('Secure credential storage failed to load.\n\n' + HELP_ENVIRONMENT_VARIABLES);
       }
     }
 
-    return keytar;
+    return this.keytar;
   }
 
   async saveCredentials(profileId, username, password) {
+    await this.loadKeytar();
     await this.keytar.setPassword(CLI_NAME, profileId, username + '|' + password);
   }
 
   async removeCredentials(profileId) {
+    await this.loadKeytar();
     return this.keytar.deletePassword(CLI_NAME, profileId);
   }
 
   async getCredentials(profileId) {
     let credentials = null;
     try {
+      await this.loadKeytar();
       credentials = await this.keytar.getPassword(CLI_NAME, profileId);
     } catch (e) {
       if (e instanceof TwilioCliError) {

@@ -5,6 +5,7 @@ const { TwilioCliError } = require('../services/error');
 const { UNEXPECTED_ERROR } = require('../services/messaging/help-messages');
 const { logger, LoggingLevel } = require('../services/messaging/logging');
 const { OutputFormats } = require('../services/output-formats');
+const { requireInstall } = require('../services/require-install');
 const { SecureStorage } = require('../services/secure-storage');
 let inquirer; // We'll lazy-load this only when it's needed.
 
@@ -16,7 +17,7 @@ class BaseCommand extends Command {
     super(argv, config);
     this.configFile = new Config('');
     this.userConfig = new ConfigData();
-    this.secureStorage = new SecureStorage();
+    this.secureStorage = new SecureStorage({ command: this });
   }
 
   get inquirer() {
@@ -135,6 +136,10 @@ class BaseCommand extends Command {
   getPromptMessage(message) {
     // Drop the trailing period and put a colon at the end of the message.
     return message.trim().replace(/[.:]?$/, ':');
+  }
+
+  async install(name) {
+    return requireInstall(name, this);
   }
 }
 
