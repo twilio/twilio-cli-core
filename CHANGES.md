@@ -1,6 +1,18 @@
 twilio-cli-core changelog
 =====================
 
+[2019-11-19] Version 4.3.2
+--------------------------
+**Library**
+- [PR #74](https://github.com/twilio/twilio-cli-core/pull/74): fix: dynamically install keytar if it fails to load. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Add optional `twiml` parameter for call create
+
+**Taskrouter**
+- Support ReEvaluateTasks parameter on Workflow update
+
+
 [2019-11-13] Version 4.3.1
 --------------------------
 **Api**
