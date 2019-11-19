@@ -10,22 +10,22 @@ describe('services', () => {
     });
 
     test.it('storageLocation (Mac)', () => {
-      const secureStorage = new SecureStorage('darwin');
+      const secureStorage = new SecureStorage({ platform: 'darwin' });
       expect(secureStorage.storageLocation).to.eq(STORAGE_LOCATIONS.KEYCHAIN);
     });
 
     test.it('storageLocation (Windows)', () => {
-      const secureStorage = new SecureStorage('win32');
+      const secureStorage = new SecureStorage({ platform: 'win32' });
       expect(secureStorage.storageLocation).to.eq(STORAGE_LOCATIONS.WIN_CRED_VAULT);
     });
 
     test.it('storageLocation (Linux)', () => {
-      const secureStorage = new SecureStorage('linux');
+      const secureStorage = new SecureStorage({ platform: 'linux' });
       expect(secureStorage.storageLocation).to.eq(STORAGE_LOCATIONS.LIBSECRET);
     });
 
     test.it('storageLocation (OpenBSD)', () => {
-      const secureStorage = new SecureStorage('openbsd');
+      const secureStorage = new SecureStorage({ platform: 'openbsd' });
       expect(secureStorage.storageLocation).to.eq(undefined);
     });
 
