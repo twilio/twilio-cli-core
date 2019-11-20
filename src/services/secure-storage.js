@@ -1,6 +1,7 @@
 const { CLI_NAME } = require('./config');
 const { TwilioCliError } = require('./error');
 const { HELP_ENVIRONMENT_VARIABLES } = require('./messaging/help-messages');
+const { logger } = require('./messaging/logging');
 
 const STORAGE_LOCATIONS = {
   KEYCHAIN: 'keychain',
@@ -25,7 +26,11 @@ class SecureStorage {
     if (!this.keytar) {
       try {
         this.keytar = await this.command.install('keytar');
+
+        // Also sanity-check that we can retrieve passwords (just use a dummy profile ID).
+        await this.keytar.getPassword(CLI_NAME, CLI_NAME);
       } catch (error) {
+        logger.debug(`Error loading keytar: ${error}`);
         // If we can't load up keytar, tell the user that maybe they should just stick to env vars.
         throw new TwilioCliError('Secure credential storage failed to load.\n\n' + HELP_ENVIRONMENT_VARIABLES);
       }
