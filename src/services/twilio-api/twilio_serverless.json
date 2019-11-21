@@ -799,7 +799,7 @@
         "description": "Retrieve a list of all asset versions.",
         "parameters": [
           {
-            "description": "The SID of the Service to read the AssetVersion resource from.",
+            "description": "The SID of the Service to read the Asset Version resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -808,7 +808,7 @@
             }
           },
           {
-            "description": "The SID of the Asset resource that is the parent of the AssetVersion resources to read.",
+            "description": "The SID of the Asset resource that is the parent of the Asset Version resources to read.",
             "in": "path",
             "name": "AssetSid",
             "required": true,
@@ -907,7 +907,7 @@
         "description": "Retrieve a specific asset version.",
         "parameters": [
           {
-            "description": "The SID of the Service to fetch the AssetVersion resource from.",
+            "description": "The SID of the Service to fetch the Asset Version resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -916,7 +916,7 @@
             }
           },
           {
-            "description": "The SID of the Asset resource that is the parent of the AssetVersion resource to fetch.",
+            "description": "The SID of the Asset resource that is the parent of the Asset Version resource to fetch.",
             "in": "path",
             "name": "AssetSid",
             "required": true,
@@ -928,7 +928,7 @@
             }
           },
           {
-            "description": "The SID of the AssetVersion resource to fetch.",
+            "description": "The SID of the Asset Version resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1221,7 +1221,7 @@
             }
           },
           {
-            "description": "The list of AssetVersion resource SIDs to include in the build.",
+            "description": "The list of Asset Version resource SIDs to include in the build.",
             "in": "query",
             "name": "AssetVersions",
             "required": false,
@@ -2560,10 +2560,10 @@
     "/v1/Services/{ServiceSid}/Functions/{FunctionSid}/Versions": {
       "description": "The content of a Function.",
       "get": {
-        "description": "Retrieve a list of all FunctionVersion resources.",
+        "description": "Retrieve a list of all Function Version resources.",
         "parameters": [
           {
-            "description": "The SID of the Service to read the FunctionVersion resources from.",
+            "description": "The SID of the Service to read the Function Version resources from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2572,7 +2572,7 @@
             }
           },
           {
-            "description": "The SID of the function that is the parent of the FunctionVersion resources to read.",
+            "description": "The SID of the function that is the parent of the Function Version resources to read.",
             "in": "path",
             "name": "FunctionSid",
             "required": true,
@@ -2668,10 +2668,10 @@
     "/v1/Services/{ServiceSid}/Functions/{FunctionSid}/Versions/{Sid}": {
       "description": "The content of a Function.",
       "get": {
-        "description": "Retrieve a specific FunctionVersion resource.",
+        "description": "Retrieve a specific Function Version resource.",
         "parameters": [
           {
-            "description": "The SID of the Service to fetch the FunctionVersion resource from.",
+            "description": "The SID of the Service to fetch the Function Version resource from.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -2680,7 +2680,7 @@
             }
           },
           {
-            "description": "The SID of the function that is the parent of the FunctionVersion resource to fetch.",
+            "description": "The SID of the function that is the parent of the Function Version resource to fetch.",
             "in": "path",
             "name": "FunctionSid",
             "required": true,
@@ -2692,7 +2692,7 @@
             }
           },
           {
-            "description": "The SID of the FunctionVersion resource to fetch.",
+            "description": "The SID of the Function Version resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,

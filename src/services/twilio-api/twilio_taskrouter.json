@@ -7422,6 +7422,15 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "description": "Whether or not to re-evaluate Tasks. The default is `false`, which means Tasks in the Workflow will not be processed through the assignment loop again.",
+            "in": "query",
+            "name": "ReEvaluateTasks",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {

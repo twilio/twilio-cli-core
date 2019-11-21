@@ -1,6 +1,15 @@
 twilio-cli-core changelog
 =====================
 
+[2019-11-21] Version 4.3.3
+--------------------------
+**Library**
+- [PR #75](https://github.com/twilio/twilio-cli-core/pull/75): fix: add keytar sanity-check during install. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Chat**
+- Added `delete` method in UserChannel resource
+
+
 [2019-11-19] Version 4.3.2
 --------------------------
 **Library**

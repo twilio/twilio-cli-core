@@ -1415,6 +1415,15 @@
             }
           },
           {
+            "description": "URL to send webhooks.",
+            "in": "query",
+            "name": "DeliveryCallbackUrl",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Delivery will be attempted only to Bindings with an Identity in this list. No more than 20 items are allowed in this list.",
             "in": "query",
             "name": "Identity",
@@ -1672,6 +1681,24 @@
             "required": false,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "description": "URL to send delivery status callback.",
+            "in": "query",
+            "name": "DeliveryCallbackUrl",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Callback configuration that enables delivery callbacks, default false",
+            "in": "query",
+            "name": "DeliveryCallbackEnabled",
+            "required": false,
+            "schema": {
+              "type": "boolean"
             }
           }
         ],

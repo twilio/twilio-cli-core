@@ -8747,6 +8747,54 @@
       "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Users/{UserSid}/Channels/{ChannelSid}": {
+      "delete": {
+        "description": "Removes User from selected Channel.",
+        "parameters": [
+          {
+            "description": "The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resources from.",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^IS[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the [User](https://www.twilio.com/docs/api/chat/rest/users) to read the User Channel resources from.",
+            "in": "path",
+            "name": "UserSid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the resource belongs to.",
+            "in": "path",
+            "name": "ChannelSid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "GA"
+        ]
+      },
       "description": "List of channels for a given user",
       "get": {
         "description": "",
