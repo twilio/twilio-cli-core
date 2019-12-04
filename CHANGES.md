@@ -1,6 +1,12 @@
 twilio-cli-core changelog
 =====================
 
+[2019-12-04] Version 4.3.4
+--------------------------
+**Conversations**
+- Allow Messaging Service update
+
+
 [2019-11-21] Version 4.3.3
 --------------------------
 **Library**

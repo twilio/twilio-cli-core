@@ -367,6 +367,9 @@
             "name": "MessagingServiceSid",
             "required": false,
             "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^MG[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -1840,6 +1843,18 @@
             "name": "Attributes",
             "required": false,
             "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique id of the [SMS Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.",
+            "in": "query",
+            "name": "MessagingServiceSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^MG[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }

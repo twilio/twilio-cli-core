@@ -8,7 +8,7 @@
     "@oclif/command": "^1.5.19",
     "@oclif/config": "^1.13.3",
     "@oclif/errors": "^1.2.2",
-    "@oclif/plugin-help": "^2.2.1",
+    "@oclif/plugin-help": "^2.2.2",
     "@oclif/plugin-plugins": "^1.7.8",
     "chalk": "^2.4.2",
     "columnify": "^1.5.4",
@@ -18,7 +18,7 @@
     "semver": "^6.3.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",
-    "twilio": "^3.37.1"
+    "twilio": "^3.38.0"
   },
   "optionalDependencies": {
     "keytar": "^4.13.0"

@@ -1653,7 +1653,7 @@
             }
           },
           {
-            "description": "The verification method to use. Can be: `email`, `sms` or `call`.",
+            "description": "The verification method to use. Can be: `email`([*])[#email-channel-availability], `sms` or `call`.",
             "in": "query",
             "name": "Channel",
             "required": true,
