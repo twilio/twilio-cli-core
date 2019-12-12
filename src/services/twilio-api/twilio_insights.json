@@ -36,9 +36,6 @@
           "carrier_edge": {
             "type": "object"
           },
-          "client": {
-            "type": "object"
-          },
           "client_edge": {
             "type": "object"
           },
@@ -51,9 +48,6 @@
               "client_edge"
             ],
             "type": "string"
-          },
-          "gateway": {
-            "type": "object"
           },
           "group": {
             "type": "string"
@@ -100,9 +94,6 @@
           "carrier_edge": {
             "type": "object"
           },
-          "client": {
-            "type": "object"
-          },
           "client_edge": {
             "type": "object"
           },
@@ -124,9 +115,6 @@
               "client_edge"
             ],
             "type": "string"
-          },
-          "gateway": {
-            "type": "object"
           },
           "sdk_edge": {
             "type": "object"

@@ -91,6 +91,12 @@
             },
             "type": "array"
           },
+          "participant_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^MB[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "sid": {
             "maxLength": 34,
             "minLength": 34,

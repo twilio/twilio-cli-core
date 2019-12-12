@@ -1628,6 +1628,12 @@
           "beta": {
             "type": "boolean"
           },
+          "bundle_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BU[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "capabilities": {
             "type": "object"
           },
@@ -1930,6 +1936,12 @@
           "beta": {
             "type": "boolean"
           },
+          "bundle_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BU[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "capabilities": {
             "type": "object"
           },
@@ -1939,6 +1951,19 @@
           },
           "date_updated": {
             "format": "date-time-rfc-2822",
+            "type": "string"
+          },
+          "emergency_address_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AD[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "emergency_status": {
+            "enum": [
+              "Active",
+              "Inactive"
+            ],
             "type": "string"
           },
           "friendly_name": {
@@ -2124,6 +2149,12 @@
           "beta": {
             "type": "boolean"
           },
+          "bundle_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BU[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "capabilities": {
             "type": "object"
           },
@@ -2133,6 +2164,19 @@
           },
           "date_updated": {
             "format": "date-time-rfc-2822",
+            "type": "string"
+          },
+          "emergency_address_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AD[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "emergency_status": {
+            "enum": [
+              "Active",
+              "Inactive"
+            ],
             "type": "string"
           },
           "friendly_name": {
@@ -2318,6 +2362,12 @@
           "beta": {
             "type": "boolean"
           },
+          "bundle_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BU[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "capabilities": {
             "type": "object"
           },
@@ -2327,6 +2377,19 @@
           },
           "date_updated": {
             "format": "date-time-rfc-2822",
+            "type": "string"
+          },
+          "emergency_address_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AD[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "emergency_status": {
+            "enum": [
+              "Active",
+              "Inactive"
+            ],
             "type": "string"
           },
           "friendly_name": {
@@ -11165,21 +11228,21 @@
             }
           },
           {
-            "description": "TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored.",
-            "in": "query",
-            "name": "Twiml",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls).",
             "in": "query",
             "name": "Url",
             "required": false,
             "schema": {
               "format": "uri",
+              "type": "string"
+            }
+          },
+          {
+            "description": "TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored.",
+            "in": "query",
+            "name": "Twiml",
+            "required": false,
+            "schema": {
               "type": "string"
             }
           },
@@ -14961,6 +15024,18 @@
             }
           },
           {
+            "description": "The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.",
+            "in": "query",
+            "name": "BundleSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BU[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
             "description": "The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.",
             "in": "query",
             "name": "PhoneNumber",
@@ -15394,6 +15469,68 @@
               "pattern": "^AD[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "The configuration status parameter that determines whether the new phone number is enabled for emergency calling.",
+            "in": "query",
+            "name": "EmergencyStatus",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Active",
+                "Inactive"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the emergency address configuration to use for emergency calling from the new phone number.",
+            "in": "query",
+            "name": "EmergencyAddressSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^AD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.",
+            "in": "query",
+            "name": "TrunkSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^TR[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.",
+            "in": "query",
+            "name": "VoiceReceiveMode",
+            "required": false,
+            "schema": {
+              "enum": [
+                "voice",
+                "fax"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.",
+            "in": "query",
+            "name": "BundleSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BU[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -15811,6 +15948,68 @@
               "pattern": "^AD[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "The configuration status parameter that determines whether the new phone number is enabled for emergency calling.",
+            "in": "query",
+            "name": "EmergencyStatus",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Active",
+                "Inactive"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the emergency address configuration to use for emergency calling from the new phone number.",
+            "in": "query",
+            "name": "EmergencyAddressSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^AD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.",
+            "in": "query",
+            "name": "TrunkSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^TR[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.",
+            "in": "query",
+            "name": "VoiceReceiveMode",
+            "required": false,
+            "schema": {
+              "enum": [
+                "voice",
+                "fax"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.",
+            "in": "query",
+            "name": "BundleSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BU[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -16226,6 +16425,68 @@
               "maxLength": 34,
               "minLength": 34,
               "pattern": "^AD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The configuration status parameter that determines whether the new phone number is enabled for emergency calling.",
+            "in": "query",
+            "name": "EmergencyStatus",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Active",
+                "Inactive"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the emergency address configuration to use for emergency calling from the new phone number.",
+            "in": "query",
+            "name": "EmergencyAddressSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^AD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.",
+            "in": "query",
+            "name": "TrunkSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^TR[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.",
+            "in": "query",
+            "name": "VoiceReceiveMode",
+            "required": false,
+            "schema": {
+              "enum": [
+                "voice",
+                "fax"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.",
+            "in": "query",
+            "name": "BundleSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BU[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -17186,6 +17447,18 @@
               "maxLength": 34,
               "minLength": 34,
               "pattern": "^AD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.",
+            "in": "query",
+            "name": "BundleSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BU[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }

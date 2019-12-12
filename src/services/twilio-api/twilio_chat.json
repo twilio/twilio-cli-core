@@ -8887,12 +8887,32 @@
             "description": "The push notification level to assign to the User Channel. Can be: `default` or `muted`.",
             "in": "query",
             "name": "NotificationLevel",
-            "required": true,
+            "required": false,
             "schema": {
               "enum": [
                 "default",
                 "muted"
               ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The index of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) in the [Channel](https://www.twilio.com/docs/chat/channels) that the Member has read.",
+            "in": "query",
+            "name": "LastConsumedMessageIndex",
+            "required": false,
+            "schema": {
+              "nullable": true,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).",
+            "in": "query",
+            "name": "LastConsumptionTimestamp",
+            "required": false,
+            "schema": {
+              "format": "date-time",
               "type": "string"
             }
           }
