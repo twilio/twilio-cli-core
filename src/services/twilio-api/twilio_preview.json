@@ -1383,6 +1383,76 @@
         },
         "type": "object"
       },
+      "preview.trusted_comms.business": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "links": {
+            "type": "object"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BX[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "preview.trusted_comms.business.insights": {
+        "properties": {},
+        "type": "object"
+      },
+      "preview.trusted_comms.business.insights.insights_success_rate": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "business_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BX[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "end": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "interval": {
+            "enum": [
+              "minute",
+              "hour",
+              "day",
+              "week",
+              "month"
+            ],
+            "type": "string"
+          },
+          "reports": {
+            "type": "object"
+          },
+          "start": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "preview.trusted_comms.cps": {
         "properties": {
           "cps_url": {
@@ -8811,6 +8881,192 @@
         "use_case"
       ],
       "x-path-type": "list"
+    },
+    "/TrustedComms/Businesses/{BusinessSid}/Insights/SuccessRate": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "Fetch a specific Success Rate.",
+        "parameters": [
+          {
+            "description": "The unique SID identifier of the Business to filter by.",
+            "in": "path",
+            "name": "BusinessSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BX[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique SID identifier of the Brand to filter by.",
+            "in": "query",
+            "name": "BrandSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BZ[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique SID identifier of the Branded Channel to filter by.",
+            "in": "query",
+            "name": "BrandedChannelSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique SID identifier of the Phone Number to filter by.",
+            "in": "query",
+            "name": "PhoneNumberSid",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^PN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The 2-letter ISO 3166 code of the Country to filter by.",
+            "in": "query",
+            "name": "Country",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The start date that for this Success Rate, given in ISO 8601 format. Default value is 30 days ago.",
+            "in": "query",
+            "name": "Start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The end date that for this Success Rate, given in ISO 8601 format. Default value is current timestamp.",
+            "in": "query",
+            "name": "End",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Interval of this Success Rate. One of `minute`, `hour`, `day`, `week` or `month`.",
+            "in": "query",
+            "name": "Interval",
+            "required": false,
+            "schema": {
+              "enum": [
+                "minute",
+                "hour",
+                "day",
+                "week",
+                "month"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/preview.trusted_comms.business.insights.insights_success_rate"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://preview.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "account_sid",
+        "start",
+        "end",
+        "interval",
+        "business_sid",
+        "reports",
+        "url"
+      ],
+      "x-path-type": "instance"
+    },
+    "/TrustedComms/Businesses/{Sid}": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "Fetch a specific Business.",
+        "parameters": [
+          {
+            "description": "A 34 character string that uniquely identifies this Business.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BX[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/preview.trusted_comms.business"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://preview.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "account_sid",
+        "sid",
+        "url",
+        "links"
+      ],
+      "x-path-type": "instance"
     },
     "/TrustedComms/CPS": {
       "description": "TODO: Resource-level docs",
