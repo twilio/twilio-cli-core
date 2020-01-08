@@ -403,6 +403,131 @@
           }
         },
         "type": "object"
+      },
+      "studio.v2.flow": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "commit_message": {
+            "type": "string"
+          },
+          "date_created": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "date_updated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "definition": {
+            "type": "object"
+          },
+          "errors": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "friendly_name": {
+            "type": "string"
+          },
+          "links": {
+            "type": "object"
+          },
+          "revision": {
+            "type": "integer"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FW[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "published"
+            ],
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          },
+          "valid": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "studio.v2.flow.flow_revision": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "commit_message": {
+            "type": "string"
+          },
+          "date_created": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "date_updated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "definition": {
+            "type": "object"
+          },
+          "errors": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "friendly_name": {
+            "type": "string"
+          },
+          "revision": {
+            "type": "integer"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FW[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "published"
+            ],
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          },
+          "valid": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "studio.v2.flow_validate": {
+        "properties": {
+          "valid": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
       }
     },
     "securitySchemes": {
@@ -1784,12 +1909,559 @@
         "version"
       ],
       "x-path-type": "instance"
+    },
+    "/v2/Flows": {
+      "description": "Studio flows",
+      "get": {
+        "description": "Retrieve a list of all Flows.",
+        "parameters": [
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "flows": {
+                      "items": {
+                        "$ref": "#/components/schemas/studio.v2.flow"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "post": {
+        "description": "Create a Flow.",
+        "parameters": [
+          {
+            "description": "The string that you assigned to describe the Flow.",
+            "in": "query",
+            "name": "FriendlyName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The status of the Flow. Can be: `draft` or `published`.",
+            "in": "query",
+            "name": "Status",
+            "required": true,
+            "schema": {
+              "enum": [
+                "draft",
+                "published"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON representation of flow definition.",
+            "in": "query",
+            "name": "Definition",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Description on change made in the revision.",
+            "in": "query",
+            "name": "CommitMessage",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://studio.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "friendly_name",
+        "status",
+        "revision"
+      ],
+      "x-path-type": "list"
+    },
+    "/v2/Flows/Validate": {
+      "description": "TODO: Resource-level docs",
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "query",
+            "name": "FriendlyName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "Status",
+            "required": true,
+            "schema": {
+              "enum": [
+                "draft",
+                "published"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "Definition",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "CommitMessage",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow_validate"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://studio.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "valid"
+      ],
+      "x-path-type": "list"
+    },
+    "/v2/Flows/{Sid}": {
+      "delete": {
+        "description": "Delete a specific Flow.",
+        "parameters": [
+          {
+            "description": "The SID of the Flow resource to delete.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "description": "Studio flows",
+      "get": {
+        "description": "Retrieve a specific Flow.",
+        "parameters": [
+          {
+            "description": "The SID of the Flow resource to fetch.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "post": {
+        "description": "Update a Flow.",
+        "parameters": [
+          {
+            "description": "The SID of the Flow resource to fetch.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The status of the Flow. Can be: `draft` or `published`.",
+            "in": "query",
+            "name": "Status",
+            "required": true,
+            "schema": {
+              "enum": [
+                "draft",
+                "published"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The string that you assigned to describe the Flow.",
+            "in": "query",
+            "name": "FriendlyName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON representation of flow definition.",
+            "in": "query",
+            "name": "Definition",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Description on change made in the revision.",
+            "in": "query",
+            "name": "CommitMessage",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://studio.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "friendly_name",
+        "status",
+        "revision"
+      ],
+      "x-path-type": "instance"
+    },
+    "/v2/Flows/{Sid}/Revisions": {
+      "description": "Studio flows revisions",
+      "get": {
+        "description": "Retrieve a list of all Flows revisions.",
+        "parameters": [
+          {
+            "description": "The SID of the Flow resource to fetch.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "revisions": {
+                      "items": {
+                        "$ref": "#/components/schemas/studio.v2.flow.flow_revision"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://studio.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "friendly_name",
+        "status",
+        "revision"
+      ],
+      "x-path-type": "list"
+    },
+    "/v2/Flows/{Sid}/Revisions/{Revision}": {
+      "description": "Studio flows revisions",
+      "get": {
+        "description": "Retrieve a specific Flow revision.",
+        "parameters": [
+          {
+            "description": "The SID of the Flow resource to fetch.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Specific Revision number or can be `LatestPublished` and `LatestRevision`.",
+            "in": "path",
+            "name": "Revision",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow.flow_revision"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://studio.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "friendly_name",
+        "status",
+        "revision"
+      ],
+      "x-path-type": "instance"
     }
   },
   "tags": [
     {
       "description": "This product is Generally Available.",
       "name": "GA"
+    },
+    {
+      "description": "PLEASE NOTE that this is a Beta product that is subject to change. Use it with caution.",
+      "name": "Beta"
     }
   ]
 }

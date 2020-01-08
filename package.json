@@ -18,7 +18,7 @@
     "semver": "^6.3.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",
-    "twilio": "^3.39.1"
+    "twilio": "^3.39.2"
   },
   "optionalDependencies": {
     "keytar": "^4.13.0"
@@ -31,7 +31,7 @@
     "eslint-config-oclif": "^1.5.1",
     "eslint-plugin-mocha": "^5.3.0",
     "mocha": "^5.2.0",
-    "nock": "^11.7.0",
+    "nock": "^11.7.2",
     "nyc": "^14.1.1",
     "sinon": "^6.3.5",
     "tmp": "0.0.33"
