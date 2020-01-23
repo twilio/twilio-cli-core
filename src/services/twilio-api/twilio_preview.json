@@ -1,138 +1,6 @@
 {
   "components": {
     "schemas": {
-      "preview.acc_security.service": {
-        "properties": {
-          "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "code_length": {
-            "type": "integer"
-          },
-          "date_created": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "date_updated": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "links": {
-            "type": "object"
-          },
-          "name": {
-            "type": "string"
-          },
-          "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^VA[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "url": {
-            "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "preview.acc_security.service.verification": {
-        "properties": {
-          "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "channel": {
-            "enum": [
-              "sms",
-              "call"
-            ],
-            "type": "string"
-          },
-          "date_created": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "date_updated": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^VA[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^VE[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "to": {
-            "type": "string"
-          },
-          "valid": {
-            "type": "boolean"
-          }
-        },
-        "type": "object"
-      },
-      "preview.acc_security.service.verification_check": {
-        "properties": {
-          "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "channel": {
-            "enum": [
-              "sms",
-              "call"
-            ],
-            "type": "string"
-          },
-          "date_created": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "date_updated": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^VA[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^VE[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "to": {
-            "type": "string"
-          },
-          "valid": {
-            "type": "boolean"
-          }
-        },
-        "type": "object"
-      },
       "preview.bulk_exports.export": {
         "properties": {
           "links": {
@@ -211,6 +79,9 @@
           "details": {
             "type": "object"
           },
+          "email": {
+            "type": "string"
+          },
           "end_day": {
             "type": "string"
           },
@@ -231,6 +102,12 @@
           },
           "url": {
             "format": "uri",
+            "type": "string"
+          },
+          "webhook_method": {
+            "type": "string"
+          },
+          "webhook_url": {
             "type": "string"
           }
         },
@@ -2605,10 +2482,10 @@
     "/BulkExports/Exports/{ResourceType}": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": "",
+        "description": "Fetch a specific Export.",
         "parameters": [
           {
-            "description": "",
+            "description": "The type of communication \u2013 Messages, Calls",
             "in": "path",
             "name": "ResourceType",
             "required": true,
@@ -2648,10 +2525,10 @@
     "/BulkExports/Exports/{ResourceType}/Configuration": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": "",
+        "description": "Fetch a specific Export Configuration.",
         "parameters": [
           {
-            "description": "",
+            "description": "The type of communication \u2013 Messages, Calls",
             "in": "path",
             "name": "ResourceType",
             "required": true,
@@ -2681,10 +2558,10 @@
         ]
       },
       "post": {
-        "description": "",
+        "description": "Update a specific Export Configuration.",
         "parameters": [
           {
-            "description": "",
+            "description": "The type of communication \u2013 Messages, Calls",
             "in": "path",
             "name": "ResourceType",
             "required": true,
@@ -2693,7 +2570,7 @@
             }
           },
           {
-            "description": "",
+            "description": "If true, Twilio will automatically generate every day's file when the day is over.",
             "in": "query",
             "name": "Enabled",
             "required": false,
@@ -2702,7 +2579,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Stores the URL destination for the method specified in webhook_method.",
             "in": "query",
             "name": "WebhookUrl",
             "required": false,
@@ -2712,7 +2589,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Sets whether Twilio should call a webhook URL when the automatic generation is complete, using GET or POST. The actual destination is set in the webhook_url",
             "in": "query",
             "name": "WebhookMethod",
             "required": false,
@@ -2752,10 +2629,10 @@
     "/BulkExports/Exports/{ResourceType}/Days": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": "",
+        "description": "Retrieve a list of all Days for a resource.",
         "parameters": [
           {
-            "description": "",
+            "description": "The type of communication \u2013 Messages, Calls",
             "in": "path",
             "name": "ResourceType",
             "required": true,
@@ -2843,10 +2720,10 @@
     "/BulkExports/Exports/{ResourceType}/Days/{Day}": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": "",
+        "description": "Fetch a specific Day.",
         "parameters": [
           {
-            "description": "",
+            "description": "The type of communication \u2013 Messages, Calls",
             "in": "path",
             "name": "ResourceType",
             "required": true,
@@ -2855,7 +2732,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The ISO 8601 format date of the resources in the file, for a UTC day",
             "in": "path",
             "name": "Day",
             "required": true,
@@ -9209,367 +9086,6 @@
         "url"
       ],
       "x-path-type": "list"
-    },
-    "/Verification/Services": {
-      "description": "TODO: Resource-level docs",
-      "get": {
-        "description": "Retrieve a list of all Phone Verification Services for an account.",
-        "parameters": [
-          {
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
-            "in": "query",
-            "name": "PageSize",
-            "schema": {
-              "maximum": 1000,
-              "minimum": 1,
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "meta": {
-                      "properties": {
-                        "first_page_url": {
-                          "format": "uri",
-                          "type": "string"
-                        },
-                        "key": {
-                          "type": "string"
-                        },
-                        "next_page_url": {
-                          "format": "uri",
-                          "type": "string"
-                        },
-                        "page": {
-                          "type": "integer"
-                        },
-                        "page_size": {
-                          "type": "integer"
-                        },
-                        "previous_page_url": {
-                          "format": "uri",
-                          "type": "string"
-                        },
-                        "url": {
-                          "format": "uri",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "services": {
-                      "items": {
-                        "$ref": "#/components/schemas/preview.acc_security.service"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "post": {
-        "description": "Create a new Verification Service.",
-        "parameters": [
-          {
-            "description": "A 1-64 character string with friendly name of service",
-            "in": "query",
-            "name": "Name",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The length of the verification code to be generated. Must be an integer value between 4-10",
-            "in": "query",
-            "name": "CodeLength",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/preview.acc_security.service"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "servers": [
-        {
-          "url": "https://preview.twilio.com"
-        }
-      ],
-      "x-default-output-properties": [],
-      "x-path-type": "list"
-    },
-    "/Verification/Services/{ServiceSid}/VerificationCheck": {
-      "description": "TODO: Resource-level docs",
-      "post": {
-        "description": "challenge a specific Verification Check.",
-        "parameters": [
-          {
-            "description": "A 34 character string that uniquely identifies the Service.",
-            "in": "path",
-            "name": "ServiceSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^VA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The 4-10 character string being verified",
-            "in": "query",
-            "name": "Code",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The To phonenumber of the phone being verified",
-            "in": "query",
-            "name": "To",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/preview.acc_security.service.verification_check"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "servers": [
-        {
-          "url": "https://preview.twilio.com"
-        }
-      ],
-      "x-default-output-properties": [],
-      "x-path-type": "list"
-    },
-    "/Verification/Services/{ServiceSid}/Verifications": {
-      "description": "TODO: Resource-level docs",
-      "post": {
-        "description": "Create a new Verification for a To number using a Service",
-        "parameters": [
-          {
-            "description": "The unique SID identifier of the Service.",
-            "in": "path",
-            "name": "ServiceSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^VA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The To phonenumber of the phone being verified",
-            "in": "query",
-            "name": "To",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The method in which the phone will be verified. Either sms or call",
-            "in": "query",
-            "name": "Channel",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A character string containing a custom message for this verification",
-            "in": "query",
-            "name": "CustomMessage",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/preview.acc_security.service.verification"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "servers": [
-        {
-          "url": "https://preview.twilio.com"
-        }
-      ],
-      "x-default-output-properties": [],
-      "x-path-type": "list"
-    },
-    "/Verification/Services/{Sid}": {
-      "description": "TODO: Resource-level docs",
-      "get": {
-        "description": "Fetch specific Verification Service Instance.",
-        "parameters": [
-          {
-            "description": "The unique SID identifier of Verification Service Instance.",
-            "in": "path",
-            "name": "Sid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^VA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/preview.acc_security.service"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "post": {
-        "description": "Update a specific Phone Verification Service.",
-        "parameters": [
-          {
-            "description": "The unique SID identifier of the Service.",
-            "in": "path",
-            "name": "Sid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^VA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "A 1-64 character string with friendly name of service",
-            "in": "query",
-            "name": "Name",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The length of the verification code to be generated. Must be an integer value between 4-10",
-            "in": "query",
-            "name": "CodeLength",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/preview.acc_security.service"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "servers": [
-        {
-          "url": "https://preview.twilio.com"
-        }
-      ],
-      "x-default-output-properties": [],
-      "x-path-type": "instance"
     },
     "/marketplace/AvailableAddOns": {
       "description": "TODO: Resource-level docs",

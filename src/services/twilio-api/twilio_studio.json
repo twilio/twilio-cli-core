@@ -2015,7 +2015,7 @@
             "name": "Definition",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "object"
             }
           },
           {
@@ -2094,7 +2094,7 @@
             "name": "Definition",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "object"
             }
           },
           {
@@ -2248,7 +2248,7 @@
             "name": "Definition",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": "object"
             }
           },
           {

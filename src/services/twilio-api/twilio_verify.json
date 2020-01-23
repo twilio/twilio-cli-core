@@ -20,6 +20,9 @@
             "format": "date-time",
             "type": "string"
           },
+          "do_not_share_warning_enabled": {
+            "type": "boolean"
+          },
           "dtmf_input_required": {
             "type": "boolean"
           },
@@ -458,6 +461,15 @@
             "description": "Whether to pass PSD2 transaction parameters when starting a verification.",
             "in": "query",
             "name": "Psd2Enabled",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS.**",
+            "in": "query",
+            "name": "DoNotShareWarningEnabled",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -1732,6 +1744,15 @@
             "schema": {
               "type": "object"
             }
+          },
+          {
+            "description": "Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be included at the end of an SMS. **Only applies for SMS.**",
+            "in": "query",
+            "name": "AppHash",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2030,6 +2051,15 @@
             "description": "Whether to pass PSD2 transaction parameters when starting a verification.",
             "in": "query",
             "name": "Psd2Enabled",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS.**",
+            "in": "query",
+            "name": "DoNotShareWarningEnabled",
             "required": false,
             "schema": {
               "type": "boolean"
