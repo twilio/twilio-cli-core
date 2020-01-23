@@ -13,3 +13,4 @@ deploy:
     tags: true
     node: lts/*
     skip_cleanup: true
+    edge: true
