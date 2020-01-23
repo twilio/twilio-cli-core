@@ -1,6 +1,12 @@
 twilio-cli-core changelog
 =====================
 
+[2020-01-23] Version 4.4.4
+--------------------------
+**Library - Fix**
+- [PR #77](https://github.com/twilio/twilio-cli-core/pull/77): travis deploy config. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+
 [2020-01-23] Version 4.4.3
 --------------------------
 **Library - Fix**
