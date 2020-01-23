@@ -12,3 +12,5 @@ deploy:
   on:
     tags: true
     node: lts/*
+    skip_cleanup: true
+    edge: true
