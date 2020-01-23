@@ -3,6 +3,12 @@ twilio-cli-core changelog
 
 [2020-01-23] Version 4.4.3
 --------------------------
+**Library - Fix**
+- [PR #76](https://github.com/twilio/twilio-cli-core/pull/76): update travis deploy. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+
+[2020-01-23] Version 4.4.3
+--------------------------
 **Api**
 - Add payments public APIs
 - Add optional parameter `byoc` to call create request.
