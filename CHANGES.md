@@ -1,6 +1,28 @@
 twilio-cli-core changelog
 =====================
 
+[2020-02-05] Version 4.4.5
+--------------------------
+**Library - Docs**
+- [PR #78](https://github.com/twilio/twilio-cli-core/pull/78): baseline all the templated markdown docs. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Making content retention and address retention public
+- Update `status` enum for Messages to include 'partially_delivered'
+
+**Authy**
+- Added support for push factors
+
+**Autopilot**
+- Add one new property in Query i.e dialogue_sid
+
+**Verify**
+- Add `SendCodeAttempts` to create verification response.
+
+**Video**
+- Clarification in composition creation documentation: one source is mandatory, either `audio_sources` or `video_layout`, but on of them has to be provided
+
+
 [2020-01-23] Version 4.4.4
 --------------------------
 **Library - Fix**

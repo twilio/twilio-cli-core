@@ -219,6 +219,9 @@
           "payee": {
             "type": "string"
           },
+          "send_code_attempts": {
+            "type": "object"
+          },
           "service_sid": {
             "maxLength": 34,
             "minLength": 34,
@@ -1564,7 +1567,7 @@
             }
           },
           {
-            "description": "The phone number or [email](https://www.twilio.com/docs/verify/tutorials/email) to verify. Either this parameter or the `verification_sid` must be specified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
+            "description": "The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Either this parameter or the `verification_sid` must be specified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
             "in": "query",
             "name": "To",
             "required": false,
@@ -1573,7 +1576,7 @@
             }
           },
           {
-            "description": "A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number/[email](https://www.twilio.com/docs/verify/tutorials/email) must be specified.",
+            "description": "A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number/[email](https://www.twilio.com/docs/verify/email) must be specified.",
             "in": "query",
             "name": "VerificationSid",
             "required": false,
@@ -1656,7 +1659,7 @@
             }
           },
           {
-            "description": "The phone number or email to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
+            "description": "The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
             "in": "query",
             "name": "To",
             "required": true,
@@ -1665,7 +1668,7 @@
             }
           },
           {
-            "description": "The verification method to use. Can be: [`email`*](#email-channel-availability), `sms` or `call`.",
+            "description": "The verification method to use. Can be: [`email`](https://www.twilio.com/docs/verify/email), `sms` or `call`.",
             "in": "query",
             "name": "Channel",
             "required": true,
@@ -1737,7 +1740,7 @@
             }
           },
           {
-            "description": "`email` channel configuration in json format. Must include 'from' and 'from_name'.",
+            "description": "[`email`](https://www.twilio.com/docs/verify/email) channel configuration in json format. Must include 'from' and 'from_name'.",
             "in": "query",
             "name": "ChannelConfiguration",
             "required": false,

@@ -2684,7 +2684,8 @@
               "received",
               "accepted",
               "scheduled",
-              "read"
+              "read",
+              "partially_delivered"
             ],
             "type": "string"
           },
@@ -18341,6 +18342,30 @@
             "required": false,
             "schema": {
               "type": "boolean"
+            }
+          },
+          {
+            "description": "Determines if the message content can be stored or redacted based on privacy settings",
+            "in": "query",
+            "name": "ContentRetention",
+            "required": false,
+            "schema": {
+              "enum": [
+                "retain"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Determines if the address can be stored or obfuscated based on privacy settings",
+            "in": "query",
+            "name": "AddressRetention",
+            "required": false,
+            "schema": {
+              "enum": [
+                "retain"
+              ],
+              "type": "string"
             }
           },
           {

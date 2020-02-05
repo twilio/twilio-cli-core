@@ -329,6 +329,12 @@
             "format": "date-time",
             "type": "string"
           },
+          "dialogue_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^UK[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "language": {
             "type": "string"
           },

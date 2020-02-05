@@ -137,7 +137,8 @@
             "enum": [
               "app-push",
               "sms",
-              "totp"
+              "totp",
+              "push"
             ],
             "type": "string"
           },
@@ -831,7 +832,7 @@
             }
           },
           {
-            "description": "A unique binding for this Factor that identifies it. E.g. a phone number for `sms` factors. Required when creating a new Factor. This value is never returned because it can contain customer secrets.",
+            "description": "A unique binding for this Factor that identifies it. E.g. a phone number for `sms` factors. It must be a json string with the required properties for the given factor type. Required when creating a new Factor. This value is never returned because it can contain customer secrets.",
             "in": "query",
             "name": "Binding",
             "required": true,
@@ -857,7 +858,8 @@
               "enum": [
                 "app-push",
                 "sms",
-                "totp"
+                "totp",
+                "push"
               ],
               "type": "string"
             }
