@@ -6,7 +6,7 @@
   "bugs": "https://github.com/twilio/twilio-cli/issues",
   "dependencies": {
     "@oclif/command": "^1.5.19",
-    "@oclif/config": "^1.13.3",
+    "@oclif/config": "^1.14.0",
     "@oclif/errors": "^1.2.2",
     "@oclif/plugin-help": "^2.2.3",
     "@oclif/plugin-plugins": "^1.7.9",
@@ -14,7 +14,7 @@
     "columnify": "^1.5.4",
     "fs-extra": "^7.0.1",
     "inquirer": "^6.5.2",
-    "request": "^2.88.0",
+    "request": "^2.88.2",
     "semver": "^6.3.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",
@@ -31,7 +31,7 @@
     "eslint-config-oclif": "^1.5.1",
     "eslint-plugin-mocha": "^5.3.0",
     "mocha": "^5.2.0",
-    "nock": "^11.7.2",
+    "nock": "^11.9.1",
     "nyc": "^14.1.1",
     "sinon": "^6.3.5",
     "tmp": "0.0.33"

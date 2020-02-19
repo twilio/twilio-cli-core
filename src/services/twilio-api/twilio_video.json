@@ -1521,9 +1521,6 @@
             "required": false,
             "schema": {
               "items": {
-                "maxLength": 34,
-                "minLength": 34,
-                "pattern": "^[a-zA-Z]{2}[0-9a-fA-F]{32}$",
                 "type": "string"
               },
               "type": "array"

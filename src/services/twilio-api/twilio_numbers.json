@@ -169,6 +169,40 @@
         },
         "type": "object"
       },
+      "numbers.v2.regulatory_compliance.regulation": {
+        "properties": {
+          "end_user_type": {
+            "enum": [
+              "individual",
+              "business"
+            ],
+            "type": "string"
+          },
+          "friendly_name": {
+            "type": "string"
+          },
+          "iso_country": {
+            "type": "string"
+          },
+          "number_type": {
+            "type": "string"
+          },
+          "requirements": {
+            "type": "object"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^RN[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "numbers.v2.regulatory_compliance.supporting_document": {
         "properties": {
           "account_sid": {
@@ -1233,6 +1267,171 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/numbers.v2.regulatory_compliance.end_user"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://numbers.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "friendly_name"
+      ],
+      "x-path-type": "instance"
+    },
+    "/v2/RegulatoryCompliance/Regulations": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "Retrieve a list of all Regulations.",
+        "parameters": [
+          {
+            "description": "The type of End User the regulation requires - can be `individual` or `business`.",
+            "in": "query",
+            "name": "EndUserType",
+            "required": false,
+            "schema": {
+              "enum": [
+                "individual",
+                "business"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The ISO country code of the phone number's country.",
+            "in": "query",
+            "name": "IsoCountry",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The type of phone number that the regulatory requiremnt is restricting.",
+            "in": "query",
+            "name": "NumberType",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "results": {
+                      "items": {
+                        "$ref": "#/components/schemas/numbers.v2.regulatory_compliance.regulation"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://numbers.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "friendly_name"
+      ],
+      "x-path-type": "list"
+    },
+    "/v2/RegulatoryCompliance/Regulations/{Sid}": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "Fetch specific Regulation Instance.",
+        "parameters": [
+          {
+            "description": "The unique string that identifies the Regulation resource.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^RN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/numbers.v2.regulatory_compliance.regulation"
                 }
               }
             }

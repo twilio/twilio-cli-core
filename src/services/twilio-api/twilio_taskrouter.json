@@ -247,6 +247,10 @@
           "task_channel_unique_name": {
             "type": "string"
           },
+          "task_queue_entered_date": {
+            "format": "date-time",
+            "type": "string"
+          },
           "task_queue_friendly_name": {
             "type": "string"
           },
@@ -531,6 +535,9 @@
             "format": "uri",
             "type": "string"
           },
+          "wait_duration_in_queue_until_accepted": {
+            "type": "object"
+          },
           "wait_duration_until_accepted": {
             "type": "object"
           },
@@ -559,6 +566,15 @@
               "type": "object"
             },
             "type": "array"
+          },
+          "longest_relative_task_age_in_queue": {
+            "type": "integer"
+          },
+          "longest_relative_task_sid_in_queue": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^WT[0-9a-fA-F]{32}$",
+            "type": "string"
           },
           "longest_task_waiting_age": {
             "type": "integer"

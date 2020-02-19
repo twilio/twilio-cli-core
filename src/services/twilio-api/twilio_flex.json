@@ -190,6 +190,9 @@
           "ui_attributes": {
             "type": "object"
           },
+          "ui_dependencies": {
+            "type": "object"
+          },
           "ui_language": {
             "type": "string"
           },

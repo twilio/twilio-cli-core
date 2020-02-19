@@ -460,6 +460,183 @@
           },
           "valid": {
             "type": "boolean"
+          },
+          "webhook_url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "studio.v2.flow.execution": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "contact_channel_address": {
+            "type": "string"
+          },
+          "context": {
+            "type": "object"
+          },
+          "date_created": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "date_updated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "flow_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FW[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "links": {
+            "type": "object"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FN[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "ended"
+            ],
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "studio.v2.flow.execution.execution_context": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "context": {
+            "type": "object"
+          },
+          "execution_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FN[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "flow_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FW[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "studio.v2.flow.execution.execution_step": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "context": {
+            "type": "object"
+          },
+          "date_created": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "date_updated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "execution_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FN[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "flow_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FW[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "links": {
+            "type": "object"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FT[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "transitioned_from": {
+            "type": "string"
+          },
+          "transitioned_to": {
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "studio.v2.flow.execution.execution_step.execution_step_context": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "context": {
+            "type": "object"
+          },
+          "execution_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FN[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "flow_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FW[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "step_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FT[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
           }
         },
         "type": "object"
@@ -517,6 +694,27 @@
           },
           "valid": {
             "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "studio.v2.flow.test_user": {
+        "properties": {
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^FW[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "test_users": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
           }
         },
         "type": "object"
@@ -2137,6 +2335,607 @@
       ],
       "x-path-type": "list"
     },
+    "/v2/Flows/{FlowSid}/Executions": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "FlowSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "DateCreatedFrom",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "DateCreatedTo",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "executions": {
+                      "items": {
+                        "$ref": "#/components/schemas/studio.v2.flow.execution"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "FlowSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "To",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "From",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "Parameters",
+            "required": false,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow.execution"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://studio.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "status",
+        "date_created"
+      ],
+      "x-path-type": "list"
+    },
+    "/v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Context": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "FlowSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "ExecutionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow.execution.execution_context"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://studio.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "context"
+      ],
+      "x-path-type": "instance"
+    },
+    "/v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "FlowSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "ExecutionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "steps": {
+                      "items": {
+                        "$ref": "#/components/schemas/studio.v2.flow.execution.execution_step"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://studio.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "name",
+        "date_created"
+      ],
+      "x-path-type": "list"
+    },
+    "/v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps/{Sid}": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "FlowSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "ExecutionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FT[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow.execution.execution_step"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://studio.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "name",
+        "date_created"
+      ],
+      "x-path-type": "instance"
+    },
+    "/v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps/{StepSid}/Context": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "FlowSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "ExecutionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "StepSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FT[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow.execution.execution_step.execution_step_context"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://studio.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "context"
+      ],
+      "x-path-type": "instance"
+    },
+    "/v2/Flows/{FlowSid}/Executions/{Sid}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "FlowSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "FlowSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow.execution"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://studio.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "status",
+        "date_created"
+      ],
+      "x-path-type": "instance"
+    },
     "/v2/Flows/{Sid}": {
       "delete": {
         "description": "Delete a specific Flow.",
@@ -2450,6 +3249,102 @@
         "friendly_name",
         "status",
         "revision"
+      ],
+      "x-path-type": "instance"
+    },
+    "/v2/Flows/{Sid}/TestUsers": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow.test_user"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "TestUsers",
+            "required": true,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow.test_user"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://studio.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "test_users"
       ],
       "x-path-type": "instance"
     }

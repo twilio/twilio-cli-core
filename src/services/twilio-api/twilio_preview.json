@@ -2408,7 +2408,7 @@
         "description": "",
         "parameters": [
           {
-            "description": "",
+            "description": "The unique string that that we created to identify the Bulk Export job",
             "in": "path",
             "name": "JobSid",
             "required": true,

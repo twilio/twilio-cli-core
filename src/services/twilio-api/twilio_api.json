@@ -924,6 +924,9 @@
           "price_unit": {
             "type": "string"
           },
+          "queue_time": {
+            "type": "string"
+          },
           "sid": {
             "maxLength": 34,
             "minLength": 34,
@@ -954,6 +957,12 @@
             "type": "string"
           },
           "to_formatted": {
+            "type": "string"
+          },
+          "trunk_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^TR[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "uri": {
@@ -11264,6 +11273,48 @@
             }
           },
           {
+            "description": "Select whether to perform answering machine detection in the background. Default, blocks the execution of the call until Answering Machine Detection is completed. Can be: `true` or `false`.",
+            "in": "query",
+            "name": "AsyncAmd",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The URL that we should call using the `async_amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.",
+            "in": "query",
+            "name": "AsyncAmdStatusCallback",
+            "required": false,
+            "schema": {
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The HTTP method we should use when calling the `async_amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.",
+            "in": "query",
+            "name": "AsyncAmdStatusCallbackMethod",
+            "required": false,
+            "schema": {
+              "enum": [
+                "head",
+                "get",
+                "post",
+                "patch",
+                "put",
+                "delete",
+                "HEAD",
+                "GET",
+                "POST",
+                "PATCH",
+                "PUT",
+                "DELETE"
+              ],
+              "type": "string"
+            }
+          },
+          {
             "description": "The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)",
             "in": "query",
             "name": "Byoc",
@@ -13702,6 +13753,18 @@
               "maxLength": 34,
               "minLength": 34,
               "pattern": "^CA[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)",
+            "in": "query",
+            "name": "Byoc",
+            "required": false,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BY[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }

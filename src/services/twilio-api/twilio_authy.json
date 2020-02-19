@@ -231,7 +231,8 @@
             "enum": [
               "app-push",
               "sms",
-              "totp"
+              "totp",
+              "push"
             ],
             "type": "string"
           },

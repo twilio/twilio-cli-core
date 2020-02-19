@@ -1,6 +1,44 @@
 twilio-cli-core changelog
 =====================
 
+[2020-02-19] Version 4.4.6
+--------------------------
+**Library - Chore**
+- [PR #79](https://github.com/twilio/twilio-cli-core/pull/79): Bump yarn from 1.21.1 to 1.22.0. Thanks to [@dependabot](https://github.com/dependabot)!
+
+**Api**
+- Make call create parameters `async_amd`, `async_amd_status_callback`, and `async_amd_status_callback_method` public
+- Add `trunk_sid` as an optional field to Call resource fetch/read responses
+- Add property `queue_time` to successful response of create, fetch, and update requests for Call
+- Add optional parameter `byoc` to conference participant create.
+
+**Authy**
+- Added support for challenges associated to push factors
+
+**Flex**
+- Adding `ui_dependencies` to Flex Configuration
+
+**Messaging**
+- Deprecate Session API **(breaking change)**
+
+**Numbers**
+- Add Regulations API
+
+**Studio**
+- Add Execution and Step endpoints to v2 API
+- Add webhook_url to Flow response and add new /TestUsers endpoint to v2 API
+
+**Taskrouter**
+- Adding `longest_relative_task_age_in_queue` and `longest_relative_task_sid_in_queue` to TaskQueue Real Time Statistics API.
+- Add `wait_duration_in_queue_until_accepted` aggregations to TaskQueues Cumulative Statistics endpoint
+- Add TaskQueueEnteredDate property to Tasks.
+
+**Video**
+- [Composer] Clarification for the composition hooks creation documentation: one source is mandatory, either the `audio_sources` or the `video_layout`, but one of them has to be provided
+- [Composer] `audio_sources` type on the composer HTTP POST command, changed from `sid[]` to `string[]` **(breaking change)**
+- [Composer] Clarification for the composition creation documentation: one source is mandatory, either the `audio_sources` or the `video_layout`, but one of them has to be provided
+
+
 [2020-02-05] Version 4.4.5
 --------------------------
 **Library - Docs**
