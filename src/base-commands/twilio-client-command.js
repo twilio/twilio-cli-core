@@ -1,4 +1,3 @@
-const chalk = require('chalk');
 const { flags } = require('@oclif/command');
 const BaseCommand = require('./base-command');
 const CliRequestClient = require('../services/cli-http-client');
@@ -25,14 +24,14 @@ class TwilioClientCommand extends BaseCommand {
     this.currentProfile = this.userConfig.getProfileById(this.flags.profile);
 
     const reportUnconfigured = (verb, message = '') => {
-      const profileParam = this.flags.profile ? ' -p ' + this.flags.profile : '';
+      const profileParam = this.flags.profile ? ` --profile "${this.flags.profile}"` : '';
       throw new TwilioCliError(
-        `To ${verb} the profile, run: ` + chalk.whiteBright('twilio profiles:create' + profileParam) + message
+        `To ${verb} the profile, run:\n\n  twilio profiles:create${profileParam}${message}`
       );
     };
 
     if (!this.currentProfile) {
-      this.logger.error('No profile configured.');
+      this.logger.error(`Could not find profile "${this.flags.profile}".`);
       reportUnconfigured('create', '\n\n' + HELP_ENVIRONMENT_VARIABLES);
     }
 
