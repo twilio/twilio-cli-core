@@ -32,6 +32,9 @@
             "pattern": "^ZS[0-9a-fA-F]{32}$",
             "type": "string"
           },
+          "ui_editable": {
+            "type": "boolean"
+          },
           "unique_name": {
             "type": "string"
           },
@@ -618,6 +621,15 @@
             "description": "Whether to inject Account credentials into a function invocation context. The default value is `false`.",
             "in": "query",
             "name": "IncludeCredentials",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Whether the Service's properties and subresources can be edited via the UI. The default value is `false`.",
+            "in": "query",
+            "name": "UiEditable",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -3002,6 +3014,15 @@
             "required": false,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "description": "Whether the Service's properties and subresources can be edited via the UI. The default value is `false`.",
+            "in": "query",
+            "name": "UiEditable",
+            "required": false,
+            "schema": {
+              "type": "boolean"
             }
           }
         ],

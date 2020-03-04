@@ -220,7 +220,10 @@
             "type": "string"
           },
           "send_code_attempts": {
-            "type": "object"
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
           },
           "service_sid": {
             "maxLength": 34,

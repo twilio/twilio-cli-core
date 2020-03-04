@@ -18,7 +18,13 @@
       },
       "preview.bulk_exports.export.day": {
         "properties": {
+          "create_date": {
+            "type": "string"
+          },
           "day": {
+            "type": "string"
+          },
+          "friendly_name": {
             "type": "string"
           },
           "resource_type": {
@@ -1398,30 +1404,6 @@
         },
         "type": "object"
       },
-      "preview.trusted_comms.device": {
-        "properties": {
-          "binding_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^BS[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "phone_number": {
-            "type": "string"
-          },
-          "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^DD[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "url": {
-            "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "preview.trusted_comms.phone_call": {
         "properties": {
           "account_sid": {
@@ -2636,6 +2618,24 @@
             "in": "path",
             "name": "ResourceType",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "NextToken",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "PreviousToken",
+            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9029,63 +9029,6 @@
         "use_case"
       ],
       "x-path-type": "instance"
-    },
-    "/TrustedComms/Devices": {
-      "description": "TODO: Resource-level docs",
-      "post": {
-        "description": "Registers a new Device and Push Token against Trusted Comms API. This works specially for iOS devices, which don't allow the SDK to know when there's an incoming call, nor the originating number.",
-        "parameters": [
-          {
-            "description": "The end user Phone Number linked to the device, given in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). The SDK or partner app is responsible of verifying this phone number veracity.",
-            "in": "query",
-            "name": "PhoneNumber",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Push Token for this Phone Number, linked to the correct SDK's application, certificate and keys.",
-            "in": "query",
-            "name": "PushToken",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/preview.trusted_comms.device"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "servers": [
-        {
-          "url": "https://preview.twilio.com"
-        }
-      ],
-      "x-default-output-properties": [
-        "binding_sid",
-        "phone_number",
-        "sid",
-        "url"
-      ],
-      "x-path-type": "list"
     },
     "/marketplace/AvailableAddOns": {
       "description": "TODO: Resource-level docs",

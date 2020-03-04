@@ -18,7 +18,7 @@
     "semver": "^6.3.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",
-    "twilio": "^3.39.5"
+    "twilio": "^3.40.0"
   },
   "optionalDependencies": {
     "keytar": "^4.13.0"

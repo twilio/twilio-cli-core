@@ -124,7 +124,7 @@
           },
           "capabilities": {
             "items": {
-              "type": "object"
+              "type": "string"
             },
             "type": "array"
           },
