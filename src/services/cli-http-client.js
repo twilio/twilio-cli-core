@@ -13,9 +13,6 @@ class CliRequestClient {
     this.commandName = commandName;
     this.logger = logger;
     this.http = http || require('axios');
-    if (!http) {
-      this.http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-    }
   }
 
   /**
