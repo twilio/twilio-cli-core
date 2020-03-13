@@ -1,15 +1,18 @@
+var http_ = require('http');
+var https = require('https');
 const os = require('os');
 const pkg = require('../../package.json');
+const qs = require('qs');
 const { TwilioCliError } = require('../services/error');
 const { NETWORK_ERROR } = require('../services/messaging/help-messages');
 
-const NETWORK_ERROR_CODES = new Set(['ETIMEDOUT', 'ESOCKETTIMEDOUT']);
+const NETWORK_ERROR_CODES = new Set(['ETIMEDOUT', 'ESOCKETTIMEDOUT', 'ECONNABORTED']);
 
 class CliRequestClient {
   constructor(commandName, logger, http) {
     this.commandName = commandName;
     this.logger = logger;
-    this.http = require('util').promisify(http || require('request'));
+    this.http = http || require('axios');
   }
 
   /**
@@ -58,20 +61,26 @@ class CliRequestClient {
 
     const options = {
       timeout: opts.timeout || 30000,
-      followRedirect: opts.allowRedirects || false,
+      maxRedirects: opts.allowRedirects ? 10 : 0,
       url: opts.uri,
       method: opts.method,
       headers,
-      forever: opts.forever !== false
+      httpAgent: opts.forever ? new http_.Agent({ keepAlive: true }) : undefined,
+      httpsAgent: opts.forever ? new https.Agent({ keepAlive: true }) : undefined,
+      validateStatus: status => {
+        return status >= 100 && status < 600;
+      }
     };
 
     if (opts.data) {
-      options.formData = opts.data;
+      options.data = qs.stringify(opts.data, { arrayFormat: 'repeat' });
     }
 
     if (opts.params) {
-      options.qs = opts.params;
-      options.useQuerystring = true;
+      options.params = opts.params;
+      options.paramSerializer = params => {
+        return qs.stringify(params, { arrayFormat: 'repeat' });
+      };
     }
 
     this.lastRequest = options;
@@ -80,15 +89,19 @@ class CliRequestClient {
     try {
       const response = await this.http(options);
 
-      this.logger.debug('response.statusCode: ' + response.statusCode);
+      this.logger.debug('response.statusCode: ' + response.status);
       this.logger.debug('response.headers: ' + JSON.stringify(response.headers));
 
-      if (response.statusCode < 200 || response.statusCode >= 300) {
-        const parsed = JSON.parse(response.body);
+      if (response.status < 200 || response.status >= 300) {
+        const parsed = response.data;
         throw new TwilioCliError(`Error code ${parsed.code} from Twilio: ${parsed.message}. See ${parsed.more_info} for more info.`, parsed.code);
       }
 
-      return response;
+      return {
+        body: response.data,
+        statusCode: response.status,
+        headers: response.headers
+      };
     } catch (error) {
       if (NETWORK_ERROR_CODES.has(error.code)) {
         throw new TwilioCliError(NETWORK_ERROR);
@@ -102,14 +115,14 @@ class CliRequestClient {
     this.logger.debug('-- BEGIN Twilio API Request --');
     this.logger.debug(options.method + ' ' + options.url);
 
-    if (options.formData) {
+    if (options.data) {
       this.logger.debug('Form data:');
-      this.logger.debug(options.formData);
+      this.logger.debug(options.data);
     }
 
-    if (options.qs && Object.keys(options.qs).length > 0) {
+    if (options.params && Object.keys(options.params).length > 0) {
       this.logger.debug('Querystring:');
-      this.logger.debug(options.qs);
+      this.logger.debug(options.params);
     }
 
     this.logger.debug('User-Agent: ' + options.headers['User-Agent']);

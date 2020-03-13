@@ -129,8 +129,7 @@ class OpenApiClient {
   }
 
   convertBody(responseBody, schema) {
-    const parsedBody = JSON.parse(responseBody);
-    return this.converter.convertSchema(schema, parsedBody);
+    return this.converter.convertSchema(schema, responseBody);
   }
 
   evaluateRefs(schema, domain) {

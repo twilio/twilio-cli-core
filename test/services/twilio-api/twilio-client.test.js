@@ -2,6 +2,7 @@ const { expect, test, constants } = require('@twilio/cli-test');
 const { logger } = require('../../../src/services/messaging/logging');
 const { TwilioApiClient } = require('../../../src/services/twilio-api');
 const CliRequestClient = require('../../../src/services/cli-http-client');
+const qs = require('qs');
 
 const accountSid = constants.FAKE_ACCOUNT_SID;
 const callSid = 'CA12345678901234567890123456789012';
@@ -114,7 +115,7 @@ describe('services', () => {
           });
 
           expect(response).to.eql({ status: 'ringing' });
-          expect(httpClient.lastRequest.formData).to.eql({ To: '123', From: '456' });
+          expect(httpClient.lastRequest.data).to.eql(qs.stringify({ To: '123', From: '456' }));
         });
 
       test
@@ -148,7 +149,7 @@ describe('services', () => {
           });
 
           expect(response).to.eql({ status: 'canceled' });
-          expect(httpClient.lastRequest.formData).to.eql({ Status: 'canceled' });
+          expect(httpClient.lastRequest.data).to.eql(qs.stringify({ Status: 'canceled' }));
         });
 
       test
@@ -228,7 +229,7 @@ describe('services', () => {
           });
 
           expect(response).to.eql({ verified: 'true' });
-          expect(httpClient.lastRequest.formData).to.eql({ EmergencyEnabled: 'true' });
+          expect(httpClient.lastRequest.data).to.eql(qs.stringify({ EmergencyEnabled: 'true' }));
         });
 
       /* eslint-disable max-nested-callbacks */

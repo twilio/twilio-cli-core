@@ -10,9 +10,9 @@ describe('services', () => {
     });
 
     test.it('should make an http request', async () => {
-      const client = new CliRequestClient('blah', logger, (options, callback) => {
+      const client = new CliRequestClient('blah', logger, options => {
         expect(options.url).to.equal('https://foo.com/bar');
-        callback(null, { statusCode: 200, body: '{}' });
+        return { status: 200, data: 'foo', headers: {} };
       });
       expect(client.commandName).to.equal('blah');
       const response = await client.request({
@@ -26,7 +26,7 @@ describe('services', () => {
       });
 
       expect(response.statusCode).to.equal(200);
-      expect(response.body).to.equal('{}');
+      expect(response.body).to.equal('foo');
     });
 
     test
