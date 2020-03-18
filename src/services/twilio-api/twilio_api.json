@@ -3580,6 +3580,9 @@
           "domain_name": {
             "type": "string"
           },
+          "emergency_calling_enabled": {
+            "type": "boolean"
+          },
           "friendly_name": {
             "type": "string"
           },
@@ -11323,6 +11326,15 @@
               "maxLength": 34,
               "minLength": 34,
               "pattern": "^BY[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Reason for the outgoing call. Use call_reason to specify the purpose of the call that is presented on the called party's phone. (Beta).",
+            "in": "query",
+            "name": "CallReason",
+            "required": false,
+            "schema": {
               "type": "string"
             }
           },
@@ -22109,6 +22121,15 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "description": "Whether emergency calling is enabled for the domain. If enabled, allows emergency calls on the domain from phone numbers with validated addresses.",
+            "in": "query",
+            "name": "EmergencyCallingEnabled",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -23856,6 +23877,15 @@
             "required": false,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "description": "Whether emergency calling is enabled for the domain. If enabled, allows emergency calls on the domain from phone numbers with validated addresses.",
+            "in": "query",
+            "name": "EmergencyCallingEnabled",
+            "required": false,
+            "schema": {
+              "type": "boolean"
             }
           }
         ],

@@ -1294,7 +1294,7 @@
         "properties": {},
         "type": "object"
       },
-      "preview.trusted_comms.business.insights.insights_success_rate": {
+      "preview.trusted_comms.business.insights.insights_impressions_rate": {
         "properties": {
           "account_sid": {
             "maxLength": 34,
@@ -8759,10 +8759,10 @@
       ],
       "x-path-type": "list"
     },
-    "/TrustedComms/Businesses/{BusinessSid}/Insights/SuccessRate": {
+    "/TrustedComms/Businesses/{BusinessSid}/Insights/ImpressionsRate": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": "Fetch a specific Success Rate.",
+        "description": "Fetch a specific Impressions Rate.",
         "parameters": [
           {
             "description": "The unique SID identifier of the Business to filter by.",
@@ -8822,7 +8822,7 @@
             }
           },
           {
-            "description": "The start date that for this Success Rate, given in ISO 8601 format. Default value is 30 days ago.",
+            "description": "The start date that for this Impressions Rate, given in ISO 8601 format. Default value is 30 days ago.",
             "in": "query",
             "name": "Start",
             "required": false,
@@ -8832,7 +8832,7 @@
             }
           },
           {
-            "description": "The end date that for this Success Rate, given in ISO 8601 format. Default value is current timestamp.",
+            "description": "The end date that for this Impressions Rate, given in ISO 8601 format. Default value is current timestamp.",
             "in": "query",
             "name": "End",
             "required": false,
@@ -8842,7 +8842,7 @@
             }
           },
           {
-            "description": "The Interval of this Success Rate. One of `minute`, `hour`, `day`, `week` or `month`.",
+            "description": "The Interval of this Impressions Rate. One of `minute`, `hour`, `day`, `week` or `month`.",
             "in": "query",
             "name": "Interval",
             "required": false,
@@ -8863,7 +8863,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/preview.trusted_comms.business.insights.insights_success_rate"
+                  "$ref": "#/components/schemas/preview.trusted_comms.business.insights.insights_impressions_rate"
                 }
               }
             }

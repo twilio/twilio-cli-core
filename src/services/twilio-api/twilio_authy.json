@@ -111,6 +111,9 @@
             "pattern": "^AC[0-9a-fA-F]{32}$",
             "type": "string"
           },
+          "config": {
+            "type": "object"
+          },
           "date_created": {
             "format": "date-time",
             "type": "string"
@@ -854,6 +857,15 @@
               ],
               "type": "string"
             }
+          },
+          {
+            "description": "The config required for this Factor. It must be a json string with the required properties for the given factor type",
+            "in": "query",
+            "name": "Config",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1355,6 +1367,24 @@
             "description": "The optional payload needed to verify the Factor for the first time. E.g. for a TOTP, the numeric code.",
             "in": "query",
             "name": "AuthPayload",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The new friendly name of this Factor",
+            "in": "query",
+            "name": "FriendlyName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The new config for this Factor. It must be a json string with the required properties for the given factor type",
+            "in": "query",
+            "name": "Config",
             "required": false,
             "schema": {
               "type": "string"

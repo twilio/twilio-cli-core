@@ -1,6 +1,23 @@
 twilio-cli-core changelog
 =====================
 
+[2020-03-18] Version 4.5.0
+--------------------------
+**Library - Feature**
+- [PR #81](https://github.com/twilio/twilio-cli-core/pull/81): migrate from deprecated request package to axios. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Api**
+- Add optional `emergency_calling_enabled` parameter to SIP Domain
+- Add optional property `call_reason` in the call create request
+
+**Authy**
+- Added `friendly_name` and `config` as optional params to Factor update
+- Added `config` param to Factor creation **(breaking change)**
+
+**Preview**
+- Renamed `SuccessRate` endpoint to `ImpressionsRate` for Branded Calls (fka. Verified by Twilio) **(breaking change)**
+
+
 [2020-03-04] Version 4.4.7
 --------------------------
 **Library - Fix**
