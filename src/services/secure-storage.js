@@ -54,12 +54,12 @@ class SecureStorage {
     try {
       await this.loadKeytar();
       credentials = await this.keytar.getPassword(CLI_NAME, profileId);
-    } catch (e) {
-      if (e instanceof TwilioCliError) {
-        throw e;
+    } catch (error) {
+      if (error instanceof TwilioCliError) {
+        throw error;
       }
 
-      return { apiKey: 'error', apiSecret: e.message };
+      return { apiKey: 'error', apiSecret: error.message };
     }
 
     const [apiKey, apiSecret] = credentials ? credentials.split('|') : ['error', 'error'];

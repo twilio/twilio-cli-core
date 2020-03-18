@@ -82,8 +82,8 @@ class TwilioClientCommand extends BaseCommand {
         await resource(resourceSid).update(updatedProperties);
         results.result = 'Success';
         Object.assign(results, updatedProperties);
-      } catch (err) {
-        this.logger.error(err.message);
+      } catch (error) {
+        this.logger.error(error.message);
         results.result = 'Error';
       }
     } else {

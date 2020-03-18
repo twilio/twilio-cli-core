@@ -53,8 +53,8 @@ describe('base-commands', () => {
           // This is essentially what oclif does behind the scenes.
           try {
             await ctx.testCmd.run();
-          } catch (e) {
-            await ctx.testCmd.catch(e);
+          } catch (error) {
+            await ctx.testCmd.catch(error);
           }
         });
     };
