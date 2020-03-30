@@ -48,5 +48,21 @@ describe('services', () => {
         const request = client.request({ method: 'GET', uri: 'https://foo.com/bar' });
         await expect(request).to.be.rejectedWith(TwilioCliError);
       });
+
+    test
+      .nock('https://foo.com', api => {
+        api.get('/bar?foo=bar&foo=baz').reply(200);
+      })
+      .it('correctly serializes array parameters', async () => {
+        const client = new CliRequestClient('bleh', logger);
+        const response = await client.request({
+          method: 'GET',
+          uri: 'https://foo.com/bar',
+          params: {
+            foo: ['bar', 'baz']
+          }
+        });
+        expect(response.statusCode).to.equal(200);
+      });
   });
 });
