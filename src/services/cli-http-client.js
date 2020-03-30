@@ -78,7 +78,7 @@ class CliRequestClient {
 
     if (opts.params) {
       options.params = opts.params;
-      options.paramSerializer = params => {
+      options.paramsSerializer = params => {
         return qs.stringify(params, { arrayFormat: 'repeat' });
       };
     }
