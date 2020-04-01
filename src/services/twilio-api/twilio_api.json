@@ -3586,6 +3586,9 @@
           "friendly_name": {
             "type": "string"
           },
+          "secure": {
+            "type": "boolean"
+          },
           "sid": {
             "maxLength": 34,
             "minLength": 34,
@@ -22130,6 +22133,15 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "description": "Whether secure SIP is enabled for the domain. If enabled, TLS will be enforced and SRTP will be negotiated on all incoming calls to this sip domain.",
+            "in": "query",
+            "name": "Secure",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -23883,6 +23895,15 @@
             "description": "Whether emergency calling is enabled for the domain. If enabled, allows emergency calls on the domain from phone numbers with validated addresses.",
             "in": "query",
             "name": "EmergencyCallingEnabled",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Whether secure SIP is enabled for the domain. If enabled, TLS will be enforced and SRTP will be negotiated on all incoming calls to this sip domain.",
+            "in": "query",
+            "name": "Secure",
             "required": false,
             "schema": {
               "type": "boolean"

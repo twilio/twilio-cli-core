@@ -467,6 +467,9 @@
             "pattern": "^ZH[0-9a-fA-F]{32}$",
             "type": "string"
           },
+          "links": {
+            "type": "object"
+          },
           "path": {
             "type": "string"
           },
@@ -492,6 +495,42 @@
               "private",
               "protected"
             ],
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "serverless.v1.service.function.function_version.function_version_content": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "function_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^ZH[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "service_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^ZS[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^ZN[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
             "type": "string"
           }
         },
@@ -1672,7 +1711,7 @@
             "description": "The SID of the build for the deployment.",
             "in": "query",
             "name": "BuildSid",
-            "required": true,
+            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -2766,6 +2805,76 @@
         "path",
         "visibility",
         "date_created"
+      ],
+      "x-path-type": "instance"
+    },
+    "/v1/Services/{ServiceSid}/Functions/{FunctionSid}/Versions/{Sid}/Content": {
+      "description": "The code of a Function Version.",
+      "get": {
+        "description": "Retrieve a the content of a specific Function Version resource.",
+        "parameters": [
+          {
+            "description": "The SID of the Service to fetch the Function Version content from.",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the function that is the parent of the Function Version content to fetch.",
+            "in": "path",
+            "name": "FunctionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZH[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the Function Version content to fetch.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^ZN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/serverless.v1.service.function.function_version.function_version_content"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://serverless.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "content"
       ],
       "x-path-type": "instance"
     },

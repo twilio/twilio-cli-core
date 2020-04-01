@@ -121,6 +121,9 @@
           "public_attributes": {
             "type": "object"
           },
+          "queue_stats_configuration": {
+            "type": "object"
+          },
           "runtime_domain": {
             "format": "uri",
             "type": "string"
@@ -202,6 +205,12 @@
           "url": {
             "format": "uri",
             "type": "string"
+          },
+          "wfm_integrations": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
           }
         },
         "type": "object"

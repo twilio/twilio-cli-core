@@ -424,7 +424,7 @@
             }
           },
           {
-            "description": "The optional service level push factors configuration. If present it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"}",
+            "description": "The optional service level push factors configuration. If present it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"include_date\": true}",
             "in": "query",
             "name": "Push",
             "required": false,
@@ -903,6 +903,126 @@
     },
     "/v1/Services/{ServiceSid}/Entities/{Identity}/Factors/{FactorSid}/Challenges": {
       "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "Retrieve a list of all Challenges for a Factor.",
+        "parameters": [
+          {
+            "description": "The unique SID identifier of the Service.",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^IS[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Customer unique identity for the Entity owner of the Challenge",
+            "in": "path",
+            "name": "Identity",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique SID identifier of the Factor.",
+            "in": "path",
+            "name": "FactorSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^YF[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Status of the Challenges to fetch. One of `pending`, `expired`, `approved` or `denied`.",
+            "in": "query",
+            "name": "Status",
+            "required": false,
+            "schema": {
+              "enum": [
+                "pending",
+                "expired",
+                "approved",
+                "denied"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "challenges": {
+                      "items": {
+                        "$ref": "#/components/schemas/authy.v1.service.entity.factor.challenge"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
       "post": {
         "description": "Create a new Challenge for the Factor",
         "parameters": [
@@ -1511,6 +1631,15 @@
             "description": "A human readable description of this resource, up to 64 characters.",
             "in": "query",
             "name": "FriendlyName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The optional service level push factors configuration. If present it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"include_date\": true}",
+            "in": "query",
+            "name": "Push",
             "required": false,
             "schema": {
               "type": "string"

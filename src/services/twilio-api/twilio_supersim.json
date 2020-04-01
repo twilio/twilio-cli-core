@@ -157,10 +157,7 @@
               "new",
               "ready",
               "active",
-              "suspended",
-              "deactivated",
               "inactive",
-              "canceled",
               "scheduled"
             ],
             "type": "string"
@@ -746,7 +743,7 @@
         "description": "Retrieve a list of Super SIMs from your account.",
         "parameters": [
           {
-            "description": "The status of the Sim resources to read. Can be `new`, `active`, `deactivated`, `inactive`, or `scheduled`.",
+            "description": "The status of the Sim resources to read. Can be `new`, `active`, `inactive`, or `scheduled`.",
             "in": "query",
             "name": "Status",
             "required": false,
@@ -755,10 +752,7 @@
                 "new",
                 "ready",
                 "active",
-                "suspended",
-                "deactivated",
                 "inactive",
-                "canceled",
                 "scheduled"
               ],
               "type": "string"
@@ -920,15 +914,13 @@
             }
           },
           {
-            "description": "The new status of the resource. Can be: `active`, `deactivated`, or `inactive`. See the [Super SIM Status Values](https://www.twilio.com/docs/iot/supersim/api/sim-resource#status-values) for more info.",
+            "description": "The new status of the resource. Can be: `active` or `inactive`. See the [Super SIM Status Values](https://www.twilio.com/docs/iot/supersim/api/sim-resource#status-values) for more info.",
             "in": "query",
             "name": "Status",
             "required": false,
             "schema": {
               "enum": [
                 "active",
-                "suspended",
-                "deactivated",
                 "inactive"
               ],
               "type": "string"
