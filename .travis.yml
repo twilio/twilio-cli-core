@@ -1,9 +1,9 @@
 language: node_js
 node_js:
-- lts/*
+  - lts/*
 before_install:
-- sudo apt-get update
-- sudo apt-get install -y libsecret-1-dev
+  - sudo apt-get update
+  - sudo apt-get install -y libsecret-1-dev
 deploy:
   provider: npm
   email: twilio-ci@twilio.com
@@ -14,3 +14,12 @@ deploy:
   on:
     tags: true
     node: lts/*
+
+notifications:
+  slack:
+    if: branch = master
+    on_pull_requests: false
+    on_success: never
+    on_failure: change
+    rooms:
+      - secure: BpQfmLgPfSEe5wemAQZjPyEoY/e0EysXwxU5eCy+QfybHal3VBcdMcUbhDYBXF97ELvMJ61NK7hPdEoMmSI0jTPVOUbcU2CV0x9YJLyuyopp6wAC98iaNqfQTj0tQEdb/box+Jq9/ba4npcOY5u530NOK6LpAzc7zFAIsVXgzxbnJaIBv8hzhF9A029AjiKo5L6DK5tO7FuddCjURjoA7BRd9m7z6qz8Huf7sxRIroPADxOhJtkVsnFpleKtzpJ4P0v3634MgvJVnheif4Rcuw/zFTnvKKSIhJALrRAJyUuc3G1WUd3srCmhry9MU73a/AlaYi5E5WREW0TXzqzn+Dg4E0qMYk1QdNfBbZbjbACrpLaMBO2Je0gtShvWIDYmfD8x8MQZbaiSnbmxbQHlZn8yCAik8sQU69dLFs2ZVgVzeCjpj/CbLwhUEw1DQBb7IH8BY6Odd/HpnbuDLiOwnuf3w5JtZ09gMivMlZCpclmMNli2bZezPz5HUVZSvyo2fBdCeOLYu0PSaOl1b5StVv0RapTl1E+mNN+q2zATj8LCT83w8XUgVteUGjPobVqSouZ0Nv/XdF2rMqhplWefn1Pa5g0PxtOuPvZKXezYxpUZJfnECj04gOaQKUQ+lJPz1siHzovGIzo0o92YCh3PzYpKEl3Z84g/XNiqyxZMKSU=
