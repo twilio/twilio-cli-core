@@ -18,7 +18,11 @@ class TwilioSchemaConverter extends JsonSchemaConverter {
       propValue = this.convertSchema(propSchema, propValue);
     }
 
-    return { propName: camelCase(propName), propValue };
+    if (propSchema) {
+      propName = camelCase(propName);
+    }
+
+    return { propName, propValue };
   }
 
   convertString(schema, value) {
