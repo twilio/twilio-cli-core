@@ -37,7 +37,7 @@ describe('services', () => {
           dateCreated: new Date('September 15, 2008 15:53 GMT+0500'),
           dateUpdated: new Date('September 15, 2008 15:53 GMT+0500'),
           messageType: ['not', 'a', 'message'],
-          freeFormObj: { firstKey: 'first_value', secondKey: 'second_value' },
+          freeFormObj: { first_key: 'first_value', second_key: 'second_value' },
           someUri: '/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
         };
 
