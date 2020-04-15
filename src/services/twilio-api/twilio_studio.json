@@ -461,6 +461,12 @@
           "valid": {
             "type": "boolean"
           },
+          "warnings": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
+          },
           "webhook_url": {
             "format": "uri",
             "type": "string"
@@ -2014,6 +2020,67 @@
           "GA"
         ]
       },
+      "post": {
+        "description": "Update the status of an Execution to `ended`.",
+        "parameters": [
+          {
+            "description": "The SID of the Flow with the Execution resources to update.",
+            "in": "path",
+            "name": "FlowSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the Execution resource to update.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The status of the Execution. Can only be `ended`.",
+            "in": "query",
+            "name": "Status",
+            "required": true,
+            "schema": {
+              "enum": [
+                "active",
+                "ended"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v1.flow.execution"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "GA"
+        ]
+      },
       "servers": [
         {
           "url": "https://studio.twilio.com"
@@ -2336,12 +2403,12 @@
       "x-path-type": "list"
     },
     "/v2/Flows/{FlowSid}/Executions": {
-      "description": "TODO: Resource-level docs",
+      "description": "Executions of Studio flows",
       "get": {
-        "description": "",
+        "description": "Retrieve a list of all Executions for the Flow.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Flow with the Execution resources to read.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -2353,7 +2420,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Only show Execution resources starting on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.",
             "in": "query",
             "name": "DateCreatedFrom",
             "required": false,
@@ -2363,7 +2430,7 @@
             }
           },
           {
-            "description": "",
+            "description": "Only show Execution resources starting before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.",
             "in": "query",
             "name": "DateCreatedTo",
             "required": false,
@@ -2442,10 +2509,10 @@
         ]
       },
       "post": {
-        "description": "",
+        "description": "Triggers a new Execution for the Flow",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Excecution's Flow.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -2457,7 +2524,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`.",
             "in": "query",
             "name": "To",
             "required": true,
@@ -2466,7 +2533,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`.",
             "in": "query",
             "name": "From",
             "required": true,
@@ -2475,7 +2542,7 @@
             }
           },
           {
-            "description": "",
+            "description": "JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.",
             "in": "query",
             "name": "Parameters",
             "required": false,
@@ -2517,12 +2584,12 @@
       "x-path-type": "list"
     },
     "/v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Context": {
-      "description": "TODO: Resource-level docs",
+      "description": "JSON context for executions",
       "get": {
-        "description": "",
+        "description": "Retrieve the most recent context for an Execution.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Flow with the Execution context to fetch.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -2534,7 +2601,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Execution context to fetch.",
             "in": "path",
             "name": "ExecutionSid",
             "required": true,
@@ -2577,12 +2644,12 @@
       "x-path-type": "instance"
     },
     "/v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps": {
-      "description": "TODO: Resource-level docs",
+      "description": "Individual steps within an execution",
       "get": {
-        "description": "",
+        "description": "Retrieve a list of all Steps for an Execution.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Flow with the Steps to read.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -2594,7 +2661,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Execution with the Steps to read.",
             "in": "path",
             "name": "ExecutionSid",
             "required": true,
@@ -2687,12 +2754,12 @@
       "x-path-type": "list"
     },
     "/v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps/{Sid}": {
-      "description": "TODO: Resource-level docs",
+      "description": "Individual steps within an execution",
       "get": {
-        "description": "",
+        "description": "Retrieve a Step.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Flow with the Step to fetch.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -2704,7 +2771,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Execution resource with the Step to fetch.",
             "in": "path",
             "name": "ExecutionSid",
             "required": true,
@@ -2716,7 +2783,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the ExecutionStep resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2761,12 +2828,12 @@
       "x-path-type": "instance"
     },
     "/v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps/{StepSid}/Context": {
-      "description": "TODO: Resource-level docs",
+      "description": "JSON context for an individual step within an execution",
       "get": {
-        "description": "",
+        "description": "Retrieve the context for an Execution Step.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Flow with the Step to fetch.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -2778,7 +2845,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Execution resource with the Step to fetch.",
             "in": "path",
             "name": "ExecutionSid",
             "required": true,
@@ -2790,7 +2857,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Step to fetch.",
             "in": "path",
             "name": "StepSid",
             "required": true,
@@ -2834,10 +2901,10 @@
     },
     "/v2/Flows/{FlowSid}/Executions/{Sid}": {
       "delete": {
-        "description": "",
+        "description": "Delete the Execution and all Steps relating to it.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Flow with the Execution resources to delete.",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -2849,7 +2916,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Execution resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2875,12 +2942,12 @@
           "Beta"
         ]
       },
-      "description": "TODO: Resource-level docs",
+      "description": "Executions of Studio flows",
       "get": {
-        "description": "",
+        "description": "Retrieve an Execution",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Flow with the Execution resource to fetch",
             "in": "path",
             "name": "FlowSid",
             "required": true,
@@ -2892,7 +2959,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Execution resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2900,6 +2967,67 @@
               "maxLength": 34,
               "minLength": 34,
               "pattern": "^FN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studio.v2.flow.execution"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "post": {
+        "description": "Update the status of an Execution to `ended`.",
+        "parameters": [
+          {
+            "description": "The SID of the Flow with the Execution resources to update.",
+            "in": "path",
+            "name": "FlowSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the Execution resource to update.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^FN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The status of the Execution. Can only be `ended`.",
+            "in": "query",
+            "name": "Status",
+            "required": true,
+            "schema": {
+              "enum": [
+                "active",
+                "ended"
+              ],
               "type": "string"
             }
           }

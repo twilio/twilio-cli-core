@@ -1,6 +1,28 @@
 twilio-cli-core changelog
 =====================
 
+[2020-04-15] Version 5.0.0
+--------------------------
+**Library - Chore**
+- [PR #84](https://github.com/twilio/twilio-cli-core/pull/84): raise Node requirement to v10 and upgrade dependencies. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+
+**Library - Fix**
+- [PR #83](https://github.com/twilio/twilio-cli-core/pull/83): only camelCase object keys when a schema is specified for the value. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+
+**Api**
+- Updated description for property `call_reason` in the call create request
+
+**Contacts**
+- Added Read, Delete All, and Delete by SID docs
+- Initial Release
+
+**Studio**
+- Rename `flow_valid` to `flow_validate`
+- Removed `errors` and `warnings` from flows error response and added new property named `details`
+- Add Update Execution endpoints to v1 and v2 to end execution via API
+- Add new `warnings` attribute v2 flow POST api
+
+
 [2020-04-01] Version 4.6.0
 --------------------------
 **Library - Fix**

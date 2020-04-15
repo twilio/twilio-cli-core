@@ -11333,7 +11333,7 @@
             }
           },
           {
-            "description": "The Reason for the outgoing call. Use call_reason to specify the purpose of the call that is presented on the called party's phone. (Beta).",
+            "description": "The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)",
             "in": "query",
             "name": "CallReason",
             "required": false,
