@@ -66,17 +66,37 @@ class OpenApiClient {
 
   getParams(opts, operation) {
     const params = {};
-    operation.parameters.forEach(parameter => {
-      // Build the actual request params from the spec's query parameters. This
-      // effectively drops all params that are not in the spec.
-      if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, parameter.name)) {
-        let value = opts.data[parameter.name];
-        if (parameter.schema.type === 'boolean') {
+    const addParam = (name, type) => {
+      if (doesObjectHaveProperty(opts.data, name)) {
+        let value = opts.data[name];
+        if (type === 'boolean') {
           value = value.toString();
         }
-        params[parameter.name] = value;
+        params[name] = value;
+      }
+    };
+
+    // Build the actual request params from the spec's query parameters and the
+    // request body properties. This effectively drops all params that are not
+    // in the spec.
+    operation.parameters.forEach(parameter => {
+      if (parameter.in === 'query') {
+        addParam(parameter.name, parameter.schema.type);
       }
     });
+
+    const contentType = opts.headers['Content-Type'];
+
+    if (contentType) {
+      // Can't wait for optional chaining in Node14/ES2020!!!
+      const properties = ((((operation.requestBody || {}).content || {})[contentType] || {}).schema || {}).properties;
+
+      if (properties) {
+        Object.entries(properties).forEach(([name, details]) => {
+          addParam(name, details.type);
+        });
+      }
+    }
 
     return params;
   }
