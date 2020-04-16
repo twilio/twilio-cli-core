@@ -352,7 +352,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -403,7 +404,8 @@
                   "$ref": "#/components/schemas/monitor.v1.alert|instance"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -552,7 +554,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -603,7 +606,8 @@
                   "$ref": "#/components/schemas/monitor.v1.event"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [

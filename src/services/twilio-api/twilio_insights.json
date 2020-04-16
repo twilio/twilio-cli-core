@@ -339,7 +339,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -470,7 +471,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -535,7 +537,8 @@
                   "$ref": "#/components/schemas/insights.v1.call.summary"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -586,7 +589,8 @@
                   "$ref": "#/components/schemas/insights.v1.call"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [

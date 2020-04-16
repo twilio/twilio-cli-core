@@ -137,17 +137,25 @@
       "description": "TODO: Resource-level docs",
       "post": {
         "description": "Create a bulk update request to change voice dialing country permissions of one or more countries identified by the corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
-        "parameters": [
-          {
-            "description": "URL encoded JSON array of update objects. example : `[ { \"iso_code\": \"GB\", \"low_risk_numbers_enabled\": \"true\", \"high_risk_special_numbers_enabled\":\"true\", \"high_risk_tollfraud_numbers_enabled\": \"false\" } ]`",
-            "in": "query",
-            "name": "UpdateRequest",
-            "required": true,
-            "schema": {
-              "type": "string"
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "UpdateRequest": {
+                    "description": "URL encoded JSON array of update objects. example : `[ { \"iso_code\": \"GB\", \"low_risk_numbers_enabled\": \"true\", \"high_risk_special_numbers_enabled\":\"true\", \"high_risk_tollfraud_numbers_enabled\": \"false\" } ]`",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "UpdateRequest"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -156,7 +164,8 @@
                   "$ref": "#/components/schemas/voice.v1.dialing_permissions.dialing_permissions_country_bulk_update"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -295,7 +304,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -342,7 +352,8 @@
                   "$ref": "#/components/schemas/voice.v1.dialing_permissions.dialing_permissions_country|instance"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -437,7 +448,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -472,7 +484,8 @@
                   "$ref": "#/components/schemas/voice.v1.dialing_permissions.dialing_permissions_settings"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -486,17 +499,22 @@
       },
       "post": {
         "description": "Update voice dialing permissions inheritance for the sub-account",
-        "parameters": [
-          {
-            "description": "`true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`.",
-            "in": "query",
-            "name": "DialingPermissionsInheritance",
-            "required": false,
-            "schema": {
-              "type": "boolean"
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "DialingPermissionsInheritance": {
+                    "description": "`true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`.",
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "202": {
             "content": {
@@ -505,7 +523,8 @@
                   "$ref": "#/components/schemas/voice.v1.dialing_permissions.dialing_permissions_settings"
                 }
               }
-            }
+            },
+            "description": "Accepted"
           }
         },
         "security": [

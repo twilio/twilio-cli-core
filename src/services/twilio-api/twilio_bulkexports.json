@@ -222,7 +222,8 @@
                   "$ref": "#/components/schemas/bulkexports.v1.export.job"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -265,7 +266,8 @@
                   "$ref": "#/components/schemas/bulkexports.v1.export"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -308,7 +310,8 @@
                   "$ref": "#/components/schemas/bulkexports.v1.export_configuration"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -331,36 +334,32 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "If true, Twilio will automatically generate every day's file when the day is over.",
-            "in": "query",
-            "name": "Enabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Stores the URL destination for the method specified in webhook_method.",
-            "in": "query",
-            "name": "WebhookUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Sets whether Twilio should call a webhook URL when the automatic generation is complete, using GET or POST. The actual destination is set in the webhook_url",
-            "in": "query",
-            "name": "WebhookMethod",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Enabled": {
+                    "description": "If true, Twilio will automatically generate every day's file when the day is over.",
+                    "type": "boolean"
+                  },
+                  "WebhookMethod": {
+                    "description": "Sets whether Twilio should call a webhook URL when the automatic generation is complete, using GET or POST. The actual destination is set in the webhook_url",
+                    "type": "string"
+                  },
+                  "WebhookUrl": {
+                    "description": "Stores the URL destination for the method specified in webhook_method.",
+                    "format": "uri",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -369,7 +368,8 @@
                   "$ref": "#/components/schemas/bulkexports.v1.export_configuration"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -478,7 +478,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -530,7 +531,8 @@
                   "$ref": "#/components/schemas/bulkexports.v1.export.day|instance"
                 }
               }
-            }
+            },
+            "description": "Temporary Redirect"
           }
         },
         "security": [
@@ -639,7 +641,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -662,62 +665,43 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "",
-            "in": "query",
-            "name": "StartDay",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "",
-            "in": "query",
-            "name": "EndDay",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "",
-            "in": "query",
-            "name": "WebhookUrl",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "",
-            "in": "query",
-            "name": "WebhookMethod",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "",
-            "in": "query",
-            "name": "Email",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Email": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "EndDay": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "StartDay": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "WebhookMethod": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "WebhookUrl": {
+                    "description": "",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -726,7 +710,8 @@
                   "$ref": "#/components/schemas/bulkexports.v1.export.export_custom_job"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [

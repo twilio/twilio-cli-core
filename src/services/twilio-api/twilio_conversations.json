@@ -323,7 +323,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -337,58 +338,43 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "description": "The human-readable name of this conversation, limited to 256 characters. Optional.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The date that this resource was created.",
-            "in": "query",
-            "name": "DateCreated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The date that this resource was last updated.",
-            "in": "query",
-            "name": "DateUpdated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The unique id of the [SMS Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.",
-            "in": "query",
-            "name": "MessagingServiceSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MG[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
-            "in": "query",
-            "name": "Attributes",
-            "required": false,
-            "schema": {
-              "type": "string"
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Attributes": {
+                    "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
+                    "type": "string"
+                  },
+                  "DateCreated": {
+                    "description": "The date that this resource was created.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "DateUpdated": {
+                    "description": "The date that this resource was last updated.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "The human-readable name of this conversation, limited to 256 characters. Optional.",
+                    "type": "string"
+                  },
+                  "MessagingServiceSid": {
+                    "description": "The unique id of the [SMS Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^MG[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -397,7 +383,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -435,7 +422,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation_webhook"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -449,60 +437,45 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "description": "The HTTP method to be used when sending a webhook request.",
-            "in": "query",
-            "name": "Method",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The list of webhook event triggers that are enabled for this Service: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`",
-            "in": "query",
-            "name": "Filters",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "The absolute url the pre-event webhook request should be sent to.",
-            "in": "query",
-            "name": "PreWebhookUrl",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The absolute url the post-event webhook request should be sent to.",
-            "in": "query",
-            "name": "PostWebhookUrl",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The routing target of the webhook. Can be ordinary or route internally to Flex",
-            "in": "query",
-            "name": "Target",
-            "required": false,
-            "schema": {
-              "enum": [
-                "webhook",
-                "flex"
-              ],
-              "type": "string"
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Filters": {
+                    "description": "The list of webhook event triggers that are enabled for this Service: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "Method": {
+                    "description": "The HTTP method to be used when sending a webhook request.",
+                    "type": "string"
+                  },
+                  "PostWebhookUrl": {
+                    "description": "The absolute url the post-event webhook request should be sent to.",
+                    "type": "string"
+                  },
+                  "PreWebhookUrl": {
+                    "description": "The absolute url the pre-event webhook request should be sent to.",
+                    "type": "string"
+                  },
+                  "Target": {
+                    "description": "The routing target of the webhook. Can be ordinary or route internally to Flex",
+                    "enum": [
+                      "webhook",
+                      "flex"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "content": {
@@ -511,7 +484,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation_webhook"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -610,7 +584,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -636,67 +611,48 @@
               "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The channel specific identifier of the message's author. Defaults to `system`.",
-            "in": "query",
-            "name": "Author",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The content of the message, can be up to 1,600 characters long.",
-            "in": "query",
-            "name": "Body",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The date that this resource was created.",
-            "in": "query",
-            "name": "DateCreated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The date that this resource was last updated. `null` if the message has not been edited.",
-            "in": "query",
-            "name": "DateUpdated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
-            "in": "query",
-            "name": "Attributes",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Media Sid to be attached to the new Message.",
-            "in": "query",
-            "name": "MediaSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ME[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Attributes": {
+                    "description": "A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
+                    "type": "string"
+                  },
+                  "Author": {
+                    "description": "The channel specific identifier of the message's author. Defaults to `system`.",
+                    "type": "string"
+                  },
+                  "Body": {
+                    "description": "The content of the message, can be up to 1,600 characters long.",
+                    "type": "string"
+                  },
+                  "DateCreated": {
+                    "description": "The date that this resource was created.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "DateUpdated": {
+                    "description": "The date that this resource was last updated. `null` if the message has not been edited.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "MediaSid": {
+                    "description": "The Media Sid to be attached to the new Message.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^ME[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -705,7 +661,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation.conversation_message"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -810,7 +767,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation.conversation_message"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -848,55 +806,41 @@
               "pattern": "^IM[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The channel specific identifier of the message's author. Defaults to `system`.",
-            "in": "query",
-            "name": "Author",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The content of the message, can be up to 1,600 characters long.",
-            "in": "query",
-            "name": "Body",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The date that this resource was created.",
-            "in": "query",
-            "name": "DateCreated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The date that this resource was last updated. `null` if the message has not been edited.",
-            "in": "query",
-            "name": "DateUpdated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
-            "in": "query",
-            "name": "Attributes",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Attributes": {
+                    "description": "A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
+                    "type": "string"
+                  },
+                  "Author": {
+                    "description": "The channel specific identifier of the message's author. Defaults to `system`.",
+                    "type": "string"
+                  },
+                  "Body": {
+                    "description": "The content of the message, can be up to 1,600 characters long.",
+                    "type": "string"
+                  },
+                  "DateCreated": {
+                    "description": "The date that this resource was created.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "DateUpdated": {
+                    "description": "The date that this resource was last updated. `null` if the message has not been edited.",
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -905,7 +849,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation.conversation_message"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1004,7 +949,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1030,73 +976,49 @@
               "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A unique string identifier for the conversation participant as [Chat User](https://www.twilio.com/docs/chat/rest/user-resource). This parameter is non-null if (and only if) the participant is using the Programmable Chat SDK to communicate. Limited to 256 characters.",
-            "in": "query",
-            "name": "Identity",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The address of the participant's device, e.g. a phone number or Messenger ID. Together with the Proxy address, this determines a participant uniquely. This field (with proxy_address) is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).",
-            "in": "query",
-            "name": "MessagingBinding.Address",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The address of the Twilio phone number (or WhatsApp number, or Messenger Page ID) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).",
-            "in": "query",
-            "name": "MessagingBinding.ProxyAddress",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The date that this resource was created.",
-            "in": "query",
-            "name": "DateCreated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The date that this resource was last updated.",
-            "in": "query",
-            "name": "DateUpdated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
-            "in": "query",
-            "name": "Attributes",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The address of the Twilio phone number that is used in Group MMS. Communication mask for the Chat participant with Identity.",
-            "in": "query",
-            "name": "MessagingBinding.ProjectedAddress",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Attributes": {
+                    "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
+                    "type": "string"
+                  },
+                  "DateCreated": {
+                    "description": "The date that this resource was created.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "DateUpdated": {
+                    "description": "The date that this resource was last updated.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "Identity": {
+                    "description": "A unique string identifier for the conversation participant as [Chat User](https://www.twilio.com/docs/chat/rest/user-resource). This parameter is non-null if (and only if) the participant is using the Programmable Chat SDK to communicate. Limited to 256 characters.",
+                    "type": "string"
+                  },
+                  "MessagingBinding.Address": {
+                    "description": "The address of the participant's device, e.g. a phone number or Messenger ID. Together with the Proxy address, this determines a participant uniquely. This field (with proxy_address) is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).",
+                    "type": "string"
+                  },
+                  "MessagingBinding.ProjectedAddress": {
+                    "description": "The address of the Twilio phone number that is used in Group MMS. Communication mask for the Chat participant with Identity.",
+                    "type": "string"
+                  },
+                  "MessagingBinding.ProxyAddress": {
+                    "description": "The address of the Twilio phone number (or WhatsApp number, or Messenger Page ID) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1105,7 +1027,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation.conversation_participant"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1208,7 +1131,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation.conversation_participant"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1246,37 +1170,33 @@
               "pattern": "^MB[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The date that this resource was created.",
-            "in": "query",
-            "name": "DateCreated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The date that this resource was last updated.",
-            "in": "query",
-            "name": "DateUpdated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
-            "in": "query",
-            "name": "Attributes",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Attributes": {
+                    "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
+                    "type": "string"
+                  },
+                  "DateCreated": {
+                    "description": "The date that this resource was created.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "DateUpdated": {
+                    "description": "The date that this resource was last updated.",
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1285,7 +1205,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation.conversation_participant"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1382,7 +1303,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1408,89 +1330,68 @@
               "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The target of this webhook: `webhook`, `studio`, `trigger`",
-            "in": "query",
-            "name": "Target",
-            "required": true,
-            "schema": {
-              "enum": [
-                "webhook",
-                "trigger",
-                "studio"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The absolute url the webhook request should be sent to.",
-            "in": "query",
-            "name": "Configuration.Url",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method to be used when sending a webhook request.",
-            "in": "query",
-            "name": "Configuration.Method",
-            "required": false,
-            "schema": {
-              "enum": [
-                "GET",
-                "POST"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The list of events, firing webhook event for this Conversation.",
-            "in": "query",
-            "name": "Configuration.Filters",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "The list of keywords, firing webhook event for this Conversation.",
-            "in": "query",
-            "name": "Configuration.Triggers",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "The studio flow sid, where the webhook should be sent to.",
-            "in": "query",
-            "name": "Configuration.FlowSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FW[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The message index for which and it's successors the webhook will be replayed. Not set by default",
-            "in": "query",
-            "name": "Configuration.ReplayAfter",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Configuration.Filters": {
+                    "description": "The list of events, firing webhook event for this Conversation.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "Configuration.FlowSid": {
+                    "description": "The studio flow sid, where the webhook should be sent to.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^FW[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Configuration.Method": {
+                    "description": "The HTTP method to be used when sending a webhook request.",
+                    "enum": [
+                      "GET",
+                      "POST"
+                    ],
+                    "type": "string"
+                  },
+                  "Configuration.ReplayAfter": {
+                    "description": "The message index for which and it's successors the webhook will be replayed. Not set by default",
+                    "type": "integer"
+                  },
+                  "Configuration.Triggers": {
+                    "description": "The list of keywords, firing webhook event for this Conversation.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "Configuration.Url": {
+                    "description": "The absolute url the webhook request should be sent to.",
+                    "type": "string"
+                  },
+                  "Target": {
+                    "description": "The target of this webhook: `webhook`, `studio`, `trigger`",
+                    "enum": [
+                      "webhook",
+                      "trigger",
+                      "studio"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Target"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1499,7 +1400,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation.conversation_scoped_webhook"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1602,7 +1504,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation.conversation_scoped_webhook"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1640,66 +1543,52 @@
               "pattern": "^WH[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The absolute url the webhook request should be sent to.",
-            "in": "query",
-            "name": "Configuration.Url",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method to be used when sending a webhook request.",
-            "in": "query",
-            "name": "Configuration.Method",
-            "required": false,
-            "schema": {
-              "enum": [
-                "GET",
-                "POST"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The list of events, firing webhook event for this Conversation.",
-            "in": "query",
-            "name": "Configuration.Filters",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "The list of keywords, firing webhook event for this Conversation.",
-            "in": "query",
-            "name": "Configuration.Triggers",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "The studio flow sid, where the webhook should be sent to.",
-            "in": "query",
-            "name": "Configuration.FlowSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FW[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Configuration.Filters": {
+                    "description": "The list of events, firing webhook event for this Conversation.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "Configuration.FlowSid": {
+                    "description": "The studio flow sid, where the webhook should be sent to.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^FW[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Configuration.Method": {
+                    "description": "The HTTP method to be used when sending a webhook request.",
+                    "enum": [
+                      "GET",
+                      "POST"
+                    ],
+                    "type": "string"
+                  },
+                  "Configuration.Triggers": {
+                    "description": "The list of keywords, firing webhook event for this Conversation.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "Configuration.Url": {
+                    "description": "The absolute url the webhook request should be sent to.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1708,7 +1597,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation.conversation_scoped_webhook"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1787,7 +1677,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1813,58 +1704,44 @@
               "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The human-readable name of this conversation, limited to 256 characters. Optional.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The date that this resource was created.",
-            "in": "query",
-            "name": "DateCreated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The date that this resource was last updated.",
-            "in": "query",
-            "name": "DateUpdated",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
-            "in": "query",
-            "name": "Attributes",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The unique id of the [SMS Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.",
-            "in": "query",
-            "name": "MessagingServiceSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MG[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Attributes": {
+                    "description": "An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \"{}\" will be returned.",
+                    "type": "string"
+                  },
+                  "DateCreated": {
+                    "description": "The date that this resource was created.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "DateUpdated": {
+                    "description": "The date that this resource was last updated.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "The human-readable name of this conversation, limited to 256 characters. Optional.",
+                    "type": "string"
+                  },
+                  "MessagingServiceSid": {
+                    "description": "The unique id of the [SMS Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^MG[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1873,7 +1750,8 @@
                   "$ref": "#/components/schemas/conversations.v1.conversation"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [

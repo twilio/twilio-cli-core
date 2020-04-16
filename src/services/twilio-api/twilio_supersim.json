@@ -326,7 +326,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -340,62 +341,56 @@
       },
       "post": {
         "description": "Send a Command to a Sim.",
-        "parameters": [
-          {
-            "description": "The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource) to send the Command to.",
-            "in": "query",
-            "name": "Sim",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^HS[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The message body of the command.",
-            "in": "query",
-            "name": "Command",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
-            "in": "query",
-            "name": "CallbackMethod",
-            "required": false,
-            "schema": {
-              "enum": [
-                "head",
-                "get",
-                "post",
-                "patch",
-                "put",
-                "delete",
-                "HEAD",
-                "GET",
-                "POST",
-                "PATCH",
-                "PUT",
-                "DELETE"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL we should call using the `callback_method` after we have sent the command.",
-            "in": "query",
-            "name": "CallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "CallbackMethod": {
+                    "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "CallbackUrl": {
+                    "description": "The URL we should call using the `callback_method` after we have sent the command.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "Command": {
+                    "description": "The message body of the command.",
+                    "type": "string"
+                  },
+                  "Sim": {
+                    "description": "The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource) to send the Command to.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^HS[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Sim",
+                  "Command"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -404,7 +399,8 @@
                   "$ref": "#/components/schemas/supersim.v1.command"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -454,7 +450,8 @@
                   "$ref": "#/components/schemas/supersim.v1.command"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -540,7 +537,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -554,68 +552,53 @@
       },
       "post": {
         "description": "Create a Fleet",
-        "parameters": [
-          {
-            "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
-            "in": "query",
-            "name": "UniqueName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M/NB-IoT data connectivity",
-            "in": "query",
-            "name": "DataEnabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Defines whether SIMs in the Fleet are capable of sending and receiving Commands via SMS.",
-            "in": "query",
-            "name": "CommandsEnabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The URL that will receive a webhook when a SIM in the Fleet originates a machine-to-machine Command. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
-            "in": "query",
-            "name": "CommandsUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "A string representing the HTTP method to use when making a request to `commands_url`. Can be one of POST or GET. Defaults to POST.",
-            "in": "query",
-            "name": "CommandsMethod",
-            "required": false,
-            "schema": {
-              "enum": [
-                "head",
-                "get",
-                "post",
-                "patch",
-                "put",
-                "delete",
-                "HEAD",
-                "GET",
-                "POST",
-                "PATCH",
-                "PUT",
-                "DELETE"
-              ],
-              "type": "string"
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "CommandsEnabled": {
+                    "description": "Defines whether SIMs in the Fleet are capable of sending and receiving Commands via SMS.",
+                    "type": "boolean"
+                  },
+                  "CommandsMethod": {
+                    "description": "A string representing the HTTP method to use when making a request to `commands_url`. Can be one of POST or GET. Defaults to POST.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "CommandsUrl": {
+                    "description": "The URL that will receive a webhook when a SIM in the Fleet originates a machine-to-machine Command. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "DataEnabled": {
+                    "description": "Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M/NB-IoT data connectivity",
+                    "type": "boolean"
+                  },
+                  "UniqueName": {
+                    "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -624,7 +607,8 @@
                   "$ref": "#/components/schemas/supersim.v1.fleet"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -671,7 +655,8 @@
                   "$ref": "#/components/schemas/supersim.v1.fleet"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -694,17 +679,23 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
-            "in": "query",
-            "name": "UniqueName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "UniqueName": {
+                    "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -713,7 +704,8 @@
                   "$ref": "#/components/schemas/supersim.v1.fleet"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -833,7 +825,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -880,7 +873,8 @@
                   "$ref": "#/components/schemas/supersim.v1.sim"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -903,39 +897,35 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
-            "in": "query",
-            "name": "UniqueName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The new status of the resource. Can be: `active` or `inactive`. See the [Super SIM Status Values](https://www.twilio.com/docs/iot/supersim/api/sim-resource#status-values) for more info.",
-            "in": "query",
-            "name": "Status",
-            "required": false,
-            "schema": {
-              "enum": [
-                "active",
-                "inactive"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID or unique name of the Fleet to which the SIM resource should be assigned.",
-            "in": "query",
-            "name": "Fleet",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Fleet": {
+                    "description": "The SID or unique name of the Fleet to which the SIM resource should be assigned.",
+                    "type": "string"
+                  },
+                  "Status": {
+                    "description": "The new status of the resource. Can be: `active` or `inactive`. See the [Super SIM Status Values](https://www.twilio.com/docs/iot/supersim/api/sim-resource#status-values) for more info.",
+                    "enum": [
+                      "active",
+                      "inactive"
+                    ],
+                    "type": "string"
+                  },
+                  "UniqueName": {
+                    "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -944,7 +934,8 @@
                   "$ref": "#/components/schemas/supersim.v1.sim"
                 }
               }
-            }
+            },
+            "description": "OK"
           },
           "202": {
             "content": {
@@ -953,7 +944,8 @@
                   "$ref": "#/components/schemas/supersim.v1.sim"
                 }
               }
-            }
+            },
+            "description": "Accepted"
           }
         },
         "security": [
@@ -1082,7 +1074,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [

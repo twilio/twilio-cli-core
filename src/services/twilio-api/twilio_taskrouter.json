@@ -1476,7 +1476,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1490,67 +1491,50 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "description": "A descriptive string that you create to describe the Workspace resource. It can be up to 64 characters long. For example: `Customer Support` or `2014 Election Campaign`.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL we should call when an event occurs. If provided, the Workspace will publish events to this URL, for example, to collect data for reporting. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information.",
-            "in": "query",
-            "name": "EventCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The list of Workspace events for which to call event_callback_url. For example if `EventsFilter=task.created,task.canceled,worker.activity.update`, then TaskRouter will call event_callback_url only when a task is created, canceled, or a Worker activity is updated.",
-            "in": "query",
-            "name": "EventsFilter",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to enable multi-tasking. Can be: `true` to enable multi-tasking, or `false` to disable it. The default is `false`. Multi-tasking allows Workers to handle multiple Tasks simultaneously. When enabled (`true`), each Worker can receive parallel reservations up to the per-channel maximums defined in the Workers section. Otherwise, each Worker will only receive a new reservation when the previous task is completed. Learn more at [Multitasking][https://www.twilio.com/docs/taskrouter/multitasking].",
-            "in": "query",
-            "name": "MultiTaskEnabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "An available template name. Can be: `NONE` or `FIFO` and the default is `NONE`. Pre-configures the Workspace with the Workflow and Activities specified in the template. `NONE` will create a Workspace with only a set of default activities. `FIFO` will configure TaskRouter with a set of default activities and a single TaskQueue for first-in, first-out distribution, which can be useful when you are getting started with TaskRouter.",
-            "in": "query",
-            "name": "Template",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The type of TaskQueue to prioritize when Workers are receiving Tasks from both types of TaskQueues. Can be: `LIFO` or `FIFO` and the default is `FIFO`. For more information, see [Queue Ordering][https://www.twilio.com/docs/taskrouter/queue-ordering-last-first-out-lifo].",
-            "in": "query",
-            "name": "PrioritizeQueueOrder",
-            "required": false,
-            "schema": {
-              "enum": [
-                "FIFO",
-                "LIFO"
-              ],
-              "type": "string"
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "EventCallbackUrl": {
+                    "description": "The URL we should call when an event occurs. If provided, the Workspace will publish events to this URL, for example, to collect data for reporting. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "EventsFilter": {
+                    "description": "The list of Workspace events for which to call event_callback_url. For example if `EventsFilter=task.created,task.canceled,worker.activity.update`, then TaskRouter will call event_callback_url only when a task is created, canceled, or a Worker activity is updated.",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Workspace resource. It can be up to 64 characters long. For example: `Customer Support` or `2014 Election Campaign`.",
+                    "type": "string"
+                  },
+                  "MultiTaskEnabled": {
+                    "description": "Whether to enable multi-tasking. Can be: `true` to enable multi-tasking, or `false` to disable it. The default is `false`. Multi-tasking allows Workers to handle multiple Tasks simultaneously. When enabled (`true`), each Worker can receive parallel reservations up to the per-channel maximums defined in the Workers section. Otherwise, each Worker will only receive a new reservation when the previous task is completed. Learn more at [Multitasking][https://www.twilio.com/docs/taskrouter/multitasking].",
+                    "type": "boolean"
+                  },
+                  "PrioritizeQueueOrder": {
+                    "description": "The type of TaskQueue to prioritize when Workers are receiving Tasks from both types of TaskQueues. Can be: `LIFO` or `FIFO` and the default is `FIFO`. For more information, see [Queue Ordering][https://www.twilio.com/docs/taskrouter/queue-ordering-last-first-out-lifo].",
+                    "enum": [
+                      "FIFO",
+                      "LIFO"
+                    ],
+                    "type": "string"
+                  },
+                  "Template": {
+                    "description": "An available template name. Can be: `NONE` or `FIFO` and the default is `NONE`. Pre-configures the Workspace with the Workflow and Activities specified in the template. `NONE` will create a Workspace with only a set of default activities. `FIFO` will configure TaskRouter with a set of default activities and a single TaskQueue for first-in, first-out distribution, which can be useful when you are getting started with TaskRouter.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -1559,7 +1543,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1639,7 +1624,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1665,82 +1651,58 @@
               "pattern": "^WS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The SID of the Activity that will be used when new Workers are created in the Workspace.",
-            "in": "query",
-            "name": "DefaultActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL we should call when an event occurs. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information.",
-            "in": "query",
-            "name": "EventCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The list of Workspace events for which to call event_callback_url. For example if `EventsFilter=task.created,task.canceled,worker.activity.update`, then TaskRouter will call event_callback_url only when a task is created, canceled, or a Worker activity is updated.",
-            "in": "query",
-            "name": "EventsFilter",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A descriptive string that you create to describe the Workspace resource. For example: `Sales Call Center` or `Customer Support Team`.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to enable multi-tasking. Can be: `true` to enable multi-tasking, or `false` to disable it. The default is `false`. Multi-tasking allows Workers to handle multiple Tasks simultaneously. When enabled (`true`), each Worker can receive parallel reservations up to the per-channel maximums defined in the Workers section. Otherwise, each Worker will only receive a new reservation when the previous task is completed. Learn more at [Multitasking][https://www.twilio.com/docs/taskrouter/multitasking].",
-            "in": "query",
-            "name": "MultiTaskEnabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The SID of the Activity that will be assigned to a Worker when a Task reservation times out without a response.",
-            "in": "query",
-            "name": "TimeoutActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The type of TaskQueue to prioritize when Workers are receiving Tasks from both types of TaskQueues. Can be: `LIFO` or `FIFO` and the default is `FIFO`. For more information, see [Queue Ordering][https://www.twilio.com/docs/taskrouter/queue-ordering-last-first-out-lifo].",
-            "in": "query",
-            "name": "PrioritizeQueueOrder",
-            "required": false,
-            "schema": {
-              "enum": [
-                "FIFO",
-                "LIFO"
-              ],
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "DefaultActivitySid": {
+                    "description": "The SID of the Activity that will be used when new Workers are created in the Workspace.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "EventCallbackUrl": {
+                    "description": "The URL we should call when an event occurs. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "EventsFilter": {
+                    "description": "The list of Workspace events for which to call event_callback_url. For example if `EventsFilter=task.created,task.canceled,worker.activity.update`, then TaskRouter will call event_callback_url only when a task is created, canceled, or a Worker activity is updated.",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Workspace resource. For example: `Sales Call Center` or `Customer Support Team`.",
+                    "type": "string"
+                  },
+                  "MultiTaskEnabled": {
+                    "description": "Whether to enable multi-tasking. Can be: `true` to enable multi-tasking, or `false` to disable it. The default is `false`. Multi-tasking allows Workers to handle multiple Tasks simultaneously. When enabled (`true`), each Worker can receive parallel reservations up to the per-channel maximums defined in the Workers section. Otherwise, each Worker will only receive a new reservation when the previous task is completed. Learn more at [Multitasking][https://www.twilio.com/docs/taskrouter/multitasking].",
+                    "type": "boolean"
+                  },
+                  "PrioritizeQueueOrder": {
+                    "description": "The type of TaskQueue to prioritize when Workers are receiving Tasks from both types of TaskQueues. Can be: `LIFO` or `FIFO` and the default is `FIFO`. For more information, see [Queue Ordering][https://www.twilio.com/docs/taskrouter/queue-ordering-last-first-out-lifo].",
+                    "enum": [
+                      "FIFO",
+                      "LIFO"
+                    ],
+                    "type": "string"
+                  },
+                  "TimeoutActivitySid": {
+                    "description": "The SID of the Activity that will be assigned to a Worker when a Task reservation times out without a response.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1749,7 +1711,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1865,7 +1828,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1891,26 +1855,30 @@
               "pattern": "^WS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether the Worker should be eligible to receive a Task when it occupies the Activity. A value of `true`, `1`, or `yes` specifies the Activity is available. All other values specify that it is not.",
-            "in": "query",
-            "name": "Available",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Available": {
+                    "description": "Whether the Worker should be eligible to receive a Task when it occupies the Activity. A value of `true`, `1`, or `yes` specifies the Activity is available. All other values specify that it is not.",
+                    "type": "boolean"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1919,7 +1887,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.activity"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -2023,7 +1992,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.activity"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2061,17 +2031,23 @@
               "pattern": "^WA[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -2080,7 +2056,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.activity"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2177,7 +2154,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.workspace_cumulative_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2395,7 +2373,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2457,7 +2436,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.event"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2516,7 +2496,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.workspace_real_time_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2613,7 +2594,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.workspace_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2709,7 +2691,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2735,35 +2718,35 @@
               "pattern": "^WS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the TaskChannel. It can be up to 64 characters long.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "An application-defined string that uniquely identifies the TaskChannel, such as `voice` or `sms`.",
-            "in": "query",
-            "name": "UniqueName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether the TaskChannel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized.",
-            "in": "query",
-            "name": "ChannelOptimizedRouting",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "ChannelOptimizedRouting": {
+                    "description": "Whether the TaskChannel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized.",
+                    "type": "boolean"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the TaskChannel. It can be up to 64 characters long.",
+                    "type": "string"
+                  },
+                  "UniqueName": {
+                    "description": "An application-defined string that uniquely identifies the TaskChannel, such as `voice` or `sms`.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName",
+                  "UniqueName"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -2772,7 +2755,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task_channel"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -2870,7 +2854,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task_channel"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2905,26 +2890,27 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the TaskChannel. It can be up to 64 characters long.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether the TaskChannel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized.",
-            "in": "query",
-            "name": "ChannelOptimizedRouting",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "ChannelOptimizedRouting": {
+                    "description": "Whether the TaskChannel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized.",
+                    "type": "boolean"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the TaskChannel. It can be up to 64 characters long.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -2933,7 +2919,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task_channel"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3061,7 +3048,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3087,72 +3075,56 @@
               "pattern": "^WS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the TaskQueue. For example `Support-Tier 1`, `Sales`, or `Escalation`.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A string that describes the Worker selection criteria for any Tasks that enter the TaskQueue. For example, `'\"language\" == \"spanish\"'`. The default value is `1==1`. If this value is empty, Tasks will wait in the TaskQueue until they are deleted or moved to another TaskQueue. For more information about Worker selection, see [Describing Worker selection criteria](https://www.twilio.com/docs/taskrouter/api/taskqueues#target-workers).",
-            "in": "query",
-            "name": "TargetWorkers",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The maximum number of Workers to reserve for the assignment of a Task in the queue. Can be an integer between 1 and 50, inclusive and defaults to 1.",
-            "in": "query",
-            "name": "MaxReservedWorkers",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "How Tasks will be assigned to Workers. Set this parameter to `LIFO` to assign most recently created Task first or FIFO to assign the oldest Task first. Default is `FIFO`. [Click here](https://www.twilio.com/docs/taskrouter/queue-ordering-last-first-out-lifo) to learn more.",
-            "in": "query",
-            "name": "TaskOrder",
-            "required": false,
-            "schema": {
-              "enum": [
-                "FIFO",
-                "LIFO"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the Activity to assign Workers when a task is reserved for them.",
-            "in": "query",
-            "name": "ReservationActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the Activity to assign Workers when a task is assigned to them.",
-            "in": "query",
-            "name": "AssignmentActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "AssignmentActivitySid": {
+                    "description": "The SID of the Activity to assign Workers when a task is assigned to them.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the TaskQueue. For example `Support-Tier 1`, `Sales`, or `Escalation`.",
+                    "type": "string"
+                  },
+                  "MaxReservedWorkers": {
+                    "description": "The maximum number of Workers to reserve for the assignment of a Task in the queue. Can be an integer between 1 and 50, inclusive and defaults to 1.",
+                    "type": "integer"
+                  },
+                  "ReservationActivitySid": {
+                    "description": "The SID of the Activity to assign Workers when a task is reserved for them.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "TargetWorkers": {
+                    "description": "A string that describes the Worker selection criteria for any Tasks that enter the TaskQueue. For example, `'\"language\" == \"spanish\"'`. The default value is `1==1`. If this value is empty, Tasks will wait in the TaskQueue until they are deleted or moved to another TaskQueue. For more information about Worker selection, see [Describing Worker selection criteria](https://www.twilio.com/docs/taskrouter/api/taskqueues#target-workers).",
+                    "type": "string"
+                  },
+                  "TaskOrder": {
+                    "description": "How Tasks will be assigned to Workers. Set this parameter to `LIFO` to assign most recently created Task first or FIFO to assign the oldest Task first. Default is `FIFO`. [Click here](https://www.twilio.com/docs/taskrouter/queue-ordering-last-first-out-lifo) to learn more.",
+                    "enum": [
+                      "FIFO",
+                      "LIFO"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -3161,7 +3133,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task_queue"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -3315,7 +3288,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3417,7 +3391,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task_queue"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3455,72 +3430,53 @@
               "pattern": "^WQ[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the TaskQueue. For example `Support-Tier 1`, `Sales`, or `Escalation`.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A string describing the Worker selection criteria for any Tasks that enter the TaskQueue. For example '\"language\" == \"spanish\"' If no TargetWorkers parameter is provided, Tasks will wait in the queue until they are either deleted or moved to another queue. Additional examples on how to describing Worker selection criteria below.",
-            "in": "query",
-            "name": "TargetWorkers",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the Activity to assign Workers when a task is reserved for them.",
-            "in": "query",
-            "name": "ReservationActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the Activity to assign Workers when a task is assigned for them.",
-            "in": "query",
-            "name": "AssignmentActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The maximum number of Workers to create reservations for the assignment of a task while in the queue. Maximum of 50.",
-            "in": "query",
-            "name": "MaxReservedWorkers",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "How Tasks will be assigned to Workers. Can be: `FIFO` or `LIFO` and the default is `FIFO`. Use `FIFO` to assign the oldest task first and `LIFO` to assign the most recent task first. For more information, see [Queue Ordering](https://www.twilio.com/docs/taskrouter/queue-ordering-last-first-out-lifo).",
-            "in": "query",
-            "name": "TaskOrder",
-            "required": false,
-            "schema": {
-              "enum": [
-                "FIFO",
-                "LIFO"
-              ],
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "AssignmentActivitySid": {
+                    "description": "The SID of the Activity to assign Workers when a task is assigned for them.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the TaskQueue. For example `Support-Tier 1`, `Sales`, or `Escalation`.",
+                    "type": "string"
+                  },
+                  "MaxReservedWorkers": {
+                    "description": "The maximum number of Workers to create reservations for the assignment of a task while in the queue. Maximum of 50.",
+                    "type": "integer"
+                  },
+                  "ReservationActivitySid": {
+                    "description": "The SID of the Activity to assign Workers when a task is reserved for them.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "TargetWorkers": {
+                    "description": "A string describing the Worker selection criteria for any Tasks that enter the TaskQueue. For example '\"language\" == \"spanish\"' If no TargetWorkers parameter is provided, Tasks will wait in the queue until they are either deleted or moved to another queue. Additional examples on how to describing Worker selection criteria below.",
+                    "type": "string"
+                  },
+                  "TaskOrder": {
+                    "description": "How Tasks will be assigned to Workers. Can be: `FIFO` or `LIFO` and the default is `FIFO`. Use `FIFO` to assign the oldest task first and `LIFO` to assign the most recent task first. For more information, see [Queue Ordering](https://www.twilio.com/docs/taskrouter/queue-ordering-last-first-out-lifo).",
+                    "enum": [
+                      "FIFO",
+                      "LIFO"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -3529,7 +3485,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task_queue"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3638,7 +3595,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task_queue.task_queue_cumulative_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3710,7 +3668,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task_queue.task_queue_real_time_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3819,7 +3778,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task_queue.task_queue_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -4005,7 +3965,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -4031,56 +3992,42 @@
               "pattern": "^WS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The amount of time in seconds the new task is allowed to live. Can be up to a maximum of 2 weeks (1,209,600 seconds). The default value is 24 hours (86,400 seconds). On timeout, the `task.canceled` event will fire with description `Task TTL Exceeded`.",
-            "in": "query",
-            "name": "Timeout",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The priority to assign the new task and override the default. When supplied, the new Task will have this priority unless it matches a Workflow Target with a Priority set. When not supplied, the new Task will have the priority of the matching Workflow Target. Value can be 0 to 2^31^ (2,147,483,647).",
-            "in": "query",
-            "name": "Priority",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "When MultiTasking is enabled, specify the TaskChannel by passing either its `unique_name` or `sid`. Default value is `default`.",
-            "in": "query",
-            "name": "TaskChannel",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the Workflow that you would like to handle routing for the new Task. If there is only one Workflow defined for the Workspace that you are posting the new task to, this parameter is optional.",
-            "in": "query",
-            "name": "WorkflowSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WW[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "A URL-encoded JSON string with the attributes of the new task. This value is passed to the Workflow's `assignment_callback_url` when the Task is assigned to a Worker. For example: `{ \"task_type\": \"call\", \"twilio_call_sid\": \"CAxxx\", \"customer_ticket_number\": \"12345\" }`.",
-            "in": "query",
-            "name": "Attributes",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Attributes": {
+                    "description": "A URL-encoded JSON string with the attributes of the new task. This value is passed to the Workflow's `assignment_callback_url` when the Task is assigned to a Worker. For example: `{ \"task_type\": \"call\", \"twilio_call_sid\": \"CAxxx\", \"customer_ticket_number\": \"12345\" }`.",
+                    "type": "string"
+                  },
+                  "Priority": {
+                    "description": "The priority to assign the new task and override the default. When supplied, the new Task will have this priority unless it matches a Workflow Target with a Priority set. When not supplied, the new Task will have the priority of the matching Workflow Target. Value can be 0 to 2^31^ (2,147,483,647).",
+                    "type": "integer"
+                  },
+                  "TaskChannel": {
+                    "description": "When MultiTasking is enabled, specify the TaskChannel by passing either its `unique_name` or `sid`. Default value is `default`.",
+                    "type": "string"
+                  },
+                  "Timeout": {
+                    "description": "The amount of time in seconds the new task is allowed to live. Can be up to a maximum of 2 weeks (1,209,600 seconds). The default value is 24 hours (86,400 seconds). On timeout, the `task.canceled` event will fire with description `Task TTL Exceeded`.",
+                    "type": "integer"
+                  },
+                  "WorkflowSid": {
+                    "description": "The SID of the Workflow that you would like to handle routing for the new Task. If there is only one Workflow defined for the Workspace that you are posting the new task to, this parameter is optional.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WW[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -4089,7 +4036,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -4195,7 +4143,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -4233,61 +4182,47 @@
               "pattern": "^WT[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The JSON string that describes the custom attributes of the task.",
-            "in": "query",
-            "name": "Attributes",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The new status of the task. Can be: `canceled`, to cancel a Task that is currently `pending` or `reserved`; `wrapping`, to move the Task to wrapup state; or `completed`, to move a Task to the completed state.",
-            "in": "query",
-            "name": "AssignmentStatus",
-            "required": false,
-            "schema": {
-              "enum": [
-                "pending",
-                "reserved",
-                "assigned",
-                "canceled",
-                "completed",
-                "wrapping"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The reason that the Task was canceled or completed. This parameter is required only if the Task is canceled or completed. Setting this value queues the task for deletion and logs the reason.",
-            "in": "query",
-            "name": "Reason",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Task's new priority value. When supplied, the Task takes on the specified priority unless it matches a Workflow Target with a Priority set. Value can be 0 to 2^31^ (2,147,483,647).",
-            "in": "query",
-            "name": "Priority",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "When MultiTasking is enabled, specify the TaskChannel with the task to update. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
-            "in": "query",
-            "name": "TaskChannel",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "AssignmentStatus": {
+                    "description": "The new status of the task. Can be: `canceled`, to cancel a Task that is currently `pending` or `reserved`; `wrapping`, to move the Task to wrapup state; or `completed`, to move a Task to the completed state.",
+                    "enum": [
+                      "pending",
+                      "reserved",
+                      "assigned",
+                      "canceled",
+                      "completed",
+                      "wrapping"
+                    ],
+                    "type": "string"
+                  },
+                  "Attributes": {
+                    "description": "The JSON string that describes the custom attributes of the task.",
+                    "type": "string"
+                  },
+                  "Priority": {
+                    "description": "The Task's new priority value. When supplied, the Task takes on the specified priority unless it matches a Workflow Target with a Priority set. Value can be 0 to 2^31^ (2,147,483,647).",
+                    "type": "integer"
+                  },
+                  "Reason": {
+                    "description": "The reason that the Task was canceled or completed. This parameter is required only if the Task is canceled or completed. Setting this value queues the task for deletion and logs the reason.",
+                    "type": "string"
+                  },
+                  "TaskChannel": {
+                    "description": "When MultiTasking is enabled, specify the TaskChannel with the task to update. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -4296,7 +4231,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -4427,7 +4363,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -4502,7 +4439,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task.task_reservation"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -4552,615 +4490,361 @@
               "pattern": "^WR[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The new status of the reservation. Can be: `pending`, `accepted`, `rejected`, or `timeout`.",
-            "in": "query",
-            "name": "ReservationStatus",
-            "required": false,
-            "schema": {
-              "enum": [
-                "pending",
-                "accepted",
-                "rejected",
-                "timeout",
-                "canceled",
-                "rescinded",
-                "wrapping",
-                "completed"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The new worker activity SID if rejecting a reservation.",
-            "in": "query",
-            "name": "WorkerActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The assignment instruction for reservation.",
-            "in": "query",
-            "name": "Instruction",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the Activity resource to start after executing a Dequeue instruction.",
-            "in": "query",
-            "name": "DequeuePostWorkActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Caller ID of the call to the worker when executing a Dequeue instruction.",
-            "in": "query",
-            "name": "DequeueFrom",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to record both legs of a call when executing a Dequeue instruction or which leg to record.",
-            "in": "query",
-            "name": "DequeueRecord",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Timeout for call when executing a Dequeue instruction.",
-            "in": "query",
-            "name": "DequeueTimeout",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The Contact URI of the worker when executing a Dequeue instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
-            "in": "query",
-            "name": "DequeueTo",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Callback URL for completed call event when executing a Dequeue instruction.",
-            "in": "query",
-            "name": "DequeueStatusCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Caller ID of the outbound call when executing a Call instruction.",
-            "in": "query",
-            "name": "CallFrom",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to record both legs of a call when executing a Call instruction or which leg to record.",
-            "in": "query",
-            "name": "CallRecord",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Timeout for call when executing a Call instruction.",
-            "in": "query",
-            "name": "CallTimeout",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The Contact URI of the worker when executing a Call instruction.  Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
-            "in": "query",
-            "name": "CallTo",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "TwiML URI executed on answering the worker's leg as a result of the Call instruction.",
-            "in": "query",
-            "name": "CallUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL to call  for the completed call event when executing a Call instruction.",
-            "in": "query",
-            "name": "CallStatusCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to accept a reservation when executing a Call instruction.",
-            "in": "query",
-            "name": "CallAccept",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The Call SID of the call parked in the queue when executing a Redirect instruction.",
-            "in": "query",
-            "name": "RedirectCallSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether the reservation should be accepted when executing a Redirect instruction.",
-            "in": "query",
-            "name": "RedirectAccept",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "TwiML URI to redirect the call to when executing the Redirect instruction.",
-            "in": "query",
-            "name": "RedirectUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Contact URI of the worker when executing a Conference instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
-            "in": "query",
-            "name": "To",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Caller ID of the call to the worker when executing a Conference instruction.",
-            "in": "query",
-            "name": "From",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL we should call using the `status_callback_method` to send status information to your application.",
-            "in": "query",
-            "name": "StatusCallback",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method we should use to call `status_callback`. Can be: `POST` or `GET` and the default is `POST`.",
-            "in": "query",
-            "name": "StatusCallbackMethod",
-            "required": false,
-            "schema": {
-              "enum": [
-                "head",
-                "get",
-                "post",
-                "patch",
-                "put",
-                "delete",
-                "HEAD",
-                "GET",
-                "POST",
-                "PATCH",
-                "PUT",
-                "DELETE"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The call progress events that we will send to `status_callback`. Can be: `initiated`, `ringing`, `answered`, or `completed`.",
-            "in": "query",
-            "name": "StatusCallbackEvent",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "initiated",
-                  "ringing",
-                  "answered",
-                  "completed"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "Timeout for call when executing a Conference instruction.",
-            "in": "query",
-            "name": "Timeout",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Whether to record the participant and their conferences, including the time between conferences. The default is `false`.",
-            "in": "query",
-            "name": "Record",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether the agent is muted in the conference. The default is `false`.",
-            "in": "query",
-            "name": "Muted",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether to play a notification beep when the participant joins or when to play a beep. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`.",
-            "in": "query",
-            "name": "Beep",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to start the conference when the participant joins, if it has not already started. The default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference.",
-            "in": "query",
-            "name": "StartConferenceOnEnter",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether to end the conference when the agent leaves.",
-            "in": "query",
-            "name": "EndConferenceOnExit",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).",
-            "in": "query",
-            "name": "WaitUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.",
-            "in": "query",
-            "name": "WaitMethod",
-            "required": false,
-            "schema": {
-              "enum": [
-                "head",
-                "get",
-                "post",
-                "patch",
-                "put",
-                "delete",
-                "HEAD",
-                "GET",
-                "POST",
-                "PATCH",
-                "PUT",
-                "DELETE"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. The default is `true`.",
-            "in": "query",
-            "name": "EarlyMedia",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.",
-            "in": "query",
-            "name": "MaxParticipants",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.",
-            "in": "query",
-            "name": "ConferenceStatusCallback",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
-            "in": "query",
-            "name": "ConferenceStatusCallbackMethod",
-            "required": false,
-            "schema": {
-              "enum": [
-                "head",
-                "get",
-                "post",
-                "patch",
-                "put",
-                "delete",
-                "HEAD",
-                "GET",
-                "POST",
-                "PATCH",
-                "PUT",
-                "DELETE"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The conference status events that we will send to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `speaker`.",
-            "in": "query",
-            "name": "ConferenceStatusCallbackEvent",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "start",
-                  "end",
-                  "join",
-                  "leave",
-                  "mute",
-                  "hold",
-                  "speaker"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "Whether to record the conference the participant is joining or when to record the conference. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.",
-            "in": "query",
-            "name": "ConferenceRecord",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "How to trim the leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.",
-            "in": "query",
-            "name": "ConferenceTrim",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`.",
-            "in": "query",
-            "name": "RecordingChannels",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL that we should call using the `recording_status_callback_method` when the recording status changes.",
-            "in": "query",
-            "name": "RecordingStatusCallback",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
-            "in": "query",
-            "name": "RecordingStatusCallbackMethod",
-            "required": false,
-            "schema": {
-              "enum": [
-                "head",
-                "get",
-                "post",
-                "patch",
-                "put",
-                "delete",
-                "HEAD",
-                "GET",
-                "POST",
-                "PATCH",
-                "PUT",
-                "DELETE"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.",
-            "in": "query",
-            "name": "ConferenceRecordingStatusCallback",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
-            "in": "query",
-            "name": "ConferenceRecordingStatusCallbackMethod",
-            "required": false,
-            "schema": {
-              "enum": [
-                "head",
-                "get",
-                "post",
-                "patch",
-                "put",
-                "delete",
-                "HEAD",
-                "GET",
-                "POST",
-                "PATCH",
-                "PUT",
-                "DELETE"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.",
-            "in": "query",
-            "name": "Region",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SIP username used for authentication.",
-            "in": "query",
-            "name": "SipAuthUsername",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SIP password for authentication.",
-            "in": "query",
-            "name": "SipAuthPassword",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Call progress events sent via webhooks as a result of a Dequeue instruction.",
-            "in": "query",
-            "name": "DequeueStatusCallbackEvent",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "The new worker activity SID after executing a Conference instruction.",
-            "in": "query",
-            "name": "PostWorkActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Supervisor mode when executing the Supervise instruction.",
-            "in": "query",
-            "name": "SupervisorMode",
-            "required": false,
-            "schema": {
-              "enum": [
-                "monitor",
-                "whisper",
-                "barge"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Supervisor SID/URI when executing the Supervise instruction.",
-            "in": "query",
-            "name": "Supervisor",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to end the conference when the customer leaves.",
-            "in": "query",
-            "name": "EndConferenceOnCustomerExit",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether to play a notification beep when the customer joins.",
-            "in": "query",
-            "name": "BeepOnCustomerEntrance",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Beep": {
+                    "description": "Whether to play a notification beep when the participant joins or when to play a beep. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`.",
+                    "type": "string"
+                  },
+                  "BeepOnCustomerEntrance": {
+                    "description": "Whether to play a notification beep when the customer joins.",
+                    "type": "boolean"
+                  },
+                  "CallAccept": {
+                    "description": "Whether to accept a reservation when executing a Call instruction.",
+                    "type": "boolean"
+                  },
+                  "CallFrom": {
+                    "description": "The Caller ID of the outbound call when executing a Call instruction.",
+                    "type": "string"
+                  },
+                  "CallRecord": {
+                    "description": "Whether to record both legs of a call when executing a Call instruction or which leg to record.",
+                    "type": "string"
+                  },
+                  "CallStatusCallbackUrl": {
+                    "description": "The URL to call  for the completed call event when executing a Call instruction.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "CallTimeout": {
+                    "description": "Timeout for call when executing a Call instruction.",
+                    "type": "integer"
+                  },
+                  "CallTo": {
+                    "description": "The Contact URI of the worker when executing a Call instruction.  Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
+                    "type": "string"
+                  },
+                  "CallUrl": {
+                    "description": "TwiML URI executed on answering the worker's leg as a result of the Call instruction.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "ConferenceRecord": {
+                    "description": "Whether to record the conference the participant is joining or when to record the conference. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.",
+                    "type": "string"
+                  },
+                  "ConferenceRecordingStatusCallback": {
+                    "description": "The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "ConferenceRecordingStatusCallbackMethod": {
+                    "description": "The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "ConferenceStatusCallback": {
+                    "description": "The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "ConferenceStatusCallbackEvent": {
+                    "description": "The conference status events that we will send to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `speaker`.",
+                    "items": {
+                      "enum": [
+                        "start",
+                        "end",
+                        "join",
+                        "leave",
+                        "mute",
+                        "hold",
+                        "speaker"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "ConferenceStatusCallbackMethod": {
+                    "description": "The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "ConferenceTrim": {
+                    "description": "How to trim the leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.",
+                    "type": "string"
+                  },
+                  "DequeueFrom": {
+                    "description": "The Caller ID of the call to the worker when executing a Dequeue instruction.",
+                    "type": "string"
+                  },
+                  "DequeuePostWorkActivitySid": {
+                    "description": "The SID of the Activity resource to start after executing a Dequeue instruction.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "DequeueRecord": {
+                    "description": "Whether to record both legs of a call when executing a Dequeue instruction or which leg to record.",
+                    "type": "string"
+                  },
+                  "DequeueStatusCallbackEvent": {
+                    "description": "The Call progress events sent via webhooks as a result of a Dequeue instruction.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "DequeueStatusCallbackUrl": {
+                    "description": "The Callback URL for completed call event when executing a Dequeue instruction.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "DequeueTimeout": {
+                    "description": "Timeout for call when executing a Dequeue instruction.",
+                    "type": "integer"
+                  },
+                  "DequeueTo": {
+                    "description": "The Contact URI of the worker when executing a Dequeue instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
+                    "type": "string"
+                  },
+                  "EarlyMedia": {
+                    "description": "Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. The default is `true`.",
+                    "type": "boolean"
+                  },
+                  "EndConferenceOnCustomerExit": {
+                    "description": "Whether to end the conference when the customer leaves.",
+                    "type": "boolean"
+                  },
+                  "EndConferenceOnExit": {
+                    "description": "Whether to end the conference when the agent leaves.",
+                    "type": "boolean"
+                  },
+                  "From": {
+                    "description": "The Caller ID of the call to the worker when executing a Conference instruction.",
+                    "type": "string"
+                  },
+                  "Instruction": {
+                    "description": "The assignment instruction for reservation.",
+                    "type": "string"
+                  },
+                  "MaxParticipants": {
+                    "description": "The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.",
+                    "type": "integer"
+                  },
+                  "Muted": {
+                    "description": "Whether the agent is muted in the conference. The default is `false`.",
+                    "type": "boolean"
+                  },
+                  "PostWorkActivitySid": {
+                    "description": "The new worker activity SID after executing a Conference instruction.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Record": {
+                    "description": "Whether to record the participant and their conferences, including the time between conferences. The default is `false`.",
+                    "type": "boolean"
+                  },
+                  "RecordingChannels": {
+                    "description": "The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`.",
+                    "type": "string"
+                  },
+                  "RecordingStatusCallback": {
+                    "description": "The URL that we should call using the `recording_status_callback_method` when the recording status changes.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "RecordingStatusCallbackMethod": {
+                    "description": "The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "RedirectAccept": {
+                    "description": "Whether the reservation should be accepted when executing a Redirect instruction.",
+                    "type": "boolean"
+                  },
+                  "RedirectCallSid": {
+                    "description": "The Call SID of the call parked in the queue when executing a Redirect instruction.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^CA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "RedirectUrl": {
+                    "description": "TwiML URI to redirect the call to when executing the Redirect instruction.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "Region": {
+                    "description": "The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.",
+                    "type": "string"
+                  },
+                  "ReservationStatus": {
+                    "description": "The new status of the reservation. Can be: `pending`, `accepted`, `rejected`, or `timeout`.",
+                    "enum": [
+                      "pending",
+                      "accepted",
+                      "rejected",
+                      "timeout",
+                      "canceled",
+                      "rescinded",
+                      "wrapping",
+                      "completed"
+                    ],
+                    "type": "string"
+                  },
+                  "SipAuthPassword": {
+                    "description": "The SIP password for authentication.",
+                    "type": "string"
+                  },
+                  "SipAuthUsername": {
+                    "description": "The SIP username used for authentication.",
+                    "type": "string"
+                  },
+                  "StartConferenceOnEnter": {
+                    "description": "Whether to start the conference when the participant joins, if it has not already started. The default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference.",
+                    "type": "boolean"
+                  },
+                  "StatusCallback": {
+                    "description": "The URL we should call using the `status_callback_method` to send status information to your application.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "StatusCallbackEvent": {
+                    "description": "The call progress events that we will send to `status_callback`. Can be: `initiated`, `ringing`, `answered`, or `completed`.",
+                    "items": {
+                      "enum": [
+                        "initiated",
+                        "ringing",
+                        "answered",
+                        "completed"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "StatusCallbackMethod": {
+                    "description": "The HTTP method we should use to call `status_callback`. Can be: `POST` or `GET` and the default is `POST`.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "Supervisor": {
+                    "description": "The Supervisor SID/URI when executing the Supervise instruction.",
+                    "type": "string"
+                  },
+                  "SupervisorMode": {
+                    "description": "The Supervisor mode when executing the Supervise instruction.",
+                    "enum": [
+                      "monitor",
+                      "whisper",
+                      "barge"
+                    ],
+                    "type": "string"
+                  },
+                  "Timeout": {
+                    "description": "Timeout for call when executing a Conference instruction.",
+                    "type": "integer"
+                  },
+                  "To": {
+                    "description": "The Contact URI of the worker when executing a Conference instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
+                    "type": "string"
+                  },
+                  "WaitMethod": {
+                    "description": "The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "WaitUrl": {
+                    "description": "The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "WorkerActivitySid": {
+                    "description": "The new worker activity SID if rejecting a reservation.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -5169,7 +4853,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.task.task_reservation"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -5337,7 +5022,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -5363,38 +5049,37 @@
               "pattern": "^WS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the new Worker. It can be up to 64 characters long.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of a valid Activity that will describe the new Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information. If not provided, the new Worker's initial state is the `default_activity_sid` configured on the Workspace.",
-            "in": "query",
-            "name": "ActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "A valid JSON string that describes the new Worker. For example: `{ \"email\": \"Bob@example.com\", \"phone\": \"+5095551234\" }`. This data is passed to the `assignment_callback_url` when TaskRouter assigns a Task to the Worker. Defaults to {}.",
-            "in": "query",
-            "name": "Attributes",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "ActivitySid": {
+                    "description": "The SID of a valid Activity that will describe the new Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information. If not provided, the new Worker's initial state is the `default_activity_sid` configured on the Workspace.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Attributes": {
+                    "description": "A valid JSON string that describes the new Worker. For example: `{ \"email\": \"Bob@example.com\", \"phone\": \"+5095551234\" }`. This data is passed to the `assignment_callback_url` when TaskRouter assigns a Task to the Worker. Defaults to {}.",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the new Worker. It can be up to 64 characters long.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -5403,7 +5088,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.worker"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -5491,7 +5177,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.worker.workers_cumulative_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -5553,7 +5240,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.worker.workers_real_time_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -5669,7 +5357,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.worker.worker_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -5771,7 +5460,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.worker"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -5809,47 +5499,38 @@
               "pattern": "^WK[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The SID of a valid Activity that will describe the Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information.",
-            "in": "query",
-            "name": "ActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The JSON string that describes the Worker. For example: `{ \"email\": \"Bob@example.com\", \"phone\": \"+5095551234\" }`. This data is passed to the `assignment_callback_url` when TaskRouter assigns a Task to the Worker. Defaults to {}.",
-            "in": "query",
-            "name": "Attributes",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A descriptive string that you create to describe the Worker. It can be up to 64 characters long.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to reject pending reservations.",
-            "in": "query",
-            "name": "RejectPendingReservations",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "ActivitySid": {
+                    "description": "The SID of a valid Activity that will describe the Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Attributes": {
+                    "description": "The JSON string that describes the Worker. For example: `{ \"email\": \"Bob@example.com\", \"phone\": \"+5095551234\" }`. This data is passed to the `assignment_callback_url` when TaskRouter assigns a Task to the Worker. Defaults to {}.",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Worker. It can be up to 64 characters long.",
+                    "type": "string"
+                  },
+                  "RejectPendingReservations": {
+                    "description": "Whether to reject pending reservations.",
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -5858,7 +5539,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.worker"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -5968,7 +5650,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -6039,7 +5722,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.worker.worker_channel"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -6086,26 +5770,27 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "The total number of Tasks that the Worker should handle for the TaskChannel type. TaskRouter creates reservations for Tasks of this TaskChannel type up to the specified capacity. If the capacity is 0, no new reservations will be created.",
-            "in": "query",
-            "name": "Capacity",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Whether the WorkerChannel is available. Set to `false` to prevent the Worker from receiving any new Tasks of this TaskChannel type.",
-            "in": "query",
-            "name": "Available",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Available": {
+                    "description": "Whether the WorkerChannel is available. Set to `false` to prevent the Worker from receiving any new Tasks of this TaskChannel type.",
+                    "type": "boolean"
+                  },
+                  "Capacity": {
+                    "description": "The total number of Tasks that the Worker should handle for the TaskChannel type. TaskRouter creates reservations for Tasks of this TaskChannel type up to the specified capacity. If the capacity is 0, no new reservations will be created.",
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -6114,7 +5799,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.worker.worker_channel"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -6243,7 +5929,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -6317,7 +6004,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.worker.worker_reservation"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -6367,592 +6055,348 @@
               "pattern": "^WR[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The new status of the reservation. Can be: `pending`, `accepted`, `rejected`, `timeout`, `canceled`, or `rescinded`.",
-            "in": "query",
-            "name": "ReservationStatus",
-            "required": false,
-            "schema": {
-              "enum": [
-                "pending",
-                "accepted",
-                "rejected",
-                "timeout",
-                "canceled",
-                "rescinded",
-                "wrapping",
-                "completed"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The new worker activity SID if rejecting a reservation.",
-            "in": "query",
-            "name": "WorkerActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The assignment instruction for the reservation.",
-            "in": "query",
-            "name": "Instruction",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the Activity resource to start after executing a Dequeue instruction.",
-            "in": "query",
-            "name": "DequeuePostWorkActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The caller ID of the call to the worker when executing a Dequeue instruction.",
-            "in": "query",
-            "name": "DequeueFrom",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to record both legs of a call when executing a Dequeue instruction or which leg to record.",
-            "in": "query",
-            "name": "DequeueRecord",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The timeout for call when executing a Dequeue instruction.",
-            "in": "query",
-            "name": "DequeueTimeout",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The contact URI of the worker when executing a Dequeue instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
-            "in": "query",
-            "name": "DequeueTo",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The callback URL for completed call event when executing a Dequeue instruction.",
-            "in": "query",
-            "name": "DequeueStatusCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Caller ID of the outbound call when executing a Call instruction.",
-            "in": "query",
-            "name": "CallFrom",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to record both legs of a call when executing a Call instruction.",
-            "in": "query",
-            "name": "CallRecord",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The timeout for a call when executing a Call instruction.",
-            "in": "query",
-            "name": "CallTimeout",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The contact URI of the worker when executing a Call instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
-            "in": "query",
-            "name": "CallTo",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "TwiML URI executed on answering the worker's leg as a result of the Call instruction.",
-            "in": "query",
-            "name": "CallUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL to call for the completed call event when executing a Call instruction.",
-            "in": "query",
-            "name": "CallStatusCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to accept a reservation when executing a Call instruction.",
-            "in": "query",
-            "name": "CallAccept",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The Call SID of the call parked in the queue when executing a Redirect instruction.",
-            "in": "query",
-            "name": "RedirectCallSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether the reservation should be accepted when executing a Redirect instruction.",
-            "in": "query",
-            "name": "RedirectAccept",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "TwiML URI to redirect the call to when executing the Redirect instruction.",
-            "in": "query",
-            "name": "RedirectUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Contact URI of the worker when executing a Conference instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
-            "in": "query",
-            "name": "To",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The caller ID of the call to the worker when executing a Conference instruction.",
-            "in": "query",
-            "name": "From",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL we should call using the `status_callback_method` to send status information to your application.",
-            "in": "query",
-            "name": "StatusCallback",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method we should use to call `status_callback`. Can be: `POST` or `GET` and the default is `POST`.",
-            "in": "query",
-            "name": "StatusCallbackMethod",
-            "required": false,
-            "schema": {
-              "enum": [
-                "head",
-                "get",
-                "post",
-                "patch",
-                "put",
-                "delete",
-                "HEAD",
-                "GET",
-                "POST",
-                "PATCH",
-                "PUT",
-                "DELETE"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The call progress events that we will send to `status_callback`. Can be: `initiated`, `ringing`, `answered`, or `completed`.",
-            "in": "query",
-            "name": "StatusCallbackEvent",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "initiated",
-                  "ringing",
-                  "answered",
-                  "completed"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "The timeout for a call when executing a Conference instruction.",
-            "in": "query",
-            "name": "Timeout",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Whether to record the participant and their conferences, including the time between conferences. Can be `true` or `false` and the default is `false`.",
-            "in": "query",
-            "name": "Record",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether the agent is muted in the conference. Defaults to `false`.",
-            "in": "query",
-            "name": "Muted",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether to play a notification beep when the participant joins or when to play a beep. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`.",
-            "in": "query",
-            "name": "Beep",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to start the conference when the participant joins, if it has not already started. Can be: `true` or `false` and the default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference.",
-            "in": "query",
-            "name": "StartConferenceOnEnter",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether to end the conference when the agent leaves.",
-            "in": "query",
-            "name": "EndConferenceOnExit",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).",
-            "in": "query",
-            "name": "WaitUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.",
-            "in": "query",
-            "name": "WaitMethod",
-            "required": false,
-            "schema": {
-              "enum": [
-                "head",
-                "get",
-                "post",
-                "patch",
-                "put",
-                "delete",
-                "HEAD",
-                "GET",
-                "POST",
-                "PATCH",
-                "PUT",
-                "DELETE"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. The default is `true`.",
-            "in": "query",
-            "name": "EarlyMedia",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The maximum number of participants allowed in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.",
-            "in": "query",
-            "name": "MaxParticipants",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.",
-            "in": "query",
-            "name": "ConferenceStatusCallback",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
-            "in": "query",
-            "name": "ConferenceStatusCallbackMethod",
-            "required": false,
-            "schema": {
-              "enum": [
-                "head",
-                "get",
-                "post",
-                "patch",
-                "put",
-                "delete",
-                "HEAD",
-                "GET",
-                "POST",
-                "PATCH",
-                "PUT",
-                "DELETE"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The conference status events that we will send to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `speaker`.",
-            "in": "query",
-            "name": "ConferenceStatusCallbackEvent",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "start",
-                  "end",
-                  "join",
-                  "leave",
-                  "mute",
-                  "hold",
-                  "speaker"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "Whether to record the conference the participant is joining or when to record the conference. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.",
-            "in": "query",
-            "name": "ConferenceRecord",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.",
-            "in": "query",
-            "name": "ConferenceTrim",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`.",
-            "in": "query",
-            "name": "RecordingChannels",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL that we should call using the `recording_status_callback_method` when the recording status changes.",
-            "in": "query",
-            "name": "RecordingStatusCallback",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
-            "in": "query",
-            "name": "RecordingStatusCallbackMethod",
-            "required": false,
-            "schema": {
-              "enum": [
-                "head",
-                "get",
-                "post",
-                "patch",
-                "put",
-                "delete",
-                "HEAD",
-                "GET",
-                "POST",
-                "PATCH",
-                "PUT",
-                "DELETE"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.",
-            "in": "query",
-            "name": "ConferenceRecordingStatusCallback",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
-            "in": "query",
-            "name": "ConferenceRecordingStatusCallbackMethod",
-            "required": false,
-            "schema": {
-              "enum": [
-                "head",
-                "get",
-                "post",
-                "patch",
-                "put",
-                "delete",
-                "HEAD",
-                "GET",
-                "POST",
-                "PATCH",
-                "PUT",
-                "DELETE"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.",
-            "in": "query",
-            "name": "Region",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SIP username used for authentication.",
-            "in": "query",
-            "name": "SipAuthUsername",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SIP password for authentication.",
-            "in": "query",
-            "name": "SipAuthPassword",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The call progress events sent via webhooks as a result of a Dequeue instruction.",
-            "in": "query",
-            "name": "DequeueStatusCallbackEvent",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "The new worker activity SID after executing a Conference instruction.",
-            "in": "query",
-            "name": "PostWorkActivitySid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to end the conference when the customer leaves.",
-            "in": "query",
-            "name": "EndConferenceOnCustomerExit",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether to play a notification beep when the customer joins.",
-            "in": "query",
-            "name": "BeepOnCustomerEntrance",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Beep": {
+                    "description": "Whether to play a notification beep when the participant joins or when to play a beep. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`.",
+                    "type": "string"
+                  },
+                  "BeepOnCustomerEntrance": {
+                    "description": "Whether to play a notification beep when the customer joins.",
+                    "type": "boolean"
+                  },
+                  "CallAccept": {
+                    "description": "Whether to accept a reservation when executing a Call instruction.",
+                    "type": "boolean"
+                  },
+                  "CallFrom": {
+                    "description": "The Caller ID of the outbound call when executing a Call instruction.",
+                    "type": "string"
+                  },
+                  "CallRecord": {
+                    "description": "Whether to record both legs of a call when executing a Call instruction.",
+                    "type": "string"
+                  },
+                  "CallStatusCallbackUrl": {
+                    "description": "The URL to call for the completed call event when executing a Call instruction.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "CallTimeout": {
+                    "description": "The timeout for a call when executing a Call instruction.",
+                    "type": "integer"
+                  },
+                  "CallTo": {
+                    "description": "The contact URI of the worker when executing a Call instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
+                    "type": "string"
+                  },
+                  "CallUrl": {
+                    "description": "TwiML URI executed on answering the worker's leg as a result of the Call instruction.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "ConferenceRecord": {
+                    "description": "Whether to record the conference the participant is joining or when to record the conference. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.",
+                    "type": "string"
+                  },
+                  "ConferenceRecordingStatusCallback": {
+                    "description": "The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "ConferenceRecordingStatusCallbackMethod": {
+                    "description": "The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "ConferenceStatusCallback": {
+                    "description": "The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "ConferenceStatusCallbackEvent": {
+                    "description": "The conference status events that we will send to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `speaker`.",
+                    "items": {
+                      "enum": [
+                        "start",
+                        "end",
+                        "join",
+                        "leave",
+                        "mute",
+                        "hold",
+                        "speaker"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "ConferenceStatusCallbackMethod": {
+                    "description": "The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "ConferenceTrim": {
+                    "description": "Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.",
+                    "type": "string"
+                  },
+                  "DequeueFrom": {
+                    "description": "The caller ID of the call to the worker when executing a Dequeue instruction.",
+                    "type": "string"
+                  },
+                  "DequeuePostWorkActivitySid": {
+                    "description": "The SID of the Activity resource to start after executing a Dequeue instruction.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "DequeueRecord": {
+                    "description": "Whether to record both legs of a call when executing a Dequeue instruction or which leg to record.",
+                    "type": "string"
+                  },
+                  "DequeueStatusCallbackEvent": {
+                    "description": "The call progress events sent via webhooks as a result of a Dequeue instruction.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "DequeueStatusCallbackUrl": {
+                    "description": "The callback URL for completed call event when executing a Dequeue instruction.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "DequeueTimeout": {
+                    "description": "The timeout for call when executing a Dequeue instruction.",
+                    "type": "integer"
+                  },
+                  "DequeueTo": {
+                    "description": "The contact URI of the worker when executing a Dequeue instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
+                    "type": "string"
+                  },
+                  "EarlyMedia": {
+                    "description": "Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. The default is `true`.",
+                    "type": "boolean"
+                  },
+                  "EndConferenceOnCustomerExit": {
+                    "description": "Whether to end the conference when the customer leaves.",
+                    "type": "boolean"
+                  },
+                  "EndConferenceOnExit": {
+                    "description": "Whether to end the conference when the agent leaves.",
+                    "type": "boolean"
+                  },
+                  "From": {
+                    "description": "The caller ID of the call to the worker when executing a Conference instruction.",
+                    "type": "string"
+                  },
+                  "Instruction": {
+                    "description": "The assignment instruction for the reservation.",
+                    "type": "string"
+                  },
+                  "MaxParticipants": {
+                    "description": "The maximum number of participants allowed in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.",
+                    "type": "integer"
+                  },
+                  "Muted": {
+                    "description": "Whether the agent is muted in the conference. Defaults to `false`.",
+                    "type": "boolean"
+                  },
+                  "PostWorkActivitySid": {
+                    "description": "The new worker activity SID after executing a Conference instruction.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Record": {
+                    "description": "Whether to record the participant and their conferences, including the time between conferences. Can be `true` or `false` and the default is `false`.",
+                    "type": "boolean"
+                  },
+                  "RecordingChannels": {
+                    "description": "The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`.",
+                    "type": "string"
+                  },
+                  "RecordingStatusCallback": {
+                    "description": "The URL that we should call using the `recording_status_callback_method` when the recording status changes.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "RecordingStatusCallbackMethod": {
+                    "description": "The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "RedirectAccept": {
+                    "description": "Whether the reservation should be accepted when executing a Redirect instruction.",
+                    "type": "boolean"
+                  },
+                  "RedirectCallSid": {
+                    "description": "The Call SID of the call parked in the queue when executing a Redirect instruction.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^CA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "RedirectUrl": {
+                    "description": "TwiML URI to redirect the call to when executing the Redirect instruction.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "Region": {
+                    "description": "The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.",
+                    "type": "string"
+                  },
+                  "ReservationStatus": {
+                    "description": "The new status of the reservation. Can be: `pending`, `accepted`, `rejected`, `timeout`, `canceled`, or `rescinded`.",
+                    "enum": [
+                      "pending",
+                      "accepted",
+                      "rejected",
+                      "timeout",
+                      "canceled",
+                      "rescinded",
+                      "wrapping",
+                      "completed"
+                    ],
+                    "type": "string"
+                  },
+                  "SipAuthPassword": {
+                    "description": "The SIP password for authentication.",
+                    "type": "string"
+                  },
+                  "SipAuthUsername": {
+                    "description": "The SIP username used for authentication.",
+                    "type": "string"
+                  },
+                  "StartConferenceOnEnter": {
+                    "description": "Whether to start the conference when the participant joins, if it has not already started. Can be: `true` or `false` and the default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference.",
+                    "type": "boolean"
+                  },
+                  "StatusCallback": {
+                    "description": "The URL we should call using the `status_callback_method` to send status information to your application.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "StatusCallbackEvent": {
+                    "description": "The call progress events that we will send to `status_callback`. Can be: `initiated`, `ringing`, `answered`, or `completed`.",
+                    "items": {
+                      "enum": [
+                        "initiated",
+                        "ringing",
+                        "answered",
+                        "completed"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "StatusCallbackMethod": {
+                    "description": "The HTTP method we should use to call `status_callback`. Can be: `POST` or `GET` and the default is `POST`.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "Timeout": {
+                    "description": "The timeout for a call when executing a Conference instruction.",
+                    "type": "integer"
+                  },
+                  "To": {
+                    "description": "The Contact URI of the worker when executing a Conference instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
+                    "type": "string"
+                  },
+                  "WaitMethod": {
+                    "description": "The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "WaitUrl": {
+                    "description": "The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "WorkerActivitySid": {
+                    "description": "The new worker activity SID if rejecting a reservation.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WA[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -6961,7 +6405,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.worker.worker_reservation"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -7061,7 +6506,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.worker.worker_instance_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -7166,7 +6612,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -7192,55 +6639,45 @@
               "pattern": "^WS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the Workflow resource. For example, `Inbound Call Workflow` or `2014 Outbound Campaign`.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A JSON string that contains the rules to apply to the Workflow. See [Configuring Workflows](https://www.twilio.com/docs/taskrouter/workflow-configuration) for more information.",
-            "in": "query",
-            "name": "Configuration",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL from your application that will process task assignment events. See [Handling Task Assignment Callback](https://www.twilio.com/docs/taskrouter/handle-assignment-callbacks) for more details.",
-            "in": "query",
-            "name": "AssignmentCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL that we should call when a call to the `assignment_callback_url` fails.",
-            "in": "query",
-            "name": "FallbackAssignmentCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker. Can be up to `86,400` (24 hours) and the default is `120`.",
-            "in": "query",
-            "name": "TaskReservationTimeout",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "AssignmentCallbackUrl": {
+                    "description": "The URL from your application that will process task assignment events. See [Handling Task Assignment Callback](https://www.twilio.com/docs/taskrouter/handle-assignment-callbacks) for more details.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "Configuration": {
+                    "description": "A JSON string that contains the rules to apply to the Workflow. See [Configuring Workflows](https://www.twilio.com/docs/taskrouter/workflow-configuration) for more information.",
+                    "type": "string"
+                  },
+                  "FallbackAssignmentCallbackUrl": {
+                    "description": "The URL that we should call when a call to the `assignment_callback_url` fails.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Workflow resource. For example, `Inbound Call Workflow` or `2014 Outbound Campaign`.",
+                    "type": "string"
+                  },
+                  "TaskReservationTimeout": {
+                    "description": "How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker. Can be up to `86,400` (24 hours) and the default is `120`.",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "FriendlyName",
+                  "Configuration"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -7249,7 +6686,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.workflow"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -7353,7 +6791,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.workflow"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -7391,64 +6830,45 @@
               "pattern": "^WW[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the Workflow resource. For example, `Inbound Call Workflow` or `2014 Outbound Campaign`.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL from your application that will process task assignment events. See [Handling Task Assignment Callback](https://www.twilio.com/docs/taskrouter/handle-assignment-callbacks) for more details.",
-            "in": "query",
-            "name": "AssignmentCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL that we should call when a call to the `assignment_callback_url` fails.",
-            "in": "query",
-            "name": "FallbackAssignmentCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "A JSON string that contains the rules to apply to the Workflow. See [Configuring Workflows](https://www.twilio.com/docs/taskrouter/workflow-configuration) for more information.",
-            "in": "query",
-            "name": "Configuration",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker. Can be up to `86,400` (24 hours) and the default is `120`.",
-            "in": "query",
-            "name": "TaskReservationTimeout",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Whether or not to re-evaluate Tasks. The default is `false`, which means Tasks in the Workflow will not be processed through the assignment loop again.",
-            "in": "query",
-            "name": "ReEvaluateTasks",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "AssignmentCallbackUrl": {
+                    "description": "The URL from your application that will process task assignment events. See [Handling Task Assignment Callback](https://www.twilio.com/docs/taskrouter/handle-assignment-callbacks) for more details.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "Configuration": {
+                    "description": "A JSON string that contains the rules to apply to the Workflow. See [Configuring Workflows](https://www.twilio.com/docs/taskrouter/workflow-configuration) for more information.",
+                    "type": "string"
+                  },
+                  "FallbackAssignmentCallbackUrl": {
+                    "description": "The URL that we should call when a call to the `assignment_callback_url` fails.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Workflow resource. For example, `Inbound Call Workflow` or `2014 Outbound Campaign`.",
+                    "type": "string"
+                  },
+                  "ReEvaluateTasks": {
+                    "description": "Whether or not to re-evaluate Tasks. The default is `false`, which means Tasks in the Workflow will not be processed through the assignment loop again.",
+                    "type": "string"
+                  },
+                  "TaskReservationTimeout": {
+                    "description": "How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker. Can be up to `86,400` (24 hours) and the default is `120`.",
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -7457,7 +6877,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.workflow"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -7566,7 +6987,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.workflow.workflow_cumulative_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -7638,7 +7060,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.workflow.workflow_real_time_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -7747,7 +7170,8 @@
                   "$ref": "#/components/schemas/taskrouter.v1.workspace.workflow.workflow_statistics"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [

@@ -820,7 +820,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -919,7 +920,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -945,35 +947,35 @@
               "pattern": "^FW[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The Contact phone number to start a Studio Flow Engagement, available as variable `{{contact.channel.address}}`.",
-            "in": "query",
-            "name": "To",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Twilio phone number to send messages or initiate calls from during the Flow Engagement. Available as variable `{{flow.channel.address}}`",
-            "in": "query",
-            "name": "From",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A JSON string we will add to your flow's context and that you can access as variables inside your flow. For example, if you pass in `Parameters={'name':'Zeke'}` then inside a widget you can reference the variable `{{flow.data.name}}` which will return the string 'Zeke'. Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string.",
-            "in": "query",
-            "name": "Parameters",
-            "required": false,
-            "schema": {
-              "type": "object"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "From": {
+                    "description": "The Twilio phone number to send messages or initiate calls from during the Flow Engagement. Available as variable `{{flow.channel.address}}`",
+                    "type": "string"
+                  },
+                  "Parameters": {
+                    "description": "A JSON string we will add to your flow's context and that you can access as variables inside your flow. For example, if you pass in `Parameters={'name':'Zeke'}` then inside a widget you can reference the variable `{{flow.data.name}}` which will return the string 'Zeke'. Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string.",
+                    "type": "object"
+                  },
+                  "To": {
+                    "description": "The Contact phone number to start a Studio Flow Engagement, available as variable `{{contact.channel.address}}`.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "To",
+                  "From"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -982,7 +984,8 @@
                   "$ref": "#/components/schemas/studio.v1.flow.engagement"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1045,7 +1048,8 @@
                   "$ref": "#/components/schemas/studio.v1.flow.engagement.engagement_context"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1153,7 +1157,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1228,7 +1233,8 @@
                   "$ref": "#/components/schemas/studio.v1.flow.engagement.step"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1303,7 +1309,8 @@
                   "$ref": "#/components/schemas/studio.v1.flow.engagement.step.step_context"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1405,7 +1412,8 @@
                   "$ref": "#/components/schemas/studio.v1.flow.engagement"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1524,7 +1532,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1550,35 +1559,35 @@
               "pattern": "^FW[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`.",
-            "in": "query",
-            "name": "To",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`.",
-            "in": "query",
-            "name": "From",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.",
-            "in": "query",
-            "name": "Parameters",
-            "required": false,
-            "schema": {
-              "type": "object"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "From": {
+                    "description": "The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`.",
+                    "type": "string"
+                  },
+                  "Parameters": {
+                    "description": "JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.",
+                    "type": "object"
+                  },
+                  "To": {
+                    "description": "The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "To",
+                  "From"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1587,7 +1596,8 @@
                   "$ref": "#/components/schemas/studio.v1.flow.execution"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1650,7 +1660,8 @@
                   "$ref": "#/components/schemas/studio.v1.flow.execution.execution_context"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1758,7 +1769,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1832,7 +1844,8 @@
                   "$ref": "#/components/schemas/studio.v1.flow.execution.execution_step"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1906,7 +1919,8 @@
                   "$ref": "#/components/schemas/studio.v1.flow.execution.execution_step.execution_step_context"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2008,7 +2022,8 @@
                   "$ref": "#/components/schemas/studio.v1.flow.execution"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2046,21 +2061,30 @@
               "pattern": "^FN[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The status of the Execution. Can only be `ended`.",
-            "in": "query",
-            "name": "Status",
-            "required": true,
-            "schema": {
-              "enum": [
-                "active",
-                "ended"
-              ],
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Status": {
+                    "description": "The status of the Execution. Can only be `ended`.",
+                    "enum": [
+                      "active",
+                      "ended"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Status"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -2069,7 +2093,8 @@
                   "$ref": "#/components/schemas/studio.v1.flow.execution"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2150,7 +2175,8 @@
                   "$ref": "#/components/schemas/studio.v1.flow"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2237,7 +2263,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2251,48 +2278,43 @@
       },
       "post": {
         "description": "Create a Flow.",
-        "parameters": [
-          {
-            "description": "The string that you assigned to describe the Flow.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The status of the Flow. Can be: `draft` or `published`.",
-            "in": "query",
-            "name": "Status",
-            "required": true,
-            "schema": {
-              "enum": [
-                "draft",
-                "published"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "JSON representation of flow definition.",
-            "in": "query",
-            "name": "Definition",
-            "required": true,
-            "schema": {
-              "type": "object"
-            }
-          },
-          {
-            "description": "Description on change made in the revision.",
-            "in": "query",
-            "name": "CommitMessage",
-            "required": false,
-            "schema": {
-              "type": "string"
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "CommitMessage": {
+                    "description": "Description on change made in the revision.",
+                    "type": "string"
+                  },
+                  "Definition": {
+                    "description": "JSON representation of flow definition.",
+                    "type": "object"
+                  },
+                  "FriendlyName": {
+                    "description": "The string that you assigned to describe the Flow.",
+                    "type": "string"
+                  },
+                  "Status": {
+                    "description": "The status of the Flow. Can be: `draft` or `published`.",
+                    "enum": [
+                      "draft",
+                      "published"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName",
+                  "Status",
+                  "Definition"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -2301,7 +2323,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -2330,48 +2353,43 @@
       "description": "TODO: Resource-level docs",
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "description": "",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "",
-            "in": "query",
-            "name": "Status",
-            "required": true,
-            "schema": {
-              "enum": [
-                "draft",
-                "published"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "",
-            "in": "query",
-            "name": "Definition",
-            "required": true,
-            "schema": {
-              "type": "object"
-            }
-          },
-          {
-            "description": "",
-            "in": "query",
-            "name": "CommitMessage",
-            "required": false,
-            "schema": {
-              "type": "string"
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "CommitMessage": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "Definition": {
+                    "description": "",
+                    "type": "object"
+                  },
+                  "FriendlyName": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "Status": {
+                    "description": "",
+                    "enum": [
+                      "draft",
+                      "published"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName",
+                  "Status",
+                  "Definition"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "content": {
@@ -2380,7 +2398,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow_validate"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2496,7 +2515,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2522,35 +2542,35 @@
               "pattern": "^FW[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`.",
-            "in": "query",
-            "name": "To",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`.",
-            "in": "query",
-            "name": "From",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.",
-            "in": "query",
-            "name": "Parameters",
-            "required": false,
-            "schema": {
-              "type": "object"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "From": {
+                    "description": "The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`.",
+                    "type": "string"
+                  },
+                  "Parameters": {
+                    "description": "JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.",
+                    "type": "object"
+                  },
+                  "To": {
+                    "description": "The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "To",
+                  "From"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -2559,7 +2579,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow.execution"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -2621,7 +2642,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow.execution.execution_context"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2729,7 +2751,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2803,7 +2826,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow.execution.execution_step"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2877,7 +2901,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow.execution.execution_step.execution_step_context"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2979,7 +3004,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow.execution"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3017,21 +3043,30 @@
               "pattern": "^FN[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The status of the Execution. Can only be `ended`.",
-            "in": "query",
-            "name": "Status",
-            "required": true,
-            "schema": {
-              "enum": [
-                "active",
-                "ended"
-              ],
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Status": {
+                    "description": "The status of the Execution. Can only be `ended`.",
+                    "enum": [
+                      "active",
+                      "ended"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Status"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -3040,7 +3075,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow.execution"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3120,7 +3156,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3146,48 +3183,42 @@
               "pattern": "^FW[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The status of the Flow. Can be: `draft` or `published`.",
-            "in": "query",
-            "name": "Status",
-            "required": true,
-            "schema": {
-              "enum": [
-                "draft",
-                "published"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The string that you assigned to describe the Flow.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "JSON representation of flow definition.",
-            "in": "query",
-            "name": "Definition",
-            "required": false,
-            "schema": {
-              "type": "object"
-            }
-          },
-          {
-            "description": "Description on change made in the revision.",
-            "in": "query",
-            "name": "CommitMessage",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "CommitMessage": {
+                    "description": "Description on change made in the revision.",
+                    "type": "string"
+                  },
+                  "Definition": {
+                    "description": "JSON representation of flow definition.",
+                    "type": "object"
+                  },
+                  "FriendlyName": {
+                    "description": "The string that you assigned to describe the Flow.",
+                    "type": "string"
+                  },
+                  "Status": {
+                    "description": "The status of the Flow. Can be: `draft` or `published`.",
+                    "enum": [
+                      "draft",
+                      "published"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Status"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -3196,7 +3227,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3295,7 +3327,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3355,7 +3388,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow.flow_revision"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3406,7 +3440,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow.test_user"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3432,20 +3467,29 @@
               "pattern": "^FW[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "",
-            "in": "query",
-            "name": "TestUsers",
-            "required": true,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "TestUsers": {
+                    "description": "",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "TestUsers"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -3454,7 +3498,8 @@
                   "$ref": "#/components/schemas/studio.v2.flow.test_user"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [

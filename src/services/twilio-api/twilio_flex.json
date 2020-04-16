@@ -409,7 +409,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -423,104 +424,70 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "description": "The SID of the FlexFlow.",
-            "in": "query",
-            "name": "FlexFlowSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FO[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The `identity` value that uniquely identifies the new resource's chat User.",
-            "in": "query",
-            "name": "Identity",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The chat participant's friendly name.",
-            "in": "query",
-            "name": "ChatUserFriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The chat channel's friendly name.",
-            "in": "query",
-            "name": "ChatFriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Target Contact Identity, for example the phone number of an SMS.",
-            "in": "query",
-            "name": "Target",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The chat channel's unique name.",
-            "in": "query",
-            "name": "ChatUniqueName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The pre-engagement data.",
-            "in": "query",
-            "name": "PreEngagementData",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the TaskRouter task.",
-            "in": "query",
-            "name": "TaskSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WT[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The task attributes to be added for the TaskRouter Task.",
-            "in": "query",
-            "name": "TaskAttributes",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to create the channel as long-lived.",
-            "in": "query",
-            "name": "LongLived",
-            "required": false,
-            "schema": {
-              "type": "boolean"
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "ChatFriendlyName": {
+                    "description": "The chat channel's friendly name.",
+                    "type": "string"
+                  },
+                  "ChatUniqueName": {
+                    "description": "The chat channel's unique name.",
+                    "type": "string"
+                  },
+                  "ChatUserFriendlyName": {
+                    "description": "The chat participant's friendly name.",
+                    "type": "string"
+                  },
+                  "FlexFlowSid": {
+                    "description": "The SID of the FlexFlow.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^FO[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Identity": {
+                    "description": "The `identity` value that uniquely identifies the new resource's chat User.",
+                    "type": "string"
+                  },
+                  "LongLived": {
+                    "description": "Whether to create the channel as long-lived.",
+                    "type": "boolean"
+                  },
+                  "PreEngagementData": {
+                    "description": "The pre-engagement data.",
+                    "type": "string"
+                  },
+                  "Target": {
+                    "description": "The Target Contact Identity, for example the phone number of an SMS.",
+                    "type": "string"
+                  },
+                  "TaskAttributes": {
+                    "description": "The task attributes to be added for the TaskRouter Task.",
+                    "type": "string"
+                  },
+                  "TaskSid": {
+                    "description": "The SID of the TaskRouter task.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WT[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FlexFlowSid",
+                  "Identity",
+                  "ChatUserFriendlyName",
+                  "ChatFriendlyName"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -529,7 +496,8 @@
                   "$ref": "#/components/schemas/flex.v1.channel"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -610,7 +578,8 @@
                   "$ref": "#/components/schemas/flex.v1.channel"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -658,7 +627,8 @@
                   "$ref": "#/components/schemas/flex.v1.configuration"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -673,6 +643,16 @@
       "post": {
         "description": "",
         "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {},
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -681,7 +661,8 @@
                   "$ref": "#/components/schemas/flex.v1.configuration"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -777,7 +758,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -791,187 +773,117 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "description": "A descriptive string that you create to describe the FlexFlow resource.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the chat service.",
-            "in": "query",
-            "name": "ChatServiceSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^IS[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The channel type. Can be: `web`, `facebook`, `sms`, `whatsapp`, `line` or `custom`.",
-            "in": "query",
-            "name": "ChannelType",
-            "required": true,
-            "schema": {
-              "enum": [
-                "web",
-                "sms",
-                "facebook",
-                "whatsapp",
-                "line",
-                "custom"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The channel contact's Identity.",
-            "in": "query",
-            "name": "ContactIdentity",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether the new FlexFlow is enabled.",
-            "in": "query",
-            "name": "Enabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The integration type. Can be: `studio`, `external`, or `task`.",
-            "in": "query",
-            "name": "IntegrationType",
-            "required": false,
-            "schema": {
-              "enum": [
-                "studio",
-                "external",
-                "task"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the Flow when `integration_type` is `studio`.",
-            "in": "query",
-            "name": "Integration.FlowSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FW[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The External Webhook URL when `integration_type` is `external`.",
-            "in": "query",
-            "name": "Integration.Url",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Workspace SID for a new task for Task `integration_type`.",
-            "in": "query",
-            "name": "Integration.WorkspaceSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WS[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Workflow SID for a new task when `integration_type` is `task`.",
-            "in": "query",
-            "name": "Integration.WorkflowSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WW[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The task channel for a new task when `integration_type` is `task`. The default is `default`.",
-            "in": "query",
-            "name": "Integration.Channel",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The task timeout in seconds for a new task when `integration_type` is `task`. The default is `86,400` seconds (24 hours).",
-            "in": "query",
-            "name": "Integration.Timeout",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The task priority of a new task when `integration_type` is `task`. The default priority is `0`.",
-            "in": "query",
-            "name": "Integration.Priority",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Whether to create a task when the first message arrives when `integration_type` is `task`. If `false`, the task is created with the channel. **Note** that does not apply when channel type is `web`. Setting the value to `true` for channel type `web` will result in misconfigured Flex Flow and no tasks will be created.",
-            "in": "query",
-            "name": "Integration.CreationOnMessage",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether new channels are long-lived.",
-            "in": "query",
-            "name": "LongLived",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Boolean flag for enabling or disabling the Janitor.",
-            "in": "query",
-            "name": "JanitorEnabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0.",
-            "in": "query",
-            "name": "Integration.RetryCount",
-            "required": false,
-            "schema": {
-              "type": "integer"
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "ChannelType": {
+                    "description": "The channel type. Can be: `web`, `facebook`, `sms`, `whatsapp`, `line` or `custom`.",
+                    "enum": [
+                      "web",
+                      "sms",
+                      "facebook",
+                      "whatsapp",
+                      "line",
+                      "custom"
+                    ],
+                    "type": "string"
+                  },
+                  "ChatServiceSid": {
+                    "description": "The SID of the chat service.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^IS[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "ContactIdentity": {
+                    "description": "The channel contact's Identity.",
+                    "type": "string"
+                  },
+                  "Enabled": {
+                    "description": "Whether the new FlexFlow is enabled.",
+                    "type": "boolean"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the FlexFlow resource.",
+                    "type": "string"
+                  },
+                  "Integration.Channel": {
+                    "description": "The task channel for a new task when `integration_type` is `task`. The default is `default`.",
+                    "type": "string"
+                  },
+                  "Integration.CreationOnMessage": {
+                    "description": "Whether to create a task when the first message arrives when `integration_type` is `task`. If `false`, the task is created with the channel. **Note** that does not apply when channel type is `web`. Setting the value to `true` for channel type `web` will result in misconfigured Flex Flow and no tasks will be created.",
+                    "type": "boolean"
+                  },
+                  "Integration.FlowSid": {
+                    "description": "The SID of the Flow when `integration_type` is `studio`.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^FW[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Integration.Priority": {
+                    "description": "The task priority of a new task when `integration_type` is `task`. The default priority is `0`.",
+                    "type": "integer"
+                  },
+                  "Integration.RetryCount": {
+                    "description": "The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0.",
+                    "type": "integer"
+                  },
+                  "Integration.Timeout": {
+                    "description": "The task timeout in seconds for a new task when `integration_type` is `task`. The default is `86,400` seconds (24 hours).",
+                    "type": "integer"
+                  },
+                  "Integration.Url": {
+                    "description": "The External Webhook URL when `integration_type` is `external`.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "Integration.WorkflowSid": {
+                    "description": "The Workflow SID for a new task when `integration_type` is `task`.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WW[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Integration.WorkspaceSid": {
+                    "description": "The Workspace SID for a new task for Task `integration_type`.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WS[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "IntegrationType": {
+                    "description": "The integration type. Can be: `studio`, `external`, or `task`.",
+                    "enum": [
+                      "studio",
+                      "external",
+                      "task"
+                    ],
+                    "type": "string"
+                  },
+                  "JanitorEnabled": {
+                    "description": "Boolean flag for enabling or disabling the Janitor.",
+                    "type": "boolean"
+                  },
+                  "LongLived": {
+                    "description": "Whether new channels are long-lived.",
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "FriendlyName",
+                  "ChatServiceSid",
+                  "ChannelType"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -980,7 +892,8 @@
                   "$ref": "#/components/schemas/flex.v1.flex_flow"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1061,7 +974,8 @@
                   "$ref": "#/components/schemas/flex.v1.flex_flow"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1087,187 +1001,113 @@
               "pattern": "^FO[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the FlexFlow resource.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the chat service.",
-            "in": "query",
-            "name": "ChatServiceSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^IS[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The channel type. Can be: `web`, `facebook`, `sms`, `whatsapp`, `line` or `custom`.",
-            "in": "query",
-            "name": "ChannelType",
-            "required": false,
-            "schema": {
-              "enum": [
-                "web",
-                "sms",
-                "facebook",
-                "whatsapp",
-                "line",
-                "custom"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The channel contact's Identity.",
-            "in": "query",
-            "name": "ContactIdentity",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether the FlexFlow is enabled.",
-            "in": "query",
-            "name": "Enabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The integration type. Can be: `studio`, `external`, or `task`.",
-            "in": "query",
-            "name": "IntegrationType",
-            "required": false,
-            "schema": {
-              "enum": [
-                "studio",
-                "external",
-                "task"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the Flow when `integration_type` is `studio`.",
-            "in": "query",
-            "name": "Integration.FlowSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FW[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The External Webhook URL when `integration_type` is `external`.",
-            "in": "query",
-            "name": "Integration.Url",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Workspace SID for a new task when `integration_type` is `task`.",
-            "in": "query",
-            "name": "Integration.WorkspaceSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WS[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Workflow SID for a new task when `integration_type` is `task`.",
-            "in": "query",
-            "name": "Integration.WorkflowSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^WW[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The task channel for a new task when `integration_type` is `task`. The default is `default`.",
-            "in": "query",
-            "name": "Integration.Channel",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The task timeout in seconds for a new task when `integration_type` is `task`. The default is `86,400` seconds (24 hours).",
-            "in": "query",
-            "name": "Integration.Timeout",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The task priority of a new task when `integration_type` is `task`. The default priority is `0`.",
-            "in": "query",
-            "name": "Integration.Priority",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Whether to create a task when the first message arrives when `integration_type` is `task`. If `false`, the task is created with the channel. **Note** that does not apply when channel type is `web`. Setting the value to `true` for channel type `web` will result in misconfigured Flex Flow and no tasks will be created.",
-            "in": "query",
-            "name": "Integration.CreationOnMessage",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether new channels created are long-lived.",
-            "in": "query",
-            "name": "LongLived",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Boolean flag for enabling or disabling the Janitor.",
-            "in": "query",
-            "name": "JanitorEnabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0.",
-            "in": "query",
-            "name": "Integration.RetryCount",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "ChannelType": {
+                    "description": "The channel type. Can be: `web`, `facebook`, `sms`, `whatsapp`, `line` or `custom`.",
+                    "enum": [
+                      "web",
+                      "sms",
+                      "facebook",
+                      "whatsapp",
+                      "line",
+                      "custom"
+                    ],
+                    "type": "string"
+                  },
+                  "ChatServiceSid": {
+                    "description": "The SID of the chat service.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^IS[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "ContactIdentity": {
+                    "description": "The channel contact's Identity.",
+                    "type": "string"
+                  },
+                  "Enabled": {
+                    "description": "Whether the FlexFlow is enabled.",
+                    "type": "boolean"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the FlexFlow resource.",
+                    "type": "string"
+                  },
+                  "Integration.Channel": {
+                    "description": "The task channel for a new task when `integration_type` is `task`. The default is `default`.",
+                    "type": "string"
+                  },
+                  "Integration.CreationOnMessage": {
+                    "description": "Whether to create a task when the first message arrives when `integration_type` is `task`. If `false`, the task is created with the channel. **Note** that does not apply when channel type is `web`. Setting the value to `true` for channel type `web` will result in misconfigured Flex Flow and no tasks will be created.",
+                    "type": "boolean"
+                  },
+                  "Integration.FlowSid": {
+                    "description": "The SID of the Flow when `integration_type` is `studio`.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^FW[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Integration.Priority": {
+                    "description": "The task priority of a new task when `integration_type` is `task`. The default priority is `0`.",
+                    "type": "integer"
+                  },
+                  "Integration.RetryCount": {
+                    "description": "The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0.",
+                    "type": "integer"
+                  },
+                  "Integration.Timeout": {
+                    "description": "The task timeout in seconds for a new task when `integration_type` is `task`. The default is `86,400` seconds (24 hours).",
+                    "type": "integer"
+                  },
+                  "Integration.Url": {
+                    "description": "The External Webhook URL when `integration_type` is `external`.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "Integration.WorkflowSid": {
+                    "description": "The Workflow SID for a new task when `integration_type` is `task`.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WW[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Integration.WorkspaceSid": {
+                    "description": "The Workspace SID for a new task when `integration_type` is `task`.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^WS[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "IntegrationType": {
+                    "description": "The integration type. Can be: `studio`, `external`, or `task`.",
+                    "enum": [
+                      "studio",
+                      "external",
+                      "task"
+                    ],
+                    "type": "string"
+                  },
+                  "JanitorEnabled": {
+                    "description": "Boolean flag for enabling or disabling the Janitor.",
+                    "type": "boolean"
+                  },
+                  "LongLived": {
+                    "description": "Whether new channels created are long-lived.",
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1276,7 +1116,8 @@
                   "$ref": "#/components/schemas/flex.v1.flex_flow"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1363,7 +1204,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1377,65 +1219,51 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "description": "The SID of the FlexFlow.",
-            "in": "query",
-            "name": "FlexFlowSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^FO[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The chat identity.",
-            "in": "query",
-            "name": "Identity",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The chat participant's friendly name.",
-            "in": "query",
-            "name": "CustomerFriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The chat channel's friendly name.",
-            "in": "query",
-            "name": "ChatFriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The chat channel's unique name.",
-            "in": "query",
-            "name": "ChatUniqueName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The pre-engagement data.",
-            "in": "query",
-            "name": "PreEngagementData",
-            "required": false,
-            "schema": {
-              "type": "string"
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "ChatFriendlyName": {
+                    "description": "The chat channel's friendly name.",
+                    "type": "string"
+                  },
+                  "ChatUniqueName": {
+                    "description": "The chat channel's unique name.",
+                    "type": "string"
+                  },
+                  "CustomerFriendlyName": {
+                    "description": "The chat participant's friendly name.",
+                    "type": "string"
+                  },
+                  "FlexFlowSid": {
+                    "description": "The SID of the FlexFlow.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^FO[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Identity": {
+                    "description": "The chat identity.",
+                    "type": "string"
+                  },
+                  "PreEngagementData": {
+                    "description": "The pre-engagement data.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FlexFlowSid",
+                  "Identity",
+                  "CustomerFriendlyName",
+                  "ChatFriendlyName"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -1444,7 +1272,8 @@
                   "$ref": "#/components/schemas/flex.v1.web_channel"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1523,7 +1352,8 @@
                   "$ref": "#/components/schemas/flex.v1.web_channel"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1549,29 +1379,30 @@
               "pattern": "^CH[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The chat status. Can only be `inactive`.",
-            "in": "query",
-            "name": "ChatStatus",
-            "required": false,
-            "schema": {
-              "enum": [
-                "inactive"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The post-engagement data.",
-            "in": "query",
-            "name": "PostEngagementData",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "ChatStatus": {
+                    "description": "The chat status. Can only be `inactive`.",
+                    "enum": [
+                      "inactive"
+                    ],
+                    "type": "string"
+                  },
+                  "PostEngagementData": {
+                    "description": "The post-engagement data.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1580,7 +1411,8 @@
                   "$ref": "#/components/schemas/flex.v1.web_channel"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [

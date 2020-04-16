@@ -118,7 +118,8 @@
                   "$ref": "#/components/schemas/lookups.v1.phone_number"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
