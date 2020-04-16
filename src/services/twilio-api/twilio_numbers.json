@@ -315,7 +315,6 @@
             "description": "The verification status of the Bundle resource.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "draft",
@@ -331,7 +330,6 @@
             "description": "The string that you assigned to describe the resource.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -340,7 +338,6 @@
             "description": "The unique string of a regulation that is associated to the Bundle resource.",
             "in": "query",
             "name": "RegulationSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -352,7 +349,6 @@
             "description": "The ISO country code of the Bundle's phone number country ownership request.",
             "in": "query",
             "name": "IsoCountry",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -361,7 +357,6 @@
             "description": "The type of phone number of the Bundle's ownership request.",
             "in": "query",
             "name": "NumberType",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -438,7 +433,6 @@
       },
       "post": {
         "description": "Create a new Bundle.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1114,7 +1108,6 @@
       },
       "post": {
         "description": "Create a new End User.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1293,7 +1286,6 @@
             "description": "The type of End User the regulation requires - can be `individual` or `business`.",
             "in": "query",
             "name": "EndUserType",
-            "required": false,
             "schema": {
               "enum": [
                 "individual",
@@ -1306,7 +1298,6 @@
             "description": "The ISO country code of the phone number's country.",
             "in": "query",
             "name": "IsoCountry",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1315,7 +1306,6 @@
             "description": "The type of phone number that the regulatory requiremnt is restricting.",
             "in": "query",
             "name": "NumberType",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1661,7 +1651,6 @@
       },
       "post": {
         "description": "Create a new Supporting Document.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {

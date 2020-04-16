@@ -1374,7 +1374,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1685,7 +1684,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1758,7 +1756,6 @@
             "description": "The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`.",
             "in": "query",
             "name": "Type",
-            "required": false,
             "schema": {
               "items": {
                 "enum": [
@@ -1950,7 +1947,6 @@
             "description": "The [User](https://www.twilio.com/docs/api/chat/rest/v1/user)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more details.",
             "in": "query",
             "name": "Identity",
-            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -2264,7 +2260,6 @@
             "description": "The [User](https://www.twilio.com/docs/api/chat/rest/v1/user)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more details.",
             "in": "query",
             "name": "Identity",
-            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -2662,7 +2657,6 @@
             "description": "The sort order of the returned messages. Can be: `asc` (ascending) or `desc` (descending) with `asc` as the default.",
             "in": "query",
             "name": "Order",
-            "required": false,
             "schema": {
               "enum": [
                 "asc",
@@ -4690,7 +4684,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -5001,7 +4994,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -5074,7 +5066,6 @@
             "description": "The push technology used by the Binding resources to read.  Can be: `apn`, `gcm`, or `fcm`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.",
             "in": "query",
             "name": "BindingType",
-            "required": false,
             "schema": {
               "items": {
                 "enum": [
@@ -5091,7 +5082,6 @@
             "description": "The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.",
             "in": "query",
             "name": "Identity",
-            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -5307,7 +5297,6 @@
             "description": "The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`.",
             "in": "query",
             "name": "Type",
-            "required": false,
             "schema": {
               "items": {
                 "enum": [
@@ -5513,7 +5502,6 @@
             "description": "The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.",
             "in": "query",
             "name": "Identity",
-            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -5827,7 +5815,6 @@
             "description": "The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the Member resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.",
             "in": "query",
             "name": "Identity",
-            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -6256,7 +6243,6 @@
             "description": "The sort order of the returned messages. Can be: `asc` (ascending) or `desc` (descending) with `asc` as the default.",
             "in": "query",
             "name": "Order",
-            "required": false,
             "schema": {
               "enum": [
                 "asc",
@@ -7998,7 +7984,6 @@
             "description": "The push technology used by the User Binding resources to read. Can be: `apn`, `gcm`, or `fcm`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.",
             "in": "query",
             "name": "BindingType",
-            "required": false,
             "schema": {
               "items": {
                 "enum": [

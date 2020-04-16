@@ -415,7 +415,6 @@
       },
       "post": {
         "description": "Create a new Service for the Account",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -960,7 +959,6 @@
             "description": "The Status of the Challenges to fetch. One of `pending`, `expired`, `approved` or `denied`.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "pending",

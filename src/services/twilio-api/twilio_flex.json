@@ -424,7 +424,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -613,7 +612,6 @@
             "description": "The Pinned UI version of the Configuration resource to fetch.",
             "in": "query",
             "name": "UiVersion",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -642,7 +640,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -696,7 +693,6 @@
             "description": "The `friendly_name` of the FlexFlow resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -773,7 +769,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1219,7 +1214,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {

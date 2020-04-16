@@ -451,7 +451,6 @@
             "description": "The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/wireless/api/sim-resource) to read.",
             "in": "query",
             "name": "Sim",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -460,7 +459,6 @@
             "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "queued",
@@ -476,7 +474,6 @@
             "description": "Only return Commands with this direction value.",
             "in": "query",
             "name": "Direction",
-            "required": false,
             "schema": {
               "enum": [
                 "from_sim",
@@ -489,7 +486,6 @@
             "description": "Only return Commands with this transport value. Can be: `sms` or `ip`.",
             "in": "query",
             "name": "Transport",
-            "required": false,
             "schema": {
               "enum": [
                 "sms",
@@ -570,7 +566,6 @@
       },
       "post": {
         "description": "Send a Command to a Sim.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -829,7 +824,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1060,7 +1054,6 @@
             "description": "Only return Sim resources with this status.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "new",
@@ -1079,7 +1072,6 @@
             "description": "Only return Sim resources with this ICCID. This will return a list with a maximum size of 1.",
             "in": "query",
             "name": "Iccid",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1088,7 +1080,6 @@
             "description": "The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource.",
             "in": "query",
             "name": "RatePlan",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1097,7 +1088,6 @@
             "description": "Deprecated.",
             "in": "query",
             "name": "EId",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1106,7 +1096,6 @@
             "description": "Only return Sim resources with this registration code. This will return a list with a maximum size of 1.",
             "in": "query",
             "name": "SimRegistrationCode",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1508,7 +1497,6 @@
             "description": "The date that the record ended, given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.",
             "in": "query",
             "name": "End",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1518,7 +1506,6 @@
             "description": "The date that the Data Session started, given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.",
             "in": "query",
             "name": "Start",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1626,7 +1613,6 @@
             "description": "Only include usage that occurred on or before this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). The default is the current time.",
             "in": "query",
             "name": "End",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1636,7 +1622,6 @@
             "description": "Only include usage that has occurred on or after this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). The default is one month before the `end` parameter value.",
             "in": "query",
             "name": "Start",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1646,7 +1631,6 @@
             "description": "How to summarize the usage by time. Can be: `daily`, `hourly`, or `all`. The default is `all`. A value of `all` returns one Usage Record that describes the usage for the entire period.",
             "in": "query",
             "name": "Granularity",
-            "required": false,
             "schema": {
               "enum": [
                 "hourly",
@@ -1745,7 +1729,6 @@
             "description": "Only include usage that has occurred on or before this date. Format is [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html).",
             "in": "query",
             "name": "End",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1755,7 +1738,6 @@
             "description": "Only include usage that has occurred on or after this date. Format is [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html).",
             "in": "query",
             "name": "Start",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1765,7 +1747,6 @@
             "description": "How to summarize the usage by time. Can be: `daily`, `hourly`, or `all`. A value of `all` returns one Usage Record that describes the usage for the entire period.",
             "in": "query",
             "name": "Granularity",
-            "required": false,
             "schema": {
               "enum": [
                 "hourly",

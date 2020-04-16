@@ -638,7 +638,6 @@
       },
       "post": {
         "description": "Create a new Service resource.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1887,7 +1886,6 @@
             "description": "The SID of the function whose invocation produced the Log resources to read.",
             "in": "query",
             "name": "FunctionSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -1899,7 +1897,6 @@
             "description": "The date/time (in GMT, ISO 8601) after which the Log resources must have been created. Defaults to 1 day prior to current date/time.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1909,7 +1906,6 @@
             "description": "The date/time (in GMT, ISO 8601) before which the Log resources must have been created. Defaults to current date/time.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"

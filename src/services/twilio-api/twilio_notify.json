@@ -379,7 +379,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -622,7 +621,6 @@
             "description": "The string that identifies the Service resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -699,7 +697,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -825,7 +822,6 @@
             "description": "Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -835,7 +831,6 @@
             "description": "Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -845,7 +840,6 @@
             "description": "The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read.",
             "in": "query",
             "name": "Identity",
-            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -857,7 +851,6 @@
             "description": "Only list Bindings that have all of the specified Tags. The following implicit tags are available: `all`, `apn`, `fcm`, `gcm`, `sms`, `facebook-messenger`. Up to 5 tags are allowed.",
             "in": "query",
             "name": "Tag",
-            "required": false,
             "schema": {
               "items": {
                 "type": "string"

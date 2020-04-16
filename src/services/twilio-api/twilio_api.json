@@ -7138,7 +7138,6 @@
             "description": "Only return the Account resources with friendly names that exactly match this name.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -7147,7 +7146,6 @@
             "description": "Only return Account resources with the given status. Can be `closed`, `suspended` or `active`.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "active",
@@ -7227,7 +7225,6 @@
       },
       "post": {
         "description": "Create a new Twilio Subaccount from the account making the request",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -7297,7 +7294,6 @@
             "description": "The `customer_name` of the Address resources to read.",
             "in": "query",
             "name": "CustomerName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -7306,7 +7302,6 @@
             "description": "The string that identifies the Address resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -7315,7 +7310,6 @@
             "description": "The ISO country code of the Address resources to read.",
             "in": "query",
             "name": "IsoCountry",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -7821,7 +7815,6 @@
             "description": "The string that identifies the Application resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -8738,7 +8731,6 @@
             "description": "The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "AreaCode",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -8747,7 +8739,6 @@
             "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -8756,7 +8747,6 @@
             "description": "Whether the phone numbers can receive text messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "SmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -8765,7 +8755,6 @@
             "description": "Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "MmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -8774,7 +8763,6 @@
             "description": "Whether the phone numbers can receive calls. Can be: `true` or `false`.",
             "in": "query",
             "name": "VoiceEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -8783,7 +8771,6 @@
             "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -8792,7 +8779,6 @@
             "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -8801,7 +8787,6 @@
             "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -8810,7 +8795,6 @@
             "description": "Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.",
             "in": "query",
             "name": "Beta",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -8819,7 +8803,6 @@
             "description": "Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -8828,7 +8811,6 @@
             "description": "Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearLatLong",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -8837,7 +8819,6 @@
             "description": "The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "Distance",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -8846,7 +8827,6 @@
             "description": "Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InPostalCode",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -8855,7 +8835,6 @@
             "description": "Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRegion",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -8864,7 +8843,6 @@
             "description": "Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRateCenter",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -8873,7 +8851,6 @@
             "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -8882,7 +8859,6 @@
             "description": "Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.",
             "in": "query",
             "name": "InLocality",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -8891,7 +8867,6 @@
             "description": "Whether the phone numbers can receive faxes. Can be: `true` or `false`.",
             "in": "query",
             "name": "FaxEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9006,7 +8981,6 @@
             "description": "The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "AreaCode",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -9015,7 +8989,6 @@
             "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9024,7 +8997,6 @@
             "description": "Whether the phone numbers can receive text messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "SmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9033,7 +9005,6 @@
             "description": "Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "MmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9042,7 +9013,6 @@
             "description": "Whether the phone numbers can receive calls. Can be: `true` or `false`.",
             "in": "query",
             "name": "VoiceEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9051,7 +9021,6 @@
             "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9060,7 +9029,6 @@
             "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9069,7 +9037,6 @@
             "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9078,7 +9045,6 @@
             "description": "Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.",
             "in": "query",
             "name": "Beta",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9087,7 +9053,6 @@
             "description": "Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9096,7 +9061,6 @@
             "description": "Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearLatLong",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9105,7 +9069,6 @@
             "description": "The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "Distance",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -9114,7 +9077,6 @@
             "description": "Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InPostalCode",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9123,7 +9085,6 @@
             "description": "Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRegion",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9132,7 +9093,6 @@
             "description": "Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRateCenter",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9141,7 +9101,6 @@
             "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9150,7 +9109,6 @@
             "description": "Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.",
             "in": "query",
             "name": "InLocality",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9159,7 +9117,6 @@
             "description": "Whether the phone numbers can receive faxes. Can be: `true` or `false`.",
             "in": "query",
             "name": "FaxEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9274,7 +9231,6 @@
             "description": "The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "AreaCode",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -9283,7 +9239,6 @@
             "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9292,7 +9247,6 @@
             "description": "Whether the phone numbers can receive text messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "SmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9301,7 +9255,6 @@
             "description": "Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "MmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9310,7 +9263,6 @@
             "description": "Whether the phone numbers can receive calls. Can be: `true` or `false`.",
             "in": "query",
             "name": "VoiceEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9319,7 +9271,6 @@
             "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9328,7 +9279,6 @@
             "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9337,7 +9287,6 @@
             "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9346,7 +9295,6 @@
             "description": "Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.",
             "in": "query",
             "name": "Beta",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9355,7 +9303,6 @@
             "description": "Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9364,7 +9311,6 @@
             "description": "Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearLatLong",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9373,7 +9319,6 @@
             "description": "The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "Distance",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -9382,7 +9327,6 @@
             "description": "Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InPostalCode",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9391,7 +9335,6 @@
             "description": "Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRegion",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9400,7 +9343,6 @@
             "description": "Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRateCenter",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9409,7 +9351,6 @@
             "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9418,7 +9359,6 @@
             "description": "Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.",
             "in": "query",
             "name": "InLocality",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9427,7 +9367,6 @@
             "description": "Whether the phone numbers can receive faxes. Can be: `true` or `false`.",
             "in": "query",
             "name": "FaxEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9542,7 +9481,6 @@
             "description": "The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "AreaCode",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -9551,7 +9489,6 @@
             "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9560,7 +9497,6 @@
             "description": "Whether the phone numbers can receive text messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "SmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9569,7 +9505,6 @@
             "description": "Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "MmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9578,7 +9513,6 @@
             "description": "Whether the phone numbers can receive calls. Can be: `true` or `false`.",
             "in": "query",
             "name": "VoiceEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9587,7 +9521,6 @@
             "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9596,7 +9529,6 @@
             "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9605,7 +9537,6 @@
             "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9614,7 +9545,6 @@
             "description": "Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.",
             "in": "query",
             "name": "Beta",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9623,7 +9553,6 @@
             "description": "Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9632,7 +9561,6 @@
             "description": "Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearLatLong",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9641,7 +9569,6 @@
             "description": "The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "Distance",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -9650,7 +9577,6 @@
             "description": "Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InPostalCode",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9659,7 +9585,6 @@
             "description": "Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRegion",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9668,7 +9593,6 @@
             "description": "Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRateCenter",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9677,7 +9601,6 @@
             "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9686,7 +9609,6 @@
             "description": "Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.",
             "in": "query",
             "name": "InLocality",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9695,7 +9617,6 @@
             "description": "Whether the phone numbers can receive faxes. Can be: `true` or `false`.",
             "in": "query",
             "name": "FaxEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9810,7 +9731,6 @@
             "description": "The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "AreaCode",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -9819,7 +9739,6 @@
             "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9828,7 +9747,6 @@
             "description": "Whether the phone numbers can receive text messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "SmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9837,7 +9755,6 @@
             "description": "Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "MmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9846,7 +9763,6 @@
             "description": "Whether the phone numbers can receive calls. Can be: `true` or `false`.",
             "in": "query",
             "name": "VoiceEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9855,7 +9771,6 @@
             "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9864,7 +9779,6 @@
             "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9873,7 +9787,6 @@
             "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9882,7 +9795,6 @@
             "description": "Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.",
             "in": "query",
             "name": "Beta",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -9891,7 +9803,6 @@
             "description": "Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9900,7 +9811,6 @@
             "description": "Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearLatLong",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9909,7 +9819,6 @@
             "description": "The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "Distance",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -9918,7 +9827,6 @@
             "description": "Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InPostalCode",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9927,7 +9835,6 @@
             "description": "Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRegion",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9936,7 +9843,6 @@
             "description": "Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRateCenter",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9945,7 +9851,6 @@
             "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9954,7 +9859,6 @@
             "description": "Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.",
             "in": "query",
             "name": "InLocality",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -9963,7 +9867,6 @@
             "description": "Whether the phone numbers can receive faxes. Can be: `true` or `false`.",
             "in": "query",
             "name": "FaxEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10078,7 +9981,6 @@
             "description": "The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "AreaCode",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -10087,7 +9989,6 @@
             "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10096,7 +9997,6 @@
             "description": "Whether the phone numbers can receive text messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "SmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10105,7 +10005,6 @@
             "description": "Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "MmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10114,7 +10013,6 @@
             "description": "Whether the phone numbers can receive calls. Can be: `true` or `false`.",
             "in": "query",
             "name": "VoiceEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10123,7 +10021,6 @@
             "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10132,7 +10029,6 @@
             "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10141,7 +10037,6 @@
             "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10150,7 +10045,6 @@
             "description": "Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.",
             "in": "query",
             "name": "Beta",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10159,7 +10053,6 @@
             "description": "Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10168,7 +10061,6 @@
             "description": "Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearLatLong",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10177,7 +10069,6 @@
             "description": "The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "Distance",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -10186,7 +10077,6 @@
             "description": "Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InPostalCode",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10195,7 +10085,6 @@
             "description": "Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRegion",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10204,7 +10093,6 @@
             "description": "Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRateCenter",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10213,7 +10101,6 @@
             "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10222,7 +10109,6 @@
             "description": "Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.",
             "in": "query",
             "name": "InLocality",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10231,7 +10117,6 @@
             "description": "Whether the phone numbers can receive faxes. Can be: `true` or `false`.",
             "in": "query",
             "name": "FaxEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10346,7 +10231,6 @@
             "description": "The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "AreaCode",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -10355,7 +10239,6 @@
             "description": "The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.",
             "in": "query",
             "name": "Contains",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10364,7 +10247,6 @@
             "description": "Whether the phone numbers can receive text messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "SmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10373,7 +10255,6 @@
             "description": "Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.",
             "in": "query",
             "name": "MmsEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10382,7 +10263,6 @@
             "description": "Whether the phone numbers can receive calls. Can be: `true` or `false`.",
             "in": "query",
             "name": "VoiceEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10391,7 +10271,6 @@
             "description": "Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeAllAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10400,7 +10279,6 @@
             "description": "Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeLocalAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10409,7 +10287,6 @@
             "description": "Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.",
             "in": "query",
             "name": "ExcludeForeignAddressRequired",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10418,7 +10295,6 @@
             "description": "Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.",
             "in": "query",
             "name": "Beta",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10427,7 +10303,6 @@
             "description": "Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10436,7 +10311,6 @@
             "description": "Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "NearLatLong",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10445,7 +10319,6 @@
             "description": "The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "Distance",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -10454,7 +10327,6 @@
             "description": "Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InPostalCode",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10463,7 +10335,6 @@
             "description": "Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRegion",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10472,7 +10343,6 @@
             "description": "Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InRateCenter",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10481,7 +10351,6 @@
             "description": "Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.",
             "in": "query",
             "name": "InLata",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10490,7 +10359,6 @@
             "description": "Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.",
             "in": "query",
             "name": "InLocality",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10499,7 +10367,6 @@
             "description": "Whether the phone numbers can receive faxes. Can be: `true` or `false`.",
             "in": "query",
             "name": "FaxEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -10656,7 +10523,6 @@
             "description": "Only show calls made to this phone number, SIP address, Client identifier or SIM SID.",
             "in": "query",
             "name": "To",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10665,7 +10531,6 @@
             "description": "Only include calls from this phone number, SIP address, Client identifier or SIM SID.",
             "in": "query",
             "name": "From",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10674,7 +10539,6 @@
             "description": "Only include calls spawned by calls with this SID.",
             "in": "query",
             "name": "ParentCallSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -10686,7 +10550,6 @@
             "description": "The status of the calls to include. Can be: `queued`, `ringing`, `in-progress`, `canceled`, `completed`, `failed`, `busy`, or `no-answer`.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "queued",
@@ -10705,7 +10568,6 @@
             "description": "Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.",
             "in": "query",
             "name": "StartTime",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -10715,7 +10577,6 @@
             "description": "Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.",
             "in": "query",
             "name": "StartTime<",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -10725,7 +10586,6 @@
             "description": "Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.",
             "in": "query",
             "name": "StartTime>",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -10735,7 +10595,6 @@
             "description": "Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.",
             "in": "query",
             "name": "EndTime",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -10745,7 +10604,6 @@
             "description": "Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.",
             "in": "query",
             "name": "EndTime<",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -10755,7 +10613,6 @@
             "description": "Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.",
             "in": "query",
             "name": "EndTime>",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -11499,7 +11356,6 @@
             "description": "Only read notifications of the specified log level. Can be:  `0` to read only ERROR notifications or `1` to read only WARNING notifications. By default, all notifications are read.",
             "in": "query",
             "name": "Log",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -11508,7 +11364,6 @@
             "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.",
             "in": "query",
             "name": "MessageDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -11518,7 +11373,6 @@
             "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.",
             "in": "query",
             "name": "MessageDate<",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -11528,7 +11382,6 @@
             "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.",
             "in": "query",
             "name": "MessageDate>",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -11995,7 +11848,6 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
             "in": "query",
             "name": "DateCreated",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -12005,7 +11857,6 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
             "in": "query",
             "name": "DateCreated<",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -12015,7 +11866,6 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
             "in": "query",
             "name": "DateCreated>",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -12689,7 +12539,6 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.",
             "in": "query",
             "name": "DateCreated",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -12699,7 +12548,6 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.",
             "in": "query",
             "name": "DateCreated<",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -12709,7 +12557,6 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.",
             "in": "query",
             "name": "DateCreated>",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -12719,7 +12566,6 @@
             "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.",
             "in": "query",
             "name": "DateUpdated",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -12729,7 +12575,6 @@
             "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.",
             "in": "query",
             "name": "DateUpdated<",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -12739,7 +12584,6 @@
             "description": "The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.",
             "in": "query",
             "name": "DateUpdated>",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -12749,7 +12593,6 @@
             "description": "The string that identifies the Conference resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -12758,7 +12601,6 @@
             "description": "The status of the resources to read. Can be: `init`, `in-progress`, or `completed`.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "init",
@@ -12881,7 +12723,6 @@
             "description": "Whether to return only participants that are muted. Can be: `true` or `false`.",
             "in": "query",
             "name": "Muted",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -12890,7 +12731,6 @@
             "description": "Whether to return only participants that are on hold. Can be: `true` or `false`.",
             "in": "query",
             "name": "Hold",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -12899,7 +12739,6 @@
             "description": "Whether to return only participants who are coaching another call. Can be: `true` or `false`.",
             "in": "query",
             "name": "Coaching",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -13602,7 +13441,6 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
             "in": "query",
             "name": "DateCreated",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -13612,7 +13450,6 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
             "in": "query",
             "name": "DateCreated<",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -13622,7 +13459,6 @@
             "description": "The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.",
             "in": "query",
             "name": "DateCreated>",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -14416,7 +14252,6 @@
             "description": "Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.",
             "in": "query",
             "name": "Beta",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -14425,7 +14260,6 @@
             "description": "A string that identifies the IncomingPhoneNumber resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -14434,7 +14268,6 @@
             "description": "The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.",
             "in": "query",
             "name": "PhoneNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -14443,7 +14276,6 @@
             "description": "Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.",
             "in": "query",
             "name": "Origin",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -14797,7 +14629,6 @@
             "description": "Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.",
             "in": "query",
             "name": "Beta",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -14806,7 +14637,6 @@
             "description": "A string that identifies the resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -14815,7 +14645,6 @@
             "description": "The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.",
             "in": "query",
             "name": "PhoneNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -14824,7 +14653,6 @@
             "description": "Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.",
             "in": "query",
             "name": "Origin",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -15177,7 +15005,6 @@
             "description": "Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.",
             "in": "query",
             "name": "Beta",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -15186,7 +15013,6 @@
             "description": "A string that identifies the resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -15195,7 +15021,6 @@
             "description": "The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.",
             "in": "query",
             "name": "PhoneNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -15204,7 +15029,6 @@
             "description": "Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.",
             "in": "query",
             "name": "Origin",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -15557,7 +15381,6 @@
             "description": "Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.",
             "in": "query",
             "name": "Beta",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -15566,7 +15389,6 @@
             "description": "A string that identifies the resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -15575,7 +15397,6 @@
             "description": "The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.",
             "in": "query",
             "name": "PhoneNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -15584,7 +15405,6 @@
             "description": "Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.",
             "in": "query",
             "name": "Origin",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -17139,7 +16959,6 @@
             "description": "Read messages sent to only this phone number.",
             "in": "query",
             "name": "To",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -17148,7 +16967,6 @@
             "description": "Read messages sent from only this phone number or alphanumeric sender ID.",
             "in": "query",
             "name": "From",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -17157,7 +16975,6 @@
             "description": "The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.",
             "in": "query",
             "name": "DateSent",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -17167,7 +16984,6 @@
             "description": "The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.",
             "in": "query",
             "name": "DateSent<",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -17177,7 +16993,6 @@
             "description": "The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.",
             "in": "query",
             "name": "DateSent>",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -17512,7 +17327,6 @@
             "description": "Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.",
             "in": "query",
             "name": "DateCreated",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -17522,7 +17336,6 @@
             "description": "Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.",
             "in": "query",
             "name": "DateCreated<",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -17532,7 +17345,6 @@
             "description": "Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.",
             "in": "query",
             "name": "DateCreated>",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -17943,7 +17755,6 @@
             "description": "Only read notifications of the specified log level. Can be:  `0` to read only ERROR notifications or `1` to read only WARNING notifications. By default, all notifications are read.",
             "in": "query",
             "name": "Log",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -17952,7 +17763,6 @@
             "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.",
             "in": "query",
             "name": "MessageDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -17962,7 +17772,6 @@
             "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.",
             "in": "query",
             "name": "MessageDate<",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -17972,7 +17781,6 @@
             "description": "Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.",
             "in": "query",
             "name": "MessageDate>",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -18144,7 +17952,6 @@
             "description": "The phone number of the OutgoingCallerId resources to read.",
             "in": "query",
             "name": "PhoneNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -18153,7 +17960,6 @@
             "description": "The string that identifies the OutgoingCallerId resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -19127,7 +18933,6 @@
             "description": "Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.",
             "in": "query",
             "name": "DateCreated",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -19137,7 +18942,6 @@
             "description": "Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.",
             "in": "query",
             "name": "DateCreated<",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -19147,7 +18951,6 @@
             "description": "Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.",
             "in": "query",
             "name": "DateCreated>",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -19157,7 +18960,6 @@
             "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read.",
             "in": "query",
             "name": "CallSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -19169,7 +18971,6 @@
             "description": "The Conference SID that identifies the conference associated with the recording to read.",
             "in": "query",
             "name": "ConferenceSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -23590,7 +23391,6 @@
             "description": "The string that identifies the ShortCode resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -23599,7 +23399,6 @@
             "description": "Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit.",
             "in": "query",
             "name": "ShortCode",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -24468,7 +24267,6 @@
             "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
-            "required": false,
             "schema": {
               "enum": [
                 "agent-conference",
@@ -24724,7 +24522,6 @@
             "description": "Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -24734,7 +24531,6 @@
             "description": "Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -24744,7 +24540,6 @@
             "description": "Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.",
             "in": "query",
             "name": "IncludeSubaccounts",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -24852,7 +24647,6 @@
             "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
-            "required": false,
             "schema": {
               "enum": [
                 "agent-conference",
@@ -25108,7 +24902,6 @@
             "description": "Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -25118,7 +24911,6 @@
             "description": "Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -25128,7 +24920,6 @@
             "description": "Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.",
             "in": "query",
             "name": "IncludeSubaccounts",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -25236,7 +25027,6 @@
             "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
-            "required": false,
             "schema": {
               "enum": [
                 "agent-conference",
@@ -25492,7 +25282,6 @@
             "description": "Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -25502,7 +25291,6 @@
             "description": "Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -25512,7 +25300,6 @@
             "description": "Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.",
             "in": "query",
             "name": "IncludeSubaccounts",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -25620,7 +25407,6 @@
             "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
-            "required": false,
             "schema": {
               "enum": [
                 "agent-conference",
@@ -25876,7 +25662,6 @@
             "description": "Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -25886,7 +25671,6 @@
             "description": "Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -25896,7 +25680,6 @@
             "description": "Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.",
             "in": "query",
             "name": "IncludeSubaccounts",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -26004,7 +25787,6 @@
             "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
-            "required": false,
             "schema": {
               "enum": [
                 "agent-conference",
@@ -26260,7 +26042,6 @@
             "description": "Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -26270,7 +26051,6 @@
             "description": "Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -26280,7 +26060,6 @@
             "description": "Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.",
             "in": "query",
             "name": "IncludeSubaccounts",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -26388,7 +26167,6 @@
             "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
-            "required": false,
             "schema": {
               "enum": [
                 "agent-conference",
@@ -26644,7 +26422,6 @@
             "description": "Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -26654,7 +26431,6 @@
             "description": "Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -26664,7 +26440,6 @@
             "description": "Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.",
             "in": "query",
             "name": "IncludeSubaccounts",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -26772,7 +26547,6 @@
             "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
-            "required": false,
             "schema": {
               "enum": [
                 "agent-conference",
@@ -27028,7 +26802,6 @@
             "description": "Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -27038,7 +26811,6 @@
             "description": "Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -27048,7 +26820,6 @@
             "description": "Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.",
             "in": "query",
             "name": "IncludeSubaccounts",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -27156,7 +26927,6 @@
             "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
-            "required": false,
             "schema": {
               "enum": [
                 "agent-conference",
@@ -27412,7 +27182,6 @@
             "description": "Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -27422,7 +27191,6 @@
             "description": "Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -27432,7 +27200,6 @@
             "description": "Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.",
             "in": "query",
             "name": "IncludeSubaccounts",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -27540,7 +27307,6 @@
             "description": "The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.",
             "in": "query",
             "name": "Category",
-            "required": false,
             "schema": {
               "enum": [
                 "agent-conference",
@@ -27796,7 +27562,6 @@
             "description": "Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -27806,7 +27571,6 @@
             "description": "Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -27816,7 +27580,6 @@
             "description": "Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.",
             "in": "query",
             "name": "IncludeSubaccounts",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -27924,7 +27687,6 @@
             "description": "The frequency of recurring UsageTriggers to read. Can be: `daily`, `monthly`, or `yearly` to read recurring UsageTriggers. An empty value or a value of `alltime` reads non-recurring UsageTriggers.",
             "in": "query",
             "name": "Recurring",
-            "required": false,
             "schema": {
               "enum": [
                 "daily",
@@ -27939,7 +27701,6 @@
             "description": "The trigger field of the UsageTriggers to read.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price).",
             "in": "query",
             "name": "TriggerBy",
-            "required": false,
             "schema": {
               "enum": [
                 "count",
@@ -27953,7 +27714,6 @@
             "description": "The usage category of the UsageTriggers to read. Must be a supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories).",
             "in": "query",
             "name": "UsageCategory",
-            "required": false,
             "schema": {
               "enum": [
                 "agent-conference",

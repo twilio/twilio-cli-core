@@ -338,7 +338,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -413,7 +412,6 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "",
-        "parameters": [],
         "responses": {
           "200": {
             "content": {
@@ -437,7 +435,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {

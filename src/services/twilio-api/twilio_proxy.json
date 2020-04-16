@@ -709,7 +709,6 @@
       },
       "post": {
         "description": "Create a new Service for Twilio Proxy",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {

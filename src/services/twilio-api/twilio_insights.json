@@ -270,7 +270,6 @@
             "description": "",
             "in": "query",
             "name": "Edge",
-            "required": false,
             "schema": {
               "enum": [
                 "unknown_edge",
@@ -387,7 +386,6 @@
             "description": "",
             "in": "query",
             "name": "Edge",
-            "required": false,
             "schema": {
               "enum": [
                 "unknown_edge",
@@ -403,7 +401,6 @@
             "description": "",
             "in": "query",
             "name": "Direction",
-            "required": false,
             "schema": {
               "enum": [
                 "unknown",
@@ -519,7 +516,6 @@
             "description": "",
             "in": "query",
             "name": "ProcessingState",
-            "required": false,
             "schema": {
               "enum": [
                 "complete",

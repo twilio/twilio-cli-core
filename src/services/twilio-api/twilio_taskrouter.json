@@ -1414,7 +1414,6 @@
             "description": "The `friendly_name` of the Workspace resources to read. For example `Customer Support` or `2014 Election Campaign`.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1491,7 +1490,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1757,7 +1755,6 @@
             "description": "The `friendly_name` of the Activity resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1766,7 +1763,6 @@
             "description": "Whether return only Activity resources that are available or unavailable. A value of `true` returns only available activities. Values of '1' or `yes` also indicate `true`. All other values represent `false` and return activities that are unavailable.",
             "in": "query",
             "name": "Available",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2102,7 +2098,6 @@
             "description": "Only include usage that occurred on or before this date, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2112,7 +2107,6 @@
             "description": "Only calculate statistics since this many minutes in the past. The default 15 minutes. This is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends.",
             "in": "query",
             "name": "Minutes",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -2121,7 +2115,6 @@
             "description": "Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2131,7 +2124,6 @@
             "description": "Only calculate cumulative statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2140,7 +2132,6 @@
             "description": "A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed. For example, `5,30` would show splits of Tasks that were canceled or accepted before and after 5 seconds and before and after 30 seconds. This can be used to show short abandoned Tasks or Tasks that failed to meet an SLA.",
             "in": "query",
             "name": "SplitByWaitTime",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2201,7 +2192,6 @@
             "description": "Only include Events that occurred on or before this date, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2211,7 +2201,6 @@
             "description": "The type of Events to read. Returns only Events of the type specified.",
             "in": "query",
             "name": "EventType",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2220,7 +2209,6 @@
             "description": "The period of events to read in minutes. Returns only Events that occurred since this many minutes in the past. The default is `15` minutes.",
             "in": "query",
             "name": "Minutes",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -2229,7 +2217,6 @@
             "description": "The SID of the Reservation with the Events to read. Returns only Events that pertain to the specified Reservation.",
             "in": "query",
             "name": "ReservationSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -2241,7 +2228,6 @@
             "description": "Only include Events from on or after this date and time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2251,7 +2237,6 @@
             "description": "The SID of the TaskQueue with the Events to read. Returns only the Events that pertain to the specified TaskQueue.",
             "in": "query",
             "name": "TaskQueueSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -2263,7 +2248,6 @@
             "description": "The SID of the Task with the Events to read. Returns only the Events that pertain to the specified Task.",
             "in": "query",
             "name": "TaskSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -2275,7 +2259,6 @@
             "description": "The SID of the Worker with the Events to read. Returns only the Events that pertain to the specified Worker.",
             "in": "query",
             "name": "WorkerSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -2287,7 +2270,6 @@
             "description": "The SID of the Workflow with the Events to read. Returns only the Events that pertain to the specified Workflow.",
             "in": "query",
             "name": "WorkflowSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -2299,7 +2281,6 @@
             "description": "The TaskChannel with the Events to read. Returns only the Events that pertain to the specified TaskChannel.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2308,7 +2289,6 @@
             "description": "The SID of the Event resource to read.",
             "in": "query",
             "name": "Sid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -2482,7 +2462,6 @@
             "description": "Only calculate real-time statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2542,7 +2521,6 @@
             "description": "Only calculate statistics since this many minutes in the past. The default 15 minutes. This is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends.",
             "in": "query",
             "name": "Minutes",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -2551,7 +2529,6 @@
             "description": "Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2561,7 +2538,6 @@
             "description": "Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2571,7 +2547,6 @@
             "description": "Only calculate statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2580,7 +2555,6 @@
             "description": "A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed. For example, `5,30` would show splits of Tasks that were canceled or accepted before and after 5 seconds and before and after 30 seconds. This can be used to show short abandoned Tasks or Tasks that failed to meet an SLA.",
             "in": "query",
             "name": "SplitByWaitTime",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2965,7 +2939,6 @@
             "description": "The `friendly_name` of the TaskQueue resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2974,7 +2947,6 @@
             "description": "The attributes of the Workers to read. Returns the TaskQueues with Workers that match the attributes specified in this parameter.",
             "in": "query",
             "name": "EvaluateWorkerAttributes",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2983,7 +2955,6 @@
             "description": "The SID of the Worker with the TaskQueue resources to read.",
             "in": "query",
             "name": "WorkerSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -3179,7 +3150,6 @@
             "description": "Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -3189,7 +3159,6 @@
             "description": "The `friendly_name` of the TaskQueue statistics to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3198,7 +3167,6 @@
             "description": "Only calculate statistics since this many minutes in the past. The default is 15 minutes.",
             "in": "query",
             "name": "Minutes",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -3207,7 +3175,6 @@
             "description": "Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -3217,7 +3184,6 @@
             "description": "Only calculate statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3226,7 +3192,6 @@
             "description": "A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed.",
             "in": "query",
             "name": "SplitByWaitTime",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3543,7 +3508,6 @@
             "description": "Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -3553,7 +3517,6 @@
             "description": "Only calculate statistics since this many minutes in the past. The default is 15 minutes.",
             "in": "query",
             "name": "Minutes",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -3562,7 +3525,6 @@
             "description": "Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -3572,7 +3534,6 @@
             "description": "Only calculate cumulative statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3581,7 +3542,6 @@
             "description": "A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed.",
             "in": "query",
             "name": "SplitByWaitTime",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3654,7 +3614,6 @@
             "description": "The TaskChannel for which to fetch statistics. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3726,7 +3685,6 @@
             "description": "Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -3736,7 +3694,6 @@
             "description": "Only calculate statistics since this many minutes in the past. The default is 15 minutes.",
             "in": "query",
             "name": "Minutes",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -3745,7 +3702,6 @@
             "description": "Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -3755,7 +3711,6 @@
             "description": "Only calculate real-time and cumulative statistics for the specified TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3764,7 +3719,6 @@
             "description": "A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed.",
             "in": "query",
             "name": "SplitByWaitTime",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3822,7 +3776,6 @@
             "description": "The priority value of the Tasks to read. Returns the list of all Tasks in the Workspace with the specified priority.",
             "in": "query",
             "name": "Priority",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -3831,7 +3784,6 @@
             "description": "The `assignment_status` of the Tasks to read. Can be: `pending`, `reserved`, `assigned`, `canceled`, and `completed`. Returns all Tasks in the Workspace with the specified `assignment_status`.",
             "in": "query",
             "name": "AssignmentStatus",
-            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -3843,7 +3795,6 @@
             "description": "The SID of the Workflow with the Tasks to read. Returns the Tasks controlled by the Workflow identified by this SID.",
             "in": "query",
             "name": "WorkflowSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -3855,7 +3806,6 @@
             "description": "The friendly name of the Workflow with the Tasks to read. Returns the Tasks controlled by the Workflow identified by this friendly name.",
             "in": "query",
             "name": "WorkflowName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3864,7 +3814,6 @@
             "description": "The SID of the TaskQueue with the Tasks to read. Returns the Tasks waiting in the TaskQueue identified by this SID.",
             "in": "query",
             "name": "TaskQueueSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -3876,7 +3825,6 @@
             "description": "The `friendly_name` of the TaskQueue with the Tasks to read. Returns the Tasks waiting in the TaskQueue identified by this friendly name.",
             "in": "query",
             "name": "TaskQueueName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3885,7 +3833,6 @@
             "description": "The attributes of the Tasks to read. Returns the Tasks that match the attributes specified in this parameter.",
             "in": "query",
             "name": "EvaluateTaskAttributes",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3894,7 +3841,6 @@
             "description": "How to order the returned Task resources. y default, Tasks are sorted by ascending DateCreated. This value is specified as: `Attribute:Order`, where `Attribute` can be either `Priority` or `DateCreated` and `Order` can be either `asc` or `desc`. For example, `Priority:desc` returns Tasks ordered in descending order of their Priority. Multiple sort orders can be specified in a comma-separated list such as `Priority:desc,DateCreated:asc`, which returns the Tasks in descending Priority order and ascending DateCreated Order.",
             "in": "query",
             "name": "Ordering",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3903,7 +3849,6 @@
             "description": "Whether to read Tasks with addons. If `true`, returns only Tasks with addons. If `false`, returns only Tasks without addons.",
             "in": "query",
             "name": "HasAddons",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -4291,7 +4236,6 @@
             "description": "Returns the list of reservations for a task with a specified ReservationStatus.  Can be: `pending`, `accepted`, `rejected`, or `timeout`.",
             "in": "query",
             "name": "ReservationStatus",
-            "required": false,
             "schema": {
               "enum": [
                 "pending",
@@ -4900,7 +4844,6 @@
             "description": "The `activity_name` of the Worker resources to read.",
             "in": "query",
             "name": "ActivityName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -4909,7 +4852,6 @@
             "description": "The `activity_sid` of the Worker resources to read.",
             "in": "query",
             "name": "ActivitySid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -4921,7 +4863,6 @@
             "description": "Whether to return only Worker resources that are available or unavailable. Can be `true`, `1`, or `yes` to return Worker resources that are available, and `false`, or any value returns the Worker resources that are not available.",
             "in": "query",
             "name": "Available",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -4930,7 +4871,6 @@
             "description": "The `friendly_name` of the Worker resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -4939,7 +4879,6 @@
             "description": "Filter by Workers that would match an expression on a TaskQueue. This is helpful for debugging which Workers would match a potential queue.",
             "in": "query",
             "name": "TargetWorkersExpression",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -4948,7 +4887,6 @@
             "description": "The `friendly_name` of the TaskQueue that the Workers to read are eligible for.",
             "in": "query",
             "name": "TaskQueueName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -4957,7 +4895,6 @@
             "description": "The SID of the TaskQueue that the Workers to read are eligible for.",
             "in": "query",
             "name": "TaskQueueSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -5134,7 +5071,6 @@
             "description": "Only calculate statistics from this date and time and earlier, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -5144,7 +5080,6 @@
             "description": "Only calculate statistics since this many minutes in the past. The default 15 minutes. This is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends.",
             "in": "query",
             "name": "Minutes",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -5153,7 +5088,6 @@
             "description": "Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -5163,7 +5097,6 @@
             "description": "Only calculate cumulative statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -5226,7 +5159,6 @@
             "description": "Only calculate real-time statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -5284,7 +5216,6 @@
             "description": "Only calculate statistics since this many minutes in the past. The default 15 minutes. This is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends.",
             "in": "query",
             "name": "Minutes",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -5293,7 +5224,6 @@
             "description": "Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -5303,7 +5233,6 @@
             "description": "Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -5313,7 +5242,6 @@
             "description": "The SID of the TaskQueue for which to fetch Worker statistics.",
             "in": "query",
             "name": "TaskQueueSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -5325,7 +5253,6 @@
             "description": "The `friendly_name` of the TaskQueue for which to fetch Worker statistics.",
             "in": "query",
             "name": "TaskQueueName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -5334,7 +5261,6 @@
             "description": "Only include Workers with `friendly_name` values that match this parameter.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -5343,7 +5269,6 @@
             "description": "Only calculate statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -5857,7 +5782,6 @@
             "description": "Returns the list of reservations for a worker with a specified ReservationStatus. Can be: `pending`, `accepted`, `rejected`, `timeout`, `canceled`, or `rescinded`.",
             "in": "query",
             "name": "ReservationStatus",
-            "required": false,
             "schema": {
               "enum": [
                 "pending",
@@ -6463,7 +6387,6 @@
             "description": "Only calculate statistics since this many minutes in the past. The default 15 minutes. This is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends.",
             "in": "query",
             "name": "Minutes",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -6472,7 +6395,6 @@
             "description": "Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -6482,7 +6404,6 @@
             "description": "Only include usage that occurred on or before this date, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -6492,7 +6413,6 @@
             "description": "Only calculate statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -6550,7 +6470,6 @@
             "description": "The `friendly_name` of the Workflow resources to read.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -6935,7 +6854,6 @@
             "description": "Only include usage that occurred on or before this date, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -6945,7 +6863,6 @@
             "description": "Only calculate statistics since this many minutes in the past. The default 15 minutes. This is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends.",
             "in": "query",
             "name": "Minutes",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -6954,7 +6871,6 @@
             "description": "Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -6964,7 +6880,6 @@
             "description": "Only calculate cumulative statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -6973,7 +6888,6 @@
             "description": "A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed. For example, `5,30` would show splits of Tasks that were canceled or accepted before and after 5 seconds and before and after 30 seconds. This can be used to show short abandoned Tasks or Tasks that failed to meet an SLA.",
             "in": "query",
             "name": "SplitByWaitTime",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -7046,7 +6960,6 @@
             "description": "Only calculate real-time statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -7118,7 +7031,6 @@
             "description": "Only calculate statistics since this many minutes in the past. The default 15 minutes. This is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends.",
             "in": "query",
             "name": "Minutes",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -7127,7 +7039,6 @@
             "description": "Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -7137,7 +7048,6 @@
             "description": "Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -7147,7 +7057,6 @@
             "description": "Only calculate real-time statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.",
             "in": "query",
             "name": "TaskChannel",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -7156,7 +7065,6 @@
             "description": "A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed. For example, `5,30` would show splits of Tasks that were canceled or accepted before and after 5 seconds and before and after 30 seconds. This can be used to show short abandoned Tasks or Tasks that failed to meet an SLA.",
             "in": "query",
             "name": "SplitByWaitTime",
-            "required": false,
             "schema": {
               "type": "string"
             }

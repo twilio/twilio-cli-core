@@ -1459,7 +1459,6 @@
             "description": "Only show Execution resources starting on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.",
             "in": "query",
             "name": "DateCreatedFrom",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1469,7 +1468,6 @@
             "description": "Only show Execution resources starting before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.",
             "in": "query",
             "name": "DateCreatedTo",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2278,7 +2276,6 @@
       },
       "post": {
         "description": "Create a Flow.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -2353,7 +2350,6 @@
       "description": "TODO: Resource-level docs",
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -2442,7 +2438,6 @@
             "description": "Only show Execution resources starting on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.",
             "in": "query",
             "name": "DateCreatedFrom",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2452,7 +2447,6 @@
             "description": "Only show Execution resources starting before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.",
             "in": "query",
             "name": "DateCreatedTo",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"

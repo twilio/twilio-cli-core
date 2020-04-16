@@ -2626,7 +2626,6 @@
             "description": "",
             "in": "query",
             "name": "NextToken",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2635,7 +2634,6 @@
             "description": "",
             "in": "query",
             "name": "PreviousToken",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2789,7 +2787,6 @@
             "description": "The token for the next page of job results, and may be null if there are no more pages",
             "in": "query",
             "name": "NextToken",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2798,7 +2795,6 @@
             "description": "The token for the previous page of results, and may be null if this is the first page",
             "in": "query",
             "name": "PreviousToken",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -3027,7 +3023,6 @@
       },
       "post": {
         "description": "Create a new Fleet for scoping of deployed devices within your account.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -3090,7 +3085,6 @@
             "description": "Filters the resulting list of Certificates by a unique string identifier of an authenticated Device.",
             "in": "query",
             "name": "DeviceSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -3731,7 +3725,6 @@
             "description": "Filters the resulting list of Devices by a unique string identifier of the Deployment they are associated with.",
             "in": "query",
             "name": "DeploymentSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -4065,7 +4058,6 @@
             "description": "Filters the resulting list of Keys by a unique string identifier of an authenticated Device.",
             "in": "query",
             "name": "DeviceSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -4506,7 +4498,6 @@
             "description": "Email that this AuthorizationDocument will be sent to for signing.",
             "in": "query",
             "name": "Email",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -4515,7 +4506,6 @@
             "description": "Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "opened",
@@ -4599,7 +4589,6 @@
       },
       "post": {
         "description": "Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -4840,7 +4829,6 @@
             "description": "Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "received",
@@ -4860,7 +4848,6 @@
             "description": "An E164 formatted phone number hosted by this HostedNumberOrder.",
             "in": "query",
             "name": "PhoneNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -4869,7 +4856,6 @@
             "description": "A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder.",
             "in": "query",
             "name": "IncomingPhoneNumberSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -4881,7 +4867,6 @@
             "description": "A human readable description of this resource, up to 64 characters.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -4890,7 +4875,6 @@
             "description": "Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID.",
             "in": "query",
             "name": "UniqueName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -4982,7 +4966,6 @@
             "description": "The Status of this HostedNumberOrder. One of `received`, `pending-verification`, `verified`, `pending-loa`, `carrier-processing`, `testing`, `completed`, `failed`, or `action-required`.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "received",
@@ -5002,7 +4985,6 @@
             "description": "An E164 formatted phone number hosted by this HostedNumberOrder.",
             "in": "query",
             "name": "PhoneNumber",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -5011,7 +4993,6 @@
             "description": "A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder.",
             "in": "query",
             "name": "IncomingPhoneNumberSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -5023,7 +5004,6 @@
             "description": "A human readable description of this resource, up to 64 characters.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -5032,7 +5012,6 @@
             "description": "Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID.",
             "in": "query",
             "name": "UniqueName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -5109,7 +5088,6 @@
       },
       "post": {
         "description": "Host a phone number's capability on Twilio's platform.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -5549,7 +5527,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -6394,7 +6371,6 @@
             "description": "",
             "in": "query",
             "name": "Order",
-            "required": false,
             "schema": {
               "enum": [
                 "asc",
@@ -6407,7 +6383,6 @@
             "description": "",
             "in": "query",
             "name": "From",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -6416,7 +6391,6 @@
             "description": "",
             "in": "query",
             "name": "Bounds",
-            "required": false,
             "schema": {
               "enum": [
                 "inclusive",
@@ -7325,7 +7299,6 @@
             "description": "",
             "in": "query",
             "name": "Order",
-            "required": false,
             "schema": {
               "enum": [
                 "asc",
@@ -7338,7 +7311,6 @@
             "description": "",
             "in": "query",
             "name": "From",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -7347,7 +7319,6 @@
             "description": "",
             "in": "query",
             "name": "Bounds",
-            "required": false,
             "schema": {
               "enum": [
                 "inclusive",
@@ -8230,7 +8201,6 @@
       "description": "TODO: Resource-level docs",
       "post": {
         "description": "Brands a Call without actually placing it. Useful for cases when the Customer wants to initiate the call themselves right after calling this endpoint. This can be used also through a TwiML using `<Brand callerId=\"+1500123\" callReason=\"This is the call reason\" callSid=\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\">+1500456</Brand>`, and right after doing `<Dial callerId=\"+1500123\">+1500456</Dial>`",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -8318,7 +8288,6 @@
       "description": "TODO: Resource-level docs",
       "post": {
         "description": "Initiates a Branded Call.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -8579,7 +8548,6 @@
             "description": "The unique SID identifier of the Brand to filter by.",
             "in": "query",
             "name": "BrandSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -8591,7 +8559,6 @@
             "description": "The unique SID identifier of the Branded Channel to filter by.",
             "in": "query",
             "name": "BrandedChannelSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -8603,7 +8570,6 @@
             "description": "The unique SID identifier of the Phone Number to filter by.",
             "in": "query",
             "name": "PhoneNumberSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -8615,7 +8581,6 @@
             "description": "The 2-letter ISO 3166 code of the Country to filter by.",
             "in": "query",
             "name": "Country",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -8624,7 +8589,6 @@
             "description": "The start date that for this Impressions Rate, given in ISO 8601 format. Default value is 30 days ago.",
             "in": "query",
             "name": "Start",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -8634,7 +8598,6 @@
             "description": "The end date that for this Impressions Rate, given in ISO 8601 format. Default value is current timestamp.",
             "in": "query",
             "name": "End",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -8644,7 +8607,6 @@
             "description": "The Interval of this Impressions Rate. One of `minute`, `hour`, `day`, `week` or `month`.",
             "in": "query",
             "name": "Interval",
-            "required": false,
             "schema": {
               "enum": [
                 "minute",
@@ -8750,7 +8712,6 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch a specific Call Placement Service (CPS) given a phone number via `X-XCNAM-Sensitive-Phone-Number` header.",
-        "parameters": [],
         "responses": {
           "200": {
             "content": {
@@ -8788,7 +8749,6 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a current call given the originating and terminating number via `X-XCNAM-Sensitive-Phone-Number-From` and `X-XCNAM-Sensitive-Phone-Number-To` headers.",
-        "parameters": [],
         "responses": {
           "200": {
             "content": {
@@ -9194,7 +9154,6 @@
       },
       "post": {
         "description": "Install an Add-on for the Account specified.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -9689,7 +9648,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -10084,7 +10042,6 @@
             "description": "An ISO language-country string of the value. For example: *en-US*",
             "in": "query",
             "name": "Language",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10899,7 +10856,6 @@
             "description": "An ISO language-country string of the sample.",
             "in": "query",
             "name": "Language",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10908,7 +10864,6 @@
             "description": "The Model Build Sid or unique name of the Model Build to be queried.",
             "in": "query",
             "name": "ModelBuild",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -10917,7 +10872,6 @@
             "description": "A string that described the query status. The values can be: pending_review, reviewed, discarded",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -12045,7 +11999,6 @@
             "description": "An ISO language-country string of the sample.",
             "in": "query",
             "name": "Language",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -12600,7 +12553,6 @@
             "description": "",
             "in": "query",
             "name": "Device",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -12609,7 +12561,6 @@
             "description": "",
             "in": "query",
             "name": "Sim",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -12618,7 +12569,6 @@
             "description": "",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -12627,7 +12577,6 @@
             "description": "",
             "in": "query",
             "name": "Direction",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -12704,7 +12653,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -12901,7 +12849,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -13118,7 +13065,6 @@
             "description": "",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -13127,7 +13073,6 @@
             "description": "",
             "in": "query",
             "name": "Iccid",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -13136,7 +13081,6 @@
             "description": "",
             "in": "query",
             "name": "RatePlan",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -13145,7 +13089,6 @@
             "description": "",
             "in": "query",
             "name": "EId",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -13154,7 +13097,6 @@
             "description": "",
             "in": "query",
             "name": "SimRegistrationCode",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -13484,7 +13426,6 @@
             "description": "",
             "in": "query",
             "name": "End",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -13493,7 +13434,6 @@
             "description": "",
             "in": "query",
             "name": "Start",
-            "required": false,
             "schema": {
               "type": "string"
             }

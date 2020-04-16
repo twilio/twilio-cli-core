@@ -409,7 +409,6 @@
       },
       "post": {
         "description": "Create a new Verification Service.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {

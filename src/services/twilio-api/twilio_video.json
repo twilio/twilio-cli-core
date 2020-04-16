@@ -761,7 +761,6 @@
             "description": "Read only CompositionHook resources with an `enabled` value that matches this parameter.",
             "in": "query",
             "name": "Enabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -770,7 +769,6 @@
             "description": "Read only CompositionHook resources created on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime with time zone.",
             "in": "query",
             "name": "DateCreatedAfter",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -780,7 +778,6 @@
             "description": "Read only CompositionHook resources created before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime with time zone.",
             "in": "query",
             "name": "DateCreatedBefore",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -790,7 +787,6 @@
             "description": "Read only CompositionHook resources with friendly names that match this string. The match is not case sensitive and can include asterisk `*` characters as wildcard match.",
             "in": "query",
             "name": "FriendlyName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -867,7 +863,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1181,7 +1176,6 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "",
-        "parameters": [],
         "responses": {
           "200": {
             "content": {
@@ -1205,7 +1199,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1293,7 +1286,6 @@
             "description": "Read only Composition resources with this status. Can be: `enqueued`, `processing`, `completed`, `deleted`, or `failed`.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "enqueued",
@@ -1309,7 +1301,6 @@
             "description": "Read only Composition resources created on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone.",
             "in": "query",
             "name": "DateCreatedAfter",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1319,7 +1310,6 @@
             "description": "Read only Composition resources created before this ISO 8601 date-time with time zone.",
             "in": "query",
             "name": "DateCreatedBefore",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1329,7 +1319,6 @@
             "description": "Read only Composition resources with this Room SID.",
             "in": "query",
             "name": "RoomSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -1409,7 +1398,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1608,7 +1596,6 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "",
-        "parameters": [],
         "responses": {
           "200": {
             "content": {
@@ -1632,7 +1619,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1720,7 +1706,6 @@
             "description": "Read only the recordings that have this status. Can be: `processing`, `completed`, or `deleted`.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "processing",
@@ -1735,7 +1720,6 @@
             "description": "Read only the recordings that have this `source_sid`.",
             "in": "query",
             "name": "SourceSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -1747,7 +1731,6 @@
             "description": "Read only recordings with this `grouping_sid`, which may include a `participant_sid` and/or a `room_sid`.",
             "in": "query",
             "name": "GroupingSid",
-            "required": false,
             "schema": {
               "items": {
                 "maxLength": 34,
@@ -1762,7 +1745,6 @@
             "description": "Read only recordings that started on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone.",
             "in": "query",
             "name": "DateCreatedAfter",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1772,7 +1754,6 @@
             "description": "Read only recordings that started before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.",
             "in": "query",
             "name": "DateCreatedBefore",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1782,7 +1763,6 @@
             "description": "Read only recordings that have this media type. Can be either `audio` or `video`.",
             "in": "query",
             "name": "MediaType",
-            "required": false,
             "schema": {
               "enum": [
                 "audio",
@@ -1970,7 +1950,6 @@
             "description": "Read only the rooms with this status. Can be: `in-progress` (default) or `completed`",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "in-progress",
@@ -1984,7 +1963,6 @@
             "description": "Read only rooms with the this `unique_name`.",
             "in": "query",
             "name": "UniqueName",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1993,7 +1971,6 @@
             "description": "Read only rooms that started on or after this date, given as `YYYY-MM-DD`.",
             "in": "query",
             "name": "DateCreatedAfter",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2003,7 +1980,6 @@
             "description": "Read only rooms that started before this date, given as `YYYY-MM-DD`.",
             "in": "query",
             "name": "DateCreatedBefore",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2081,7 +2057,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -2207,7 +2182,6 @@
             "description": "Read only the participants with this status. Can be: `connected` or `disconnected`. For `in-progress` Rooms the default Status is `connected`, for `completed` Rooms only `disconnected` Participants are returned.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "connected",
@@ -2220,7 +2194,6 @@
             "description": "Read only the Participants with this [User](https://www.twilio.com/docs/chat/rest/user-resource) `identity` value.",
             "in": "query",
             "name": "Identity",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2229,7 +2202,6 @@
             "description": "Read only Participants that started after this date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.",
             "in": "query",
             "name": "DateCreatedAfter",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2239,7 +2211,6 @@
             "description": "Read only Participants that started before this date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.",
             "in": "query",
             "name": "DateCreatedBefore",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2931,7 +2902,6 @@
             "description": "Read only the recordings with this status. Can be: `processing`, `completed`, or `deleted`.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "processing",
@@ -2946,7 +2916,6 @@
             "description": "Read only the recordings that have this `source_sid`.",
             "in": "query",
             "name": "SourceSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -2958,7 +2927,6 @@
             "description": "Read only recordings that started on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime with time zone.",
             "in": "query",
             "name": "DateCreatedAfter",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2968,7 +2936,6 @@
             "description": "Read only Recordings that started before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime with time zone.",
             "in": "query",
             "name": "DateCreatedBefore",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"

@@ -597,7 +597,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1457,7 +1456,6 @@
             "description": "How to order the List Items returned by their `index` value. Can be: `asc` (ascending) or `desc` (descending) and the default is ascending.",
             "in": "query",
             "name": "Order",
-            "required": false,
             "schema": {
               "enum": [
                 "asc",
@@ -1470,7 +1468,6 @@
             "description": "The `index` of the first Sync List Item resource to read. See also `bounds`.",
             "in": "query",
             "name": "From",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1479,7 +1476,6 @@
             "description": "Whether to include the List Item referenced by the `from` parameter. Can be: `inclusive` to include the List Item referenced by the `from` parameter or `exclusive` to start with the next List Item. The default value is `inclusive`.",
             "in": "query",
             "name": "Bounds",
-            "required": false,
             "schema": {
               "enum": [
                 "inclusive",
@@ -2466,7 +2462,6 @@
             "description": "How to order the Map Items returned by their `key` value. Can be: `asc` (ascending) or `desc` (descending) and the default is ascending. Map Items are [ordered lexicographically](https://en.wikipedia.org/wiki/Lexicographical_order) by Item key.",
             "in": "query",
             "name": "Order",
-            "required": false,
             "schema": {
               "enum": [
                 "asc",
@@ -2479,7 +2474,6 @@
             "description": "The `key` of the first Sync Map Item resource to read. See also `bounds`.",
             "in": "query",
             "name": "From",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -2488,7 +2482,6 @@
             "description": "Whether to include the Map Item referenced by the `from` parameter. Can be: `inclusive` to include the Map Item referenced by the `from` parameter or `exclusive` to start with the next Map Item. The default value is `inclusive`.",
             "in": "query",
             "name": "Bounds",
-            "required": false,
             "schema": {
               "enum": [
                 "inclusive",

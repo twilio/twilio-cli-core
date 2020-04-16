@@ -167,7 +167,6 @@
             "description": "Retrieve only those faxes sent from this phone number, specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.",
             "in": "query",
             "name": "From",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -176,7 +175,6 @@
             "description": "Retrieve only those faxes sent to this phone number, specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.",
             "in": "query",
             "name": "To",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -185,7 +183,6 @@
             "description": "Retrieve only those faxes with a `date_created` that is before or equal to this value, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "DateCreatedOnOrBefore",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -195,7 +192,6 @@
             "description": "Retrieve only those faxes with a `date_created` that is later than this value, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
             "in": "query",
             "name": "DateCreatedAfter",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -273,7 +269,6 @@
       },
       "post": {
         "description": "Create a new fax to send to a phone number or SIP endpoint.",
-        "parameters": [],
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
