@@ -45,8 +45,17 @@ class TwilioApiBrowser {
         // Move the operations into an operations object.
         OPERATIONS.forEach(operationName => {
           if (operationName in path) {
-            path.operations[operationName] = path[operationName];
+            const operation = path[operationName];
+            path.operations[operationName] = operation;
             delete path[operationName];
+
+            // Convert all the request body properties to query parameters for
+            // simpler parsing downstream.
+            const parameters = this.requestPropertiesToParameters(operation.requestBody);
+
+            if (parameters.length > 0) {
+              operation.parameters = operation.parameters ? operation.parameters.concat(parameters) : parameters;
+            }
           }
         });
 
@@ -64,6 +73,29 @@ class TwilioApiBrowser {
     });
 
     return domains;
+  }
+
+  requestPropertiesToParameters(requestBody) {
+    const parameters = [];
+    const content = (requestBody || {}).content || {};
+
+    Object.values(content).forEach(type => {
+      const typeSchema = type.schema || {};
+      const properties = typeSchema.properties || {};
+      const required = typeSchema.required || [];
+
+      Object.entries(properties).forEach(([name, schema]) => {
+        parameters.push({
+          name,
+          schema,
+          in: 'query',
+          required: required.includes(name),
+          description: schema.description
+        });
+      });
+    });
+
+    return parameters;
   }
 }
 
