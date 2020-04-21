@@ -623,7 +623,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -637,44 +638,37 @@
       },
       "post": {
         "description": "Create a new Service resource.",
-        "parameters": [
-          {
-            "description": "An application-defined string that uniquely identifies the Service resource. It can be used as an alternative to the `sid` in the URL path to address the Service resource. This value must be 244 characters or less in length and be unique.",
-            "in": "query",
-            "name": "UniqueName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A descriptive string that you create to describe the Service resource. It can be up to 255 characters long.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to inject Account credentials into a function invocation context. The default value is `false`.",
-            "in": "query",
-            "name": "IncludeCredentials",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether the Service's properties and subresources can be edited via the UI. The default value is `false`.",
-            "in": "query",
-            "name": "UiEditable",
-            "required": false,
-            "schema": {
-              "type": "boolean"
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Service resource. It can be up to 255 characters long.",
+                    "type": "string"
+                  },
+                  "IncludeCredentials": {
+                    "description": "Whether to inject Account credentials into a function invocation context. The default value is `false`.",
+                    "type": "boolean"
+                  },
+                  "UiEditable": {
+                    "description": "Whether the Service's properties and subresources can be edited via the UI. The default value is `false`.",
+                    "type": "boolean"
+                  },
+                  "UniqueName": {
+                    "description": "An application-defined string that uniquely identifies the Service resource. It can be used as an alternative to the `sid` in the URL path to address the Service resource. This value must be 244 characters or less in length and be unique.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "UniqueName",
+                  "FriendlyName"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -683,7 +677,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -778,7 +773,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -801,17 +797,26 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the Asset resource. It can be up to 255 characters long.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Asset resource. It can be up to 255 characters long.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -820,7 +825,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.asset"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -927,7 +933,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -999,7 +1006,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.asset.asset_version"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1098,7 +1106,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.asset"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1133,17 +1142,26 @@
               "pattern": "^ZH[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the Asset resource. It can be up to 255 characters long.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Asset resource. It can be up to 255 characters long.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1152,7 +1170,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.asset"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1247,7 +1266,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1270,47 +1290,43 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "The list of Asset Version resource SIDs to include in the build.",
-            "in": "query",
-            "name": "AssetVersions",
-            "required": false,
-            "schema": {
-              "items": {
-                "maxLength": 34,
-                "minLength": 34,
-                "pattern": "^ZN[0-9a-fA-F]{32}$",
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "The list of the Variable resource SIDs to include in the build.",
-            "in": "query",
-            "name": "FunctionVersions",
-            "required": false,
-            "schema": {
-              "items": {
-                "maxLength": 34,
-                "minLength": 34,
-                "pattern": "^ZN[0-9a-fA-F]{32}$",
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "description": "A list of objects that describe the Dependencies included in the build. Each object contains the `name` and `version` of the dependency.",
-            "in": "query",
-            "name": "Dependencies",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "AssetVersions": {
+                    "description": "The list of Asset Version resource SIDs to include in the build.",
+                    "items": {
+                      "maxLength": 34,
+                      "minLength": 34,
+                      "pattern": "^ZN[0-9a-fA-F]{32}$",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "Dependencies": {
+                    "description": "A list of objects that describe the Dependencies included in the build. Each object contains the `name` and `version` of the dependency.",
+                    "type": "string"
+                  },
+                  "FunctionVersions": {
+                    "description": "The list of the Variable resource SIDs to include in the build.",
+                    "items": {
+                      "maxLength": 34,
+                      "minLength": 34,
+                      "pattern": "^ZN[0-9a-fA-F]{32}$",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1319,7 +1335,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.build"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1417,7 +1434,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.build"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1512,7 +1530,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1535,26 +1554,30 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "An application-defined string that uniquely identifies the Environment resource. It can be used as an alternative to the `sid` in the URL path to address the Environment resource. This value must have fewer than 256 characters.",
-            "in": "query",
-            "name": "UniqueName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A URL-friendly name that represents the environment and forms part of the domain name. Must have fewer than 32 characters.",
-            "in": "query",
-            "name": "DomainSuffix",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "DomainSuffix": {
+                    "description": "A URL-friendly name that represents the environment and forms part of the domain name. Must have fewer than 32 characters.",
+                    "type": "string"
+                  },
+                  "UniqueName": {
+                    "description": "An application-defined string that uniquely identifies the Environment resource. It can be used as an alternative to the `sid` in the URL path to address the Environment resource. This value must have fewer than 256 characters.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "UniqueName"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1563,7 +1586,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.environment"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1671,7 +1695,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1706,20 +1731,26 @@
               "pattern": "^ZE[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The SID of the build for the deployment.",
-            "in": "query",
-            "name": "BuildSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^ZB[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "BuildSid": {
+                    "description": "The SID of the build for the deployment.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^ZB[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1728,7 +1759,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.environment.deployment"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1799,7 +1831,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.environment.deployment"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1853,7 +1886,6 @@
             "description": "The SID of the function whose invocation produced the Log resources to read.",
             "in": "query",
             "name": "FunctionSid",
-            "required": false,
             "schema": {
               "maxLength": 34,
               "minLength": 34,
@@ -1865,7 +1897,6 @@
             "description": "The date/time (in GMT, ISO 8601) after which the Log resources must have been created. Defaults to 1 day prior to current date/time.",
             "in": "query",
             "name": "StartDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1875,7 +1906,6 @@
             "description": "The date/time (in GMT, ISO 8601) before which the Log resources must have been created. Defaults to current date/time.",
             "in": "query",
             "name": "EndDate",
-            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1938,7 +1968,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2005,7 +2036,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.environment.log"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2108,7 +2140,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2143,26 +2176,31 @@
               "pattern": "^ZE[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A string by which the Variable resource can be referenced. Must be less than 128 characters long.",
-            "in": "query",
-            "name": "Key",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A string that contains the actual value of the variable. Must have less than 450 bytes.",
-            "in": "query",
-            "name": "Value",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Key": {
+                    "description": "A string by which the Variable resource can be referenced. Must be less than 128 characters long.",
+                    "type": "string"
+                  },
+                  "Value": {
+                    "description": "A string that contains the actual value of the variable. Must have less than 450 bytes.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Key",
+                  "Value"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -2171,7 +2209,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.environment.variable"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -2293,7 +2332,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.environment.variable"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2340,26 +2380,27 @@
               "pattern": "^ZV[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A string by which the Variable resource can be referenced. Must be less than 128 characters long.",
-            "in": "query",
-            "name": "Key",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A string that contains the actual value of the variable. Must have less than 450 bytes.",
-            "in": "query",
-            "name": "Value",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Key": {
+                    "description": "A string by which the Variable resource can be referenced. Must be less than 128 characters long.",
+                    "type": "string"
+                  },
+                  "Value": {
+                    "description": "A string that contains the actual value of the variable. Must have less than 450 bytes.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -2368,7 +2409,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.environment.variable"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2466,7 +2508,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.environment"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2562,7 +2605,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2585,17 +2629,26 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the Function resource. It can be up to 255 characters long.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Function resource. It can be up to 255 characters long.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -2604,7 +2657,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.function"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -2711,7 +2765,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2783,7 +2838,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.function.function_version"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2855,7 +2911,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.function.function_version.function_version_content"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2952,7 +3009,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.function"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2987,17 +3045,26 @@
               "pattern": "^ZH[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the Function resource. It can be up to 255 characters long.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Function resource. It can be up to 255 characters long.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -3006,7 +3073,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service.function"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3080,7 +3148,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -3106,35 +3175,31 @@
               "pattern": "^ZS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "Whether to inject Account credentials into a function invocation context.",
-            "in": "query",
-            "name": "IncludeCredentials",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "A descriptive string that you create to describe the Service resource. It can be up to 255 characters long.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether the Service's properties and subresources can be edited via the UI. The default value is `false`.",
-            "in": "query",
-            "name": "UiEditable",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the Service resource. It can be up to 255 characters long.",
+                    "type": "string"
+                  },
+                  "IncludeCredentials": {
+                    "description": "Whether to inject Account credentials into a function invocation context.",
+                    "type": "boolean"
+                  },
+                  "UiEditable": {
+                    "description": "Whether the Service's properties and subresources can be edited via the UI. The default value is `false`.",
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -3143,7 +3208,8 @@
                   "$ref": "#/components/schemas/serverless.v1.service"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [

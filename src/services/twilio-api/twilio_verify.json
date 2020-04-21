@@ -394,7 +394,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -408,80 +409,52 @@
       },
       "post": {
         "description": "Create a new Verification Service.",
-        "parameters": [
-          {
-            "description": "A descriptive string that you create to describe the verification service. It can be up to 64 characters long. **This value should not contain PII.**",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.",
-            "in": "query",
-            "name": "CodeLength",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Whether to perform a lookup with each verification started and return info about the phone number.",
-            "in": "query",
-            "name": "LookupEnabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.",
-            "in": "query",
-            "name": "SkipSmsToLandlines",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether to ask the user to press a number before delivering the verify code in a phone call.",
-            "in": "query",
-            "name": "DtmfInputRequired",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.",
-            "in": "query",
-            "name": "TtsName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to pass PSD2 transaction parameters when starting a verification.",
-            "in": "query",
-            "name": "Psd2Enabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don\u2019t share this code with anyone; our employees will never ask for the code`",
-            "in": "query",
-            "name": "DoNotShareWarningEnabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "CodeLength": {
+                    "description": "The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.",
+                    "type": "integer"
+                  },
+                  "DoNotShareWarningEnabled": {
+                    "description": "Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don\u2019t share this code with anyone; our employees will never ask for the code`",
+                    "type": "boolean"
+                  },
+                  "DtmfInputRequired": {
+                    "description": "Whether to ask the user to press a number before delivering the verify code in a phone call.",
+                    "type": "boolean"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the verification service. It can be up to 64 characters long. **This value should not contain PII.**",
+                    "type": "string"
+                  },
+                  "LookupEnabled": {
+                    "description": "Whether to perform a lookup with each verification started and return info about the phone number.",
+                    "type": "boolean"
+                  },
+                  "Psd2Enabled": {
+                    "description": "Whether to pass PSD2 transaction parameters when starting a verification.",
+                    "type": "boolean"
+                  },
+                  "SkipSmsToLandlines": {
+                    "description": "Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.",
+                    "type": "boolean"
+                  },
+                  "TtsName": {
+                    "description": "The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -490,7 +463,8 @@
                   "$ref": "#/components/schemas/verify.v2.service"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -588,7 +562,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -614,29 +589,34 @@
               "pattern": "^VA[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`.",
-            "in": "query",
-            "name": "Country",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration.",
-            "in": "query",
-            "name": "MessagingServiceSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MG[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Country": {
+                    "description": "The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`.",
+                    "type": "string"
+                  },
+                  "MessagingServiceSid": {
+                    "description": "The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^MG[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Country",
+                  "MessagingServiceSid"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -645,7 +625,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.messaging_configuration"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -746,7 +727,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.messaging_configuration"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -781,20 +763,29 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration.",
-            "in": "query",
-            "name": "MessagingServiceSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MG[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "MessagingServiceSid": {
+                    "description": "The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) to be used to send SMS to the country of this configuration.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^MG[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "MessagingServiceSid"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -803,7 +794,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.messaging_configuration"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -904,7 +896,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -930,26 +923,30 @@
               "pattern": "^VA[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "Provides a unique and addressable name to be assigned to this Rate Limit, assigned by the developer, to be optionally used in addition to SID. **This value should not contain PII.**",
-            "in": "query",
-            "name": "UniqueName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Description of this Rate Limit",
-            "in": "query",
-            "name": "Description",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Description": {
+                    "description": "Description of this Rate Limit",
+                    "type": "string"
+                  },
+                  "UniqueName": {
+                    "description": "Provides a unique and addressable name to be assigned to this Rate Limit, assigned by the developer, to be optionally used in addition to SID. **This value should not contain PII.**",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "UniqueName"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -958,7 +955,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.rate_limit"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1072,7 +1070,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1110,26 +1109,31 @@
               "pattern": "^RK[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "Maximum number of requests permitted in during the interval.",
-            "in": "query",
-            "name": "Max",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Number of seconds that the rate limit will be enforced over.",
-            "in": "query",
-            "name": "Interval",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Interval": {
+                    "description": "Number of seconds that the rate limit will be enforced over.",
+                    "type": "integer"
+                  },
+                  "Max": {
+                    "description": "Maximum number of requests permitted in during the interval.",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "Max",
+                  "Interval"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1138,7 +1142,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.rate_limit.bucket"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1271,7 +1276,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.rate_limit.bucket"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1321,26 +1327,27 @@
               "pattern": "^BL[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "Maximum number of requests permitted in during the interval.",
-            "in": "query",
-            "name": "Max",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Number of seconds that the rate limit will be enforced over.",
-            "in": "query",
-            "name": "Interval",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Interval": {
+                    "description": "Number of seconds that the rate limit will be enforced over.",
+                    "type": "integer"
+                  },
+                  "Max": {
+                    "description": "Maximum number of requests permitted in during the interval.",
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1349,7 +1356,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.rate_limit.bucket"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1458,7 +1466,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.rate_limit"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1496,17 +1505,23 @@
               "pattern": "^RK[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "Description of this Rate Limit",
-            "in": "query",
-            "name": "Description",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Description": {
+                    "description": "Description of this Rate Limit",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1515,7 +1530,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.rate_limit"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1559,56 +1575,45 @@
               "pattern": "^VA[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The 4-10 character string being verified.",
-            "in": "query",
-            "name": "Code",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Either this parameter or the `verification_sid` must be specified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
-            "in": "query",
-            "name": "To",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number/[email](https://www.twilio.com/docs/verify/email) must be specified.",
-            "in": "query",
-            "name": "VerificationSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^VE[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.",
-            "in": "query",
-            "name": "Amount",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.",
-            "in": "query",
-            "name": "Payee",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Amount": {
+                    "description": "The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.",
+                    "type": "string"
+                  },
+                  "Code": {
+                    "description": "The 4-10 character string being verified.",
+                    "type": "string"
+                  },
+                  "Payee": {
+                    "description": "The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.",
+                    "type": "string"
+                  },
+                  "To": {
+                    "description": "The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Either this parameter or the `verification_sid` must be specified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
+                    "type": "string"
+                  },
+                  "VerificationSid": {
+                    "description": "A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number/[email](https://www.twilio.com/docs/verify/email) must be specified.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^VE[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Code"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1617,7 +1622,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.verification_check"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1660,107 +1666,67 @@
               "pattern": "^VA[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
-            "in": "query",
-            "name": "To",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The verification method to use. Can be: [`email`](https://www.twilio.com/docs/verify/email), `sms` or `call`.",
-            "in": "query",
-            "name": "Channel",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The text of a custom message to use for the verification.",
-            "in": "query",
-            "name": "CustomMessage",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits).",
-            "in": "query",
-            "name": "SendDigits",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The locale to use for the verification SMS or call. Can be: `af`, `ar`, `ca`, `cs`, `da`, `de`, `el`, `en`, `es`, `fi`, `fr`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `ko`, `ms`, `nb`, `nl`, `pl`, `pt`, `pr-BR`, `ro`, `ru`, `sv`, `th`, `tl`, `tr`, `vi`, `zh`, `zh-CN`, or `zh-HK.`",
-            "in": "query",
-            "name": "Locale",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive.",
-            "in": "query",
-            "name": "CustomCode",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.",
-            "in": "query",
-            "name": "Amount",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.",
-            "in": "query",
-            "name": "Payee",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The custom key-value pairs of Programmable Rate Limits. Keys correspond to `unique_name` fields defined when [creating your Rate Limit](https://www.twilio.com/docs/verify/api/service-rate-limits). Associated value pairs represent values in the request that you are rate limiting on. You may include multiple Rate Limit values in each request.",
-            "in": "query",
-            "name": "RateLimits",
-            "required": false,
-            "schema": {
-              "type": "object"
-            }
-          },
-          {
-            "description": "[`email`](https://www.twilio.com/docs/verify/email) channel configuration in json format. Must include 'from' and 'from_name'.",
-            "in": "query",
-            "name": "ChannelConfiguration",
-            "required": false,
-            "schema": {
-              "type": "object"
-            }
-          },
-          {
-            "description": "Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`.",
-            "in": "query",
-            "name": "AppHash",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Amount": {
+                    "description": "The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.",
+                    "type": "string"
+                  },
+                  "AppHash": {
+                    "description": "Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`.",
+                    "type": "string"
+                  },
+                  "Channel": {
+                    "description": "The verification method to use. Can be: [`email`](https://www.twilio.com/docs/verify/email), `sms` or `call`.",
+                    "type": "string"
+                  },
+                  "ChannelConfiguration": {
+                    "description": "[`email`](https://www.twilio.com/docs/verify/email) channel configuration in json format. Must include 'from' and 'from_name'.",
+                    "type": "object"
+                  },
+                  "CustomCode": {
+                    "description": "A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive.",
+                    "type": "string"
+                  },
+                  "CustomMessage": {
+                    "description": "The text of a custom message to use for the verification.",
+                    "type": "string"
+                  },
+                  "Locale": {
+                    "description": "The locale to use for the verification SMS or call. Can be: `af`, `ar`, `ca`, `cs`, `da`, `de`, `el`, `en`, `es`, `fi`, `fr`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `ko`, `ms`, `nb`, `nl`, `pl`, `pt`, `pr-BR`, `ro`, `ru`, `sv`, `th`, `tl`, `tr`, `vi`, `zh`, `zh-CN`, or `zh-HK.`",
+                    "type": "string"
+                  },
+                  "Payee": {
+                    "description": "The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.",
+                    "type": "string"
+                  },
+                  "RateLimits": {
+                    "description": "The custom key-value pairs of Programmable Rate Limits. Keys correspond to `unique_name` fields defined when [creating your Rate Limit](https://www.twilio.com/docs/verify/api/service-rate-limits). Associated value pairs represent values in the request that you are rate limiting on. You may include multiple Rate Limit values in each request.",
+                    "type": "object"
+                  },
+                  "SendDigits": {
+                    "description": "The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits).",
+                    "type": "string"
+                  },
+                  "To": {
+                    "description": "The phone number or [email](https://www.twilio.com/docs/verify/email) to verify. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "To",
+                  "Channel"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1769,7 +1735,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.verification"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1831,7 +1798,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.verification"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1866,21 +1834,30 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "The new status of the resource. Can be: `canceled` or `approved`.",
-            "in": "query",
-            "name": "Status",
-            "required": true,
-            "schema": {
-              "enum": [
-                "canceled",
-                "approved"
-              ],
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Status": {
+                    "description": "The new status of the resource. Can be: `canceled` or `approved`.",
+                    "enum": [
+                      "canceled",
+                      "approved"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Status"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1889,7 +1866,8 @@
                   "$ref": "#/components/schemas/verify.v2.service.verification"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1972,7 +1950,8 @@
                   "$ref": "#/components/schemas/verify.v2.service"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1998,80 +1977,51 @@
               "pattern": "^VA[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A descriptive string that you create to describe the verification service. It can be up to 64 characters long. **This value should not contain PII.**",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.",
-            "in": "query",
-            "name": "CodeLength",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Whether to perform a lookup with each verification started and return info about the phone number.",
-            "in": "query",
-            "name": "LookupEnabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.",
-            "in": "query",
-            "name": "SkipSmsToLandlines",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether to ask the user to press a number before delivering the verify code in a phone call.",
-            "in": "query",
-            "name": "DtmfInputRequired",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.",
-            "in": "query",
-            "name": "TtsName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether to pass PSD2 transaction parameters when starting a verification.",
-            "in": "query",
-            "name": "Psd2Enabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "description": "Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS.**",
-            "in": "query",
-            "name": "DoNotShareWarningEnabled",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "CodeLength": {
+                    "description": "The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.",
+                    "type": "integer"
+                  },
+                  "DoNotShareWarningEnabled": {
+                    "description": "Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS.**",
+                    "type": "boolean"
+                  },
+                  "DtmfInputRequired": {
+                    "description": "Whether to ask the user to press a number before delivering the verify code in a phone call.",
+                    "type": "boolean"
+                  },
+                  "FriendlyName": {
+                    "description": "A descriptive string that you create to describe the verification service. It can be up to 64 characters long. **This value should not contain PII.**",
+                    "type": "string"
+                  },
+                  "LookupEnabled": {
+                    "description": "Whether to perform a lookup with each verification started and return info about the phone number.",
+                    "type": "boolean"
+                  },
+                  "Psd2Enabled": {
+                    "description": "Whether to pass PSD2 transaction parameters when starting a verification.",
+                    "type": "boolean"
+                  },
+                  "SkipSmsToLandlines": {
+                    "description": "Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.",
+                    "type": "boolean"
+                  },
+                  "TtsName": {
+                    "description": "The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -2080,7 +2030,8 @@
                   "$ref": "#/components/schemas/verify.v2.service"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [

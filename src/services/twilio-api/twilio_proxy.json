@@ -694,7 +694,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -708,96 +709,68 @@
       },
       "post": {
         "description": "Create a new Service for Twilio Proxy",
-        "parameters": [
-          {
-            "description": "An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**",
-            "in": "query",
-            "name": "UniqueName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.",
-            "in": "query",
-            "name": "DefaultTtl",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The URL we should call when the interaction status changes.",
-            "in": "query",
-            "name": "CallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Where a proxy number must be located relative to the participant identifier. Can be: `country`, `area-code`, or `extended-area-code`. The default value is `country` and more specific areas than `country` are only available in North America.",
-            "in": "query",
-            "name": "GeoMatchLevel",
-            "required": false,
-            "schema": {
-              "enum": [
-                "area-code",
-                "overlay",
-                "radius",
-                "country"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The preference for Proxy Number selection in the Service instance. Can be: `prefer-sticky` or `avoid-sticky` and the default is `prefer-sticky`. `prefer-sticky` means that we will try and select the same Proxy Number for a given participant if they have previous [Sessions](https://www.twilio.com/docs/proxy/api/session), but we will not fail if that Proxy Number cannot be used.  `avoid-sticky` means that we will try to use different Proxy Numbers as long as that is possible within a given pool rather than try and use a previously assigned number.",
-            "in": "query",
-            "name": "NumberSelectionBehavior",
-            "required": false,
-            "schema": {
-              "enum": [
-                "avoid-sticky",
-                "prefer-sticky"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.",
-            "in": "query",
-            "name": "InterceptCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.",
-            "in": "query",
-            "name": "OutOfSessionCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.",
-            "in": "query",
-            "name": "ChatInstanceSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^IS[0-9a-fA-F]{32}$",
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "CallbackUrl": {
+                    "description": "The URL we should call when the interaction status changes.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "ChatInstanceSid": {
+                    "description": "The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^IS[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "DefaultTtl": {
+                    "description": "The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.",
+                    "type": "integer"
+                  },
+                  "GeoMatchLevel": {
+                    "description": "Where a proxy number must be located relative to the participant identifier. Can be: `country`, `area-code`, or `extended-area-code`. The default value is `country` and more specific areas than `country` are only available in North America.",
+                    "enum": [
+                      "area-code",
+                      "overlay",
+                      "radius",
+                      "country"
+                    ],
+                    "type": "string"
+                  },
+                  "InterceptCallbackUrl": {
+                    "description": "The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "NumberSelectionBehavior": {
+                    "description": "The preference for Proxy Number selection in the Service instance. Can be: `prefer-sticky` or `avoid-sticky` and the default is `prefer-sticky`. `prefer-sticky` means that we will try and select the same Proxy Number for a given participant if they have previous [Sessions](https://www.twilio.com/docs/proxy/api/session), but we will not fail if that Proxy Number cannot be used.  `avoid-sticky` means that we will try to use different Proxy Numbers as long as that is possible within a given pool rather than try and use a previously assigned number.",
+                    "enum": [
+                      "avoid-sticky",
+                      "prefer-sticky"
+                    ],
+                    "type": "string"
+                  },
+                  "OutOfSessionCallbackUrl": {
+                    "description": "The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "UniqueName": {
+                    "description": "An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "UniqueName"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -806,7 +779,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -904,7 +878,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -930,38 +905,34 @@
               "pattern": "^KS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The SID of a Twilio [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) resource that represents the Twilio Number you would like to assign to your Proxy Service.",
-            "in": "query",
-            "name": "Sid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^PN[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.",
-            "in": "query",
-            "name": "PhoneNumber",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Whether the new phone number should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.",
-            "in": "query",
-            "name": "IsReserved",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "IsReserved": {
+                    "description": "Whether the new phone number should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.",
+                    "type": "boolean"
+                  },
+                  "PhoneNumber": {
+                    "description": "The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.",
+                    "type": "string"
+                  },
+                  "Sid": {
+                    "description": "The SID of a Twilio [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) resource that represents the Twilio Number you would like to assign to your Proxy Service.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^PN[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -970,7 +941,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.phone_number"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1074,7 +1046,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.phone_number"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1112,17 +1085,23 @@
               "pattern": "^PN[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "Whether the phone number should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.",
-            "in": "query",
-            "name": "IsReserved",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "IsReserved": {
+                    "description": "Whether the phone number should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.",
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1131,7 +1110,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.phone_number"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1229,7 +1209,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1255,78 +1236,59 @@
               "pattern": "^KS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**",
-            "in": "query",
-            "name": "UniqueName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session should expire. If this is value is present, it overrides the `ttl` value.",
-            "in": "query",
-            "name": "DateExpiry",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.",
-            "in": "query",
-            "name": "Ttl",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The Mode of the Session. Can be: `message-only`, `voice-only`, or `voice-and-message` and the default value is `voice-and-message`.",
-            "in": "query",
-            "name": "Mode",
-            "required": false,
-            "schema": {
-              "enum": [
-                "message-only",
-                "voice-only",
-                "voice-and-message"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The initial status of the Session. Can be: `open`, `in-progress`, `closed`, `failed`, or `unknown`. The default is `open` on create.",
-            "in": "query",
-            "name": "Status",
-            "required": false,
-            "schema": {
-              "enum": [
-                "open",
-                "in-progress",
-                "closed",
-                "failed",
-                "unknown"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Participant objects to include in the new session.",
-            "in": "query",
-            "name": "Participants",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "object"
-              },
-              "type": "array"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "DateExpiry": {
+                    "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session should expire. If this is value is present, it overrides the `ttl` value.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "Mode": {
+                    "description": "The Mode of the Session. Can be: `message-only`, `voice-only`, or `voice-and-message` and the default value is `voice-and-message`.",
+                    "enum": [
+                      "message-only",
+                      "voice-only",
+                      "voice-and-message"
+                    ],
+                    "type": "string"
+                  },
+                  "Participants": {
+                    "description": "The Participant objects to include in the new session.",
+                    "items": {
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "Status": {
+                    "description": "The initial status of the Session. Can be: `open`, `in-progress`, `closed`, `failed`, or `unknown`. The default is `open` on create.",
+                    "enum": [
+                      "open",
+                      "in-progress",
+                      "closed",
+                      "failed",
+                      "unknown"
+                    ],
+                    "type": "string"
+                  },
+                  "Ttl": {
+                    "description": "The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.",
+                    "type": "integer"
+                  },
+                  "UniqueName": {
+                    "description": "An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1335,7 +1297,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.session"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1446,7 +1409,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1574,7 +1538,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.session.interaction"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1684,7 +1649,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1722,47 +1688,41 @@
               "pattern": "^KC[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The phone number of the Participant.",
-            "in": "query",
-            "name": "Identifier",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The string that you assigned to describe the participant. This value must be 255 characters or fewer. **This value should not have PII.**",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The proxy phone number to use for the Participant. If not specified, Proxy will select a number from the pool.",
-            "in": "query",
-            "name": "ProxyIdentifier",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the Proxy Identifier to assign to the Participant.",
-            "in": "query",
-            "name": "ProxyIdentifierSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^PN[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "FriendlyName": {
+                    "description": "The string that you assigned to describe the participant. This value must be 255 characters or fewer. **This value should not have PII.**",
+                    "type": "string"
+                  },
+                  "Identifier": {
+                    "description": "The phone number of the Participant.",
+                    "type": "string"
+                  },
+                  "ProxyIdentifier": {
+                    "description": "The proxy phone number to use for the Participant. If not specified, Proxy will select a number from the pool.",
+                    "type": "string"
+                  },
+                  "ProxyIdentifierSid": {
+                    "description": "The SID of the Proxy Identifier to assign to the Participant.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^PN[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Identifier"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1771,7 +1731,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.session.participant"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1894,7 +1855,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1944,30 +1906,31 @@
               "pattern": "^KP[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The message to send to the participant",
-            "in": "query",
-            "name": "Body",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Reserved. Not currently supported.",
-            "in": "query",
-            "name": "MediaUrl",
-            "required": false,
-            "schema": {
-              "items": {
-                "format": "uri",
-                "type": "string"
-              },
-              "type": "array"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Body": {
+                    "description": "The message to send to the participant",
+                    "type": "string"
+                  },
+                  "MediaUrl": {
+                    "description": "Reserved. Not currently supported.",
+                    "items": {
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1976,7 +1939,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.session.participant.message_interaction"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -2062,7 +2026,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.session.participant.message_interaction"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2190,7 +2155,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.session.participant"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2292,7 +2258,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.session"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2330,43 +2297,39 @@
               "pattern": "^KC[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session should expire. If this is value is present, it overrides the `ttl` value.",
-            "in": "query",
-            "name": "DateExpiry",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.",
-            "in": "query",
-            "name": "Ttl",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The new status of the resource. Can be: `in-progress` to re-open a session or `closed` to close a session.",
-            "in": "query",
-            "name": "Status",
-            "required": false,
-            "schema": {
-              "enum": [
-                "open",
-                "in-progress",
-                "closed",
-                "failed",
-                "unknown"
-              ],
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "DateExpiry": {
+                    "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session should expire. If this is value is present, it overrides the `ttl` value.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "Status": {
+                    "description": "The new status of the resource. Can be: `in-progress` to re-open a session or `closed` to close a session.",
+                    "enum": [
+                      "open",
+                      "in-progress",
+                      "closed",
+                      "failed",
+                      "unknown"
+                    ],
+                    "type": "string"
+                  },
+                  "Ttl": {
+                    "description": "The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.",
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -2375,7 +2338,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.session"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2474,7 +2438,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2500,20 +2465,29 @@
               "pattern": "^KS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The SID of a Twilio [ShortCode](https://www.twilio.com/docs/sms/api/short-code) resource that represents the short code you would like to assign to your Proxy Service.",
-            "in": "query",
-            "name": "Sid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^SC[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Sid": {
+                    "description": "The SID of a Twilio [ShortCode](https://www.twilio.com/docs/sms/api/short-code) resource that represents the short code you would like to assign to your Proxy Service.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^SC[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Sid"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -2522,7 +2496,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.short_code"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -2626,7 +2601,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.short_code"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2664,17 +2640,23 @@
               "pattern": "^SC[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "Whether the short code should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.",
-            "in": "query",
-            "name": "IsReserved",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "IsReserved": {
+                    "description": "Whether the short code should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.",
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -2683,7 +2665,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service.short_code"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2760,7 +2743,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2786,96 +2770,67 @@
               "pattern": "^KS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**",
-            "in": "query",
-            "name": "UniqueName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.",
-            "in": "query",
-            "name": "DefaultTtl",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "The URL we should call when the interaction status changes.",
-            "in": "query",
-            "name": "CallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Where a proxy number must be located relative to the participant identifier. Can be: `country`, `area-code`, or `extended-area-code`. The default value is `country` and more specific areas than `country` are only available in North America.",
-            "in": "query",
-            "name": "GeoMatchLevel",
-            "required": false,
-            "schema": {
-              "enum": [
-                "area-code",
-                "overlay",
-                "radius",
-                "country"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The preference for Proxy Number selection in the Service instance. Can be: `prefer-sticky` or `avoid-sticky` and the default is `prefer-sticky`. `prefer-sticky` means that we will try and select the same Proxy Number for a given participant if they have previous [Sessions](https://www.twilio.com/docs/proxy/api/session), but we will not fail if that Proxy Number cannot be used.  `avoid-sticky` means that we will try to use different Proxy Numbers as long as that is possible within a given pool rather than try and use a previously assigned number.",
-            "in": "query",
-            "name": "NumberSelectionBehavior",
-            "required": false,
-            "schema": {
-              "enum": [
-                "avoid-sticky",
-                "prefer-sticky"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.",
-            "in": "query",
-            "name": "InterceptCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.",
-            "in": "query",
-            "name": "OutOfSessionCallbackUrl",
-            "required": false,
-            "schema": {
-              "format": "uri",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.",
-            "in": "query",
-            "name": "ChatInstanceSid",
-            "required": false,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^IS[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "CallbackUrl": {
+                    "description": "The URL we should call when the interaction status changes.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "ChatInstanceSid": {
+                    "description": "The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^IS[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "DefaultTtl": {
+                    "description": "The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.",
+                    "type": "integer"
+                  },
+                  "GeoMatchLevel": {
+                    "description": "Where a proxy number must be located relative to the participant identifier. Can be: `country`, `area-code`, or `extended-area-code`. The default value is `country` and more specific areas than `country` are only available in North America.",
+                    "enum": [
+                      "area-code",
+                      "overlay",
+                      "radius",
+                      "country"
+                    ],
+                    "type": "string"
+                  },
+                  "InterceptCallbackUrl": {
+                    "description": "The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "NumberSelectionBehavior": {
+                    "description": "The preference for Proxy Number selection in the Service instance. Can be: `prefer-sticky` or `avoid-sticky` and the default is `prefer-sticky`. `prefer-sticky` means that we will try and select the same Proxy Number for a given participant if they have previous [Sessions](https://www.twilio.com/docs/proxy/api/session), but we will not fail if that Proxy Number cannot be used.  `avoid-sticky` means that we will try to use different Proxy Numbers as long as that is possible within a given pool rather than try and use a previously assigned number.",
+                    "enum": [
+                      "avoid-sticky",
+                      "prefer-sticky"
+                    ],
+                    "type": "string"
+                  },
+                  "OutOfSessionCallbackUrl": {
+                    "description": "The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "UniqueName": {
+                    "description": "An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -2884,7 +2839,8 @@
                   "$ref": "#/components/schemas/proxy.v1.service"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [

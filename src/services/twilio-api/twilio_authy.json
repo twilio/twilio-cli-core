@@ -315,7 +315,8 @@
                   "$ref": "#/components/schemas/authy.v1.form"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -399,7 +400,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -413,26 +415,28 @@
       },
       "post": {
         "description": "Create a new Service for the Account",
-        "parameters": [
-          {
-            "description": "A human readable description of this resource, up to 64 characters.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The optional service level push factors configuration. If present it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"include_date\": true}",
-            "in": "query",
-            "name": "Push",
-            "required": false,
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "FriendlyName": {
+                    "description": "A human readable description of this resource, up to 64 characters.",
+                    "type": "string"
+                  },
+                  "Push": {
+                    "description": "The optional service level push factors configuration. If present it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"include_date\": true}",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FriendlyName"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -441,7 +445,8 @@
                   "$ref": "#/components/schemas/authy.v1.service"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -539,7 +544,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -565,17 +571,26 @@
               "pattern": "^IS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "Customer unique identity for the Entity of the Service",
-            "in": "query",
-            "name": "Identity",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Identity": {
+                    "description": "Customer unique identity for the Entity of the Service",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Identity"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -584,7 +599,8 @@
                   "$ref": "#/components/schemas/authy.v1.service.entity"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -682,7 +698,8 @@
                   "$ref": "#/components/schemas/authy.v1.service.entity"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -789,7 +806,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -824,50 +842,47 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "A unique binding for this Factor that identifies it. E.g. a phone number for `sms` factors. It must be a json string with the required properties for the given factor type. Required when creating a new Factor. This value is never returned because it can contain customer secrets.",
-            "in": "query",
-            "name": "Binding",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The friendly name of this Factor",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Type of this Factor. One of `app-push`, `sms`, `totp`, etc.",
-            "in": "query",
-            "name": "FactorType",
-            "required": true,
-            "schema": {
-              "enum": [
-                "app-push",
-                "sms",
-                "totp",
-                "push"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The config required for this Factor. It must be a json string with the required properties for the given factor type",
-            "in": "query",
-            "name": "Config",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Binding": {
+                    "description": "A unique binding for this Factor that identifies it. E.g. a phone number for `sms` factors. It must be a json string with the required properties for the given factor type. Required when creating a new Factor. This value is never returned because it can contain customer secrets.",
+                    "type": "string"
+                  },
+                  "Config": {
+                    "description": "The config required for this Factor. It must be a json string with the required properties for the given factor type",
+                    "type": "string"
+                  },
+                  "FactorType": {
+                    "description": "The Type of this Factor. One of `app-push`, `sms`, `totp`, etc.",
+                    "enum": [
+                      "app-push",
+                      "sms",
+                      "totp",
+                      "push"
+                    ],
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "The friendly name of this Factor",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Binding",
+                  "FriendlyName",
+                  "FactorType",
+                  "Config"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -876,7 +891,8 @@
                   "$ref": "#/components/schemas/authy.v1.service.entity.factor"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -943,7 +959,6 @@
             "description": "The Status of the Challenges to fetch. One of `pending`, `expired`, `approved` or `denied`.",
             "in": "query",
             "name": "Status",
-            "required": false,
             "schema": {
               "enum": [
                 "pending",
@@ -1011,7 +1026,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1058,36 +1074,32 @@
               "pattern": "^YF[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The future date in which this Challenge will expire, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
-            "in": "query",
-            "name": "ExpirationDate",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Details provided to give context about the Challenge. Shown to the end user.",
-            "in": "query",
-            "name": "Details",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Details provided to give context about the Challenge. Not shown to the end user.",
-            "in": "query",
-            "name": "HiddenDetails",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Details": {
+                    "description": "Details provided to give context about the Challenge. Shown to the end user.",
+                    "type": "string"
+                  },
+                  "ExpirationDate": {
+                    "description": "The future date in which this Challenge will expire, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "HiddenDetails": {
+                    "description": "Details provided to give context about the Challenge. Not shown to the end user.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "content": {
@@ -1096,7 +1108,8 @@
                   "$ref": "#/components/schemas/authy.v1.service.entity.factor.challenge"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -1237,7 +1250,8 @@
                   "$ref": "#/components/schemas/authy.v1.service.entity.factor.challenge"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1293,17 +1307,23 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "description": "The optional payload needed to verify the Challenge. E.g., a TOTP would use the numeric code.",
-            "in": "query",
-            "name": "AuthPayload",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "AuthPayload": {
+                    "description": "The optional payload needed to verify the Challenge. E.g., a TOTP would use the numeric code.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1312,7 +1332,8 @@
                   "$ref": "#/components/schemas/authy.v1.service.entity.factor.challenge"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1435,7 +1456,8 @@
                   "$ref": "#/components/schemas/authy.v1.service.entity.factor"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1482,35 +1504,31 @@
               "pattern": "^YF[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "The optional payload needed to verify the Factor for the first time. E.g. for a TOTP, the numeric code.",
-            "in": "query",
-            "name": "AuthPayload",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The new friendly name of this Factor",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The new config for this Factor. It must be a json string with the required properties for the given factor type",
-            "in": "query",
-            "name": "Config",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "AuthPayload": {
+                    "description": "The optional payload needed to verify the Factor for the first time. E.g. for a TOTP, the numeric code.",
+                    "type": "string"
+                  },
+                  "Config": {
+                    "description": "The new config for this Factor. It must be a json string with the required properties for the given factor type",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "The new friendly name of this Factor",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1519,7 +1537,8 @@
                   "$ref": "#/components/schemas/authy.v1.service.entity.factor"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1600,7 +1619,8 @@
                   "$ref": "#/components/schemas/authy.v1.service"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1626,26 +1646,27 @@
               "pattern": "^IS[0-9a-fA-F]{32}$",
               "type": "string"
             }
-          },
-          {
-            "description": "A human readable description of this resource, up to 64 characters.",
-            "in": "query",
-            "name": "FriendlyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The optional service level push factors configuration. If present it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"include_date\": true}",
-            "in": "query",
-            "name": "Push",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "FriendlyName": {
+                    "description": "A human readable description of this resource, up to 64 characters.",
+                    "type": "string"
+                  },
+                  "Push": {
+                    "description": "The optional service level push factors configuration. If present it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"include_date\": true}",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -1654,7 +1675,8 @@
                   "$ref": "#/components/schemas/authy.v1.service"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [

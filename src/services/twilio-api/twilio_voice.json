@@ -137,17 +137,24 @@
       "description": "TODO: Resource-level docs",
       "post": {
         "description": "Create a bulk update request to change voice dialing country permissions of one or more countries identified by the corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
-        "parameters": [
-          {
-            "description": "URL encoded JSON array of update objects. example : `[ { \"iso_code\": \"GB\", \"low_risk_numbers_enabled\": \"true\", \"high_risk_special_numbers_enabled\":\"true\", \"high_risk_tollfraud_numbers_enabled\": \"false\" } ]`",
-            "in": "query",
-            "name": "UpdateRequest",
-            "required": true,
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "UpdateRequest": {
+                    "description": "URL encoded JSON array of update objects. example : `[ { \"iso_code\": \"GB\", \"low_risk_numbers_enabled\": \"true\", \"high_risk_special_numbers_enabled\":\"true\", \"high_risk_tollfraud_numbers_enabled\": \"false\" } ]`",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "UpdateRequest"
+                ],
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "content": {
@@ -156,7 +163,8 @@
                   "$ref": "#/components/schemas/voice.v1.dialing_permissions.dialing_permissions_country_bulk_update"
                 }
               }
-            }
+            },
+            "description": "Created"
           }
         },
         "security": [
@@ -188,7 +196,6 @@
             "description": "Filter to retrieve the country permissions by specifying the [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
             "in": "query",
             "name": "IsoCode",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -197,7 +204,6 @@
             "description": "Filter to retrieve the country permissions by specifying the continent",
             "in": "query",
             "name": "Continent",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -206,7 +212,6 @@
             "description": "Filter the results by specified [country codes](https://www.itu.int/itudoc/itu-t/ob-lists/icc/e164_763.html)",
             "in": "query",
             "name": "CountryCode",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -215,7 +220,6 @@
             "description": "Filter to retrieve the country permissions with dialing to low-risk numbers enabled. Can be: `true` or `false`.",
             "in": "query",
             "name": "LowRiskNumbersEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -224,7 +228,6 @@
             "description": "Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled. Can be: `true` or `false`",
             "in": "query",
             "name": "HighRiskSpecialNumbersEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -233,7 +236,6 @@
             "description": "Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`.",
             "in": "query",
             "name": "HighRiskTollfraudNumbersEnabled",
-            "required": false,
             "schema": {
               "type": "boolean"
             }
@@ -295,7 +297,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -342,7 +345,8 @@
                   "$ref": "#/components/schemas/voice.v1.dialing_permissions.dialing_permissions_country|instance"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -437,7 +441,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -463,7 +468,6 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve voice dialing permissions inheritance for the sub-account",
-        "parameters": [],
         "responses": {
           "200": {
             "content": {
@@ -472,7 +476,8 @@
                   "$ref": "#/components/schemas/voice.v1.dialing_permissions.dialing_permissions_settings"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -486,17 +491,21 @@
       },
       "post": {
         "description": "Update voice dialing permissions inheritance for the sub-account",
-        "parameters": [
-          {
-            "description": "`true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`.",
-            "in": "query",
-            "name": "DialingPermissionsInheritance",
-            "required": false,
-            "schema": {
-              "type": "boolean"
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "DialingPermissionsInheritance": {
+                    "description": "`true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`.",
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "202": {
             "content": {
@@ -505,7 +514,8 @@
                   "$ref": "#/components/schemas/voice.v1.dialing_permissions.dialing_permissions_settings"
                 }
               }
-            }
+            },
+            "description": "Accepted"
           }
         },
         "security": [

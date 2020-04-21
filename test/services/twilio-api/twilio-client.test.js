@@ -115,7 +115,7 @@ describe('services', () => {
           });
 
           expect(response).to.eql({ status: 'ringing' });
-          expect(httpClient.lastRequest.data).to.eql(qs.stringify({ To: '123', From: '456' }));
+          expect(httpClient.lastRequest.data).to.eql(qs.stringify({ From: '456', To: '123' }));
         });
 
       test

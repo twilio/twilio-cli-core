@@ -270,7 +270,6 @@
             "description": "",
             "in": "query",
             "name": "Edge",
-            "required": false,
             "schema": {
               "enum": [
                 "unknown_edge",
@@ -339,7 +338,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -386,7 +386,6 @@
             "description": "",
             "in": "query",
             "name": "Edge",
-            "required": false,
             "schema": {
               "enum": [
                 "unknown_edge",
@@ -402,7 +401,6 @@
             "description": "",
             "in": "query",
             "name": "Direction",
-            "required": false,
             "schema": {
               "enum": [
                 "unknown",
@@ -470,7 +468,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -517,7 +516,6 @@
             "description": "",
             "in": "query",
             "name": "ProcessingState",
-            "required": false,
             "schema": {
               "enum": [
                 "complete",
@@ -535,7 +533,8 @@
                   "$ref": "#/components/schemas/insights.v1.call.summary"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -586,7 +585,8 @@
                   "$ref": "#/components/schemas/insights.v1.call"
                 }
               }
-            }
+            },
+            "description": "OK"
           }
         },
         "security": [
