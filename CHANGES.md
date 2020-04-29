@@ -1,6 +1,21 @@
 twilio-cli-core changelog
 =====================
 
+[2020-04-29] Version 5.0.1
+--------------------------
+**Library - Fix**
+- [PR #85](https://github.com/twilio/twilio-cli-core/pull/85): properly describe request bodies and add response descriptions. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Preview**
+- Added `Dispatch` version to `preview`
+
+**Studio**
+- Reroute Create Execution for V2 to the V2 downstream
+
+**Supersim**
+- Add Networks resource
+
+
 [2020-04-15] Version 5.0.0
 --------------------------
 **Library - Chore**

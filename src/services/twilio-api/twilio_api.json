@@ -17101,6 +17101,10 @@
                     "pattern": "^AP[0-9a-fA-F]{32}$",
                     "type": "string"
                   },
+                  "Attempt": {
+                    "description": "Total number of attempts made ( including this ) to send out the message regardless of the provider used",
+                    "type": "integer"
+                  },
                   "Body": {
                     "description": "The text of the message you want to send. Can be up to 1,600 characters in length.",
                     "type": "string"

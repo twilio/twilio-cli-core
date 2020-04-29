@@ -44,6 +44,14 @@
             "pattern": "^CH[0-9a-fA-F]{32}$",
             "type": "string"
           },
+          "state": {
+            "enum": [
+              "inactive",
+              "active",
+              "closed"
+            ],
+            "type": "string"
+          },
           "url": {
             "format": "uri",
             "type": "string"
@@ -366,6 +374,15 @@
                     "maxLength": 34,
                     "minLength": 34,
                     "pattern": "^MG[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "State": {
+                    "description": "Current state of this conversation. Can be either `active`, `inactive` or `closed` and defaults to `active`",
+                    "enum": [
+                      "inactive",
+                      "active",
+                      "closed"
+                    ],
                     "type": "string"
                   }
                 },
@@ -1731,6 +1748,15 @@
                     "maxLength": 34,
                     "minLength": 34,
                     "pattern": "^MG[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "State": {
+                    "description": "Current state of this conversation. Can be either `active`, `inactive` or `closed` and defaults to `active`",
+                    "enum": [
+                      "inactive",
+                      "active",
+                      "closed"
+                    ],
                     "type": "string"
                   }
                 },

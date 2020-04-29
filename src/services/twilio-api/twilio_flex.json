@@ -861,11 +861,11 @@
                     "type": "string"
                   },
                   "JanitorEnabled": {
-                    "description": "Boolean flag for enabling or disabling the Janitor.",
+                    "description": "When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI.",
                     "type": "boolean"
                   },
                   "LongLived": {
-                    "description": "Whether new channels are long-lived.",
+                    "description": "When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity.",
                     "type": "boolean"
                   }
                 },
@@ -1090,11 +1090,11 @@
                     "type": "string"
                   },
                   "JanitorEnabled": {
-                    "description": "Boolean flag for enabling or disabling the Janitor.",
+                    "description": "When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI.",
                     "type": "boolean"
                   },
                   "LongLived": {
-                    "description": "Whether new channels created are long-lived.",
+                    "description": "When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity.",
                     "type": "boolean"
                   }
                 },
