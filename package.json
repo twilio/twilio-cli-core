@@ -1,7 +1,7 @@
 {
   "name": "@twilio/cli-core",
   "description": "Core functionality for the twilio-cli",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "author": "Twilio @twilio",
   "bugs": "https://github.com/twilio/twilio-cli/issues",
   "dependencies": {
@@ -19,7 +19,7 @@
     "semver": "^7.3.0",
     "shelljs": "^0.8.3",
     "tsv": "^0.2.0",
-    "twilio": "^3.42.1"
+    "twilio": "^3.43.0"
   },
   "optionalDependencies": {
     "keytar": "^5.4.0"
