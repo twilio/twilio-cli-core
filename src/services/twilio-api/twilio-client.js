@@ -188,9 +188,8 @@ class TwilioApiClient {
     }
 
     opts.edge = this.edge || opts.edge;
-    if (this.region) {
-      opts.region = this.region;
-    } else if (this.edge || (opts.edge && !opts.region)) {
+    opts.region = this.region || opts.region;
+    if (opts.edge && !opts.region) {
       opts.region = 'us1';
     }
     return this.apiClient.request(opts);
