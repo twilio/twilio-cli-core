@@ -76,7 +76,6 @@ describe('services', () => {
         expect(profile.apiKey).to.equal(constants.FAKE_ACCOUNT_SID);
         expect(profile.apiSecret).to.equal(FAKE_AUTH_TOKEN);
       });
-
       test.it('should return profile populated from AccountSid/ApiKey env vars', () => {
         const configData = new ConfigData();
         configData.addProfile('envProfile', constants.FAKE_ACCOUNT_SID);
@@ -90,6 +89,23 @@ describe('services', () => {
         expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
         expect(profile.apiKey).to.equal(constants.FAKE_API_KEY);
         expect(profile.apiSecret).to.equal(constants.FAKE_API_SECRET);
+      });
+
+      test.it('should return profile populated with region/edge env vars', () => {
+        const configData = new ConfigData();
+        configData.addProfile('envProfile', constants.FAKE_ACCOUNT_SID);
+
+        process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
+        process.env.TWILIO_AUTH_TOKEN = FAKE_AUTH_TOKEN;
+        process.env.TWILIO_REGION = 'region';
+        process.env.TWILIO_EDGE = 'edge';
+
+        const profile = configData.getProfileById();
+        expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiKey).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiSecret).to.equal(FAKE_AUTH_TOKEN);
+        expect(profile.region).to.equal('region');
+        expect(profile.edge).to.equal('edge');
       });
     });
 

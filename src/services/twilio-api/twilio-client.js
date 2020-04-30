@@ -20,6 +20,7 @@ class TwilioApiClient {
     this.username = username;
     this.password = password;
     this.accountSid = opts.accountSid || this.username;
+    this.edge = opts.edge;
     this.region = opts.region;
 
     this.apiClient = new OpenApiClient({
@@ -148,8 +149,9 @@ class TwilioApiClient {
    * @param {object} opts - The options argument
    * @param {string} opts.method - The http method
    * @param {string} opts.path - The request path
+   * @param {string} [opts.edge] - The request edge. Defaults to none.
    * @param {string} [opts.host] - The request host
-   * @param {string} [opts.region] - The request region
+   * @param {string} [opts.region] - The request region. Default to us1 if edge defined
    * @param {string} [opts.uri] - The request uri
    * @param {string} [opts.username] - The username used for auth
    * @param {string} [opts.password] - The password used for auth
@@ -164,7 +166,6 @@ class TwilioApiClient {
 
     opts.username = opts.username || this.username;
     opts.password = opts.password || this.password;
-    opts.region = opts.region || this.region;
     opts.headers = opts.headers || {};
     opts.data = opts.data || {};
     opts.pathParams = opts.pathParams || {};
@@ -186,6 +187,12 @@ class TwilioApiClient {
       }
     }
 
+    opts.edge = this.edge || opts.edge;
+    if (this.region) {
+      opts.region = this.region;
+    } else if (this.edge || (opts.edge && !opts.region)) {
+      opts.region = 'us1';
+    }
     return this.apiClient.request(opts);
   }
 }

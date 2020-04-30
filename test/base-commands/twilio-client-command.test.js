@@ -65,6 +65,7 @@ describe('base-commands', () => {
       expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
       expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'MyFirstProfile');
       expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
+      expect(ctx.testCmd.twilioClient.edge).to.equal(undefined);
     });
 
     setUpTest(['-l', 'debug', '--account-sid', 'ACbaccbaccbaccbaccbaccbaccbaccbacc'], { commandClass: AccountSidClientCommand }).it(
@@ -75,6 +76,7 @@ describe('base-commands', () => {
         expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
         expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'MyFirstProfile');
         expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
+        expect(ctx.testCmd.twilioClient.edge).to.equal(undefined);
       }
     );
 

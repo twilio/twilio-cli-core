@@ -6,10 +6,11 @@ const MessageTemplates = require('./messaging/templates');
 const CLI_NAME = 'twilio-cli';
 
 class ConfigDataProfile {
-  constructor(id, accountSid, region) {
+  constructor(id, accountSid, region, edge) {
     this.id = id;
     this.accountSid = accountSid;
     this.region = region;
+    this.edge = edge;
   }
 }
 
@@ -22,7 +23,14 @@ class ConfigData {
   }
 
   getProfileFromEnvironment() {
-    const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_API_KEY, TWILIO_API_SECRET } = process.env;
+    const {
+      TWILIO_ACCOUNT_SID,
+      TWILIO_AUTH_TOKEN,
+      TWILIO_API_KEY,
+      TWILIO_API_SECRET,
+      TWILIO_REGION,
+      TWILIO_EDGE
+    } = process.env;
     if (!TWILIO_ACCOUNT_SID) return;
 
     if (TWILIO_API_KEY && TWILIO_API_SECRET)
@@ -31,7 +39,9 @@ class ConfigData {
         id: '${TWILIO_API_KEY}/${TWILIO_API_SECRET}',
         accountSid: TWILIO_ACCOUNT_SID,
         apiKey: TWILIO_API_KEY,
-        apiSecret: TWILIO_API_SECRET
+        apiSecret: TWILIO_API_SECRET,
+        region: TWILIO_REGION,
+        edge: TWILIO_EDGE
       };
 
     if (TWILIO_AUTH_TOKEN)
@@ -40,7 +50,9 @@ class ConfigData {
         id: '${TWILIO_ACCOUNT_SID}/${TWILIO_AUTH_TOKEN}',
         accountSid: TWILIO_ACCOUNT_SID,
         apiKey: TWILIO_ACCOUNT_SID,
-        apiSecret: TWILIO_AUTH_TOKEN
+        apiSecret: TWILIO_AUTH_TOKEN,
+        region: TWILIO_REGION,
+        edge: TWILIO_EDGE
       };
   }
 
@@ -97,18 +109,20 @@ class ConfigData {
     }
   }
 
-  addProfile(id, accountSid, region) {
+  addProfile(id, accountSid, region, edge) {
     // Clean all the inputs.
     id = this.sanitize(id);
     accountSid = this.sanitize(accountSid);
     region = this.sanitize(region);
+    edge = this.sanitize(edge);
 
     const existing = this.getProfileById(id);
     if (existing) {
       existing.accountSid = accountSid;
       existing.region = region;
+      existing.edge = edge;
     } else {
-      this.profiles.push(new ConfigDataProfile(id, accountSid, region));
+      this.profiles.push(new ConfigDataProfile(id, accountSid, region, edge));
     }
   }
 
@@ -134,7 +148,7 @@ class ConfigData {
     this.prompts = configObj.prompts || {};
     // Note the historical 'projects' naming.
     configObj.profiles = configObj.projects || [];
-    configObj.profiles.forEach(profile => this.addProfile(profile.id, profile.accountSid, profile.region));
+    configObj.profiles.forEach(profile => this.addProfile(profile.id, profile.accountSid, profile.region, profile.edge));
     this.setActiveProfile(configObj.activeProject);
   }
 

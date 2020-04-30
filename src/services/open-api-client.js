@@ -44,13 +44,10 @@ class OpenApiClient {
       }
 
       if (opts.region) {
-        const parts = opts.host.split('.');
-
-        // From 'https://api.twilio.com/' to 'https://api.{region}.twilio.com/'
-        if (parts.length > 1 && parts[1] !== opts.region) {
-          parts.splice(1, 0, opts.region);
-          opts.host = parts.join('.');
-        }
+        const domain = opts.host.split('.').slice(-2).join('.');
+        const prefix = opts.host.split('.' + domain)[0];
+        let product = prefix.split('.')[0];
+        opts.host = [product, opts.edge, opts.region, domain].filter(part => part).join('.');
       }
 
       opts.uri = opts.host + opts.uri;
