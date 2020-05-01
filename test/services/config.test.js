@@ -91,21 +91,19 @@ describe('services', () => {
         expect(profile.apiSecret).to.equal(constants.FAKE_API_SECRET);
       });
 
-      test.it('should return profile populated with region/edge env vars', () => {
+      test.it('should return profile populated with region env var', () => {
         const configData = new ConfigData();
         configData.addProfile('envProfile', constants.FAKE_ACCOUNT_SID);
 
         process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
         process.env.TWILIO_AUTH_TOKEN = FAKE_AUTH_TOKEN;
         process.env.TWILIO_REGION = 'region';
-        process.env.TWILIO_EDGE = 'edge';
 
         const profile = configData.getProfileById();
         expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
         expect(profile.apiKey).to.equal(constants.FAKE_ACCOUNT_SID);
         expect(profile.apiSecret).to.equal(FAKE_AUTH_TOKEN);
         expect(profile.region).to.equal('region');
-        expect(profile.edge).to.equal('edge');
       });
     });
 
@@ -220,6 +218,17 @@ describe('services', () => {
 
         const saveMessage = await config.save(userConfig);
         expect(saveMessage).to.contain(`${nestedConfig}${path.sep}config.json`);
+      });
+
+      test.it('uses env vars over config to set edge', async () => {
+        const config = new Config(tempConfigDir.name);
+        const userConfig = await config.load();
+
+        expect(userConfig.edge).to.be.undefined;
+        process.env.TWILIO_EDGE = 'edge';
+
+        const loadedConfig = await config.load();
+        expect(loadedConfig.edge).to.equal('edge');
       });
     });
   });

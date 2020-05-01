@@ -1,3 +1,4 @@
+const url = require('url');
 const { logger } = require('./messaging/logging');
 const { doesObjectHaveProperty } = require('./javascript-utilities');
 const JsonSchemaConverter = require('./api-schema/json-converter');
@@ -34,7 +35,7 @@ class OpenApiClient {
     const params = this.getParams(opts, operation);
 
     if (!opts.uri) {
-      opts.uri = this.getUri(opts);
+      opts.uri = this.getUri(opts.uri, opts);
     }
 
     // If the URI is relative, determine the host and prepend it.
@@ -42,15 +43,13 @@ class OpenApiClient {
       if (!opts.host) {
         opts.host = path.server;
       }
-
-      if (opts.region) {
-        const domain = opts.host.split('.').slice(-2).join('.');
-        const prefix = opts.host.split('.' + domain)[0];
-        let product = prefix.split('.')[0];
-        opts.host = [product, opts.edge, opts.region, domain].filter(part => part).join('.');
-      }
-
+      opts.host = this.getHost(opts.host, opts);
       opts.uri = opts.host + opts.uri;
+    } else if (opts.uri) {
+      let uri = new url.URL(opts.uri);
+      uri.hostname = this.getHost(uri.hostname, opts);
+      uri.pathname = this.getUri(uri.pathname, opts);
+      opts.uri = uri.href;
     }
 
     opts.params = (isPost ? null : params);
@@ -78,7 +77,10 @@ class OpenApiClient {
     return params;
   }
 
-  getUri(opts) {
+  getUri(path, opts) {
+    if (path && path !== '/') {
+      return path;
+    }
     // Evaluate the request path by replacing path parameters with their value
     // from the request data.
     return opts.path.replace(/{(.+?)}/g, (fullMatch, pathNode) => {
@@ -92,6 +94,25 @@ class OpenApiClient {
 
       return value;
     });
+  }
+
+  getHost(host, opts) {
+    if (opts.region || opts.edge) {
+      const domain = host.split('.').slice(-2).join('.');
+      const prefix = host.split('.' + domain)[0];
+      let [product, edge, region] = prefix.split('.');
+      if (edge && !region) {
+        region = edge;
+        edge = undefined;
+      }
+      opts.edge = opts.edge || edge;
+      opts.region = opts.region || region || (opts.edge ? 'us1' : undefined);
+      return [product,
+        opts.edge,
+        opts.region,
+        domain].filter(part => part).join('.');
+    }
+    return host;
   }
 
   parseResponse(domain, operation, response, requestOpts) {

@@ -267,14 +267,14 @@ describe('services', () => {
       });
 
       describe('regional and edge support', () => {
-        let regionTest = test
+        const defaultRegionTest = test
           .nock('https://api.edge.us1.twilio.com', api => {
             api.post(`/2010-04-01/Accounts/${accountSid}/Messages.json`).reply(201, {
               status: 'queued'
             });
           });
 
-        regionTest
+        defaultRegionTest
           .it('uses the default region if only edge is defined', async () => {
             const client = new TwilioApiClient(
               constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
@@ -288,7 +288,7 @@ describe('services', () => {
             expect(response).to.eql({ status: 'queued' });
           });
 
-        regionTest
+        defaultRegionTest
           .it('uses the default region if edge is provided', async () => {
             const client = new TwilioApiClient(
               constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
@@ -303,7 +303,7 @@ describe('services', () => {
             expect(response).to.eql({ status: 'queued' });
           });
 
-        regionTest = test.nock('https://api.region.twilio.com', api => {
+        const regionTest = test.nock('https://api.region.twilio.com', api => {
           api.post(`/2010-04-01/Accounts/${accountSid}/Messages.json`).reply(201, {
             status: 'queued'
           });
@@ -317,21 +317,25 @@ describe('services', () => {
 
           const response = await client.create({
             domain: 'api',
-            path: '/2010-04-01/Accounts/{AccountSid}/Messages.json'
+            path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
+            // Should ignore the region in the uri
+            uri: 'https://api.uriRegion.twilio.com'
           });
           expect(response).to.eql({ status: 'queued' });
         });
 
-        regionTest.it('uses the client region if defined and region is provided', async () => {
+        regionTest.it('uses the provided region if client region defined and region is provided', async () => {
           const client = new TwilioApiClient(
             constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
-            { accountSid, httpClient, region: 'region' }
+            { accountSid, httpClient, region: 'region2' }
           );
 
           const response = await client.create({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
-            region: 'region2'
+            region: 'region',
+            // Should ignore the region in the uri
+            uri: 'https://api.uriRegion.twilio.com'
           });
           expect(response).to.eql({ status: 'queued' });
         });
@@ -345,32 +349,21 @@ describe('services', () => {
           const response = await client.create({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
-            region: 'region'
+            region: 'region',
+            // Should ignore the region in the uri
+            uri: 'https://api.uriRegion.twilio.com'
           });
           expect(response).to.eql({ status: 'queued' });
         });
 
-        regionTest =
+        const edgeRegionTest =
           test.nock('https://api.edge.region.twilio.com', api => {
             api.post(`/2010-04-01/Accounts/${accountSid}/Messages.json`).reply(201, {
               status: 'queued'
             });
           });
 
-        regionTest.it('should set the region and edge properly', async () => {
-          const client = new TwilioApiClient(
-            constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
-            { accountSid, httpClient, edge: 'edge', region: 'region' }
-          );
-
-          const response = await client.create({
-            domain: 'api',
-            path: '/2010-04-01/Accounts/{AccountSid}/Messages.json'
-          });
-          expect(response).to.eql({ status: 'queued' });
-        });
-
-        regionTest.it('uses the client region and edge when edge provided', async () => {
+        edgeRegionTest.it('should set the region and edge properly', async () => {
           const client = new TwilioApiClient(
             constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
             { accountSid, httpClient, edge: 'edge', region: 'region' }
@@ -379,26 +372,45 @@ describe('services', () => {
           const response = await client.create({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
-            edge: 'edge2'
+            // Should ignore the edge and region in the uri
+            uri: 'https://api.uriEdge.uriRegion.twilio.com'
           });
           expect(response).to.eql({ status: 'queued' });
         });
 
-        regionTest.it('uses the client region and edge when region provided', async () => {
+        edgeRegionTest.it('uses the client region and provided edge when edge provided', async () => {
           const client = new TwilioApiClient(
             constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
-            { accountSid, httpClient, edge: 'edge', region: 'region' }
+            { accountSid, httpClient, edge: 'clientEdge', region: 'region' }
           );
 
           const response = await client.create({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
-            region: 'region2'
+            edge: 'edge',
+            // Should ignore the edge and region in the uri
+            uri: 'https://api.uriEdge.uriRegion.twilio.com'
           });
           expect(response).to.eql({ status: 'queued' });
         });
 
-        regionTest.it('uses the provided region and edge', async () => {
+        edgeRegionTest.it('uses the provided region and client edge when region provided', async () => {
+          const client = new TwilioApiClient(
+            constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
+            { accountSid, httpClient, edge: 'edge', region: 'clientRegion' }
+          );
+
+          const response = await client.create({
+            domain: 'api',
+            path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
+            region: 'region',
+            // Should ignore the edge and region in the uri
+            uri: 'https://api.uriEdge.uriRegion.twilio.com'
+          });
+          expect(response).to.eql({ status: 'queued' });
+        });
+
+        edgeRegionTest.it('uses the provided region and edge', async () => {
           const client = new TwilioApiClient(
             constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
             { accountSid, httpClient }
@@ -408,27 +420,14 @@ describe('services', () => {
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
             edge: 'edge',
-            region: 'region'
+            region: 'region',
+            // Should ignore the edge and region in the uri
+            uri: 'https://api.uriEdge.uriRegion.twilio.com'
           });
           expect(response).to.eql({ status: 'queued' });
         });
 
-        regionTest.it('uses the client region and provided edge when edge and region provided', async () => {
-          const client = new TwilioApiClient(
-            constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
-            { accountSid, httpClient, region: 'region' }
-          );
-
-          const response = await client.create({
-            domain: 'api',
-            path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
-            edge: 'edge',
-            region: 'region2'
-          });
-          expect(response).to.eql({ status: 'queued' });
-        });
-
-        regionTest
+        edgeRegionTest
           .it('uses the provided region if only edge is defined and region is provided', async () => {
             const client = new TwilioApiClient(
               constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
@@ -438,13 +437,15 @@ describe('services', () => {
             const response = await client.create({
               domain: 'api',
               path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
-              region: 'region'
+              region: 'region',
+              // Should ignore the edge and region in the uri
+              uri: 'https://api.uriEdge.uriRegion.twilio.com'
             });
             expect(response).to.eql({ status: 'queued' });
           });
 
-        regionTest
-          .it('uses the provided region if only edge is defined and edge and region are provided', async () => {
+        edgeRegionTest
+          .it('uses the uri region and client edge', async () => {
             const client = new TwilioApiClient(
               constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
               { accountSid, httpClient, edge: 'edge' }
@@ -453,11 +454,40 @@ describe('services', () => {
             const response = await client.create({
               domain: 'api',
               path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
-              edge: 'edge2',
-              region: 'region'
+              // Should ignore the edge in the uri
+              uri: 'https://api.uriEdge.region.twilio.com'
             });
             expect(response).to.eql({ status: 'queued' });
           });
+
+        edgeRegionTest.it('uses the client region and uri edge', async () => {
+          const client = new TwilioApiClient(
+            constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
+            { accountSid, httpClient, region: 'region' }
+          );
+
+          const response = await client.create({
+            domain: 'api',
+            path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
+            // Should ignore the region in the uri
+            uri: 'https://api.edge.uriRegion.twilio.com'
+          });
+          expect(response).to.eql({ status: 'queued' });
+        });
+
+        edgeRegionTest.it('uses the uri region and edge', async () => {
+          const client = new TwilioApiClient(
+            constants.FAKE_API_KEY, constants.FAKE_API_SECRET,
+            { accountSid, httpClient }
+          );
+
+          const response = await client.create({
+            domain: 'api',
+            path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
+            uri: 'https://api.edge.region.twilio.com'
+          });
+          expect(response).to.eql({ status: 'queued' });
+        });
       });
     });
   });

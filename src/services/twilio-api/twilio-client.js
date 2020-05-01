@@ -149,8 +149,8 @@ class TwilioApiClient {
    * @param {object} opts - The options argument
    * @param {string} opts.method - The http method
    * @param {string} opts.path - The request path
-   * @param {string} [opts.edge] - The request edge. Defaults to none.
    * @param {string} [opts.host] - The request host
+   * @param {string} [opts.edge] - The request edge. Defaults to none.
    * @param {string} [opts.region] - The request region. Default to us1 if edge defined
    * @param {string} [opts.uri] - The request uri
    * @param {string} [opts.username] - The username used for auth
@@ -181,17 +181,12 @@ class TwilioApiClient {
       opts.headers.Accept = 'application/json';
     }
 
-    if (!opts.uri) {
-      if (opts.path.includes(TwilioApiFlags.ACCOUNT_SID) && !doesObjectHaveProperty(opts.pathParams, TwilioApiFlags.ACCOUNT_SID)) {
-        opts.pathParams[TwilioApiFlags.ACCOUNT_SID] = this.accountSid;
-      }
+    if (opts.path.includes(TwilioApiFlags.ACCOUNT_SID) && !doesObjectHaveProperty(opts.pathParams, TwilioApiFlags.ACCOUNT_SID)) {
+      opts.pathParams[TwilioApiFlags.ACCOUNT_SID] = this.accountSid;
     }
 
-    opts.edge = this.edge || opts.edge;
-    opts.region = this.region || opts.region;
-    if (opts.edge && !opts.region) {
-      opts.region = 'us1';
-    }
+    opts.edge = opts.edge || this.edge;
+    opts.region = opts.region || this.region;
     return this.apiClient.request(opts);
   }
 }
