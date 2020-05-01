@@ -106,7 +106,7 @@ class OpenApiClient {
         edge = undefined;
       }
       opts.edge = opts.edge || edge;
-      opts.region = opts.region || region || (opts.edge ? 'us1' : undefined);
+      opts.region = opts.region || region || (opts.edge && 'us1');
       return [product,
         opts.edge,
         opts.region,
