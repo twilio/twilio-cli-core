@@ -45,12 +45,12 @@ class OpenApiClient {
       }
       opts.host = this.getHost(opts.host, opts);
       opts.uri = opts.host + opts.uri;
-    } else if (opts.uri) {
-      let uri = new url.URL(opts.uri);
-      uri.hostname = this.getHost(uri.hostname, opts);
-      uri.pathname = this.getUri(uri.pathname, opts);
-      opts.uri = uri.href;
     }
+
+    let uri = new url.URL(opts.uri);
+    uri.hostname = this.getHost(uri.hostname, opts);
+    uri.pathname = this.getUri(uri.pathname, opts);
+    opts.uri = uri.href;
 
     opts.params = (isPost ? null : params);
     opts.data = (isPost ? params : null);
@@ -105,12 +105,9 @@ class OpenApiClient {
         region = edge;
         edge = undefined;
       }
-      opts.edge = opts.edge || edge;
-      opts.region = opts.region || region || (opts.edge && 'us1');
-      return [product,
-        opts.edge,
-        opts.region,
-        domain].filter(part => part).join('.');
+      edge = opts.edge || edge;
+      region = opts.region || region || (opts.edge && 'us1');
+      return [product, edge, region, domain].filter(part => part).join('.');
     }
     return host;
   }
