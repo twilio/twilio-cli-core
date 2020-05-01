@@ -15,7 +15,7 @@ class ConfigDataProfile {
 
 class ConfigData {
   constructor() {
-    this.edge = process.env.TWILIO_EDGE;
+    this.edge = undefined;
     this.email = {};
     this.prompts = {};
     this.profiles = [];
@@ -166,7 +166,7 @@ class Config {
     if (!fs.existsSync(this.filePath)) {
       return configData;
     }
-
+    configData.edge = process.env.TWILIO_EDGE;
     configData.loadFromObject(await fs.readJSON(this.filePath));
     return configData;
   }
