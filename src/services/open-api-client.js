@@ -35,7 +35,7 @@ class OpenApiClient {
     const params = this.getParams(opts, operation);
 
     if (!opts.uri) {
-      opts.uri = this.getUri(opts.uri, opts);
+      opts.uri = this.getUri(opts);
     }
 
     // If the URI is relative, determine the host and prepend it.
@@ -48,7 +48,6 @@ class OpenApiClient {
 
     const uri = new url.URL(opts.uri);
     uri.hostname = this.getHost(uri.hostname, opts);
-    uri.pathname = this.getUri(uri.pathname, opts);
     opts.uri = uri.href;
 
     opts.params = (isPost ? null : params);
@@ -76,10 +75,7 @@ class OpenApiClient {
     return params;
   }
 
-  getUri(path, opts) {
-    if (path && path !== '/') {
-      return path;
-    }
+  getUri(opts) {
     // Evaluate the request path by replacing path parameters with their value
     // from the request data.
     return opts.path.replace(/{(.+?)}/g, (fullMatch, pathNode) => {

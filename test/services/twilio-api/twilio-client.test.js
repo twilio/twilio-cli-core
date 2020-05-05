@@ -319,7 +319,7 @@ describe('services', () => {
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
             // Should ignore the region in the uri
-            uri: 'https://api.uriRegion.twilio.com'
+            uri: `https://api.uriRegion.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`
           });
           expect(response).to.eql({ status: 'queued' });
         });
@@ -335,7 +335,7 @@ describe('services', () => {
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
             region: 'region',
             // Should ignore the region in the uri
-            uri: 'https://api.uriRegion.twilio.com'
+            uri: `https://api.uriRegion.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`
           });
           expect(response).to.eql({ status: 'queued' });
         });
@@ -351,7 +351,7 @@ describe('services', () => {
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
             region: 'region',
             // Should ignore the region in the uri
-            uri: 'https://api.uriRegion.twilio.com'
+            uri: `https://api.uriRegion.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`
           });
           expect(response).to.eql({ status: 'queued' });
         });
@@ -373,7 +373,7 @@ describe('services', () => {
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
             // Should ignore the edge and region in the uri
-            uri: 'https://api.uriEdge.uriRegion.twilio.com'
+            uri: `https://api.uriEdge.uriRegion.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`
           });
           expect(response).to.eql({ status: 'queued' });
         });
@@ -389,7 +389,7 @@ describe('services', () => {
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
             edge: 'edge',
             // Should ignore the edge and region in the uri
-            uri: 'https://api.uriEdge.uriRegion.twilio.com'
+            uri: `https://api.uriEdge.uriRegion.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`
           });
           expect(response).to.eql({ status: 'queued' });
         });
@@ -405,7 +405,7 @@ describe('services', () => {
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
             region: 'region',
             // Should ignore the edge and region in the uri
-            uri: 'https://api.uriEdge.uriRegion.twilio.com'
+            uri: `https://api.uriEdge.uriRegion.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`
           });
           expect(response).to.eql({ status: 'queued' });
         });
@@ -422,7 +422,7 @@ describe('services', () => {
             edge: 'edge',
             region: 'region',
             // Should ignore the edge and region in the uri
-            uri: 'https://api.uriEdge.uriRegion.twilio.com'
+            uri: `https://api.uriEdge.uriRegion.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`
           });
           expect(response).to.eql({ status: 'queued' });
         });
@@ -439,7 +439,7 @@ describe('services', () => {
               path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
               region: 'region',
               // Should ignore the edge and region in the uri
-              uri: 'https://api.uriEdge.uriRegion.twilio.com'
+              uri: `https://api.uriEdge.uriRegion.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`
             });
             expect(response).to.eql({ status: 'queued' });
           });
@@ -455,7 +455,7 @@ describe('services', () => {
               domain: 'api',
               path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
               // Should ignore the edge in the uri
-              uri: 'https://api.uriEdge.region.twilio.com'
+              uri: `https://api.uriEdge.region.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`
             });
             expect(response).to.eql({ status: 'queued' });
           });
@@ -470,7 +470,7 @@ describe('services', () => {
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
             // Should ignore the region in the uri
-            uri: 'https://api.edge.uriRegion.twilio.com'
+            uri: `https://api.edge.uriRegion.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`
           });
           expect(response).to.eql({ status: 'queued' });
         });
@@ -484,7 +484,7 @@ describe('services', () => {
           const response = await client.create({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
-            uri: 'https://api.edge.region.twilio.com'
+            uri: `https://api.edge.region.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`
           });
           expect(response).to.eql({ status: 'queued' });
         });

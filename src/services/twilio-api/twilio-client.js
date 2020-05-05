@@ -181,8 +181,10 @@ class TwilioApiClient {
       opts.headers.Accept = 'application/json';
     }
 
-    if (opts.path.includes(TwilioApiFlags.ACCOUNT_SID) && !doesObjectHaveProperty(opts.pathParams, TwilioApiFlags.ACCOUNT_SID)) {
-      opts.pathParams[TwilioApiFlags.ACCOUNT_SID] = this.accountSid;
+    if (!opts.uri) {
+      if (opts.path.includes(TwilioApiFlags.ACCOUNT_SID) && !doesObjectHaveProperty(opts.pathParams, TwilioApiFlags.ACCOUNT_SID)) {
+        opts.pathParams[TwilioApiFlags.ACCOUNT_SID] = this.accountSid;
+      }
     }
 
     opts.edge = opts.edge || this.edge;

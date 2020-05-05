@@ -1,6 +1,5 @@
 const fs = require('fs-extra');
 const path = require('path');
-const shell = require('shelljs');
 const MessageTemplates = require('./messaging/templates');
 
 const CLI_NAME = 'twilio-cli';
@@ -166,6 +165,7 @@ class Config {
     if (!fs.existsSync(this.filePath)) {
       return configData;
     }
+
     configData.loadFromObject(await fs.readJSON(this.filePath));
     return configData;
   }
@@ -180,8 +180,7 @@ class Config {
       activeProject: configData.activeProfile
     };
 
-    // Migrate to 'fs.mkdirSync' with 'recursive: true' when no longer supporting Node8.
-    shell.mkdir('-p', this.configDir);
+    fs.mkdirSync(this.configDir, { recursive: true });
     await fs.writeJSON(this.filePath, configData, { flag: 'w' });
 
     return MessageTemplates.configSaved({ path: this.filePath });
