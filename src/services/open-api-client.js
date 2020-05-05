@@ -43,7 +43,6 @@ class OpenApiClient {
       if (!opts.host) {
         opts.host = path.server;
       }
-      opts.host = this.getHost(opts.host, opts);
       opts.uri = opts.host + opts.uri;
     }
 
