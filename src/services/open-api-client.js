@@ -47,7 +47,7 @@ class OpenApiClient {
       opts.uri = opts.host + opts.uri;
     }
 
-    let uri = new url.URL(opts.uri);
+    const uri = new url.URL(opts.uri);
     uri.hostname = this.getHost(uri.hostname, opts);
     uri.pathname = this.getUri(uri.pathname, opts);
     opts.uri = uri.href;

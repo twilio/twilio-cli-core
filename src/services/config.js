@@ -139,7 +139,7 @@ class ConfigData {
   }
 
   loadFromObject(configObj) {
-    this.edge = this.edge || configObj.edge;
+    this.edge = configObj.edge;
     this.email = configObj.email || {};
     this.prompts = configObj.prompts || {};
     // Note the historical 'projects' naming.
@@ -166,7 +166,6 @@ class Config {
     if (!fs.existsSync(this.filePath)) {
       return configData;
     }
-    configData.edge = process.env.TWILIO_EDGE;
     configData.loadFromObject(await fs.readJSON(this.filePath));
     return configData;
   }

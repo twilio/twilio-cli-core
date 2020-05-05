@@ -229,17 +229,6 @@ describe('services', () => {
         const saveMessage = await config.save(userConfig);
         expect(saveMessage).to.contain(`${nestedConfig}${path.sep}config.json`);
       });
-
-      test.it('uses env vars over config to set edge', async () => {
-        const config = new Config(tempConfigDir.name);
-        const userConfig = await config.load();
-
-        expect(userConfig.edge).to.be.undefined;
-        process.env.TWILIO_EDGE = 'edge';
-
-        const loadedConfig = await config.load();
-        expect(loadedConfig.edge).to.equal('edge');
-      });
     });
   });
 });
