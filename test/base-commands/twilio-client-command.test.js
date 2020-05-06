@@ -2,6 +2,8 @@ const { expect, test, constants } = require('@twilio/cli-test');
 const TwilioClientCommand = require('../../src/base-commands/twilio-client-command');
 const { Config, ConfigData } = require('../../src/services/config');
 
+const ORIGINAL_ENV = process.env;
+
 describe('base-commands', () => {
   describe('twilio-client-command', () => {
     class TestClientCommand extends TwilioClientCommand {
@@ -65,6 +67,7 @@ describe('base-commands', () => {
       expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
       expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'MyFirstProfile');
       expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
+      expect(ctx.testCmd.twilioClient.edge).to.equal(undefined);
     });
 
     setUpTest(['-l', 'debug', '--account-sid', 'ACbaccbaccbaccbaccbaccbaccbaccbacc'], { commandClass: AccountSidClientCommand }).it(
@@ -75,6 +78,7 @@ describe('base-commands', () => {
         expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
         expect(ctx.testCmd.twilioClient.password).to.equal(constants.FAKE_API_SECRET + 'MyFirstProfile');
         expect(ctx.testCmd.twilioClient.region).to.equal(undefined);
+        expect(ctx.testCmd.twilioClient.edge).to.equal(undefined);
       }
     );
 
@@ -228,6 +232,72 @@ describe('base-commands', () => {
         expect(results.sid).to.equal(resourceSid);
         expect(results.result).to.equal('Error');
         expect(ctx.stderr).to.contain('A fake API error');
+      });
+    });
+
+    describe('regional and edge support', () => {
+      const envTest = (
+        args = [],
+        { envRegion, envEdge, configRegion = 'configRegion', configEdge } = {}
+      ) => {
+        return test
+          .do(ctx => {
+            ctx.userConfig = new ConfigData();
+            ctx.userConfig.edge = configEdge;
+
+            if (envRegion) {
+              process.env.TWILIO_REGION = envRegion;
+              process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
+              process.env.TWILIO_AUTH_TOKEN = constants.FAKE_API_SECRET;
+            }
+            if (envEdge) {
+              process.env.TWILIO_EDGE = envEdge;
+            }
+
+            ctx.userConfig.addProfile('default-profile', constants.FAKE_ACCOUNT_SID);
+            ctx.userConfig.addProfile('region-edge-testing', constants.FAKE_ACCOUNT_SID, configRegion);
+          })
+          .twilioCliEnv(Config)
+          .do(async ctx => {
+            ctx.testCmd = new TwilioClientCommand(args, ctx.fakeConfig);
+            ctx.testCmd.secureStorage =
+                  {
+                    async getCredentials(profileId) {
+                      return {
+                        apiKey: constants.FAKE_API_KEY,
+                        apiSecret: constants.FAKE_API_SECRET + profileId
+                      };
+                    }
+                  };
+
+            // This is essentially what oclif does behind the scenes.
+            try {
+              await ctx.testCmd.run();
+            } catch (error) {
+              await ctx.testCmd.catch(error);
+            }
+            process.env = ORIGINAL_ENV;
+          });
+      };
+
+      envTest([], { configEdge: 'edge' }).it('should use the config edge when defined', ctx => {
+        expect(ctx.testCmd.twilioApiClient.edge).to.equal('edge');
+        expect(ctx.testCmd.twilioApiClient.region).to.be.undefined;
+      });
+
+      envTest(['-p', 'region-edge-testing']).it('should use the config region when defined', ctx => {
+        expect(ctx.testCmd.twilioApiClient.region).to.equal('configRegion');
+        expect(ctx.testCmd.twilioApiClient.edge).to.be.undefined;
+      });
+
+      envTest([], { envRegion: 'region' }).it('should use the env region over a config region', ctx => {
+        expect(ctx.testCmd.twilioApiClient.region).to.equal('region');
+        expect(ctx.testCmd.twilioApiClient.edge).to.be.undefined;
+      });
+
+      envTest([], { configEdge: 'configEdge', envEdge: 'edge', envRegion: 'region' }).it('should use the env edge over a config edge', ctx => {
+        expect(ctx.testCmd.twilioApiClient.edge).to.equal('edge');
+        expect(ctx.testCmd.twilioApiClient.region).to.equal('region');
       });
     });
   });

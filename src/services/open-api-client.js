@@ -1,3 +1,4 @@
+const url = require('url');
 const { logger } = require('./messaging/logging');
 const { doesObjectHaveProperty } = require('./javascript-utilities');
 const JsonSchemaConverter = require('./api-schema/json-converter');
@@ -42,19 +43,12 @@ class OpenApiClient {
       if (!opts.host) {
         opts.host = path.server;
       }
-
-      if (opts.region) {
-        const parts = opts.host.split('.');
-
-        // From 'https://api.twilio.com/' to 'https://api.{region}.twilio.com/'
-        if (parts.length > 1 && parts[1] !== opts.region) {
-          parts.splice(1, 0, opts.region);
-          opts.host = parts.join('.');
-        }
-      }
-
       opts.uri = opts.host + opts.uri;
     }
+
+    const uri = new url.URL(opts.uri);
+    uri.hostname = this.getHost(uri.hostname, opts);
+    opts.uri = uri.href;
 
     opts.params = (isPost ? null : params);
     opts.data = (isPost ? params : null);
@@ -95,6 +89,22 @@ class OpenApiClient {
 
       return value;
     });
+  }
+
+  getHost(host, opts) {
+    if (opts.region || opts.edge) {
+      const domain = host.split('.').slice(-2).join('.');
+      const prefix = host.split('.' + domain)[0];
+      let [product, edge, region] = prefix.split('.');
+      if (edge && !region) {
+        region = edge;
+        edge = undefined;
+      }
+      edge = opts.edge || edge;
+      region = opts.region || region || (opts.edge && 'us1');
+      return [product, edge, region, domain].filter(part => part).join('.');
+    }
+    return host;
   }
 
   parseResponse(domain, operation, response, requestOpts) {

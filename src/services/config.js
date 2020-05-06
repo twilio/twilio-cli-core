@@ -1,6 +1,5 @@
 const fs = require('fs-extra');
 const path = require('path');
-const shell = require('shelljs');
 const MessageTemplates = require('./messaging/templates');
 
 const CLI_NAME = 'twilio-cli';
@@ -15,6 +14,7 @@ class ConfigDataProfile {
 
 class ConfigData {
   constructor() {
+    this.edge = undefined;
     this.email = {};
     this.prompts = {};
     this.profiles = [];
@@ -22,7 +22,13 @@ class ConfigData {
   }
 
   getProfileFromEnvironment() {
-    const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_API_KEY, TWILIO_API_SECRET } = process.env;
+    const {
+      TWILIO_ACCOUNT_SID,
+      TWILIO_AUTH_TOKEN,
+      TWILIO_API_KEY,
+      TWILIO_API_SECRET,
+      TWILIO_REGION
+    } = process.env;
     if (!TWILIO_ACCOUNT_SID) return;
 
     if (TWILIO_API_KEY && TWILIO_API_SECRET)
@@ -31,7 +37,8 @@ class ConfigData {
         id: '${TWILIO_API_KEY}/${TWILIO_API_SECRET}',
         accountSid: TWILIO_ACCOUNT_SID,
         apiKey: TWILIO_API_KEY,
-        apiSecret: TWILIO_API_SECRET
+        apiSecret: TWILIO_API_SECRET,
+        region: TWILIO_REGION
       };
 
     if (TWILIO_AUTH_TOKEN)
@@ -40,7 +47,8 @@ class ConfigData {
         id: '${TWILIO_ACCOUNT_SID}/${TWILIO_AUTH_TOKEN}',
         accountSid: TWILIO_ACCOUNT_SID,
         apiKey: TWILIO_ACCOUNT_SID,
-        apiSecret: TWILIO_AUTH_TOKEN
+        apiSecret: TWILIO_AUTH_TOKEN,
+        region: TWILIO_REGION
       };
   }
 
@@ -130,6 +138,7 @@ class ConfigData {
   }
 
   loadFromObject(configObj) {
+    this.edge = configObj.edge;
     this.email = configObj.email || {};
     this.prompts = configObj.prompts || {};
     // Note the historical 'projects' naming.
@@ -163,6 +172,7 @@ class Config {
 
   async save(configData) {
     configData = {
+      edge: configData.edge,
       email: configData.email,
       prompts: configData.prompts,
       // Note the historical 'projects' naming.
@@ -170,8 +180,7 @@ class Config {
       activeProject: configData.activeProfile
     };
 
-    // Migrate to 'fs.mkdirSync' with 'recursive: true' when no longer supporting Node8.
-    shell.mkdir('-p', this.configDir);
+    fs.mkdirSync(this.configDir, { recursive: true });
     await fs.writeJSON(this.filePath, configData, { flag: 'w' });
 
     return MessageTemplates.configSaved({ path: this.filePath });
