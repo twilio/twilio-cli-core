@@ -654,6 +654,59 @@
           }
         },
         "type": "object"
+      },
+      "autopilot.v1.restore_assistant": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "callback_events": {
+            "type": "string"
+          },
+          "callback_url": {
+            "format": "uri",
+            "type": "string"
+          },
+          "date_created": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "date_updated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "development_stage": {
+            "type": "string"
+          },
+          "friendly_name": {
+            "type": "string"
+          },
+          "latest_model_build_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^UG[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "log_queries": {
+            "type": "boolean"
+          },
+          "needs_model_build": {
+            "type": "boolean"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^UA[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "unique_name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
       }
     },
     "securitySchemes": {
@@ -824,6 +877,62 @@
         }
       ],
       "x-default-output-properties": [
+        "sid",
+        "unique_name",
+        "friendly_name"
+      ],
+      "x-path-type": "list"
+    },
+    "/v1/Assistants/Restore": {
+      "description": "TODO: Resource-level docs",
+      "post": {
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Assistant": {
+                    "description": "The Twilio-provided string that uniquely identifies the Assistant resource to restore.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Assistant"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/autopilot.v1.restore_assistant"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://autopilot.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "account_sid",
         "sid",
         "unique_name",
         "friendly_name"

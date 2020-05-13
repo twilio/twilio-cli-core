@@ -3569,6 +3569,12 @@
           "auth_type": {
             "type": "string"
           },
+          "byoc_trunk_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BY[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "date_created": {
             "format": "date-time-rfc-2822",
             "type": "string"
@@ -3578,6 +3584,12 @@
             "type": "string"
           },
           "domain_name": {
+            "type": "string"
+          },
+          "emergency_caller_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^PN[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "emergency_calling_enabled": {
@@ -20739,8 +20751,22 @@
             "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {
+                  "ByocTrunkSid": {
+                    "description": "The SID of the BYOC Trunk(Bring Your Own Carrier) resource that the Sip Domain will be associated with.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^BY[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
                   "DomainName": {
                     "description": "The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \"-\".",
+                    "type": "string"
+                  },
+                  "EmergencyCallerSid": {
+                    "description": "Whether an emergency caller sid is configured for the domain. If present, this phone number will be used as the callback for the emergency call.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^PN[0-9a-fA-F]{32}$",
                     "type": "string"
                   },
                   "EmergencyCallingEnabled": {
@@ -22526,8 +22552,22 @@
             "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {
+                  "ByocTrunkSid": {
+                    "description": "The SID of the BYOC Trunk(Bring Your Own Carrier) resource that the Sip Domain will be associated with.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^BY[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
                   "DomainName": {
                     "description": "The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \"-\".",
+                    "type": "string"
+                  },
+                  "EmergencyCallerSid": {
+                    "description": "Whether an emergency caller sid is configured for the domain. If present, this phone number will be used as the callback for the emergency call.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^PN[0-9a-fA-F]{32}$",
                     "type": "string"
                   },
                   "EmergencyCallingEnabled": {

@@ -105,10 +105,48 @@
             "format": "date-time",
             "type": "string"
           },
+          "network_access_profile_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^HA[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "sid": {
             "maxLength": 34,
             "minLength": 34,
             "pattern": "^HF[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "unique_name": {
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "supersim.v1.network_access_profile": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "date_created": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "date_updated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^HA[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "unique_name": {
@@ -477,6 +515,14 @@
         "description": "Retrieve a list of Fleets from your account.",
         "parameters": [
           {
+            "description": "The SID or unique name of the Network Access Profile that controls which cellular network operators the Fleet's SIMs can connect to",
+            "in": "query",
+            "name": "NetworkAccessProfile",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
             "in": "query",
             "name": "PageSize",
@@ -584,6 +630,10 @@
                     "description": "Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M/NB-IoT data connectivity",
                     "type": "boolean"
                   },
+                  "NetworkAccessProfile": {
+                    "description": "The SID or unique name of the Network Access Profile that will control which cellular network operators the Fleet's SIMs can connect to",
+                    "type": "string"
+                  },
                   "UniqueName": {
                     "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
                     "type": "string"
@@ -681,6 +731,10 @@
             "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {
+                  "NetworkAccessProfile": {
+                    "description": "The SID or unique name of the Network Access Profile that will control which cellular network operators the Fleet's SIMs can connect to",
+                    "type": "string"
+                  },
                   "UniqueName": {
                     "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
                     "type": "string"
@@ -721,6 +775,235 @@
         "sid",
         "unique_name",
         "data_metering"
+      ],
+      "x-path-type": "instance"
+    },
+    "/v1/NetworkAccessProfiles": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "network_access_profiles": {
+                      "items": {
+                        "$ref": "#/components/schemas/supersim.v1.network_access_profile"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "post": {
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Networks": {
+                    "description": "",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "UniqueName": {
+                    "description": "",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/supersim.v1.network_access_profile"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://supersim.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "unique_name",
+        "fleets_count"
+      ],
+      "x-path-type": "list"
+    },
+    "/v1/NetworkAccessProfiles/{Sid}": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/supersim.v1.network_access_profile"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "UniqueName": {
+                    "description": "",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/supersim.v1.network_access_profile"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://supersim.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "unique_name",
+        "fleets_count"
       ],
       "x-path-type": "instance"
     },

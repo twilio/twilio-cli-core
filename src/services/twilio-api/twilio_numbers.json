@@ -63,6 +63,56 @@
         },
         "type": "object"
       },
+      "numbers.v2.regulatory_compliance.bundle.evaluation": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "bundle_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^BU[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "date_created": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "regulation_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^RN[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "results": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^EL[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "compliant",
+              "noncompliant"
+            ],
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "numbers.v2.regulatory_compliance.bundle.item_assignment": {
         "properties": {
           "account_sid": {
@@ -516,6 +566,211 @@
         "friendly_name"
       ],
       "x-path-type": "list"
+    },
+    "/v2/RegulatoryCompliance/Bundles/{BundleSid}/Evaluations": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "Retrieve a list of Evaluations associated to the Bundle resource.",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "BundleSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BU[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "results": {
+                      "items": {
+                        "$ref": "#/components/schemas/numbers.v2.regulatory_compliance.bundle.evaluation"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "GA"
+        ]
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "BundleSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BU[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {},
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/numbers.v2.regulatory_compliance.bundle.evaluation"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://numbers.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid"
+      ],
+      "x-path-type": "list"
+    },
+    "/v2/RegulatoryCompliance/Bundles/{BundleSid}/Evaluations/{Sid}": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "Fetch specific Evaluation Instance.",
+        "parameters": [
+          {
+            "description": "The unique string that we created to identify the Bundle resource.",
+            "in": "path",
+            "name": "BundleSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BU[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique string that identifies the Evaluation resource.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^EL[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/numbers.v2.regulatory_compliance.bundle.evaluation"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://numbers.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid"
+      ],
+      "x-path-type": "instance"
     },
     "/v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments": {
       "description": "TODO: Resource-level docs",

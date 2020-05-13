@@ -12,6 +12,9 @@
           "code_length": {
             "type": "integer"
           },
+          "custom_code_enabled": {
+            "type": "boolean"
+          },
           "date_created": {
             "format": "date-time",
             "type": "string"
@@ -417,6 +420,10 @@
                   "CodeLength": {
                     "description": "The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.",
                     "type": "integer"
+                  },
+                  "CustomCodeEnabled": {
+                    "description": "Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.",
+                    "type": "boolean"
                   },
                   "DoNotShareWarningEnabled": {
                     "description": "Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don\u2019t share this code with anyone; our employees will never ask for the code`",
@@ -1698,7 +1705,7 @@
                     "type": "string"
                   },
                   "Locale": {
-                    "description": "The locale to use for the verification SMS or call. Can be: `af`, `ar`, `ca`, `cs`, `da`, `de`, `el`, `en`, `es`, `fi`, `fr`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `ko`, `ms`, `nb`, `nl`, `pl`, `pt`, `pr-BR`, `ro`, `ru`, `sv`, `th`, `tl`, `tr`, `vi`, `zh`, `zh-CN`, or `zh-HK.`",
+                    "description": "The locale to use for the verification SMS or call. Can be: `af`, `ar`, `ca`, `cs`, `da`, `de`, `el`, `en`, `en-GB`, `es`, `fi`, `fr`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `ko`, `ms`, `nb`, `nl`, `pl`, `pt`, `pr-BR`, `ro`, `ru`, `sv`, `th`, `tl`, `tr`, `vi`, `zh`, `zh-CN`, or `zh-HK.`",
                     "type": "string"
                   },
                   "Payee": {
@@ -1987,6 +1994,10 @@
                   "CodeLength": {
                     "description": "The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.",
                     "type": "integer"
+                  },
+                  "CustomCodeEnabled": {
+                    "description": "Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.",
+                    "type": "boolean"
                   },
                   "DoNotShareWarningEnabled": {
                     "description": "Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS.**",
