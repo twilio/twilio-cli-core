@@ -1,11 +1,12 @@
 const { Command, flags } = require('@oclif/command');
 const { CLIError } = require('@oclif/errors');
+const pkg = require('../../package.json');
+const MessageTemplates = require('../services/messaging/templates');
 const { Config, ConfigData } = require('../services/config');
 const { TwilioCliError } = require('../services/error');
-const { UNEXPECTED_ERROR } = require('../services/messaging/help-messages');
 const { logger, LoggingLevel } = require('../services/messaging/logging');
 const { OutputFormats } = require('../services/output-formats');
-const { requireInstall } = require('../services/require-install');
+const { getCommandPlugin, requireInstall } = require('../services/require-install');
 const { SecureStorage } = require('../services/secure-storage');
 let inquirer; // We'll lazy-load this only when it's needed.
 
@@ -63,11 +64,21 @@ class BaseCommand extends Command {
       this.exit(error.exitCode || 1);
     } else {
       // System errors
-      this.logger.error(UNEXPECTED_ERROR);
+      const plugin = getCommandPlugin(this);
+      this.logger.error(MessageTemplates.unexpectedError({ url: this.getIssueUrl(plugin) }));
       this.logger.debug(error.message);
       this.logger.debug(error.stack);
       this.exit(1);
     }
+  }
+
+  getIssueUrl(plugin) {
+    const getPropertyUrl = value => value && (value.url || value);
+    const getPackageUrl = pjson => getPropertyUrl(pjson.bugs) || getPropertyUrl(pjson.homepage) || getPropertyUrl(pjson.repository);
+
+    // If we found the plugin and an issue URL for it, use it. Otherwise
+    // fallback to our own issue URL.
+    return (plugin && getPackageUrl(plugin.pjson)) || getPackageUrl(pkg);
   }
 
   /**

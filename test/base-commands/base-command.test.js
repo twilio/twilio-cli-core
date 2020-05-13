@@ -67,6 +67,32 @@ describe('base-commands', () => {
         await expect(ctx.testCmd.catch(new TwilioCliError('hey-o!'))).to.be.rejectedWith(TwilioCliError);
       });
 
+    describe('getIssueUrl', () => {
+      baseCommandTest.it('follows the proper precedence order', ctx => {
+        const pjson = {
+          bugs: 'could be',
+          homepage: 'maybe',
+          repository: 'nope'
+        };
+
+        expect(ctx.testCmd.getIssueUrl({ pjson })).to.equal('could be');
+
+        delete pjson.bugs;
+        expect(ctx.testCmd.getIssueUrl({ pjson })).to.equal('maybe');
+
+        delete pjson.homepage;
+        expect(ctx.testCmd.getIssueUrl({ pjson })).to.equal('nope');
+      });
+
+      baseCommandTest.it('handles url properties', ctx => {
+        expect(ctx.testCmd.getIssueUrl({ pjson: { bugs: { email: 'me', url: 'you' } } })).to.equal('you');
+      });
+
+      baseCommandTest.it('use the main repo when no url is found', ctx => {
+        expect(ctx.testCmd.getIssueUrl({ pjson: { anything: 'nothing' } })).to.equal('https://github.com/twilio/twilio-cli/issues');
+      });
+    });
+
     describe('sanitizeDateString', () => {
       baseCommandTest.it('check date is sliced correctly', ctx => {
         expect(ctx.testCmd.sanitizeDateString('Fri May 24 2019 11:43:11 GMT-0600 (MDT)')).to.equal('May 24 2019 11:43:11 GMT-0600');

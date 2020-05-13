@@ -1,7 +1,7 @@
 const { templatize } = require('./templating');
 
-const configSaved = templatize`twilio-cli configuration saved to "${'path'}"`;
+exports.configSaved = templatize`twilio-cli configuration saved to "${'path'}"`;
 
-module.exports = {
-  configSaved
-};
+exports.unexpectedError = templatize`twilio-cli encountered an unexpected error. \
+To report this issue, execute the command with the "-l debug" flag, then copy the output to a new issue here: \
+"${'url'}"`;
