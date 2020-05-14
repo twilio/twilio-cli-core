@@ -1,6 +1,7 @@
 const tmp = require('tmp');
 const { expect, test } = require('@twilio/cli-test');
 const { getCommandPlugin, getPackageVersion, getDependencyVersion, checkVersion, requireInstall } = require('../../src/services/require-install');
+const { logger, LoggingLevel } = require('../../src/services/messaging/logging');
 const corePJSON = require('../../package.json');
 
 const TOP_PLUGIN = {
@@ -95,13 +96,24 @@ describe('services', () => {
     });
 
     describe('requireInstall', () => {
+      before(() => {
+        logger.config.level = LoggingLevel.debug;
+      });
+
+      after(() => {
+        logger.config.level = LoggingLevel.info;
+      });
+
       test.it('can load existing packages', () => {
         expect(requireInstall('chai')).to.not.be.undefined;
       });
 
-      test.it('will attempt to install packages', async () => {
+      test.stderr().it('will attempt to install packages', async ctx => {
         const command = { id: 'top-command', config };
         await expect(requireInstall('chai-dai', command)).to.be.rejected;
+        expect(ctx.stderr).to.contain('Error loading chai-dai');
+        expect(ctx.stderr).to.contain('Installing chai-dai');
+        expect(ctx.stderr).to.contain('Error installing chai-dai');
       });
     });
   });

@@ -94,16 +94,16 @@ const requireInstall = async (packageName, command) => {
   }
 
   // If we're here, attempt to install the package in the plugin's runtime modules path.
-  try {
-    logger.warn(`Installing ${packageName} ...`);
-    const packageTag = targetVersion ? `${packageName}@${targetVersion}` : packageName;
-    const plugins = new Plugins({ dataDir: pluginPath, cacheDir: pluginPath });
+  logger.warn(`Installing ${packageName} ...`);
+  const plugins = new Plugins({ dataDir: pluginPath, cacheDir: pluginPath });
 
+  try {
     // Init the PJSON in case it doesn't exist. This is required by yarn or it
     // moves up the dir tree until it finds one.
     await plugins.createPJSON();
 
     // Force install the package in case it's a native module that needs rebuilding.
+    const packageTag = targetVersion ? `${packageName}@${targetVersion}` : packageName;
     await plugins.yarn.exec(['add', '--force', packageTag], { cwd: pluginPath, verbose: false });
   } catch (error) {
     logger.debug(`Error installing ${packageName}: ${error}`);
