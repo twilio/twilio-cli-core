@@ -8,7 +8,7 @@ const { logger } = require('./messaging/logging');
  * Retrieves the plugin for a given command.
  */
 const getCommandPlugin = command => {
-  for (let plugin of command.config.plugins) {
+  for (let plugin of command.config.plugins || []) {
     for (let pluginCommand of plugin.commands) {
       if (pluginCommand.id === command.id || pluginCommand.aliases.includes(command.id)) {
         // Check the plugin options/config name first. This will contain the
