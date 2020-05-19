@@ -111,9 +111,8 @@ describe('services', () => {
       test.stderr().it('will attempt to install packages', async ctx => {
         const command = { id: 'top-command', config };
         await expect(requireInstall('chai-dai', command)).to.be.rejected;
-        expect(ctx.stderr).to.contain('Error loading chai-dai');
         expect(ctx.stderr).to.contain('Installing chai-dai');
-        expect(ctx.stderr).to.contain('Error installing chai-dai');
+        expect(ctx.stderr).to.contain('Error loading/installing chai-dai');
       });
     });
   });

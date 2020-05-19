@@ -28,14 +28,18 @@ const getCommandPlugin = command => {
 /**
  * Retrieves the package version given a path.
  */
-const getPackageVersion = packagePath => {
+const getPackageVersion = (packagePath, errors = null) => {
   const pjsonPath = path.join(packagePath, 'package.json');
 
   try {
     return require(pjsonPath).version;
   } catch (error) {
     // Failure to read the version is non-fatal.
-    logger.debug(`Could not determine package version: ${error}`);
+    if (errors === null) {
+      logger.debug(`Could not determine package version: ${error}`);
+    } else {
+      errors.push(error);
+    }
   }
 };
 
@@ -68,11 +72,13 @@ const checkVersion = (currentVersion, targetVersion) => {
  * Loads the given package and installs it if missing or not the proper version.
  */
 const requireInstall = async (packageName, command) => {
+  const errors = [];
+
   // First, try to load the package the old-fashioned way.
   try {
     return require(packageName);
   } catch (error) {
-    logger.debug(`Error loading ${packageName}: ${error}`);
+    errors.push(error);
   }
 
   const plugin = getCommandPlugin(command);
@@ -81,7 +87,7 @@ const requireInstall = async (packageName, command) => {
   const pluginPath = path.join(command.config.dataDir, 'runtime_modules', plugin.name);
   const packagePath = path.join(pluginPath, 'node_modules', packageName);
 
-  const currentVersion = getPackageVersion(packagePath);
+  const currentVersion = getPackageVersion(packagePath, errors);
   const targetVersion = getDependencyVersion(packageName, plugin.pjson);
 
   // Then, try to load the package from the plugin's runtime modules path.
@@ -90,7 +96,7 @@ const requireInstall = async (packageName, command) => {
 
     return require(packagePath);
   } catch (error) {
-    logger.debug(`Error loading ${packageName}: ${error}`);
+    errors.push(error);
   }
 
   // If we're here, attempt to install the package in the plugin's runtime modules path.
@@ -106,11 +112,21 @@ const requireInstall = async (packageName, command) => {
     const packageTag = targetVersion ? `${packageName}@${targetVersion}` : packageName;
     await plugins.yarn.exec(['add', '--force', packageTag], { cwd: pluginPath, verbose: false });
   } catch (error) {
-    logger.debug(`Error installing ${packageName}: ${error}`);
+    errors.push(error);
   }
 
-  // Finally, re-attempt loading the package from the plugin's runtime modules path.
-  return require(packagePath);
+  try {
+    // Finally, re-attempt loading the package from the plugin's runtime modules path.
+    return require(packagePath);
+  } catch (error) {
+    // Debug log any lazy errors we swallowed earlier.
+    if (errors) {
+      logger.debug(`Error loading/installing ${packageName}:`);
+      errors.forEach(lazyError => logger.debug(lazyError));
+    }
+
+    throw error;
+  }
 };
 
 module.exports = {
