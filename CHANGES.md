@@ -1,6 +1,16 @@
 twilio-cli-core changelog
 =====================
 
+[2020-05-20] Version 5.2.0
+--------------------------
+**Library - Fix**
+- [PR #89](https://github.com/twilio/twilio-cli-core/pull/89): delay module-loading error logs until all locations have been exhausted. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #88](https://github.com/twilio/twilio-cli-core/pull/88): pin 'tslib' to avoid issues when interacting with plugin-plugins. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Feature**
+- [PR #87](https://github.com/twilio/twilio-cli-core/pull/87): look through plugin pjson for an issue URL. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2020-05-13] Version 5.1.0
 --------------------------
 **Library - Feature**
