@@ -241,7 +241,7 @@
           "trunk_sid": {
             "maxLength": 34,
             "minLength": 34,
-            "pattern": "^TR[0-9a-fA-F]{32}$",
+            "pattern": "^TK[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "uri": {
@@ -962,7 +962,7 @@
           "trunk_sid": {
             "maxLength": 34,
             "minLength": 34,
-            "pattern": "^TR[0-9a-fA-F]{32}$",
+            "pattern": "^TK[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "uri": {
@@ -1379,6 +1379,12 @@
           "api_version": {
             "type": "string"
           },
+          "call_sid_ending_conference": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^CA[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "date_created": {
             "format": "date-time-rfc-2822",
             "type": "string"
@@ -1388,6 +1394,16 @@
             "type": "string"
           },
           "friendly_name": {
+            "type": "string"
+          },
+          "reason_conference_ended": {
+            "enum": [
+              "conference-ended-via-api",
+              "participant-with-end-conference-on-exit-left",
+              "participant-with-end-conference-on-exit-kicked",
+              "last-participant-kicked",
+              "last-participant-left"
+            ],
             "type": "string"
           },
           "region": {
@@ -1795,7 +1811,7 @@
           "trunk_sid": {
             "maxLength": 34,
             "minLength": 34,
-            "pattern": "^TR[0-9a-fA-F]{32}$",
+            "pattern": "^TK[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "uri": {
@@ -2103,7 +2119,7 @@
           "trunk_sid": {
             "maxLength": 34,
             "minLength": 34,
-            "pattern": "^TR[0-9a-fA-F]{32}$",
+            "pattern": "^TK[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "uri": {
@@ -2316,7 +2332,7 @@
           "trunk_sid": {
             "maxLength": 34,
             "minLength": 34,
-            "pattern": "^TR[0-9a-fA-F]{32}$",
+            "pattern": "^TK[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "uri": {
@@ -2529,7 +2545,7 @@
           "trunk_sid": {
             "maxLength": 34,
             "minLength": 34,
-            "pattern": "^TR[0-9a-fA-F]{32}$",
+            "pattern": "^TK[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "uri": {
@@ -14513,7 +14529,7 @@
                     "description": "The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.",
                     "maxLength": 34,
                     "minLength": 34,
-                    "pattern": "^TR[0-9a-fA-F]{32}$",
+                    "pattern": "^TK[0-9a-fA-F]{32}$",
                     "type": "string"
                   },
                   "VoiceApplicationSid": {
@@ -14886,7 +14902,7 @@
                     "description": "The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.",
                     "maxLength": 34,
                     "minLength": 34,
-                    "pattern": "^TR[0-9a-fA-F]{32}$",
+                    "pattern": "^TK[0-9a-fA-F]{32}$",
                     "type": "string"
                   },
                   "VoiceApplicationSid": {
@@ -15262,7 +15278,7 @@
                     "description": "The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.",
                     "maxLength": 34,
                     "minLength": 34,
-                    "pattern": "^TR[0-9a-fA-F]{32}$",
+                    "pattern": "^TK[0-9a-fA-F]{32}$",
                     "type": "string"
                   },
                   "VoiceApplicationSid": {
@@ -15638,7 +15654,7 @@
                     "description": "The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.",
                     "maxLength": 34,
                     "minLength": 34,
-                    "pattern": "^TR[0-9a-fA-F]{32}$",
+                    "pattern": "^TK[0-9a-fA-F]{32}$",
                     "type": "string"
                   },
                   "VoiceApplicationSid": {
@@ -16525,7 +16541,7 @@
                     "description": "The SID of the Trunk we should use to handle phone calls to the phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.",
                     "maxLength": 34,
                     "minLength": 34,
-                    "pattern": "^TR[0-9a-fA-F]{32}$",
+                    "pattern": "^TK[0-9a-fA-F]{32}$",
                     "type": "string"
                   },
                   "VoiceApplicationSid": {

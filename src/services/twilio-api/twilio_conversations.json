@@ -149,6 +149,12 @@
           "messaging_binding": {
             "type": "object"
           },
+          "role_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^RL[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "sid": {
             "maxLength": 34,
             "minLength": 34,
@@ -1026,6 +1032,13 @@
                   "MessagingBinding.ProxyAddress": {
                     "description": "The address of the Twilio phone number (or WhatsApp number, or Messenger Page ID) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).",
                     "type": "string"
+                  },
+                  "RoleSid": {
+                    "description": "The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the participant.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^RL[0-9a-fA-F]{32}$",
+                    "type": "string"
                   }
                 },
                 "type": "object"
@@ -1203,6 +1216,13 @@
                   "DateUpdated": {
                     "description": "The date that this resource was last updated.",
                     "format": "date-time",
+                    "type": "string"
+                  },
+                  "RoleSid": {
+                    "description": "The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the participant.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^RL[0-9a-fA-F]{32}$",
                     "type": "string"
                   }
                 },

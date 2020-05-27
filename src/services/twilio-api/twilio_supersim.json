@@ -91,6 +91,9 @@
           "data_enabled": {
             "type": "boolean"
           },
+          "data_limit": {
+            "type": "integer"
+          },
           "data_metering": {
             "enum": [
               "payg"
@@ -127,6 +130,33 @@
         },
         "type": "object"
       },
+      "supersim.v1.network": {
+        "properties": {
+          "friendly_name": {
+            "type": "string"
+          },
+          "identifiers": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "iso_country": {
+            "type": "string"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^HW[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "supersim.v1.network_access_profile": {
         "properties": {
           "account_sid": {
@@ -143,6 +173,9 @@
             "format": "date-time",
             "type": "string"
           },
+          "links": {
+            "type": "object"
+          },
           "sid": {
             "maxLength": 34,
             "minLength": 34,
@@ -150,6 +183,39 @@
             "type": "string"
           },
           "unique_name": {
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "supersim.v1.network_access_profile.network_access_profile_network": {
+        "properties": {
+          "friendly_name": {
+            "type": "string"
+          },
+          "identifiers": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "iso_country": {
+            "type": "string"
+          },
+          "network_access_profile_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^HA[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^HW[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "url": {
@@ -630,6 +696,10 @@
                     "description": "Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M/NB-IoT data connectivity",
                     "type": "boolean"
                   },
+                  "DataLimit": {
+                    "description": "",
+                    "type": "integer"
+                  },
                   "NetworkAccessProfile": {
                     "description": "The SID or unique name of the Network Access Profile that will control which cellular network operators the Fleet's SIMs can connect to",
                     "type": "string"
@@ -781,7 +851,7 @@
     "/v1/NetworkAccessProfiles": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": "",
+        "description": "Retrieve a list of Network Access Profiles from your account.",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -854,21 +924,21 @@
         ]
       },
       "post": {
-        "description": "",
+        "description": "Create a new Network Access Profile",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {
                   "Networks": {
-                    "description": "",
+                    "description": "List of Network SIDs that this Network Access Profile will allow connections to.",
                     "items": {
                       "type": "string"
                     },
                     "type": "array"
                   },
                   "UniqueName": {
-                    "description": "",
+                    "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
                     "type": "string"
                   }
                 },
@@ -910,13 +980,262 @@
       ],
       "x-path-type": "list"
     },
+    "/v1/NetworkAccessProfiles/{NetworkAccessProfileSid}/Networks": {
+      "description": "Mobile operator networks which Network Access Profiles allow access to",
+      "get": {
+        "description": "Retrieve a list of Network Access Profile resource's Network resource.",
+        "parameters": [
+          {
+            "description": "The unique string that identifies the Network Access Profile resource.",
+            "in": "path",
+            "name": "NetworkAccessProfileSid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "networks": {
+                      "items": {
+                        "$ref": "#/components/schemas/supersim.v1.network_access_profile.network_access_profile_network"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "post": {
+        "description": "Add a Network resource to the Network Access Profile resource.",
+        "parameters": [
+          {
+            "description": "The unique string that identifies the Network Access Profile resource.",
+            "in": "path",
+            "name": "NetworkAccessProfileSid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Network": {
+                    "description": "The SID of the Network resource to be added to the Network Access Profile resource.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^HW[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Network"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/supersim.v1.network_access_profile.network_access_profile_network"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://supersim.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid"
+      ],
+      "x-path-type": "list"
+    },
+    "/v1/NetworkAccessProfiles/{NetworkAccessProfileSid}/Networks/{Sid}": {
+      "delete": {
+        "description": "Remove a Network resource from the Network Access Profile resource's.",
+        "parameters": [
+          {
+            "description": "The unique string that identifies the Network Access Profile resource.",
+            "in": "path",
+            "name": "NetworkAccessProfileSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^HA[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^HW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "description": "Mobile operator networks which Network Access Profiles allow access to",
+      "get": {
+        "description": "Fetch a Network Access Profile resource's Network resource.",
+        "parameters": [
+          {
+            "description": "The unique string that identifies the Network Access Profile resource.",
+            "in": "path",
+            "name": "NetworkAccessProfileSid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the Network resource to fetch.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^HW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/supersim.v1.network_access_profile.network_access_profile_network"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://supersim.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid"
+      ],
+      "x-path-type": "instance"
+    },
     "/v1/NetworkAccessProfiles/{Sid}": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": "",
+        "description": "Fetch a Network Access Profile instance from your account.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Network Access Profile resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -947,10 +1266,10 @@
         ]
       },
       "post": {
-        "description": "",
+        "description": "Updates the given properties of a Network Access Profile in your account.",
         "parameters": [
           {
-            "description": "",
+            "description": "The SID of the Network Access Profile to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -965,7 +1284,7 @@
               "schema": {
                 "properties": {
                   "UniqueName": {
-                    "description": "",
+                    "description": "The new unique name of the Network Access Profile.",
                     "type": "string"
                   }
                 },
@@ -1004,6 +1323,164 @@
         "sid",
         "unique_name",
         "fleets_count"
+      ],
+      "x-path-type": "instance"
+    },
+    "/v1/Networks": {
+      "description": "Mobile operator networks to which Super SIMs can connect",
+      "get": {
+        "description": "Retrieve a list of Network resources.",
+        "parameters": [
+          {
+            "description": "The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Network resources to read.",
+            "in": "query",
+            "name": "IsoCountry",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The 'mobile country code' of a country. Network resources with this `mcc` in their `identifiers` will be read.",
+            "in": "query",
+            "name": "Mcc",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The 'mobile network code' of a mobile operator network. Network resources with this `mnc` in their `identifiers` will be read.",
+            "in": "query",
+            "name": "Mnc",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "networks": {
+                      "items": {
+                        "$ref": "#/components/schemas/supersim.v1.network"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://supersim.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid"
+      ],
+      "x-path-type": "list"
+    },
+    "/v1/Networks/{Sid}": {
+      "description": "Mobile operator networks to which Super SIMs can connect",
+      "get": {
+        "description": "Fetch a Network resource.",
+        "parameters": [
+          {
+            "description": "The SID of the Network resource to fetch.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^HW[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/supersim.v1.network"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://supersim.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid"
       ],
       "x-path-type": "instance"
     },

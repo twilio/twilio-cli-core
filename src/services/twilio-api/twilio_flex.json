@@ -97,6 +97,12 @@
             "format": "date-time",
             "type": "string"
           },
+          "flex_service_instance_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^IS[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
           "integrations": {
             "items": {
               "type": "object"
@@ -469,7 +475,7 @@
                     "type": "string"
                   },
                   "TaskSid": {
-                    "description": "The SID of the TaskRouter task.",
+                    "description": "The SID of the TaskRouter task. Only valid when integration type is `task`. `null` for integration types `studio` & `external`",
                     "maxLength": 34,
                     "minLength": 34,
                     "pattern": "^WT[0-9a-fA-F]{32}$",
@@ -861,11 +867,11 @@
                     "type": "string"
                   },
                   "JanitorEnabled": {
-                    "description": "When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI.",
+                    "description": "When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`.",
                     "type": "boolean"
                   },
                   "LongLived": {
-                    "description": "When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity.",
+                    "description": "When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity. Defaults to `false`.",
                     "type": "boolean"
                   }
                 },
@@ -1090,11 +1096,11 @@
                     "type": "string"
                   },
                   "JanitorEnabled": {
-                    "description": "When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI.",
+                    "description": "When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`.",
                     "type": "boolean"
                   },
                   "LongLived": {
-                    "description": "When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity.",
+                    "description": "When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity. Defaults to `false`.",
                     "type": "boolean"
                   }
                 },
