@@ -7127,7 +7127,7 @@
             "type": "string"
           },
           "validation_code": {
-            "type": "integer"
+            "type": "string"
           }
         },
         "type": "object"
@@ -13132,6 +13132,7 @@
       ],
       "x-default-output-properties": [
         "call_sid",
+        "label",
         "status",
         "muted",
         "hold"
@@ -13167,14 +13168,11 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to delete.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to delete. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.",
             "in": "path",
             "name": "CallSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -13222,14 +13220,11 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to fetch.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to fetch. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.",
             "in": "path",
             "name": "CallSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -13283,14 +13278,11 @@
             }
           },
           {
-            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to update.",
+            "description": "The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to update. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.",
             "in": "path",
             "name": "CallSid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^CA[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -13430,6 +13422,7 @@
       ],
       "x-default-output-properties": [
         "call_sid",
+        "label",
         "status",
         "muted",
         "hold"

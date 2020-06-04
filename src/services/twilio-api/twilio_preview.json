@@ -1266,6 +1266,29 @@
         },
         "type": "object"
       },
+      "preview.trusted_comms.brands_information": {
+        "properties": {
+          "event_type": {
+            "enum": [
+              "full",
+              "updates"
+            ],
+            "type": "string"
+          },
+          "file_link": {
+            "format": "uri",
+            "type": "string"
+          },
+          "file_link_ttl_in_seconds": {
+            "type": "string"
+          },
+          "update_time": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "preview.trusted_comms.business": {
         "properties": {
           "account_sid": {
@@ -8305,6 +8328,102 @@
       "x-default-output-properties": [],
       "x-path-type": "instance"
     },
+    "/TrustedComms/BrandsInformation": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "Retrieve a list of all BrandInformation available",
+        "parameters": [
+          {
+            "description": "Determines the extent of the information to retrieve. Can either be `full` or `updates`. `full` is all the brands information owned by Twilio at the time. `updates` are the changes produced to the brands information since the last `full` query.",
+            "in": "query",
+            "name": "Type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "brands_information": {
+                      "items": {
+                        "$ref": "#/components/schemas/preview.trusted_comms.brands_information"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://preview.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "event_type",
+        "update_time",
+        "file_link",
+        "file_link_ttl_in_seconds"
+      ],
+      "x-path-type": "list"
+    },
     "/TrustedComms/Business/BrandedCalls": {
       "description": "TODO: Resource-level docs",
       "post": {
@@ -8682,10 +8801,6 @@
             "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {
-                  "PhoneNumber": {
-                    "description": "The phone number given in [E.164 format](https://www.twilio.com/docs/glossary/what-e164) to assign to the Branded Channel. It must be a Twilio number that from your account.",
-                    "type": "string"
-                  },
                   "PhoneNumberSid": {
                     "description": "The unique SID identifier of the Phone Number of the Phone number to be assigned to the Branded Channel.",
                     "maxLength": 34,
@@ -8695,8 +8810,7 @@
                   }
                 },
                 "required": [
-                  "PhoneNumberSid",
-                  "PhoneNumber"
+                  "PhoneNumberSid"
                 ],
                 "type": "object"
               }

@@ -124,6 +124,14 @@
         },
         "type": "object"
       },
+      "verify.v2.service.entity.access_token": {
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "verify.v2.service.entity.factor": {
         "properties": {
           "account_sid": {
@@ -1021,6 +1029,85 @@
         "date_created"
       ],
       "x-path-type": "instance"
+    },
+    "/v2/Services/{ServiceSid}/Entities/{Identity}/AccessTokens": {
+      "description": "TODO: Resource-level docs",
+      "post": {
+        "description": "Create a new enrollment Access Token for the Entity",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^VA[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Customer unique identity for the Entity owner of the Factor",
+            "in": "path",
+            "name": "Identity",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "FactorType": {
+                    "description": "The Type of this Factor. eg. push",
+                    "enum": [
+                      "push"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "FactorType"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/verify.v2.service.entity.access_token"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://verify.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "token"
+      ],
+      "x-path-type": "list"
     },
     "/v2/Services/{ServiceSid}/Entities/{Identity}/Factors": {
       "description": "TODO: Resource-level docs",
