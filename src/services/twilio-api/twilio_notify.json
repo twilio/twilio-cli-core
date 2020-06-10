@@ -81,6 +81,12 @@
           "default_gcm_notification_protocol_version": {
             "type": "string"
           },
+          "delivery_callback_enabled": {
+            "type": "boolean"
+          },
+          "delivery_callback_url": {
+            "type": "string"
+          },
           "facebook_messenger_page_id": {
             "type": "string"
           },
@@ -727,6 +733,14 @@
                   },
                   "DefaultGcmNotificationProtocolVersion": {
                     "description": "The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.",
+                    "type": "string"
+                  },
+                  "DeliveryCallbackEnabled": {
+                    "description": "Callback configuration that enables delivery callbacks, default false",
+                    "type": "boolean"
+                  },
+                  "DeliveryCallbackUrl": {
+                    "description": "URL to send delivery status callback.",
                     "type": "string"
                   },
                   "FacebookMessengerPageId": {

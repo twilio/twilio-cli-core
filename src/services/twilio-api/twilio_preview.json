@@ -1268,13 +1268,6 @@
       },
       "preview.trusted_comms.brands_information": {
         "properties": {
-          "event_type": {
-            "enum": [
-              "full",
-              "updates"
-            ],
-            "type": "string"
-          },
           "file_link": {
             "format": "uri",
             "type": "string"
@@ -1284,6 +1277,10 @@
           },
           "update_time": {
             "format": "date-time",
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
             "type": "string"
           }
         },
@@ -8331,71 +8328,13 @@
     "/TrustedComms/BrandsInformation": {
       "description": "TODO: Resource-level docs",
       "get": {
-        "description": "Retrieve a list of all BrandInformation available",
-        "parameters": [
-          {
-            "description": "Determines the extent of the information to retrieve. Can either be `full` or `updates`. `full` is all the brands information owned by Twilio at the time. `updates` are the changes produced to the brands information since the last `full` query.",
-            "in": "query",
-            "name": "Type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
-            "in": "query",
-            "name": "PageSize",
-            "schema": {
-              "maximum": 1000,
-              "minimum": 1,
-              "type": "integer"
-            }
-          }
-        ],
+        "description": "Retrieve the newest available BrandInformation",
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "brands_information": {
-                      "items": {
-                        "$ref": "#/components/schemas/preview.trusted_comms.brands_information"
-                      },
-                      "type": "array"
-                    },
-                    "meta": {
-                      "properties": {
-                        "first_page_url": {
-                          "format": "uri",
-                          "type": "string"
-                        },
-                        "key": {
-                          "type": "string"
-                        },
-                        "next_page_url": {
-                          "format": "uri",
-                          "type": "string"
-                        },
-                        "page": {
-                          "type": "integer"
-                        },
-                        "page_size": {
-                          "type": "integer"
-                        },
-                        "previous_page_url": {
-                          "format": "uri",
-                          "type": "string"
-                        },
-                        "url": {
-                          "format": "uri",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    }
-                  },
-                  "type": "object"
+                  "$ref": "#/components/schemas/preview.trusted_comms.brands_information"
                 }
               }
             },
@@ -8417,12 +8356,12 @@
         }
       ],
       "x-default-output-properties": [
-        "event_type",
         "update_time",
         "file_link",
-        "file_link_ttl_in_seconds"
+        "file_link_ttl_in_seconds",
+        "url"
       ],
-      "x-path-type": "list"
+      "x-path-type": "instance"
     },
     "/TrustedComms/Business/BrandedCalls": {
       "description": "TODO: Resource-level docs",

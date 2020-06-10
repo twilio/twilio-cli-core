@@ -581,7 +581,7 @@
         "description": "Retrieve a list of Fleets from your account.",
         "parameters": [
           {
-            "description": "The SID or unique name of the Network Access Profile that controls which cellular network operators the Fleet's SIMs can connect to",
+            "description": "The SID or unique name of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to",
             "in": "query",
             "name": "NetworkAccessProfile",
             "schema": {
@@ -666,7 +666,7 @@
               "schema": {
                 "properties": {
                   "CommandsEnabled": {
-                    "description": "Defines whether SIMs in the Fleet are capable of sending and receiving Commands via SMS.",
+                    "description": "Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands.",
                     "type": "boolean"
                   },
                   "CommandsMethod": {
@@ -688,20 +688,20 @@
                     "type": "string"
                   },
                   "CommandsUrl": {
-                    "description": "The URL that will receive a webhook when a SIM in the Fleet originates a machine-to-machine Command. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                    "description": "The URL that will receive a webhook when a SIM in the Fleet originates a machine-to-machine SMS via Commands. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
                     "format": "uri",
                     "type": "string"
                   },
                   "DataEnabled": {
-                    "description": "Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M/NB-IoT data connectivity",
+                    "description": "Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity",
                     "type": "boolean"
                   },
                   "DataLimit": {
-                    "description": "",
+                    "description": "The total data usage (download and upload combined) in Megabytes that each Sim resource assigned to the Fleet resource can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000).",
                     "type": "integer"
                   },
                   "NetworkAccessProfile": {
-                    "description": "The SID or unique name of the Network Access Profile that will control which cellular network operators the Fleet's SIMs can connect to",
+                    "description": "The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to",
                     "type": "string"
                   },
                   "UniqueName": {
@@ -709,6 +709,9 @@
                     "type": "string"
                   }
                 },
+                "required": [
+                  "NetworkAccessProfile"
+                ],
                 "type": "object"
               }
             }
@@ -802,7 +805,7 @@
               "schema": {
                 "properties": {
                   "NetworkAccessProfile": {
-                    "description": "The SID or unique name of the Network Access Profile that will control which cellular network operators the Fleet's SIMs can connect to",
+                    "description": "The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to",
                     "type": "string"
                   },
                   "UniqueName": {

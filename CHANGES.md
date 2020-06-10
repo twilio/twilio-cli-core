@@ -1,6 +1,32 @@
 twilio-cli-core changelog
 =====================
 
+[2020-06-10] Version 5.5.0
+--------------------------
+**Library - Fix**
+- [PR #91](https://github.com/twilio/twilio-cli-core/pull/91): increase Node minimum version requirement to 10.12.0. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Added `pstnconnectivity` to `usage_record` API
+
+**Contacts**
+- Added contacts channel create, update, read, delete API definition
+- Added contacts Get API definition
+- Added contacts Update API definition
+- Added contacts Delete API definition
+- Added contacts Search API definition
+- Added contacts location Create, update, read and delete API definitions
+
+**Notify**
+- delivery_callback_url and delivery_callback_enabled added
+
+**Preview**
+- `BrandsInformation` endpoint now returns a single `BrandsInformation`
+
+**Supersim**
+- Require a Network Access Profile when creating a Fleet **(breaking change)**
+
+
 [2020-06-04] Version 5.4.0
 --------------------------
 **Autopilot**
