@@ -85,7 +85,7 @@ describe('base-commands', () => {
     setUpTest(['-l', 'debug'], { setUpUserConfig: () => 0 })
       .exit(1)
       .it('should fail for a non-existent active profile', ctx => {
-        expect(ctx.stderr).to.contain('Could not find profile');
+        expect(ctx.stderr).to.contain('Could not find profile.');
         expect(ctx.stderr).to.contain('To create the profile, run:');
         expect(ctx.stderr).to.contain('twilio profiles:create');
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
@@ -94,7 +94,7 @@ describe('base-commands', () => {
     setUpTest(['-p', 'alt', '-l', 'debug'])
       .exit(1)
       .it('should fail for a non-existent profile', ctx => {
-        expect(ctx.stderr).to.contain('Could not find profile');
+        expect(ctx.stderr).to.contain('Could not find profile "alt".');
         expect(ctx.stderr).to.contain('To create the profile, run:');
         expect(ctx.stderr).to.contain('twilio profiles:create --profile "alt"');
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
