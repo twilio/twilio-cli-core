@@ -31,7 +31,8 @@ class TwilioClientCommand extends BaseCommand {
     };
 
     if (!this.currentProfile) {
-      this.logger.error(`Could not find profile "${this.flags.profile}".`);
+      const profileName = this.flags.profile ? ` "${this.flags.profile}"` : '';
+      this.logger.error(`Could not find profile${profileName}.`);
       reportUnconfigured('create', '\n\n' + HELP_ENVIRONMENT_VARIABLES);
     }
 
