@@ -83,6 +83,7 @@ class OpenApiClient {
 
       if (doesObjectHaveProperty(opts.pathParams, pathNode)) {
         value = opts.pathParams[pathNode];
+        value = encodeURIComponent(value);
       }
 
       logger.debug(`pathNode=${pathNode}, value=${value}`);
