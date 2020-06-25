@@ -232,6 +232,22 @@ describe('services', () => {
           expect(httpClient.lastRequest.data).to.eql(qs.stringify({ EmergencyEnabled: 'true' }));
         });
 
+      test
+        .nock('https://api.twilio.com', api => {
+          api.get(`/2010-04-01/Accounts/${accountSid}/Calls/hey%23there%3F.json`).reply(200, {
+            status: 'in-progress'
+          });
+        })
+        .it('encodes non-safe path param characters', async () => {
+          const response = await client.fetch({
+            domain: 'api',
+            path: '/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json',
+            pathParams: { Sid: 'hey#there?' }
+          });
+
+          expect(response).to.eql({ status: 'in-progress' });
+        });
+
       /* eslint-disable max-nested-callbacks */
       describe('getLimit', () => {
         test.it('gets the limit', () => {

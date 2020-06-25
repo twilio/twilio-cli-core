@@ -325,7 +325,7 @@
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
-    "title": "Twilio REST API",
+    "title": "Twilio - Supersim",
     "version": "81ff5a4"
   },
   "openapi": "3.0.1",
@@ -1666,6 +1666,7 @@
                   "Status": {
                     "description": "The new status of the resource. Can be: `active` or `inactive`. See the [Super SIM Status Values](https://www.twilio.com/docs/iot/supersim/api/sim-resource#status-values) for more info.",
                     "enum": [
+                      "ready",
                       "active",
                       "inactive"
                     ],
