@@ -52,6 +52,9 @@
             ],
             "type": "string"
           },
+          "timers": {
+            "type": "object"
+          },
           "url": {
             "format": "uri",
             "type": "string"
@@ -270,7 +273,7 @@
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
-    "title": "Twilio REST API",
+    "title": "Twilio - Conversations",
     "version": "81ff5a4"
   },
   "openapi": "3.0.1",
@@ -389,6 +392,14 @@
                       "active",
                       "closed"
                     ],
+                    "type": "string"
+                  },
+                  "Timers.Closed": {
+                    "description": "ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.",
+                    "type": "string"
+                  },
+                  "Timers.Inactive": {
+                    "description": "ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.",
                     "type": "string"
                   }
                 },
@@ -1777,6 +1788,14 @@
                       "active",
                       "closed"
                     ],
+                    "type": "string"
+                  },
+                  "Timers.Closed": {
+                    "description": "ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.",
+                    "type": "string"
+                  },
+                  "Timers.Inactive": {
+                    "description": "ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.",
                     "type": "string"
                   }
                 },

@@ -1,6 +1,39 @@
 twilio-cli-core changelog
 =====================
 
+[2020-06-25] Version 5.6.0
+--------------------------
+**Library - Fix**
+- [PR #94](https://github.com/twilio/twilio-cli-core/pull/94): encode URL path params. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #92](https://github.com/twilio/twilio-cli-core/pull/92): don't display "undefined" when no profiles exists. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Added optional `JitterBufferSize` parameter for creating conference participant
+- Added optional `label` property for conference participants
+- Added optional parameter `caller_id` for creating conference participant endpoint.
+
+**Autopilot**
+- Remove Export resource from Autopilot Assistant
+
+**Conversations**
+- Expose Conversation timers
+
+**Monitor**
+- Update start/end date filter params to support date-or-time format **(breaking change)**
+
+**Numbers**
+- Add `provisionally-approved` as a Supporting Document status
+
+**Preview**
+- Removed `Authy` resources. **(breaking change)**
+
+**Supersim**
+- Add ready state to the allowed transitions in the sim update call behind the feature flag supersim.ready-state.v1
+
+**Verify**
+- Webhook resources added to Verify services and put behind the `api.verify.push` beta feature
+
+
 [2020-06-10] Version 5.5.0
 --------------------------
 **Library - Fix**

@@ -115,45 +115,6 @@
         },
         "type": "object"
       },
-      "autopilot.v1.assistant.export": {
-        "properties": {
-          "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "assistant_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^UA[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "date_created": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "error_code": {
-            "nullable": true,
-            "type": "integer"
-          },
-          "schema": {
-            "type": "object"
-          },
-          "status": {
-            "enum": [
-              "completed",
-              "failed"
-            ],
-            "type": "string"
-          },
-          "url": {
-            "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "autopilot.v1.assistant.field_type": {
         "properties": {
           "account_sid": {
@@ -728,7 +689,7 @@
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
-    "title": "Twilio REST API",
+    "title": "Twilio - Autopilot",
     "version": "81ff5a4"
   },
   "openapi": "3.0.1",
@@ -1087,56 +1048,6 @@
       "x-default-output-properties": [
         "sid",
         "data"
-      ],
-      "x-path-type": "instance"
-    },
-    "/v1/Assistants/{AssistantSid}/Export": {
-      "description": "TODO: Resource-level docs",
-      "get": {
-        "description": "Returns the Assistant exported as a JSON Object.",
-        "parameters": [
-          {
-            "description": "The SID of the [Assistant](https://www.twilio.com/docs/autopilot/api/assistant) to export.",
-            "in": "path",
-            "name": "AssistantSid",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/autopilot.v1.assistant.export"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "servers": [
-        {
-          "url": "https://autopilot.twilio.com"
-        }
-      ],
-      "x-default-output-properties": [
-        "account_sid",
-        "assistant_sid",
-        "date_created",
-        "status",
-        "schema"
       ],
       "x-path-type": "instance"
     },
