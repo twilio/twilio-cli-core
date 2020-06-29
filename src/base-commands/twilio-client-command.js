@@ -5,10 +5,12 @@ const { TwilioApiClient, TwilioApiFlags } = require('../services/twilio-api');
 const { TwilioCliError } = require('../services/error');
 const { translateValues } = require('../services/javascript-utilities');
 const { camelCase, kebabCase } = require('../services/naming-conventions');
-const { HELP_ENVIRONMENT_VARIABLES } = require('../services/messaging/help-messages');
+const { ACCESS_DENIED, HELP_ENVIRONMENT_VARIABLES } = require('../services/messaging/help-messages');
 
 // CLI flags are kebab-cased, whereas API flags are PascalCased.
 const CliFlags = translateValues(TwilioApiFlags, kebabCase);
+
+const ACCESS_DENIED_CODE = 20003;
 
 class TwilioClientCommand extends BaseCommand {
   constructor(argv, config) {
@@ -49,6 +51,18 @@ class TwilioClientCommand extends BaseCommand {
     }
 
     this.httpClient = new CliRequestClient(this.id, this.logger);
+  }
+
+  async catch(error) {
+    // Append to the error message when catching API access denied errors with
+    // profile-auth (i.e., standard API key auth).
+    if (error instanceof TwilioCliError && error.exitCode === ACCESS_DENIED_CODE) {
+      if (!this.currentProfile.id.startsWith('${TWILIO')) { // Auth *not* using env vars.
+        error.message += '\n\n' + ACCESS_DENIED;
+      }
+    }
+
+    return super.catch(error);
   }
 
   parseProperties() {
