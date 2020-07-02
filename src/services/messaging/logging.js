@@ -9,10 +9,10 @@ const LoggingLevel = {
 };
 
 const LoggingLevelStyle = {
-  [LoggingLevel.debug]: msg => chalk.gray('[DEBUG] ' + msg),
-  [LoggingLevel.info]: msg => chalk.white(msg),
-  [LoggingLevel.warn]: msg => ' ' + chalk.yellowBright('»') + ' ' + chalk.white(msg),
-  [LoggingLevel.error]: msg => ' ' + chalk.red('»') + ' ' + chalk.whiteBright(msg)
+  [LoggingLevel.debug]: msg => chalk.dim('[DEBUG] ' + msg),
+  [LoggingLevel.info]: msg => msg,
+  [LoggingLevel.warn]: msg => chalk.italic(' » ' + msg),
+  [LoggingLevel.error]: msg => chalk.bold(' » ' + msg)
 };
 
 class Logger {
