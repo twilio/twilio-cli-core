@@ -60,6 +60,10 @@
           "url": {
             "format": "uri",
             "type": "string"
+          },
+          "valid_until": {
+            "format": "date-time",
+            "type": "string"
           }
         },
         "type": "object"
@@ -1034,6 +1038,36 @@
       "x-path-type": "instance"
     },
     "/v2/RegulatoryCompliance/Bundles/{Sid}": {
+      "delete": {
+        "description": "Delete a specific Bundle.",
+        "parameters": [
+          {
+            "description": "The unique string that we created to identify the Bundle resource.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BU[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "GA"
+        ]
+      },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch a specific Bundle instance.",

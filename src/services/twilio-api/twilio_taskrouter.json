@@ -2206,7 +2206,7 @@
             }
           },
           {
-            "description": "The period of events to read in minutes. Returns only Events that occurred since this many minutes in the past. The default is `15` minutes.",
+            "description": "The period of events to read in minutes. Returns only Events that occurred since this many minutes in the past. The default is `15` minutes. Task Attributes for Events occuring more 43,200 minutes ago will be redacted.",
             "in": "query",
             "name": "Minutes",
             "schema": {
@@ -2225,7 +2225,7 @@
             }
           },
           {
-            "description": "Only include Events from on or after this date and time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
+            "description": "Only include Events from on or after this date and time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Task Attributes for Events older than 30 days will be redacted.",
             "in": "query",
             "name": "StartDate",
             "schema": {

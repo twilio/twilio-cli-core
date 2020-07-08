@@ -8,9 +8,7 @@
           },
           "form_type": {
             "enum": [
-              "form-app-push",
-              "form-sms",
-              "form-totp"
+              "form-push"
             ],
             "type": "string"
           },
@@ -64,6 +62,9 @@
           "psd2_enabled": {
             "type": "boolean"
           },
+          "push": {
+            "type": "object"
+          },
           "sid": {
             "maxLength": 34,
             "minLength": 34,
@@ -78,6 +79,14 @@
           },
           "url": {
             "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "verify.v2.service.access_token": {
+        "properties": {
+          "token": {
             "type": "string"
           }
         },
@@ -124,84 +133,7 @@
         },
         "type": "object"
       },
-      "verify.v2.service.entity.access_token": {
-        "properties": {
-          "token": {
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "verify.v2.service.entity.factor": {
-        "properties": {
-          "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "config": {
-            "type": "object"
-          },
-          "date_created": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "date_updated": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "entity_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^YE[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "factor_type": {
-            "enum": [
-              "app-push",
-              "sms",
-              "totp",
-              "push"
-            ],
-            "type": "string"
-          },
-          "friendly_name": {
-            "type": "string"
-          },
-          "identity": {
-            "type": "string"
-          },
-          "links": {
-            "type": "object"
-          },
-          "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^VA[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^YF[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "status": {
-            "enum": [
-              "unverified",
-              "verified"
-            ],
-            "type": "string"
-          },
-          "url": {
-            "format": "uri",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "verify.v2.service.entity.factor.challenge": {
+      "verify.v2.service.entity.challenge": {
         "properties": {
           "account_sid": {
             "maxLength": 34,
@@ -242,9 +174,6 @@
           },
           "factor_type": {
             "enum": [
-              "app-push",
-              "sms",
-              "totp",
               "push"
             ],
             "type": "string"
@@ -281,6 +210,69 @@
               "expired",
               "approved",
               "denied"
+            ],
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "verify.v2.service.entity.factor": {
+        "properties": {
+          "account_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          },
+          "date_created": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "date_updated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "entity_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^YE[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "factor_type": {
+            "enum": [
+              "push"
+            ],
+            "type": "string"
+          },
+          "friendly_name": {
+            "type": "string"
+          },
+          "identity": {
+            "type": "string"
+          },
+          "service_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^VA[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^YF[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "unverified",
+              "verified"
             ],
             "type": "string"
           },
@@ -634,15 +626,13 @@
         "description": "Fetch the forms for a specific Form Type.",
         "parameters": [
           {
-            "description": "The Type of this Form. One of `form-app-push`, `form-sms` or `form-totp`.",
+            "description": "The Type of this Form. Currently only `form-push` is supported.",
             "in": "path",
             "name": "FormType",
             "required": true,
             "schema": {
               "enum": [
-                "form-app-push",
-                "form-sms",
-                "form-totp"
+                "form-push"
               ],
               "type": "string"
             }
@@ -789,6 +779,10 @@
                     "description": "Whether to pass PSD2 transaction parameters when starting a verification.",
                     "type": "boolean"
                   },
+                  "Push": {
+                    "description": "The optional service level push factors configuration. If present it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"include_date\": true}",
+                    "type": "object"
+                  },
                   "SkipSmsToLandlines": {
                     "description": "Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.",
                     "type": "boolean"
@@ -836,6 +830,81 @@
         "sid",
         "friendly_name",
         "date_created"
+      ],
+      "x-path-type": "list"
+    },
+    "/v2/Services/{ServiceSid}/AccessTokens": {
+      "description": "TODO: Resource-level docs",
+      "post": {
+        "description": "Create a new enrollment Access Token for the Entity",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^VA[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "FactorType": {
+                    "description": "The Type of this Factor. Eg. `push`",
+                    "enum": [
+                      "push"
+                    ],
+                    "type": "string"
+                  },
+                  "Identity": {
+                    "description": "The unique external identifier for the Entity of the Service. This identifier should be immutable, not PII, and generated by your external system, such as your user's UUID, GUID, or SID.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Identity",
+                  "FactorType"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/verify.v2.service.access_token"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://verify.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "token"
       ],
       "x-path-type": "list"
     },
@@ -948,7 +1017,7 @@
               "schema": {
                 "properties": {
                   "Identity": {
-                    "description": "Customer unique identity for the Entity of the Service",
+                    "description": "The unique external identifier for the Entity of the Service",
                     "type": "string"
                   }
                 },
@@ -1010,7 +1079,7 @@
             }
           },
           {
-            "description": "Customer unique identity for the Entity of the Service",
+            "description": "The unique external identifier for the Entity of the Service",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1050,7 +1119,7 @@
             }
           },
           {
-            "description": "Customer unique identity for the Entity of the Service",
+            "description": "The unique external identifier for the Entity of the Service",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1092,13 +1161,13 @@
       ],
       "x-path-type": "instance"
     },
-    "/v2/Services/{ServiceSid}/Entities/{Identity}/AccessTokens": {
+    "/v2/Services/{ServiceSid}/Entities/{Identity}/Challenges": {
       "description": "TODO: Resource-level docs",
-      "post": {
-        "description": "Create a new enrollment Access Token for the Entity",
+      "get": {
+        "description": "Retrieve a list of all Challenges for a Factor.",
         "parameters": [
           {
-            "description": "",
+            "description": "The unique SID identifier of the Service.",
             "in": "path",
             "name": "ServiceSid",
             "required": true,
@@ -1110,7 +1179,126 @@
             }
           },
           {
-            "description": "Customer unique identity for the Entity owner of the Factor",
+            "description": "Customer unique identity for the Entity owner of the Challenge",
+            "in": "path",
+            "name": "Identity",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique SID identifier of the Factor.",
+            "in": "query",
+            "name": "FactorSid",
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^YF[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Status of the Challenges to fetch. One of `pending`, `expired`, `approved` or `denied`.",
+            "in": "query",
+            "name": "Status",
+            "schema": {
+              "enum": [
+                "pending",
+                "expired",
+                "approved",
+                "denied"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "challenges": {
+                      "items": {
+                        "$ref": "#/components/schemas/verify.v2.service.entity.challenge"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "post": {
+        "description": "Create a new Challenge for the Factor",
+        "parameters": [
+          {
+            "description": "The unique SID identifier of the Service.",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^VA[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique external identifier for the Entity of the Service. This identifier should be immutable, not PII, and generated by your external system, such as your user's UUID, GUID, or SID.",
             "in": "path",
             "name": "Identity",
             "required": true,
@@ -1124,16 +1312,29 @@
             "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {
-                  "FactorType": {
-                    "description": "The Type of this Factor. eg. push",
-                    "enum": [
-                      "push"
-                    ],
+                  "Details": {
+                    "description": "Details provided to give context about the Challenge. Shown to the end user.",
+                    "type": "string"
+                  },
+                  "ExpirationDate": {
+                    "description": "The future date in which this Challenge will expire, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "FactorSid": {
+                    "description": "The unique SID identifier of the Factor.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^YF[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "HiddenDetails": {
+                    "description": "Details provided to give context about the Challenge. Not shown to the end user.",
                     "type": "string"
                   }
                 },
                 "required": [
-                  "FactorType"
+                  "FactorSid"
                 ],
                 "type": "object"
               }
@@ -1145,7 +1346,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/verify.v2.service.entity.access_token"
+                  "$ref": "#/components/schemas/verify.v2.service.entity.challenge"
                 }
               }
             },
@@ -1167,9 +1368,158 @@
         }
       ],
       "x-default-output-properties": [
-        "token"
+        "factor_type",
+        "status",
+        "responded_reason",
+        "date_created"
       ],
       "x-path-type": "list"
+    },
+    "/v2/Services/{ServiceSid}/Entities/{Identity}/Challenges/{Sid}": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "Fetch a specific Challenge.",
+        "parameters": [
+          {
+            "description": "The unique SID identifier of the Service.",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^VA[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique external identifier for the Entity of the Service. This identifier should be immutable, not PII, and generated by your external system, such as your user's UUID, GUID, or SID.",
+            "in": "path",
+            "name": "Identity",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "A 34 character string that uniquely identifies this Challenge.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^YC[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/verify.v2.service.entity.challenge"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "post": {
+        "description": "Verify a specific Challenge.",
+        "parameters": [
+          {
+            "description": "The unique SID identifier of the Service.",
+            "in": "path",
+            "name": "ServiceSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^VA[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Customer unique identity for the Entity owner of the Challenge",
+            "in": "path",
+            "name": "Identity",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "A 34 character string that uniquely identifies this Challenge.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^YC[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "AuthPayload": {
+                    "description": "The optional payload needed to verify the Challenge. E.g., a TOTP would use the numeric code.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/verify.v2.service.entity.challenge"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://verify.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "factor_type",
+        "status",
+        "responded_reason",
+        "date_created"
+      ],
+      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/Entities/{Identity}/Factors": {
       "description": "TODO: Resource-level docs",
@@ -1298,7 +1648,7 @@
               "schema": {
                 "properties": {
                   "Binding": {
-                    "description": "A unique binding for this Factor that identifies it. E.g. a phone number for `sms` factors. It must be a json string with the required properties for the given factor type. Required when creating a new Factor. This value is never returned because it can contain customer secrets.",
+                    "description": "A unique binding for this Factor that identifies it. E.g. the algorithm and public key for `push` factors. It must be a json string with the required properties for the given factor type. Required when creating a new Factor. This value is never returned because it can contain customer secrets.",
                     "type": "string"
                   },
                   "Config": {
@@ -1306,11 +1656,8 @@
                     "type": "string"
                   },
                   "FactorType": {
-                    "description": "The Type of this Factor. One of `app-push`, `sms`, `totp`, etc.",
+                    "description": "The Type of this Factor. Currently only `push` is supported",
                     "enum": [
-                      "app-push",
-                      "sms",
-                      "totp",
                       "push"
                     ],
                     "type": "string"
@@ -1364,447 +1711,6 @@
         "factor_type"
       ],
       "x-path-type": "list"
-    },
-    "/v2/Services/{ServiceSid}/Entities/{Identity}/Factors/{FactorSid}/Challenges": {
-      "description": "TODO: Resource-level docs",
-      "get": {
-        "description": "Retrieve a list of all Challenges for a Factor.",
-        "parameters": [
-          {
-            "description": "The unique SID identifier of the Service.",
-            "in": "path",
-            "name": "ServiceSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^VA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Customer unique identity for the Entity owner of the Challenge",
-            "in": "path",
-            "name": "Identity",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The unique SID identifier of the Factor.",
-            "in": "path",
-            "name": "FactorSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^YF[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Status of the Challenges to fetch. One of `pending`, `expired`, `approved` or `denied`.",
-            "in": "query",
-            "name": "Status",
-            "schema": {
-              "enum": [
-                "pending",
-                "expired",
-                "approved",
-                "denied"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
-            "in": "query",
-            "name": "PageSize",
-            "schema": {
-              "maximum": 1000,
-              "minimum": 1,
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "challenges": {
-                      "items": {
-                        "$ref": "#/components/schemas/verify.v2.service.entity.factor.challenge"
-                      },
-                      "type": "array"
-                    },
-                    "meta": {
-                      "properties": {
-                        "first_page_url": {
-                          "format": "uri",
-                          "type": "string"
-                        },
-                        "key": {
-                          "type": "string"
-                        },
-                        "next_page_url": {
-                          "format": "uri",
-                          "type": "string"
-                        },
-                        "page": {
-                          "type": "integer"
-                        },
-                        "page_size": {
-                          "type": "integer"
-                        },
-                        "previous_page_url": {
-                          "format": "uri",
-                          "type": "string"
-                        },
-                        "url": {
-                          "format": "uri",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "post": {
-        "description": "Create a new Challenge for the Factor",
-        "parameters": [
-          {
-            "description": "The unique SID identifier of the Service.",
-            "in": "path",
-            "name": "ServiceSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^VA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Customer unique identity for the Entity owner of the Challenge",
-            "in": "path",
-            "name": "Identity",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The unique SID identifier of the Factor.",
-            "in": "path",
-            "name": "FactorSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^YF[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "properties": {
-                  "Details": {
-                    "description": "Details provided to give context about the Challenge. Shown to the end user.",
-                    "type": "string"
-                  },
-                  "ExpirationDate": {
-                    "description": "The future date in which this Challenge will expire, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.",
-                    "format": "date-time",
-                    "type": "string"
-                  },
-                  "HiddenDetails": {
-                    "description": "Details provided to give context about the Challenge. Not shown to the end user.",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/verify.v2.service.entity.factor.challenge"
-                }
-              }
-            },
-            "description": "Created"
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "servers": [
-        {
-          "url": "https://verify.twilio.com"
-        }
-      ],
-      "x-default-output-properties": [
-        "factor_type",
-        "status",
-        "responded_reason",
-        "date_created"
-      ],
-      "x-path-type": "list"
-    },
-    "/v2/Services/{ServiceSid}/Entities/{Identity}/Factors/{FactorSid}/Challenges/{Sid}": {
-      "delete": {
-        "description": "Delete a specific Challenge.",
-        "parameters": [
-          {
-            "description": "The unique SID identifier of the Service.",
-            "in": "path",
-            "name": "ServiceSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^VA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Customer unique identity for the Entity owner of the Challenge",
-            "in": "path",
-            "name": "Identity",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The unique SID identifier of the Factor.",
-            "in": "path",
-            "name": "FactorSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^YF[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "A 34 character string that uniquely identifies this Challenge.",
-            "in": "path",
-            "name": "Sid",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully."
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "description": "TODO: Resource-level docs",
-      "get": {
-        "description": "Fetch a specific Challenge.",
-        "parameters": [
-          {
-            "description": "The unique SID identifier of the Service.",
-            "in": "path",
-            "name": "ServiceSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^VA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Customer unique identity for the Entity owner of the Challenge",
-            "in": "path",
-            "name": "Identity",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The unique SID identifier of the Factor.",
-            "in": "path",
-            "name": "FactorSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^YF[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "A 34 character string that uniquely identifies this Challenge. It also allows the keyword `latest` to fetch the most recent active Challenge created for a Factor.",
-            "in": "path",
-            "name": "Sid",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/verify.v2.service.entity.factor.challenge"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "post": {
-        "description": "Verify a specific Challenge.",
-        "parameters": [
-          {
-            "description": "The unique SID identifier of the Service.",
-            "in": "path",
-            "name": "ServiceSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^VA[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Customer unique identity for the Entity owner of the Challenge",
-            "in": "path",
-            "name": "Identity",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The unique SID identifier of the Factor.",
-            "in": "path",
-            "name": "FactorSid",
-            "required": true,
-            "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^YF[0-9a-fA-F]{32}$",
-              "type": "string"
-            }
-          },
-          {
-            "description": "A 34 character string that uniquely identifies this Challenge. It also allows the keyword `latest` to fetch the most recent active Challenge created for a Factor.",
-            "in": "path",
-            "name": "Sid",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "properties": {
-                  "AuthPayload": {
-                    "description": "The optional payload needed to verify the Challenge. E.g., a TOTP would use the numeric code.",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/verify.v2.service.entity.factor.challenge"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "tags": [
-          "Preview"
-        ]
-      },
-      "servers": [
-        {
-          "url": "https://verify.twilio.com"
-        }
-      ],
-      "x-default-output-properties": [
-        "factor_type",
-        "status",
-        "responded_reason",
-        "date_created"
-      ],
-      "x-path-type": "instance"
     },
     "/v2/Services/{ServiceSid}/Entities/{Identity}/Factors/{Sid}": {
       "delete": {
@@ -3907,6 +3813,10 @@
                   "Psd2Enabled": {
                     "description": "Whether to pass PSD2 transaction parameters when starting a verification.",
                     "type": "boolean"
+                  },
+                  "Push": {
+                    "description": "The optional service level push factors configuration. If present it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"include_date\": true}",
+                    "type": "object"
                   },
                   "SkipSmsToLandlines": {
                     "description": "Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.",

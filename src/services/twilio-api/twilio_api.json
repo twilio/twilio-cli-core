@@ -1790,6 +1790,9 @@
             "format": "uri",
             "type": "string"
           },
+          "status": {
+            "type": "string"
+          },
           "status_callback": {
             "format": "uri",
             "type": "string"
@@ -1865,6 +1868,13 @@
               "PATCH",
               "PUT",
               "DELETE"
+            ],
+            "type": "string"
+          },
+          "voice_receive_mode": {
+            "enum": [
+              "voice",
+              "fax"
             ],
             "type": "string"
           },

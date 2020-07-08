@@ -211,12 +211,6 @@
           "url": {
             "format": "uri",
             "type": "string"
-          },
-          "wfm_integrations": {
-            "items": {
-              "type": "object"
-            },
-            "type": "array"
           }
         },
         "type": "object"

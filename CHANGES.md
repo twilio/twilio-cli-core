@@ -1,6 +1,40 @@
 twilio-cli-core changelog
 =====================
 
+[2020-07-08] Version 5.7.0
+--------------------------
+**Library - Fix**
+- [PR #96](https://github.com/twilio/twilio-cli-core/pull/96): don't get so fancy with the font color scheme. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #97](https://github.com/twilio/twilio-cli-core/pull/97): upgrade dependencies and drop tslib pinning. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Feature**
+- [PR #95](https://github.com/twilio/twilio-cli-core/pull/95): improve 'access denied' error messaging. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #93](https://github.com/twilio/twilio-cli-core/pull/93): update the env var message to use the proper OS syntax. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Conversations**
+- Allow Address updates for Participants
+- Message delivery receipts
+
+**Events**
+- Add account_sid to subscription and subscribed_events resources
+
+**Flex**
+- Changed `wfm_integrations` Flex Configuration key to private **(breaking change)**
+
+**Messaging**
+- Add error states to WhatsApp Sender status with failed reason **(breaking change)**
+- Delete WhatsApp Template API
+- Update WhatsApp Template API
+- Add WhatsApp Template Get Api (fetch and read)
+
+**Numbers**
+- Add `valid_until` in the Bundles resource
+- Add API for Bundle deletion
+
+**Verify**
+- Removed support for `sms`, `totp` and `app-push` factor types in Verify push **(breaking change)**
+
+
 [2020-06-25] Version 5.6.0
 --------------------------
 **Library - Fix**

@@ -93,8 +93,14 @@
             "format": "date-time",
             "type": "string"
           },
+          "delivery": {
+            "type": "object"
+          },
           "index": {
             "type": "integer"
+          },
+          "links": {
+            "type": "object"
           },
           "media": {
             "items": {
@@ -112,6 +118,66 @@
             "maxLength": 34,
             "minLength": 34,
             "pattern": "^IM[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "conversations.v1.conversation.conversation_message.conversation_message_receipt": {
+        "properties": {
+          "channel_message_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^[a-zA-Z]{2}[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "conversation_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^CH[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "date_created": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "date_updated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "error_code": {
+            "type": "integer"
+          },
+          "message_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^IM[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "participant_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^MB[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "pattern": "^DY[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "read",
+              "failed",
+              "delivered",
+              "undelivered",
+              "sent"
+            ],
             "type": "string"
           },
           "url": {
@@ -718,6 +784,194 @@
       ],
       "x-path-type": "list"
     },
+    "/v1/Conversations/{ConversationSid}/Messages/{MessageSid}/Receipts": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "The unique id of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.",
+            "in": "path",
+            "name": "ConversationSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^CH[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The sid of the message within a [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) the delivery receipt belongs to",
+            "in": "path",
+            "name": "MessageSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^IM[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "delivery_receipts": {
+                      "items": {
+                        "$ref": "#/components/schemas/conversations.v1.conversation.conversation_message.conversation_message_receipt"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://conversations.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "message_sid",
+        "status",
+        "date_created"
+      ],
+      "x-path-type": "list"
+    },
+    "/v1/Conversations/{ConversationSid}/Messages/{MessageSid}/Receipts/{Sid}": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "The unique id of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.",
+            "in": "path",
+            "name": "ConversationSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^CH[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The sid of the message within a [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) the delivery receipt belongs to",
+            "in": "path",
+            "name": "MessageSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^IM[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "A 34 character string that uniquely identifies this resource.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^DY[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/conversations.v1.conversation.conversation_message.conversation_message_receipt"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://conversations.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "message_sid",
+        "status",
+        "date_created"
+      ],
+      "x-path-type": "instance"
+    },
     "/v1/Conversations/{ConversationSid}/Messages/{Sid}": {
       "delete": {
         "description": "",
@@ -1227,6 +1481,14 @@
                   "DateUpdated": {
                     "description": "The date that this resource was last updated.",
                     "format": "date-time",
+                    "type": "string"
+                  },
+                  "MessagingBinding.ProjectedAddress": {
+                    "description": "The address of the Twilio phone number that is used in Group MMS. 'null' value will remove it.",
+                    "type": "string"
+                  },
+                  "MessagingBinding.ProxyAddress": {
+                    "description": "The address of the Twilio phone number that the participant is in contact with. 'null' value will remove it.",
                     "type": "string"
                   },
                   "RoleSid": {
