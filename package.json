@@ -1,7 +1,7 @@
 {
   "name": "@twilio/cli-core",
   "description": "Core functionality for the twilio-cli",
-  "version": "5.6.0",
+  "version": "5.7.0",
   "author": "Twilio @twilio",
   "bugs": "https://github.com/twilio/twilio-cli/issues",
   "dependencies": {
