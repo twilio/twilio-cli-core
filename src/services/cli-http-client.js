@@ -8,6 +8,8 @@ const { NETWORK_ERROR } = require('../services/messaging/help-messages');
 
 const NETWORK_ERROR_CODES = new Set(['ETIMEDOUT', 'ESOCKETTIMEDOUT', 'ECONNABORTED']);
 
+const STANDARD_HEADERS = ['user-agent', 'accept-charset', 'connection', 'authorization', 'accept', 'content-type'];
+
 class CliRequestClient {
   constructor(commandName, logger, http) {
     this.commandName = commandName;
@@ -125,15 +127,12 @@ class CliRequestClient {
       this.logger.debug(options.params);
     }
 
-    // Deep copy headers since we'll be modifying
-    let customHeaders = JSON.parse(JSON.stringify(options.headers));
-    const standardHeaders = ['User-Agent', 'Accept-Charset', 'Connection', 'Authorization', 'Accept', 'Content-Type'];
-    standardHeaders.forEach(header => {
-      delete customHeaders[header];
+    const customHeaders = Object.keys(options.headers).filter(header => {
+      return !STANDARD_HEADERS.includes(header.toLowerCase());
     });
     if (customHeaders) {
       this.logger.debug('Custom HTTP Headers:');
-      this.logger.debug(customHeaders);
+      customHeaders.forEach(header => this.logger.debug(header + ': ' + options.headers[header]));
     }
 
     this.logger.debug('User-Agent: ' + options.headers['User-Agent']);
