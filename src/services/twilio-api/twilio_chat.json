@@ -5392,6 +5392,18 @@
               "pattern": "^IS[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "The X-Twilio-Webhook-Enabled HTTP request header",
+            "in": "header",
+            "name": "X-Twilio-Webhook-Enabled",
+            "schema": {
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -5915,6 +5927,18 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The X-Twilio-Webhook-Enabled HTTP request header",
+            "in": "header",
+            "name": "X-Twilio-Webhook-Enabled",
+            "schema": {
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -6032,6 +6056,18 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The X-Twilio-Webhook-Enabled HTTP request header",
+            "in": "header",
+            "name": "X-Twilio-Webhook-Enabled",
+            "schema": {
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -6134,6 +6170,18 @@
             "name": "Sid",
             "required": true,
             "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The X-Twilio-Webhook-Enabled HTTP request header",
+            "in": "header",
+            "name": "X-Twilio-Webhook-Enabled",
+            "schema": {
+              "enum": [
+                "true",
+                "false"
+              ],
               "type": "string"
             }
           }
@@ -6344,6 +6392,18 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The X-Twilio-Webhook-Enabled HTTP request header",
+            "in": "header",
+            "name": "X-Twilio-Webhook-Enabled",
+            "schema": {
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -6460,6 +6520,18 @@
               "pattern": "^IM[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "The X-Twilio-Webhook-Enabled HTTP request header",
+            "in": "header",
+            "name": "X-Twilio-Webhook-Enabled",
+            "schema": {
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -6568,6 +6640,18 @@
               "maxLength": 34,
               "minLength": 34,
               "pattern": "^IM[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The X-Twilio-Webhook-Enabled HTTP request header",
+            "in": "header",
+            "name": "X-Twilio-Webhook-Enabled",
+            "schema": {
+              "enum": [
+                "true",
+                "false"
+              ],
               "type": "string"
             }
           }
@@ -7108,6 +7192,18 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The X-Twilio-Webhook-Enabled HTTP request header",
+            "in": "header",
+            "name": "X-Twilio-Webhook-Enabled",
+            "schema": {
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -7192,6 +7288,18 @@
             "name": "Sid",
             "required": true,
             "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The X-Twilio-Webhook-Enabled HTTP request header",
+            "in": "header",
+            "name": "X-Twilio-Webhook-Enabled",
+            "schema": {
+              "enum": [
+                "true",
+                "false"
+              ],
               "type": "string"
             }
           }
@@ -7713,6 +7821,18 @@
               "pattern": "^IS[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "The X-Twilio-Webhook-Enabled HTTP request header",
+            "in": "header",
+            "name": "X-Twilio-Webhook-Enabled",
+            "schema": {
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -7890,6 +8010,18 @@
             "name": "Sid",
             "required": true,
             "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The X-Twilio-Webhook-Enabled HTTP request header",
+            "in": "header",
+            "name": "X-Twilio-Webhook-Enabled",
+            "schema": {
+              "enum": [
+                "true",
+                "false"
+              ],
               "type": "string"
             }
           }

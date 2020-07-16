@@ -6187,6 +6187,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -6270,6 +6278,14 @@
             "in": "path",
             "name": "Sid",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
             "schema": {
               "type": "string"
             }
@@ -6702,6 +6718,14 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -6805,6 +6829,14 @@
             "required": true,
             "schema": {
               "type": "integer"
+            }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -7635,6 +7667,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -7736,6 +7776,14 @@
             "in": "path",
             "name": "Key",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
             "schema": {
               "type": "string"
             }
@@ -8329,6 +8377,16 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve the newest available BrandInformation",
+        "parameters": [
+          {
+            "description": "The If-None-Match HTTP request header",
+            "in": "header",
+            "name": "If-None-Match",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -9121,6 +9179,16 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch a specific Call Placement Service (CPS) given a phone number via `X-XCNAM-Sensitive-Phone-Number` header.",
+        "parameters": [
+          {
+            "description": "The X-Xcnam-Sensitive-Phone-Number HTTP request header",
+            "in": "header",
+            "name": "X-Xcnam-Sensitive-Phone-Number",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -9158,6 +9226,24 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a current call given the originating and terminating number via `X-XCNAM-Sensitive-Phone-Number-From` and `X-XCNAM-Sensitive-Phone-Number-To` headers.",
+        "parameters": [
+          {
+            "description": "The X-Xcnam-Sensitive-Phone-Number-From HTTP request header",
+            "in": "header",
+            "name": "X-Xcnam-Sensitive-Phone-Number-From",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The X-Xcnam-Sensitive-Phone-Number-To HTTP request header",
+            "in": "header",
+            "name": "X-Xcnam-Sensitive-Phone-Number-To",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {

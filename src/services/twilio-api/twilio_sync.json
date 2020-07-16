@@ -1142,6 +1142,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1219,6 +1227,14 @@
             "in": "path",
             "name": "Sid",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
             "schema": {
               "type": "string"
             }
@@ -1669,6 +1685,14 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1766,6 +1790,14 @@
             "required": true,
             "schema": {
               "type": "integer"
+            }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -2680,6 +2712,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2775,6 +2815,14 @@
             "in": "path",
             "name": "Key",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
             "schema": {
               "type": "string"
             }

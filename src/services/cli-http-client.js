@@ -125,6 +125,17 @@ class CliRequestClient {
       this.logger.debug(options.params);
     }
 
+    // Deep copy headers since we'll be modifying
+    let customHeaders = JSON.parse(JSON.stringify(options.headers));
+    const standardHeaders = ['User-Agent', 'Accept-Charset', 'Connection', 'Authorization', 'Accept', 'Content-Type'];
+    standardHeaders.forEach(header => {
+      delete customHeaders[header];
+    });
+    if (customHeaders) {
+      this.logger.debug('Custom HTTP Headers:');
+      this.logger.debug(customHeaders);
+    }
+
     this.logger.debug('User-Agent: ' + options.headers['User-Agent']);
     this.logger.debug('-- END Twilio API Request --');
   }
