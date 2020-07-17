@@ -926,6 +926,14 @@
             }
           },
           {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
             "in": "query",
             "name": "PageSize",
@@ -1009,6 +1017,14 @@
               "pattern": "^VA[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -1086,6 +1102,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1123,6 +1147,14 @@
             "in": "path",
             "name": "Identity",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
             "schema": {
               "type": "string"
             }
@@ -1183,6 +1215,14 @@
             "in": "path",
             "name": "Identity",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
             "schema": {
               "type": "string"
             }
@@ -1305,6 +1345,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -1412,6 +1460,14 @@
               "pattern": "^YC[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1468,6 +1524,14 @@
               "maxLength": 34,
               "minLength": 34,
               "pattern": "^YC[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
+            "schema": {
               "type": "string"
             }
           }
@@ -1543,6 +1607,14 @@
             "in": "path",
             "name": "Identity",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
             "schema": {
               "type": "string"
             }
@@ -1637,6 +1709,22 @@
             "in": "path",
             "name": "Identity",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Authorization HTTP request header",
+            "in": "header",
+            "name": "Authorization",
             "schema": {
               "type": "string"
             }
@@ -1748,6 +1836,14 @@
               "pattern": "^YF[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1798,6 +1894,14 @@
               "maxLength": 34,
               "minLength": 34,
               "pattern": "^YF[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
+            "schema": {
               "type": "string"
             }
           }
@@ -1856,6 +1960,14 @@
               "maxLength": 34,
               "minLength": 34,
               "pattern": "^YF[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Twilio-Sandbox-Mode HTTP request header",
+            "in": "header",
+            "name": "Twilio-Sandbox-Mode",
+            "schema": {
               "type": "string"
             }
           }

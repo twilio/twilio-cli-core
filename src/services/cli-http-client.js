@@ -8,6 +8,8 @@ const { NETWORK_ERROR } = require('../services/messaging/help-messages');
 
 const NETWORK_ERROR_CODES = new Set(['ETIMEDOUT', 'ESOCKETTIMEDOUT', 'ECONNABORTED']);
 
+const STANDARD_HEADERS = ['user-agent', 'accept-charset', 'connection', 'authorization', 'accept', 'content-type'];
+
 class CliRequestClient {
   constructor(commandName, logger, http) {
     this.commandName = commandName;
@@ -123,6 +125,14 @@ class CliRequestClient {
     if (options.params && Object.keys(options.params).length > 0) {
       this.logger.debug('Querystring:');
       this.logger.debug(options.params);
+    }
+
+    const customHeaders = Object.keys(options.headers).filter(header => {
+      return !STANDARD_HEADERS.includes(header.toLowerCase());
+    });
+    if (customHeaders) {
+      this.logger.debug('Custom HTTP Headers:');
+      customHeaders.forEach(header => this.logger.debug(header + ': ' + options.headers[header]));
     }
 
     this.logger.debug('User-Agent: ' + options.headers['User-Agent']);
