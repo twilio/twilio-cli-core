@@ -15,3 +15,5 @@ twilio-cli-*.tgz
 
 ### Backup package.json files created during release ###
 *.bak
+
+.idea
