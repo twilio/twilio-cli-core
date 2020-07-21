@@ -105,5 +105,5 @@ module.exports = {
   translateValues,
   sleep,
   splitArray,
-  instanceOf,
+  instanceOf
 };
