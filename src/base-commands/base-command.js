@@ -8,7 +8,7 @@ const { logger, LoggingLevel } = require('../services/messaging/logging');
 const { OutputFormats } = require('../services/output-formats');
 const { getCommandPlugin, requireInstall } = require('../services/require-install');
 const { SecureStorage } = require('../services/secure-storage');
-const { instanceOf } = require('../utils/general');
+const { instanceOf } = require('../services/javascript-utilities');
 let inquirer; // We'll lazy-load this only when it's needed.
 
 const DEFAULT_LOG_LEVEL = 'info';

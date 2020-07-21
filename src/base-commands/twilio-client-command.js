@@ -3,10 +3,9 @@ const BaseCommand = require('./base-command');
 const CliRequestClient = require('../services/cli-http-client');
 const { TwilioApiClient, TwilioApiFlags } = require('../services/twilio-api');
 const { TwilioCliError } = require('../services/error');
-const { translateValues } = require('../services/javascript-utilities');
+const { translateValues, instanceOf } = require('../services/javascript-utilities');
 const { camelCase, kebabCase } = require('../services/naming-conventions');
 const { ACCESS_DENIED, HELP_ENVIRONMENT_VARIABLES } = require('../services/messaging/help-messages');
-const { instanceOf } = require('../utils/general');
 
 // CLI flags are kebab-cased, whereas API flags are PascalCased.
 const CliFlags = translateValues(TwilioApiFlags, kebabCase);
