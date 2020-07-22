@@ -1,7 +1,8 @@
-const tmp = require('tmp');
 const path = require('path');
 
+const tmp = require('tmp');
 const { expect, test, constants } = require('@twilio/cli-test');
+
 const { Config, ConfigData } = require('../../src/services/config');
 
 const FAKE_AUTH_TOKEN = '1234567890abcdefghijklmnopqrstuvwxyz';
@@ -158,7 +159,7 @@ describe('services', () => {
         configData.addProfile('thirdProfile', 'newest_account_SID');
         const fakeProfile = {
           id: 'DOES_NOT_EXIST',
-          accountSid: 'fake_SID'
+          accountSid: 'fake_SID',
         };
         const originalLength = configData.profiles.length;
         configData.removeProfile(fakeProfile);

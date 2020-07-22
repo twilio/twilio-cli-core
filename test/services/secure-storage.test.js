@@ -1,4 +1,5 @@
 const { expect, test } = require('@twilio/cli-test');
+
 const { SecureStorage, STORAGE_LOCATIONS } = require('../../src/services/secure-storage');
 const { TwilioCliError } = require('../../src/services/error');
 
@@ -30,32 +31,30 @@ describe('services', () => {
     });
 
     describe('getCredentials', () => {
-      const setup = getPassword => test
-        .do(ctx => {
+      const setup = (getPassword) =>
+        test.do((ctx) => {
           ctx.secureStorage = new SecureStorage();
           Object.defineProperty(ctx.secureStorage, 'keytar', {
-            get: () => ({ getPassword })
+            get: () => ({ getPassword }),
           });
         });
 
-      setup(async () => 'key|password')
-        .it('handles a key-password pair', async ctx => {
-          const expected = { apiKey: 'key', apiSecret: 'password' };
-          expect(await ctx.secureStorage.getCredentials('Pro File')).to.eql(expected);
-        });
+      setup(async () => 'key|password').it('handles a key-password pair', async (ctx) => {
+        const expected = { apiKey: 'key', apiSecret: 'password' };
+        expect(await ctx.secureStorage.getCredentials('Pro File')).to.eql(expected);
+      });
 
       setup(async () => {
         throw new Error('WHOA!');
-      })
-        .it('handles a keytar error', async ctx => {
-          const expected = { apiKey: 'error', apiSecret: 'WHOA!' };
-          expect(await ctx.secureStorage.getCredentials('No File')).to.eql(expected);
-        });
+      }).it('handles a keytar error', async (ctx) => {
+        const expected = { apiKey: 'error', apiSecret: 'WHOA!' };
+        expect(await ctx.secureStorage.getCredentials('No File')).to.eql(expected);
+      });
 
       setup(async () => {
         throw new TwilioCliError('WOE!');
       })
-        .do(ctx => ctx.secureStorage.getCredentials('Woe File'))
+        .do((ctx) => ctx.secureStorage.getCredentials('Woe File'))
         .catch(/WOE!/)
         .it('passes a TwilioCliError error through');
     });

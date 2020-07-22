@@ -6,7 +6,7 @@ const SCHEMA_TYPE_TO_CONVERT_FUNC_MAP = {
   integer: 'convertInteger',
   number: 'convertNumber',
   object: 'convertObject',
-  string: 'convertString'
+  string: 'convertString',
 };
 
 /**
@@ -22,7 +22,7 @@ class JsonSchemaConverter {
     if (schema) {
       if (!value) {
         if (!schema.nullable) {
-          this.logger.debug('Null value found when nullable not allowed by schema: ' + JSON.stringify(schema));
+          this.logger.debug(`Null value found when nullable not allowed by schema: ${JSON.stringify(schema)}`);
         }
 
         return value;
@@ -42,27 +42,29 @@ class JsonSchemaConverter {
 
   convertArray(schema, value) {
     // Recurse into the value using the schema's items schema.
-    return value.map(item => this.convertSchema(schema.items, item));
+    return value.map((item) => this.convertSchema(schema.items, item));
   }
 
   convertObject(schema, value) {
     const converted = {};
 
-    let properties = schema.properties;
+    let { properties } = schema;
 
-    // If the schema has no properties, it is a free-form object with arbitrary
-    // property/value pairs. We'll map the object's keys to null-schemas so
-    // they'll be processed as-is (i.e., no type so just use the value).
+    /*
+     * If the schema has no properties, it is a free-form object with arbitrary
+     * property/value pairs. We'll map the object's keys to null-schemas so
+     * they'll be processed as-is (i.e., no type so just use the value).
+     */
     if (!properties) {
-      const nameList = Object
-        .keys(value)
-        .map(name => ({ [name]: null }));
+      const nameList = Object.keys(value).map((name) => ({ [name]: null }));
 
       properties = Object.assign({}, ...nameList);
     }
 
-    // Convert each object property and store it in the converted object, if a
-    // value was provided.
+    /*
+     * Convert each object property and store it in the converted object, if a
+     * value was provided.
+     */
     Object.entries(properties).forEach(([name, propSchema]) => {
       const { propName, propValue } = this.convertObjectProperty(propSchema, name, value[name]);
 

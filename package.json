@@ -27,9 +27,10 @@
     "@oclif/test": "^1.2.6",
     "@twilio/cli-test": "^2.1.0",
     "chai": "^4.2.0",
-    "eslint": "^7.3.1",
+    "eslint": "^7.5.0",
     "eslint-config-oclif": "^3.1.0",
-    "eslint-plugin-mocha": "^7.0.1",
+    "eslint-config-twilio": "^1.28.0",
+    "eslint-config-twilio-mocha": "^1.28.0",
     "mocha": "^8.0.1",
     "nock": "^13.0.2",
     "nyc": "^15.1.0",
@@ -54,6 +55,8 @@
     "url": "https://github.com/twilio/twilio-cli-core.git"
   },
   "scripts": {
+    "lint": "eslint --ext js --ext jsx src/ test/",
+    "lint:fix": "npm run lint -- --fix",
     "posttest": "eslint --ignore-path .gitignore . && npm audit --audit-level=moderate",
     "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\""
   }

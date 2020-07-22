@@ -1,5 +1,8 @@
-const fs = require('fs-extra');
+/* eslint-disable max-classes-per-file */
 const path = require('path');
+
+const fs = require('fs-extra');
+
 const MessageTemplates = require('./messaging/templates');
 
 const CLI_NAME = 'twilio-cli';
@@ -22,34 +25,34 @@ class ConfigData {
   }
 
   getProfileFromEnvironment() {
-    const {
-      TWILIO_ACCOUNT_SID,
-      TWILIO_AUTH_TOKEN,
-      TWILIO_API_KEY,
-      TWILIO_API_SECRET,
-      TWILIO_REGION
-    } = process.env;
-    if (!TWILIO_ACCOUNT_SID) return;
+    const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_API_KEY, TWILIO_API_SECRET, TWILIO_REGION } = process.env;
+    if (!TWILIO_ACCOUNT_SID) {
+      return null;
+    }
 
-    if (TWILIO_API_KEY && TWILIO_API_SECRET)
+    if (TWILIO_API_KEY && TWILIO_API_SECRET) {
       return {
         // eslint-disable-next-line no-template-curly-in-string
         id: '${TWILIO_API_KEY}/${TWILIO_API_SECRET}',
         accountSid: TWILIO_ACCOUNT_SID,
         apiKey: TWILIO_API_KEY,
         apiSecret: TWILIO_API_SECRET,
-        region: TWILIO_REGION
+        region: TWILIO_REGION,
       };
+    }
 
-    if (TWILIO_AUTH_TOKEN)
+    if (TWILIO_AUTH_TOKEN) {
       return {
         // eslint-disable-next-line no-template-curly-in-string
         id: '${TWILIO_ACCOUNT_SID}/${TWILIO_AUTH_TOKEN}',
         accountSid: TWILIO_ACCOUNT_SID,
         apiKey: TWILIO_ACCOUNT_SID,
         apiSecret: TWILIO_AUTH_TOKEN,
-        region: TWILIO_REGION
+        region: TWILIO_REGION,
       };
+    }
+
+    return null;
   }
 
   getProfileById(profileId) {
@@ -63,7 +66,7 @@ class ConfigData {
       if (profileId) {
         // Clean the profile ID.
         profileId = this.sanitize(profileId);
-        profile = this.profiles.find(profile => profile.id === profileId);
+        profile = this.profiles.find((p) => p.id === profileId);
       } else {
         profile = this.getActiveProfile();
       }
@@ -81,13 +84,15 @@ class ConfigData {
         return profile;
       }
     }
+
+    return undefined;
   }
 
   getActiveProfile() {
     let profile;
     if (this.profiles.length > 0) {
       if (this.activeProfile) {
-        profile = this.profiles.find(profile => profile.id === this.activeProfile);
+        profile = this.profiles.find((p) => p.id === this.activeProfile);
       }
       if (!profile) {
         profile = this.profiles[0];
@@ -97,7 +102,7 @@ class ConfigData {
   }
 
   removeProfile(profileToRemove) {
-    this.profiles = this.profiles.filter(profile => {
+    this.profiles = this.profiles.filter((profile) => {
       return profile.id !== profileToRemove.id;
     });
     if (profileToRemove.id === this.activeProfile) {
@@ -143,7 +148,7 @@ class ConfigData {
     this.prompts = configObj.prompts || {};
     // Note the historical 'projects' naming.
     configObj.profiles = configObj.projects || [];
-    configObj.profiles.forEach(profile => this.addProfile(profile.id, profile.accountSid, profile.region));
+    configObj.profiles.forEach((profile) => this.addProfile(profile.id, profile.accountSid, profile.region));
     this.setActiveProfile(configObj.activeProject);
   }
 
@@ -177,7 +182,7 @@ class Config {
       prompts: configData.prompts,
       // Note the historical 'projects' naming.
       projects: configData.profiles,
-      activeProject: configData.activeProfile
+      activeProject: configData.activeProfile,
     };
 
     fs.mkdirSync(this.configDir, { recursive: true });
@@ -190,5 +195,5 @@ class Config {
 module.exports = {
   CLI_NAME,
   Config,
-  ConfigData
+  ConfigData,
 };

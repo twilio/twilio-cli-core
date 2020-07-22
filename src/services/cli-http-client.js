@@ -1,8 +1,10 @@
-var http_ = require('http');
-var https = require('https');
+const http_ = require('http');
+const https = require('https');
 const os = require('os');
-const pkg = require('../../package.json');
+
 const qs = require('qs');
+
+const pkg = require('../../package.json');
 const { TwilioCliError } = require('../services/error');
 const { NETWORK_ERROR } = require('../services/messaging/help-messages');
 
@@ -49,17 +51,14 @@ class CliRequestClient {
     }
 
     if (opts.username && opts.password) {
-      const b64Auth = Buffer.from(opts.username + ':' + opts.password).toString('base64');
-      headers.Authorization = 'Basic ' + b64Auth;
+      const b64Auth = Buffer.from(`${opts.username}:${opts.password}`).toString('base64');
+      headers.Authorization = `Basic ${b64Auth}`;
     }
 
-    const componentInfo = (headers['User-Agent'] || '')
-      .replace(' (', '|')
-      .replace(')', '')
-      .split('|');
-    componentInfo.push(os.platform() + ' ' + os.release() + ' ' + os.arch());
+    const componentInfo = (headers['User-Agent'] || '').replace(' (', '|').replace(')', '').split('|');
+    componentInfo.push(`${os.platform()} ${os.release()} ${os.arch()}`);
     componentInfo.push(this.commandName);
-    headers['User-Agent'] = pkg.name + '/' + pkg.version + ' (' + componentInfo.join(', ') + ')';
+    headers['User-Agent'] = `${pkg.name}/${pkg.version} (${componentInfo.join(', ')})`;
 
     const options = {
       timeout: opts.timeout || 30000,
@@ -69,9 +68,9 @@ class CliRequestClient {
       headers,
       httpAgent: opts.forever ? new http_.Agent({ keepAlive: true }) : undefined,
       httpsAgent: opts.forever ? new https.Agent({ keepAlive: true }) : undefined,
-      validateStatus: status => {
+      validateStatus: (status) => {
         return status >= 100 && status < 600;
-      }
+      },
     };
 
     if (opts.data) {
@@ -80,7 +79,7 @@ class CliRequestClient {
 
     if (opts.params) {
       options.params = opts.params;
-      options.paramsSerializer = params => {
+      options.paramsSerializer = (params) => {
         return qs.stringify(params, { arrayFormat: 'repeat' });
       };
     }
@@ -91,18 +90,21 @@ class CliRequestClient {
     try {
       const response = await this.http(options);
 
-      this.logger.debug('response.statusCode: ' + response.status);
-      this.logger.debug('response.headers: ' + JSON.stringify(response.headers));
+      this.logger.debug(`response.statusCode: ${response.status}`);
+      this.logger.debug(`response.headers: ${JSON.stringify(response.headers)}`);
 
       if (response.status < 200 || response.status >= 300) {
         const parsed = response.data;
-        throw new TwilioCliError(`Error code ${parsed.code} from Twilio: ${parsed.message}. See ${parsed.more_info} for more info.`, parsed.code);
+        throw new TwilioCliError(
+          `Error code ${parsed.code} from Twilio: ${parsed.message}. See ${parsed.more_info} for more info.`,
+          parsed.code,
+        );
       }
 
       return {
         body: response.data,
         statusCode: response.status,
-        headers: response.headers
+        headers: response.headers,
       };
     } catch (error) {
       if (NETWORK_ERROR_CODES.has(error.code)) {
@@ -115,7 +117,7 @@ class CliRequestClient {
 
   logRequest(options) {
     this.logger.debug('-- BEGIN Twilio API Request --');
-    this.logger.debug(options.method + ' ' + options.url);
+    this.logger.debug(`${options.method} ${options.url}`);
 
     if (options.data) {
       this.logger.debug('Form data:');
@@ -127,15 +129,15 @@ class CliRequestClient {
       this.logger.debug(options.params);
     }
 
-    const customHeaders = Object.keys(options.headers).filter(header => {
+    const customHeaders = Object.keys(options.headers).filter((header) => {
       return !STANDARD_HEADERS.includes(header.toLowerCase());
     });
     if (customHeaders) {
       this.logger.debug('Custom HTTP Headers:');
-      customHeaders.forEach(header => this.logger.debug(header + ': ' + options.headers[header]));
+      customHeaders.forEach((header) => this.logger.debug(`${header}: ${options.headers[header]}`));
     }
 
-    this.logger.debug('User-Agent: ' + options.headers['User-Agent']);
+    this.logger.debug(`User-Agent: ${options.headers['User-Agent']}`);
     this.logger.debug('-- END Twilio API Request --');
   }
 }

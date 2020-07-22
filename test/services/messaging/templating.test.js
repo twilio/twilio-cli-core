@@ -1,4 +1,5 @@
 const { expect, test } = require('@twilio/cli-test');
+
 const { templatize } = require('../../../src/services/messaging/templating');
 
 const EXPECTED_MESSAGE = 'Indiana Jones and the Template of Doom';

@@ -1,39 +1,52 @@
 const tmp = require('tmp');
 const { expect, test } = require('@twilio/cli-test');
-const { getCommandPlugin, getPackageVersion, getDependencyVersion, checkVersion, requireInstall } = require('../../src/services/require-install');
+
+const {
+  getCommandPlugin,
+  getPackageVersion,
+  getDependencyVersion,
+  checkVersion,
+  requireInstall,
+} = require('../../src/services/require-install');
 const { logger, LoggingLevel } = require('../../src/services/messaging/logging');
 const corePJSON = require('../../package.json');
 
 const TOP_PLUGIN = {
   name: 'top-plugin',
   options: {},
-  commands: [{
-    id: 'top-command',
-    aliases: []
-  }]
+  commands: [
+    {
+      id: 'top-command',
+      aliases: [],
+    },
+  ],
 };
 
 const DYNAMIC_PLUGIN = {
   name: 'dynamic-plugin',
   options: { name: 'top-plugin' },
-  commands: [{
-    id: 'dynamic-command',
-    aliases: []
-  }]
+  commands: [
+    {
+      id: 'dynamic-command',
+      aliases: [],
+    },
+  ],
 };
 
 const INSTALLED_PLUGIN = {
   name: 'installed-plugin',
   options: { name: 'installed-plugin' },
-  commands: [{
-    id: 'installed-command',
-    aliases: ['alias-installed-command']
-  }]
+  commands: [
+    {
+      id: 'installed-command',
+      aliases: ['alias-installed-command'],
+    },
+  ],
 };
 
 const config = {
   plugins: [TOP_PLUGIN, DYNAMIC_PLUGIN, INSTALLED_PLUGIN],
-  dataDir: tmp.dirSync({ unsafeCleanup: true }).name
+  dataDir: tmp.dirSync({ unsafeCleanup: true }).name,
 };
 
 /* eslint-disable max-nested-callbacks */
@@ -87,7 +100,7 @@ describe('services', () => {
       test.it('can retrieve dependency versions', () => {
         const pjson = {
           dependencies: { keytar: '1.2.3' },
-          optionalDependencies: { tartar: '4.5.6' }
+          optionalDependencies: { tartar: '4.5.6' },
         };
 
         expect(getDependencyVersion('keytar', pjson)).to.equal('1.2.3');
@@ -108,7 +121,7 @@ describe('services', () => {
         expect(requireInstall('chai')).to.not.be.undefined;
       });
 
-      test.stderr().it('will attempt to install packages', async ctx => {
+      test.stderr().it('will attempt to install packages', async (ctx) => {
         const command = { id: 'top-command', config };
         await expect(requireInstall('chai-dai', command)).to.be.rejected;
         expect(ctx.stderr).to.contain('Installing chai-dai');

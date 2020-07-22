@@ -1,1 +1,1 @@
-module.exports = data => JSON.stringify(data, null, 2);
+module.exports = (data) => JSON.stringify(data, null, 2);
