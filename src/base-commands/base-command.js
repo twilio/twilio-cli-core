@@ -8,6 +8,7 @@ const { logger, LoggingLevel } = require('../services/messaging/logging');
 const { OutputFormats } = require('../services/output-formats');
 const { getCommandPlugin, requireInstall } = require('../services/require-install');
 const { SecureStorage } = require('../services/secure-storage');
+const { instanceOf } = require('../services/javascript-utilities');
 let inquirer; // We'll lazy-load this only when it's needed.
 
 const DEFAULT_LOG_LEVEL = 'info';
@@ -53,11 +54,11 @@ class BaseCommand extends Command {
   }
 
   async catch(error) {
-    if (!this.logger || error instanceof CLIError) {
+    if (!this.logger || instanceOf(error, CLIError)) {
       return super.catch(error);
     }
 
-    if (error instanceof TwilioCliError) {
+    if (instanceOf(error, TwilioCliError)) {
       // User/API errors
       this.logger.error(error.message);
       this.logger.debug(error.stack);

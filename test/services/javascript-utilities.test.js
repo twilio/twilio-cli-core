@@ -1,4 +1,4 @@
-const { doesObjectHaveProperty, translateKeys, translateValues, sleep, splitArray } = require('../../src/services/javascript-utilities');
+const { doesObjectHaveProperty, translateKeys, translateValues, sleep, splitArray, instanceOf } = require('../../src/services/javascript-utilities');
 
 const { expect, test } = require('@twilio/cli-test');
 
@@ -118,6 +118,38 @@ describe('services', () => {
 
         expect(matched).to.deep.equal(['a', 'b', 'c']);
         expect(notMatched).to.deep.equal(['ey!', 'bee', 'SEA']);
+      });
+    });
+
+    describe('instanceOf', () => {
+      class BaseError extends Error {
+        // No-op
+      }
+
+      class ExtendedError extends BaseError {
+        // No-op
+      }
+
+      test.it('should return true for instanceOf', () => {
+        const baseError = new BaseError();
+        const extendedError = new ExtendedError();
+
+        expect(instanceOf(extendedError, ExtendedError)).to.equal(true);
+        expect(instanceOf(extendedError, BaseError)).to.equal(true);
+        expect(instanceOf(extendedError, Error)).to.equal(true);
+
+        expect(instanceOf(baseError, BaseError)).to.equal(true);
+        expect(instanceOf(baseError, Error)).to.equal(true);
+      });
+
+      test.it('should return false for instanceOf', () => {
+        class Foo extends Error {}
+
+        const baseError = new BaseError();
+        const extendedError = new ExtendedError();
+
+        expect(instanceOf(baseError, Foo)).to.equal(false);
+        expect(instanceOf(extendedError, Foo)).to.equal(false);
       });
     });
   });
