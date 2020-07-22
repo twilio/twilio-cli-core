@@ -80,7 +80,7 @@ class BaseCommand extends Command {
       this.exit(1);
     }
 
-    throw err;
+    throw error;
   }
 
   getIssueUrl(plugin) {

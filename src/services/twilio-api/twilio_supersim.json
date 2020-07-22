@@ -1659,6 +1659,29 @@
             "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {
+                  "CallbackMethod": {
+                    "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
+                    "enum": [
+                      "head",
+                      "get",
+                      "post",
+                      "patch",
+                      "put",
+                      "delete",
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "CallbackUrl": {
+                    "description": "The URL we should call using the `callback_method` after an asynchronous update has finished.",
+                    "format": "uri",
+                    "type": "string"
+                  },
                   "Fleet": {
                     "description": "The SID or unique name of the Fleet to which the SIM resource should be assigned.",
                     "type": "string"

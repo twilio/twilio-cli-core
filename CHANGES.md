@@ -1,6 +1,21 @@
 twilio-cli-core changelog
 =====================
 
+[2020-07-22] Version 5.8.0
+--------------------------
+**Library - Fix**
+- [PR #99](https://github.com/twilio/twilio-cli-core/pull/99): use new 'instanceOf' in the catch blocks. Thanks to [@ktalebian](https://github.com/ktalebian)!
+
+**Library - Feature**
+- [PR #98](https://github.com/twilio/twilio-cli-core/pull/98): add custom header param support. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Api**
+- Add optional Click Tracking and Scheduling parameters to Create action of Message resource
+
+**Supersim**
+- Add callback_url and callback_method parameters to Sim resource update request
+
+
 [2020-07-08] Version 5.7.0
 --------------------------
 **Library - Fix**

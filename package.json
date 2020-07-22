@@ -1,6 +1,6 @@
 {
   "name": "@twilio/cli-core",
-  "version": "5.7.0",
+  "version": "5.8.0",
   "description": "Core functionality for the twilio-cli",
   "keywords": [
     "twilio"
@@ -38,14 +38,13 @@
     "qs": "^6.9.4",
     "semver": "^7.3.2",
     "tsv": "^0.2.0",
-    "twilio": "^3.47.0"
+    "twilio": "^3.48.1"
   },
   "devDependencies": {
     "@oclif/test": "^1.2.6",
     "@twilio/cli-test": "^2.1.0",
     "chai": "^4.2.0",
     "eslint": "^7.5.0",
-    "eslint-config-oclif": "^3.1.0",
     "eslint-config-twilio": "^1.28.0",
     "eslint-config-twilio-mocha": "^1.28.0",
     "mocha": "^8.0.1",
