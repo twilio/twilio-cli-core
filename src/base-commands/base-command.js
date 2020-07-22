@@ -57,8 +57,7 @@ class BaseCommand extends Command {
 
   async catch(error) {
     if (!this.logger || instanceOf(error, CLIError)) {
-      super.catch(error);
-      return;
+      return super.catch(error);
     }
 
     if (instanceOf(error, TwilioCliError)) {
@@ -68,12 +67,20 @@ class BaseCommand extends Command {
       this.exit(error.exitCode || 1);
     } else {
       // System errors
-      const plugin = getCommandPlugin(this);
-      this.logger.error(MessageTemplates.unexpectedError({ url: this.getIssueUrl(plugin) }));
+      let url = '';
+      try {
+        url = this.getIssueUrl(getCommandPlugin(this));
+      } catch (e) {
+        // No-op
+      }
+
+      this.logger.error(MessageTemplates.unexpectedError({ url }));
       this.logger.debug(error.message);
       this.logger.debug(error.stack);
       this.exit(1);
     }
+
+    throw err;
   }
 
   getIssueUrl(plugin) {

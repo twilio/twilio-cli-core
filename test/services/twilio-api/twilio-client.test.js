@@ -106,7 +106,7 @@ describe('services', () => {
           /* eslint-enable camelcase */
         })
         .it('can list resources with metadata', async () => {
-          const response = await client.list({
+          const response = await apiClient.list({
             domain: 'studio',
             path: '/v1/Flows',
           });
@@ -121,7 +121,7 @@ describe('services', () => {
           });
         })
         .it('can create resources', async () => {
-          const response = await client.create({
+          const response = await apiClient.create({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Calls.json',
             data: { To: '123', From: '456', Junk: 'disregard' },
@@ -138,7 +138,7 @@ describe('services', () => {
           });
         })
         .it('can fetch resources', async () => {
-          const response = await client.fetch({
+          const response = await apiClient.fetch({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json',
             pathParams: { Sid: callSid },
@@ -154,7 +154,7 @@ describe('services', () => {
           });
         })
         .it('can update resources', async () => {
-          const response = await client.update({
+          const response = await apiClient.update({
             domain: 'api',
             path: '/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json',
             pathParams: { Sid: callSid },

@@ -1,9 +1,29 @@
 {
   "name": "@twilio/cli-core",
-  "description": "Core functionality for the twilio-cli",
   "version": "5.7.0",
-  "author": "Twilio @twilio",
+  "description": "Core functionality for the twilio-cli",
+  "keywords": [
+    "twilio"
+  ],
+  "homepage": "https://github.com/twilio/twilio-cli-core",
   "bugs": "https://github.com/twilio/twilio-cli/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twilio/twilio-cli-core.git"
+  },
+  "license": "MIT",
+  "author": "Twilio @twilio",
+  "main": "src/index.js",
+  "files": [
+    "/bin",
+    "/src"
+  ],
+  "scripts": {
+    "lint": "eslint --ext js --ext jsx src/ test/",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\"",
+    "posttest": "eslint --ignore-path .gitignore . && npm audit --audit-level=moderate"
+  },
   "dependencies": {
     "@oclif/command": "^1.7.0",
     "@oclif/config": "^1.16.0",
@@ -20,9 +40,6 @@
     "tsv": "^0.2.0",
     "twilio": "^3.47.0"
   },
-  "optionalDependencies": {
-    "keytar": "^6.0.1"
-  },
   "devDependencies": {
     "@oclif/test": "^1.2.6",
     "@twilio/cli-test": "^2.1.0",
@@ -37,27 +54,10 @@
     "sinon": "^9.0.2",
     "tmp": "^0.2.1"
   },
+  "optionalDependencies": {
+    "keytar": "^6.0.1"
+  },
   "engines": {
     "node": ">=10.12.0"
-  },
-  "files": [
-    "/bin",
-    "/src"
-  ],
-  "homepage": "https://github.com/twilio/twilio-cli-core",
-  "keywords": [
-    "twilio"
-  ],
-  "license": "MIT",
-  "main": "src/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/twilio/twilio-cli-core.git"
-  },
-  "scripts": {
-    "lint": "eslint --ext js --ext jsx src/ test/",
-    "lint:fix": "npm run lint -- --fix",
-    "posttest": "eslint --ignore-path .gitignore . && npm audit --audit-level=moderate",
-    "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\""
   }
 }

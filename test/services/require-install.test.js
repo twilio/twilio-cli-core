@@ -1,6 +1,7 @@
 const tmp = require('tmp');
 const { expect, test } = require('@twilio/cli-test');
 
+const { TwilioCliError } = require('../../src/services/error');
 const {
   getCommandPlugin,
   getPackageVersion,
@@ -75,7 +76,7 @@ describe('services', () => {
 
       test.it('handles unknown commands', () => {
         const command = { id: 'what-command', config };
-        expect(getCommandPlugin(command)).to.be.undefined;
+        expect(() => getCommandPlugin(command)).to.throw(TwilioCliError);
       });
     });
 

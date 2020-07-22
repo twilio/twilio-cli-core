@@ -8,11 +8,9 @@ const OPERATIONS = ['post', 'get', 'delete'];
 
 class TwilioApiBrowser {
   constructor(spec) {
-    if (!apiSpec) {
-      apiSpec = spec || this.loadApiSpecFromDisk();
-    }
+    spec = spec || this.loadApiSpecFromDisk();
 
-    this.domains = this.loadDomains(apiSpec);
+    this.domains = this.loadDomains(spec);
   }
 
   loadApiSpecFromDisk() {

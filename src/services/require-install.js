@@ -3,6 +3,7 @@ const path = require('path');
 const semver = require('semver');
 const Plugins = require('@oclif/plugin-plugins').default;
 
+const { TwilioCliError } = require('../services/error');
 const corePJSON = require('../../package.json');
 const { logger } = require('./messaging/logging');
 
@@ -26,7 +27,7 @@ const getCommandPlugin = (command) => {
     }
   }
 
-  throw new Error('No plugin was found');
+  throw new TwilioCliError('No plugin was found');
 };
 
 /**
