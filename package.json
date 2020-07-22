@@ -54,7 +54,7 @@
     "url": "https://github.com/twilio/twilio-cli-core.git"
   },
   "scripts": {
-    "posttest": "eslint --ignore-path .gitignore . && npm audit",
+    "posttest": "eslint --ignore-path .gitignore . && npm audit --audit-level=moderate",
     "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\""
   }
 }
