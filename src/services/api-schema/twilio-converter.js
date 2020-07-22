@@ -4,7 +4,7 @@ const { camelCase } = require('../naming-conventions');
 const STRING_FORMAT_TO_CONVERT_FUNC_MAP = {
   'date-time': 'convertDateTime',
   'date-time-rfc-2822': 'convertDateTime',
-  uri: 'convertUri'
+  uri: 'convertUri',
 };
 
 /**

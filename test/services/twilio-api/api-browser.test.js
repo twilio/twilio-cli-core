@@ -1,6 +1,6 @@
-const { TwilioApiBrowser } = require('../../../src/services/twilio-api');
-
 const { expect, test } = require('@twilio/cli-test');
+
+const { TwilioApiBrowser } = require('../../../src/services/twilio-api');
 
 describe('services', () => {
   describe('twilio-api', () => {
@@ -19,62 +19,62 @@ describe('services', () => {
               '/2010-04-01/Widgets.json': {
                 servers: [
                   {
-                    url: 'https://api.twilio.com'
-                  }
+                    url: 'https://api.twilio.com',
+                  },
                 ],
                 description: 'Widgets here\nsecond line of text',
-                'x-default-output-properties': ['sid']
-              }
+                'x-default-output-properties': ['sid'],
+              },
             },
             tags: [
               {
                 name: 'Beta',
-                description: 'Betamax!'
-              }
-            ]
+                description: 'Betamax!',
+              },
+            ],
           },
           neato: {
             paths: {
               '/v1/Gadgets.json': {
                 servers: [
                   {
-                    url: 'https://neato.twilio.com'
-                  }
+                    url: 'https://neato.twilio.com',
+                  },
                 ],
                 description: 'v1 Gadgets here',
-                'x-default-output-properties': ['sid']
+                'x-default-output-properties': ['sid'],
               },
               '/v2/Gadgets.json': {
                 servers: [
                   {
-                    url: 'https://neato.twilio.com'
-                  }
+                    url: 'https://neato.twilio.com',
+                  },
                 ],
                 post: { createStuff: '' },
                 get: { listStuff: '' },
                 description: 'v2 list Gadgets here',
-                'x-default-output-properties': ['sid', 'name']
+                'x-default-output-properties': ['sid', 'name'],
               },
               '/v2/Gadgets/{Sid}.json': {
                 servers: [
                   {
-                    url: 'https://neato.twilio.com'
-                  }
+                    url: 'https://neato.twilio.com',
+                  },
                 ],
                 post: { updateStuff: '' },
                 get: { fetchStuff: '' },
                 delete: { removeStuff: '' },
                 description: 'v2 instance Gadgets here',
-                'x-default-output-properties': ['sid', 'description']
-              }
+                'x-default-output-properties': ['sid', 'description'],
+              },
             },
             tags: [
               {
                 name: 'GA',
-                description: 'Generally Available!'
-              }
-            ]
-          }
+                description: 'Generally Available!',
+              },
+            ],
+          },
         });
 
         expect(browser.domains).to.deep.equal({
@@ -82,53 +82,53 @@ describe('services', () => {
             tags: [
               {
                 name: 'Beta',
-                description: 'Betamax!'
-              }
+                description: 'Betamax!',
+              },
             ],
             paths: {
               '/2010-04-01/Widgets.json': {
                 operations: {},
                 server: 'https://api.twilio.com',
                 description: 'Widgets here second line of text',
-                defaultOutputProperties: ['sid']
-              }
-            }
+                defaultOutputProperties: ['sid'],
+              },
+            },
           },
           neato: {
             tags: [
               {
                 name: 'GA',
-                description: 'Generally Available!'
-              }
+                description: 'Generally Available!',
+              },
             ],
             paths: {
               '/v1/Gadgets.json': {
                 operations: {},
                 server: 'https://neato.twilio.com',
                 description: 'v1 Gadgets here',
-                defaultOutputProperties: ['sid']
+                defaultOutputProperties: ['sid'],
               },
               '/v2/Gadgets.json': {
                 operations: {
                   post: { createStuff: '' },
-                  get: { listStuff: '' }
+                  get: { listStuff: '' },
                 },
                 server: 'https://neato.twilio.com',
                 description: 'v2 list Gadgets here',
-                defaultOutputProperties: ['sid', 'name']
+                defaultOutputProperties: ['sid', 'name'],
               },
               '/v2/Gadgets/{Sid}.json': {
                 operations: {
                   get: { fetchStuff: '' },
                   post: { updateStuff: '' },
-                  delete: { removeStuff: '' }
+                  delete: { removeStuff: '' },
                 },
                 server: 'https://neato.twilio.com',
                 description: 'v2 instance Gadgets here',
-                defaultOutputProperties: ['sid', 'description']
-              }
-            }
-          }
+                defaultOutputProperties: ['sid', 'description'],
+              },
+            },
+          },
         });
       });
     });

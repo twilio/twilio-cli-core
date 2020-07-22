@@ -1,6 +1,14 @@
-const { doesObjectHaveProperty, translateKeys, translateValues, sleep, splitArray, instanceOf } = require('../../src/services/javascript-utilities');
-
+/* eslint-disable max-classes-per-file */
 const { expect, test } = require('@twilio/cli-test');
+
+const {
+  doesObjectHaveProperty,
+  translateKeys,
+  translateValues,
+  sleep,
+  splitArray,
+  instanceOf,
+} = require('../../src/services/javascript-utilities');
 
 describe('services', () => {
   describe('javascript-utilities', () => {
@@ -32,7 +40,7 @@ describe('services', () => {
     });
 
     describe('translateKeys', () => {
-      const keyFunc = key => key.toUpperCase();
+      const keyFunc = (key) => key.toUpperCase();
 
       test.it('should translate the keys of a complex object', () => {
         const actual = {
@@ -45,8 +53,8 @@ describe('services', () => {
             three: 3,
             toJSON() {
               return { one: this.one, two: this.two };
-            }
-          }
+            },
+          },
         };
 
         const expected = {
@@ -55,8 +63,8 @@ describe('services', () => {
           NESTED: { LEVEL2: { LEVEL3: 'value' } },
           CUSTOM: {
             ONE: 1,
-            TWO: 2
-          }
+            TWO: 2,
+          },
         };
 
         expect(translateKeys(actual, keyFunc)).to.eql(expected);
@@ -64,7 +72,7 @@ describe('services', () => {
     });
 
     describe('translateValues', () => {
-      const valueFunc = key => key.toUpperCase();
+      const valueFunc = (key) => key.toUpperCase();
 
       test.it('should translate the values of a complex object', () => {
         const actual = {
@@ -77,8 +85,8 @@ describe('services', () => {
             three: 'thr33',
             toJSON() {
               return { one: this.one, two: this.two };
-            }
-          }
+            },
+          },
         };
 
         const expected = {
@@ -87,8 +95,8 @@ describe('services', () => {
           nested: { level2: { level3: 'VALUE' } },
           custom: {
             one: 'WON',
-            two: 'TOO'
-          }
+            two: 'TOO',
+          },
         };
 
         expect(translateValues(actual, valueFunc)).to.eql(expected);
@@ -112,7 +120,7 @@ describe('services', () => {
     describe('splitArray', () => {
       test.it('should split the array in 2', () => {
         const testArray = ['a', 'ey!', 'bee', 'b', 'c', 'SEA'];
-        const isLengthOne = item => item.length === 1;
+        const isLengthOne = (item) => item.length === 1;
 
         const [matched, notMatched] = splitArray(testArray, isLengthOne);
 

@@ -1,4 +1,5 @@
 const { expect, test } = require('@twilio/cli-test');
+
 const CliRequestClient = require('../../src/services/cli-http-client');
 const { TwilioCliError } = require('../../src/services/error');
 const { Logger, LoggingLevel } = require('../../src/services/messaging/logging');
@@ -6,11 +7,11 @@ const { Logger, LoggingLevel } = require('../../src/services/messaging/logging')
 describe('services', () => {
   describe('cli-http-client', () => {
     const logger = new Logger({
-      level: LoggingLevel.none
+      level: LoggingLevel.none,
     });
 
     test.it('should make an http request', async () => {
-      const client = new CliRequestClient('blah', logger, options => {
+      const client = new CliRequestClient('blah', logger, (options) => {
         expect(options.url).to.equal('https://foo.com/bar');
         return { status: 200, data: 'foo', headers: {} };
       });
@@ -22,7 +23,7 @@ describe('services', () => {
         password: 'aaaaaaaaa',
         headers: { 'User-Agent': 'test' },
         params: { x: 1, y: 2 },
-        data: { foo: 'bar' }
+        data: { foo: 'bar' },
       });
 
       expect(response.statusCode).to.equal(200);
@@ -30,7 +31,7 @@ describe('services', () => {
     });
 
     test
-      .nock('https://foo.com', api => {
+      .nock('https://foo.com', (api) => {
         api.get('/bar').delay(100).reply(200);
       })
       .it('throws a TwilioCliError on response timeouts', async () => {
@@ -40,7 +41,7 @@ describe('services', () => {
       });
 
     test
-      .nock('https://foo.com', api => {
+      .nock('https://foo.com', (api) => {
         api.get('/bar').replyWithError({ code: 'ETIMEDOUT' });
       })
       .it('throws a TwilioCliError on connection timeouts', async () => {
@@ -50,7 +51,7 @@ describe('services', () => {
       });
 
     test
-      .nock('https://foo.com', api => {
+      .nock('https://foo.com', (api) => {
         api.get('/bar?foo=bar&foo=baz').reply(200);
       })
       .it('correctly serializes array parameters', async () => {
@@ -59,8 +60,8 @@ describe('services', () => {
           method: 'GET',
           uri: 'https://foo.com/bar',
           params: {
-            foo: ['bar', 'baz']
-          }
+            foo: ['bar', 'baz'],
+          },
         });
         expect(response.statusCode).to.equal(200);
       });

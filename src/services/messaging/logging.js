@@ -5,14 +5,14 @@ const LoggingLevel = {
   info: 0,
   warn: 1,
   error: 2,
-  none: 10
+  none: 10,
 };
 
 const LoggingLevelStyle = {
-  [LoggingLevel.debug]: msg => chalk.dim('[DEBUG] ' + msg),
-  [LoggingLevel.info]: msg => msg,
-  [LoggingLevel.warn]: msg => chalk.italic(' » ' + msg),
-  [LoggingLevel.error]: msg => chalk.bold(' » ' + msg)
+  [LoggingLevel.debug]: (msg) => chalk.dim(`[DEBUG] ${msg}`),
+  [LoggingLevel.info]: (msg) => msg,
+  [LoggingLevel.warn]: (msg) => chalk.italic(` » ${msg}`),
+  [LoggingLevel.error]: (msg) => chalk.bold(` » ${msg}`),
 };
 
 class Logger {
@@ -41,17 +41,17 @@ class Logger {
 
     if (level >= this.config.level) {
       const message = typeof msg === 'string' ? msg : JSON.stringify(msg);
-      process.stderr.write(LoggingLevelStyle[level](message) + '\n');
+      process.stderr.write(`${LoggingLevelStyle[level](message)}\n`);
     }
   }
 }
 
 const logger = new Logger({
-  level: LoggingLevel.info
+  level: LoggingLevel.info,
 });
 
 module.exports = {
   LoggingLevel,
   Logger, // class
-  logger // global instance
+  logger, // global instance
 };

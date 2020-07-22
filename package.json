@@ -1,9 +1,29 @@
 {
   "name": "@twilio/cli-core",
-  "description": "Core functionality for the twilio-cli",
   "version": "5.8.0",
-  "author": "Twilio @twilio",
+  "description": "Core functionality for the twilio-cli",
+  "keywords": [
+    "twilio"
+  ],
+  "homepage": "https://github.com/twilio/twilio-cli-core",
   "bugs": "https://github.com/twilio/twilio-cli/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twilio/twilio-cli-core.git"
+  },
+  "license": "MIT",
+  "author": "Twilio @twilio",
+  "main": "src/index.js",
+  "files": [
+    "/bin",
+    "/src"
+  ],
+  "scripts": {
+    "lint": "eslint --ext js --ext jsx src/ test/",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\"",
+    "posttest": "eslint --ignore-path .gitignore . && npm audit --audit-level=moderate"
+  },
   "dependencies": {
     "@oclif/command": "^1.7.0",
     "@oclif/config": "^1.16.0",
@@ -20,41 +40,23 @@
     "tsv": "^0.2.0",
     "twilio": "^3.48.1"
   },
-  "optionalDependencies": {
-    "keytar": "^6.0.1"
-  },
   "devDependencies": {
     "@oclif/test": "^1.2.6",
     "@twilio/cli-test": "^2.1.0",
     "chai": "^4.2.0",
-    "eslint": "^7.3.1",
-    "eslint-config-oclif": "^3.1.0",
-    "eslint-plugin-mocha": "^7.0.1",
+    "eslint": "^7.5.0",
+    "eslint-config-twilio": "^1.28.0",
+    "eslint-config-twilio-mocha": "^1.28.0",
     "mocha": "^8.0.1",
     "nock": "^13.0.2",
     "nyc": "^15.1.0",
     "sinon": "^9.0.2",
     "tmp": "^0.2.1"
   },
+  "optionalDependencies": {
+    "keytar": "^6.0.1"
+  },
   "engines": {
     "node": ">=10.12.0"
-  },
-  "files": [
-    "/bin",
-    "/src"
-  ],
-  "homepage": "https://github.com/twilio/twilio-cli-core",
-  "keywords": [
-    "twilio"
-  ],
-  "license": "MIT",
-  "main": "src/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/twilio/twilio-cli-core.git"
-  },
-  "scripts": {
-    "posttest": "eslint --ignore-path .gitignore . && npm audit --audit-level=moderate",
-    "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\""
   }
 }

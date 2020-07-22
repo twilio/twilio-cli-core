@@ -1,4 +1,5 @@
 const url = require('url');
+
 const { logger } = require('./messaging/logging');
 const { doesObjectHaveProperty } = require('./javascript-utilities');
 const JsonSchemaConverter = require('./api-schema/json-converter');
@@ -11,7 +12,7 @@ class OpenApiClient {
   }
 
   async request(opts) {
-    opts = Object.assign({}, opts);
+    opts = { ...opts };
 
     const domain = this.apiBrowser.domains[opts.domain];
 
@@ -31,7 +32,7 @@ class OpenApiClient {
       throw new Error(`Operation not found: ${opts.domain}.${opts.path}.${opts.method}`);
     }
 
-    const isPost = (opts.method.toLowerCase() === 'post');
+    const isPost = opts.method.toLowerCase() === 'post';
     const params = this.getParams(opts, operation);
 
     if (!opts.uri) {
@@ -50,8 +51,8 @@ class OpenApiClient {
     uri.hostname = this.getHost(uri.hostname, opts);
     opts.uri = uri.href;
 
-    opts.params = (isPost ? null : params);
-    opts.data = (isPost ? params : null);
+    opts.params = isPost ? null : params;
+    opts.data = isPost ? params : null;
 
     const response = await this.httpClient.request(opts);
 
@@ -60,9 +61,11 @@ class OpenApiClient {
 
   getParams(opts, operation) {
     const params = {};
-    operation.parameters.forEach(parameter => {
-      // Build the actual request params from the spec's query parameters. This
-      // effectively drops all params that are not in the spec.
+    operation.parameters.forEach((parameter) => {
+      /*
+       * Build the actual request params from the spec's query parameters. This
+       * effectively drops all params that are not in the spec.
+       */
       if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, parameter.name)) {
         let value = opts.data[parameter.name];
         if (parameter.schema.type === 'boolean') {
@@ -76,8 +79,10 @@ class OpenApiClient {
   }
 
   getUri(opts) {
-    // Evaluate the request path by replacing path parameters with their value
-    // from the request data.
+    /*
+     * Evaluate the request path by replacing path parameters with their value
+     * from the request data.
+     */
     return opts.path.replace(/{(.+?)}/g, (fullMatch, pathNode) => {
       let value = '';
 
@@ -95,7 +100,9 @@ class OpenApiClient {
   getHost(host, opts) {
     if (opts.region || opts.edge) {
       const domain = host.split('.').slice(-2).join('.');
-      const prefix = host.split('.' + domain)[0];
+      const prefix = host.split(`.${domain}`)[0];
+
+      // eslint-disable-next-line prefer-const
       let [product, edge, region] = prefix.split('.');
       if (edge && !region) {
         region = edge;
@@ -103,7 +110,7 @@ class OpenApiClient {
       }
       edge = opts.edge || edge;
       region = opts.region || region || (opts.edge && 'us1');
-      return [product, edge, region, domain].filter(part => part).join('.');
+      return [product, edge, region, domain].filter((part) => part).join('.');
     }
     return host;
   }
@@ -125,16 +132,16 @@ class OpenApiClient {
     let response = operation.responses[statusCode];
 
     if (!response) {
-      const statusCodeRange = statusCode.toString()[0] + 'XX';
+      const statusCodeRange = `${statusCode.toString()[0]}XX`;
       response = operation.responses[statusCodeRange];
 
       if (!response) {
         logger.debug(`Response schema not found for status code ${statusCode} (${statusCodeRange})`);
-        return;
+        return undefined;
       }
     }
 
-    const schema = response.content[contentType].schema;
+    const { schema } = response.content[contentType];
 
     return this.evaluateRefs(schema, domain);
   }
@@ -168,11 +175,14 @@ class OpenApiClient {
     }
 
     let node = domain;
-    local.split('/').filter(n => n).forEach(nodeName => {
-      if (doesObjectHaveProperty(node, nodeName)) {
-        node = node[nodeName];
-      }
-    });
+    local
+      .split('/')
+      .filter((n) => n)
+      .forEach((nodeName) => {
+        if (doesObjectHaveProperty(node, nodeName)) {
+          node = node[nodeName];
+        }
+      });
 
     if (!node) {
       logger.debug(`Ref not found: ${ref}`);

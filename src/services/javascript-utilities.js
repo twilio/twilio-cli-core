@@ -19,7 +19,7 @@ const translateObject = (obj, keyFunc, valueFunc) => {
   }
 
   if (Array.isArray(obj)) {
-    return obj.map(item => translateObject(item, keyFunc, valueFunc));
+    return obj.map((item) => translateObject(item, keyFunc, valueFunc));
   }
 
   if (typeof obj === 'object') {
@@ -63,15 +63,15 @@ const translateValues = (obj, valueFunc) => {
   return translateObject(obj, null, valueFunc);
 };
 
-const sleep = ms => {
-  return new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
 const splitArray = (array, testFunc) => {
   const left = [];
   const right = [];
 
-  array.forEach(item => testFunc(item) ? left.push(item) : right.push(item));
+  array.forEach((item) => (testFunc(item) ? left.push(item) : right.push(item)));
 
   return [left, right];
 };
@@ -105,5 +105,5 @@ module.exports = {
   translateValues,
   sleep,
   splitArray,
-  instanceOf
+  instanceOf,
 };

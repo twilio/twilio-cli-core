@@ -2,9 +2,10 @@ const os = require('os');
 const path = require('path');
 
 const { expect, test } = require('@twilio/cli-test');
+
 const configureEnv = require('../../src/services/env');
 
-const ORIGINAL_ENV = Object.assign({}, process.env);
+const ORIGINAL_ENV = { ...process.env };
 const DEFAULT_DIR = path.join('home', '.twilio-cli');
 
 describe('services', () => {

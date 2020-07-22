@@ -5,8 +5,10 @@ const templatize = (templateStrings, ...templateKeys) => {
     const result = [templateStrings[0]];
 
     templateKeys.forEach((key, i) => {
-      // Numerical keys will perform a 0-based index lookup on the provided values.
-      // Others will perform a string-key lookup on the last value.
+      /*
+       * Numerical keys will perform a 0-based index lookup on the provided values.
+       * Others will perform a string-key lookup on the last value.
+       */
       const value = Number.isInteger(key) ? values[key] : dict[key];
 
       // Append the lookup value and the next string in the template.
@@ -20,5 +22,5 @@ const templatize = (templateStrings, ...templateKeys) => {
 };
 
 module.exports = {
-  templatize
+  templatize,
 };

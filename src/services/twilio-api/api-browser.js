@@ -1,13 +1,16 @@
 const fs = require('fs');
+
 const { camelCase } = require('../naming-conventions');
+
 let apiSpec; // Lazy-loaded below.
 
 const OPERATIONS = ['post', 'get', 'delete'];
 
 class TwilioApiBrowser {
-  constructor(apiSpec) {
-    apiSpec = apiSpec || this.loadApiSpecFromDisk();
-    this.domains = this.loadDomains(apiSpec);
+  constructor(spec) {
+    spec = spec || this.loadApiSpecFromDisk();
+
+    this.domains = this.loadDomains(spec);
   }
 
   loadApiSpecFromDisk() {
@@ -15,9 +18,10 @@ class TwilioApiBrowser {
       const specPattern = /twilio_(.+)\.json/;
       const specNameIndex = 1;
 
-      apiSpec = fs.readdirSync(__dirname)
-        .filter(filename => filename.match(specPattern))
-        .map(filename => {
+      apiSpec = fs
+        .readdirSync(__dirname)
+        .filter((filename) => filename.match(specPattern))
+        .map((filename) => {
           const domainName = filename.match(specPattern)[specNameIndex];
 
           return { [domainName]: require(`./${filename}`) };
@@ -29,12 +33,12 @@ class TwilioApiBrowser {
     return apiSpec;
   }
 
-  loadDomains(apiSpec) {
+  loadDomains(obj) {
     // Clone the spec since we'll be modifying it.
-    const domains = JSON.parse(JSON.stringify(apiSpec));
+    const domains = JSON.parse(JSON.stringify(obj));
 
-    Object.values(domains).forEach(spec => {
-      Object.values(spec.paths).forEach(path => {
+    Object.values(domains).forEach((spec) => {
+      Object.values(spec.paths).forEach((path) => {
         // Naive assumption: The Twilio APIs only have a single server.
         path.server = path.servers[0].url;
         delete path.servers;
@@ -43,14 +47,16 @@ class TwilioApiBrowser {
         path.description = path.description.replace(/(\r\n|\n|\r)/gm, ' ');
 
         // Move the operations into an operations object.
-        OPERATIONS.forEach(operationName => {
+        OPERATIONS.forEach((operationName) => {
           if (operationName in path) {
             const operation = path[operationName];
             path.operations[operationName] = operation;
             delete path[operationName];
 
-            // Convert all the request body properties to query parameters for
-            // simpler parsing downstream.
+            /*
+             * Convert all the request body properties to query parameters for
+             * simpler parsing downstream.
+             */
             const parameters = this.requestPropertiesToParameters(operation.requestBody);
 
             if (parameters.length > 0) {
@@ -79,7 +85,7 @@ class TwilioApiBrowser {
     const parameters = [];
     const content = (requestBody || {}).content || {};
 
-    Object.values(content).forEach(type => {
+    Object.values(content).forEach((type) => {
       const typeSchema = type.schema || {};
       const properties = typeSchema.properties || {};
       const required = typeSchema.required || [];
@@ -90,7 +96,7 @@ class TwilioApiBrowser {
           schema,
           in: 'query',
           required: required.includes(name),
-          description: schema.description
+          description: schema.description,
         });
       });
     });

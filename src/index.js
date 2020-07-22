@@ -1,7 +1,7 @@
 module.exports = {
   baseCommands: {
     BaseCommand: require('./base-commands/base-command'),
-    TwilioClientCommand: require('./base-commands/twilio-client-command')
+    TwilioClientCommand: require('./base-commands/twilio-client-command'),
   },
   services: {
     TwilioApi: require('./services/twilio-api'),
@@ -13,7 +13,7 @@ module.exports = {
     templating: require('./services/messaging/templating'),
     namingConventions: require('./services/naming-conventions'),
     outputFormats: require('./services/output-formats'),
-    secureStorage: require('./services/secure-storage')
+    secureStorage: require('./services/secure-storage'),
   },
-  configureEnv: require('./services/env')
+  configureEnv: require('./services/env'),
 };

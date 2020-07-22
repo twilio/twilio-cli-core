@@ -10,7 +10,7 @@ const TwilioApiFlags = {
   ACCOUNT_SID: 'AccountSid',
   PAGE_SIZE: 'PageSize',
   LIMIT: 'Limit',
-  NO_LIMIT: 'NoLimit'
+  NO_LIMIT: 'NoLimit',
 };
 
 class TwilioApiClient {
@@ -26,7 +26,7 @@ class TwilioApiClient {
     this.apiClient = new OpenApiClient({
       httpClient: opts.httpClient,
       apiBrowser: new TwilioApiBrowser(),
-      converter: new TwilioSchemaConverter()
+      converter: new TwilioSchemaConverter(),
     });
 
     if (!this.username) {
@@ -105,7 +105,7 @@ class TwilioApiClient {
         domain: opts.domain,
         host: opts.host,
         path: opts.path,
-        uri: nextPageUri
+        uri: nextPageUri,
       };
     }
 
@@ -115,7 +115,7 @@ class TwilioApiClient {
   getLimit(options) {
     // 'no-limit' outranks 'limit' so begone.
     if (!options || options[TwilioApiFlags.NO_LIMIT]) {
-      return;
+      return undefined;
     }
 
     const limit = options[TwilioApiFlags.LIMIT];
@@ -162,7 +162,7 @@ class TwilioApiClient {
    * @param {boolean} [opts.allowRedirects] - Should the client follow redirects
    */
   async request(opts) {
-    opts = Object.assign({}, opts);
+    opts = { ...opts };
 
     opts.username = opts.username || this.username;
     opts.password = opts.password || this.password;
@@ -182,7 +182,10 @@ class TwilioApiClient {
     }
 
     if (!opts.uri) {
-      if (opts.path.includes(TwilioApiFlags.ACCOUNT_SID) && !doesObjectHaveProperty(opts.pathParams, TwilioApiFlags.ACCOUNT_SID)) {
+      if (
+        opts.path.includes(TwilioApiFlags.ACCOUNT_SID) &&
+        !doesObjectHaveProperty(opts.pathParams, TwilioApiFlags.ACCOUNT_SID)
+      ) {
         opts.pathParams[TwilioApiFlags.ACCOUNT_SID] = this.accountSid;
       }
     }
@@ -195,5 +198,5 @@ class TwilioApiClient {
 
 module.exports = {
   TwilioApiClient,
-  TwilioApiFlags
+  TwilioApiFlags,
 };
