@@ -202,6 +202,20 @@ describe('services', () => {
 
       test
         .nock('https://api.twilio.com', (api) => {
+          api.get(`/2010-04-01/Accounts/${accountSid}/Messages.json`).reply(307, '{"redirect_to": "some_other_place"}');
+        })
+        .it('handles redirects', async () => {
+          const response = await apiClient.fetch({
+            domain: 'api',
+            path: '/2010-04-01/Accounts/{AccountSid}/Messages.json',
+          });
+
+          // eslint-disable-next-line camelcase
+          expect(response).to.eql({ redirect_to: 'some_other_place' });
+        });
+
+      test
+        .nock('https://api.twilio.com', (api) => {
           api
             .post(`/2010-04-01/Accounts/${accountSid}/Messages.json`)
             .reply(
