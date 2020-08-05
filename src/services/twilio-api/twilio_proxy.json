@@ -2309,6 +2309,10 @@
                     "format": "date-time",
                     "type": "string"
                   },
+                  "FailOnParticipantConflict": {
+                    "description": "Setting to true (recommended), enables Proxy to return a 400 error (Twilio error code 80604) when a request to set a Session to in-progress would cause Participants with the same identifier/proxy_identifier pair to be active in multiple Sessions. If not provided, or if set to false, requests will be allowed to succeed and a Debugger event (80801) will be emitted. This causes calls and messages from affected Participants to be routed incorrectly. Please note, in a future release, the default behavior will be to reject the request with a 400 error.",
+                    "type": "boolean"
+                  },
                   "Status": {
                     "description": "The new status of the resource. Can be: `in-progress` to re-open a session or `closed` to close a session.",
                     "enum": [

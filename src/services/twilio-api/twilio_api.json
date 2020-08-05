@@ -2108,6 +2108,9 @@
             "format": "uri",
             "type": "string"
           },
+          "status": {
+            "type": "string"
+          },
           "status_callback": {
             "format": "uri",
             "type": "string"
@@ -2183,6 +2186,13 @@
               "PATCH",
               "PUT",
               "DELETE"
+            ],
+            "type": "string"
+          },
+          "voice_receive_mode": {
+            "enum": [
+              "voice",
+              "fax"
             ],
             "type": "string"
           },
@@ -2321,6 +2331,9 @@
             "format": "uri",
             "type": "string"
           },
+          "status": {
+            "type": "string"
+          },
           "status_callback": {
             "format": "uri",
             "type": "string"
@@ -2396,6 +2409,13 @@
               "PATCH",
               "PUT",
               "DELETE"
+            ],
+            "type": "string"
+          },
+          "voice_receive_mode": {
+            "enum": [
+              "voice",
+              "fax"
             ],
             "type": "string"
           },
@@ -2534,6 +2554,9 @@
             "format": "uri",
             "type": "string"
           },
+          "status": {
+            "type": "string"
+          },
           "status_callback": {
             "format": "uri",
             "type": "string"
@@ -2609,6 +2632,13 @@
               "PATCH",
               "PUT",
               "DELETE"
+            ],
+            "type": "string"
+          },
+          "voice_receive_mode": {
+            "enum": [
+              "voice",
+              "fax"
             ],
             "type": "string"
           },
@@ -11631,7 +11661,7 @@
               "schema": {
                 "properties": {
                   "BankAccountType": {
-                    "description": "If Payment source is ACH, type of bank account. Can be: `consumer-checking`, `consumer-savings`, `commercial-checking`. The default value is `consumer-checking`.",
+                    "description": "Type of bank account if payment source is ACH. One of `consumer-checking`, `consumer-savings`, or `commercial-checking`. The default value is `consumer-checking`.",
                     "enum": [
                       "consumer-checking",
                       "consumer-savings",
@@ -11640,39 +11670,39 @@
                     "type": "string"
                   },
                   "ChargeAmount": {
-                    "description": "If this field is present and greater than `0.0` payment source will be charged. Otherwise payment source will be tokenized.",
+                    "description": "A positive decimal value less than 1,000,000 to charge against the credit card or bank account. Default currency can be overwritten with `currency` field. Leave blank or set to 0 to tokenize.",
                     "type": "number"
                   },
                   "Currency": {
-                    "description": "Currency `charge_amount` is in. It's format should be as specified in [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format. The default value is `USD`.",
+                    "description": "The currency of the `charge_amount`, formatted as [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format. The default value is `USD` and all values allowed from the <Pay> Connector are accepted.",
                     "type": "string"
                   },
                   "Description": {
-                    "description": "Decription of the charge.",
+                    "description": "The description can be used to provide more details regarding the transaction. This information is submitted along with the payment details to the Payment Connector which are then posted on the transactions.",
                     "type": "string"
                   },
                   "IdempotencyKey": {
-                    "description": "A unique token for each payment session that should be provided to maintain idempotency of the session.",
+                    "description": "A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated.",
                     "type": "string"
                   },
                   "Input": {
-                    "description": "Kind of medium customer would enter payment source information in. Currently only 'DTMF' is supported, which means customer would use keypad of their phone to enter card number etc.",
+                    "description": "A list of inputs that should be accepted. Currently only `dtmf` is supported. All digits captured during a pay session are redacted from the logs.",
                     "type": "string"
                   },
                   "MinPostalCodeLength": {
-                    "description": "If postal code is expected, minimum length of the postal code. When user enters postal code, this value will be used to validate.",
+                    "description": "A positive integer that is used to validate the length of the `PostalCode` inputted by the user. User must enter this many digits.",
                     "type": "integer"
                   },
                   "Parameter": {
-                    "description": "Additonal data to be sent over to payment provider. It has to be a JSON string with only one level object. This parameter can be used to send information such as customer name, phone number etc. Refer to specific payment provider's documentation in Twilio console for supported names/values/format.",
+                    "description": "A single level JSON string that is required when accepting certain information specific only to ACH payments. The information that has to be included here depends on the <Pay> Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors).",
                     "type": "object"
                   },
                   "PaymentConnector": {
-                    "description": "Payment connector that you would like Twilio to use for processing payments. The default value is `Default`, which means you need to have at least one payment connector configured in Twilio with name 'Default'. If not you must provide connector configuration name here.",
+                    "description": "This is the unique name corresponding to the Payment Gateway Connector installed in the Twilio Add-ons. Learn more about [<Pay> Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`.",
                     "type": "string"
                   },
                   "PaymentMethod": {
-                    "description": "Payment source type. Can be: `credit-card`, `ach-debit`. The default value is `credit-card`.",
+                    "description": "Type of payment being captured. One of `credit-card` or `ach-debit`. The default value is `credit-card`.",
                     "enum": [
                       "credit-card",
                       "ach-debit"
@@ -11680,24 +11710,24 @@
                     "type": "string"
                   },
                   "PostalCode": {
-                    "description": "Whether to expect postal code during payment source data gathering. Can be: `true`, `false`. The default value is `true`.",
+                    "description": "Indicates whether the credit card postal code (zip code) is a required piece of payment information that must be provided by the caller. The default is `true`.",
                     "type": "boolean"
                   },
                   "SecurityCode": {
-                    "description": "Whether to expect security code during payment source data gathering. Can be: `true`, `false`. The default value is `true`.",
+                    "description": "Indicates whether the credit card security code is a required piece of payment information that must be provided by the caller. The default is `true`.",
                     "type": "boolean"
                   },
                   "StatusCallback": {
-                    "description": "The URL we should call using the `status_callback` to send status information of payment session.",
+                    "description": "Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [expected StatusCallback values](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback)",
                     "format": "uri",
                     "type": "string"
                   },
                   "Timeout": {
-                    "description": "The number of seconds that we should allow customer to enter payment information. Can be an integer between `5` and `600`, inclusive. The default value is `5`.",
+                    "description": "The number of seconds that <Pay> should wait for the caller to press a digit between each subsequent digit, after the first one, before moving on to validate the digits captured. The default is `5`, maximum is `600`.",
                     "type": "integer"
                   },
                   "TokenType": {
-                    "description": "If tokenization of payment source is desired, this represents type of token. Can be: `one-time`, `reusable`. The default value is `reusable`.",
+                    "description": "Indicates whether the payment method should be tokenized as a `one-time` or `reusable` token. The default value is `reusable`. Do not enter a charge amount when tokenizing. If a charge amount is entered, the payment method will be charged and not tokenized.",
                     "enum": [
                       "one-time",
                       "reusable"
@@ -11705,7 +11735,7 @@
                     "type": "string"
                   },
                   "ValidCardTypes": {
-                    "description": "List of card types accepted with each card types separated by space. Can be: `visa`,`nmastercard`,`amex`,`maestro`,`discover`,`optima`,`jcb`,`diners-club`,`enroute`. The default value is `visa mastercard amex`.",
+                    "description": "Credit card types separated by space that Pay should accept. The default value is `visa mastercard amex`",
                     "type": "string"
                   }
                 },
@@ -11797,7 +11827,7 @@
               "schema": {
                 "properties": {
                   "Capture": {
-                    "description": "Specific payment source information to expect. Can be: `payment-card-number`,`expiration-date`,`security-code`,`postal-code`,`bank-routing-number`,`bank-account-number`.",
+                    "description": "The piece of payment information that you wish the caller to enter. Must be one of `payment-card-number`, `expiration-date`, `security-code`, `postal-code`, `bank-routing-number`, or `bank-account-number`.",
                     "enum": [
                       "payment-card-number",
                       "expiration-date",
@@ -11809,11 +11839,11 @@
                     "type": "string"
                   },
                   "IdempotencyKey": {
-                    "description": "A unique token for each payment session that should be provided to maintain idempotency of the session.",
+                    "description": "A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated.",
                     "type": "string"
                   },
                   "Status": {
-                    "description": "Instruction to complete or cancel the transaction. Can be: `complete`, `cancel.`",
+                    "description": "Indicates whether the current payment session should be cancelled or completed. When `cancel` the payment session is cancelled. When `complete`, Twilio sends the payment information to the selected <Pay> connector for processing.",
                     "enum": [
                       "complete",
                       "cancel"
@@ -11821,7 +11851,7 @@
                     "type": "string"
                   },
                   "StatusCallback": {
-                    "description": "The URL we should call using the `status_callback` to send status information of payment session.",
+                    "description": "Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [Update](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-update) and [Complete/Cancel](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-cancelcomplete) POST requests.",
                     "format": "uri",
                     "type": "string"
                   }

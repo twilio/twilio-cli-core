@@ -1,6 +1,26 @@
 twilio-cli-core changelog
 =====================
 
+[2020-08-05] Version 5.8.1
+--------------------------
+**Library - Fix**
+- [PR #101](https://github.com/twilio/twilio-cli-core/pull/101): allow API redirect responses. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Chore**
+- [PR #100](https://github.com/twilio/twilio-cli-core/pull/100): lint using twilio-style. Thanks to [@ktalebian](https://github.com/ktalebian)!
+
+**Messaging**
+- Add rejection reason support to WhatsApp API
+- Removed status parameter for create and update in WhatsApp Templates API
+
+**Proxy**
+- Add FailOnParticipantConflict param to Proxy Session update
+
+**Verify**
+- Add `CustomFriendlyName` optional parameter on Verification creation.
+- Changes in `Challenge` resource to update documentation of both `details` and `hidden_details` properties.
+
+
 [2020-07-22] Version 5.8.0
 --------------------------
 **Library - Fix**

@@ -780,7 +780,7 @@
                     "type": "boolean"
                   },
                   "Push": {
-                    "description": "The optional service level push factors configuration. If present it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"include_date\": true}",
+                    "description": "Configurations for the Push factors (channel) created under this Service. If present, it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"include_date\": true}. If `include_date` is set to `true`, which is the default, that means that the push challenge\u2019s response will include the date created value. If `include_date` is set to `false`, then the date created value will not be included. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource\u2019s details parameter for more info",
                     "type": "object"
                   },
                   "SkipSmsToLandlines": {
@@ -1361,7 +1361,7 @@
               "schema": {
                 "properties": {
                   "Details": {
-                    "description": "Details provided to give context about the Challenge. Shown to the end user.",
+                    "description": "Details provided to give context about the Challenge. Shown to the end user. It must be a stringified JSON with the following structure: {\"message\": \"string\", \"fields\": [ { \"label\": \"string\", \"value\": \"string\"}]}. `message` is required. If you send the `fields` property, each field has to include `label` and `value` properties. If you had set `include_date=true` in the `push` configuration of the [service](https://www.twilio.com/docs/verify/api/service), the response will also include the challenge's date created value as an additional field called `date`",
                     "type": "string"
                   },
                   "ExpirationDate": {
@@ -1377,7 +1377,7 @@
                     "type": "string"
                   },
                   "HiddenDetails": {
-                    "description": "Details provided to give context about the Challenge. Not shown to the end user.",
+                    "description": "Details provided to give context about the Challenge. Not shown to the end user. It must be a stringified JSON with only strings values eg. `{\"ip\": \"172.168.1.234\"}`",
                     "type": "string"
                   }
                 },
@@ -3234,6 +3234,10 @@
                     "description": "A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive.",
                     "type": "string"
                   },
+                  "CustomFriendlyName": {
+                    "description": "A custom user defined friendly name that overwrites the existing one in the verification message",
+                    "type": "string"
+                  },
                   "CustomMessage": {
                     "description": "The text of a custom message to use for the verification.",
                     "type": "string"
@@ -3927,7 +3931,7 @@
                     "type": "boolean"
                   },
                   "Push": {
-                    "description": "The optional service level push factors configuration. If present it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"include_date\": true}",
+                    "description": "Configurations for the Push factors (channel) created under this Service. If present, it must be a json string with the following format: {\"notify_service_sid\": \"ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\", \"include_date\": true}. If `include_date` is set to `true`, which is the default, that means that the push challenge\u2019s response will include the date created value. If `include_date` is set to `false`, then the date created value will not be included. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource\u2019s details parameter for more info",
                     "type": "object"
                   },
                   "SkipSmsToLandlines": {
