@@ -47,7 +47,7 @@
     "eslint": "^7.5.0",
     "eslint-config-twilio": "^1.28.0",
     "eslint-config-twilio-mocha": "^1.28.0",
-    "mocha": "^8.0.1",
+    "mocha": "^8.1.1",
     "nock": "^13.0.2",
     "nyc": "^15.1.0",
     "sinon": "^9.0.2",
