@@ -9,8 +9,7 @@ before_install:
 deploy:
   provider: npm
   email: twilio-ci@twilio.com
-  api_key:
-    secure: ZgH0hVgm75+vRFucYiKZYTQ7e5OVS1W/o5xxtEF+2zFgmmgXN/cxQQPm30n1vCnHJ8dREL4DFBRzmv6+TcKrQ4T3NiRYh1v09mygWI3GoB4AIz6RXw/mDlUZxLCwiZ1OQvbu3FjTcFPRyIK1l+5W1dDf7IVmk/aG1Iawn6nsSC8CqUPB+QBxRu0zjp3yJA/wVRDqvbFokS2dgcF3cV86cwlIjk1ivrGLXbuUfdul4TlwBiWcfZpAFVFnzs5Kzdojs4exH/LPBvtt2tYBS1Kp7bBo97bTpmY8iXKaG2eSLNdCrECRA8lxkjt4toXkPoZ7G2lOPrXmPBMjgf3xZHk9/8IjisaFsbZnOLJIBB5HhWTUsd6AjUvDxw6rU6p0sRDujQo05vlk6tGHZTW9OU6+QCmc6RSt0CFiMVlWGRzhQp9eaHyJD1yr7K0JczV/fjEJEOS0o0l/F6s85PoTqs8fBySAK8rQ3IuilOD2Yx3KRoJN3lmjSOOn+WtkvOwo5+/a19696FqawWMXut1Q6sp/xoyDfF6WYvBFPk9X8tJbHkbwUTU8Y/ApJbEoGWQ5KpVOWfm/iq4wruqVWEiScyrxj/b4RgLtx9YMJsCEO7y3s0hWsMQOqKhP+rJkCFX1aC81nHCND1S4JBiVQ7fe3t9cfn0+Nw67+jLPqEvJCiuWyeM=
+  api_key: $NPM_TOKEN
   skip_cleanup: true
   edge: true
   on:
@@ -23,5 +22,4 @@ notifications:
     on_pull_requests: false
     on_success: never
     on_failure: change
-    rooms:
-      - secure: BpQfmLgPfSEe5wemAQZjPyEoY/e0EysXwxU5eCy+QfybHal3VBcdMcUbhDYBXF97ELvMJ61NK7hPdEoMmSI0jTPVOUbcU2CV0x9YJLyuyopp6wAC98iaNqfQTj0tQEdb/box+Jq9/ba4npcOY5u530NOK6LpAzc7zFAIsVXgzxbnJaIBv8hzhF9A029AjiKo5L6DK5tO7FuddCjURjoA7BRd9m7z6qz8Huf7sxRIroPADxOhJtkVsnFpleKtzpJ4P0v3634MgvJVnheif4Rcuw/zFTnvKKSIhJALrRAJyUuc3G1WUd3srCmhry9MU73a/AlaYi5E5WREW0TXzqzn+Dg4E0qMYk1QdNfBbZbjbACrpLaMBO2Je0gtShvWIDYmfD8x8MQZbaiSnbmxbQHlZn8yCAik8sQU69dLFs2ZVgVzeCjpj/CbLwhUEw1DQBb7IH8BY6Odd/HpnbuDLiOwnuf3w5JtZ09gMivMlZCpclmMNli2bZezPz5HUVZSvyo2fBdCeOLYu0PSaOl1b5StVv0RapTl1E+mNN+q2zATj8LCT83w8XUgVteUGjPobVqSouZ0Nv/XdF2rMqhplWefn1Pa5g0PxtOuPvZKXezYxpUZJfnECj04gOaQKUQ+lJPz1siHzovGIzo0o92YCh3PzYpKEl3Z84g/XNiqyxZMKSU=
+    rooms: $SLACK_TOKEN
