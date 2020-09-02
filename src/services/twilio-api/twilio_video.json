@@ -417,6 +417,7 @@
           },
           "type": {
             "enum": [
+              "peer-to-peer-basic",
               "peer-to-peer",
               "group",
               "group-small"
@@ -748,7 +749,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Video",
-    "version": "81ff5a4"
+    "version": "5.9.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -2104,6 +2105,7 @@
                   "Type": {
                     "description": "The type of room. Can be: `peer-to-peer`, `group-small`, or `group`. The default value is `group`.",
                     "enum": [
+                      "peer-to-peer-basic",
                       "peer-to-peer",
                       "group",
                       "group-small"

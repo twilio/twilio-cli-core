@@ -49,7 +49,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Lookups",
-    "version": "81ff5a4"
+    "version": "5.9.1"
   },
   "openapi": "3.0.1",
   "paths": {
