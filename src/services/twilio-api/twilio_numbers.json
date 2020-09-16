@@ -358,7 +358,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Numbers",
-    "version": "5.9.1"
+    "version": "5.9.2"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -2034,12 +2034,42 @@
       "x-path-type": "list"
     },
     "/v2/RegulatoryCompliance/SupportingDocuments/{Sid}": {
+      "delete": {
+        "description": "Delete a specific Supporting Document.",
+        "parameters": [
+          {
+            "description": "The unique string created by Twilio to identify the Supporting Document resource.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^RD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "GA"
+        ]
+      },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch specific Supporting Document Instance.",
         "parameters": [
           {
-            "description": "The unique string that we created to identify the Supporting Document resource.",
+            "description": "The unique string created by Twilio to identify the Supporting Document resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2076,7 +2106,7 @@
         "description": "Update an existing Supporting Document.",
         "parameters": [
           {
-            "description": "The unique string that we created to identify the End User resource.",
+            "description": "The unique string created by Twilio to identify the Supporting Document resource.",
             "in": "path",
             "name": "Sid",
             "required": true,

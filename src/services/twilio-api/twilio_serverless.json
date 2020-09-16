@@ -563,7 +563,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Serverless",
-    "version": "5.9.1"
+    "version": "5.9.2"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -650,7 +650,7 @@
               "schema": {
                 "properties": {
                   "FriendlyName": {
-                    "description": "A descriptive string that you create to describe the Service resource. It can be up to 255 characters long.",
+                    "description": "A descriptive string that you create to describe the Service resource. It can be a maximum of 255 characters.",
                     "type": "string"
                   },
                   "IncludeCredentials": {
@@ -662,7 +662,7 @@
                     "type": "boolean"
                   },
                   "UniqueName": {
-                    "description": "An application-defined string that uniquely identifies the Service resource. It can be used as an alternative to the `sid` in the URL path to address the Service resource. This value must be 244 characters or less in length and be unique.",
+                    "description": "A user-defined string that uniquely identifies the Service resource. It can be used as an alternative to the `sid` in the URL path to address the Service resource. This value must be 50 characters or less in length and be unique.",
                     "type": "string"
                   }
                 },
@@ -811,7 +811,7 @@
               "schema": {
                 "properties": {
                   "FriendlyName": {
-                    "description": "A descriptive string that you create to describe the Asset resource. It can be up to 255 characters long.",
+                    "description": "A descriptive string that you create to describe the Asset resource. It can be a maximum of 255 characters.",
                     "type": "string"
                   }
                 },
@@ -859,7 +859,7 @@
     "/v1/Services/{ServiceSid}/Assets/{AssetSid}/Versions": {
       "description": "The content of an Asset.",
       "get": {
-        "description": "Retrieve a list of all asset versions.",
+        "description": "Retrieve a list of all Asset Versions.",
         "parameters": [
           {
             "description": "The SID of the Service to read the Asset Version resource from.",
@@ -968,7 +968,7 @@
     "/v1/Services/{ServiceSid}/Assets/{AssetSid}/Versions/{Sid}": {
       "description": "The content of an Asset.",
       "get": {
-        "description": "Retrieve a specific asset version.",
+        "description": "Retrieve a specific Asset Version.",
         "parameters": [
           {
             "description": "The SID of the Service to fetch the Asset Version resource from.",
@@ -1052,7 +1052,7 @@
             }
           },
           {
-            "description": "The SID of the Asset resource to delete.",
+            "description": "The SID that identifies the Asset resource to delete.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1092,7 +1092,7 @@
             }
           },
           {
-            "description": "The SID of the Asset resource to fetch.",
+            "description": "The SID that identifies the Asset resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1138,7 +1138,7 @@
             }
           },
           {
-            "description": "The SID of the Asset resource to update.",
+            "description": "The SID that identifies the Asset resource to update.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1156,7 +1156,7 @@
               "schema": {
                 "properties": {
                   "FriendlyName": {
-                    "description": "A descriptive string that you create to describe the Asset resource. It can be up to 255 characters long.",
+                    "description": "A descriptive string that you create to describe the Asset resource. It can be a maximum of 255 characters.",
                     "type": "string"
                   }
                 },
@@ -1202,7 +1202,7 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Builds": {
-      "description": "A collection of function versions, asset versions, and dependencies that form a deployable unit.",
+      "description": "A collection of Function Versions, Asset Versions, and Dependencies that form a deployable unit.",
       "get": {
         "description": "Retrieve a list of all Builds.",
         "parameters": [
@@ -1304,7 +1304,7 @@
               "schema": {
                 "properties": {
                   "AssetVersions": {
-                    "description": "The list of Asset Version resource SIDs to include in the build.",
+                    "description": "The list of Asset Version resource SIDs to include in the Build.",
                     "items": {
                       "maxLength": 34,
                       "minLength": 34,
@@ -1314,11 +1314,11 @@
                     "type": "array"
                   },
                   "Dependencies": {
-                    "description": "A list of objects that describe the Dependencies included in the build. Each object contains the `name` and `version` of the dependency.",
+                    "description": "A list of objects that describe the Dependencies included in the Build. Each object contains the `name` and `version` of the dependency.",
                     "type": "string"
                   },
                   "FunctionVersions": {
-                    "description": "The list of the Variable resource SIDs to include in the build.",
+                    "description": "The list of the Function Version resource SIDs to include in the Build.",
                     "items": {
                       "maxLength": 34,
                       "minLength": 34,
@@ -1406,7 +1406,7 @@
           "Preview"
         ]
       },
-      "description": "A collection of function versions, asset versions, and dependencies that form a deployable unit.",
+      "description": "A collection of Function Versions, Asset Versions, and Dependencies that form a deployable unit.",
       "get": {
         "description": "Retrieve a specific Buildn resource.",
         "parameters": [
@@ -1568,11 +1568,11 @@
               "schema": {
                 "properties": {
                   "DomainSuffix": {
-                    "description": "A URL-friendly name that represents the environment and forms part of the domain name. Must have fewer than 32 characters.",
+                    "description": "A URL-friendly name that represents the environment and forms part of the domain name. It can be a maximum of 16 characters.",
                     "type": "string"
                   },
                   "UniqueName": {
-                    "description": "An application-defined string that uniquely identifies the Environment resource. It can be used as an alternative to the `sid` in the URL path to address the Environment resource. This value must have fewer than 256 characters.",
+                    "description": "A user-defined string that uniquely identifies the Environment resource. It can be a maximum of 100 characters.",
                     "type": "string"
                   }
                 },
@@ -1619,9 +1619,9 @@
       "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Deployments": {
-      "description": "An association of a build with an environment so that the build is published in the environment.",
+      "description": "An association of a Build with an Environment so that the Build is published in the Environment.",
       "get": {
-        "description": "Retrieve a list of all deployments.",
+        "description": "Retrieve a list of all Deployments.",
         "parameters": [
           {
             "description": "The SID of the Service to read the Deployment resources from.",
@@ -1633,7 +1633,7 @@
             }
           },
           {
-            "description": "The SID of the environment used by the Deployment resources to read.",
+            "description": "The SID of the Environment used by the Deployment resources to read.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1715,7 +1715,7 @@
         ]
       },
       "post": {
-        "description": "Create a new deployment.",
+        "description": "Create a new Deployment.",
         "parameters": [
           {
             "description": "The SID of the Service to create the Deployment resource under.",
@@ -1727,7 +1727,7 @@
             }
           },
           {
-            "description": "The SID of the environment for the deployment.",
+            "description": "The SID of the Environment for the Deployment.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1745,7 +1745,7 @@
               "schema": {
                 "properties": {
                   "BuildSid": {
-                    "description": "The SID of the build for the deployment.",
+                    "description": "The SID of the Build for the Deployment.",
                     "maxLength": 34,
                     "minLength": 34,
                     "pattern": "^ZB[0-9a-fA-F]{32}$",
@@ -1791,9 +1791,9 @@
       "x-path-type": "list"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Deployments/{Sid}": {
-      "description": "An association of a build with an environment so that the build is published in the environment.",
+      "description": "An association of a Build with an Environment so that the Build is published in the Environment.",
       "get": {
-        "description": "Retrieve a specific deployment.",
+        "description": "Retrieve a specific Deployment.",
         "parameters": [
           {
             "description": "The SID of the Service to fetch the Deployment resource from.",
@@ -1805,7 +1805,7 @@
             }
           },
           {
-            "description": "The SID of the environment used by the Deployment to fetch.",
+            "description": "The SID of the Environment used by the Deployment to fetch.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -1817,7 +1817,7 @@
             }
           },
           {
-            "description": "The SID of the Deployment resource to fetch.",
+            "description": "The SID that identifies the Deployment resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2064,7 +2064,7 @@
       "x-path-type": "instance"
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Variables": {
-      "description": "A key and value pair that is specific to an environment.",
+      "description": "A key and value pair that is specific to an Environment.",
       "get": {
         "description": "Retrieve a list of all Variables.",
         "parameters": [
@@ -2078,7 +2078,7 @@
             }
           },
           {
-            "description": "The SID of the environment with the Variable resources to read.",
+            "description": "The SID of the Environment with the Variable resources to read.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -2160,7 +2160,7 @@
         ]
       },
       "post": {
-        "description": "Create a new variable.",
+        "description": "Create a new Variable.",
         "parameters": [
           {
             "description": "The SID of the Service to create the Variable resource under.",
@@ -2172,7 +2172,7 @@
             }
           },
           {
-            "description": "The SID of the environment in which the variable exists.",
+            "description": "The SID of the Environment in which the Variable resource exists.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -2190,11 +2190,11 @@
               "schema": {
                 "properties": {
                   "Key": {
-                    "description": "A string by which the Variable resource can be referenced. Must be less than 128 characters long.",
+                    "description": "A string by which the Variable resource can be referenced. It can be a maximum of 128 characters.",
                     "type": "string"
                   },
                   "Value": {
-                    "description": "A string that contains the actual value of the variable. Must have less than 450 bytes.",
+                    "description": "A string that contains the actual value of the Variable. It can be a maximum of 450 bytes in size.",
                     "type": "string"
                   }
                 },
@@ -2242,7 +2242,7 @@
     },
     "/v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Variables/{Sid}": {
       "delete": {
-        "description": "Delete a specific variable.",
+        "description": "Delete a specific Variable.",
         "parameters": [
           {
             "description": "The SID of the Service to delete the Variable resource from.",
@@ -2254,7 +2254,7 @@
             }
           },
           {
-            "description": "The SID of the environment with the Variables to delete.",
+            "description": "The SID of the Environment with the Variables to delete.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -2292,9 +2292,9 @@
           "Preview"
         ]
       },
-      "description": "A key and value pair that is specific to an environment.",
+      "description": "A key and value pair that is specific to an Environment.",
       "get": {
-        "description": "Retrieve a specific variable.",
+        "description": "Retrieve a specific Variable.",
         "parameters": [
           {
             "description": "The SID of the Service to fetch the Variable resource from.",
@@ -2306,7 +2306,7 @@
             }
           },
           {
-            "description": "The SID of the environment with the Variable resource to fetch.",
+            "description": "The SID of the Environment with the Variable resource to fetch.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -2352,7 +2352,7 @@
         ]
       },
       "post": {
-        "description": "Update a specific variable.",
+        "description": "Update a specific Variable.",
         "parameters": [
           {
             "description": "The SID of the Service to update the Variable resource under.",
@@ -2364,7 +2364,7 @@
             }
           },
           {
-            "description": "The SID of the environment with the Variable resource to update.",
+            "description": "The SID of the Environment with the Variable resource to update.",
             "in": "path",
             "name": "EnvironmentSid",
             "required": true,
@@ -2394,11 +2394,11 @@
               "schema": {
                 "properties": {
                   "Key": {
-                    "description": "A string by which the Variable resource can be referenced. Must be less than 128 characters long.",
+                    "description": "A string by which the Variable resource can be referenced. It can be a maximum of 128 characters.",
                     "type": "string"
                   },
                   "Value": {
-                    "description": "A string that contains the actual value of the variable. Must have less than 450 bytes.",
+                    "description": "A string that contains the actual value of the Variable. It can be a maximum of 450 bytes in size.",
                     "type": "string"
                   }
                 },
@@ -2643,7 +2643,7 @@
               "schema": {
                 "properties": {
                   "FriendlyName": {
-                    "description": "A descriptive string that you create to describe the Function resource. It can be up to 255 characters long.",
+                    "description": "A descriptive string that you create to describe the Function resource. It can be a maximum of 255 characters.",
                     "type": "string"
                   }
                 },
@@ -2885,7 +2885,7 @@
             }
           },
           {
-            "description": "The SID of the function that is the parent of the Function Version content to fetch.",
+            "description": "The SID of the Function that is the parent of the Function Version content to fetch.",
             "in": "path",
             "name": "FunctionSid",
             "required": true,
@@ -3059,7 +3059,7 @@
               "schema": {
                 "properties": {
                   "FriendlyName": {
-                    "description": "A descriptive string that you create to describe the Function resource. It can be up to 255 characters long.",
+                    "description": "A descriptive string that you create to describe the Function resource. It can be a maximum of 255 characters.",
                     "type": "string"
                   }
                 },
@@ -3189,7 +3189,7 @@
               "schema": {
                 "properties": {
                   "FriendlyName": {
-                    "description": "A descriptive string that you create to describe the Service resource. It can be up to 255 characters long.",
+                    "description": "A descriptive string that you create to describe the Service resource. It can be a maximum of 255 characters.",
                     "type": "string"
                   },
                   "IncludeCredentials": {
@@ -3197,7 +3197,7 @@
                     "type": "boolean"
                   },
                   "UiEditable": {
-                    "description": "Whether the Service's properties and subresources can be edited via the UI. The default value is `false`.",
+                    "description": "Whether the Service resource's properties and subresources can be edited via the UI. The default value is `false`.",
                     "type": "boolean"
                   }
                 },

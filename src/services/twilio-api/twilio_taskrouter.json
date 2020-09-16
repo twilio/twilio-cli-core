@@ -1401,7 +1401,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Taskrouter",
-    "version": "5.9.1"
+    "version": "5.9.2"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -1859,7 +1859,7 @@
               "schema": {
                 "properties": {
                   "Available": {
-                    "description": "Whether the Worker should be eligible to receive a Task when it occupies the Activity. A value of `true`, `1`, or `yes` specifies the Activity is available. All other values specify that it is not.",
+                    "description": "Whether the Worker should be eligible to receive a Task when it occupies the Activity. A value of `true`, `1`, or `yes` specifies the Activity is available. All other values specify that it is not. The value cannot be changed after the Activity is created.",
                     "type": "boolean"
                   },
                   "FriendlyName": {

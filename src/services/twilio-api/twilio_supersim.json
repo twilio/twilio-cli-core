@@ -341,7 +341,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Supersim",
-    "version": "5.9.1"
+    "version": "5.9.2"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -1508,7 +1508,7 @@
         "description": "Retrieve a list of Super SIMs from your account.",
         "parameters": [
           {
-            "description": "The status of the Sim resources to read. Can be `new`, `active`, `inactive`, or `scheduled`.",
+            "description": "The status of the Sim resources to read. Can be `new`, `ready`, `active`, `inactive`, or `scheduled`.",
             "in": "query",
             "name": "Status",
             "schema": {
@@ -1674,6 +1674,10 @@
             "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {
+                  "AccountSid": {
+                    "description": "The SID of the Account to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a Subaccount of the requesting Account. Only valid when the Sim resource's status is new.",
+                    "type": "string"
+                  },
                   "CallbackMethod": {
                     "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
                     "enum": [
@@ -1702,7 +1706,7 @@
                     "type": "string"
                   },
                   "Status": {
-                    "description": "The new status of the resource. Can be: `active` or `inactive`. See the [Super SIM Status Values](https://www.twilio.com/docs/iot/supersim/api/sim-resource#status-values) for more info.",
+                    "description": "The new status of the resource. Can be: `ready`, `active`, or `inactive`. See the [Super SIM Status Values](https://www.twilio.com/docs/iot/supersim/api/sim-resource#status-values) for more info.",
                     "enum": [
                       "ready",
                       "active",

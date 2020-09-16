@@ -1,6 +1,35 @@
 {
   "components": {
     "schemas": {
+      "events.v1.event_type": {
+        "properties": {
+          "date_created": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "date_updated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "links": {
+            "type": "object"
+          },
+          "schema_id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "events.v1.sink": {
         "properties": {
           "date_created": {
@@ -153,7 +182,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Events",
-    "version": "5.9.1"
+    "version": "5.9.2"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -1016,6 +1045,141 @@
         "version",
         "account_sid",
         "subscription_sid"
+      ],
+      "x-path-type": "instance"
+    },
+    "/v1/Types": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "types": {
+                      "items": {
+                        "$ref": "#/components/schemas/events.v1.event_type"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://events.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "type",
+        "schema_id",
+        "description"
+      ],
+      "x-path-type": "list"
+    },
+    "/v1/Types/{Type}": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "Type",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/events.v1.event_type"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "tags": [
+          "Preview"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://events.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "type",
+        "schema_id",
+        "description"
       ],
       "x-path-type": "instance"
     }
