@@ -754,7 +754,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Studio",
-    "version": "5.9.3"
+    "version": "5.9.4"
   },
   "openapi": "3.0.1",
   "paths": {
