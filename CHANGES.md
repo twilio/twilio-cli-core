@@ -1,6 +1,12 @@
 twilio-cli-core changelog
 =====================
 
+[2020-09-30] Version 5.9.5
+--------------------------
+**Library - Chore**
+- updating api spec
+
+
 [2020-09-28] Version 5.9.4
 --------------------------
 **Api**

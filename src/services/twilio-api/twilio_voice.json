@@ -398,7 +398,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Voice",
-    "version": "5.9.4"
+    "version": "5.9.5"
   },
   "openapi": "3.0.1",
   "paths": {
