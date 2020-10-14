@@ -448,7 +448,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Trunking",
-    "version": "5.9.5"
+    "version": "5.10.0"
   },
   "openapi": "3.0.1",
   "paths": {
