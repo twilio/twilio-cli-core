@@ -6,14 +6,15 @@ const { expect, test } = require('@twilio/cli-test');
 const configureEnv = require('../../src/services/env');
 
 const ORIGINAL_ENV = { ...process.env };
-const DEFAULT_DIR = path.join('home', '.twilio-cli');
+const DEFAULT_DIR =
+  process.platform === 'win32' ? path.join('appdata', 'twilio-cli') : path.join('home', '.twilio-cli');
 
 describe('services', () => {
   describe('env', () => {
     describe('configureEnv', () => {
       beforeEach(() => {
         process.env.HOME = 'home';
-        process.env.USERPROFILE = 'user-profile';
+        process.env.APPDATA = 'appdata';
       });
 
       afterEach(() => {
@@ -50,17 +51,17 @@ describe('services', () => {
         expect(process.env.TWILIO_DATA_DIR).to.equal(DEFAULT_DIR);
       });
 
-      test.it('should use the user profile if no home found', () => {
-        delete process.env.HOME;
+      test.it('should use the AppData directory on Windows', () => {
+        process.platform = 'win32';
 
         configureEnv();
 
-        expect(process.env.TWILIO_CACHE_DIR).to.equal(path.join('user-profile', '.twilio-cli'));
+        expect(process.env.TWILIO_CACHE_DIR).to.equal(path.join('appdata', 'twilio-cli'));
       });
 
-      test.it('should fallback to the OS home dir if no home or user profile found', () => {
+      test.it('should fallback to the OS home dir if no home or AppData found', () => {
         delete process.env.HOME;
-        delete process.env.USERPROFILE;
+        delete process.env.APPDATA;
 
         configureEnv();
 
