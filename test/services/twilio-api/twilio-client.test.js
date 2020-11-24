@@ -317,6 +317,24 @@ describe('services', () => {
         });
       });
 
+      describe('absent operation parameters', () => {
+        test
+          .nock('https://conversations.twilio.com', (api) => {
+            api.get(`/v1/Configuration`).reply(200, {
+              // eslint-disable-next-line camelcase
+              account_sid: accountSid,
+            });
+          })
+          .it('can fetch', async () => {
+            const response = await apiClient.fetch({
+              domain: 'conversations',
+              path: '/v1/Configuration',
+            });
+
+            expect(response).to.eql({ accountSid });
+          });
+      });
+
       describe('regional and edge support', () => {
         const defaultRegionTest = test.nock('https://api.edge.us1.twilio.com', (api) => {
           api.post(`/2010-04-01/Accounts/${accountSid}/Messages.json`).reply(201, {
