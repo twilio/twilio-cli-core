@@ -14,6 +14,7 @@ class TwilioApiBrowser {
   }
 
   mergeVersions(spec) {
+    // merge the domain_versions into a single domain
     const mergedSpec = {};
     for (const domainNameWithVersion in spec) {
       if (spec.hasOwnProperty(domainNameWithVersion)) {
