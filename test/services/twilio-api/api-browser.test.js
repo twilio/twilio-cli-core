@@ -12,6 +12,16 @@ describe('services', () => {
         expect(browser.domains.api.paths['/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json'].operations.get).to.exist;
       });
 
+      test.it('loads JSONs split by version', () => {
+        const browser = new TwilioApiBrowser();
+        const spec = browser.loadApiSpecFromDisk();
+        expect(spec).to.not.have.property('studio');
+        expect(spec).to.have.property('studio_v1');
+        expect(spec).to.have.property('studio_v2');
+        expect(browser.domains.studio.paths['/v1/Flows'].operations.get).to.exist;
+        expect(browser.domains.studio.paths['/v2/Flows'].operations.get).to.exist;
+      });
+
       test.it('loads a specific api spec', () => {
         const browser = new TwilioApiBrowser({
           api: {
