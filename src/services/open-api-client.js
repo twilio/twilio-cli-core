@@ -61,7 +61,7 @@ class OpenApiClient {
 
   getParams(opts, operation) {
     const params = {};
-    operation.parameters.forEach((parameter) => {
+    (operation.parameters || []).forEach((parameter) => {
       /*
        * Build the actual request params from the spec's query parameters. This
        * effectively drops all params that are not in the spec.
