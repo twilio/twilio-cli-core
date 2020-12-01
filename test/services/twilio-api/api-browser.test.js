@@ -19,6 +19,7 @@ describe('services', () => {
         expect(spec).to.have.property('studio_v1');
         expect(spec).to.have.property('studio_v2');
         expect(spec).to.have.property('api_v2010');
+        expect(spec).to.have.property('preview');
         expect(browser.domains.studio.paths['/v1/Flows'].operations.get).to.exist;
         expect(browser.domains.studio.paths['/v2/Flows'].operations.get).to.exist;
       });
