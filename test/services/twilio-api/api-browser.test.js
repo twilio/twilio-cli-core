@@ -18,8 +18,18 @@ describe('services', () => {
         expect(spec).to.not.have.property('studio');
         expect(spec).to.have.property('studio_v1');
         expect(spec).to.have.property('studio_v2');
+        expect(spec).to.have.property('api_v2010');
         expect(browser.domains.studio.paths['/v1/Flows'].operations.get).to.exist;
         expect(browser.domains.studio.paths['/v2/Flows'].operations.get).to.exist;
+      });
+
+      test.it('merges the domains into one', () => {
+        const browser = new TwilioApiBrowser();
+        let spec = browser.loadApiSpecFromDisk();
+        expect(spec).to.have.property('studio_v1');
+        spec = browser.mergeVersions(spec);
+        expect(spec).to.not.have.property('studio_v1');
+        expect(spec).to.have.property('studio');
       });
 
       test.it('loads a specific api spec', () => {
