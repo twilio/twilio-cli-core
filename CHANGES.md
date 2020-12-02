@@ -1,6 +1,26 @@
 twilio-cli-core changelog
 =====================
 
+[2020-12-02] Version 5.13.0
+---------------------------
+**Library - Feature**
+- [PR #104](https://github.com/twilio/twilio-cli-core/pull/104): splitting openAPI specs by version. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Library - Fix**
+- [PR #103](https://github.com/twilio/twilio-cli-core/pull/103): getParams when operation parameters is absent. Thanks to [@sergiofbsilva](https://github.com/sergiofbsilva)!
+
+**Api**
+- Remove `RecordingTrack` parameter for create calls, create participants, and create call recordings **(breaking change)**
+- Added `RecordingTrack` parameter for create calls and create call recordings
+- Add optional property `recording_track` in the participant create request
+
+**Lookups**
+- Changed `caller_name` and `carrier` properties type to object **(breaking change)**
+
+**Trunking**
+- Added dual channel recording options for Trunks.
+
+
 [2020-11-18] Version 5.12.0
 ---------------------------
 **Api**
