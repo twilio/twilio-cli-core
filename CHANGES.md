@@ -1,6 +1,19 @@
 twilio-cli-core changelog
 =====================
 
+[2020-12-08] Version 5.14.0
+---------------------------
+**Library - Chore**
+- [PR #105](https://github.com/twilio/twilio-cli-core/pull/105): replace tags with vendor extension. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Library - Fix**
+- [PR #106](https://github.com/twilio/twilio-cli-core/pull/106): fixing semantic errors in the openAPI specs. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Api**
+- Added optional `RecordingTrack` parameter for create calls, create participants, and create call recordings
+- Removed deprecated Programmable Chat usage record categories **(breaking change)**
+
+
 [2020-12-02] Version 5.13.0
 ---------------------------
 **Library - Feature**
