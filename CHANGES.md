@@ -1,6 +1,23 @@
 twilio-cli-core changelog
 =====================
 
+[2020-12-16] Version 5.15.0
+---------------------------
+**Library - Feature**
+- [PR #107](https://github.com/twilio/twilio-cli-core/pull/107): add operation IDs. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+
+**Api**
+- Updated `call_event` default_output_properties to request and response.
+
+**Conversations**
+- Added `last_read_message_index` and `last_read_timestamp` to Participant's resource update operation
+- Added `is_notifiable` and `is_online` to User's resource
+- Added `reachability_enabled` parameters to update method for Conversation Service Configuration resource
+
+**Messaging**
+- Added WA template quick reply, URL, and phone number buttons
+
+
 [2020-12-08] Version 5.14.0
 ---------------------------
 **Library - Chore**
