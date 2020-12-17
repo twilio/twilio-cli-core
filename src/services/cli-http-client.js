@@ -94,10 +94,11 @@ class CliRequestClient {
       this.logger.debug(`response.headers: ${JSON.stringify(response.headers)}`);
 
       if (response.status < 200 || response.status >= 400) {
-        const parsed = response.data;
+        const { code, message, more_info, details} = response.data;
         throw new TwilioCliError(
-          `Error code ${parsed.code} from Twilio: ${parsed.message}. See ${parsed.more_info} for more info.`,
-          parsed.code,
+          `Error code ${code} from Twilio: ${message}. See ${more_info} for more info.`,
+          code,
+          details,
         );
       }
 
