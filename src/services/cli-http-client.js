@@ -93,6 +93,7 @@ class CliRequestClient {
       this.logger.debug(`response.statusCode: ${response.status}`);
       this.logger.debug(`response.headers: ${JSON.stringify(response.headers)}`);
 
+      /* eslint-disable camelcase */
       if (response.status < 200 || response.status >= 400) {
         const { code, message, more_info, details } = response.data;
         throw new TwilioCliError(
@@ -101,6 +102,7 @@ class CliRequestClient {
           details,
         );
       }
+      /* eslint-enable camelcase */
 
       return {
         body: response.data,
