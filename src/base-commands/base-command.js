@@ -62,16 +62,13 @@ class BaseCommand extends Command {
 
     if (instanceOf(error, TwilioCliError)) {
       // User/API errors
-      this.logger.error(error.message);
-      this.logger.debug(error.stack);
-
       if (this.flags['cli-output-format'] === 'json') {
-        this.output(error.details);
+        this.output(error);
+      } else {
+        this.logger.error(error.message);
+        this.logger.debug(error.stack);
       }
-      
       this.exit(error.exitCode || 1);
-
-
     } else {
       // System errors
       let url = '';
