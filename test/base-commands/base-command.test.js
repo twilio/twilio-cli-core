@@ -61,7 +61,6 @@ describe('base-commands', () => {
 
     test
       .twilioCliEnv()
-      .stderr()
       .stdout()
       .do(async (ctx) => {
         ctx.testCmd = new BaseCommand(['-o', 'json'], ctx.fakeConfig);
