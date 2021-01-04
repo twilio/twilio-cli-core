@@ -61,6 +61,20 @@ describe('base-commands', () => {
 
     test
       .twilioCliEnv()
+      .stderr()
+      .stdout()
+      .do(async (ctx) => {
+        ctx.testCmd = new BaseCommand(['-o', 'json'], ctx.fakeConfig);
+        await ctx.testCmd.run();
+        await ctx.testCmd.catch(new TwilioCliError('oh no', 1, { errors: [{ message: 'oh no' }] }));
+      })
+      .exit(1)
+      .it('can correctly display error details', (ctx) => {
+        expect(ctx.stdout).to.contain(`"message": "oh no"`);
+      });
+
+    test
+      .twilioCliEnv()
       .do((ctx) => {
         ctx.testCmd = new BaseCommand([], ctx.fakeConfig);
       })
