@@ -2,6 +2,7 @@ const http_ = require('http');
 const https = require('https');
 const os = require('os');
 
+const HttpsProxyAgent = require('https-proxy-agent');
 const qs = require('qs');
 
 const pkg = require('../../package.json');
@@ -17,6 +18,14 @@ class CliRequestClient {
     this.commandName = commandName;
     this.logger = logger;
     this.http = http || require('axios');
+    if (process.env.HTTP_PROXY) {
+      /*
+       * If environment variable HTTP_PROXY is set,
+       * add an appropriate httpsAgent to axios.
+       */
+      this.http.defaults.proxy = false;
+      this.http.defaults.httpsAgent = new HttpsProxyAgent(process.env.HTTP_PROXY);
+    }
   }
 
   /**

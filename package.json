@@ -34,6 +34,7 @@
     "chalk": "^4.1.0",
     "columnify": "^1.5.4",
     "fs-extra": "^9.0.1",
+    "https-proxy-agent": "^5.0.0",
     "inquirer": "^7.3.0",
     "qs": "^6.9.4",
     "semver": "^7.3.2",
