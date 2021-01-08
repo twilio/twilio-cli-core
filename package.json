@@ -1,6 +1,6 @@
 {
   "name": "@twilio/cli-core",
-  "version": "5.15.0",
+  "version": "5.15.1",
   "description": "Core functionality for the twilio-cli",
   "keywords": [
     "twilio"
@@ -39,7 +39,7 @@
     "qs": "^6.9.4",
     "semver": "^7.3.2",
     "tsv": "^0.2.0",
-    "twilio": "^3.48.2"
+    "twilio": "^3.54.2"
   },
   "devDependencies": {
     "@oclif/test": "^1.2.6",

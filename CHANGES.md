@@ -1,6 +1,12 @@
 twilio-cli-core changelog
 =====================
 
+[2021-01-06] Version 5.15.1
+---------------------------
+**Library - Chore**
+- [PR #110](https://github.com/twilio/twilio-cli-core/pull/110): bump axios version. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+
 [2020-12-16] Version 5.15.0
 ---------------------------
 **Library - Feature**
