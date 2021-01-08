@@ -141,9 +141,9 @@ class CliRequestClient {
   /* eslint-disable camelcase */
   // In the rare event parameters are missing, display a readable message
   formatErrorMessage({ code, message, more_info, details }) {
-    const moreInfoMessage = more_info ? `See ${more_info} for more info.` : '';
+    const moreInfoMessage = more_info ? ` See ${more_info} for more info.` : '';
     const error = {
-      message: `Error code ${code || 'N/A'} from Twilio: ${message || 'No message provided'}. ${moreInfoMessage}`,
+      message: `Error code ${code || 'N/A'} from Twilio: ${message || 'No message provided'}.${moreInfoMessage}`,
       code,
       details,
     };
