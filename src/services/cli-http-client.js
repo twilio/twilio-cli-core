@@ -93,16 +93,10 @@ class CliRequestClient {
       this.logger.debug(`response.statusCode: ${response.status}`);
       this.logger.debug(`response.headers: ${JSON.stringify(response.headers)}`);
 
-      /* eslint-disable camelcase */
       if (response.status < 200 || response.status >= 400) {
-        const { code, message, more_info, details } = response.data;
-        throw new TwilioCliError(
-          `Error code ${code} from Twilio: ${message}. See ${more_info} for more info.`,
-          code,
-          details,
-        );
+        const { message, code, details } = this.formatErrorMessage(response.data);
+        throw new TwilioCliError(message, code, details);
       }
-      /* eslint-enable camelcase */
 
       return {
         body: response.data,
@@ -143,6 +137,20 @@ class CliRequestClient {
     this.logger.debug(`User-Agent: ${options.headers['User-Agent']}`);
     this.logger.debug('-- END Twilio API Request --');
   }
+
+  /* eslint-disable camelcase */
+  // In the rare event parameters are missing, display a readable message
+  formatErrorMessage({ code, message, more_info, details }) {
+    const moreInfoMessage = more_info ? `See ${more_info} for more info.` : '';
+    const error = {
+      message: `Error code ${code || 'N/A'} from Twilio: ${message || 'No message provided'}. ${moreInfoMessage}`,
+      code,
+      details,
+    };
+
+    return error;
+  }
+  /* eslint-enable camelcase */
 }
 
 module.exports = CliRequestClient;
