@@ -63,7 +63,7 @@ class BaseCommand extends Command {
     if (instanceOf(error, TwilioCliError)) {
       // User/API errors
       if (this.flags['cli-output-format'] === 'json') {
-        this.output(error);
+        this.output(error.data);
       } else {
         this.logger.error(error.message);
         this.logger.debug(error.stack);
