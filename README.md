@@ -31,7 +31,7 @@ Formatters to take a JSON array and write to the stdout. Current formatters incl
 A custom http client for the Twilio helper library to allow us to log API requests as well as modify the User-Agent header.
 
 ### Usage with proxy
- - `HTTP_PROXY`: If using Twilio CLI behind a proxy, set the URL of the proxy here.
+ - `HTTP_PROXY`: If using Twilio CLI behind a proxy, set the URL of the proxy in an environment variable called `HTTP_PROXY`.
 
 ### Config
 
