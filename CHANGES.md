@@ -1,6 +1,18 @@
 twilio-cli-core changelog
 =====================
 
+[2021-01-27] Version 5.16.1
+---------------------------
+**Library - Fix**
+- [PR #111](https://github.com/twilio/twilio-cli-core/pull/111): Outputting entire error response w/ JSON format flag enabled. Thanks to [@alecnicolas](https://github.com/alecnicolas)!
+
+**Studio**
+- Studio V2 API is now GA
+
+**Supersim**
+- Allow updating `CommandsUrl` and `CommandsMethod` on a Fleet
+
+
 [2021-01-13] Version 5.16.0
 ---------------------------
 **Library - Feature**
