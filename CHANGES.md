@@ -1,6 +1,39 @@
 twilio-cli-core changelog
 =====================
 
+[2021-01-27] Version 5.16.1
+---------------------------
+**Library - Fix**
+- [PR #111](https://github.com/twilio/twilio-cli-core/pull/111): Outputting entire error response w/ JSON format flag enabled. Thanks to [@alecnicolas](https://github.com/alecnicolas)!
+
+**Studio**
+- Studio V2 API is now GA
+
+**Supersim**
+- Allow updating `CommandsUrl` and `CommandsMethod` on a Fleet
+
+
+[2021-01-13] Version 5.16.0
+---------------------------
+**Library - Feature**
+- [PR #108](https://github.com/twilio/twilio-cli-core/pull/108): Support detailed error objects in cli. Thanks to [@alecnicolas](https://github.com/alecnicolas)!
+
+**Api**
+- Add 'Electric Imp v1 Usage' to usage categories
+
+**Conversations**
+- Changed `last_read_message_index` type in Participant's resource **(breaking change)**
+
+**Insights**
+- Added `created_time` to call summary.
+
+**Sync**
+- Remove HideExpired query parameter for filtering Sync Documents with expired **(breaking change)**
+
+**Video**
+- [Rooms] Expose maxConcurrentPublishedTracks property in Room resource
+
+
 [2021-01-06] Version 5.15.1
 ---------------------------
 **Library - Chore**

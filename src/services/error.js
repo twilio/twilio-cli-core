@@ -1,9 +1,9 @@
 class TwilioCliError extends Error {
-  constructor(message, exitCode, details = 'No details provided') {
+  constructor(message, exitCode, data) {
     super(message);
     this.name = this.constructor.name;
     this.exitCode = exitCode;
-    this.details = details;
+    this.data = data;
   }
 }
 

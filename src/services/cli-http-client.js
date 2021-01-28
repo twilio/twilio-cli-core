@@ -103,8 +103,8 @@ class CliRequestClient {
       this.logger.debug(`response.headers: ${JSON.stringify(response.headers)}`);
 
       if (response.status < 200 || response.status >= 400) {
-        const { message, code, details } = this.formatErrorMessage(response.data);
-        throw new TwilioCliError(message, code, details);
+        const { message, code } = this.formatErrorMessage(response.data);
+        throw new TwilioCliError(message, code, response.data);
       }
 
       return {

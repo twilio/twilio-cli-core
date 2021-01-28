@@ -68,7 +68,7 @@ describe('base-commands', () => {
         await ctx.testCmd.catch(new TwilioCliError('oh no', 1, { errors: [{ message: 'oh no' }] }));
       })
       .exit(1)
-      .it('can correctly display error details', (ctx) => {
+      .it('can correctly display error data', (ctx) => {
         expect(ctx.stdout).to.contain(`"message": "oh no"`);
       });
 
