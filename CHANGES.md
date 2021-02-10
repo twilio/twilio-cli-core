@@ -1,6 +1,38 @@
 twilio-cli-core changelog
 =====================
 
+[2021-02-10] Version 5.17.0
+---------------------------
+**Library - Chore**
+- [PR #113](https://github.com/twilio/twilio-cli-core/pull/113): update oai specs. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Library - Fix**
+- [PR #112](https://github.com/twilio/twilio-cli-core/pull/112): add titles to inline schemas. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+- [PR #109](https://github.com/twilio/twilio-cli-core/pull/109): Add http agent to axios to work with proxy. Thanks to [@david-amores-anz](https://github.com/david-amores-anz)!
+
+**Api**
+- Revert change that conference participant create `from` and `to` param to be endpoint type for supporting client identifier and sip address
+- Update the conference participant create `from` and `to` param to be endpoint type for supporting client identifier and sip address
+
+**Events**
+- Documentation should state that no fields are PII
+
+**Flex**
+- Adding `notifications` and `markdown` to Flex Configuration
+
+**Messaging**
+- Add A2P use cases API
+- Add Brand Registrations API
+- Add Campaigns API
+
+**Serverless**
+- Add runtime field to Build response and as an optional parameter to the Build create endpoint.
+- Add @twilio/runtime-handler dependency to Build response example.
+
+**Sync**
+- Remove If-Match header for Document **(breaking change)**
+
+
 [2021-01-27] Version 5.16.1
 ---------------------------
 **Library - Fix**
