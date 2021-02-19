@@ -1,96 +1,78 @@
 {
   "components": {
     "schemas": {
+      "currency": {
+        "type": "string"
+      },
+      "date_time_iso8601": {
+        "format": "date-time",
+        "type": "string"
+      },
+      "decimal": {
+        "type": "number"
+      },
+      "direction": {
+        "enum": [
+          "inbound",
+          "outbound"
+        ],
+        "type": "string"
+      },
       "fax.v1.fax": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "api_version": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "direction": {
-            "enum": [
-              "inbound",
-              "outbound"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/direction"
           },
           "duration": {
-            "nullable": true,
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "from": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "media_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^ME[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_ME"
           },
           "media_url": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "num_pages": {
-            "nullable": true,
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "price": {
-            "type": "number"
+            "$ref": "#/components/schemas/decimal"
           },
           "price_unit": {
-            "type": "string"
+            "$ref": "#/components/schemas/currency"
           },
           "quality": {
-            "enum": [
-              "standard",
-              "fine",
-              "superfine"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/quality"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^FX[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_FX"
           },
           "status": {
-            "enum": [
-              "queued",
-              "processing",
-              "sending",
-              "delivered",
-              "receiving",
-              "received",
-              "no-answer",
-              "busy",
-              "failed",
-              "canceled"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/status"
           },
           "to": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -98,40 +80,83 @@
       "fax.v1.fax.fax_media": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "content_type": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "fax_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^FX[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_FX"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^ME[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_ME"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
+      },
+      "integer": {
+        "nullable": true,
+        "type": "integer"
+      },
+      "quality": {
+        "enum": [
+          "standard",
+          "fine",
+          "superfine"
+        ],
+        "type": "string"
+      },
+      "sid_AC": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^AC[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_FX": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^FX[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_ME": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^ME[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "status": {
+        "enum": [
+          "queued",
+          "processing",
+          "sending",
+          "delivered",
+          "receiving",
+          "received",
+          "no-answer",
+          "busy",
+          "failed",
+          "canceled"
+        ],
+        "type": "string"
+      },
+      "string": {
+        "type": "string"
+      },
+      "uri_map": {
+        "type": "object"
+      },
+      "url": {
+        "format": "uri",
+        "type": "string"
       }
     },
     "securitySchemes": {
@@ -154,7 +179,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Fax",
-    "version": "5.10.0"
+    "version": "5.17.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -162,6 +187,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all faxes.",
+        "operationId": "ListFax",
         "parameters": [
           {
             "description": "Retrieve only those faxes sent from this phone number, specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.",
@@ -251,6 +277,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListFaxResponse",
                   "type": "object"
                 }
               }
@@ -263,12 +290,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "post": {
         "description": "Create a new fax to send to a phone number or SIP endpoint.",
+        "operationId": "CreateFax",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -322,6 +350,7 @@
                   "To",
                   "MediaUrl"
                 ],
+                "title": "CreateFaxRequest",
                 "type": "object"
               }
             }
@@ -344,7 +373,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
@@ -366,6 +395,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all fax media instances for the specified fax.",
+        "operationId": "ListFaxMedia",
         "parameters": [
           {
             "description": "The SID of the fax with the FaxMedia resources to read.",
@@ -433,6 +463,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListFaxMediaResponse",
                   "type": "object"
                 }
               }
@@ -445,7 +476,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
@@ -463,6 +494,7 @@
     "/v1/Faxes/{FaxSid}/Media/{Sid}": {
       "delete": {
         "description": "Delete a specific fax media instance.",
+        "operationId": "DeleteFaxMedia",
         "parameters": [
           {
             "description": "The SID of the fax with the FaxMedia resource to delete.",
@@ -499,13 +531,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch a specific fax media instance.",
+        "operationId": "FetchFaxMedia",
         "parameters": [
           {
             "description": "The SID of the fax with the FaxMedia resource to fetch.",
@@ -549,7 +582,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
@@ -567,6 +600,7 @@
     "/v1/Faxes/{Sid}": {
       "delete": {
         "description": "Delete a specific fax and its associated media.",
+        "operationId": "DeleteFax",
         "parameters": [
           {
             "description": "The Twilio-provided string that uniquely identifies the Fax resource to delete.",
@@ -591,13 +625,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch a specific fax.",
+        "operationId": "FetchFax",
         "parameters": [
           {
             "description": "The Twilio-provided string that uniquely identifies the Fax resource to fetch.",
@@ -629,12 +664,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "post": {
         "description": "Update a specific fax.",
+        "operationId": "UpdateFax",
         "parameters": [
           {
             "description": "The Twilio-provided string that uniquely identifies the Fax resource to update.",
@@ -662,6 +698,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateFaxRequest",
                 "type": "object"
               }
             }
@@ -684,7 +721,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
@@ -703,7 +740,7 @@
       "x-path-type": "instance"
     }
   },
-  "tags": [
+  "x-maturity": [
     {
       "description": "PLEASE NOTE that this is a Beta product that is subject to change. Use it with caution.",
       "name": "Beta"

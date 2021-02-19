@@ -1,38 +1,39 @@
 {
   "components": {
     "schemas": {
+      "binding_type": {
+        "enum": [
+          "apn",
+          "gcm",
+          "fcm"
+        ],
+        "type": "string"
+      },
+      "boolean": {
+        "type": "boolean"
+      },
       "conversations.v1.configuration": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "default_chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "default_closed_timer": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "default_inactive_timer": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "default_messaging_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MG[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MG"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -40,40 +41,25 @@
       "conversations.v1.configuration.configuration_webhook": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "filters": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/string_list"
           },
           "method": {
-            "enum": [
-              "GET",
-              "POST"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/method"
           },
           "post_webhook_url": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "pre_webhook_url": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "target": {
-            "enum": [
-              "webhook",
-              "flex"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/target"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -81,63 +67,43 @@
       "conversations.v1.conversation": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "attributes": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "messaging_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MG[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MG"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CH"
           },
           "state": {
-            "enum": [
-              "inactive",
-              "active",
-              "closed"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/state"
           },
           "timers": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -145,64 +111,46 @@
       "conversations.v1.conversation.conversation_message": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "attributes": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "author": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "body": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "conversation_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CH"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "delivery": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "index": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "media": {
-            "items": {
-              "type": "object"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/object_list"
           },
           "participant_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MB[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MB"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IM[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IM"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -210,65 +158,37 @@
       "conversations.v1.conversation.conversation_message.conversation_message_receipt": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "channel_message_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^[a-zA-Z]{2}[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid"
           },
           "conversation_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CH"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "error_code": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "message_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IM[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IM"
           },
           "participant_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MB[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MB"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^DY[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_DY"
           },
           "status": {
-            "enum": [
-              "read",
-              "failed",
-              "delivered",
-              "undelivered",
-              "sent"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/delivery_status"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -276,49 +196,40 @@
       "conversations.v1.conversation.conversation_participant": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "attributes": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "conversation_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CH"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "identity": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
+          },
+          "last_read_message_index": {
+            "$ref": "#/components/schemas/integer"
+          },
+          "last_read_timestamp": {
+            "$ref": "#/components/schemas/string"
           },
           "messaging_binding": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "role_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RL[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RL"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MB[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MB"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -326,40 +237,28 @@
       "conversations.v1.conversation.conversation_scoped_webhook": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "configuration": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "conversation_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CH"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^WH[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_WH"
           },
           "target": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -367,42 +266,28 @@
       "conversations.v1.credential": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "sandbox": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CR[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CR"
           },
           "type": {
-            "enum": [
-              "apn",
-              "gcm",
-              "fcm"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/push_type"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -410,50 +295,31 @@
       "conversations.v1.role": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "permissions": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/string_list"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RL[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RL"
           },
           "type": {
-            "enum": [
-              "conversation",
-              "service"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/role_type"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -461,34 +327,25 @@
       "conversations.v1.service": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -496,60 +353,37 @@
       "conversations.v1.service.service_binding": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "binding_type": {
-            "enum": [
-              "apn",
-              "gcm",
-              "fcm"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/binding_type"
           },
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "credential_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CR[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CR"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "endpoint": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "identity": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "message_types": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/string_list"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^BS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_BS"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -557,35 +391,25 @@
       "conversations.v1.service.service_configuration": {
         "properties": {
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "default_chat_service_role_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RL[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RL"
           },
           "default_conversation_creator_role_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RL[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RL"
           },
           "default_conversation_role_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RL[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RL"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
+          },
+          "reachability_enabled": {
+            "$ref": "#/components/schemas/boolean"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -593,32 +417,25 @@
       "conversations.v1.service.service_configuration.service_notification": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "added_to_conversation": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "log_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "new_message": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "removed_from_conversation": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -626,63 +443,43 @@
       "conversations.v1.service.service_conversation": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "attributes": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "messaging_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MG[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MG"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CH"
           },
           "state": {
-            "enum": [
-              "inactive",
-              "active",
-              "closed"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/state"
           },
           "timers": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -690,70 +487,49 @@
       "conversations.v1.service.service_conversation.service_conversation_message": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "attributes": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "author": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "body": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "conversation_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CH"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "delivery": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "index": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "media": {
-            "items": {
-              "type": "object"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/object_list"
           },
           "participant_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MB[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MB"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IM[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IM"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -761,71 +537,40 @@
       "conversations.v1.service.service_conversation.service_conversation_message.service_conversation_message_receipt": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "channel_message_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^[a-zA-Z]{2}[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid"
           },
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "conversation_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CH"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "error_code": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "message_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IM[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IM"
           },
           "participant_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MB[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MB"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^DY[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_DY"
           },
           "status": {
-            "enum": [
-              "read",
-              "failed",
-              "delivered",
-              "undelivered",
-              "sent"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/delivery_status"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -833,55 +578,43 @@
       "conversations.v1.service.service_conversation.service_conversation_participant": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "attributes": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "conversation_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CH"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "identity": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
+          },
+          "last_read_message_index": {
+            "$ref": "#/components/schemas/integer"
+          },
+          "last_read_timestamp": {
+            "$ref": "#/components/schemas/string"
           },
           "messaging_binding": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "role_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RL[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RL"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MB[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MB"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -889,46 +622,31 @@
       "conversations.v1.service.service_conversation.service_conversation_scoped_webhook": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "configuration": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "conversation_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CH[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CH"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^WH[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_WH"
           },
           "target": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -936,50 +654,31 @@
       "conversations.v1.service.service_role": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "permissions": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/string_list"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RL[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RL"
           },
           "type": {
-            "enum": [
-              "conversation",
-              "service"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/role_type"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -987,52 +686,40 @@
       "conversations.v1.service.service_user": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "attributes": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "identity": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
+          },
+          "is_notifiable": {
+            "$ref": "#/components/schemas/boolean"
           },
           "is_online": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "role_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RL[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RL"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^US[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_US"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -1040,55 +727,201 @@
       "conversations.v1.user": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "attributes": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "chat_service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "identity": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
+          },
+          "is_notifiable": {
+            "$ref": "#/components/schemas/boolean"
           },
           "is_online": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "role_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RL[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RL"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^US[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_US"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
+      },
+      "date_time_iso8601": {
+        "format": "date-time",
+        "type": "string"
+      },
+      "delivery_status": {
+        "enum": [
+          "read",
+          "failed",
+          "delivered",
+          "undelivered",
+          "sent"
+        ],
+        "type": "string"
+      },
+      "integer": {
+        "nullable": true,
+        "type": "integer"
+      },
+      "method": {
+        "enum": [
+          "GET",
+          "POST"
+        ],
+        "type": "string"
+      },
+      "object": {
+        "type": "object"
+      },
+      "object_list": {
+        "items": {
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "push_type": {
+        "enum": [
+          "apn",
+          "gcm",
+          "fcm"
+        ],
+        "type": "string"
+      },
+      "role_type": {
+        "enum": [
+          "conversation",
+          "service"
+        ],
+        "type": "string"
+      },
+      "sid": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^[a-zA-Z]{2}[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_AC": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^AC[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_BS": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^BS[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_CH": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^CH[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_CR": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^CR[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_DY": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^DY[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_IM": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^IM[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_IS": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^IS[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_MB": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^MB[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_MG": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^MG[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_RL": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^RL[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_US": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^US[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_WH": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^WH[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "state": {
+        "enum": [
+          "inactive",
+          "active",
+          "closed"
+        ],
+        "type": "string"
+      },
+      "string": {
+        "type": "string"
+      },
+      "string_list": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "target": {
+        "enum": [
+          "webhook",
+          "flex"
+        ],
+        "type": "string"
+      },
+      "uri_map": {
+        "type": "object"
+      },
+      "url": {
+        "format": "uri",
+        "type": "string"
       }
     },
     "securitySchemes": {
@@ -1111,7 +944,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Conversations",
-    "version": "5.10.0"
+    "version": "5.17.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -1119,6 +952,7 @@
       "description": "The Configuration resource manages a set of account-level settings applicable to the Conversations API.",
       "get": {
         "description": "Fetch the global configuration of conversations on your account",
+        "operationId": "FetchConfiguration",
         "responses": {
           "200": {
             "content": {
@@ -1136,12 +970,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update the global configuration of conversations on your account",
+        "operationId": "UpdateConfiguration",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1170,6 +1005,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateConfigurationRequest",
                 "type": "object"
               }
             }
@@ -1192,7 +1028,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1212,6 +1048,7 @@
       "description": "A Webhook resource manages a service-level set of callback URLs and their configuration for receiving all conversation events.",
       "get": {
         "description": "",
+        "operationId": "FetchConfigurationWebhook",
         "responses": {
           "200": {
             "content": {
@@ -1229,12 +1066,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "UpdateConfigurationWebhook",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1268,6 +1106,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateConfigurationWebhookRequest",
                 "type": "object"
               }
             }
@@ -1290,7 +1129,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1311,6 +1150,7 @@
       "description": "A Conversation resource represents an omnichannel group conversation with an ordered list of messages and a participant roster.",
       "get": {
         "description": "Retrieve a list of conversations in your account's default service",
+        "operationId": "ListConversation",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -1366,6 +1206,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListConversationResponse",
                   "type": "object"
                 }
               }
@@ -1378,12 +1219,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Create a new conversation in your account's default service",
+        "operationId": "CreateConversation",
         "parameters": [
           {
             "description": "The X-Twilio-Webhook-Enabled HTTP request header",
@@ -1450,6 +1292,7 @@
                     "type": "string"
                   }
                 },
+                "title": "CreateConversationRequest",
                 "type": "object"
               }
             }
@@ -1472,7 +1315,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1493,6 +1336,7 @@
       "description": "A Message resource represents a message in a conversation.",
       "get": {
         "description": "Retrieve a list of all messages in the conversation",
+        "operationId": "ListConversationMessage",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for messages.",
@@ -1557,6 +1401,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListConversationMessageResponse",
                   "type": "object"
                 }
               }
@@ -1569,12 +1414,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Add a new message to the conversation",
+        "operationId": "CreateConversationMessage",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.",
@@ -1633,6 +1479,7 @@
                     "type": "string"
                   }
                 },
+                "title": "CreateConversationMessageRequest",
                 "type": "object"
               }
             }
@@ -1655,7 +1502,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1676,6 +1523,7 @@
       "description": "A Message Receipt resource represents a delivery/read receipt of a message in a conversation.",
       "get": {
         "description": "Retrieve a list of all delivery and read receipts of the conversation message",
+        "operationId": "ListConversationMessageReceipt",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.",
@@ -1752,6 +1600,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListConversationMessageReceiptResponse",
                   "type": "object"
                 }
               }
@@ -1764,7 +1613,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1785,6 +1634,7 @@
       "description": "A Message Receipt resource represents a delivery/read receipt of a message in a conversation.",
       "get": {
         "description": "Fetch the delivery and read receipts of the conversation message",
+        "operationId": "FetchConversationMessageReceipt",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.",
@@ -1837,7 +1687,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1857,6 +1707,7 @@
     "/v1/Conversations/{ConversationSid}/Messages/{Sid}": {
       "delete": {
         "description": "Remove a message from the conversation",
+        "operationId": "DeleteConversationMessage",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.",
@@ -1902,13 +1753,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Message resource represents a message in a conversation.",
       "get": {
         "description": "Fetch a message from the conversation",
+        "operationId": "FetchConversationMessage",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.",
@@ -1949,12 +1801,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing message in the conversation",
+        "operationId": "UpdateConversationMessage",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.",
@@ -2018,6 +1871,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateConversationMessageRequest",
                 "type": "object"
               }
             }
@@ -2040,7 +1894,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2061,6 +1915,7 @@
       "description": "A Participant resource represents a member of the conversation.",
       "get": {
         "description": "Retrieve a list of all participants of the conversation",
+        "operationId": "ListConversationParticipant",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for participants.",
@@ -2125,6 +1980,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListConversationParticipantResponse",
                   "type": "object"
                 }
               }
@@ -2137,12 +1993,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Add a new participant to the conversation",
+        "operationId": "CreateConversationParticipant",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant.",
@@ -2209,6 +2066,7 @@
                     "type": "string"
                   }
                 },
+                "title": "CreateConversationParticipantRequest",
                 "type": "object"
               }
             }
@@ -2231,7 +2089,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2249,6 +2107,7 @@
     "/v1/Conversations/{ConversationSid}/Participants/{Sid}": {
       "delete": {
         "description": "Remove a participant from the conversation",
+        "operationId": "DeleteConversationParticipant",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant.",
@@ -2294,13 +2153,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Participant resource represents a member of the conversation.",
       "get": {
         "description": "Fetch a participant of the conversation",
+        "operationId": "FetchConversationParticipant",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant.",
@@ -2341,12 +2201,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing participant in the conversation",
+        "operationId": "UpdateConversationParticipant",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant.",
@@ -2405,6 +2266,15 @@
                     "description": "A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters.",
                     "type": "string"
                   },
+                  "LastReadMessageIndex": {
+                    "description": "Index of last \u201cread\u201d message in the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for the Participant.",
+                    "nullable": true,
+                    "type": "integer"
+                  },
+                  "LastReadTimestamp": {
+                    "description": "Timestamp of last \u201cread\u201d message in the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for the Participant.",
+                    "type": "string"
+                  },
                   "MessagingBinding.ProjectedAddress": {
                     "description": "The address of the Twilio phone number that is used in Group MMS. 'null' value will remove it.",
                     "type": "string"
@@ -2421,6 +2291,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateConversationParticipantRequest",
                 "type": "object"
               }
             }
@@ -2443,7 +2314,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2462,6 +2333,7 @@
       "description": "A Scoped Webhook resource manages a set of callback URLs and their configuration for receiving events specific to one conversation.",
       "get": {
         "description": "Retrieve a list of all webhooks scoped to the conversation",
+        "operationId": "ListConversationScopedWebhook",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this webhook.",
@@ -2526,6 +2398,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListConversationScopedWebhookResponse",
                   "type": "object"
                 }
               }
@@ -2538,12 +2411,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Create a new webhook scoped to the conversation",
+        "operationId": "CreateConversationScopedWebhook",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this webhook.",
@@ -2610,6 +2484,7 @@
                 "required": [
                   "Target"
                 ],
+                "title": "CreateConversationScopedWebhookRequest",
                 "type": "object"
               }
             }
@@ -2632,7 +2507,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2650,6 +2525,7 @@
     "/v1/Conversations/{ConversationSid}/Webhooks/{Sid}": {
       "delete": {
         "description": "Remove an existing webhook scoped to the conversation",
+        "operationId": "DeleteConversationScopedWebhook",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this webhook.",
@@ -2683,13 +2559,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Scoped Webhook resource manages a set of callback URLs and their configuration for receiving events specific to one conversation.",
       "get": {
         "description": "Fetch the configuration of a conversation-scoped webhook",
+        "operationId": "FetchConversationScopedWebhook",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this webhook.",
@@ -2730,12 +2607,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing conversation-scoped webhook",
+        "operationId": "UpdateConversationScopedWebhook",
         "parameters": [
           {
             "description": "The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this webhook.",
@@ -2798,6 +2676,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateConversationScopedWebhookRequest",
                 "type": "object"
               }
             }
@@ -2820,7 +2699,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2838,6 +2717,7 @@
     "/v1/Conversations/{Sid}": {
       "delete": {
         "description": "Remove a conversation from your account's default service",
+        "operationId": "DeleteConversation",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation.",
@@ -2871,13 +2751,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Conversation resource represents an omnichannel group conversation with an ordered list of messages and a participant roster.",
       "get": {
         "description": "Fetch a conversation from your account's default service",
+        "operationId": "FetchConversation",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation.",
@@ -2906,12 +2787,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing conversation in your account's default service",
+        "operationId": "UpdateConversation",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation.",
@@ -2987,6 +2869,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateConversationRequest",
                 "type": "object"
               }
             }
@@ -3009,7 +2892,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -3030,6 +2913,7 @@
       "description": "A Credential resource represents a push notification credential.",
       "get": {
         "description": "Retrieve a list of all push notification credentials on your account",
+        "operationId": "ListCredential",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -3085,6 +2969,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListCredentialResponse",
                   "type": "object"
                 }
               }
@@ -3097,12 +2982,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Add a new push notification credential to your account",
+        "operationId": "CreateCredential",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -3145,6 +3031,7 @@
                 "required": [
                   "Type"
                 ],
+                "title": "CreateCredentialRequest",
                 "type": "object"
               }
             }
@@ -3167,7 +3054,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -3186,6 +3073,7 @@
     "/v1/Credentials/{Sid}": {
       "delete": {
         "description": "Remove a push notification credential from your account",
+        "operationId": "DeleteCredential",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource.",
@@ -3210,13 +3098,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Credential resource represents a push notification credential.",
       "get": {
         "description": "Fetch a push notification credential from your account",
+        "operationId": "FetchCredential",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource.",
@@ -3248,12 +3137,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing push notification credential on your account",
+        "operationId": "UpdateCredential",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource.",
@@ -3307,6 +3197,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateCredentialRequest",
                 "type": "object"
               }
             }
@@ -3329,7 +3220,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -3349,6 +3240,7 @@
       "description": "A Role resource represents a set of permissions granted to a user within a service or a conversation.",
       "get": {
         "description": "Retrieve a list of all user roles in your account's default service",
+        "operationId": "ListRole",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -3404,6 +3296,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListRoleResponse",
                   "type": "object"
                 }
               }
@@ -3416,12 +3309,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Create a new user role in your account's default service",
+        "operationId": "CreateRole",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -3452,6 +3346,7 @@
                   "Type",
                   "Permission"
                 ],
+                "title": "CreateRoleRequest",
                 "type": "object"
               }
             }
@@ -3474,7 +3369,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -3493,6 +3388,7 @@
     "/v1/Roles/{Sid}": {
       "delete": {
         "description": "Remove a user role from your account's default service",
+        "operationId": "DeleteRole",
         "parameters": [
           {
             "description": "The SID of the Role resource to delete.",
@@ -3517,13 +3413,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Role resource represents a set of permissions granted to a user within a service or a conversation.",
       "get": {
         "description": "Fetch a user role from your account's default service",
+        "operationId": "FetchRole",
         "parameters": [
           {
             "description": "The SID of the Role resource to fetch.",
@@ -3555,12 +3452,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing user role in your account's default service",
+        "operationId": "UpdateRole",
         "parameters": [
           {
             "description": "The SID of the Role resource to update.",
@@ -3591,6 +3489,7 @@
                 "required": [
                   "Permission"
                 ],
+                "title": "UpdateRoleRequest",
                 "type": "object"
               }
             }
@@ -3613,7 +3512,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -3633,6 +3532,7 @@
       "description": "A Service resource is a top-level conversation resource container that serves as a data silo.",
       "get": {
         "description": "Retrieve a list of all conversation services on your account",
+        "operationId": "ListService",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -3688,6 +3588,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListServiceResponse",
                   "type": "object"
                 }
               }
@@ -3700,12 +3601,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Create a new conversation service on your account",
+        "operationId": "CreateService",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -3719,6 +3621,7 @@
                 "required": [
                   "FriendlyName"
                 ],
+                "title": "CreateServiceRequest",
                 "type": "object"
               }
             }
@@ -3741,7 +3644,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -3760,6 +3663,7 @@
       "description": "A Binding resource represents a push notification binding and its configuration, for delivering conversation events to mobile or web endpoints.",
       "get": {
         "description": "Retrieve a list of all push notification bindings in the conversation service",
+        "operationId": "ListServiceBinding",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Binding resource is associated with.",
@@ -3854,6 +3758,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListServiceBindingResponse",
                   "type": "object"
                 }
               }
@@ -3866,7 +3771,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -3885,6 +3790,7 @@
     "/v1/Services/{ChatServiceSid}/Bindings/{Sid}": {
       "delete": {
         "description": "Remove a push notification binding from the conversation service",
+        "operationId": "DeleteServiceBinding",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to delete the Binding resource from.",
@@ -3921,13 +3827,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Binding resource represents a push notification binding and its configuration, for delivering conversation events to mobile or web endpoints.",
       "get": {
         "description": "Fetch a push notification binding from the conversation service",
+        "operationId": "FetchServiceBinding",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Binding resource is associated with.",
@@ -3971,7 +3878,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -3991,6 +3898,7 @@
       "description": "A Service Configuration resource manages service-level settings applicable to the Conversation API.",
       "get": {
         "description": "Fetch the configuration of a conversation service",
+        "operationId": "FetchServiceConfiguration",
         "parameters": [
           {
             "description": "The SID of the Service configuration resource to fetch.",
@@ -4022,12 +3930,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update configuration settings of a conversation service",
+        "operationId": "UpdateServiceConfiguration",
         "parameters": [
           {
             "description": "The SID of the Service configuration resource to update.",
@@ -4067,8 +3976,13 @@
                     "minLength": 34,
                     "pattern": "^RL[0-9a-fA-F]{32}$",
                     "type": "string"
+                  },
+                  "ReachabilityEnabled": {
+                    "description": "Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Conversations Service. The default is `false`.",
+                    "type": "boolean"
                   }
                 },
+                "title": "UpdateServiceConfigurationRequest",
                 "type": "object"
               }
             }
@@ -4091,7 +4005,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -4109,6 +4023,7 @@
       "description": "A Service Notification resource manages a set of settings to determine push notification behavior at service level.",
       "get": {
         "description": "Fetch push notification service settings",
+        "operationId": "FetchServiceNotification",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Configuration applies to.",
@@ -4140,12 +4055,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update push notification service settings",
+        "operationId": "UpdateServiceNotification",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Configuration applies to.",
@@ -4210,6 +4126,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateServiceNotificationRequest",
                 "type": "object"
               }
             }
@@ -4232,7 +4149,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -4242,7 +4159,7 @@
         }
       ],
       "x-default-output-properties": [
-        "sid"
+        "chat_service_sid"
       ],
       "x-path-type": "instance"
     },
@@ -4250,6 +4167,7 @@
       "description": "A Service Conversation resource represents an omnichannel group conversation with an ordered list of messages and a participant roster.",
       "get": {
         "description": "Retrieve a list of conversations in your service",
+        "operationId": "ListServiceConversation",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with.",
@@ -4317,6 +4235,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListServiceConversationResponse",
                   "type": "object"
                 }
               }
@@ -4329,12 +4248,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Create a new conversation in your service",
+        "operationId": "CreateServiceConversation",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with.",
@@ -4413,6 +4333,7 @@
                     "type": "string"
                   }
                 },
+                "title": "CreateServiceConversationRequest",
                 "type": "object"
               }
             }
@@ -4435,7 +4356,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -4456,6 +4377,7 @@
       "description": "A Service Message resource represents a message in a conversation within a specific service.",
       "get": {
         "description": "Retrieve a list of all messages in the conversation",
+        "operationId": "ListServiceConversationMessage",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -4532,6 +4454,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListServiceConversationMessageResponse",
                   "type": "object"
                 }
               }
@@ -4544,12 +4467,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Add a new message to the conversation in a specific service",
+        "operationId": "CreateServiceConversationMessage",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -4620,6 +4544,7 @@
                     "type": "string"
                   }
                 },
+                "title": "CreateServiceConversationMessageRequest",
                 "type": "object"
               }
             }
@@ -4642,7 +4567,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -4663,6 +4588,7 @@
       "description": "A Service Message Receipt resource represents a delivery/read receipt of a message in a conversation.",
       "get": {
         "description": "Retrieve a list of all delivery and read receipts of the conversation message",
+        "operationId": "ListServiceConversationMessageReceipt",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Message resource is associated with.",
@@ -4751,6 +4677,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListServiceConversationMessageReceiptResponse",
                   "type": "object"
                 }
               }
@@ -4763,7 +4690,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -4784,6 +4711,7 @@
       "description": "A Service Message Receipt resource represents a delivery/read receipt of a message in a conversation.",
       "get": {
         "description": "Fetch the delivery and read receipts of the conversation message",
+        "operationId": "FetchServiceConversationMessageReceipt",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Message resource is associated with.",
@@ -4848,7 +4776,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -4868,6 +4796,7 @@
     "/v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Messages/{Sid}": {
       "delete": {
         "description": "Remove a message from the conversation",
+        "operationId": "DeleteServiceConversationMessage",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -4925,13 +4854,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Service Message resource represents a message in a conversation within a specific service.",
       "get": {
         "description": "Fetch a message from the conversation",
+        "operationId": "FetchServiceConversationMessage",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -4984,12 +4914,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing message in the conversation",
+        "operationId": "UpdateServiceConversationMessage",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -5065,6 +4996,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateServiceConversationMessageRequest",
                 "type": "object"
               }
             }
@@ -5087,7 +5019,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -5108,6 +5040,7 @@
       "description": "A Service Participant resource represents a member of the conversation within a specific service.",
       "get": {
         "description": "Retrieve a list of all participants of the conversation",
+        "operationId": "ListServiceConversationParticipant",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -5184,6 +5117,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListServiceConversationParticipantResponse",
                   "type": "object"
                 }
               }
@@ -5196,12 +5130,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Add a new participant to the conversation in a specific service",
+        "operationId": "CreateServiceConversationParticipant",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -5280,6 +5215,7 @@
                     "type": "string"
                   }
                 },
+                "title": "CreateServiceConversationParticipantRequest",
                 "type": "object"
               }
             }
@@ -5302,7 +5238,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -5320,6 +5256,7 @@
     "/v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Participants/{Sid}": {
       "delete": {
         "description": "Remove a participant from the conversation",
+        "operationId": "DeleteServiceConversationParticipant",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -5377,13 +5314,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Service Participant resource represents a member of the conversation within a specific service.",
       "get": {
         "description": "Fetch a participant of the conversation",
+        "operationId": "FetchServiceConversationParticipant",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -5436,12 +5374,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing participant in the conversation",
+        "operationId": "UpdateServiceConversationParticipant",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -5512,6 +5451,15 @@
                     "description": "A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversation SDK to communicate. Limited to 256 characters.",
                     "type": "string"
                   },
+                  "LastReadMessageIndex": {
+                    "description": "Index of last \u201cread\u201d message in the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for the Participant.",
+                    "nullable": true,
+                    "type": "integer"
+                  },
+                  "LastReadTimestamp": {
+                    "description": "Timestamp of last \u201cread\u201d message in the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for the Participant.",
+                    "type": "string"
+                  },
                   "MessagingBinding.ProjectedAddress": {
                     "description": "The address of the Twilio phone number that is used in Group MMS. 'null' value will remove it.",
                     "type": "string"
@@ -5528,6 +5476,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateServiceConversationParticipantRequest",
                 "type": "object"
               }
             }
@@ -5550,7 +5499,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -5569,6 +5518,7 @@
       "description": "A Conversation-scoped Webhook resource manages a set of callback URLs and their configuration for receiving events specific to one conversation.",
       "get": {
         "description": "Retrieve a list of all webhooks scoped to the conversation",
+        "operationId": "ListServiceConversationScopedWebhook",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -5645,6 +5595,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListServiceConversationScopedWebhookResponse",
                   "type": "object"
                 }
               }
@@ -5657,12 +5608,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Create a new webhook scoped to the conversation in a specific service",
+        "operationId": "CreateServiceConversationScopedWebhook",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -5741,6 +5693,7 @@
                 "required": [
                   "Target"
                 ],
+                "title": "CreateServiceConversationScopedWebhookRequest",
                 "type": "object"
               }
             }
@@ -5763,7 +5716,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -5781,6 +5734,7 @@
     "/v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Webhooks/{Sid}": {
       "delete": {
         "description": "Remove an existing webhook scoped to the conversation",
+        "operationId": "DeleteServiceConversationScopedWebhook",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -5826,13 +5780,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Conversation-scoped Webhook resource manages a set of callback URLs and their configuration for receiving events specific to one conversation.",
       "get": {
         "description": "Fetch the configuration of a conversation-scoped webhook",
+        "operationId": "FetchServiceConversationScopedWebhook",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -5885,12 +5840,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing conversation-scoped webhook",
+        "operationId": "UpdateServiceConversationScopedWebhook",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.",
@@ -5965,6 +5921,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateServiceConversationScopedWebhookRequest",
                 "type": "object"
               }
             }
@@ -5987,7 +5944,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -6005,6 +5962,7 @@
     "/v1/Services/{ChatServiceSid}/Conversations/{Sid}": {
       "delete": {
         "description": "Remove a conversation from your service",
+        "operationId": "DeleteServiceConversation",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with.",
@@ -6050,13 +6008,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Service Conversation resource represents an omnichannel group conversation with an ordered list of messages and a participant roster.",
       "get": {
         "description": "Fetch a conversation from your service",
+        "operationId": "FetchServiceConversation",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with.",
@@ -6097,12 +6056,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing conversation in your service",
+        "operationId": "UpdateServiceConversation",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with.",
@@ -6190,6 +6150,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateServiceConversationRequest",
                 "type": "object"
               }
             }
@@ -6212,7 +6173,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -6233,6 +6194,7 @@
       "description": "A Service Role resource represents a set of permissions granted to a user within a service or a conversation.",
       "get": {
         "description": "Retrieve a list of all user roles in your service",
+        "operationId": "ListServiceRole",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to read the Role resources from.",
@@ -6300,6 +6262,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListServiceRoleResponse",
                   "type": "object"
                 }
               }
@@ -6312,12 +6275,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Create a new user role in your service",
+        "operationId": "CreateServiceRole",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to create the Role resource under.",
@@ -6362,6 +6326,7 @@
                   "Type",
                   "Permission"
                 ],
+                "title": "CreateServiceRoleRequest",
                 "type": "object"
               }
             }
@@ -6384,7 +6349,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -6403,6 +6368,7 @@
     "/v1/Services/{ChatServiceSid}/Roles/{Sid}": {
       "delete": {
         "description": "Remove a user role from your service",
+        "operationId": "DeleteServiceRole",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to delete the Role resource from.",
@@ -6439,13 +6405,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Service Role resource represents a set of permissions granted to a user within a service or a conversation.",
       "get": {
         "description": "Fetch a user role from your service",
+        "operationId": "FetchServiceRole",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to fetch the Role resource from.",
@@ -6489,12 +6456,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing user role in your service",
+        "operationId": "UpdateServiceRole",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to update the Role resource in.",
@@ -6537,6 +6505,7 @@
                 "required": [
                   "Permission"
                 ],
+                "title": "UpdateServiceRoleRequest",
                 "type": "object"
               }
             }
@@ -6559,7 +6528,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -6579,6 +6548,7 @@
       "description": "A Service User resource represents a conversation user belonging to a specific conversation service.",
       "get": {
         "description": "Retrieve a list of all conversation users in your service",
+        "operationId": "ListServiceUser",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to read the User resources from.",
@@ -6646,6 +6616,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListServiceUserResponse",
                   "type": "object"
                 }
               }
@@ -6658,12 +6629,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Add a new conversation user to your service",
+        "operationId": "CreateServiceUser",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the User resource is associated with.",
@@ -6718,6 +6690,7 @@
                 "required": [
                   "Identity"
                 ],
+                "title": "CreateServiceUserRequest",
                 "type": "object"
               }
             }
@@ -6740,7 +6713,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -6758,6 +6731,7 @@
     "/v1/Services/{ChatServiceSid}/Users/{Sid}": {
       "delete": {
         "description": "Remove a conversation user from your service",
+        "operationId": "DeleteServiceUser",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to delete the User resource from.",
@@ -6803,13 +6777,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Service User resource represents a conversation user belonging to a specific conversation service.",
       "get": {
         "description": "Fetch a conversation user from your service",
+        "operationId": "FetchServiceUser",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to fetch the User resource from.",
@@ -6850,12 +6825,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing conversation user in your service",
+        "operationId": "UpdateServiceUser",
         "parameters": [
           {
             "description": "The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the User resource is associated with.",
@@ -6912,6 +6888,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateServiceUserRequest",
                 "type": "object"
               }
             }
@@ -6934,7 +6911,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -6952,6 +6929,7 @@
     "/v1/Services/{Sid}": {
       "delete": {
         "description": "Remove a conversation service with all its nested resources from your account",
+        "operationId": "DeleteService",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource.",
@@ -6976,13 +6954,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A Service resource is a top-level conversation resource container that serves as a data silo.",
       "get": {
         "description": "Fetch a conversation service from your account",
+        "operationId": "FetchService",
         "parameters": [
           {
             "description": "A 34 character string that uniquely identifies this resource.",
@@ -7014,7 +6993,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -7033,6 +7012,7 @@
       "description": "A User resource represents a conversation user belonging to a default conversation service.",
       "get": {
         "description": "Retrieve a list of all conversation users in your account's default service",
+        "operationId": "ListUser",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -7088,6 +7068,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListUserResponse",
                   "type": "object"
                 }
               }
@@ -7100,12 +7081,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Add a new conversation user to your account's default service",
+        "operationId": "CreateUser",
         "parameters": [
           {
             "description": "The X-Twilio-Webhook-Enabled HTTP request header",
@@ -7148,6 +7130,7 @@
                 "required": [
                   "Identity"
                 ],
+                "title": "CreateUserRequest",
                 "type": "object"
               }
             }
@@ -7170,7 +7153,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -7188,6 +7171,7 @@
     "/v1/Users/{Sid}": {
       "delete": {
         "description": "Remove a conversation user from your account's default service",
+        "operationId": "DeleteUser",
         "parameters": [
           {
             "description": "The SID of the User resource to delete. This value can be either the `sid` or the `identity` of the User resource to delete.",
@@ -7221,13 +7205,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A User resource represents a conversation user belonging to a default conversation service.",
       "get": {
         "description": "Fetch a conversation user from your account's default service",
+        "operationId": "FetchUser",
         "parameters": [
           {
             "description": "The SID of the User resource to fetch. This value can be either the `sid` or the `identity` of the User resource to fetch.",
@@ -7256,12 +7241,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing conversation user in your account's default service",
+        "operationId": "UpdateUser",
         "parameters": [
           {
             "description": "The SID of the User resource to update. This value can be either the `sid` or the `identity` of the User resource to update.",
@@ -7306,6 +7292,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateUserRequest",
                 "type": "object"
               }
             }
@@ -7328,7 +7315,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -7344,7 +7331,7 @@
       "x-path-type": "instance"
     }
   },
-  "tags": [
+  "x-maturity": [
     {
       "description": "This product is Generally Available.",
       "name": "GA"

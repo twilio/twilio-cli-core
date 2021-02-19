@@ -1,6 +1,17 @@
 {
   "components": {
     "schemas": {
+      "date_time_iso8601": {
+        "format": "date-time",
+        "type": "string"
+      },
+      "end_user_type": {
+        "enum": [
+          "individual",
+          "business"
+        ],
+        "type": "string"
+      },
       "numbers.v2.regulatory_compliance": {
         "properties": {},
         "type": "object"
@@ -8,62 +19,40 @@
       "numbers.v2.regulatory_compliance.bundle": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "email": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "regulation_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RN[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RN"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^BU[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_BU"
           },
           "status": {
-            "enum": [
-              "draft",
-              "pending-review",
-              "in-review",
-              "twilio-rejected",
-              "twilio-approved",
-              "provisionally-approved"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/status"
           },
           "status_callback": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "valid_until": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           }
         },
         "type": "object"
@@ -71,49 +60,28 @@
       "numbers.v2.regulatory_compliance.bundle.evaluation": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "bundle_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^BU[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_BU"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "regulation_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RN[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RN"
           },
           "results": {
-            "items": {
-              "type": "object"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/object_list"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^EL[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_EL"
           },
           "status": {
-            "enum": [
-              "compliant",
-              "noncompliant"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/status"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -121,36 +89,22 @@
       "numbers.v2.regulatory_compliance.bundle.item_assignment": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "bundle_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^BU[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_BU"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "object_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^[a-zA-Z]{2}[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^BV[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_BV"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -158,41 +112,28 @@
       "numbers.v2.regulatory_compliance.end_user": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "attributes": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IT[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IT"
           },
           "type": {
-            "enum": [
-              "individual",
-              "business"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/type"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -200,26 +141,19 @@
       "numbers.v2.regulatory_compliance.end_user_type": {
         "properties": {
           "fields": {
-            "items": {
-              "type": "object"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/object_list"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "machine_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^OY[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_OY"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -227,33 +161,25 @@
       "numbers.v2.regulatory_compliance.regulation": {
         "properties": {
           "end_user_type": {
-            "enum": [
-              "individual",
-              "business"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/end_user_type"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "iso_country": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "number_type": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "requirements": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RN[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RN"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -261,51 +187,34 @@
       "numbers.v2.regulatory_compliance.supporting_document": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "attributes": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "mime_type": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RD[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RD"
           },
           "status": {
-            "enum": [
-              "draft",
-              "pending-review",
-              "rejected",
-              "approved",
-              "expired",
-              "provisionally-approved"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/status"
           },
           "type": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -313,29 +222,113 @@
       "numbers.v2.regulatory_compliance.supporting_document_type": {
         "properties": {
           "fields": {
-            "items": {
-              "type": "object"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/object_list"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "machine_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^OY[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_OY"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
+      },
+      "object": {
+        "type": "object"
+      },
+      "object_list": {
+        "items": {
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "sid": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^[a-zA-Z]{2}[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_AC": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^AC[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_BU": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^BU[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_BV": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^BV[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_EL": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^EL[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_IT": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^IT[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_OY": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^OY[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_RD": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^RD[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_RN": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^RN[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "status": {
+        "enum": [
+          "draft",
+          "pending-review",
+          "rejected",
+          "approved",
+          "expired",
+          "provisionally-approved"
+        ],
+        "type": "string"
+      },
+      "string": {
+        "type": "string"
+      },
+      "type": {
+        "enum": [
+          "individual",
+          "business"
+        ],
+        "type": "string"
+      },
+      "uri_map": {
+        "type": "object"
+      },
+      "url": {
+        "format": "uri",
+        "type": "string"
       }
     },
     "securitySchemes": {
@@ -358,7 +351,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Numbers",
-    "version": "5.10.0"
+    "version": "5.17.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -366,6 +359,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all Bundles for an account.",
+        "operationId": "ListBundle",
         "parameters": [
           {
             "description": "The verification status of the Bundle resource.",
@@ -472,6 +466,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListBundleResponse",
                   "type": "object"
                 }
               }
@@ -484,12 +479,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Create a new Bundle.",
+        "operationId": "CreateBundle",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -536,6 +532,7 @@
                   "FriendlyName",
                   "Email"
                 ],
+                "title": "CreateBundleRequest",
                 "type": "object"
               }
             }
@@ -558,7 +555,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -578,6 +575,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of Evaluations associated to the Bundle resource.",
+        "operationId": "ListEvaluation",
         "parameters": [
           {
             "description": "",
@@ -645,6 +643,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListEvaluationResponse",
                   "type": "object"
                 }
               }
@@ -657,12 +656,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateEvaluation",
         "parameters": [
           {
             "description": "",
@@ -682,6 +682,7 @@
             "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {},
+                "title": "CreateEvaluationRequest",
                 "type": "object"
               }
             }
@@ -704,7 +705,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -722,6 +723,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch specific Evaluation Instance.",
+        "operationId": "FetchEvaluation",
         "parameters": [
           {
             "description": "The unique string that we created to identify the Bundle resource.",
@@ -765,7 +767,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -783,6 +785,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all Assigned Items for an account.",
+        "operationId": "ListItemAssignment",
         "parameters": [
           {
             "description": "The unique string that we created to identify the Bundle resource.",
@@ -850,6 +853,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListItemAssignmentResponse",
                   "type": "object"
                 }
               }
@@ -862,12 +866,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Create a new Assigned Item.",
+        "operationId": "CreateItemAssignment",
         "parameters": [
           {
             "description": "The unique string that we created to identify the Bundle resource.",
@@ -898,6 +903,7 @@
                 "required": [
                   "ObjectSid"
                 ],
+                "title": "CreateItemAssignmentRequest",
                 "type": "object"
               }
             }
@@ -920,7 +926,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -937,6 +943,7 @@
     "/v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments/{Sid}": {
       "delete": {
         "description": "Remove an Assignment Item Instance.",
+        "operationId": "DeleteItemAssignment",
         "parameters": [
           {
             "description": "The unique string that we created to identify the Bundle resource.",
@@ -973,13 +980,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch specific Assigned Item Instance.",
+        "operationId": "FetchItemAssignment",
         "parameters": [
           {
             "description": "The unique string that we created to identify the Bundle resource.",
@@ -1023,7 +1031,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1040,6 +1048,7 @@
     "/v2/RegulatoryCompliance/Bundles/{Sid}": {
       "delete": {
         "description": "Delete a specific Bundle.",
+        "operationId": "DeleteBundle",
         "parameters": [
           {
             "description": "The unique string that we created to identify the Bundle resource.",
@@ -1064,13 +1073,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch a specific Bundle instance.",
+        "operationId": "FetchBundle",
         "parameters": [
           {
             "description": "The unique string that we created to identify the Bundle resource.",
@@ -1102,12 +1112,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Updates a Bundle in an account.",
+        "operationId": "UpdateBundle",
         "parameters": [
           {
             "description": "The unique string that we created to identify the Bundle resource.",
@@ -1153,6 +1164,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateBundleRequest",
                 "type": "object"
               }
             }
@@ -1175,7 +1187,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1195,6 +1207,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all End-User Types.",
+        "operationId": "ListEndUserType",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -1250,6 +1263,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListEndUserTypeResponse",
                   "type": "object"
                 }
               }
@@ -1262,7 +1276,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1281,6 +1295,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch a specific End-User Type Instance.",
+        "operationId": "FetchEndUserType",
         "parameters": [
           {
             "description": "The unique string that identifies the End-User Type resource.",
@@ -1309,7 +1324,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1328,6 +1343,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all End User for an account.",
+        "operationId": "ListEndUser",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -1383,6 +1399,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListEndUserResponse",
                   "type": "object"
                 }
               }
@@ -1395,12 +1412,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Create a new End User.",
+        "operationId": "CreateEndUser",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1427,6 +1445,7 @@
                   "FriendlyName",
                   "Type"
                 ],
+                "title": "CreateEndUserRequest",
                 "type": "object"
               }
             }
@@ -1449,7 +1468,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1467,6 +1486,7 @@
     "/v2/RegulatoryCompliance/EndUsers/{Sid}": {
       "delete": {
         "description": "Delete a specific End User.",
+        "operationId": "DeleteEndUser",
         "parameters": [
           {
             "description": "The unique string created by Twilio to identify the End User resource.",
@@ -1491,13 +1511,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch specific End User Instance.",
+        "operationId": "FetchEndUser",
         "parameters": [
           {
             "description": "The unique string created by Twilio to identify the End User resource.",
@@ -1529,12 +1550,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing End User.",
+        "operationId": "UpdateEndUser",
         "parameters": [
           {
             "description": "The unique string created by Twilio to identify the End User resource.",
@@ -1563,6 +1585,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateEndUserRequest",
                 "type": "object"
               }
             }
@@ -1585,7 +1608,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1604,6 +1627,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all Regulations.",
+        "operationId": "ListRegulation",
         "parameters": [
           {
             "description": "The type of End User the regulation requires - can be `individual` or `business`.",
@@ -1687,6 +1711,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListRegulationResponse",
                   "type": "object"
                 }
               }
@@ -1699,7 +1724,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1718,6 +1743,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch specific Regulation Instance.",
+        "operationId": "FetchRegulation",
         "parameters": [
           {
             "description": "The unique string that identifies the Regulation resource.",
@@ -1749,7 +1775,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1768,6 +1794,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all Supporting Document Types.",
+        "operationId": "ListSupportingDocumentType",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -1823,6 +1850,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListSupportingDocumentTypeResponse",
                   "type": "object"
                 }
               }
@@ -1835,7 +1863,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1854,6 +1882,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch a specific Supporting Document Type Instance.",
+        "operationId": "FetchSupportingDocumentType",
         "parameters": [
           {
             "description": "The unique string that identifies the Supporting Document Type resource.",
@@ -1882,7 +1911,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1901,6 +1930,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all Supporting Document for an account.",
+        "operationId": "ListSupportingDocument",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -1956,6 +1986,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListSupportingDocumentResponse",
                   "type": "object"
                 }
               }
@@ -1968,12 +1999,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Create a new Supporting Document.",
+        "operationId": "CreateSupportingDocument",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1996,6 +2028,7 @@
                   "FriendlyName",
                   "Type"
                 ],
+                "title": "CreateSupportingDocumentRequest",
                 "type": "object"
               }
             }
@@ -2018,7 +2051,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2036,6 +2069,7 @@
     "/v2/RegulatoryCompliance/SupportingDocuments/{Sid}": {
       "delete": {
         "description": "Delete a specific Supporting Document.",
+        "operationId": "DeleteSupportingDocument",
         "parameters": [
           {
             "description": "The unique string created by Twilio to identify the Supporting Document resource.",
@@ -2060,13 +2094,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch specific Supporting Document Instance.",
+        "operationId": "FetchSupportingDocument",
         "parameters": [
           {
             "description": "The unique string created by Twilio to identify the Supporting Document resource.",
@@ -2098,12 +2133,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update an existing Supporting Document.",
+        "operationId": "UpdateSupportingDocument",
         "parameters": [
           {
             "description": "The unique string created by Twilio to identify the Supporting Document resource.",
@@ -2132,6 +2168,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateSupportingDocumentRequest",
                 "type": "object"
               }
             }
@@ -2154,7 +2191,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2170,7 +2207,7 @@
       "x-path-type": "instance"
     }
   },
-  "tags": [
+  "x-maturity": [
     {
       "description": "This product is Generally Available.",
       "name": "GA"

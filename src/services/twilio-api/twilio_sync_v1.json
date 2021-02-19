@@ -1,59 +1,107 @@
 {
   "components": {
     "schemas": {
+      "boolean": {
+        "type": "boolean"
+      },
+      "date_time_iso8601": {
+        "format": "date-time",
+        "type": "string"
+      },
+      "integer": {
+        "type": "integer"
+      },
+      "object": {
+        "type": "object"
+      },
+      "sid_AC": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^AC[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_ES": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^ES[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_ET": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^ET[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_IS": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^IS[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_MP": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^MP[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_TO": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^TO[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_TZ": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^TZ[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "string": {
+        "type": "string"
+      },
       "sync.v1.service": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "acl_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "reachability_debouncing_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "reachability_debouncing_window": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "reachability_webhooks_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "webhook_url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "webhooks_from_rest_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           }
         },
         "type": "object"
@@ -61,53 +109,40 @@
       "sync.v1.service.document": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "created_by": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "data": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_expires": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "revision": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^ET[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_ET"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -115,38 +150,28 @@
       "sync.v1.service.document.document_permission": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "document_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^ET[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_ET"
           },
           "identity": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "manage": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "read": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "write": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           }
         },
         "type": "object"
@@ -154,50 +179,37 @@
       "sync.v1.service.sync_list": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "created_by": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_expires": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "revision": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^ES[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_ES"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -205,50 +217,37 @@
       "sync.v1.service.sync_list.sync_list_item": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "created_by": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "data": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_expires": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "index": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "list_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^ES[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_ES"
           },
           "revision": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -256,38 +255,28 @@
       "sync.v1.service.sync_list.sync_list_permission": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "identity": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "list_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^ES[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_ES"
           },
           "manage": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "read": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "write": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           }
         },
         "type": "object"
@@ -295,50 +284,37 @@
       "sync.v1.service.sync_map": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "created_by": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_expires": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "revision": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MP[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MP"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -346,50 +322,37 @@
       "sync.v1.service.sync_map.sync_map_item": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "created_by": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "data": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_expires": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "key": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "map_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MP[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MP"
           },
           "revision": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -397,38 +360,28 @@
       "sync.v1.service.sync_map.sync_map_permission": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "identity": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "manage": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "map_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MP[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MP"
           },
           "read": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "write": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           }
         },
         "type": "object"
@@ -436,47 +389,34 @@
       "sync.v1.service.sync_stream": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "created_by": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_expires": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^IS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_IS"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^TO[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_TO"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -484,16 +424,20 @@
       "sync.v1.service.sync_stream.stream_message": {
         "properties": {
           "data": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^TZ[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_TZ"
           }
         },
         "type": "object"
+      },
+      "uri_map": {
+        "type": "object"
+      },
+      "url": {
+        "format": "uri",
+        "type": "string"
       }
     },
     "securitySchemes": {
@@ -516,7 +460,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Sync",
-    "version": "5.10.0"
+    "version": "5.17.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -524,6 +468,7 @@
       "description": "Containers for sync objects",
       "get": {
         "description": "",
+        "operationId": "ListService",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -579,6 +524,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListServiceResponse",
                   "type": "object"
                 }
               }
@@ -591,12 +537,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateService",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -632,6 +579,7 @@
                     "type": "boolean"
                   }
                 },
+                "title": "CreateServiceRequest",
                 "type": "object"
               }
             }
@@ -654,8 +602,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -674,6 +622,7 @@
       "description": "Sync Document objects",
       "get": {
         "description": "",
+        "operationId": "ListDocument",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resources to read.",
@@ -738,6 +687,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListDocumentResponse",
                   "type": "object"
                 }
               }
@@ -750,12 +700,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateDocument",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Document resource in.",
@@ -773,7 +724,7 @@
               "schema": {
                 "properties": {
                   "Data": {
-                    "description": "A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16KB in length.",
+                    "description": "A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16 KiB in length.",
                     "type": "object"
                   },
                   "Ttl": {
@@ -785,6 +736,7 @@
                     "type": "string"
                   }
                 },
+                "title": "CreateDocumentRequest",
                 "type": "object"
               }
             }
@@ -807,8 +759,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -827,6 +779,7 @@
       "description": "Sync document permissions",
       "get": {
         "description": "Retrieve a list of all Permissions applying to a Sync Document.",
+        "operationId": "ListDocumentPermission",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resources to read.",
@@ -900,6 +853,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListDocumentPermissionResponse",
                   "type": "object"
                 }
               }
@@ -912,8 +866,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -932,6 +886,7 @@
     "/v1/Services/{ServiceSid}/Documents/{DocumentSid}/Permissions/{Identity}": {
       "delete": {
         "description": "Delete a specific Sync Document Permission.",
+        "operationId": "DeleteDocumentPermission",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to delete.",
@@ -971,13 +926,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "description": "Sync document permissions",
       "get": {
         "description": "Fetch a specific Sync Document Permission.",
+        "operationId": "FetchDocumentPermission",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to fetch.",
@@ -1024,12 +980,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "Update an identity's access to a specific Sync Document.",
+        "operationId": "UpdateDocumentPermission",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document Permission resource to update.",
@@ -1082,6 +1039,7 @@
                   "Write",
                   "Manage"
                 ],
+                "title": "UpdateDocumentPermissionRequest",
                 "type": "object"
               }
             }
@@ -1104,8 +1062,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -1124,6 +1082,7 @@
     "/v1/Services/{ServiceSid}/Documents/{Sid}": {
       "delete": {
         "description": "",
+        "operationId": "DeleteDocument",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resource to delete.",
@@ -1135,18 +1094,10 @@
             }
           },
           {
-            "description": "The SID of the Document resource to delete.",
+            "description": "The SID of the Document resource to delete. Can be the Document resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "Sid",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The If-Match HTTP request header",
-            "in": "header",
-            "name": "If-Match",
             "schema": {
               "type": "string"
             }
@@ -1162,13 +1113,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "description": "Sync Document objects",
       "get": {
         "description": "",
+        "operationId": "FetchDocument",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resource to fetch.",
@@ -1180,7 +1132,7 @@
             }
           },
           {
-            "description": "The SID of the Document resource to fetch.",
+            "description": "The SID of the Document resource to fetch. Can be the Document resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1206,12 +1158,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "UpdateDocument",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Document resource to update.",
@@ -1223,7 +1176,7 @@
             }
           },
           {
-            "description": "The SID of the Document resource to update.",
+            "description": "The SID of the Document resource to update. Can be the Document resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1246,7 +1199,7 @@
               "schema": {
                 "properties": {
                   "Data": {
-                    "description": "A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16KB in length.",
+                    "description": "A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16 KiB in length.",
                     "type": "object"
                   },
                   "Ttl": {
@@ -1254,6 +1207,7 @@
                     "type": "integer"
                   }
                 },
+                "title": "UpdateDocumentRequest",
                 "type": "object"
               }
             }
@@ -1276,8 +1230,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -1296,6 +1250,7 @@
       "description": "Sync list objects",
       "get": {
         "description": "",
+        "operationId": "ListSyncList",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resources to read.",
@@ -1360,6 +1315,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListSyncListResponse",
                   "type": "object"
                 }
               }
@@ -1372,12 +1328,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateSyncList",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Sync List in.",
@@ -1407,6 +1364,7 @@
                     "type": "string"
                   }
                 },
+                "title": "CreateSyncListRequest",
                 "type": "object"
               }
             }
@@ -1429,8 +1387,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -1449,6 +1407,7 @@
       "description": "Items in a sync list",
       "get": {
         "description": "",
+        "operationId": "ListSyncListItem",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the List Item resources to read.",
@@ -1554,6 +1513,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListSyncListItemResponse",
                   "type": "object"
                 }
               }
@@ -1566,12 +1526,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateSyncListItem",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new List Item in.",
@@ -1602,7 +1563,7 @@
                     "type": "integer"
                   },
                   "Data": {
-                    "description": "A JSON string that represents an arbitrary, schema-less object that the List Item stores. Can be up to 16KB in length.",
+                    "description": "A JSON string that represents an arbitrary, schema-less object that the List Item stores. Can be up to 16 KiB in length.",
                     "type": "object"
                   },
                   "ItemTtl": {
@@ -1617,6 +1578,7 @@
                 "required": [
                   "Data"
                 ],
+                "title": "CreateSyncListItemRequest",
                 "type": "object"
               }
             }
@@ -1639,8 +1601,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -1658,6 +1620,7 @@
     "/v1/Services/{ServiceSid}/Lists/{ListSid}/Items/{Index}": {
       "delete": {
         "description": "",
+        "operationId": "DeleteSyncListItem",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Item resource to delete.",
@@ -1687,7 +1650,7 @@
             }
           },
           {
-            "description": "The If-Match HTTP request header",
+            "description": "If provided, applies this mutation if (and only if) the \u201crevision\u201d field of this [map item] matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).",
             "in": "header",
             "name": "If-Match",
             "schema": {
@@ -1705,13 +1668,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "description": "Items in a sync list",
       "get": {
         "description": "",
+        "operationId": "FetchSyncListItem",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Item resource to fetch.",
@@ -1758,12 +1722,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "UpdateSyncListItem",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Item resource to update.",
@@ -1793,7 +1758,7 @@
             }
           },
           {
-            "description": "The If-Match HTTP request header",
+            "description": "If provided, applies this mutation if (and only if) the \u201crevision\u201d field of this [map item] matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).",
             "in": "header",
             "name": "If-Match",
             "schema": {
@@ -1811,7 +1776,7 @@
                     "type": "integer"
                   },
                   "Data": {
-                    "description": "A JSON string that represents an arbitrary, schema-less object that the List Item stores. Can be up to 16KB in length.",
+                    "description": "A JSON string that represents an arbitrary, schema-less object that the List Item stores. Can be up to 16 KiB in length.",
                     "type": "object"
                   },
                   "ItemTtl": {
@@ -1823,6 +1788,7 @@
                     "type": "integer"
                   }
                 },
+                "title": "UpdateSyncListItemRequest",
                 "type": "object"
               }
             }
@@ -1845,8 +1811,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -1865,6 +1831,7 @@
       "description": "Permissions for Sync list items",
       "get": {
         "description": "Retrieve a list of all Permissions applying to a Sync List.",
+        "operationId": "ListSyncListPermission",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resources to read.",
@@ -1938,6 +1905,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListSyncListPermissionResponse",
                   "type": "object"
                 }
               }
@@ -1950,8 +1918,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -1970,6 +1938,7 @@
     "/v1/Services/{ServiceSid}/Lists/{ListSid}/Permissions/{Identity}": {
       "delete": {
         "description": "Delete a specific Sync List Permission.",
+        "operationId": "DeleteSyncListPermission",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to delete.",
@@ -2009,13 +1978,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "description": "Permissions for Sync list items",
       "get": {
         "description": "Fetch a specific Sync List Permission.",
+        "operationId": "FetchSyncListPermission",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to fetch.",
@@ -2062,12 +2032,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "Update an identity's access to a specific Sync List.",
+        "operationId": "UpdateSyncListPermission",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resource to update.",
@@ -2120,6 +2091,7 @@
                   "Write",
                   "Manage"
                 ],
+                "title": "UpdateSyncListPermissionRequest",
                 "type": "object"
               }
             }
@@ -2142,8 +2114,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -2162,6 +2134,7 @@
     "/v1/Services/{ServiceSid}/Lists/{Sid}": {
       "delete": {
         "description": "",
+        "operationId": "DeleteSyncList",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resource to delete.",
@@ -2173,7 +2146,7 @@
             }
           },
           {
-            "description": "The SID of the Sync List resource to delete.",
+            "description": "The SID of the Sync List resource to delete. Can be the Sync List resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2192,13 +2165,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "description": "Sync list objects",
       "get": {
         "description": "",
+        "operationId": "FetchSyncList",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resource to fetch.",
@@ -2210,7 +2184,7 @@
             }
           },
           {
-            "description": "The SID of the Sync List resource to fetch.",
+            "description": "The SID of the Sync List resource to fetch. Can be the Sync List resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2236,12 +2210,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "UpdateSyncList",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List resource to update.",
@@ -2253,7 +2228,7 @@
             }
           },
           {
-            "description": "The SID of the Sync List resource to update.",
+            "description": "The SID of the Sync List resource to update. Can be the Sync List resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -2276,6 +2251,7 @@
                     "type": "integer"
                   }
                 },
+                "title": "UpdateSyncListRequest",
                 "type": "object"
               }
             }
@@ -2298,8 +2274,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -2318,6 +2294,7 @@
       "description": "Sync map objects",
       "get": {
         "description": "",
+        "operationId": "ListSyncMap",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resources to read.",
@@ -2382,6 +2359,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListSyncMapResponse",
                   "type": "object"
                 }
               }
@@ -2394,12 +2372,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateSyncMap",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the Sync Map in.",
@@ -2429,6 +2408,7 @@
                     "type": "string"
                   }
                 },
+                "title": "CreateSyncMapRequest",
                 "type": "object"
               }
             }
@@ -2451,8 +2431,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -2471,6 +2451,7 @@
       "description": "Keys in a sync map",
       "get": {
         "description": "",
+        "operationId": "ListSyncMapItem",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Map Item resources to read.",
@@ -2482,7 +2463,7 @@
             }
           },
           {
-            "description": "The SID of the Sync Map with the Sync Map Item resource to fetch. Can be the Sync Map's `sid` or its `unique_name`.",
+            "description": "The SID of the Sync Map with the Sync Map Item resource to fetch. Can be the Sync Map resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2576,6 +2557,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListSyncMapItemResponse",
                   "type": "object"
                 }
               }
@@ -2588,12 +2570,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateSyncMapItem",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the Map Item in.",
@@ -2605,7 +2588,7 @@
             }
           },
           {
-            "description": "The SID of the Sync Map to add the new Map Item to.",
+            "description": "The SID of the Sync Map to add the new Map Item to. Can be the Sync Map resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2624,7 +2607,7 @@
                     "type": "integer"
                   },
                   "Data": {
-                    "description": "A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16KB in length.",
+                    "description": "A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16 KiB in length.",
                     "type": "object"
                   },
                   "ItemTtl": {
@@ -2644,6 +2627,7 @@
                   "Key",
                   "Data"
                 ],
+                "title": "CreateSyncMapItemRequest",
                 "type": "object"
               }
             }
@@ -2666,8 +2650,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -2685,6 +2669,7 @@
     "/v1/Services/{ServiceSid}/Maps/{MapSid}/Items/{Key}": {
       "delete": {
         "description": "",
+        "operationId": "DeleteSyncMapItem",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Item resource to delete.",
@@ -2696,7 +2681,7 @@
             }
           },
           {
-            "description": "The SID of the Sync Map with the Sync Map Item resource to delete. Can be the Sync Map's `sid` or its `unique_name`.",
+            "description": "The SID of the Sync Map with the Sync Map Item resource to delete. Can be the Sync Map resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2714,7 +2699,7 @@
             }
           },
           {
-            "description": "The If-Match HTTP request header",
+            "description": "If provided, applies this mutation if (and only if) the \u201crevision\u201d field of this [map item] matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).",
             "in": "header",
             "name": "If-Match",
             "schema": {
@@ -2732,13 +2717,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "description": "Keys in a sync map",
       "get": {
         "description": "",
+        "operationId": "FetchSyncMapItem",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Item resource to fetch.",
@@ -2750,7 +2736,7 @@
             }
           },
           {
-            "description": "The SID of the Sync Map with the Sync Map Item resource to fetch. Can be the Sync Map's `sid` or its `unique_name`.",
+            "description": "The SID of the Sync Map with the Sync Map Item resource to fetch. Can be the Sync Map resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2785,12 +2771,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "UpdateSyncMapItem",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Item resource to update.",
@@ -2802,7 +2789,7 @@
             }
           },
           {
-            "description": "The SID of the Sync Map with the Sync Map Item resource to update. Can be the Sync Map's `sid` or its `unique_name`.",
+            "description": "The SID of the Sync Map with the Sync Map Item resource to update. Can be the Sync Map resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2820,7 +2807,7 @@
             }
           },
           {
-            "description": "The If-Match HTTP request header",
+            "description": "If provided, applies this mutation if (and only if) the \u201crevision\u201d field of this [map item] matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).",
             "in": "header",
             "name": "If-Match",
             "schema": {
@@ -2838,7 +2825,7 @@
                     "type": "integer"
                   },
                   "Data": {
-                    "description": "A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16KB in length.",
+                    "description": "A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16 KiB in length.",
                     "type": "object"
                   },
                   "ItemTtl": {
@@ -2850,6 +2837,7 @@
                     "type": "integer"
                   }
                 },
+                "title": "UpdateSyncMapItemRequest",
                 "type": "object"
               }
             }
@@ -2872,8 +2860,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -2892,6 +2880,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all Permissions applying to a Sync Map.",
+        "operationId": "ListSyncMapPermission",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resources to read. Can be the Service's `sid` value or `default`.",
@@ -2903,7 +2892,7 @@
             }
           },
           {
-            "description": "The SID of the Sync Map with the Permission resources to read. Can be the Sync Map's `sid` or its `unique_name`.",
+            "description": "The SID of the Sync Map with the Permission resources to read. Can be the Sync Map resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -2965,6 +2954,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListSyncMapPermissionResponse",
                   "type": "object"
                 }
               }
@@ -2977,8 +2967,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -2997,6 +2987,7 @@
     "/v1/Services/{ServiceSid}/Maps/{MapSid}/Permissions/{Identity}": {
       "delete": {
         "description": "Delete a specific Sync Map Permission.",
+        "operationId": "DeleteSyncMapPermission",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to delete. Can be the Service's `sid` value or `default`.",
@@ -3008,7 +2999,7 @@
             }
           },
           {
-            "description": "The SID of the Sync Map with the Sync Map Permission resource to delete. Can be the Sync Map's `sid` or its `unique_name`.",
+            "description": "The SID of the Sync Map with the Sync Map Permission resource to delete. Can be the Sync Map resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -3036,13 +3027,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch a specific Sync Map Permission.",
+        "operationId": "FetchSyncMapPermission",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to fetch. Can be the Service's `sid` value or `default`.",
@@ -3054,7 +3046,7 @@
             }
           },
           {
-            "description": "The SID of the Sync Map with the Sync Map Permission resource to fetch. Can be the Sync Map's `sid` or its `unique_name`.",
+            "description": "The SID of the Sync Map with the Sync Map Permission resource to fetch. Can be the Sync Map resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -3089,12 +3081,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "Update an identity's access to a specific Sync Map.",
+        "operationId": "UpdateSyncMapPermission",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map Permission resource to update. Can be the Service's `sid` value or `default`.",
@@ -3106,7 +3099,7 @@
             }
           },
           {
-            "description": "The SID of the Sync Map with the Sync Map Permission resource to update. Can be the Sync Map's `sid` or its `unique_name`.",
+            "description": "The SID of the Sync Map with the Sync Map Permission resource to update. Can be the Sync Map resource's `sid` or its `unique_name`.",
             "in": "path",
             "name": "MapSid",
             "required": true,
@@ -3147,6 +3140,7 @@
                   "Write",
                   "Manage"
                 ],
+                "title": "UpdateSyncMapPermissionRequest",
                 "type": "object"
               }
             }
@@ -3169,8 +3163,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -3189,6 +3183,7 @@
     "/v1/Services/{ServiceSid}/Maps/{Sid}": {
       "delete": {
         "description": "",
+        "operationId": "DeleteSyncMap",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resource to delete.",
@@ -3200,7 +3195,7 @@
             }
           },
           {
-            "description": "The SID of the Sync Map resource to delete.",
+            "description": "The SID of the Sync Map resource to delete. Can be the Sync Map's `sid` or its `unique_name`.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3219,13 +3214,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "description": "Sync map objects",
       "get": {
         "description": "",
+        "operationId": "FetchSyncMap",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resource to fetch.",
@@ -3237,7 +3233,7 @@
             }
           },
           {
-            "description": "The SID of the Sync Map resource to fetch.",
+            "description": "The SID of the Sync Map resource to fetch. Can be the Sync Map's `sid` or its `unique_name`.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3263,12 +3259,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "UpdateSyncMap",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Map resource to update.",
@@ -3280,7 +3277,7 @@
             }
           },
           {
-            "description": "The SID of the Sync Map resource to update.",
+            "description": "The SID of the Sync Map resource to update. Can be the Sync Map's `sid` or its `unique_name`.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -3303,6 +3300,7 @@
                     "type": "integer"
                   }
                 },
+                "title": "UpdateSyncMapRequest",
                 "type": "object"
               }
             }
@@ -3325,8 +3323,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -3345,6 +3343,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of all Streams in a Service Instance.",
+        "operationId": "ListSyncStream",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Stream resources to read.",
@@ -3409,6 +3408,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListSyncStreamResponse",
                   "type": "object"
                 }
               }
@@ -3421,12 +3421,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "Create a new Stream.",
+        "operationId": "CreateSyncStream",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Stream in.",
@@ -3452,6 +3453,7 @@
                     "type": "string"
                   }
                 },
+                "title": "CreateSyncStreamRequest",
                 "type": "object"
               }
             }
@@ -3474,8 +3476,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -3493,6 +3495,7 @@
     "/v1/Services/{ServiceSid}/Streams/{Sid}": {
       "delete": {
         "description": "Delete a specific Stream.",
+        "operationId": "DeleteSyncStream",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Stream resource to delete.",
@@ -3523,13 +3526,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch a specific Stream.",
+        "operationId": "FetchSyncStream",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Stream resource to fetch.",
@@ -3567,12 +3571,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "Update a specific Stream.",
+        "operationId": "UpdateSyncStream",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync Stream resource to update.",
@@ -3603,6 +3608,7 @@
                     "type": "integer"
                   }
                 },
+                "title": "UpdateSyncStreamRequest",
                 "type": "object"
               }
             }
@@ -3625,8 +3631,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -3645,6 +3651,7 @@
       "description": "TODO: Resource-level docs",
       "post": {
         "description": "Create a new Stream Message.",
+        "operationId": "CreateStreamMessage",
         "parameters": [
           {
             "description": "The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Stream Message in.",
@@ -3671,13 +3678,14 @@
               "schema": {
                 "properties": {
                   "Data": {
-                    "description": "A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message body. Can be up to 4KB in length.",
+                    "description": "A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message body. Can be up to 4 KiB in length.",
                     "type": "object"
                   }
                 },
                 "required": [
                   "Data"
                 ],
+                "title": "CreateStreamMessageRequest",
                 "type": "object"
               }
             }
@@ -3700,8 +3708,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -3717,6 +3725,7 @@
     "/v1/Services/{Sid}": {
       "delete": {
         "description": "",
+        "operationId": "DeleteService",
         "parameters": [
           {
             "description": "The SID of the Service resource to delete.",
@@ -3738,13 +3747,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "description": "Containers for sync objects",
       "get": {
         "description": "",
+        "operationId": "FetchService",
         "parameters": [
           {
             "description": "The SID of the Service resource to fetch.",
@@ -3773,12 +3783,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "UpdateService",
         "parameters": [
           {
             "description": "The SID of the Service resource to update.",
@@ -3825,6 +3836,7 @@
                     "type": "boolean"
                   }
                 },
+                "title": "UpdateServiceRequest",
                 "type": "object"
               }
             }
@@ -3847,8 +3859,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Beta"
+        "x-maturity": [
+          "GA"
         ]
       },
       "servers": [
@@ -3864,10 +3876,10 @@
       "x-path-type": "instance"
     }
   },
-  "tags": [
+  "x-maturity": [
     {
-      "description": "PLEASE NOTE that this is a Beta product that is subject to change. Use it with caution.",
-      "name": "Beta"
+      "description": "This product is Generally Available.",
+      "name": "GA"
     }
   ]
 }

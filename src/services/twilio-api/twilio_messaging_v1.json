@@ -1,11 +1,113 @@
 {
   "components": {
     "schemas": {
+      "boolean": {
+        "type": "boolean"
+      },
+      "date_time_iso8601": {
+        "format": "date-time",
+        "type": "string"
+      },
+      "http_method": {
+        "enum": [
+          "HEAD",
+          "GET",
+          "POST",
+          "PATCH",
+          "PUT",
+          "DELETE"
+        ],
+        "type": "string"
+      },
+      "integer": {
+        "type": "integer"
+      },
+      "messaging.v1.brand_registrations": {
+        "properties": {
+          "a2p_profile_bundle_sid": {
+            "$ref": "#/components/schemas/sid_BU"
+          },
+          "account_sid": {
+            "$ref": "#/components/schemas/sid_AC"
+          },
+          "customer_profile_bundle_sid": {
+            "$ref": "#/components/schemas/sid_BU"
+          },
+          "date_created": {
+            "$ref": "#/components/schemas/date_time_iso8601"
+          },
+          "date_updated": {
+            "$ref": "#/components/schemas/date_time_iso8601"
+          },
+          "failure_reason": {
+            "$ref": "#/components/schemas/string"
+          },
+          "sid": {
+            "$ref": "#/components/schemas/sid_BN"
+          },
+          "status": {
+            "$ref": "#/components/schemas/status"
+          },
+          "tcr_id": {
+            "$ref": "#/components/schemas/string"
+          },
+          "url": {
+            "$ref": "#/components/schemas/url"
+          }
+        },
+        "type": "object"
+      },
+      "messaging.v1.campaigns": {
+        "properties": {
+          "account_sid": {
+            "$ref": "#/components/schemas/sid_AC"
+          },
+          "brand_registration_sid": {
+            "$ref": "#/components/schemas/sid_BN"
+          },
+          "date_created": {
+            "$ref": "#/components/schemas/date_time_iso8601"
+          },
+          "date_updated": {
+            "$ref": "#/components/schemas/date_time_iso8601"
+          },
+          "description": {
+            "$ref": "#/components/schemas/string"
+          },
+          "failure_reason": {
+            "$ref": "#/components/schemas/string"
+          },
+          "has_embedded_links": {
+            "$ref": "#/components/schemas/boolean"
+          },
+          "has_embedded_phone": {
+            "$ref": "#/components/schemas/boolean"
+          },
+          "message_samples": {
+            "$ref": "#/components/schemas/string_list"
+          },
+          "messaging_service_sid": {
+            "$ref": "#/components/schemas/sid_MG"
+          },
+          "sid": {
+            "$ref": "#/components/schemas/sid_CM"
+          },
+          "status": {
+            "$ref": "#/components/schemas/status"
+          },
+          "url": {
+            "$ref": "#/components/schemas/url"
+          },
+          "use_case": {
+            "$ref": "#/components/schemas/string"
+          }
+        },
+        "type": "object"
+      },
       "messaging.v1.deactivation": {
         "properties": {
           "redirect_to": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -13,109 +115,64 @@
       "messaging.v1.service": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "area_code_geomatch": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "fallback_method": {
-            "enum": [
-              "head",
-              "get",
-              "post",
-              "patch",
-              "put",
-              "delete",
-              "HEAD",
-              "GET",
-              "POST",
-              "PATCH",
-              "PUT",
-              "DELETE"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/http_method"
           },
           "fallback_to_long_code": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "fallback_url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "inbound_method": {
-            "enum": [
-              "head",
-              "get",
-              "post",
-              "patch",
-              "put",
-              "delete",
-              "HEAD",
-              "GET",
-              "POST",
-              "PATCH",
-              "PUT",
-              "DELETE"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/http_method"
           },
           "inbound_request_url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "mms_converter": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "scan_message_content": {
-            "enum": [
-              "inherit",
-              "enable",
-              "disable"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/scan_message_content"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MG[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MG"
           },
           "smart_encoding": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "status_callback": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "sticky_sender": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "synchronous_validation": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "validity_period": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           }
         },
         "type": "object"
@@ -123,43 +180,28 @@
       "messaging.v1.service.alpha_sender": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "alpha_sender": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "capabilities": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/string_list"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MG[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MG"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AI[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AI"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -167,46 +209,31 @@
       "messaging.v1.service.phone_number": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "capabilities": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/string_list"
           },
           "country_code": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "phone_number": {
-            "type": "string"
+            "$ref": "#/components/schemas/phone_number"
           },
           "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MG[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MG"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^PN[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_PN"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -214,49 +241,131 @@
       "messaging.v1.service.short_code": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "capabilities": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/string_list"
           },
           "country_code": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "service_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MG[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MG"
           },
           "short_code": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^SC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_SC"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
+      },
+      "messaging.v1.use_cases": {
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/string"
+          },
+          "description": {
+            "$ref": "#/components/schemas/string"
+          },
+          "name": {
+            "$ref": "#/components/schemas/string"
+          }
+        },
+        "type": "object"
+      },
+      "phone_number": {
+        "type": "string"
+      },
+      "scan_message_content": {
+        "enum": [
+          "inherit",
+          "enable",
+          "disable"
+        ],
+        "type": "string"
+      },
+      "sid_AC": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^AC[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_AI": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^AI[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_BN": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^BN[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_BU": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^BU[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_CM": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^CM[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_MG": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^MG[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_PN": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^PN[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_SC": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^SC[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "status": {
+        "enum": [
+          "approved",
+          "pending",
+          "failed"
+        ],
+        "type": "string"
+      },
+      "string": {
+        "type": "string"
+      },
+      "string_list": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "uri_map": {
+        "type": "object"
+      },
+      "url": {
+        "format": "uri",
+        "type": "string"
       }
     },
     "securitySchemes": {
@@ -279,7 +388,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Messaging",
-    "version": "5.10.0"
+    "version": "5.17.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -287,6 +396,7 @@
       "description": "A Deactivation resource to retrieve a list of United States phone numbers that have been deactivated by mobile carriers on a specific date.",
       "get": {
         "description": "Fetch a list of all United States numbers that have been deactivated on a specific date.",
+        "operationId": "FetchDeactivation",
         "parameters": [
           {
             "description": "The request will return a list of all United States Phone Numbers that were deactivated on the day specified by this parameter. This date should be specified in YYYY-MM-DD format.",
@@ -315,7 +425,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -333,6 +443,7 @@
       "description": "A Messaging Service resource to create, fetch, update, delete or add/remove senders from Messaging Services.",
       "get": {
         "description": "",
+        "operationId": "ListService",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -388,6 +499,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListServiceResponse",
                   "type": "object"
                 }
               }
@@ -400,12 +512,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateService",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -418,12 +531,6 @@
                   "FallbackMethod": {
                     "description": "The HTTP method we should use to call `fallback_url`. Can be: `GET` or `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -449,12 +556,6 @@
                   "InboundMethod": {
                     "description": "The HTTP method we should use to call `inbound_request_url`. Can be `GET` or `POST` and the default is `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -507,6 +608,7 @@
                 "required": [
                   "FriendlyName"
                 ],
+                "title": "CreateServiceRequest",
                 "type": "object"
               }
             }
@@ -529,7 +631,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
@@ -549,6 +651,7 @@
       "description": "A Messaging Service resource to add, fetch or remove an Alpha Sender ID from a Messaging Service.",
       "get": {
         "description": "",
+        "operationId": "ListAlphaSender",
         "parameters": [
           {
             "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the resources from.",
@@ -616,6 +719,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListAlphaSenderResponse",
                   "type": "object"
                 }
               }
@@ -628,12 +732,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateAlphaSender",
         "parameters": [
           {
             "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under.",
@@ -661,6 +766,7 @@
                 "required": [
                   "AlphaSender"
                 ],
+                "title": "CreateAlphaSenderRequest",
                 "type": "object"
               }
             }
@@ -683,7 +789,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
@@ -701,6 +807,7 @@
     "/v1/Services/{ServiceSid}/AlphaSenders/{Sid}": {
       "delete": {
         "description": "",
+        "operationId": "DeleteAlphaSender",
         "parameters": [
           {
             "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from.",
@@ -734,13 +841,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "description": "A Messaging Service resource to add, fetch or remove an Alpha Sender ID from a Messaging Service.",
       "get": {
         "description": "",
+        "operationId": "FetchAlphaSender",
         "parameters": [
           {
             "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the resource from.",
@@ -781,7 +889,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
@@ -800,6 +908,7 @@
       "description": "A Messaging Service resource to add, fetch or remove phone numbers from a Messaging Service.",
       "get": {
         "description": "",
+        "operationId": "ListPhoneNumber",
         "parameters": [
           {
             "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the resources from.",
@@ -867,6 +976,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListPhoneNumberResponse",
                   "type": "object"
                 }
               }
@@ -879,12 +989,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreatePhoneNumber",
         "parameters": [
           {
             "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under.",
@@ -915,6 +1026,7 @@
                 "required": [
                   "PhoneNumberSid"
                 ],
+                "title": "CreatePhoneNumberRequest",
                 "type": "object"
               }
             }
@@ -937,7 +1049,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
@@ -956,6 +1068,7 @@
     "/v1/Services/{ServiceSid}/PhoneNumbers/{Sid}": {
       "delete": {
         "description": "",
+        "operationId": "DeletePhoneNumber",
         "parameters": [
           {
             "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from.",
@@ -989,13 +1102,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "description": "A Messaging Service resource to add, fetch or remove phone numbers from a Messaging Service.",
       "get": {
         "description": "",
+        "operationId": "FetchPhoneNumber",
         "parameters": [
           {
             "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the resource from.",
@@ -1036,7 +1150,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
@@ -1056,6 +1170,7 @@
       "description": "A Messaging Service resource to add, fetch or remove short code numbers from a Messaging Service.",
       "get": {
         "description": "",
+        "operationId": "ListShortCode",
         "parameters": [
           {
             "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the resources from.",
@@ -1123,6 +1238,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListShortCodeResponse",
                   "type": "object"
                 }
               }
@@ -1135,12 +1251,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateShortCode",
         "parameters": [
           {
             "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under.",
@@ -1171,6 +1288,7 @@
                 "required": [
                   "ShortCodeSid"
                 ],
+                "title": "CreateShortCodeRequest",
                 "type": "object"
               }
             }
@@ -1193,7 +1311,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
@@ -1212,6 +1330,7 @@
     "/v1/Services/{ServiceSid}/ShortCodes/{Sid}": {
       "delete": {
         "description": "",
+        "operationId": "DeleteShortCode",
         "parameters": [
           {
             "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from.",
@@ -1245,13 +1364,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "description": "A Messaging Service resource to add, fetch or remove short code numbers from a Messaging Service.",
       "get": {
         "description": "",
+        "operationId": "FetchShortCode",
         "parameters": [
           {
             "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the resource from.",
@@ -1292,7 +1412,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
@@ -1311,6 +1431,7 @@
     "/v1/Services/{Sid}": {
       "delete": {
         "description": "",
+        "operationId": "DeleteService",
         "parameters": [
           {
             "description": "The SID of the Service resource to delete.",
@@ -1335,13 +1456,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "description": "A Messaging Service resource to create, fetch, update, delete or add/remove senders from Messaging Services.",
       "get": {
         "description": "",
+        "operationId": "FetchService",
         "parameters": [
           {
             "description": "The SID of the Service resource to fetch.",
@@ -1373,12 +1495,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "UpdateService",
         "parameters": [
           {
             "description": "The SID of the Service resource to update.",
@@ -1405,12 +1528,6 @@
                   "FallbackMethod": {
                     "description": "The HTTP method we should use to call `fallback_url`. Can be: `GET` or `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -1436,12 +1553,6 @@
                   "InboundMethod": {
                     "description": "The HTTP method we should use to call `inbound_request_url`. Can be `GET` or `POST` and the default is `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -1491,6 +1602,7 @@
                     "type": "integer"
                   }
                 },
+                "title": "UpdateServiceRequest",
                 "type": "object"
               }
             }
@@ -1513,7 +1625,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Beta"
         ]
       },
@@ -1528,9 +1640,542 @@
         "date_created"
       ],
       "x-path-type": "instance"
+    },
+    "/v1/a2p/BrandRegistrations": {
+      "description": "A Messaging Service resource to add and fetch Brand Registrations.",
+      "get": {
+        "description": "",
+        "operationId": "ListBrandRegistrations",
+        "parameters": [
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/messaging.v1.brand_registrations"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "title": "ListBrandRegistrationsResponse",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "post": {
+        "description": "",
+        "operationId": "CreateBrandRegistrations",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "A2pProfileBundleSid": {
+                    "description": "A2P Messaging Profile Bundle Sid.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^BU[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "CustomerProfileBundleSid": {
+                    "description": "Customer Profile Bundle Sid.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^BU[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "CustomerProfileBundleSid",
+                  "A2pProfileBundleSid"
+                ],
+                "title": "CreateBrandRegistrationsRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/messaging.v1.brand_registrations"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://messaging.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "date_created"
+      ],
+      "x-path-type": "list"
+    },
+    "/v1/a2p/BrandRegistrations/{Sid}": {
+      "description": "A Messaging Service resource to add and fetch Brand Registrations.",
+      "get": {
+        "description": "",
+        "operationId": "FetchBrandRegistrations",
+        "parameters": [
+          {
+            "description": "The SID of the Brand Registration resource to fetch.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^BN[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/messaging.v1.brand_registrations"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://messaging.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "date_created"
+      ],
+      "x-path-type": "instance"
+    },
+    "/v1/a2p/Campaigns": {
+      "description": "A service for adding, fetching and removing A2P campaigns",
+      "get": {
+        "description": "",
+        "operationId": "ListCampaigns",
+        "parameters": [
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/messaging.v1.campaigns"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "title": "ListCampaignsResponse",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "post": {
+        "description": "",
+        "operationId": "CreateCampaigns",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "BrandRegistrationSid": {
+                    "description": "A2P BrandRegistration Sid",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^BN[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "Description": {
+                    "description": "A short description of what this SMS campaign does.",
+                    "type": "string"
+                  },
+                  "HasEmbeddedLinks": {
+                    "description": "Indicate that this SMS campaign will send messages that contain links.",
+                    "type": "boolean"
+                  },
+                  "HasEmbeddedPhone": {
+                    "description": "Indicates that this SMS campaign will send messages that contain phone numbers.",
+                    "type": "boolean"
+                  },
+                  "MessageSamples": {
+                    "description": "Message samples, up to 5 sample messages, <=255 chars each. Example: [ \"EXPRESS: Denim Days Event is ON\", \"LAST CHANCE: Book your next flight for just 1 (ONE) EUR\" ]",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "MessagingServiceSid": {
+                    "description": "The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the resources from.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^MG[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "UseCase": {
+                    "description": "A2P Campaign UseCase. One of [ 2FA, EMERGENCY, MARKETING ]",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "BrandRegistrationSid",
+                  "UseCase",
+                  "Description",
+                  "MessageSamples",
+                  "HasEmbeddedLinks",
+                  "HasEmbeddedPhone",
+                  "MessagingServiceSid"
+                ],
+                "title": "CreateCampaignsRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/messaging.v1.campaigns"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://messaging.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "date_created"
+      ],
+      "x-path-type": "list"
+    },
+    "/v1/a2p/Campaigns/{Sid}": {
+      "delete": {
+        "description": "",
+        "operationId": "DeleteCampaigns",
+        "parameters": [
+          {
+            "description": "The SID of the Campaign resource to delete.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^CM[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "description": "A service for adding, fetching and removing A2P campaigns",
+      "get": {
+        "description": "",
+        "operationId": "FetchCampaigns",
+        "parameters": [
+          {
+            "description": "The SID of the Campaign resource to fetch.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^CM[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/messaging.v1.campaigns"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://messaging.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "sid",
+        "date_created"
+      ],
+      "x-path-type": "instance"
+    },
+    "/v1/a2p/UseCases": {
+      "description": "A2P campaign Use Case resource. Fetch possible use cases for A2P campaigns.",
+      "get": {
+        "description": "",
+        "operationId": "ListUseCases",
+        "parameters": [
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/messaging.v1.use_cases"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "title": "ListUseCasesResponse",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://messaging.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "name",
+        "code"
+      ],
+      "x-path-type": "list"
     }
   },
-  "tags": [
+  "x-maturity": [
     {
       "description": "This product is Generally Available.",
       "name": "GA"

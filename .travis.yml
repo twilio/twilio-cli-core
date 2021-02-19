@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get install -y libsecret-1-dev
 deploy:
   provider: npm
-  email: twilio-ci@twilio.com
+  email: team_interfaces@twilio.com
   api_key: $NPM_TOKEN
   skip_cleanup: true
   edge: true

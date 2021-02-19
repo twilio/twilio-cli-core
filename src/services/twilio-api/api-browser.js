@@ -9,8 +9,29 @@ const OPERATIONS = ['post', 'get', 'delete'];
 class TwilioApiBrowser {
   constructor(spec) {
     spec = spec || this.loadApiSpecFromDisk();
-
+    spec = this.mergeVersions(spec);
     this.domains = this.loadDomains(spec);
+  }
+
+  mergeVersions(spec) {
+    // merge the domain_versions into a single domain
+    const mergedSpec = {};
+    for (const domainNameWithVersion in spec) {
+      if (spec.hasOwnProperty(domainNameWithVersion)) {
+        const domainName = domainNameWithVersion.split('_')[0];
+        if (domainName in mergedSpec) {
+          const existing = mergedSpec[domainName];
+          const current = spec[domainNameWithVersion];
+          Object.assign(existing.components.schemas, current.components.schemas);
+          Object.assign(existing.paths, current.paths);
+          mergedSpec[domainName] = existing;
+        } else {
+          mergedSpec[domainName] = spec[domainNameWithVersion];
+        }
+      }
+    }
+
+    return mergedSpec;
   }
 
   loadApiSpecFromDisk() {

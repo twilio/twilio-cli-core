@@ -1,57 +1,132 @@
 {
   "components": {
     "schemas": {
+      "boolean": {
+        "type": "boolean"
+      },
+      "data_metering": {
+        "enum": [
+          "payg"
+        ],
+        "type": "string"
+      },
+      "date_time_iso8601": {
+        "format": "date-time",
+        "type": "string"
+      },
+      "direction": {
+        "enum": [
+          "to_sim",
+          "from_sim"
+        ],
+        "type": "string"
+      },
+      "http_method": {
+        "enum": [
+          "HEAD",
+          "GET",
+          "POST",
+          "PATCH",
+          "PUT",
+          "DELETE"
+        ],
+        "type": "string"
+      },
+      "integer": {
+        "type": "integer"
+      },
+      "iso_country_code": {
+        "type": "string"
+      },
+      "long": {
+        "type": "integer"
+      },
+      "object": {
+        "type": "object"
+      },
+      "object_list": {
+        "items": {
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "sid_AC": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^AC[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_HA": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^HA[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_HC": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^HC[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_HF": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^HF[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_HS": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^HS[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_HW": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^HW[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "status": {
+        "enum": [
+          "new",
+          "ready",
+          "active",
+          "inactive",
+          "scheduled"
+        ],
+        "type": "string"
+      },
+      "string": {
+        "type": "string"
+      },
       "supersim.v1.command": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "command": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "direction": {
-            "enum": [
-              "to_sim",
-              "from_sim"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/direction"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HC"
           },
           "sim_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HS"
           },
           "status": {
-            "enum": [
-              "queued",
-              "sent",
-              "delivered",
-              "received",
-              "failed"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/status"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -59,73 +134,43 @@
       "supersim.v1.fleet": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "commands_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "commands_method": {
-            "enum": [
-              "head",
-              "get",
-              "post",
-              "patch",
-              "put",
-              "delete",
-              "HEAD",
-              "GET",
-              "POST",
-              "PATCH",
-              "PUT",
-              "DELETE"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/http_method"
           },
           "commands_url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "data_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "data_limit": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "data_metering": {
-            "enum": [
-              "payg"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/data_metering"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "network_access_profile_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HA[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HA"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HF[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HF"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -133,26 +178,19 @@
       "supersim.v1.network": {
         "properties": {
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "identifiers": {
-            "items": {
-              "type": "object"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/object_list"
           },
           "iso_country": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HW[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HW"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -160,34 +198,25 @@
       "supersim.v1.network_access_profile": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HA[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HA"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -195,32 +224,22 @@
       "supersim.v1.network_access_profile.network_access_profile_network": {
         "properties": {
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "identifiers": {
-            "items": {
-              "type": "object"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/object_list"
           },
           "iso_country": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "network_access_profile_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HA[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HA"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HW[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HW"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -228,50 +247,31 @@
       "supersim.v1.sim": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "fleet_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HF[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HF"
           },
           "iccid": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HS"
           },
           "status": {
-            "enum": [
-              "new",
-              "ready",
-              "active",
-              "inactive",
-              "scheduled"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/status"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -279,46 +279,41 @@
       "supersim.v1.usage_record": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "data_download": {
-            "type": "integer"
+            "$ref": "#/components/schemas/long"
           },
           "data_total": {
-            "type": "integer"
+            "$ref": "#/components/schemas/long"
           },
           "data_upload": {
-            "type": "integer"
+            "$ref": "#/components/schemas/long"
           },
           "fleet_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HF[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HF"
           },
           "iso_country": {
-            "type": "string"
+            "$ref": "#/components/schemas/iso_country_code"
           },
           "network_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HW[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HW"
           },
           "period": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "sim_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HS[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HS"
           }
         },
         "type": "object"
+      },
+      "uri_map": {
+        "type": "object"
+      },
+      "url": {
+        "format": "uri",
+        "type": "string"
       }
     },
     "securitySchemes": {
@@ -341,7 +336,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Supersim",
-    "version": "5.10.0"
+    "version": "5.17.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -349,6 +344,7 @@
       "description": "Machine-to-machine commands sent to/from sims",
       "get": {
         "description": "Retrieve a list of Commands from your account.",
+        "operationId": "ListCommand",
         "parameters": [
           {
             "description": "The SID or unique name of the Sim that Command was sent to or from.",
@@ -439,6 +435,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListCommandResponse",
                   "type": "object"
                 }
               }
@@ -451,12 +448,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "post": {
         "description": "Send a Command to a Sim.",
+        "operationId": "CreateCommand",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -465,12 +463,6 @@
                   "CallbackMethod": {
                     "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -501,6 +493,7 @@
                   "Sim",
                   "Command"
                 ],
+                "title": "CreateCommandRequest",
                 "type": "object"
               }
             }
@@ -523,8 +516,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -543,6 +536,7 @@
       "description": "Machine-to-machine commands sent to/from sims",
       "get": {
         "description": "Fetch a Command instance from your account.",
+        "operationId": "FetchCommand",
         "parameters": [
           {
             "description": "The SID of the Command resource to fetch.",
@@ -574,8 +568,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -594,6 +588,7 @@
       "description": "Fleets for grouping Super SIMs",
       "get": {
         "description": "Retrieve a list of Fleets from your account.",
+        "operationId": "ListFleet",
         "parameters": [
           {
             "description": "The SID or unique name of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to.",
@@ -657,6 +652,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListFleetResponse",
                   "type": "object"
                 }
               }
@@ -669,12 +665,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "post": {
         "description": "Create a Fleet",
+        "operationId": "CreateFleet",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -687,12 +684,6 @@
                   "CommandsMethod": {
                     "description": "A string representing the HTTP method to use when making a request to `commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -703,7 +694,7 @@
                     "type": "string"
                   },
                   "CommandsUrl": {
-                    "description": "The URL that will receive a webhook when a SIM in the Fleet originates a machine-to-machine SMS via Commands. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                    "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
                     "format": "uri",
                     "type": "string"
                   },
@@ -727,6 +718,7 @@
                 "required": [
                   "NetworkAccessProfile"
                 ],
+                "title": "CreateFleetRequest",
                 "type": "object"
               }
             }
@@ -749,8 +741,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -769,6 +761,7 @@
       "description": "Fleets for grouping Super SIMs",
       "get": {
         "description": "Fetch a Fleet instance from your account.",
+        "operationId": "FetchFleet",
         "parameters": [
           {
             "description": "The SID of the Fleet resource to fetch.",
@@ -797,12 +790,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "post": {
         "description": "Updates the given properties of a Super SIM Fleet instance from your account.",
+        "operationId": "UpdateFleet",
         "parameters": [
           {
             "description": "The SID of the Fleet resource to update.",
@@ -819,6 +813,23 @@
             "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {
+                  "CommandsMethod": {
+                    "description": "A string representing the HTTP method to use when making a request to `commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
+                    "enum": [
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "CommandsUrl": {
+                    "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                    "format": "uri",
+                    "type": "string"
+                  },
                   "NetworkAccessProfile": {
                     "description": "The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to.",
                     "type": "string"
@@ -828,6 +839,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateFleetRequest",
                 "type": "object"
               }
             }
@@ -850,8 +862,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -870,6 +882,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Retrieve a list of Network Access Profiles from your account.",
+        "operationId": "ListNetworkAccessProfile",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -925,6 +938,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListNetworkAccessProfileResponse",
                   "type": "object"
                 }
               }
@@ -937,12 +951,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "post": {
         "description": "Create a new Network Access Profile",
+        "operationId": "CreateNetworkAccessProfile",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -960,6 +975,7 @@
                     "type": "string"
                   }
                 },
+                "title": "CreateNetworkAccessProfileRequest",
                 "type": "object"
               }
             }
@@ -982,8 +998,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -1002,6 +1018,7 @@
       "description": "Mobile operator networks which Network Access Profiles allow access to",
       "get": {
         "description": "Retrieve a list of Network Access Profile resource's Network resource.",
+        "operationId": "ListNetworkAccessProfileNetwork",
         "parameters": [
           {
             "description": "The unique string that identifies the Network Access Profile resource.",
@@ -1066,6 +1083,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListNetworkAccessProfileNetworkResponse",
                   "type": "object"
                 }
               }
@@ -1078,12 +1096,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "post": {
         "description": "Add a Network resource to the Network Access Profile resource.",
+        "operationId": "CreateNetworkAccessProfileNetwork",
         "parameters": [
           {
             "description": "The unique string that identifies the Network Access Profile resource.",
@@ -1111,6 +1130,7 @@
                 "required": [
                   "Network"
                 ],
+                "title": "CreateNetworkAccessProfileNetworkRequest",
                 "type": "object"
               }
             }
@@ -1133,8 +1153,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -1150,6 +1170,7 @@
     "/v1/NetworkAccessProfiles/{NetworkAccessProfileSid}/Networks/{Sid}": {
       "delete": {
         "description": "Remove a Network resource from the Network Access Profile resource's.",
+        "operationId": "DeleteNetworkAccessProfileNetwork",
         "parameters": [
           {
             "description": "The unique string that identifies the Network Access Profile resource.",
@@ -1164,7 +1185,7 @@
             }
           },
           {
-            "description": "",
+            "description": "The SID of the Network resource to be removed from the Network Access Profile resource.",
             "in": "path",
             "name": "Sid",
             "required": true,
@@ -1186,13 +1207,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "description": "Mobile operator networks which Network Access Profiles allow access to",
       "get": {
         "description": "Fetch a Network Access Profile resource's Network resource.",
+        "operationId": "FetchNetworkAccessProfileNetwork",
         "parameters": [
           {
             "description": "The unique string that identifies the Network Access Profile resource.",
@@ -1233,8 +1255,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -1251,6 +1273,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Fetch a Network Access Profile instance from your account.",
+        "operationId": "FetchNetworkAccessProfile",
         "parameters": [
           {
             "description": "The SID of the Network Access Profile resource to fetch.",
@@ -1279,12 +1302,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "post": {
         "description": "Updates the given properties of a Network Access Profile in your account.",
+        "operationId": "UpdateNetworkAccessProfile",
         "parameters": [
           {
             "description": "The SID of the Network Access Profile to update.",
@@ -1306,6 +1330,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateNetworkAccessProfileRequest",
                 "type": "object"
               }
             }
@@ -1328,8 +1353,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -1348,6 +1373,7 @@
       "description": "Mobile operator networks to which Super SIMs can connect",
       "get": {
         "description": "Retrieve a list of Network resources.",
+        "operationId": "ListNetwork",
         "parameters": [
           {
             "description": "The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Network resources to read.",
@@ -1427,6 +1453,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListNetworkResponse",
                   "type": "object"
                 }
               }
@@ -1439,8 +1466,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -1457,6 +1484,7 @@
       "description": "Mobile operator networks to which Super SIMs can connect",
       "get": {
         "description": "Fetch a Network resource.",
+        "operationId": "FetchNetwork",
         "parameters": [
           {
             "description": "The SID of the Network resource to fetch.",
@@ -1488,8 +1516,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -1506,6 +1534,7 @@
       "description": "Individual IoT Super SIMs",
       "get": {
         "description": "Retrieve a list of Super SIMs from your account.",
+        "operationId": "ListSim",
         "parameters": [
           {
             "description": "The status of the Sim resources to read. Can be `new`, `ready`, `active`, `inactive`, or `scheduled`.",
@@ -1592,6 +1621,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListSimResponse",
                   "type": "object"
                 }
               }
@@ -1604,8 +1634,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -1624,6 +1654,7 @@
       "description": "Individual IoT Super SIMs",
       "get": {
         "description": "Fetch a Super SIM instance from your account.",
+        "operationId": "FetchSim",
         "parameters": [
           {
             "description": "The SID of the Sim resource to fetch.",
@@ -1652,12 +1683,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "post": {
         "description": "Updates the given properties of a Super SIM instance from your account.",
+        "operationId": "UpdateSim",
         "parameters": [
           {
             "description": "The SID of the Sim resource to update.",
@@ -1681,12 +1713,6 @@
                   "CallbackMethod": {
                     "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -1719,6 +1745,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateSimRequest",
                 "type": "object"
               }
             }
@@ -1751,8 +1778,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -1771,6 +1798,7 @@
       "description": "Usage information for Sim resources",
       "get": {
         "description": "List UsageRecords",
+        "operationId": "ListUsageRecord",
         "parameters": [
           {
             "description": "SID or unique name of a Sim resource. Only show UsageRecords representing usage incurred by this Super SIM.",
@@ -1906,6 +1934,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListUsageRecordResponse",
                   "type": "object"
                 }
               }
@@ -1918,8 +1947,8 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
-          "Preview"
+        "x-maturity": [
+          "Beta"
         ]
       },
       "servers": [
@@ -1934,10 +1963,10 @@
       "x-path-type": "list"
     }
   },
-  "tags": [
+  "x-maturity": [
     {
-      "description": "PLEASE NOTE that this is a Preview product that is subject to change. Use it with caution. If you currently do not have developer preview access, please contact help@twilio.com.",
-      "name": "Preview"
+      "description": "PLEASE NOTE that this is a Beta product that is subject to change. Use it with caution.",
+      "name": "Beta"
     }
   ]
 }

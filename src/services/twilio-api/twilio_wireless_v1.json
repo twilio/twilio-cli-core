@@ -1,22 +1,129 @@
 {
   "components": {
     "schemas": {
+      "boolean": {
+        "type": "boolean"
+      },
+      "command_mode": {
+        "enum": [
+          "text",
+          "binary"
+        ],
+        "type": "string"
+      },
+      "date_time_iso8601": {
+        "format": "date-time",
+        "type": "string"
+      },
+      "direction": {
+        "enum": [
+          "from_sim",
+          "to_sim"
+        ],
+        "type": "string"
+      },
+      "http_method": {
+        "enum": [
+          "HEAD",
+          "GET",
+          "POST",
+          "PATCH",
+          "PUT",
+          "DELETE"
+        ],
+        "type": "string"
+      },
+      "integer": {
+        "type": "integer"
+      },
+      "object": {
+        "type": "object"
+      },
+      "reset_status": {
+        "enum": [
+          "resetting"
+        ],
+        "type": "string"
+      },
+      "sid_AC": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^AC[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_DC": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^DC[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_DE": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^DE[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_WP": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^WP[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_like_DE": {
+        "type": "string"
+      },
+      "sid_like_WN": {
+        "type": "string"
+      },
+      "status": {
+        "enum": [
+          "new",
+          "ready",
+          "active",
+          "suspended",
+          "deactivated",
+          "canceled",
+          "scheduled",
+          "updating"
+        ],
+        "type": "string"
+      },
+      "string": {
+        "type": "string"
+      },
+      "string_list": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "transport": {
+        "enum": [
+          "sms",
+          "ip"
+        ],
+        "type": "string"
+      },
+      "uri_map": {
+        "type": "object"
+      },
+      "url": {
+        "format": "uri",
+        "type": "string"
+      },
       "wireless.v1.account_usage_record": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "commands": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "data": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "period": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           }
         },
         "type": "object"
@@ -24,71 +131,40 @@
       "wireless.v1.command": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "command": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "command_mode": {
-            "enum": [
-              "text",
-              "binary"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/command_mode"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "delivery_receipt_requested": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "direction": {
-            "enum": [
-              "from_sim",
-              "to_sim"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/direction"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^DC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_DC"
           },
           "sim_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^DE[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_DE"
           },
           "status": {
-            "enum": [
-              "queued",
-              "sent",
-              "delivered",
-              "received",
-              "failed"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/status"
           },
           "transport": {
-            "enum": [
-              "sms",
-              "ip"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/transport"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -96,64 +172,52 @@
       "wireless.v1.rate_plan": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "data_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "data_limit": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "data_metering": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "international_roaming": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/string_list"
           },
           "international_roaming_data_limit": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "messaging_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "national_roaming_data_limit": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "national_roaming_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^WP[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_WP"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "voice_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           }
         },
         "type": "object"
@@ -161,176 +225,76 @@
       "wireless.v1.sim": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "commands_callback_method": {
-            "enum": [
-              "head",
-              "get",
-              "post",
-              "patch",
-              "put",
-              "delete",
-              "HEAD",
-              "GET",
-              "POST",
-              "PATCH",
-              "PUT",
-              "DELETE"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/http_method"
           },
           "commands_callback_url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "e_id": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "iccid": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "ip_address": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "rate_plan_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^WP[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_WP"
           },
           "reset_status": {
-            "enum": [
-              "resetting"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/reset_status"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^DE[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_DE"
           },
           "sms_fallback_method": {
-            "enum": [
-              "head",
-              "get",
-              "post",
-              "patch",
-              "put",
-              "delete",
-              "HEAD",
-              "GET",
-              "POST",
-              "PATCH",
-              "PUT",
-              "DELETE"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/http_method"
           },
           "sms_fallback_url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "sms_method": {
-            "enum": [
-              "head",
-              "get",
-              "post",
-              "patch",
-              "put",
-              "delete",
-              "HEAD",
-              "GET",
-              "POST",
-              "PATCH",
-              "PUT",
-              "DELETE"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/http_method"
           },
           "sms_url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "status": {
-            "enum": [
-              "new",
-              "ready",
-              "active",
-              "suspended",
-              "deactivated",
-              "canceled",
-              "scheduled",
-              "updating"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/status"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "voice_fallback_method": {
-            "enum": [
-              "head",
-              "get",
-              "post",
-              "patch",
-              "put",
-              "delete",
-              "HEAD",
-              "GET",
-              "POST",
-              "PATCH",
-              "PUT",
-              "DELETE"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/http_method"
           },
           "voice_fallback_url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "voice_method": {
-            "enum": [
-              "head",
-              "get",
-              "post",
-              "patch",
-              "put",
-              "delete",
-              "HEAD",
-              "GET",
-              "POST",
-              "PATCH",
-              "PUT",
-              "DELETE"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/http_method"
           },
           "voice_url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -338,58 +302,52 @@
       "wireless.v1.sim.data_session": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "cell_id": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "cell_location_estimate": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "end": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "imei": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "last_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "operator_country": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "operator_mcc": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "operator_mnc": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "operator_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "packets_downloaded": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "packets_uploaded": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "radio_link": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "sid": {
-            "type": "string"
+            "$ref": "#/components/schemas/sid_like_WN"
           },
           "sim_sid": {
-            "type": "string"
+            "$ref": "#/components/schemas/sid_like_DE"
           },
           "start": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           }
         },
         "type": "object"
@@ -397,22 +355,19 @@
       "wireless.v1.sim.usage_record": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "commands": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "data": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "period": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "sim_sid": {
-            "type": "string"
+            "$ref": "#/components/schemas/sid_like_DE"
           }
         },
         "type": "object"
@@ -438,7 +393,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Wireless",
-    "version": "5.10.0"
+    "version": "5.17.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -446,6 +401,7 @@
       "description": "Machine-to-machine commands sent to/from devices",
       "get": {
         "description": "Retrieve a list of Commands from your account.",
+        "operationId": "ListCommand",
         "parameters": [
           {
             "description": "The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/wireless/api/sim-resource) to read.",
@@ -548,6 +504,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListCommandResponse",
                   "type": "object"
                 }
               }
@@ -560,12 +517,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Send a Command to a Sim.",
+        "operationId": "CreateCommand",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -574,12 +532,6 @@
                   "CallbackMethod": {
                     "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -622,6 +574,7 @@
                 "required": [
                   "Command"
                 ],
+                "title": "CreateCommandRequest",
                 "type": "object"
               }
             }
@@ -644,7 +597,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -666,6 +619,7 @@
     "/v1/Commands/{Sid}": {
       "delete": {
         "description": "Delete a Command instance from your account.",
+        "operationId": "DeleteCommand",
         "parameters": [
           {
             "description": "The SID of the Command resource to delete.",
@@ -690,13 +644,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "Machine-to-machine commands sent to/from devices",
       "get": {
         "description": "Fetch a Command instance from your account.",
+        "operationId": "FetchCommand",
         "parameters": [
           {
             "description": "The SID of the Command resource to fetch.",
@@ -728,7 +683,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -751,6 +706,7 @@
       "description": "Capabilities and restrictions for SIMs",
       "get": {
         "description": "",
+        "operationId": "ListRatePlan",
         "parameters": [
           {
             "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
@@ -806,6 +762,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListRatePlanResponse",
                   "type": "object"
                 }
               }
@@ -818,12 +775,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateRatePlan",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -877,6 +835,7 @@
                     "type": "boolean"
                   }
                 },
+                "title": "CreateRatePlanRequest",
                 "type": "object"
               }
             }
@@ -899,7 +858,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -919,6 +878,7 @@
     "/v1/RatePlans/{Sid}": {
       "delete": {
         "description": "",
+        "operationId": "DeleteRatePlan",
         "parameters": [
           {
             "description": "The SID of the RatePlan resource to delete.",
@@ -940,13 +900,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "Capabilities and restrictions for SIMs",
       "get": {
         "description": "",
+        "operationId": "FetchRatePlan",
         "parameters": [
           {
             "description": "The SID of the RatePlan resource to fetch.",
@@ -975,12 +936,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "UpdateRatePlan",
         "parameters": [
           {
             "description": "The SID of the RatePlan resource to update.",
@@ -1006,6 +968,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateRatePlanRequest",
                 "type": "object"
               }
             }
@@ -1028,7 +991,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1049,6 +1012,7 @@
       "description": "A resource representing a Programmable Wireless SIM",
       "get": {
         "description": "Retrieve a list of Sim resources on your Account.",
+        "operationId": "ListSim",
         "parameters": [
           {
             "description": "Only return Sim resources with this status.",
@@ -1154,6 +1118,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListSimResponse",
                   "type": "object"
                 }
               }
@@ -1166,7 +1131,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1186,6 +1151,7 @@
     "/v1/Sims/{Sid}": {
       "delete": {
         "description": "Delete a Sim resource on your Account.",
+        "operationId": "DeleteSim",
         "parameters": [
           {
             "description": "The SID or the `unique_name` of the Sim resource to delete.",
@@ -1207,13 +1173,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "A resource representing a Programmable Wireless SIM",
       "get": {
         "description": "Fetch a Sim resource on your Account.",
+        "operationId": "FetchSim",
         "parameters": [
           {
             "description": "The SID or the `unique_name` of the Sim resource to fetch.",
@@ -1242,12 +1209,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Updates the given properties of a Sim resource on your Account.",
+        "operationId": "UpdateSim",
         "parameters": [
           {
             "description": "The SID or the `unique_name` of the Sim resource to update.",
@@ -1271,12 +1239,6 @@
                   "CallbackMethod": {
                     "description": "The HTTP method we should use to call `callback_url`. Can be: `POST` or `GET`. The default is `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -1294,12 +1256,6 @@
                   "CommandsCallbackMethod": {
                     "description": "The HTTP method we should use to call `commands_callback_url`. Can be: `POST` or `GET`. The default is `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -1332,12 +1288,6 @@
                   "SmsFallbackMethod": {
                     "description": "The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`. Default is `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -1355,12 +1305,6 @@
                   "SmsMethod": {
                     "description": "The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`. Default is `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -1396,12 +1340,6 @@
                   "VoiceFallbackMethod": {
                     "description": "The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -1419,12 +1357,6 @@
                   "VoiceMethod": {
                     "description": "The HTTP method we should use when we call `voice_url`. Can be: `GET` or `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -1440,6 +1372,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateSimRequest",
                 "type": "object"
               }
             }
@@ -1462,7 +1395,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1483,6 +1416,7 @@
       "description": "Data session information for SIMs",
       "get": {
         "description": "",
+        "operationId": "ListDataSession",
         "parameters": [
           {
             "description": "The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource) with the Data Sessions to read.",
@@ -1547,6 +1481,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListDataSessionResponse",
                   "type": "object"
                 }
               }
@@ -1559,7 +1494,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1581,6 +1516,7 @@
       "description": "Usage information for SIMs",
       "get": {
         "description": "",
+        "operationId": "ListUsageRecord",
         "parameters": [
           {
             "description": "The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource)  to read the usage from.",
@@ -1676,6 +1612,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListUsageRecordResponse",
                   "type": "object"
                 }
               }
@@ -1688,7 +1625,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1706,6 +1643,7 @@
       "description": "Aggregated Usage information for all SIMs on an Account",
       "get": {
         "description": "",
+        "operationId": "ListAccountUsageRecord",
         "parameters": [
           {
             "description": "Only include usage that has occurred on or before this date. Format is [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html).",
@@ -1792,6 +1730,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListAccountUsageRecordResponse",
                   "type": "object"
                 }
               }
@@ -1804,7 +1743,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1819,7 +1758,7 @@
       "x-path-type": "list"
     }
   },
-  "tags": [
+  "x-maturity": [
     {
       "description": "This product is Generally Available.",
       "name": "GA"

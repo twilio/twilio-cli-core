@@ -30,6 +30,14 @@ describe('services', () => {
       expect(response.body).to.equal('foo');
     });
 
+    test.it('should add the correct http agent for proxy', async () => {
+      process.env.HTTP_PROXY = 'http://someproxy.com:8080';
+      const client = new CliRequestClient('blah', logger, { defaults: {} });
+      const httpAgent = client.http.defaults.httpsAgent;
+      expect(httpAgent.proxy.host).to.equal('someproxy.com');
+      expect(httpAgent.proxy.port).to.equal(8080);
+    });
+
     test
       .nock('https://foo.com', (api) => {
         api.get('/bar').delay(100).reply(200);

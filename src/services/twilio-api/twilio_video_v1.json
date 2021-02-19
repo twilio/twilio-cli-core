@@ -1,93 +1,246 @@
 {
   "components": {
     "schemas": {
+      "boolean": {
+        "type": "boolean"
+      },
+      "codec": {
+        "enum": [
+          "VP8",
+          "H264",
+          "OPUS",
+          "PCMU"
+        ],
+        "type": "string"
+      },
+      "date_time_iso8601": {
+        "format": "date-time",
+        "type": "string"
+      },
+      "format": {
+        "enum": [
+          "mka",
+          "mkv"
+        ],
+        "type": "string"
+      },
+      "http_method": {
+        "enum": [
+          "HEAD",
+          "GET",
+          "POST",
+          "PATCH",
+          "PUT",
+          "DELETE"
+        ],
+        "type": "string"
+      },
+      "integer": {
+        "nullable": true,
+        "type": "integer"
+      },
+      "kind": {
+        "enum": [
+          "audio",
+          "video",
+          "data"
+        ],
+        "type": "string"
+      },
+      "long": {
+        "type": "integer"
+      },
+      "object": {
+        "type": "object"
+      },
+      "recording_rule_list": {
+        "items": {
+          "properties": {
+            "all": {
+              "type": "boolean"
+            },
+            "kind": {
+              "type": "string"
+            },
+            "publisher": {
+              "type": "string"
+            },
+            "track": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "room_status": {
+        "enum": [
+          "in-progress",
+          "completed",
+          "failed"
+        ],
+        "type": "string"
+      },
+      "room_type": {
+        "enum": [
+          "go",
+          "peer-to-peer",
+          "group",
+          "group-small"
+        ],
+        "type": "string"
+      },
+      "sid": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^[a-zA-Z]{2}[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_AC": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^AC[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_CJ": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^CJ[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_CR": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^CR[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_HK": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^HK[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_MT": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^MT[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_PA": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^PA[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_RM": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^RM[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "sid_RT": {
+        "maxLength": 34,
+        "minLength": 34,
+        "pattern": "^RT[0-9a-fA-F]{32}$",
+        "type": "string"
+      },
+      "status": {
+        "enum": [
+          "processing",
+          "completed",
+          "deleted",
+          "failed"
+        ],
+        "type": "string"
+      },
+      "string": {
+        "type": "string"
+      },
+      "string_list": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "subscribe_rule_list": {
+        "items": {
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "type": {
+        "enum": [
+          "audio",
+          "video",
+          "data"
+        ],
+        "type": "string"
+      },
+      "uri_map": {
+        "type": "object"
+      },
+      "url": {
+        "format": "uri",
+        "type": "string"
+      },
       "video.v1.composition": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "audio_sources": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/string_list"
           },
           "audio_sources_excluded": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/string_list"
           },
           "bitrate": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "date_completed": {
-            "format": "date-time",
-            "nullable": true,
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_deleted": {
-            "format": "date-time",
-            "nullable": true,
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "duration": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "format": {
-            "enum": [
-              "mp4",
-              "webm"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/format"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "resolution": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "room_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RM[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RM"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CJ[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CJ"
           },
           "size": {
-            "type": "integer"
+            "$ref": "#/components/schemas/long"
           },
           "status": {
-            "enum": [
-              "enqueued",
-              "processing",
-              "completed",
-              "deleted",
-              "failed"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/status"
           },
           "trim": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "video_layout": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           }
         },
         "type": "object"
@@ -95,85 +248,49 @@
       "video.v1.composition_hook": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "audio_sources": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/string_list"
           },
           "audio_sources_excluded": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/string_list"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "nullable": true,
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "format": {
-            "enum": [
-              "mp4",
-              "webm"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/format"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "resolution": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^HK[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_HK"
           },
           "status_callback": {
-            "format": "uri",
-            "nullable": true,
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "status_callback_method": {
-            "enum": [
-              "head",
-              "get",
-              "post",
-              "patch",
-              "put",
-              "delete",
-              "HEAD",
-              "GET",
-              "POST",
-              "PATCH",
-              "PUT",
-              "DELETE"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/http_method"
           },
           "trim": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "video_layout": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           }
         },
         "type": "object"
@@ -181,39 +298,28 @@
       "video.v1.composition_settings": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "aws_credentials_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CR[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CR"
           },
           "aws_s3_url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "aws_storage_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "encryption_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "encryption_key_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CR[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CR"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -221,82 +327,49 @@
       "video.v1.recording": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "codec": {
-            "enum": [
-              "VP8",
-              "H264",
-              "OPUS",
-              "PCMU"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/codec"
           },
           "container_format": {
-            "enum": [
-              "mka",
-              "mkv"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/format"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "duration": {
-            "nullable": true,
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "grouping_sids": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "offset": {
-            "type": "integer"
+            "$ref": "#/components/schemas/long"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RT[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RT"
           },
           "size": {
-            "type": "integer"
+            "$ref": "#/components/schemas/long"
           },
           "source_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^[a-zA-Z]{2}[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid"
           },
           "status": {
-            "enum": [
-              "processing",
-              "completed",
-              "deleted",
-              "failed"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/status"
           },
           "track_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "type": {
-            "enum": [
-              "audio",
-              "video",
-              "data"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/type"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -304,39 +377,28 @@
       "video.v1.recording_settings": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "aws_credentials_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CR[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CR"
           },
           "aws_s3_url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "aws_storage_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "encryption_enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "encryption_key_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^CR[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_CR"
           },
           "friendly_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -344,102 +406,61 @@
       "video.v1.room": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "duration": {
-            "nullable": true,
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "enable_turn": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "end_time": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
+          },
+          "max_concurrent_published_tracks": {
+            "$ref": "#/components/schemas/integer"
           },
           "max_participants": {
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "media_region": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "record_participants_on_connect": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RM[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RM"
           },
           "status": {
-            "enum": [
-              "in-progress",
-              "completed",
-              "failed"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/room_status"
           },
           "status_callback": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "status_callback_method": {
-            "enum": [
-              "head",
-              "get",
-              "post",
-              "patch",
-              "put",
-              "delete",
-              "HEAD",
-              "GET",
-              "POST",
-              "PATCH",
-              "PUT",
-              "DELETE"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/http_method"
           },
           "type": {
-            "enum": [
-              "go",
-              "peer-to-peer",
-              "group",
-              "group-small"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/room_type"
           },
           "unique_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           },
           "video_codecs": {
-            "items": {
-              "enum": [
-                "VP8",
-                "H264"
-              ],
-              "type": "string"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/video_codec_list"
           }
         },
         "type": "object"
@@ -447,59 +468,40 @@
       "video.v1.room.room_participant": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "duration": {
-            "nullable": true,
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "end_time": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "identity": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "room_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RM[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RM"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^PA[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_PA"
           },
           "start_time": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "status": {
-            "enum": [
-              "connected",
-              "disconnected"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/status"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -507,48 +509,31 @@
       "video.v1.room.room_participant.room_participant_published_track": {
         "properties": {
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "kind": {
-            "enum": [
-              "audio",
-              "video",
-              "data"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/kind"
           },
           "name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "participant_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^PA[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_PA"
           },
           "room_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RM[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RM"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MT[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MT"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -556,30 +541,19 @@
       "video.v1.room.room_participant.room_participant_subscribe_rule": {
         "properties": {
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "participant_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^PA[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_PA"
           },
           "room_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RM[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RM"
           },
           "rules": {
-            "items": {
-              "type": "object"
-            },
-            "type": "array"
+            "$ref": "#/components/schemas/subscribe_rule_list"
           }
         },
         "type": "object"
@@ -587,54 +561,34 @@
       "video.v1.room.room_participant.room_participant_subscribed_track": {
         "properties": {
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "date_updated": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "enabled": {
-            "type": "boolean"
+            "$ref": "#/components/schemas/boolean"
           },
           "kind": {
-            "enum": [
-              "audio",
-              "video",
-              "data"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/kind"
           },
           "name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "participant_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^PA[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_PA"
           },
           "publisher_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^PA[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_PA"
           },
           "room_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RM[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RM"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^MT[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_MT"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
@@ -642,91 +596,82 @@
       "video.v1.room.room_recording": {
         "properties": {
           "account_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_AC"
           },
           "codec": {
-            "enum": [
-              "VP8",
-              "H264",
-              "OPUS",
-              "PCMU"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/codec"
           },
           "container_format": {
-            "enum": [
-              "mka",
-              "mkv"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/format"
           },
           "date_created": {
-            "format": "date-time",
-            "type": "string"
+            "$ref": "#/components/schemas/date_time_iso8601"
           },
           "duration": {
-            "nullable": true,
-            "type": "integer"
+            "$ref": "#/components/schemas/integer"
           },
           "grouping_sids": {
-            "type": "object"
+            "$ref": "#/components/schemas/object"
           },
           "links": {
-            "type": "object"
+            "$ref": "#/components/schemas/uri_map"
           },
           "offset": {
-            "type": "integer"
+            "$ref": "#/components/schemas/long"
           },
           "room_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RM[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RM"
           },
           "sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^RT[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid_RT"
           },
           "size": {
-            "type": "integer"
+            "$ref": "#/components/schemas/long"
           },
           "source_sid": {
-            "maxLength": 34,
-            "minLength": 34,
-            "pattern": "^[a-zA-Z]{2}[0-9a-fA-F]{32}$",
-            "type": "string"
+            "$ref": "#/components/schemas/sid"
           },
           "status": {
-            "enum": [
-              "processing",
-              "completed",
-              "deleted",
-              "failed"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/status"
           },
           "track_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/string"
           },
           "type": {
-            "enum": [
-              "audio",
-              "video",
-              "data"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/type"
           },
           "url": {
-            "format": "uri",
-            "type": "string"
+            "$ref": "#/components/schemas/url"
           }
         },
         "type": "object"
+      },
+      "video.v1.room.room_recording_rule": {
+        "properties": {
+          "date_created": {
+            "$ref": "#/components/schemas/date_time_iso8601"
+          },
+          "date_updated": {
+            "$ref": "#/components/schemas/date_time_iso8601"
+          },
+          "room_sid": {
+            "$ref": "#/components/schemas/sid_RM"
+          },
+          "rules": {
+            "$ref": "#/components/schemas/recording_rule_list"
+          }
+        },
+        "type": "object"
+      },
+      "video_codec_list": {
+        "items": {
+          "enum": [
+            "VP8",
+            "H264"
+          ],
+          "type": "string"
+        },
+        "type": "array"
       }
     },
     "securitySchemes": {
@@ -749,7 +694,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Video",
-    "version": "5.10.0"
+    "version": "5.17.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -757,6 +702,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "List of all Recording CompositionHook resources.",
+        "operationId": "ListCompositionHook",
         "parameters": [
           {
             "description": "Read only CompositionHook resources with an `enabled` value that matches this parameter.",
@@ -846,6 +792,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListCompositionHookResponse",
                   "type": "object"
                 }
               }
@@ -858,12 +805,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Preview"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateCompositionHook",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -911,12 +859,6 @@
                   "StatusCallbackMethod": {
                     "description": "The HTTP method we should use to call `status_callback`. Can be: `POST` or `GET` and the default is `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -938,6 +880,7 @@
                 "required": [
                   "FriendlyName"
                 ],
+                "title": "CreateCompositionHookRequest",
                 "type": "object"
               }
             }
@@ -960,7 +903,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Preview"
         ]
       },
@@ -979,6 +922,7 @@
     "/v1/CompositionHooks/{Sid}": {
       "delete": {
         "description": "Delete a Recording CompositionHook resource identified by a `CompositionHook SID`.",
+        "operationId": "DeleteCompositionHook",
         "parameters": [
           {
             "description": "The SID of the CompositionHook resource to delete.",
@@ -1003,13 +947,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Preview"
         ]
       },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Returns a single CompositionHook resource identified by a CompositionHook SID.",
+        "operationId": "FetchCompositionHook",
         "parameters": [
           {
             "description": "The SID of the CompositionHook resource to fetch.",
@@ -1041,12 +986,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Preview"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "UpdateCompositionHook",
         "parameters": [
           {
             "description": "The SID of the CompositionHook resource to update.",
@@ -1108,12 +1054,6 @@
                   "StatusCallbackMethod": {
                     "description": "The HTTP method we should use to call `status_callback`. Can be: `POST` or `GET` and the default is `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -1135,6 +1075,7 @@
                 "required": [
                   "FriendlyName"
                 ],
+                "title": "UpdateCompositionHookRequest",
                 "type": "object"
               }
             }
@@ -1157,7 +1098,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Preview"
         ]
       },
@@ -1177,6 +1118,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "",
+        "operationId": "FetchCompositionSettings",
         "responses": {
           "200": {
             "content": {
@@ -1194,12 +1136,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateCompositionSettings",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1213,7 +1156,7 @@
                     "type": "string"
                   },
                   "AwsS3Url": {
-                    "description": "The URL of the AWS S3 bucket where the compositions should be stored. We only support DNS-compliant URLs like `https://<my-bucket>.s3-<aws-region>.amazonaws.com/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>.",
+                    "description": "The URL of the AWS S3 bucket where the compositions should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>.",
                     "format": "uri",
                     "type": "string"
                   },
@@ -1240,6 +1183,7 @@
                 "required": [
                   "FriendlyName"
                 ],
+                "title": "CreateCompositionSettingsRequest",
                 "type": "object"
               }
             }
@@ -1262,7 +1206,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1282,6 +1226,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "List of all Recording compositions.",
+        "operationId": "ListComposition",
         "parameters": [
           {
             "description": "Read only Composition resources with this status. Can be: `enqueued`, `processing`, `completed`, `deleted`, or `failed`.",
@@ -1381,6 +1326,7 @@
                       "type": "object"
                     }
                   },
+                  "title": "ListCompositionResponse",
                   "type": "object"
                 }
               }
@@ -1393,12 +1339,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Preview"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateComposition",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1445,12 +1392,6 @@
                   "StatusCallbackMethod": {
                     "description": "The HTTP method we should use to call `status_callback`. Can be: `POST` or `GET` and the default is `POST`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -1472,6 +1413,7 @@
                 "required": [
                   "RoomSid"
                 ],
+                "title": "CreateCompositionRequest",
                 "type": "object"
               }
             }
@@ -1494,7 +1436,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Preview"
         ]
       },
@@ -1514,6 +1456,7 @@
     "/v1/Compositions/{Sid}": {
       "delete": {
         "description": "Delete a Recording Composition resource identified by a Composition SID.",
+        "operationId": "DeleteComposition",
         "parameters": [
           {
             "description": "The SID of the Composition resource to delete.",
@@ -1538,13 +1481,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Preview"
         ]
       },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Returns a single Composition resource identified by a Composition SID.",
+        "operationId": "FetchComposition",
         "parameters": [
           {
             "description": "The SID of the Composition resource to fetch.",
@@ -1576,7 +1520,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "Preview"
         ]
       },
@@ -1597,6 +1541,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "",
+        "operationId": "FetchRecordingSettings",
         "responses": {
           "200": {
             "content": {
@@ -1614,12 +1559,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateRecordingSettings",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -1633,7 +1579,7 @@
                     "type": "string"
                   },
                   "AwsS3Url": {
-                    "description": "The URL of the AWS S3 bucket where the recordings should be stored. We only support DNS-compliant URLs like `https://<my-bucket>.s3-<aws-region>.amazonaws.com/recordings`, where `recordings` is the path in which you want the recordings to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>.",
+                    "description": "The URL of the AWS S3 bucket where the recordings should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/recordings`, where `recordings` is the path in which you want the recordings to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>.",
                     "format": "uri",
                     "type": "string"
                   },
@@ -1660,6 +1606,7 @@
                 "required": [
                   "FriendlyName"
                 ],
+                "title": "CreateRecordingSettingsRequest",
                 "type": "object"
               }
             }
@@ -1682,7 +1629,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1702,6 +1649,7 @@
       "description": "Single-track, single-media recordings",
       "get": {
         "description": "List of all Track recordings.",
+        "operationId": "ListRecording",
         "parameters": [
           {
             "description": "Read only the recordings that have this status. Can be: `processing`, `completed`, or `deleted`.",
@@ -1827,6 +1775,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListRecordingResponse",
                   "type": "object"
                 }
               }
@@ -1839,7 +1788,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1861,6 +1810,7 @@
     "/v1/Recordings/{Sid}": {
       "delete": {
         "description": "Delete a Recording resource identified by a Recording SID.",
+        "operationId": "DeleteRecording",
         "parameters": [
           {
             "description": "The SID of the Recording resource to delete.",
@@ -1885,13 +1835,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "Single-track, single-media recordings",
       "get": {
         "description": "Returns a single Recording resource identified by a Recording SID.",
+        "operationId": "FetchRecording",
         "parameters": [
           {
             "description": "The SID of the Recording resource to fetch.",
@@ -1923,7 +1874,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -1946,6 +1897,7 @@
       "description": "Video rooms with one or more participants",
       "get": {
         "description": "",
+        "operationId": "ListRoom",
         "parameters": [
           {
             "description": "Read only the rooms with this status. Can be: `in-progress` (default) or `completed`",
@@ -2040,6 +1992,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListRoomResponse",
                   "type": "object"
                 }
               }
@@ -2052,12 +2005,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "CreateRoom",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -2087,12 +2041,6 @@
                   "StatusCallbackMethod": {
                     "description": "The HTTP method we should use to call `status_callback`. Can be `POST` or `GET`.",
                     "enum": [
-                      "head",
-                      "get",
-                      "post",
-                      "patch",
-                      "put",
-                      "delete",
                       "HEAD",
                       "GET",
                       "POST",
@@ -2128,6 +2076,7 @@
                     "type": "array"
                   }
                 },
+                "title": "CreateRoomRequest",
                 "type": "object"
               }
             }
@@ -2150,7 +2099,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2170,6 +2119,7 @@
       "description": "Participants in video rooms",
       "get": {
         "description": "",
+        "operationId": "ListRoomParticipant",
         "parameters": [
           {
             "description": "The SID of the room with the Participant resources to read.",
@@ -2272,6 +2222,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListRoomParticipantResponse",
                   "type": "object"
                 }
               }
@@ -2284,7 +2235,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2304,6 +2255,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list resource.",
+        "operationId": "ListRoomParticipantPublishedTrack",
         "parameters": [
           {
             "description": "The SID of the Room resource where the Track resources to read are published.",
@@ -2377,6 +2329,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListRoomParticipantPublishedTrackResponse",
                   "type": "object"
                 }
               }
@@ -2389,7 +2342,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2410,6 +2363,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Returns a single Track resource represented by TrackName or SID.",
+        "operationId": "FetchRoomParticipantPublishedTrack",
         "parameters": [
           {
             "description": "The SID of the Room resource where the Track resource to fetch is published.",
@@ -2456,7 +2410,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2477,6 +2431,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Returns a list of Subscribe Rules for the Participant.",
+        "operationId": "FetchRoomParticipantSubscribeRule",
         "parameters": [
           {
             "description": "The SID of the Room resource where the subscribe rules to fetch apply.",
@@ -2514,12 +2469,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "Update the Subscribe Rules for the Participant",
+        "operationId": "UpdateRoomParticipantSubscribeRule",
         "parameters": [
           {
             "description": "The SID of the Room resource where the subscribe rules to update apply.",
@@ -2550,6 +2506,7 @@
                     "type": "object"
                   }
                 },
+                "title": "UpdateRoomParticipantSubscribeRuleRequest",
                 "type": "object"
               }
             }
@@ -2572,7 +2529,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2592,6 +2549,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Returns a list of tracks that are subscribed for the participant.",
+        "operationId": "ListRoomParticipantSubscribedTrack",
         "parameters": [
           {
             "description": "The SID of the Room resource with the Track resources to read.",
@@ -2665,6 +2623,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListRoomParticipantSubscribedTrackResponse",
                   "type": "object"
                 }
               }
@@ -2677,7 +2636,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2698,6 +2657,7 @@
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "Returns a single Track resource represented by `track_sid`.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique.",
+        "operationId": "FetchRoomParticipantSubscribedTrack",
         "parameters": [
           {
             "description": "The SID of the Room where the Track resource to fetch is subscribed.",
@@ -2747,7 +2707,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2768,6 +2728,7 @@
       "description": "Participants in video rooms",
       "get": {
         "description": "",
+        "operationId": "FetchRoomParticipant",
         "parameters": [
           {
             "description": "The SID of the room with the Participant resource to fetch.",
@@ -2805,12 +2766,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "UpdateRoomParticipant",
         "parameters": [
           {
             "description": "The SID of the room with the participant to update.",
@@ -2845,6 +2807,7 @@
                     "type": "string"
                   }
                 },
+                "title": "UpdateRoomParticipantRequest",
                 "type": "object"
               }
             }
@@ -2867,7 +2830,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -2883,10 +2846,110 @@
       ],
       "x-path-type": "instance"
     },
+    "/v1/Rooms/{RoomSid}/RecordingRules": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "Returns a list of Recording Rules for the Room.",
+        "operationId": "FetchRoomRecordingRule",
+        "parameters": [
+          {
+            "description": "The SID of the Room resource where the recording rules to fetch apply.",
+            "in": "path",
+            "name": "RoomSid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/video.v1.room.room_recording_rule"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "post": {
+        "description": "Update the Recording Rules for the Room",
+        "operationId": "UpdateRoomRecordingRule",
+        "parameters": [
+          {
+            "description": "The SID of the Room resource where the recording rules to update apply.",
+            "in": "path",
+            "name": "RoomSid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Rules": {
+                    "description": "A JSON-encoded array of recording rules.",
+                    "type": "object"
+                  }
+                },
+                "title": "UpdateRoomRecordingRuleRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/video.v1.room.room_recording_rule"
+                }
+              }
+            },
+            "description": "Accepted"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://video.twilio.com"
+        }
+      ],
+      "x-default-output-properties": [
+        "room_sid",
+        "rules"
+      ],
+      "x-path-type": "list"
+    },
     "/v1/Rooms/{RoomSid}/Recordings": {
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "",
+        "operationId": "ListRoomRecording",
         "parameters": [
           {
             "description": "The SID of the room with the RoomRecording resources to read.",
@@ -2997,6 +3060,7 @@
                       "type": "array"
                     }
                   },
+                  "title": "ListRoomRecordingResponse",
                   "type": "object"
                 }
               }
@@ -3009,7 +3073,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -3031,6 +3095,7 @@
     "/v1/Rooms/{RoomSid}/Recordings/{Sid}": {
       "delete": {
         "description": "",
+        "operationId": "DeleteRoomRecording",
         "parameters": [
           {
             "description": "The SID of the room with the RoomRecording resource to delete.",
@@ -3067,13 +3132,14 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "description": "TODO: Resource-level docs",
       "get": {
         "description": "",
+        "operationId": "FetchRoomRecording",
         "parameters": [
           {
             "description": "The SID of the Room resource with the recording to fetch.",
@@ -3117,7 +3183,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -3140,6 +3206,7 @@
       "description": "Video rooms with one or more participants",
       "get": {
         "description": "",
+        "operationId": "FetchRoom",
         "parameters": [
           {
             "description": "The SID of the Room resource to fetch.",
@@ -3168,12 +3235,13 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
       "post": {
         "description": "",
+        "operationId": "UpdateRoom",
         "parameters": [
           {
             "description": "The SID of the Room resource to update.",
@@ -3203,6 +3271,7 @@
                 "required": [
                   "Status"
                 ],
+                "title": "UpdateRoomRequest",
                 "type": "object"
               }
             }
@@ -3225,7 +3294,7 @@
             "accountSid_authToken": []
           }
         ],
-        "tags": [
+        "x-maturity": [
           "GA"
         ]
       },
@@ -3242,10 +3311,14 @@
       "x-path-type": "instance"
     }
   },
-  "tags": [
+  "x-maturity": [
     {
       "description": "This product is Generally Available.",
       "name": "GA"
+    },
+    {
+      "description": "PLEASE NOTE that this is a Beta product that is subject to change. Use it with caution.",
+      "name": "Beta"
     },
     {
       "description": "PLEASE NOTE that this is a Preview product that is subject to change. Use it with caution. If you currently do not have developer preview access, please contact help@twilio.com.",
