@@ -1,6 +1,27 @@
 twilio-cli-core changelog
 =====================
 
+[2021-02-24] Version 5.18.0
+---------------------------
+**Library - Fix**
+- [PR #115](https://github.com/twilio/twilio-cli-core/pull/115): add support for null response fields. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+- [PR #114](https://github.com/twilio/twilio-cli-core/pull/114): remove duplicate enum values. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Events**
+- Update description of types in the create sink resource
+
+**Messaging**
+- Add WA template header and footer
+- Remove A2P campaign and use cases API **(breaking change)**
+- Add number_registration_status field to read and fetch campaign responses
+
+**Trusthub**
+- Make all resources public
+
+**Verify**
+- Verify List Attempts API endpoints added.
+
+
 [2021-02-10] Version 5.17.0
 ---------------------------
 **Library - Chore**

@@ -367,7 +367,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Supersim",
-    "version": "5.17.0"
+    "version": "5.18.0"
   },
   "openapi": "3.0.1",
   "paths": {
