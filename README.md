@@ -6,10 +6,6 @@
 
 This module contains core functionality for the twilio-cli.
 
-## Announcements
-
-Our Developer Experience team is conducting planned maintenance from 03/09/2021 until 03/11/2021. Our next release is scheduled for 03/15/2021.
-
 ## Base commands
 
 ### BaseCommand
