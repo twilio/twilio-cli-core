@@ -147,6 +147,10 @@ class ConfigData {
     this.plugins[pluginName] = data;
   }
 
+  getPluginData(pluginName) {
+    return this.plugins[pluginName];
+  }
+
   removePluginData(pluginName) {
     delete this.plugins[pluginName];
   }

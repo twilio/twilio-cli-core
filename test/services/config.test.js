@@ -206,11 +206,11 @@ describe('services', () => {
     describe('ConfigData.setPluginData', () => {
       test.it('should add data for a new plugin', () => {
         const configData = new ConfigData();
-        expect(configData.plugins['fancy-plugin']).to.be.undefined;
+        expect(configData.getPluginData('fancy-plugin')).to.be.undefined;
         const testData = { arbitrary: 'data' };
         configData.setPluginData('fancy-plugin', testData);
 
-        expect(configData.plugins['fancy-plugin']).to.deep.equal(testData);
+        expect(configData.getPluginData('fancy-plugin')).to.deep.equal(testData);
       });
 
       test.it('should update data for an existing plugin', () => {
@@ -220,8 +220,8 @@ describe('services', () => {
         configData.setPluginData('fancy-plugin', testData);
         configData.setPluginData('fancy-plugin', newData);
 
-        expect(configData.plugins['fancy-plugin']).to.deep.equal(newData);
-        expect(configData.plugins['fancy-plugin'].arbitrary).to.be.undefined;
+        expect(configData.getPluginData('fancy-plugin')).to.deep.equal(newData);
+        expect(configData.getPluginData('fancy-plugin').arbitrary).to.be.undefined;
       });
 
       test.it('should remove data for plugin', () => {
@@ -230,7 +230,7 @@ describe('services', () => {
         configData.setPluginData('fancy-plugin', testData);
         configData.removePluginData('fancy-plugin');
 
-        expect(configData.plugins['fancy-plugin']).to.be.undefined;
+        expect(configData.getPluginData('fancy-plugin')).to.be.undefined;
       });
     });
 
