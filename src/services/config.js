@@ -22,7 +22,6 @@ class ConfigData {
     this.prompts = {};
     this.profiles = [];
     this.activeProfile = null;
-    this.plugins = {};
   }
 
   getProfileFromEnvironment() {
@@ -143,14 +142,6 @@ class ConfigData {
     prompt.acked = true;
   }
 
-  setPluginData(pluginName, data) {
-    this.plugins[pluginName] = data;
-  }
-
-  removePluginData(pluginName) {
-    delete this.plugins[pluginName];
-  }
-
   loadFromObject(configObj) {
     this.edge = configObj.edge;
     this.email = configObj.email || {};
@@ -159,9 +150,6 @@ class ConfigData {
     configObj.profiles = configObj.projects || [];
     configObj.profiles.forEach((profile) => this.addProfile(profile.id, profile.accountSid, profile.region));
     this.setActiveProfile(configObj.activeProject);
-    Object.keys(configObj.plugins).forEach((pluginName) =>
-      this.setPluginData(pluginName, configObj.plugins[pluginName]),
-    );
   }
 
   sanitize(string) {
@@ -195,7 +183,6 @@ class Config {
       // Note the historical 'projects' naming.
       projects: configData.profiles,
       activeProject: configData.activeProfile,
-      plugins: configData.plugins,
     };
 
     fs.mkdirSync(this.configDir, { recursive: true });

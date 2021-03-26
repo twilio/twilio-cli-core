@@ -203,37 +203,6 @@ describe('services', () => {
       });
     });
 
-    describe('ConfigData.setPluginData', () => {
-      test.it('should add data for a new plugin', () => {
-        const configData = new ConfigData();
-        expect(configData.plugins['fancy-plugin']).to.be.undefined;
-        const testData = { arbitrary: 'data' };
-        configData.setPluginData('fancy-plugin', testData);
-
-        expect(configData.plugins['fancy-plugin']).to.deep.equal(testData);
-      });
-
-      test.it('should update data for an existing plugin', () => {
-        const configData = new ConfigData();
-        const testData = { arbitrary: 'data' };
-        const newData = { new: 'information' };
-        configData.setPluginData('fancy-plugin', testData);
-        configData.setPluginData('fancy-plugin', newData);
-
-        expect(configData.plugins['fancy-plugin']).to.deep.equal(newData);
-        expect(configData.plugins['fancy-plugin'].arbitrary).to.be.undefined;
-      });
-
-      test.it('should remove data for plugin', () => {
-        const configData = new ConfigData();
-        const testData = { arbitrary: 'data' };
-        configData.setPluginData('fancy-plugin', testData);
-        configData.removePluginData('fancy-plugin');
-
-        expect(configData.plugins['fancy-plugin']).to.be.undefined;
-      });
-    });
-
     describe('Config', () => {
       const tempConfigDir = tmp.dirSync({ unsafeCleanup: true });
 
@@ -243,7 +212,6 @@ describe('services', () => {
         userConfig.addProfile('  profile  \t', 'sid  \n ', '    stage');
         userConfig.setActiveProfile('\tprofile\t');
         userConfig.ackPrompt('impromptu');
-        userConfig.setPluginData('fancy-plugin', 'plugin-data');
 
         const saveMessage = await config.save(userConfig);
         expect(saveMessage).to.contain(`${tempConfigDir.name}${path.sep}config.json`);
