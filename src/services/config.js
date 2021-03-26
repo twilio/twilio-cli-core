@@ -192,8 +192,33 @@ class Config {
   }
 }
 
+class PluginConfig {
+  constructor(configDir, pluginName) {
+    this.filePath = path.join(configDir, 'plugins', pluginName, 'config.json');
+  }
+
+  getConfig() {
+    try {
+      const config = fs.readFileSync(this.filePath, { encoding: 'utf-8' });
+      return JSON.parse(config);
+    } catch (error) {
+      return {};
+    }
+  }
+
+  setConfig(config) {
+    try {
+      fs.writeFileSync(this.filePath, JSON.stringify(config));
+    } catch (error) {
+      fs.mkdirSync(path.dirname(this.filePath), { recursive: true });
+      fs.writeFileSync(this.filePath, JSON.stringify(config));
+    }
+  }
+}
+
 module.exports = {
   CLI_NAME,
   Config,
   ConfigData,
+  PluginConfig,
 };
