@@ -4765,6 +4765,14 @@
               "pattern": "^WT[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "The If-Match HTTP request header",
+            "in": "header",
+            "name": "If-Match",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
