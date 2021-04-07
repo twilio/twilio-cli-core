@@ -57,6 +57,9 @@
   "optionalDependencies": {
     "keytar": "^7.6.0"
   },
+  "resolutions": {
+    "yargs": "^16.2.0"
+  },
   "engines": {
     "node": ">=10.12.0"
   }
