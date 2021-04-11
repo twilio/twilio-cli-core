@@ -242,37 +242,24 @@ describe('services', () => {
         tempConfigDir.removeCallback();
       });
 
-      test.it("loads an empty object when the plugin directory doesn't exist", () => {
+      test.it("loads an empty object when the plugin directory doesn't exist", async () => {
         const pluginConfig = new PluginConfig(tempConfigDir.name, 'test-plugin');
-        expect(pluginConfig.getConfig()).to.deep.equal({});
+        expect(await pluginConfig.getConfig()).to.deep.equal({});
       });
 
-      test.it('loads an existing plugin config', () => {
-        fs.mkdirSync(path.join(tempConfigDir.name, 'plugins', 'test-plugin'), { recursive: true });
-        fs.writeFileSync(
-          path.join(tempConfigDir.name, 'plugins', 'test-plugin', 'config.json'),
-          JSON.stringify({ hello: 'world' }),
-        );
+      test.it("saves config to the plugin directory when it doesn't exist", async () => {
         const pluginConfig = new PluginConfig(tempConfigDir.name, 'test-plugin');
-        expect(pluginConfig.getConfig()).to.deep.equal({ hello: 'world' });
+        await pluginConfig.setConfig({ foo: 'bar' });
+        expect(await pluginConfig.getConfig()).to.deep.equal({ foo: 'bar' });
       });
 
-      test.it("saves config to the plugin directory when it doesn't exist", () => {
+      test.it('overwrites config when it already exists', async () => {
         const pluginConfig = new PluginConfig(tempConfigDir.name, 'test-plugin');
-        pluginConfig.setConfig({ foo: 'bar' });
-        expect(pluginConfig.getConfig()).to.deep.equal({ foo: 'bar' });
-      });
+        await pluginConfig.setConfig({ hello: 'world' });
 
-      test.it('overwrites config when it already exists', () => {
-        fs.mkdirSync(path.join(tempConfigDir.name, 'plugins', 'test-plugin'), { recursive: true });
-        fs.writeFileSync(
-          path.join(tempConfigDir.name, 'plugins', 'test-plugin', 'config.json'),
-          JSON.stringify({ hello: 'world' }),
-        );
-
-        const pluginConfig = new PluginConfig(tempConfigDir.name, 'test-plugin');
-        pluginConfig.setConfig({ foo: 'bar' });
-        expect(pluginConfig.getConfig()).to.deep.equal({ foo: 'bar' });
+        const pluginConfig2 = new PluginConfig(tempConfigDir.name, 'test-plugin');
+        await pluginConfig2.setConfig({ foo: 'bar' });
+        expect(await pluginConfig2.getConfig()).to.deep.equal({ foo: 'bar' });
       });
     });
   });

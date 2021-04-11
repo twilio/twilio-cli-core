@@ -197,21 +197,20 @@ class PluginConfig {
     this.filePath = path.join(configDir, 'plugins', pluginName, 'config.json');
   }
 
-  getConfig() {
+  async getConfig() {
     try {
-      const config = fs.readFileSync(this.filePath, { encoding: 'utf-8' });
-      return JSON.parse(config);
+      return await fs.readJSON(this.filePath, { encoding: 'utf-8' });
     } catch (error) {
       return {};
     }
   }
 
-  setConfig(config) {
+  async setConfig(config) {
     try {
-      fs.writeFileSync(this.filePath, JSON.stringify(config));
+      await fs.writeJSON(this.filePath, config);
     } catch (error) {
-      fs.mkdirSync(path.dirname(this.filePath), { recursive: true });
-      fs.writeFileSync(this.filePath, JSON.stringify(config));
+      await fs.mkdir(path.dirname(this.filePath), { recursive: true });
+      await fs.writeJSON(this.filePath, config);
     }
   }
 }

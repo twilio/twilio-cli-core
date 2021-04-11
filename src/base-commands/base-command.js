@@ -176,15 +176,15 @@ class BaseCommand extends Command {
       const pluginName = getCommandPlugin(this);
       this._pluginConfig = new PluginConfig(this.config.configDir, pluginName);
     }
-    return this._pluginConfig.getConfig();
+    return this._pluginConfig;
   }
 
-  set pluginConfig(config) {
-    if (!this._pluginConfig) {
-      const pluginName = getCommandPlugin(this);
-      this._pluginConfig = new PluginConfig(this.config.configDir, pluginName);
-    }
-    this._pluginConfig.setConfig(config);
+  async getPluginConfig() {
+    return this.pluginConfig.getConfig();
+  }
+
+  async setPluginConfig(config) {
+    return this.pluginConfig.setConfig(config);
   }
 }
 
