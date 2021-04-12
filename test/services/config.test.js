@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require('fs');
 
 const tmp = require('tmp');
 const { expect, test, constants } = require('@twilio/cli-test');
