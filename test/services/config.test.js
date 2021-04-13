@@ -3,7 +3,7 @@ const path = require('path');
 const tmp = require('tmp');
 const { expect, test, constants } = require('@twilio/cli-test');
 
-const { Config, ConfigData } = require('../../src/services/config');
+const { Config, ConfigData, PluginConfig } = require('../../src/services/config');
 
 const FAKE_AUTH_TOKEN = '1234567890abcdefghijklmnopqrstuvwxyz';
 
@@ -229,6 +229,36 @@ describe('services', () => {
 
         const saveMessage = await config.save(userConfig);
         expect(saveMessage).to.contain(`${nestedConfig}${path.sep}config.json`);
+      });
+    });
+
+    describe('PluginConfig', () => {
+      let tempConfigDir;
+      beforeEach(() => {
+        tempConfigDir = tmp.dirSync({ unsafeCleanup: true });
+      });
+      afterEach(() => {
+        tempConfigDir.removeCallback();
+      });
+
+      test.it("loads an empty object when the plugin directory doesn't exist", async () => {
+        const pluginConfig = new PluginConfig(tempConfigDir.name, 'test-plugin');
+        expect(await pluginConfig.getConfig()).to.deep.equal({});
+      });
+
+      test.it("saves config to the plugin directory when it doesn't exist", async () => {
+        const pluginConfig = new PluginConfig(tempConfigDir.name, 'test-plugin');
+        await pluginConfig.setConfig({ foo: 'bar' });
+        expect(await pluginConfig.getConfig()).to.deep.equal({ foo: 'bar' });
+      });
+
+      test.it('overwrites config when it already exists', async () => {
+        const pluginConfig = new PluginConfig(tempConfigDir.name, 'test-plugin');
+        await pluginConfig.setConfig({ hello: 'world' });
+
+        const pluginConfig2 = new PluginConfig(tempConfigDir.name, 'test-plugin');
+        await pluginConfig2.setConfig({ foo: 'bar' });
+        expect(await pluginConfig2.getConfig()).to.deep.equal({ foo: 'bar' });
       });
     });
   });

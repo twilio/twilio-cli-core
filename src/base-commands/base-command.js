@@ -3,7 +3,7 @@ const { CLIError } = require('@oclif/errors');
 
 const pkg = require('../../package.json');
 const MessageTemplates = require('../services/messaging/templates');
-const { Config, ConfigData } = require('../services/config');
+const { Config, ConfigData, PluginConfig } = require('../services/config');
 const { TwilioCliError } = require('../services/error');
 const { logger, LoggingLevel } = require('../services/messaging/logging');
 const { OutputFormats } = require('../services/output-formats');
@@ -169,6 +169,22 @@ class BaseCommand extends Command {
 
   async install(name) {
     return requireInstall(name, this);
+  }
+
+  get pluginConfig() {
+    if (!this._pluginConfig) {
+      const pluginName = getCommandPlugin(this);
+      this._pluginConfig = new PluginConfig(this.config.configDir, pluginName);
+    }
+    return this._pluginConfig;
+  }
+
+  async getPluginConfig() {
+    return this.pluginConfig.getConfig();
+  }
+
+  async setPluginConfig(config) {
+    return this.pluginConfig.setConfig(config);
   }
 }
 

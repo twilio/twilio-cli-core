@@ -192,8 +192,32 @@ class Config {
   }
 }
 
+class PluginConfig {
+  constructor(configDir, pluginName) {
+    this.filePath = path.join(configDir, 'plugins', pluginName, 'config.json');
+  }
+
+  async getConfig() {
+    try {
+      return await fs.readJSON(this.filePath, { encoding: 'utf-8' });
+    } catch (error) {
+      return {};
+    }
+  }
+
+  async setConfig(config) {
+    try {
+      await fs.writeJSON(this.filePath, config);
+    } catch (error) {
+      await fs.mkdir(path.dirname(this.filePath), { recursive: true });
+      await fs.writeJSON(this.filePath, config);
+    }
+  }
+}
+
 module.exports = {
   CLI_NAME,
   Config,
   ConfigData,
+  PluginConfig,
 };
