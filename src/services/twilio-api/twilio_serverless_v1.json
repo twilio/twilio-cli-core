@@ -818,7 +818,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Serverless",
-    "version": "5.21.0"
+    "version": "5.22.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -3615,6 +3615,11 @@
       "x-path-type": "instance"
     }
   },
+  "servers": [
+    {
+      "url": "https://serverless.twilio.com"
+    }
+  ],
   "x-maturity": [
     {
       "description": "PLEASE NOTE that this is a Beta product that is subject to change. Use it with caution.",

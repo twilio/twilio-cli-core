@@ -952,7 +952,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Autopilot",
-    "version": "5.21.0"
+    "version": "5.22.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -4390,6 +4390,11 @@
       "x-path-type": "instance"
     }
   },
+  "servers": [
+    {
+      "url": "https://autopilot.twilio.com"
+    }
+  ],
   "x-maturity": [
     {
       "description": "PLEASE NOTE that this is a Preview product that is subject to change. Use it with caution. If you currently do not have developer preview access, please contact help@twilio.com.",

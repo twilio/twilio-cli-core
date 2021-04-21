@@ -547,7 +547,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Supersim",
-    "version": "5.21.0"
+    "version": "5.22.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -2098,7 +2098,7 @@
         "operationId": "ListSmsCommand",
         "parameters": [
           {
-            "description": "The SID or unique name of the Sim that SMS Command was sent to or from.",
+            "description": "The SID or unique name of the Sim resource that SMS Command was sent to or from.",
             "in": "query",
             "name": "Sim",
             "schema": {
@@ -2504,6 +2504,11 @@
       "x-path-type": "list"
     }
   },
+  "servers": [
+    {
+      "url": "https://supersim.twilio.com"
+    }
+  ],
   "x-maturity": [
     {
       "description": "PLEASE NOTE that this is a Beta product that is subject to change. Use it with caution.",

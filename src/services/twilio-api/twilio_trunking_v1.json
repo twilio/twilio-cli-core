@@ -540,7 +540,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Trunking",
-    "version": "5.21.0"
+    "version": "5.22.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -2184,6 +2184,11 @@
       "x-path-type": "instance"
     }
   },
+  "servers": [
+    {
+      "url": "https://trunking.twilio.com"
+    }
+  ],
   "x-maturity": [
     {
       "description": "This product is Generally Available.",
