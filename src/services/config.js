@@ -20,7 +20,7 @@ class ConfigData {
     this.edge = undefined;
     this.email = {};
     this.prompts = {};
-    this.profiles = [];
+    this.projects = [];
     this.activeProfile = null;
   }
 
@@ -66,7 +66,7 @@ class ConfigData {
       if (profileId) {
         // Clean the profile ID.
         profileId = this.sanitize(profileId);
-        profile = this.profiles.find((p) => p.id === profileId);
+        profile = this.projects.find((p) => p.id === profileId);
       } else {
         profile = this.getActiveProfile();
       }
@@ -90,19 +90,19 @@ class ConfigData {
 
   getActiveProfile() {
     let profile;
-    if (this.profiles.length > 0) {
+    if (this.projects.length > 0) {
       if (this.activeProfile) {
-        profile = this.profiles.find((p) => p.id === this.activeProfile);
+        profile = this.projects.find((p) => p.id === this.activeProfile);
       }
       if (!profile) {
-        profile = this.profiles[0];
+        profile = this.projects[0];
       }
     }
     return profile;
   }
 
   removeProfile(profileToRemove) {
-    this.profiles = this.profiles.filter((profile) => {
+    this.projects = this.projects.filter((profile) => {
       return profile.id !== profileToRemove.id;
     });
     if (profileToRemove.id === this.activeProfile) {
@@ -121,7 +121,7 @@ class ConfigData {
       existing.accountSid = accountSid;
       existing.region = region;
     } else {
-      this.profiles.push(new ConfigDataProfile(id, accountSid, region));
+      this.projects.push(new ConfigDataProfile(id, accountSid, region));
     }
   }
 
@@ -147,8 +147,8 @@ class ConfigData {
     this.email = configObj.email || {};
     this.prompts = configObj.prompts || {};
     // Note the historical 'projects' naming.
-    configObj.profiles = configObj.projects || [];
-    configObj.profiles.forEach((profile) => this.addProfile(profile.id, profile.accountSid, profile.region));
+    configObj.projects = configObj.projects || [];
+    configObj.projects.forEach((project) => this.addProfile(project.id, project.accountSid, project.region));
     this.setActiveProfile(configObj.activeProject);
   }
 
@@ -181,7 +181,7 @@ class Config {
       email: configData.email,
       prompts: configData.prompts,
       // Note the historical 'projects' naming.
-      projects: configData.profiles,
+      projects: configData.projects,
       activeProject: configData.activeProfile,
     };
 
