@@ -14,9 +14,9 @@ describe('services', () => {
         const configData = new ConfigData();
         configData.addProfile('newProfile', constants.FAKE_ACCOUNT_SID, 'dev');
 
-        expect(configData.profiles[0].id).to.equal('newProfile');
-        expect(configData.profiles[0].accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
-        expect(configData.profiles[0].region).to.equal('dev');
+        expect(configData.projects[0].id).to.equal('newProfile');
+        expect(configData.projects[0].accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(configData.projects[0].region).to.equal('dev');
       });
 
       test.it('should update an existing profile', () => {
@@ -24,9 +24,9 @@ describe('services', () => {
         configData.addProfile('activeProfile', constants.FAKE_ACCOUNT_SID, 'dev');
         configData.addProfile('activeProfile', 'new-account-sid');
 
-        expect(configData.profiles[0].id).to.equal('activeProfile');
-        expect(configData.profiles[0].accountSid).to.equal('new-account-sid');
-        expect(configData.profiles[0].region).to.be.undefined;
+        expect(configData.projects[0].id).to.equal('activeProfile');
+        expect(configData.projects[0].accountSid).to.equal('new-account-sid');
+        expect(configData.projects[0].region).to.be.undefined;
       });
     });
 
@@ -161,10 +161,10 @@ describe('services', () => {
           id: 'DOES_NOT_EXIST',
           accountSid: 'fake_SID',
         };
-        const originalLength = configData.profiles.length;
+        const originalLength = configData.projects.length;
         configData.removeProfile(fakeProfile);
 
-        expect(configData.profiles.length).to.equal(originalLength);
+        expect(configData.projects.length).to.equal(originalLength);
       });
 
       test.it('removes profile', () => {
@@ -175,8 +175,8 @@ describe('services', () => {
         const profile = configData.getProfileById('secondProfile');
         configData.removeProfile(profile);
 
-        expect(configData.profiles[1].id).to.equal('thirdProfile');
-        expect(configData.profiles[1].accountSid).to.equal('newest_account_SID');
+        expect(configData.projects[1].id).to.equal('thirdProfile');
+        expect(configData.projects[1].accountSid).to.equal('newest_account_SID');
       });
 
       test.it('removes active profile', () => {
@@ -187,8 +187,8 @@ describe('services', () => {
         const profile = configData.setActiveProfile('firstProfile');
         configData.removeProfile(profile);
 
-        expect(configData.profiles[1].id).to.equal('thirdProfile');
-        expect(configData.profiles[1].accountSid).to.equal('newest_account_SID');
+        expect(configData.projects[1].id).to.equal('thirdProfile');
+        expect(configData.projects[1].accountSid).to.equal('newest_account_SID');
         expect(configData.activeProfile).to.equal(null);
       });
     });
