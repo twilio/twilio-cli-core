@@ -146,7 +146,6 @@ class ConfigData {
     this.edge = configObj.edge;
     this.email = configObj.email || {};
     this.prompts = configObj.prompts || {};
-    // Note the historical 'projects' naming.
     configObj.projects = configObj.projects || [];
     configObj.projects.forEach((project) => this.addProfile(project.id, project.accountSid, project.region));
     this.setActiveProfile(configObj.activeProject);
@@ -180,7 +179,6 @@ class Config {
       edge: configData.edge,
       email: configData.email,
       prompts: configData.prompts,
-      // Note the historical 'projects' naming.
       projects: configData.projects,
       activeProject: configData.activeProfile,
     };
