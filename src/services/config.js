@@ -22,6 +22,7 @@ class ConfigData {
     this.prompts = {};
     this.projects = [];
     this.activeProfile = null;
+    this.profiles = null;
   }
 
   getProfileFromEnvironment() {
@@ -146,6 +147,7 @@ class ConfigData {
     this.edge = configObj.edge;
     this.email = configObj.email || {};
     this.prompts = configObj.prompts || {};
+    this.profiles = configObj.profiles || null;
     // Note the historical 'projects' naming.
     configObj.projects = configObj.projects || [];
     configObj.projects.forEach((project) => this.addProfile(project.id, project.accountSid, project.region));
@@ -155,6 +157,17 @@ class ConfigData {
   sanitize(string) {
     // Trim whitespace if given a non-null string.
     return string ? string.trim() : string;
+  }
+
+  getCredentialsByProfileID(profileId) {
+    if (this.profiles) {
+      const { profiles } = this;
+      if (profileId && profiles.hasOwnProperty(profileId)) {
+        return { apiKey: profiles[profileId].apiKey, apiSecret: profiles[profileId].apiSecret };
+      }
+      return { apiKey: 'error', apiSecret: 'Profile not found' };
+    }
+    return undefined;
   }
 }
 
