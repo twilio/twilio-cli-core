@@ -22,7 +22,7 @@ class ConfigData {
     this.prompts = {};
     this.projects = [];
     this.activeProfile = null;
-    this.profiles = null;
+    this.profiles = undefined;
   }
 
   getProfileFromEnvironment() {
@@ -71,6 +71,7 @@ class ConfigData {
       } else {
         profile = this.getActiveProfile();
       }
+      this.addCredentialsToProfile(profile);
     }
 
     return profile;
@@ -147,7 +148,7 @@ class ConfigData {
     this.edge = configObj.edge;
     this.email = configObj.email || {};
     this.prompts = configObj.prompts || {};
-    this.profiles = configObj.profiles || null;
+    this.profiles = configObj.profiles;
     // Note the historical 'projects' naming.
     configObj.projects = configObj.projects || [];
     configObj.projects.forEach((project) => this.addProfile(project.id, project.accountSid, project.region));
@@ -159,6 +160,16 @@ class ConfigData {
     return string ? string.trim() : string;
   }
 
+  addCredentialsToProfile(profile) {
+    if (profile) {
+      const credentials = this.getCredentialsByProfileID(profile.id);
+      if (credentials) {
+        profile.apiKey = credentials.apiKey;
+        profile.apiSecret = credentials.apiSecret;
+      }
+    }
+  }
+
   getCredentialsByProfileID(profileId) {
     if (this.profiles) {
       const { profiles } = this;
@@ -167,7 +178,7 @@ class ConfigData {
       }
       return { apiKey: 'error', apiSecret: 'Profile not found' };
     }
-    return undefined;
+    return null;
   }
 }
 

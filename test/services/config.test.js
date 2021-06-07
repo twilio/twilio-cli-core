@@ -111,6 +111,32 @@ describe('services', () => {
         expect(profile.apiSecret).to.equal(FAKE_AUTH_TOKEN);
         expect(profile.region).to.equal('region');
       });
+
+      test.it('should return error if first profile not exists with apiKey and apiSecret', () => {
+        const configData = new ConfigData();
+        configData.profiles = {};
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+
+        const profile = configData.getProfileById();
+        expect(profile.apiKey).to.equal('error');
+        expect(profile.apiSecret).to.equal('Profile not found');
+      });
+
+      test.it('should return first profile if it exists with apiKey and apiSecret', () => {
+        const configData = new ConfigData();
+        configData.profiles = {
+          firstProfile: {
+            apiKey: constants.FAKE_API_KEY,
+            apiSecret: constants.FAKE_API_SECRET,
+          },
+        };
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+
+        const profile = configData.getProfileById();
+        expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiKey).to.equal(constants.FAKE_API_KEY);
+        expect(profile.apiSecret).to.equal(constants.FAKE_API_SECRET);
+      });
     });
 
     describe('ConfigData.activeProfile', () => {

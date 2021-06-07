@@ -40,11 +40,7 @@ class TwilioClientCommand extends BaseCommand {
     this.logger.debug(`Using profile: ${this.currentProfile.id}`);
 
     if (!this.currentProfile.apiKey || !this.currentProfile.apiSecret) {
-      // Get Credentials from config file if not there get them from keytar.
-      let creds = this.userConfig.getCredentialsByProfileID(this.currentProfile.id);
-      if (!creds) {
-        creds = await this.secureStorage.getCredentials(this.currentProfile.id);
-      }
+      const creds = await this.secureStorage.getCredentials(this.currentProfile.id);
       if (creds.apiKey === 'error') {
         this.logger.error(`Could not get credentials for profile "${this.currentProfile.id}".`);
         reportUnconfigured('reconfigure');
