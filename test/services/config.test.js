@@ -118,8 +118,8 @@ describe('services', () => {
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
 
         const profile = configData.getProfileById();
-        expect(profile.apiKey).to.equal('error');
-        expect(profile.apiSecret).to.equal('Profile not found');
+        expect(profile.apiKey).to.be.undefined;
+        expect(profile.apiSecret).to.be.undefined;
       });
 
       test.it('should return first profile if it exists with apiKey and apiSecret', () => {
@@ -241,8 +241,7 @@ describe('services', () => {
         configData.profiles = {};
 
         const credentials = configData.getApiKeysByProfileID('DOES_NOT_EXIST');
-        expect(credentials.apiKey).to.equal('error');
-        expect(credentials.apiSecret).to.equal('Profile not found');
+        expect(credentials).to.be.null;
       });
 
       test.it('should return API keys if it profiles exists', () => {

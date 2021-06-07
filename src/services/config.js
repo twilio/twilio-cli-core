@@ -22,7 +22,7 @@ class ConfigData {
     this.prompts = {};
     this.projects = [];
     this.activeProfile = null;
-    this.profiles = undefined;
+    this.profiles = {};
   }
 
   getProfileFromEnvironment() {
@@ -148,7 +148,7 @@ class ConfigData {
     this.edge = configObj.edge;
     this.email = configObj.email || {};
     this.prompts = configObj.prompts || {};
-    this.profiles = configObj.profiles;
+    this.profiles = configObj.profiles || {};
     // Note the historical 'projects' naming.
     configObj.projects = configObj.projects || [];
     configObj.projects.forEach((project) => this.addProfile(project.id, project.accountSid, project.region));
@@ -176,7 +176,6 @@ class ConfigData {
       if (profileId && profiles.hasOwnProperty(profileId)) {
         return { apiKey: profiles[profileId].apiKey, apiSecret: profiles[profileId].apiSecret };
       }
-      return { apiKey: 'error', apiSecret: 'Profile not found' };
     }
     return null;
   }
