@@ -229,18 +229,18 @@ describe('services', () => {
       });
     });
 
-    describe('ConfigData.getCredentialsByProfileID', () => {
-      test.it('should return undefined if there are no profiles', () => {
+    describe('ConfigData.getApiKeysByProfileID', () => {
+      test.it('should return null if there are no profiles key in config file', () => {
         const configData = new ConfigData();
-        const credentials = configData.getCredentialsByProfileID('DOES_NOT_EXIST');
-        expect(credentials).to.be.undefined;
+        const credentials = configData.getApiKeysByProfileID('DOES_NOT_EXIST');
+        expect(credentials).to.be.null;
       });
 
       test.it('should return error if no profiles with given profileID', () => {
         const configData = new ConfigData();
         configData.profiles = {};
 
-        const credentials = configData.getCredentialsByProfileID('DOES_NOT_EXIST');
+        const credentials = configData.getApiKeysByProfileID('DOES_NOT_EXIST');
         expect(credentials.apiKey).to.equal('error');
         expect(credentials.apiSecret).to.equal('Profile not found');
       });
@@ -254,7 +254,7 @@ describe('services', () => {
           },
         };
 
-        const credentials = configData.getCredentialsByProfileID('profile1');
+        const credentials = configData.getApiKeysByProfileID('profile1');
         expect(credentials.apiKey).to.equal(constants.FAKE_API_KEY);
         expect(credentials.apiSecret).to.equal(constants.FAKE_API_SECRET);
       });

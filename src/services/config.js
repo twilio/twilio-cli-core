@@ -71,7 +71,7 @@ class ConfigData {
       } else {
         profile = this.getActiveProfile();
       }
-      this.addCredentialsToProfile(profile);
+      this.addApiKeysToProfile(profile);
     }
 
     return profile;
@@ -160,9 +160,9 @@ class ConfigData {
     return string ? string.trim() : string;
   }
 
-  addCredentialsToProfile(profile) {
+  addApiKeysToProfile(profile) {
     if (profile) {
-      const credentials = this.getCredentialsByProfileID(profile.id);
+      const credentials = this.getApiKeysByProfileID(profile.id);
       if (credentials) {
         profile.apiKey = credentials.apiKey;
         profile.apiSecret = credentials.apiSecret;
@@ -170,7 +170,7 @@ class ConfigData {
     }
   }
 
-  getCredentialsByProfileID(profileId) {
+  getApiKeysByProfileID(profileId) {
     if (this.profiles) {
       const { profiles } = this;
       if (profileId && profiles.hasOwnProperty(profileId)) {

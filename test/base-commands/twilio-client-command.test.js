@@ -161,12 +161,10 @@ describe('base-commands', () => {
         expect(ctx.stderr).to.not.contain('Standard API Keys');
       });
 
-    setUpTest([], {}).it(
-      'should load from keytar, if profiles key is not there in config file',
-      (ctx) => {
-        expect(ctx.testCmd.twilioClient.username).to.contain(constants.FAKE_API_KEY);
-        expect(ctx.testCmd.twilioClient.accountSid).to.contain(constants.FAKE_ACCOUNT_SID);
-      });
+    setUpTest([], {}).it('should load from keytar, if profiles key is not there in config file', (ctx) => {
+      expect(ctx.testCmd.twilioClient.username).to.contain(constants.FAKE_API_KEY);
+      expect(ctx.testCmd.twilioClient.accountSid).to.contain(constants.FAKE_ACCOUNT_SID);
+    });
 
     describe('parseProperties', () => {
       setUpTest().it('should ignore empty PropertyFlags', (ctx) => {
