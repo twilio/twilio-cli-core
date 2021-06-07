@@ -7,11 +7,20 @@ const MessageTemplates = require('./messaging/templates');
 
 const CLI_NAME = 'twilio-cli';
 
-class ConfigDataProfile {
+class ConfigDataProject {
   constructor(id, accountSid, region) {
     this.id = id;
     this.accountSid = accountSid;
     this.region = region;
+  }
+}
+
+class ConfigDataProfile {
+  constructor(accountSid, region, apiKey, apiSecret) {
+    this.accountSid = accountSid;
+    this.region = region;
+    this.apiKey = apiKey;
+    this.apiSecret = apiSecret;
   }
 }
 
@@ -22,6 +31,7 @@ class ConfigData {
     this.prompts = {};
     this.projects = [];
     this.activeProfile = null;
+    this.profiles = {};
   }
 
   getProfileFromEnvironment() {
@@ -110,19 +120,24 @@ class ConfigData {
     }
   }
 
-  addProfile(id, accountSid, region) {
-    // Clean all the inputs.
+  addProfile(id, accountSid, region, apiKey, apiSecret) {
+    //  Clean all the inputs.
     id = this.sanitize(id);
     accountSid = this.sanitize(accountSid);
     region = this.sanitize(region);
 
     const existing = this.getProfileById(id);
+
+    //  Update the historical projects array
     if (existing) {
       existing.accountSid = accountSid;
       existing.region = region;
     } else {
-      this.projects.push(new ConfigDataProfile(id, accountSid, region));
+      this.projects.push(new ConfigDataProject(id, accountSid, region));
     }
+
+    //  Update profiles object
+    this.profiles[id] = new ConfigDataProfile(accountSid, region, apiKey, apiSecret);
   }
 
   isPromptAcked(promptId) {
@@ -182,6 +197,7 @@ class Config {
       prompts: configData.prompts,
       // Note the historical 'projects' naming.
       projects: configData.projects,
+      profiles: configData.profiles,
       activeProject: configData.activeProfile,
     };
 
