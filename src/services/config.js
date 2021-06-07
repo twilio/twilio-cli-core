@@ -56,6 +56,15 @@ class ConfigData {
     return undefined;
   }
 
+  getProfileFromConfigFileById(profileId) {
+    let profile = this.profiles.hasOwnProperty(profileId) ? this.profiles[profileId] : null;
+    if (!profile) {
+      profile = this.projects.find((p) => p.id === profileId);
+      this.addApiKeysToProfile(profile);
+    }
+    return profile;
+  }
+
   getProfileById(profileId) {
     let profile;
 
@@ -67,11 +76,10 @@ class ConfigData {
       if (profileId) {
         // Clean the profile ID.
         profileId = this.sanitize(profileId);
-        profile = this.projects.find((p) => p.id === profileId);
+        profile = this.getProfileFromConfigFileById(profileId);
       } else {
         profile = this.getActiveProfile();
       }
-      this.addApiKeysToProfile(profile);
     }
 
     return profile;
@@ -94,10 +102,11 @@ class ConfigData {
     let profile;
     if (this.projects.length > 0) {
       if (this.activeProfile) {
-        profile = this.projects.find((p) => p.id === this.activeProfile);
+        profile = this.getProfileFromConfigFileById(this.activeProfile);
       }
       if (!profile) {
         profile = this.projects[0];
+        this.addApiKeysToProfile(profile);
       }
     }
     return profile;
@@ -148,11 +157,11 @@ class ConfigData {
     this.edge = configObj.edge;
     this.email = configObj.email || {};
     this.prompts = configObj.prompts || {};
-    this.profiles = configObj.profiles || {};
     // Note the historical 'projects' naming.
     configObj.projects = configObj.projects || [];
     configObj.projects.forEach((project) => this.addProfile(project.id, project.accountSid, project.region));
     this.setActiveProfile(configObj.activeProject);
+    this.profiles = configObj.profiles || {};
   }
 
   sanitize(string) {
@@ -171,11 +180,9 @@ class ConfigData {
   }
 
   getApiKeysByProfileID(profileId) {
-    if (this.profiles) {
-      const { profiles } = this;
-      if (profileId && profiles.hasOwnProperty(profileId)) {
-        return { apiKey: profiles[profileId].apiKey, apiSecret: profiles[profileId].apiSecret };
-      }
+    const { profiles } = this;
+    if (profileId && profiles.hasOwnProperty(profileId)) {
+      return profiles[profileId];
     }
     return null;
   }

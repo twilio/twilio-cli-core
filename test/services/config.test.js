@@ -124,13 +124,13 @@ describe('services', () => {
 
       test.it('should return first profile if it exists with apiKey and apiSecret', () => {
         const configData = new ConfigData();
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
         configData.profiles = {
           firstProfile: {
             apiKey: constants.FAKE_API_KEY,
             apiSecret: constants.FAKE_API_SECRET,
           },
         };
-        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
 
         const profile = configData.getProfileById();
         expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
