@@ -57,10 +57,9 @@ class ConfigData {
   }
 
   getProfileFromConfigFileById(profileId) {
-    let profile = this.profiles.hasOwnProperty(profileId) ? this.profiles[profileId] : null;
+    let profile = this.profiles[profileId];
     if (!profile) {
       profile = this.projects.find((p) => p.id === profileId);
-      this.addApiKeysToProfile(profile);
     }
     return profile;
   }
@@ -106,7 +105,7 @@ class ConfigData {
       }
       if (!profile) {
         profile = this.projects[0];
-        this.addApiKeysToProfile(profile);
+        this.addApiKeysToProject(profile);
       }
     }
     return profile;
@@ -169,22 +168,12 @@ class ConfigData {
     return string ? string.trim() : string;
   }
 
-  addApiKeysToProfile(profile) {
-    if (profile) {
-      const credentials = this.getApiKeysByProfileID(profile.id);
-      if (credentials) {
-        profile.apiKey = credentials.apiKey;
-        profile.apiSecret = credentials.apiSecret;
-      }
+  addApiKeysToProject(profile) {
+    const credentials = this.profiles[profile.id];
+    if (credentials) {
+      profile.apiKey = credentials.apiKey;
+      profile.apiSecret = credentials.apiSecret;
     }
-  }
-
-  getApiKeysByProfileID(profileId) {
-    const { profiles } = this;
-    if (profileId && profiles.hasOwnProperty(profileId)) {
-      return profiles[profileId];
-    }
-    return null;
   }
 }
 

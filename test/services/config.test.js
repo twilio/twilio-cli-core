@@ -229,33 +229,32 @@ describe('services', () => {
       });
     });
 
-    describe('ConfigData.getApiKeysByProfileID', () => {
-      test.it('should return null if there are no profiles key in config file', () => {
-        const configData = new ConfigData();
-        const credentials = configData.getApiKeysByProfileID('DOES_NOT_EXIST');
-        expect(credentials).to.be.null;
-      });
-
-      test.it('should return error if no profiles with given profileID', () => {
+    describe('ConfigData.addApiKeysToProject', () => {
+      test.it('should return undefined if no profiles keys with given profile', () => {
         const configData = new ConfigData();
         configData.profiles = {};
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        const profile = configData.getActiveProfile();
 
-        const credentials = configData.getApiKeysByProfileID('DOES_NOT_EXIST');
-        expect(credentials).to.be.null;
+        configData.addApiKeysToProject(profile);
+        expect(profile.apiKey).to.be.undefined;
+        expect(profile.apiSecret).to.be.undefined;
       });
 
       test.it('should return API keys if it profiles exists', () => {
         const configData = new ConfigData();
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        const profile = configData.getActiveProfile();
         configData.profiles = {
-          profile1: {
+          firstProfile: {
             apiKey: constants.FAKE_API_KEY,
             apiSecret: constants.FAKE_API_SECRET,
           },
         };
 
-        const credentials = configData.getApiKeysByProfileID('profile1');
-        expect(credentials.apiKey).to.equal(constants.FAKE_API_KEY);
-        expect(credentials.apiSecret).to.equal(constants.FAKE_API_SECRET);
+        configData.addApiKeysToProject(profile);
+        expect(profile.apiKey).to.equal(constants.FAKE_API_KEY);
+        expect(profile.apiSecret).to.equal(constants.FAKE_API_SECRET);
       });
     });
 
