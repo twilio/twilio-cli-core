@@ -17,6 +17,29 @@ describe('services', () => {
         expect(configData.projects[0].id).to.equal('newProfile');
         expect(configData.projects[0].accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
         expect(configData.projects[0].region).to.equal('dev');
+
+        expect(configData.profiles.newProfile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(configData.profiles.newProfile.region).to.equal('dev');
+      });
+
+      test.it('should add a new profile with apiKey', () => {
+        const configData = new ConfigData();
+        configData.addProfile(
+          'newProfile',
+          constants.FAKE_ACCOUNT_SID,
+          'dev',
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
+
+        expect(configData.projects[0].id).to.equal('newProfile');
+        expect(configData.projects[0].accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(configData.projects[0].region).to.equal('dev');
+
+        expect(configData.profiles.newProfile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(configData.profiles.newProfile.region).to.equal('dev');
+        expect(configData.profiles.newProfile.apiKey).to.equal(constants.FAKE_API_KEY);
+        expect(configData.profiles.newProfile.apiSecret).to.equal(constants.FAKE_API_SECRET);
       });
 
       test.it('should update an existing profile', () => {
@@ -27,6 +50,9 @@ describe('services', () => {
         expect(configData.projects[0].id).to.equal('activeProfile');
         expect(configData.projects[0].accountSid).to.equal('new-account-sid');
         expect(configData.projects[0].region).to.be.undefined;
+
+        expect(configData.profiles.activeProfile.accountSid).to.equal('new-account-sid');
+        expect(configData.profiles.activeProfile.region).to.be.undefined;
       });
     });
 
