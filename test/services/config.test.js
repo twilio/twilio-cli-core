@@ -112,7 +112,7 @@ describe('services', () => {
         expect(profile.region).to.equal('region');
       });
 
-      test.it('should return error if first profile not exists with apiKey and apiSecret', () => {
+      test.it('should return undefined if first profile not exists with apiKey and apiSecret', () => {
         const configData = new ConfigData();
         configData.profiles = {};
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
@@ -122,17 +122,18 @@ describe('services', () => {
         expect(profile.apiSecret).to.be.undefined;
       });
 
-      test.it('should return first profile if it exists with apiKey and apiSecret', () => {
+      test.it('should return profile with apiKey and apiSecret', () => {
         const configData = new ConfigData();
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
         configData.profiles = {
           firstProfile: {
+            accountSid: constants.FAKE_ACCOUNT_SID,
             apiKey: constants.FAKE_API_KEY,
             apiSecret: constants.FAKE_API_SECRET,
           },
         };
 
-        const profile = configData.getProfileById();
+        const profile = configData.getProfileById('firstProfile');
         expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
         expect(profile.apiKey).to.equal(constants.FAKE_API_KEY);
         expect(profile.apiSecret).to.equal(constants.FAKE_API_SECRET);
@@ -226,35 +227,6 @@ describe('services', () => {
         configData.ackPrompt('prompt-1');
         expect(configData.isPromptAcked('prompt-1')).to.be.true;
         expect(configData.isPromptAcked('prompt-2')).to.be.false;
-      });
-    });
-
-    describe('ConfigData.addApiKeysToProject', () => {
-      test.it('should return undefined if no profiles keys with given profile', () => {
-        const configData = new ConfigData();
-        configData.profiles = {};
-        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
-        const profile = configData.getActiveProfile();
-
-        configData.addApiKeysToProject(profile);
-        expect(profile.apiKey).to.be.undefined;
-        expect(profile.apiSecret).to.be.undefined;
-      });
-
-      test.it('should return API keys if it profiles exists', () => {
-        const configData = new ConfigData();
-        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
-        const profile = configData.getActiveProfile();
-        configData.profiles = {
-          firstProfile: {
-            apiKey: constants.FAKE_API_KEY,
-            apiSecret: constants.FAKE_API_SECRET,
-          },
-        };
-
-        configData.addApiKeysToProject(profile);
-        expect(profile.apiKey).to.equal(constants.FAKE_API_KEY);
-        expect(profile.apiSecret).to.equal(constants.FAKE_API_SECRET);
       });
     });
 

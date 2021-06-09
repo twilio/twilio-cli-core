@@ -99,13 +99,12 @@ class ConfigData {
 
   getActiveProfile() {
     let profile;
-    if (this.projects.length > 0) {
+    if (this.projects.length > 0 || Object.keys(this.profiles).length > 0) {
       if (this.activeProfile) {
         profile = this.getProfileFromConfigFileById(this.activeProfile);
       }
       if (!profile) {
         profile = this.projects[0];
-        this.addApiKeysToProject(profile);
       }
     }
     return profile;
@@ -166,14 +165,6 @@ class ConfigData {
   sanitize(string) {
     // Trim whitespace if given a non-null string.
     return string ? string.trim() : string;
-  }
-
-  addApiKeysToProject(profile) {
-    const credentials = this.profiles[profile.id];
-    if (credentials) {
-      profile.apiKey = credentials.apiKey;
-      profile.apiSecret = credentials.apiSecret;
-    }
   }
 }
 
