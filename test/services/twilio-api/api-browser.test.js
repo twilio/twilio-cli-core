@@ -43,7 +43,7 @@ describe('services', () => {
                   },
                 ],
                 description: 'Widgets here\nsecond line of text',
-                'x-default-output-properties': ['sid'],
+                'x-twilio': { defaultOutputProperties: ['sid'] },
               },
             },
             tags: [
@@ -62,7 +62,7 @@ describe('services', () => {
                   },
                 ],
                 description: 'v1 Gadgets here',
-                'x-default-output-properties': ['sid'],
+                'x-twilio': { defaultOutputProperties: ['sid'] },
               },
               '/v2/Gadgets.json': {
                 servers: [
@@ -73,7 +73,7 @@ describe('services', () => {
                 post: { createStuff: '' },
                 get: { listStuff: '' },
                 description: 'v2 list Gadgets here',
-                'x-default-output-properties': ['sid', 'name'],
+                'x-twilio': { defaultOutputProperties: ['sid', 'name'] },
               },
               '/v2/Gadgets/{Sid}.json': {
                 servers: [
@@ -85,7 +85,7 @@ describe('services', () => {
                 get: { fetchStuff: '' },
                 delete: { removeStuff: '' },
                 description: 'v2 instance Gadgets here',
-                'x-default-output-properties': ['sid', 'description'],
+                'x-twilio': { defaultOutputProperties: ['sid', 'description'] },
               },
             },
             tags: [
