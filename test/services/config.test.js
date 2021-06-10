@@ -111,6 +111,33 @@ describe('services', () => {
         expect(profile.apiSecret).to.equal(FAKE_AUTH_TOKEN);
         expect(profile.region).to.equal('region');
       });
+
+      test.it('should return undefined if first profile not exists with apiKey and apiSecret', () => {
+        const configData = new ConfigData();
+        configData.profiles = {};
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+
+        const profile = configData.getProfileById();
+        expect(profile.apiKey).to.be.undefined;
+        expect(profile.apiSecret).to.be.undefined;
+      });
+
+      test.it('should return profile with apiKey and apiSecret', () => {
+        const configData = new ConfigData();
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.profiles = {
+          firstProfile: {
+            accountSid: constants.FAKE_ACCOUNT_SID,
+            apiKey: constants.FAKE_API_KEY,
+            apiSecret: constants.FAKE_API_SECRET,
+          },
+        };
+
+        const profile = configData.getProfileById('firstProfile');
+        expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiKey).to.equal(constants.FAKE_API_KEY);
+        expect(profile.apiSecret).to.equal(constants.FAKE_API_SECRET);
+      });
     });
 
     describe('ConfigData.activeProfile', () => {
