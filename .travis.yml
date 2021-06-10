@@ -1,11 +1,12 @@
 language: node_js
 node_js:
-- node
-- lts/*
-- '10'
+  # Disabling for Node 16 until audit issue is resolved: https://travis-ci.com/github/twilio/twilio-cli-core/jobs/512495850
+  # - node
+  - lts/*
+  - '10'
 before_install:
-- sudo apt-get update
-- sudo apt-get install -y libsecret-1-dev
+  - sudo apt-get update
+  - sudo apt-get install -y libsecret-1-dev
 deploy:
   provider: npm
   email: team_interfaces@twilio.com
