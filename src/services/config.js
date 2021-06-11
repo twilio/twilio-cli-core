@@ -65,6 +65,14 @@ class ConfigData {
     return undefined;
   }
 
+  getProfileFromConfigFileById(profileId) {
+    let profile = this.profiles[profileId];
+    if (!profile) {
+      profile = this.projects.find((p) => p.id === profileId);
+    }
+    return profile;
+  }
+
   getProfileById(profileId) {
     let profile;
 
@@ -76,7 +84,7 @@ class ConfigData {
       if (profileId) {
         // Clean the profile ID.
         profileId = this.sanitize(profileId);
-        profile = this.projects.find((p) => p.id === profileId);
+        profile = this.getProfileFromConfigFileById(profileId);
       } else {
         profile = this.getActiveProfile();
       }
@@ -100,9 +108,9 @@ class ConfigData {
 
   getActiveProfile() {
     let profile;
-    if (this.projects.length > 0) {
+    if (this.projects.length > 0 || Object.keys(this.profiles).length > 0) {
       if (this.activeProfile) {
-        profile = this.projects.find((p) => p.id === this.activeProfile);
+        profile = this.getProfileFromConfigFileById(this.activeProfile);
       }
       if (!profile) {
         profile = this.projects[0];
@@ -165,6 +173,7 @@ class ConfigData {
     configObj.projects = configObj.projects || [];
     configObj.projects.forEach((project) => this.addProfile(project.id, project.accountSid, project.region));
     this.setActiveProfile(configObj.activeProject);
+    this.profiles = configObj.profiles || {};
   }
 
   sanitize(string) {
