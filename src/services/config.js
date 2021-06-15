@@ -7,14 +7,6 @@ const MessageTemplates = require('./messaging/templates');
 
 const CLI_NAME = 'twilio-cli';
 
-class ConfigDataProject {
-  constructor(id, accountSid, region) {
-    this.id = id;
-    this.accountSid = accountSid;
-    this.region = region;
-  }
-}
-
 class ConfigDataProfile {
   constructor(accountSid, region, apiKey, apiSecret) {
     this.accountSid = accountSid;
@@ -85,6 +77,10 @@ class ConfigData {
         // Clean the profile ID.
         profileId = this.sanitize(profileId);
         profile = this.getProfileFromConfigFileById(profileId);
+        // Explicitly add `id` to the returned profile
+        if (profile && !profile.hasOwnProperty('id')) {
+          profile.id = profileId;
+        }
       } else {
         profile = this.getActiveProfile();
       }
@@ -112,8 +108,13 @@ class ConfigData {
       if (this.activeProfile) {
         profile = this.getProfileFromConfigFileById(this.activeProfile);
       }
+
+      // Ensure order of profiles : DIxxx
       if (!profile) {
-        profile = this.projects[0];
+        profile = this.projects[0] || Object.values(this.profiles)[0];
+        if (profile && !profile.hasOwnProperty('id')) {
+          profile.id = Object.keys(this.profiles)[0];
+        }
       }
     }
     return profile;
@@ -138,10 +139,7 @@ class ConfigData {
 
     //  Update the historical projects array
     if (existing) {
-      existing.accountSid = accountSid;
-      existing.region = region;
-    } else {
-      this.projects.push(new ConfigDataProject(id, accountSid, region));
+      this.projects = this.projects.filter((p) => p.id !== existing.id);
     }
 
     //  Update profiles object
@@ -171,9 +169,8 @@ class ConfigData {
     this.prompts = configObj.prompts || {};
     // Note the historical 'projects' naming.
     configObj.projects = configObj.projects || [];
-    configObj.projects.forEach((project) => this.addProfile(project.id, project.accountSid, project.region));
-    this.setActiveProfile(configObj.activeProject);
     this.profiles = configObj.profiles || {};
+    this.setActiveProfile(configObj.activeProject);
   }
 
   sanitize(string) {

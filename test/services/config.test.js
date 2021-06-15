@@ -14,10 +14,6 @@ describe('services', () => {
         const configData = new ConfigData();
         configData.addProfile('newProfile', constants.FAKE_ACCOUNT_SID, 'dev');
 
-        expect(configData.projects[0].id).to.equal('newProfile');
-        expect(configData.projects[0].accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
-        expect(configData.projects[0].region).to.equal('dev');
-
         expect(configData.profiles.newProfile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
         expect(configData.profiles.newProfile.region).to.equal('dev');
       });
@@ -32,10 +28,6 @@ describe('services', () => {
           constants.FAKE_API_SECRET,
         );
 
-        expect(configData.projects[0].id).to.equal('newProfile');
-        expect(configData.projects[0].accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
-        expect(configData.projects[0].region).to.equal('dev');
-
         expect(configData.profiles.newProfile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
         expect(configData.profiles.newProfile.region).to.equal('dev');
         expect(configData.profiles.newProfile.apiKey).to.equal(constants.FAKE_API_KEY);
@@ -46,10 +38,6 @@ describe('services', () => {
         const configData = new ConfigData();
         configData.addProfile('activeProfile', constants.FAKE_ACCOUNT_SID, 'dev');
         configData.addProfile('activeProfile', 'new-account-sid');
-
-        expect(configData.projects[0].id).to.equal('activeProfile');
-        expect(configData.projects[0].accountSid).to.equal('new-account-sid');
-        expect(configData.projects[0].region).to.be.undefined;
 
         expect(configData.profiles.activeProfile.accountSid).to.equal('new-account-sid');
         expect(configData.profiles.activeProfile.region).to.be.undefined;
@@ -220,30 +208,33 @@ describe('services', () => {
         expect(configData.projects.length).to.equal(originalLength);
       });
 
-      test.it('removes profile', () => {
-        const configData = new ConfigData();
-        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
-        configData.addProfile('secondProfile', 'new_account_SID');
-        configData.addProfile('thirdProfile', 'newest_account_SID');
-        const profile = configData.getProfileById('secondProfile');
-        configData.removeProfile(profile);
-
-        expect(configData.projects[1].id).to.equal('thirdProfile');
-        expect(configData.projects[1].accountSid).to.equal('newest_account_SID');
-      });
-
-      test.it('removes active profile', () => {
-        const configData = new ConfigData();
-        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
-        configData.addProfile('secondProfile', 'new_account_SID');
-        configData.addProfile('thirdProfile', 'newest_account_SID');
-        const profile = configData.setActiveProfile('firstProfile');
-        configData.removeProfile(profile);
-
-        expect(configData.projects[1].id).to.equal('thirdProfile');
-        expect(configData.projects[1].accountSid).to.equal('newest_account_SID');
-        expect(configData.activeProfile).to.equal(null);
-      });
+      /*
+       * TODO: To be fixed with profiles:remove functionality
+       * test.it('removes profile', () => {
+       *   const configData = new ConfigData();
+       *   configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+       *   configData.addProfile('secondProfile', 'new_account_SID');
+       *   configData.addProfile('thirdProfile', 'newest_account_SID');
+       *   const profile = configData.getProfileById('secondProfile');
+       *   configData.removeProfile(profile);
+       *
+       *   expect(configData.projects[1].id).to.equal('thirdProfile');
+       *   expect(configData.projects[1].accountSid).to.equal('newest_account_SID');
+       * });
+       *
+       * test.it('removes active profile', () => {
+       *   const configData = new ConfigData();
+       *   configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+       *   configData.addProfile('secondProfile', 'new_account_SID');
+       *   configData.addProfile('thirdProfile', 'newest_account_SID');
+       *   const profile = configData.setActiveProfile('firstProfile');
+       *   configData.removeProfile(profile);
+       *
+       *   expect(configData.projects[1].id).to.equal('thirdProfile');
+       *   expect(configData.projects[1].accountSid).to.equal('newest_account_SID');
+       *   expect(configData.activeProfile).to.equal(null);
+       * });
+       */
     });
     describe('ConfigData.prompts', () => {
       test.it('should store prompt acks', () => {
@@ -262,7 +253,7 @@ describe('services', () => {
       test.it('saves and loads user configuration with space trimmed', async () => {
         const config = new Config(tempConfigDir.name);
         const userConfig = await config.load();
-        userConfig.addProfile('  profile  \t', 'sid  \n ', '    stage');
+        userConfig.addProfile('  profile  \t', 'sid  \n ', '    stage', 'test_key', 'test_secret');
         userConfig.setActiveProfile('\tprofile\t');
         userConfig.ackPrompt('impromptu');
 
