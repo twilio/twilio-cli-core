@@ -86,13 +86,12 @@ class TwilioApiBrowser {
           }
         });
 
-        // Convert extensions to camel-cased properties.
+        // Lift the Twilio vendor extension properties.
         Object.entries(path).forEach(([key, value]) => {
-          const extensionMatch = key.match(/x-(.+)/);
-
-          if (extensionMatch) {
-            const newKey = camelCase(extensionMatch[1]);
-            path[newKey] = value;
+          if (key === 'x-twilio') {
+            Object.entries(value).forEach(([subKey, subValue]) => {
+              path[subKey] = subValue;
+            });
             delete path[key];
           }
         });
