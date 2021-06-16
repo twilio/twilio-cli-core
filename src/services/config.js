@@ -186,7 +186,7 @@ class ConfigData {
     this.prompts = configObj.prompts || {};
     // Note the historical 'projects' naming.
     configObj.projects = configObj.projects || [];
-    configObj.projects.forEach((project) => this.addProfile(project.id, project.accountSid, project.region));
+    configObj.projects.forEach((project) => this.addProject(project.id, project.accountSid, project.region));
     this.profiles = configObj.profiles || {};
     this.setActiveProfile(configObj.activeProject);
   }
