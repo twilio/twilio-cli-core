@@ -16,6 +16,14 @@ class ConfigDataProfile {
   }
 }
 
+class ConfigDataProject {
+  constructor(id, accountSid, region) {
+    this.id = id;
+    this.accountSid = accountSid;
+    this.region = region;
+  }
+}
+
 class ConfigData {
   constructor() {
     this.edge = undefined;
@@ -109,7 +117,7 @@ class ConfigData {
         profile = this.getProfileFromConfigFileById(this.activeProfile);
       }
 
-      // TODO: Ensure order of profiles : DI-1479
+      // Ensure order of profiles DI-1479
       if (!profile) {
         profile = this.projects[0] || Object.values(this.profiles)[0];
         if (profile && !profile.hasOwnProperty('id')) {
@@ -137,13 +145,22 @@ class ConfigData {
 
     const existing = this.getProfileById(id);
 
-    //  Remove if existing in historical projects
+    //  Remove if existing in historical projects.
     if (existing) {
+      // Remove from Keytar : DI-1352
       this.projects = this.projects.filter((p) => p.id !== existing.id);
     }
 
     //  Update profiles object
     this.profiles[id] = new ConfigDataProfile(accountSid, region, apiKey, apiSecret);
+  }
+
+  addProject(id, accountSid, region) {
+    id = this.sanitize(id);
+    accountSid = this.sanitize(accountSid);
+    region = this.sanitize(region);
+
+    this.projects.push(new ConfigDataProject(id, accountSid, region));
   }
 
   isPromptAcked(promptId) {
@@ -169,6 +186,7 @@ class ConfigData {
     this.prompts = configObj.prompts || {};
     // Note the historical 'projects' naming.
     configObj.projects = configObj.projects || [];
+    configObj.projects.forEach((project) => this.addProfile(project.id, project.accountSid, project.region));
     this.profiles = configObj.profiles || {};
     this.setActiveProfile(configObj.activeProject);
   }

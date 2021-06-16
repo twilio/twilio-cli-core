@@ -178,6 +178,21 @@ describe('services', () => {
         expect(active.accountSid).to.equal('new_account_SID');
       });
 
+      test.it('should remove profile from projects if duplicate found', () => {
+        const configData = new ConfigData();
+        configData.addProject('testProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile(
+          'testProfile',
+          constants.FAKE_ACCOUNT_SID,
+          '',
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
+
+        expect(configData.projects).to.be.empty;
+        expect(configData.profiles.testProfile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+      });
+
       test.it('should not allow the active profile to not exist', () => {
         const configData = new ConfigData();
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
