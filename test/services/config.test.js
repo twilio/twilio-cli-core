@@ -263,7 +263,10 @@ describe('services', () => {
     });
 
     describe('Config', () => {
-      const tempConfigDir = tmp.dirSync({ unsafeCleanup: true });
+      let tempConfigDir;
+      beforeEach(() => {
+        tempConfigDir = tmp.dirSync({ unsafeCleanup: true });
+      });
 
       test.it('saves and loads user configuration with space trimmed', async () => {
         const config = new Config(tempConfigDir.name);
@@ -278,6 +281,22 @@ describe('services', () => {
         const loadedConfig = await config.load();
         expect(loadedConfig).to.deep.equal(userConfig);
         expect(loadedConfig.getActiveProfile().id).to.equal('profile');
+      });
+
+      test.it('should load projects post sanitization and not removed from list on load', async () => {
+        tempConfigDir = tmp.dirSync({ unsafeCleanup: true });
+        const config = new Config(tempConfigDir.name);
+        const configData = await config.load();
+        configData.addProfile('  profile  ', 'sid  ', '    dev', 'test_key', 'test_secret');
+        configData.addProject('    profile', ' sid ', '    dev');
+        await config.save(configData);
+
+        const loadedConfig = await config.load();
+        expect(loadedConfig).to.deep.equal(configData);
+        expect(loadedConfig.projects.length).to.equal(1); // Removal shouldn't be performed on projects
+        expect(loadedConfig.projects[0].id).to.equal('profile'); // Sanitization checks
+        expect(loadedConfig.projects[0].accountSid).to.equal('sid');
+        expect(loadedConfig.projects[0].region).to.equal('dev');
       });
 
       test.it('works with config dirs that did not exist', async () => {
