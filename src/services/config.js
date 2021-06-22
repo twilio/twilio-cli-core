@@ -8,6 +8,15 @@ const MessageTemplates = require('./messaging/templates');
 const CLI_NAME = 'twilio-cli';
 
 class ConfigDataProfile {
+  constructor(accountSid, region, apiKey, apiSecret) {
+    this.accountSid = accountSid;
+    this.region = region;
+    this.apiKey = apiKey;
+    this.apiSecret = apiSecret;
+  }
+}
+
+class ConfigDataProject {
   constructor(id, accountSid, region) {
     this.id = id;
     this.accountSid = accountSid;
@@ -76,6 +85,10 @@ class ConfigData {
         // Clean the profile ID.
         profileId = this.sanitize(profileId);
         profile = this.getProfileFromConfigFileById(profileId);
+        // Explicitly add `id` to the returned profile
+        if (profile && !profile.hasOwnProperty('id')) {
+          profile.id = profileId;
+        }
       } else {
         profile = this.getActiveProfile();
       }
@@ -103,8 +116,13 @@ class ConfigData {
       if (this.activeProfile) {
         profile = this.getProfileFromConfigFileById(this.activeProfile);
       }
+
+      // Ensure order of profiles DI-1479
       if (!profile) {
-        profile = this.projects[0];
+        profile = this.projects[0] || Object.values(this.profiles)[0];
+        if (profile && !profile.hasOwnProperty('id')) {
+          profile.id = Object.keys(this.profiles)[0];
+        }
       }
     }
     return profile;
@@ -119,19 +137,30 @@ class ConfigData {
     }
   }
 
-  addProfile(id, accountSid, region) {
-    // Clean all the inputs.
+  addProfile(id, accountSid, region, apiKey, apiSecret) {
+    //  Clean all the inputs.
     id = this.sanitize(id);
     accountSid = this.sanitize(accountSid);
     region = this.sanitize(region);
 
     const existing = this.getProfileById(id);
+
+    //  Remove if existing in historical projects.
     if (existing) {
-      existing.accountSid = accountSid;
-      existing.region = region;
-    } else {
-      this.projects.push(new ConfigDataProfile(id, accountSid, region));
+      // Remove from Keytar : DI-1352
+      this.projects = this.projects.filter((p) => p.id !== existing.id);
     }
+
+    //  Update profiles object
+    this.profiles[id] = new ConfigDataProfile(accountSid, region, apiKey, apiSecret);
+  }
+
+  addProject(id, accountSid, region) {
+    id = this.sanitize(id);
+    accountSid = this.sanitize(accountSid);
+    region = this.sanitize(region);
+
+    this.projects.push(new ConfigDataProject(id, accountSid, region));
   }
 
   isPromptAcked(promptId) {
@@ -157,9 +186,9 @@ class ConfigData {
     this.prompts = configObj.prompts || {};
     // Note the historical 'projects' naming.
     configObj.projects = configObj.projects || [];
-    configObj.projects.forEach((project) => this.addProfile(project.id, project.accountSid, project.region));
-    this.setActiveProfile(configObj.activeProject);
+    configObj.projects.forEach((project) => this.addProject(project.id, project.accountSid, project.region));
     this.profiles = configObj.profiles || {};
+    this.setActiveProfile(configObj.activeProject);
   }
 
   sanitize(string) {
@@ -192,6 +221,7 @@ class Config {
       prompts: configData.prompts,
       // Note the historical 'projects' naming.
       projects: configData.projects,
+      profiles: configData.profiles,
       activeProject: configData.activeProfile,
     };
 
