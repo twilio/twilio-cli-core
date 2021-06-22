@@ -129,9 +129,13 @@ class ConfigData {
   }
 
   removeProfile(profileToRemove) {
-    this.projects = this.projects.filter((profile) => {
-      return profile.id !== profileToRemove.id;
-    });
+    if (this.profiles[profileToRemove.id]) {
+      delete this.profiles[profileToRemove.id];
+    } else {
+      this.projects = this.projects.filter((profile) => {
+        return profile.id !== profileToRemove.id;
+      });
+    }
     if (profileToRemove.id === this.activeProfile) {
       this.activeProfile = null;
     }
@@ -147,8 +151,8 @@ class ConfigData {
 
     //  Remove if existing in historical projects.
     if (existing) {
-      // Remove from Keytar : DI-1352
       this.projects = this.projects.filter((p) => p.id !== existing.id);
+      this.removeProfile(existing);
     }
 
     //  Update profiles object
