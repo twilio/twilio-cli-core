@@ -1989,7 +1989,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Taskrouter",
-    "version": "5.24.0"
+    "version": "5.25.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -5428,6 +5428,14 @@
                     "description": "The Contact URI of the worker when executing a Conference instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
                     "type": "string"
                   },
+                  "Transcribe": {
+                    "description": "Whether to transcribe the call recording. The default is `false`.",
+                    "type": "boolean"
+                  },
+                  "TranscriptionConfiguration": {
+                    "description": "The SID or (unique) friendly name of the transcription configuration object to use for transcribing.",
+                    "type": "string"
+                  },
                   "WaitMethod": {
                     "description": "The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.",
                     "enum": [
@@ -6967,6 +6975,14 @@
                   },
                   "To": {
                     "description": "The Contact URI of the worker when executing a Conference instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination.",
+                    "type": "string"
+                  },
+                  "Transcribe": {
+                    "description": "Whether to transcribe the call recording. The default is `false`.",
+                    "type": "boolean"
+                  },
+                  "TranscriptionConfiguration": {
+                    "description": "The SID or (unique) friendly name of the transcription configuration object to use for transcribing.",
                     "type": "string"
                   },
                   "WaitMethod": {
