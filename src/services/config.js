@@ -129,9 +129,13 @@ class ConfigData {
   }
 
   removeProfile(profileToRemove) {
-    this.projects = this.projects.filter((profile) => {
-      return profile.id !== profileToRemove.id;
-    });
+    if (this.profiles[profileToRemove.id]) {
+      delete this.profiles[profileToRemove.id];
+    } else {
+      this.projects = this.projects.filter((profile) => {
+        return profile.id !== profileToRemove.id;
+      });
+    }
     if (profileToRemove.id === this.activeProfile) {
       this.activeProfile = null;
     }
