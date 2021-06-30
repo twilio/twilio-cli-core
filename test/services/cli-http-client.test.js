@@ -11,11 +11,12 @@ describe('services', () => {
     });
 
     test.it('should make an http request', async () => {
-      const client = new CliRequestClient('blah', logger, (options) => {
+      const client = new CliRequestClient('blah', logger, true, (options) => {
         expect(options.url).to.equal('https://foo.com/bar');
         return { status: 200, data: 'foo', headers: {} };
       });
       expect(client.commandName).to.equal('blah');
+      expect(client.keytarWord).to.equal('keytar');
       const response = await client.request({
         method: 'POST',
         uri: 'https://foo.com/bar',
@@ -64,6 +65,7 @@ describe('services', () => {
       })
       .it('correctly serializes array parameters', async () => {
         const client = new CliRequestClient('bleh', logger);
+        expect(client.keytarWord).to.equal('');
         const response = await client.request({
           method: 'GET',
           uri: 'https://foo.com/bar',
