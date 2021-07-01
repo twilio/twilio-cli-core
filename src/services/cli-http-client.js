@@ -14,7 +14,7 @@ const NETWORK_ERROR_CODES = new Set(['ETIMEDOUT', 'ESOCKETTIMEDOUT', 'ECONNABORT
 const STANDARD_HEADERS = ['user-agent', 'accept-charset', 'connection', 'authorization', 'accept', 'content-type'];
 
 class CliRequestClient {
-  constructor(commandName, logger, keytarFlag = false, http = null) {
+  constructor(commandName, logger, http, keytarFlag = false) {
     this.commandName = commandName;
     this.logger = logger;
     this.http = http || require('axios');

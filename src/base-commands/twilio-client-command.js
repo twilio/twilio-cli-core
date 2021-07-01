@@ -51,7 +51,7 @@ class TwilioClientCommand extends BaseCommand {
       keytarFlag = true;
     }
 
-    this.httpClient = new CliRequestClient(this.id, this.logger, keytarFlag);
+    this.httpClient = new CliRequestClient(this.id, this.logger, undefined, keytarFlag);
   }
 
   async catch(error) {

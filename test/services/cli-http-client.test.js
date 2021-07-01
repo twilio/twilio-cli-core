@@ -11,10 +11,15 @@ describe('services', () => {
     });
 
     test.it('should make an http request', async () => {
-      const client = new CliRequestClient('blah', logger, true, (options) => {
-        expect(options.url).to.equal('https://foo.com/bar');
-        return { status: 200, data: 'foo', headers: {} };
-      });
+      const client = new CliRequestClient(
+        'blah',
+        logger,
+        (options) => {
+          expect(options.url).to.equal('https://foo.com/bar');
+          return { status: 200, data: 'foo', headers: {} };
+        },
+        true,
+      );
       expect(client.commandName).to.equal('blah');
       expect(client.keytarWord).to.equal('keytar');
       const response = await client.request({
@@ -33,10 +38,11 @@ describe('services', () => {
 
     test.it('should add the correct http agent for proxy', async () => {
       process.env.HTTP_PROXY = 'http://someproxy.com:8080';
-      const client = new CliRequestClient('blah', logger, false, { defaults: {} });
+      const client = new CliRequestClient('blah', logger, { defaults: {} }, false);
       const httpAgent = client.http.defaults.httpsAgent;
       expect(httpAgent.proxy.host).to.equal('someproxy.com');
       expect(httpAgent.proxy.port).to.equal(8080);
+      expect(client.keytarWord).to.equal('');
     });
 
     test
@@ -65,7 +71,6 @@ describe('services', () => {
       })
       .it('correctly serializes array parameters', async () => {
         const client = new CliRequestClient('bleh', logger);
-        expect(client.keytarWord).to.equal('');
         const response = await client.request({
           method: 'GET',
           uri: 'https://foo.com/bar',
