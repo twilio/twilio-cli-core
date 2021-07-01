@@ -25,6 +25,7 @@ class TwilioClientCommand extends BaseCommand {
     await super.run();
 
     this.currentProfile = this.userConfig.getProfileById(this.flags.profile);
+    let keytarFlag = false;
 
     const reportUnconfigured = (verb, message = '') => {
       const profileParam = this.flags.profile ? ` --profile "${this.flags.profile}"` : '';
@@ -47,9 +48,10 @@ class TwilioClientCommand extends BaseCommand {
       }
       this.currentProfile.apiKey = creds.apiKey;
       this.currentProfile.apiSecret = creds.apiSecret;
+      keytarFlag = true;
     }
 
-    this.httpClient = new CliRequestClient(this.id, this.logger);
+    this.httpClient = new CliRequestClient(this.id, this.logger, undefined, keytarFlag);
   }
 
   async catch(error) {
