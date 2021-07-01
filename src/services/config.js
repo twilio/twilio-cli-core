@@ -151,7 +151,6 @@ class ConfigData {
 
     //  Remove if existing in historical projects.
     if (existing) {
-      // Remove from Keytar : DI-1352
       this.projects = this.projects.filter((p) => p.id !== existing.id);
     }
 
