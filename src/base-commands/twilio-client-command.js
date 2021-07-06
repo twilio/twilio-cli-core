@@ -26,15 +26,22 @@ class TwilioClientCommand extends BaseCommand {
 
     this.currentProfile = this.userConfig.getProfileById(this.flags.profile);
 
-    const reportUnconfigured = (verb, message = '') => {
+    const reportUnconfigured = (verb, message = '', commandName = 'create') => {
       const profileParam = this.flags.profile ? ` --profile "${this.flags.profile}"` : '';
-      throw new TwilioCliError(`To ${verb} the profile, run:\n\n  twilio profiles:create${profileParam}${message}`);
+      throw new TwilioCliError(
+        `To ${verb} the profile, run:\n\n  twilio profiles:${commandName}${profileParam}${message}`,
+      );
     };
 
     if (!this.currentProfile) {
       const profileName = this.flags.profile ? ` "${this.flags.profile}"` : '';
-      this.logger.error(`Could not find profile${profileName}.`);
-      reportUnconfigured('create', `\n\n${HELP_ENVIRONMENT_VARIABLES}`);
+      if (Object.keys(this.userConfig.profiles).length !== 0 && !profileName) {
+        this.logger.error(`There is no active profile set.`);
+        reportUnconfigured('activate', '', 'use');
+      } else {
+        this.logger.error(`Could not find profile${profileName}.`);
+        reportUnconfigured('create', `\n\n${HELP_ENVIRONMENT_VARIABLES}`);
+      }
     }
 
     this.logger.debug(`Using profile: ${this.currentProfile.id}`);

@@ -117,12 +117,8 @@ class ConfigData {
         profile = this.getProfileFromConfigFileById(this.activeProfile);
       }
 
-      // Ensure order of profiles DI-1479
       if (!profile) {
-        profile = this.projects[0] || Object.values(this.profiles)[0];
-        if (profile && !profile.hasOwnProperty('id')) {
-          profile.id = Object.keys(this.profiles)[0];
-        }
+        profile = this.projects[0];
       }
     }
     return profile;
