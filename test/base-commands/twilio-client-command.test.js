@@ -64,6 +64,7 @@ describe('base-commands', () => {
           } else {
             ctx.userConfig.addProfile('MyFirstProfile', constants.FAKE_ACCOUNT_SID);
             ctx.userConfig.addProfile('region-edge-testing', constants.FAKE_ACCOUNT_SID, configRegion);
+            ctx.userConfig.setActiveProfile('MyFirstProfile');
           }
         })
         .twilioCliEnv(Config)
@@ -124,6 +125,18 @@ describe('base-commands', () => {
         expect(ctx.stderr).to.contain('To create the profile, run:');
         expect(ctx.stderr).to.contain('twilio profiles:create --profile "alt"');
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
+      });
+
+    setUpTest(['-l', 'debug'], {
+      setUpUserConfig: (x) => {
+        x.addProfile('profile1', constants.FAKE_ACCOUNT_SID);
+      },
+    })
+      .exit(1)
+      .it('should fail for a no active profile', (ctx) => {
+        expect(ctx.stderr).to.contain('There is no active profile set.');
+        expect(ctx.stderr).to.contain(' To activate the profile, run:');
+        expect(ctx.stderr).to.contain('twilio profiles:use');
       });
 
     setUpTest(['-p', 'region-edge-testing']).it('should create a client for a non-default profile', (ctx) => {

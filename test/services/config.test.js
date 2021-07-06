@@ -60,9 +60,9 @@ describe('services', () => {
         expect(profile).to.be.undefined;
       });
 
-      test.it('should return first profile if it exists, and no env vars', () => {
+      test.it('should return first profile if project exists, and no env vars', () => {
         const configData = new ConfigData();
-        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('firstProfile', constants.FAKE_ACCOUNT_SID);
 
         const profile = configData.getProfileById();
         expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
@@ -131,7 +131,7 @@ describe('services', () => {
         configData.profiles = {};
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
 
-        const profile = configData.getProfileById();
+        const profile = configData.getProfileById('firstProfile');
         expect(profile.apiKey).to.be.undefined;
         expect(profile.apiSecret).to.be.undefined;
       });
@@ -155,9 +155,19 @@ describe('services', () => {
     });
 
     describe('ConfigData.activeProfile', () => {
-      test.it('should return first profile when no active profile is set', () => {
+      test.it('should return undefined when no active profile is set and no projects are set', () => {
         const configData = new ConfigData();
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile('secondProfile', 'new_account_SID');
+        configData.addProfile('thirdProfile', 'newest_account_SID');
+        const active = configData.getActiveProfile();
+
+        expect(active).to.be.undefined;
+      });
+
+      test.it('should return first profile when no active profile is set and with projects', () => {
+        const configData = new ConfigData();
+        configData.addProject('firstProfile', constants.FAKE_ACCOUNT_SID);
         configData.addProfile('secondProfile', 'new_account_SID');
         configData.addProfile('thirdProfile', 'newest_account_SID');
         const active = configData.getActiveProfile();
@@ -193,11 +203,11 @@ describe('services', () => {
         expect(configData.profiles.testProfile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
       });
 
-      test.it('should not allow the active profile to not exist', () => {
+      test.it('should allow the active profile to not exist', () => {
         const configData = new ConfigData();
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
         expect(configData.setActiveProfile('secondProfile')).to.be.undefined;
-        expect(configData.getActiveProfile().id).to.equal('firstProfile');
+        expect(configData.getActiveProfile()).to.be.undefined;
       });
 
       test.it('should return undefined if profile does not exist and there are no profiles configured', () => {
