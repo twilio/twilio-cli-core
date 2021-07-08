@@ -16,4 +16,5 @@ module.exports = {
     secureStorage: require('./services/secure-storage'),
   },
   configureEnv: require('./services/env'),
+  postInstallUtility: require('./services/post-install-utility'),
 };
