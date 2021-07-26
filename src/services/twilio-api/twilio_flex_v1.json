@@ -789,30 +789,6 @@
           "GA"
         ]
       },
-      "post": {
-        "description": "",
-        "operationId": "UpdateConfiguration",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/flex.v1.configuration"
-                }
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "accountSid_authToken": []
-          }
-        ],
-        "x-maturity": [
-          "GA"
-        ]
-      },
       "servers": [
         {
           "url": "https://flex-api.twilio.com"
