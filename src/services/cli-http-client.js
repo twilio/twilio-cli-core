@@ -14,7 +14,7 @@ const NETWORK_ERROR_CODES = new Set(['ETIMEDOUT', 'ESOCKETTIMEDOUT', 'ECONNABORT
 const STANDARD_HEADERS = ['user-agent', 'accept-charset', 'connection', 'authorization', 'accept', 'content-type'];
 
 class CliRequestClient {
-  constructor(commandName, logger, http) {
+  constructor(commandName, logger, http, keytarFlag = false) {
     this.commandName = commandName;
     this.logger = logger;
     this.http = http || require('axios');
@@ -26,6 +26,7 @@ class CliRequestClient {
       this.http.defaults.proxy = false;
       this.http.defaults.httpsAgent = new HttpsProxyAgent(process.env.HTTP_PROXY);
     }
+    this.keytarWord = keytarFlag ? 'keytar' : '';
   }
 
   /**
@@ -67,7 +68,8 @@ class CliRequestClient {
     const componentInfo = (headers['User-Agent'] || '').replace(' (', '|').replace(')', '').split('|');
     componentInfo.push(`${os.platform()} ${os.release()} ${os.arch()}`);
     componentInfo.push(this.commandName);
-    headers['User-Agent'] = `${pkg.name}/${pkg.version} (${componentInfo.join(', ')})`;
+    componentInfo.push(this.keytarWord);
+    headers['User-Agent'] = `${pkg.name}/${pkg.version} (${componentInfo.filter(Boolean).join(', ')})`;
 
     const options = {
       timeout: opts.timeout || 30000,
