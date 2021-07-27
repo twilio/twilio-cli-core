@@ -105,13 +105,6 @@ describe('base-commands', () => {
         expect(ctx.stderr).to.contain('-p, --profile PROFILE');
       });
 
-    setUpTest(['-p', ''], { configRequireProfileInput: true })
-      .exit(1)
-      .it('should fail if requireProfileInput attribute in config is set but flag is passed as empty string', (ctx) => {
-        expect(ctx.stderr).to.contain('Error: Missing required flag:');
-        expect(ctx.stderr).to.contain('-p, --profile PROFILE');
-      });
-
     setUpTest(['-p', 'region-edge-testing'], { configRequireProfileInput: true }).it(
       'should use the profile passed, when requireProfileInput flag is set in config and valid profile is passed',
       (ctx) => {
