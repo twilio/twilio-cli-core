@@ -24,6 +24,12 @@ class TwilioClientCommand extends BaseCommand {
   async run() {
     await super.run();
 
+    // check if profile flag is required as per the config
+    if (this.userConfig.requireProfileInput && !this.flags.profile) {
+      throw new TwilioCliError(
+        `Error: Missing required flag:\n -p, --profile PROFILE  ${TwilioClientCommand.flags.profile.description} To disable this check run:\n\n  twilio config:set --no-require-profile-input`,
+      );
+    }
     this.currentProfile = this.userConfig.getProfileById(this.flags.profile);
 
     const reportUnconfigured = (verb, message = '', commandName = 'create') => {

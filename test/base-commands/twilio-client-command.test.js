@@ -42,12 +42,14 @@ describe('base-commands', () => {
         envEdge,
         configRegion = 'configRegion',
         configEdge,
+        configRequireProfileInput,
       } = {},
     ) => {
       return test
         .do((ctx) => {
           ctx.userConfig = new ConfigData();
           ctx.userConfig.edge = configEdge;
+          ctx.userConfig.requireProfileInput = configRequireProfileInput;
 
           if (envRegion) {
             process.env.TWILIO_REGION = envRegion;
@@ -88,6 +90,34 @@ describe('base-commands', () => {
           }
         });
     };
+
+    setUpTest([], { configRequireProfileInput: true })
+      .exit(1)
+      .it('should fail if requireProfileInput attribute in config is set but flag is not passed', (ctx) => {
+        expect(ctx.stderr).to.contain('Error: Missing required flag:');
+        expect(ctx.stderr).to.contain('-p, --profile PROFILE');
+      });
+
+    setUpTest(['-p', ''], { configRequireProfileInput: true })
+      .exit(1)
+      .it('should fail if requireProfileInput attribute in config is set but flag is passed as empty string', (ctx) => {
+        expect(ctx.stderr).to.contain('Error: Missing required flag:');
+        expect(ctx.stderr).to.contain('-p, --profile PROFILE');
+      });
+
+    setUpTest(['-p', ''], { configRequireProfileInput: true })
+      .exit(1)
+      .it('should fail if requireProfileInput attribute in config is set but flag is passed as empty string', (ctx) => {
+        expect(ctx.stderr).to.contain('Error: Missing required flag:');
+        expect(ctx.stderr).to.contain('-p, --profile PROFILE');
+      });
+
+    setUpTest(['-p', 'region-edge-testing'], { configRequireProfileInput: true }).it(
+      'should use the profile passed, when requireProfileInput flag is set in config and valid profile is passed',
+      (ctx) => {
+        expect(ctx.testCmd.currentProfile.id).to.equal('region-edge-testing');
+      },
+    );
 
     setUpTest(['-l', 'debug']).it('should create a client for the active profile', (ctx) => {
       expect(ctx.stderr).to.contain('MyFirstProfile');
