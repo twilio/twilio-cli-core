@@ -15,6 +15,10 @@ class ConfigDataProfile {
   }
 }
 
+//
+// Test lines for sonarCloud coverage
+//
+
 class ConfigData {
   constructor() {
     this.edge = undefined;
