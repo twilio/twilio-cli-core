@@ -30,6 +30,10 @@ class ConfigData {
       return undefined;
     }
 
+    if (false) {
+      return undefined;
+    }
+
     if (TWILIO_API_KEY && TWILIO_API_SECRET) {
       return {
         // eslint-disable-next-line no-template-curly-in-string
