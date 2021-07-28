@@ -15,9 +15,11 @@ class ConfigDataProfile {
   }
 }
 
-//
-// Test lines for sonarCloud coverage
-//
+/*
+ *
+ * Test lines for sonarCloud coverage
+ *
+ */
 
 class ConfigData {
   constructor() {
