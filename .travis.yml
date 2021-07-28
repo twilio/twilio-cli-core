@@ -7,9 +7,6 @@ node_js:
 before_install:
   - sudo apt-get update
   - sudo apt-get install -y libsecret-1-dev
-script:
-  - npm run test
-  - sonar-scanner
 deploy:
   provider: npm
   email: team_interfaces@twilio.com
@@ -27,8 +24,3 @@ notifications:
     on_failure: change
     rooms:
       secure: co5l1LIDXNac0VVXrOaOvpqjqkVraMDCW5uErSQ9W3KUSjyRf88sukrRL83xIFMu0U4+W6bj8aHU7DCaE9M1yyndv/GFjr7oAYMdc2VbcHCCMGGBZp3SAo/OgIqoS+GZJMaN2D0Hy9PtkMuzXiZ374WIraj6XJQjCb289WUZZUJJ9f7xEh9ewrIsNXAorfLlNxoxXZbMAmq51j85yen+y0uOKJyV9IlRdp+XGSGPZEFYTDkJgqf0Adah+RfCfaSOzpDWneqLdiXNun6d9yn+0Ok9d9odsg9lFMYyfC2s58R5evxQJrW6lXmV+wwXNZJRxVX3dhwRm1LmKlXs/fmmhL03tWWNCx9+brzq/KniuXhduQOlO181C3HY76LOLJvhig/UYzOTNccxVVVkFTnL4nTqxOO9tQl9FOj0x8X+8BPit9cVgkzXlmD0delDANE7rX0b8kkSzhL+MH5MX85k+3KBlVnTsfDRu+9iPaCt/+GSzFN2u4pIggRVFeea0hnljCIL3U1ZxNJdWDjfQzWuqE5jUELshmftr32Ty5cbn7pfrFfYQ+4kVeAMjweoT5+OcqAYihaD811ItzPO6eApaTZM6x6ZEbtLuvYAI+2AbOnEBqgfMcbzgZFIvhrnzF5ZdmKWe+8+2oENROuS1xkRHSrMr5ipahdSage19zNnO0s=
-addons:
-  sonarcloud:
-    organization: twilio
-    token:
-      secure: Pun1o012b/O/Vp8BQBrUEjJehcOgAisn9Wtyy4yBMvyzhJdnq8SWYgieHn9VhGaswhgkPHHDaBpCgvUsfStzMQAUsmuWTE9A9JoTiAbl+eatba8Q8RV+S6HL8kSzn3lsgrEM0a+63oEsiYmqyuXhOCYgYuY7TOWah3a85iMnCkwTiWqUZ5waP6yqm3IQmhocDqiOkP97ZGRxi31jqzHaz6otGffc9bVy0QpvhzOe8t6PS0Xx555m4MSV9kznSDNMhe5i6DThFtGyCx1rWnRtf09AjmkFKA8Xak9pjA9jBmMDr4DyfmKMB6hhQ78oYWfw7pHIlcdbZLA8bOajlPvL6/ihWIfIWjh0GLA46YJ7XkneL/yhZz8tkJNGveUQNxAqjDu+6pedIcoU2zHOrjHxPZ6250G5CQGUfm8UEk7ddBDo5stT5XqVDyU2s8COyqbAkIlZTt/xxj3ygP+f9+/aYbvxZSi5xrh4IqifOsZlyvBFvZ2o2B89Hb4PtarKSXrYDcnQh44PgWXU1Y9bwfo7ME7nC8VzzJonAAbaPjIuK+h9OvSb2ANWwigqlLi+3BjiNUf9ZByjr6Awp5oiupAsWb43Rm352dY8PbTm6vNlqt7jGfjlm0vOOLL86a++OkEwntsDAbxlSjFCKD+jrbeR56VXcvdglRnnkdSjhp9UWZE=
