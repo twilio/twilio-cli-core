@@ -32,6 +32,7 @@ class ConfigData {
     this.projects = [];
     this.activeProfile = null;
     this.profiles = {};
+    this.requireProfileInput = undefined;
   }
 
   getProfileFromEnvironment() {
@@ -182,6 +183,7 @@ class ConfigData {
   loadFromObject(configObj) {
     this.edge = configObj.edge;
     this.email = configObj.email || {};
+    this.requireProfileInput = configObj.requireProfileInput;
     this.prompts = configObj.prompts || {};
     // Note the historical 'projects' naming.
     configObj.projects = configObj.projects || [];
@@ -217,6 +219,7 @@ class Config {
     configData = {
       edge: configData.edge,
       email: configData.email,
+      requireProfileInput: configData.requireProfileInput,
       prompts: configData.prompts,
       // Note the historical 'projects' naming.
       projects: configData.projects,
