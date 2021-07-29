@@ -1,6 +1,12 @@
 twilio-cli-core changelog
 =====================
 
+[2021-07-29] Version 5.27.1-rc
+------------------------------
+**Library - Fix**
+- [PR #137](https://github.com/twilio/twilio-cli-core/pull/137): Update release-feature-branch with main. Thanks to [@ravali-rimmalapudi](https://github.com/ravali-rimmalapudi)!
+
+
 [2021-07-29] Version 5.27.0
 ---------------------------
 **Api**

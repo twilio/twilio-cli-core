@@ -8879,7 +8879,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Api",
-    "version": "5.27.0"
+    "version": "5.27.1-rc"
   },
   "openapi": "3.0.1",
   "paths": {
