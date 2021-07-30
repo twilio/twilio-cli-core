@@ -21,7 +21,7 @@
   "scripts": {
     "lint": "eslint --ext js --ext jsx src/ test/",
     "lint:fix": "npm run lint -- --fix",
-    "test": "nyc --check-coverage --lines 90 --reporter=html --reporter=text mocha --forbid-only \"test/**/*.test.js\"",
+    "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
     "posttest": "eslint --ignore-path .gitignore . && npm audit --audit-level=moderate"
   },
   "dependencies": {
