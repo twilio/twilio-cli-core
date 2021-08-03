@@ -37,10 +37,15 @@ class BaseCommand extends Command {
     this.flags = flags;
     await this.loadConfig();
 
-    this.outputProcessor = OutputFormats[this.flags['cli-output-format'] || DEFAULT_OUTPUT_FORMAT];
+    this.outputProcessor = this.flags.silent
+      ? OutputFormats.none
+      : OutputFormats[this.flags['cli-output-format'] || DEFAULT_OUTPUT_FORMAT];
 
     this.logger = logger;
-    this.logger.config.level = LoggingLevel[flags['cli-log-level'] || DEFAULT_LOG_LEVEL];
+    // Give precedence to silent flag
+    this.logger.config.level = this.flags.silent
+      ? LoggingLevel.none
+      : LoggingLevel[flags['cli-log-level'] || DEFAULT_LOG_LEVEL];
 
     this.logger.debug(`Config File: ${this.configFile.filePath}`);
 
@@ -113,6 +118,11 @@ class BaseCommand extends Command {
   }
 
   output(fullData, properties, options) {
+    if (!this.outputProcessor) {
+      // Silenced output
+      return;
+    }
+
     const dataArray = fullData.constructor === Array ? fullData : [fullData];
 
     if (dataArray.length === 0) {
@@ -203,6 +213,11 @@ BaseCommand.flags = {
     default: DEFAULT_OUTPUT_FORMAT,
     options: Object.keys(OutputFormats),
     description: 'Format of command output.',
+  }),
+
+  silent: oclifFlags.boolean({
+    description: 'Suppress output and logs. This is a shorthand for "-l none -o none".',
+    default: false,
   }),
 };
 
