@@ -65,12 +65,15 @@ class CliRequestClient {
       headers.Authorization = `Basic ${b64Auth}`;
     }
 
-    const componentInfo = (headers['User-Agent'] || '').replace(' (', '|').replace(')', '').split('|');
-    componentInfo.push(`${os.platform()} ${os.release()} ${os.arch()}`);
+    
+    const componentInfo = [];
+    componentInfo.push(`(${os.platform()} ${os.arch()})`);
+    const userAgentArr = (headers['User-Agent'] || '').split(' ');
+    componentInfo.push(userAgentArr[0]); //extensions
+    componentInfo.push(userAgentArr[3]); //extensions
     componentInfo.push(this.commandName);
     componentInfo.push(this.keytarWord);
-    headers['User-Agent'] = `${pkg.name}/${pkg.version} (${componentInfo.filter(Boolean).join(', ')})`;
-
+    headers['User-Agent'] = `${pkg.name}/${pkg.version} ${componentInfo.filter(Boolean).join(' ')}`;
     const options = {
       timeout: opts.timeout || 30000,
       maxRedirects: opts.allowRedirects ? 10 : 0,
