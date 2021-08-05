@@ -1,8 +1,11 @@
+const os = require('os');
+
 const { expect, test } = require('@twilio/cli-test');
 
 const CliRequestClient = require('../../src/services/cli-http-client');
 const { TwilioCliError } = require('../../src/services/error');
 const { Logger, LoggingLevel } = require('../../src/services/messaging/logging');
+const pkg = require('../../package.json');
 
 describe('services', () => {
   describe('cli-http-client', () => {
@@ -23,7 +26,7 @@ describe('services', () => {
       );
       expect(client.commandName).to.equal('blah');
       expect(client.keytarWord).to.equal('keytar');
-      expect(client.helperLibrary).to.equal('blah');
+      expect(client.pluginName).to.equal('blah');
       const response = await client.request({
         method: 'POST',
         uri: 'https://foo.com/bar',
@@ -43,7 +46,7 @@ describe('services', () => {
       const client = new CliRequestClient('blah', logger, { defaults: {} }, false, 'blah');
       const httpAgent = client.http.defaults.httpsAgent;
       expect(client.keytarWord).to.equal('');
-      expect(client.helperLibrary).to.equal('blah');
+      expect(client.pluginName).to.equal('blah');
       expect(httpAgent.proxy.host).to.equal('someproxy.com');
       expect(httpAgent.proxy.port).to.equal(8080);
     });
@@ -66,6 +69,45 @@ describe('services', () => {
         const client = new CliRequestClient('bleh', logger);
         const request = client.request({ method: 'GET', uri: 'https://foo.com/bar' });
         await expect(request).to.be.rejectedWith(TwilioCliError);
+      });
+
+    test
+      .nock('https://foo.com', (api) => {
+        api.get('/bar').reply(200, '', {
+          'User-Agent': `twilio-cli/2.27.1 ${pkg.name}\/${
+            pkg.version
+          } \(${os.platform()} ${os.arch()}\) dummyCommand keytar`,
+        });
+      })
+      .it('correctly sets user-agent', async () => {
+        const client = new CliRequestClient('dummyCommand', logger, '', true, 'twilio-cli/2.27.1');
+        const response = await client.request({
+          method: 'GET',
+          uri: 'https://foo.com/bar',
+        });
+        expect(client.keytarWord).to.equal('keytar');
+        expect(client.lastRequest.headers['User-Agent']).to.equal(
+          `twilio-cli/2.27.1 ${pkg.name}\/${pkg.version} \(${os.platform()} ${os.arch()}\) dummyCommand keytar`,
+        );
+        expect(response.statusCode).to.equal(200);
+      });
+
+    test
+      .nock('https://foo.com', (api) => {
+        api.get('/bar').reply(200, '', {
+          'User-Agent': ` ${pkg.name}\/${pkg.version} \(${os.platform()} ${os.arch()}\) dummyCommand keytar`,
+        });
+      })
+      .it('correctly sets user-agent with empty plugin value', async () => {
+        const client = new CliRequestClient('dummyCommand', logger, '', true, '');
+        const response = await client.request({
+          method: 'GET',
+          uri: 'https://foo.com/bar',
+        });
+        expect(client.lastRequest.headers['User-Agent']).to.equal(
+          ` ${pkg.name}\/${pkg.version} \(${os.platform()} ${os.arch()}\) dummyCommand keytar`,
+        );
+        expect(response.statusCode).to.equal(200);
       });
 
     test
