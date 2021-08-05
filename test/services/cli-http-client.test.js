@@ -19,9 +19,11 @@ describe('services', () => {
           return { status: 200, data: 'foo', headers: {} };
         },
         true,
+        'blah',
       );
       expect(client.commandName).to.equal('blah');
       expect(client.keytarWord).to.equal('keytar');
+      expect(client.helperLibrary).to.equal('blah');
       const response = await client.request({
         method: 'POST',
         uri: 'https://foo.com/bar',
@@ -38,9 +40,10 @@ describe('services', () => {
 
     test.it('should add the correct http agent for proxy', async () => {
       process.env.HTTP_PROXY = 'http://someproxy.com:8080';
-      const client = new CliRequestClient('blah', logger, { defaults: {} }, false);
+      const client = new CliRequestClient('blah', logger, { defaults: {} }, false, 'blah');
       const httpAgent = client.http.defaults.httpsAgent;
       expect(client.keytarWord).to.equal('');
+      expect(client.helperLibrary).to.equal('blah');
       expect(httpAgent.proxy.host).to.equal('someproxy.com');
       expect(httpAgent.proxy.port).to.equal(8080);
     });

@@ -14,10 +14,10 @@ const NETWORK_ERROR_CODES = new Set(['ETIMEDOUT', 'ESOCKETTIMEDOUT', 'ECONNABORT
 const STANDARD_HEADERS = ['user-agent', 'accept-charset', 'connection', 'authorization', 'accept', 'content-type'];
 
 class CliRequestClient {
-  constructor(commandName, logger, http, keytarFlag = false, helper_library ='') {
+  constructor(commandName, logger, http, keytarFlag = false, extensions = ' ') {
     this.commandName = commandName;
     this.logger = logger;
-    this.helper_library = helper_library;
+    this.helperLibrary = extensions;
     this.http = http || require('axios');
     if (process.env.HTTP_PROXY) {
       /*
@@ -40,7 +40,7 @@ class CliRequestClient {
    * @param {string} [opts.password] - The password used for auth
    * @param {object} [opts.headers] - The request headers
    * @param {object} [opts.params] - The request params
-   * @param {object} [opts.data] - The request data 
+   * @param {object} [opts.data] - The request data
    * @param {int} [opts.timeout=30000] - The request timeout in milliseconds
    * @param {boolean} [opts.allowRedirects] - Should the client follow redirects
    * @param {boolean} [opts.forever] - Set to true to use the forever-agent
@@ -65,16 +65,15 @@ class CliRequestClient {
       const b64Auth = Buffer.from(`${opts.username}:${opts.password}`).toString('base64');
       headers.Authorization = `Basic ${b64Auth}`;
     }
-
-    
     const componentInfo = [];
     componentInfo.push(`(${os.platform()} ${os.arch()})`);
     const userAgentArr = (headers['User-Agent'] || '').split(' ');
-    componentInfo.push(userAgentArr[0]); //extensions
-    componentInfo.push(userAgentArr[3]); //extensions
+    componentInfo.push(userAgentArr[0]); // extensions
+    componentInfo.push(userAgentArr[3]); // extensions
     componentInfo.push(this.commandName);
     componentInfo.push(this.keytarWord);
-    headers['User-Agent'] = this.helper_library + ` ${pkg.name}/${pkg.version} ${componentInfo.filter(Boolean).join(' ')}`;
+    headers['User-Agent'] = `${this.helperLibrary} ${pkg.name}/${pkg.version} ${componentInfo.filter(Boolean).join(' ')}`;
+
     const options = {
       timeout: opts.timeout || 30000,
       maxRedirects: opts.allowRedirects ? 10 : 0,
