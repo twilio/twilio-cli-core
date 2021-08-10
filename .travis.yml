@@ -5,11 +5,11 @@ node_js:
   - lts/*
   - '10'
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install -y libsecret-1-dev
+- sudo apt-get update
+- sudo apt-get install -y libsecret-1-dev
 script:
-  - npm run test
-  - sonar-scanner
+- npm run test
+- sonar-scanner
 deploy:
   provider: npm
   email: team_interfaces@twilio.com
@@ -18,7 +18,7 @@ deploy:
   edge: true
   on:
     tags: true
-    condition: $TRAVIS_TAG =~ ^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$
+    condition: "$TRAVIS_TAG =~ ^[[:digit:]]+\\.[[:digit:]]+\\.[[:digit:]]+$"
     node: lts/*
 notifications:
   slack:
@@ -32,4 +32,4 @@ addons:
   sonarcloud:
     organization: twilio
     token:
-      secure: Pun1o012b/O/Vp8BQBrUEjJehcOgAisn9Wtyy4yBMvyzhJdnq8SWYgieHn9VhGaswhgkPHHDaBpCgvUsfStzMQAUsmuWTE9A9JoTiAbl+eatba8Q8RV+S6HL8kSzn3lsgrEM0a+63oEsiYmqyuXhOCYgYuY7TOWah3a85iMnCkwTiWqUZ5waP6yqm3IQmhocDqiOkP97ZGRxi31jqzHaz6otGffc9bVy0QpvhzOe8t6PS0Xx555m4MSV9kznSDNMhe5i6DThFtGyCx1rWnRtf09AjmkFKA8Xak9pjA9jBmMDr4DyfmKMB6hhQ78oYWfw7pHIlcdbZLA8bOajlPvL6/ihWIfIWjh0GLA46YJ7XkneL/yhZz8tkJNGveUQNxAqjDu+6pedIcoU2zHOrjHxPZ6250G5CQGUfm8UEk7ddBDo5stT5XqVDyU2s8COyqbAkIlZTt/xxj3ygP+f9+/aYbvxZSi5xrh4IqifOsZlyvBFvZ2o2B89Hb4PtarKSXrYDcnQh44PgWXU1Y9bwfo7ME7nC8VzzJonAAbaPjIuK+h9OvSb2ANWwigqlLi+3BjiNUf9ZByjr6Awp5oiupAsWb43Rm352dY8PbTm6vNlqt7jGfjlm0vOOLL86a++OkEwntsDAbxlSjFCKD+jrbeR56VXcvdglRnnkdSjhp9UWZE=
+      secure: XXvLAzUmE28YrSIS9WCpS5OxX3NbryHwUswjdPpncKIO/6xbQpWteFUVplBL2hj4yWFsfvoz0jGBTPgUe8jy0DPLHkbP3PIkXYB2UvNSC1N5YEDOmRSXzJQYpIP+eXvlE1lUy9GdZSuolfdXElLALq25Eg3WF2KZAOBZyu63k0lI37zLOdX2yW3Vf96GCB5jUYpu1zSd8ojW0MWbLVmcyn39lkXD1M0IYJDEiPk0XORF7O3kgDPyCHY8UyMuqibZO1z5XHYDH1Xl5377woBqi+bn1er5e8/h5MKYBSXrhUuRiZHaxbOLP2bF0Tsz/q/CKiWktzumknHSVJugSEj+mtRjCGuU6M06z7zd83mCseupVmsUT4y6hVzWe9vejvL4sUUcgwDtxqUp/OXlQNgTxn2N/bUNc8udc5L6sNAh/y9OaHib3SIhxCO8a0Rg7wolTa9HFWet4dnUISUG0n1vBlIKF5zdK+VJNCmZf1TbbCCfGcg5oSB6GlBuXu31r7xw6UA+LBsqCZxhnGyLhFwygtVw051m1gBun9sH4FcHOhuudajTk7hnpz0bYuGrpamVJrsOoMW1+TD7BJk1379mjUMMt2rV5eBXhV7jG99Wz1LxWmYgoXIMf5u1JO3dwzoXi2ECxCzr+XkfXtKszIe2mkVM7Ou3vj5ia4ySaQTyF3g=
