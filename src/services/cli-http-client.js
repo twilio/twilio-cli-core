@@ -14,9 +14,10 @@ const NETWORK_ERROR_CODES = new Set(['ETIMEDOUT', 'ESOCKETTIMEDOUT', 'ECONNABORT
 const STANDARD_HEADERS = ['user-agent', 'accept-charset', 'connection', 'authorization', 'accept', 'content-type'];
 
 class CliRequestClient {
-  constructor(commandName, logger, http, keytarFlag = false) {
+  constructor(commandName, logger, http, keytarFlag = false, extensions = ' ') {
     this.commandName = commandName;
     this.logger = logger;
+    this.pluginName = extensions;
     this.http = http || require('axios');
     if (process.env.HTTP_PROXY) {
       /*
@@ -64,12 +65,15 @@ class CliRequestClient {
       const b64Auth = Buffer.from(`${opts.username}:${opts.password}`).toString('base64');
       headers.Authorization = `Basic ${b64Auth}`;
     }
-
-    const componentInfo = (headers['User-Agent'] || '').replace(' (', '|').replace(')', '').split('|');
-    componentInfo.push(`${os.platform()} ${os.release()} ${os.arch()}`);
-    componentInfo.push(this.commandName);
-    componentInfo.push(this.keytarWord);
-    headers['User-Agent'] = `${pkg.name}/${pkg.version} (${componentInfo.filter(Boolean).join(', ')})`;
+    // User-Agent will have these info : <plugin/version> <core-api-lib>/<core-api-lib-version> (<os-name> <os-arch>) <extensions>
+    const componentInfo = [];
+    componentInfo.push(`(${os.platform()} ${os.arch()})`); // (<os-name> <os-arch>)
+    const userAgentArr = (headers['User-Agent'] || ' ').split(' '); // contains twilio-node/version (darwin x64) node/v16.4.2
+    componentInfo.push(userAgentArr[0]); // Api client version
+    componentInfo.push(userAgentArr[3]); // nodejs version
+    componentInfo.push(this.commandName); // cli-command
+    componentInfo.push(this.keytarWord); // keytar flag
+    headers['User-Agent'] = `${this.pluginName} ${pkg.name}/${pkg.version} ${componentInfo.filter(Boolean).join(' ')}`;
 
     const options = {
       timeout: opts.timeout || 30000,
