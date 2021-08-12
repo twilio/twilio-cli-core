@@ -620,7 +620,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Messaging",
-    "version": "5.27.1"
+    "version": "5.28.0"
   },
   "openapi": "3.0.1",
   "paths": {

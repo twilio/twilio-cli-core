@@ -1,6 +1,35 @@
 twilio-cli-core changelog
 =====================
 
+[2021-08-12] Version 5.28.0
+---------------------------
+**Library - Chore**
+- [PR #140](https://github.com/twilio/twilio-cli-core/pull/140): standardize User-Agent string: format and include more details. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+- [PR #139](https://github.com/twilio/twilio-cli-core/pull/139): Add none output and silent flag. Thanks to [@onuzbee](https://github.com/onuzbee)!
+- [PR #136](https://github.com/twilio/twilio-cli-core/pull/136): Integrate with Sonarcloud. Thanks to [@onuzbee](https://github.com/onuzbee)!
+
+**Library - Fix**
+- [PR #138](https://github.com/twilio/twilio-cli-core/pull/138): Added condition to deploy specific regex match tags. Thanks to [@ravali-rimmalapudi](https://github.com/ravali-rimmalapudi)!
+
+**Api**
+- Corrected the `price`, `call_sid_to_coach`, and `uri` data types for Conference, Participant, and Recording **(breaking change)**
+- Made documentation for property `time_limit` in the call api public. **(breaking change)**
+
+**Insights**
+- Added new endpoint to fetch Call Summaries
+
+**Messaging**
+- Revert brand registration api update to add brand_type field
+- Add brand_type field to a2p brand_registration api
+
+**Taskrouter**
+- Add `X-Rate-Limit-Limit`, `X-Rate-Limit-Remaining`, and `X-Rate-Limit-Config` as Response Headers to all TaskRouter endpoints
+
+**Verify**
+- Add `TemplateSid` optional parameter on Verification creation.
+- Include `whatsapp` as a channel type in the verifications API.
+
+
 [2021-07-29] Version 5.27.1
 ---------------------------
 **Messaging**
