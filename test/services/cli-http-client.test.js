@@ -125,5 +125,17 @@ describe('services', () => {
         });
         expect(response.statusCode).to.equal(200);
       });
+
+    test.it('correct exit code', () => {
+      const client = new CliRequestClient('bleh', logger);
+      const response = {
+        code: 20404,
+        message: 'error',
+        moreInfo: '',
+        details: '',
+      };
+      const { message, code } = client.formatErrorMessage(response);
+      expect(code).to.equal('20');
+    });
   });
 });
