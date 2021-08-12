@@ -68,7 +68,7 @@ class BaseCommand extends Command {
         this.logger.error(error.message);
         this.logger.debug(error.stack);
       }
-      this.exit(error.exitCode || 1);
+      this.exit(error.exitCode.toString().substring(0, 2) || 1);
     } else {
       // System errors
       let url = '';
