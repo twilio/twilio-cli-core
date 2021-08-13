@@ -4,11 +4,13 @@ node_js:
   # - node
   - lts/*
   - '10'
-cache:
-  npm: false
 before_install:
 - sudo apt-get update
 - sudo apt-get install -y libsecret-1-dev
+before-script:
+  if: npm audit --audit-level=moderate != 0
+  cache:
+    npm: false
 script:
 - npm run test
 - sonar-scanner
