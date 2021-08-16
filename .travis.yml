@@ -8,10 +8,11 @@ before_install:
 - sudo apt-get update
 - sudo apt-get install -y libsecret-1-dev
 before_script:
-  if: npm audit --audit-level=moderate != 0
-  cache:
-    npm: false
+  - CACHE_CLEAN = true
+  - if [[ npm audit --audit-level moderate != 0 ]] ; then CACHE_CLEAN = "false" ; fi
 script:
+  cache:
+  npm: $CACHE_CLEAN
 - npm run test
 - sonar-scanner
 deploy:
