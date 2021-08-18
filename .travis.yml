@@ -5,6 +5,7 @@ node_js:
   - lts/*
   - '10'
 cache:
+  if: $(npm audit --audit-level=moderate) = 1
   npm: false
 before_install:
 - sudo apt-get update
