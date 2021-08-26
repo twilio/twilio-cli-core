@@ -15,8 +15,8 @@ versionType=$(node scripts/get-version-type.js | tail -n -1)
 echo "Version type: $versionType"
 rm -rf OAI_CHANGES.md
 echo "Git configurations"
-git config --global user.email "lakshmiravali.rimmalapudi@gmail.com"
-git config --global user.name "lakshmiravali"
+git config --global user.email "team_interfaces+github@twilio.com"
+git config --global user.name "twilio-dx"
 branch=$(git branch --show-current)
 echo "Current branch: $branch"
 git add -A
