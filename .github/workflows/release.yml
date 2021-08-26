@@ -24,9 +24,6 @@ jobs:
       changeLog: ${{ steps.updateFolder.outputs.changeLog }}
     steps:
       - run: mkdir -p ~/oai_definitions/json
-      - run: cd ~/oai_definitions
-      - run: pwd
-      - run: ls
       - uses: actions/checkout@v2
         with:
           repository: 'twilio/twilio-oai'
@@ -68,13 +65,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git fetch --tags
-      - name: Getting tag
+      - name: Getting latest tag
         id: getTag
         run: |
           echo "::set-output name=TAG_NAME::$(git describe --tags $(git rev-list --tags --max-count=1))"
       - run: echo "${{steps.getTag.outputs.TAG_NAME}}"
-      - name: update release
-        id: update_release
+      - name: Update release
         uses: tubone24/update_release@v1.2.0
         env:
           GITHUB_TOKEN: ${{ github.token }}
