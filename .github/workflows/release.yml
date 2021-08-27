@@ -25,7 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
     outputs:
-      changeLog: ${{ steps.updateFolder.outputs.changeLog }}
+      changeLog: ${{ steps.updateSpecs.outputs.changeLog }}
+      versionType: ${{ steps.updateSpecs.outputs.versionType }}
     steps:
       - run: mkdir -p ~/oai_definitions/json
       - uses: actions/checkout@v2
@@ -36,13 +37,14 @@ jobs:
           cp -R spec/json/. ~/oai_definitions/json/
           cp -R CHANGES.md ~/oai_definitions/CHANGES.md
       - uses: actions/checkout@v2
-      - name: Update OAI folder
-        id: updateFolder
+      - name: Update OAI specs
+        id: updateSpecs
         run: |
           npm install
           cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
           source scripts/update-api-spec-with-changelog.sh
           echo "::set-output name=changeLog::$changeLog"
+          echo "::set-output name=versionType::$versionType"
   release:
     runs-on: ubuntu-latest
     needs: [updateAPIDefinitions]
@@ -90,7 +92,8 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: Cli Release
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.CLI_ACCESS_TOKEN }}
           repo: twilio/twilio-cli
           ref: ${{ github.event.inputs.cliBranch }}
-          inputs: '{ "changeLog": "${{needs.updateAPIDefinitions.outputs.changeLog}}" }'
+          inputs: '{ "changeLog": ${{ toJSON(needs.updateAPIDefinitions.outputs.changeLog) }},
+                     "versionType": "${{needs.updateAPIDefinitions.outputs.versionType}}" }'
