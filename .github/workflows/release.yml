@@ -13,7 +13,7 @@ jobs:
         node-version: [10.x]
     steps:
       - name: Checkout to cli-core repo
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - run: npm install
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -32,9 +32,9 @@ jobs:
       version-type: ${{ steps.update-specs.outputs.version-type }}
     steps:
       - name: Create temporary folder for copying json files fom OAI repo
-      - run: mkdir -p ~/oai_definitions/json
+        run: mkdir -p ~/oai_definitions/json
       - name: Checkout to OAI repo
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
         with:
           repository: 'twilio/twilio-oai'
           token:  ${{ secrets.OAI_TOKEN }}
@@ -42,7 +42,7 @@ jobs:
           cp -R spec/json/. ~/oai_definitions/json/
           cp -R CHANGES.md ~/oai_definitions/CHANGES.md
       - name: Checkout to cli-core repo
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: Update OAI specs
         id: update-specs
         run: |
@@ -56,8 +56,8 @@ jobs:
     needs: [update-api-specs]
     steps:
       - name: Checkout to cli-core repo
-      - uses: actions/checkout@v2
-        run: |
+        uses: actions/checkout@v2
+      - run: |
           git pull
           npm install
       - name: Use Node.js ${{ matrix.node-version }}
@@ -76,7 +76,7 @@ jobs:
     needs: [update-api-specs, release]
     steps:
       - name: Checkout to cli-core repo
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - run: git fetch --tags
       - name: Getting latest tag
         id: get-tag
