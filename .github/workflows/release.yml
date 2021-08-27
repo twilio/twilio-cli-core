@@ -102,5 +102,4 @@ jobs:
           token: ${{ secrets.CLI_ACCESS_TOKEN }}
           repo: twilio/twilio-cli
           ref: ${{ github.event.inputs.cli-branch }}
-          inputs: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }},
-                     "version-type": "${{needs.update-api-specs.outputs.version-type}}" }'
+          inputs: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}" }'
