@@ -62,7 +62,11 @@
   },
   "release": {
     "branches": [
-      "github_action_changes"
+      "main",
+      {
+        "name": "github_action_changes",
+        "prerelease": "rc"
+      }
     ],
     "plugins": [
       "@semantic-release/commit-analyzer",
