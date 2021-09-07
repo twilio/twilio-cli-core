@@ -1,7 +1,7 @@
 const fs = require('fs');
 const readline = require('readline');
 
-const { logger } = require('../src/services/messaging/logging');
+const { logger } = require('../../src/services/messaging/logging');
 
 const defaultVersionRegex = /(\d+)\.(\d+)\.(\d+)/;
 const defaultDateRegex = /\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/;
@@ -88,6 +88,10 @@ class ChangeLogHelper {
         try {
           this.logger.info('Updating the CHANGES.md');
           const data = fs.readFileSync(this.cliCoreChangelogFilename);
+          if (data.toString().includes(changeLog)) {
+            this.logger.info(`Provided changes are already in cli core changeLog: ${changeLog}`);
+            return '';
+          }
           const fd = fs.openSync(this.cliCoreChangelogFilename, 'w+');
           const insert = Buffer.from(changeLog);
           fs.writeSync(fd, insert, 0, insert.length, 0);
