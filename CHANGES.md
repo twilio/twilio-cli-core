@@ -1,3 +1,15 @@
+## [5.29.0-rc.1](https://github.com/twilio/twilio-cli-core/compare/5.28.1...5.29.0-rc.1) (2021-09-09)
+
+
+### Library - Features
+
+* Enable GitHub actions. ([01a4fc5](https://github.com/twilio/twilio-cli-core/commit/01a4fc5be7fe0074b35e6b40997b54ed3301623d))
+
+
+### Library - Fixes
+
+* Updated api definitions ([65bed32](https://github.com/twilio/twilio-cli-core/commit/65bed322fd5f67ed3d6389b536d862defbecc094))
+
 ---------------------------
 **Api**
 - Revert adding `siprec` resource
