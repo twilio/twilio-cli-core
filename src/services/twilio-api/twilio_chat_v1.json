@@ -764,7 +764,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Chat",
-    "version": "5.28.2"
+    "version": "5.28.3"
   },
   "openapi": "3.0.1",
   "paths": {

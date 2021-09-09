@@ -1,6 +1,13 @@
 twilio-cli-core changelog
 =====================
 
+[2021-09-09] Version 5.28.3
+---------------------------
+**Messaging**
+- Add Identity Status, Russell 3000, Tax Exempt Status and Should Skip SecVet fields for Brand Registrations
+- Add Should Skip Secondary Vetting optional flag parameter to create Brand API
+
+
 [2021-09-09] Version 5.28.2
 ---------------------------
 **Api**
