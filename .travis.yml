@@ -12,7 +12,6 @@ before_install:
 - sudo apt-get install -y libsecret-1-dev
 script:
 - npm run test
-- sonar-scanner
 deploy:
   provider: npm
   email: team_interfaces@twilio.com
