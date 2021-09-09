@@ -1,6 +1,21 @@
 twilio-cli-core changelog
 =====================
 
+[2021-09-09] Version 5.28.2
+---------------------------
+**Api**
+- Revert adding `siprec` resource
+- Add `siprec` resource
+
+**Messaging**
+- Add 'mock' as an optional field to brand_registration api
+- Add 'mock' as an optional field to us_app_to_person api
+- Adds more Use Cases in us_app_to_person_usecase api transaction and updates us_app_to_person_usecase docs
+
+**Verify**
+- Verify List Templates API endpoint added.
+
+
 [2021-08-26] Version 5.28.1
 ---------------------------
 **Library - Fix**
