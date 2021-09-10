@@ -18,3 +18,6 @@ const getVersionType = async () => {
 (async () => {
   console.log(await getVersionType());
 })();
+module.exports = {
+  getVersionType,
+};
