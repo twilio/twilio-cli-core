@@ -29,7 +29,7 @@ jobs:
       change-log: ${{ steps.update-specs.outputs.change-log }}
       version-type: ${{ steps.update-specs.outputs.version-type }}
     steps:
-      - name: Create temporary folder for copying json files fom OAI repo
+      - name: Create temporary folder for copying json files from OAI repo
         run: mkdir -p ~/oai_definitions/json
       - name: Checkout OAI repo
         uses: actions/checkout@v2
