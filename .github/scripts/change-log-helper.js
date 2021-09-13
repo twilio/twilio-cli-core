@@ -80,17 +80,17 @@ class ChangeLogHelper {
   }
 
   async appendChangesToChangelog() {
-    this.logger.info('Started getAndAppendChangesToChangelog');
-    const latestDate = await this.getLatestChangelogGeneratedDate(); // changes.md
-    if (latestDate) {
-      const changeLog = await this.getChangesAfterGivenDate(latestDate); // oai_changes.md
-      if (changeLog) {
-        try {
+    this.logger.info('Started appendChangesToChangelog');
+    try {
+      const latestDate = await this.getLatestChangelogGeneratedDate(); // changes.md
+      if (latestDate) {
+        const changeLog = await this.getChangesAfterGivenDate(latestDate); // oai_changes.md
+        if (changeLog) {
           this.logger.info('Updating the CHANGES.md');
           const data = fs.readFileSync(this.cliCoreChangelogFilename);
           if (data.toString().includes(changeLog)) {
             this.logger.info(`Provided changes are already in cli core changeLog: ${changeLog}`);
-            return '';
+            return;
           }
           const fd = fs.openSync(this.cliCoreChangelogFilename, 'w+');
           const insert = Buffer.from(changeLog);
@@ -100,16 +100,18 @@ class ChangeLogHelper {
             if (err) throw err;
           });
           fs.writeFileSync('changeLog.md', changeLog);
-        } catch (error) {
-          this.logger.error(`Error while updating the changelog: ${error}`);
         }
-        return changeLog;
       }
+    } catch (error) {
+      this.logger.error(`Error while updating the changelog: ${error.message}`);
+      throw new Error(error);
     }
-    return '';
   }
 
   async getReadLiner(filename) {
+    if (!fs.existsSync(filename)) {
+      throw new Error(`File not found: ${filename}`);
+    }
     const fileStream = fs.createReadStream(filename);
     return readline.createInterface({
       input: fileStream,

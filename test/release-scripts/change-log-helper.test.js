@@ -87,7 +87,7 @@ describe('release-scripts', () => {
     test.it('getLatestChangelogGeneratedDate', async () => {
       const invalidChangeLogHelper = new ChangeLogHelper('invalid-changes.md');
       await expect(invalidChangeLogHelper.getLatestChangelogGeneratedDate()).to.be.rejectedWith(
-        "ENOENT, no such file or directory 'invalid-changes.md'",
+        'File not found: invalid-changes.md',
       );
       const changeLogHelper = new ChangeLogHelper();
       const date = await changeLogHelper.getLatestChangelogGeneratedDate();
@@ -97,7 +97,7 @@ describe('release-scripts', () => {
     test.it('getChangesAfterGivenDate', async () => {
       const invalidChangeLogHelper = new ChangeLogHelper('CHANGES.md', 'invalid-oai-changes.md');
       await expect(invalidChangeLogHelper.getChangesAfterGivenDate('2021-08-26')).to.be.rejectedWith(
-        "ENOENT, no such file or directory 'invalid-oai-changes.md'",
+        'File not found: invalid-oai-changes.md',
       );
       const changeLogHelper = new ChangeLogHelper();
       const changes = await changeLogHelper.getChangesAfterGivenDate('2021-08-26');
@@ -113,7 +113,7 @@ describe('release-scripts', () => {
     test.it('appendChangesToChangelog', async () => {
       const invalidChangeLogHelper = new ChangeLogHelper('invalid-changes.md');
       await expect(invalidChangeLogHelper.appendChangesToChangelog()).to.be.rejectedWith(
-        "ENOENT, no such file or directory 'invalid-changes.md'",
+        'Error: File not found: invalid-changes.md',
       );
       expect(fs.existsSync('changeLog.md')).to.eq(false);
       const changeLogHelper = new ChangeLogHelper();
