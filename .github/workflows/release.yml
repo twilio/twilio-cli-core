@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       cli-branch:
-        description: 'Run workflow in the branch'
+        description: 'Run cli workflow in the given branch'
         default: main
       homebrew-branch:
         description: 'HomeBrew branch name'
@@ -95,7 +95,7 @@ jobs:
         if: ${{toJSON(needs.update-api-specs.outputs.change-log) != null && needs.update-api-specs.outputs.version-type != -1}}
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: Cli-core Release
+          workflow: Cli Release
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           repo: twilio/twilio-cli
           ref: ${{ github.event.inputs.cli-branch }}
