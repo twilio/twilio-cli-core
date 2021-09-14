@@ -5,6 +5,12 @@ on:
       cli-branch:
         description: 'Run workflow in the branch'
         default: main
+      homebrew-branch:
+        description: 'HomeBrew branch name'
+        default: main
+      homebrew-prerelease:
+        description: 'HomeBrew prerelease'
+        default: 'false'
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -92,4 +98,4 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           repo: twilio/twilio-cli
           ref: ${{ github.event.inputs.cli-branch }}
-          inputs: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}" }'
+          inputs: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "home-brew-branch": "${{github.event.inputs.homebrew-branch}}", "pre-release": "${{github.event.inputs.homebrew-prerelease}}" }'
