@@ -1,21 +1,102 @@
-
 name: Cli-core Release
 on:
   workflow_dispatch:
+    inputs:
+      cli-branch:
+        description: 'Run cli workflow in the given branch'
+        default: main
+      homebrew-branch:
+        description: 'HomeBrew branch name'
+        default: main
+      homebrew-prerelease:
+        description: 'HomeBrew prerelease'
+        default: 'false'
 jobs:
-    test:
-      runs-on: ubuntu-latest
-      strategy:
-        matrix:
-          node-version: [14.x]
-      steps:
-        - name: Checkout cli-core repo
-          uses: actions/checkout@v2
-        - run: npm install
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v2
-          with:
-            node-version: ${{ matrix.node-version }}
-            cache: 'npm'
-        - name: Run tests
-          run: npm test
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x,14.x]
+    steps:
+      - name: Checkout cli-core repo
+        uses: actions/checkout@v2
+      - run: npm install
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Run tests
+        run: npm test
+  update-api-specs:
+    runs-on: ubuntu-latest
+    needs: [test]
+    outputs:
+      change-log: ${{ steps.update-specs.outputs.change-log }}
+      version-type: ${{ steps.update-specs.outputs.version-type }}
+    steps:
+      - name: Create temporary folder for copying json files from OAI repo
+        run: mkdir -p ~/oai_definitions/json
+      - name: Checkout OAI repo
+        uses: actions/checkout@v2
+        with:
+          repository: 'twilio/twilio-oai'
+          token:  ${{ secrets.REPO_ACCESS_TOKEN }}
+      - run: |
+          cp -R spec/json/. ~/oai_definitions/json/
+          cp -R CHANGES.md ~/oai_definitions/CHANGES.md
+      - name: Checkout cli-core repo
+        uses: actions/checkout@v2
+      - name: Update OAI specs
+        id: update-specs
+        run: |
+          npm install
+          cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
+          source .github/scripts/update-api-spec-with-changelog.sh
+          echo "::set-output name=change-log::$changeLog"
+          echo "::set-output name=version-type::$versionType"
+  release:
+    runs-on: ubuntu-latest
+    needs: [update-api-specs]
+    outputs:
+      tag-name: ${{ steps.semantic-release.outputs.TAG_NAME }}
+    steps:
+      - name: Checkout cli-core repo
+        uses: actions/checkout@v2
+      - run: |
+          git pull
+          npm install
+      - name: semanticRelease
+        id: semantic-release
+        run: npx semantic-release -t \${version}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  update-release:
+    runs-on: ubuntu-latest
+    needs: [update-api-specs, release]
+    steps:
+      - name: Checkout cli-core repo
+        uses: actions/checkout@v2
+      - name: Update release
+        if: ${{needs.release.outputs.tag-name != ''}}
+        uses: tubone24/update_release@v1.2.0
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{needs.release.outputs.tag-name}}
+        with:
+          is_append_body: true
+          body: ${{needs.update-api-specs.outputs.change-log}}
+  triggerCliWorkflow:
+    runs-on: ubuntu-latest
+    needs: [ update-api-specs, update-release]
+    steps:
+      - name: Invoke CLI workflow with changelog and version-type
+        if: ${{toJSON(needs.update-api-specs.outputs.change-log) != null && needs.update-api-specs.outputs.version-type != -1}}
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Cli Release
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repo: twilio/twilio-cli
+          ref: ${{ github.event.inputs.cli-branch }}
+          inputs: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "home-brew-branch": "${{github.event.inputs.homebrew-branch}}", "pre-release": "${{github.event.inputs.homebrew-prerelease}}" }'
