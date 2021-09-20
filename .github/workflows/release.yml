@@ -99,4 +99,4 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           repo: twilio/twilio-cli
           ref: ${{ github.event.inputs.cli-branch }}
-          inputs: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "home-brew-branch": "${{github.event.inputs.homebrew-branch}}", "pre-release": "${{github.event.inputs.homebrew-prerelease}}" }'
+          inputs: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}" }'
