@@ -1,6 +1,6 @@
 {
   "name": "@twilio/cli-core",
-  "version": "5.28.3",
+  "version": "5.29.0",
   "description": "Core functionality for the twilio-cli",
   "keywords": [
     "twilio"
