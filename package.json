@@ -42,8 +42,8 @@
     "twilio": "^3.54.2"
   },
   "devDependencies": {
-    "@actions/core": "^1.5.0",
-    "@actions/github": "^5.0.0",
+    "@actions/core": "^1.0.0",
+    "@actions/github": "^2.2.0",
     "@oclif/test": "^1.2.6",
     "@octokit/rest": "^18.10.0",
     "@semantic-release/changelog": "^5.0.1",

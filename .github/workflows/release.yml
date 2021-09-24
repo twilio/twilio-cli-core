@@ -89,7 +89,6 @@ jobs:
           git pull
           npm install
       - name: Invoke CLI workflow with changelog and version-type
-        if: ${{toJSON(needs.update-api-specs.outputs.change-log) != null && needs.update-api-specs.outputs.version-type != '-1'}}
         run: node .github/scripts/trigger-workflow.js
         env:
           REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}

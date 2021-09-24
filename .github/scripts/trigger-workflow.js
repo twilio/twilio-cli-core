@@ -5,7 +5,7 @@ const { Octokit } = require('@octokit/rest');
  * Functionality from benc-uk/workflow-dispatch.
  * Link: https://github.com/benc-uk/workflow-dispatch
  */
-const run = async () => {
+const triggerWorkflow = async () => {
   try {
     const octokit = new Octokit({
       auth: process.env.REPO_WORKFLOW_TOKEN
@@ -45,5 +45,9 @@ const run = async () => {
 }
 
 (async () => {
-  await run();
+  await triggerWorkflow();
 })();
+
+module.exports = {
+  triggerWorkflow,
+};
