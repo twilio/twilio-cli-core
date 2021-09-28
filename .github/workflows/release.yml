@@ -94,5 +94,5 @@ jobs:
           REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
           WORKFLOW_NAME: 'release.yml'
           BRANCH_NAME: ${{github.event.inputs.cli-branch}}
-          REPO_NAME: LakshmiRavali/twilio-cli
+          REPO_NAME: twilio/twilio-cli
           INPUTS: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}" }'
