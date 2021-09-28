@@ -16,4 +16,8 @@ module.exports = {
     secureStorage: require('./services/secure-storage'),
   },
   configureEnv: require('./services/env'),
+  releaseScripts: {
+    UpdateRelease: require('../.github/scripts/update-release'),
+    TriggerWorkflow: require('../.github/scripts/trigger-workflow'),
+  },
 };
