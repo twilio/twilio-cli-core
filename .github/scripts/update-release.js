@@ -7,15 +7,13 @@ const { GitHub } = require('@actions/github');
  */
 const updateRelease = async () => {
   try {
-    const github = new GitHub(process.env.GITHUB_TOKEN);
-    const [owner, repo] = process.env.REPO_NAME
-      ? process.env.REPO_NAME.split('/')
-      : [null, null];
+    const github = new GitHub(process.env.REPO_ACCESS_TOKEN);
+    const [owner, repo] = process.env.REPO_NAME ? process.env.REPO_NAME.split('/') : [null, null];
     const tag = process.env.TAG_NAME;
     const getReleaseResponse = await github.repos.getReleaseByTag({
       owner,
       repo,
-      tag
+      tag,
     });
 
     const {
@@ -26,31 +24,29 @@ const updateRelease = async () => {
         body: oldBody,
         draft: oldDraft,
         name: oldName,
-        prerelease: oldPrerelease
-      }
+        prerelease: oldPrerelease,
+      },
     } = getReleaseResponse;
 
-    core.info(
-      `Got release info: '${oldReleaseId}', ${oldName}, '${oldHtmlUrl}', '${oldUploadUrl},'`
-    )
-    core.info(`Body: ${oldBody}`)
-    core.info(`Draft: ${oldDraft}, Prerelease: ${oldPrerelease}`)
+    core.info(`Got release info: '${oldReleaseId}', ${oldName}, '${oldHtmlUrl}', '${oldUploadUrl},'`);
+    core.info(`Body: ${oldBody}`);
+    core.info(`Draft: ${oldDraft}, Prerelease: ${oldPrerelease}`);
 
     const newBody = process.env.RELEASE_BODY;
     const newPrerelease = process.env.PRE_RELEASE;
 
-    let body
+    let body;
     if (newBody === '') {
-      body = oldBody
+      body = oldBody;
     } else {
       body = `${oldBody}\n${newBody}`;
     }
 
-    let prerelease
-    if (newPrerelease !== '' && !!newPrerelease) {
-      prerelease = newPrerelease === 'true'
+    let prerelease;
+    if (newPrerelease !== '' && Boolean(newPrerelease)) {
+      prerelease = newPrerelease === 'true';
     } else {
-      prerelease = oldPrerelease
+      prerelease = oldPrerelease;
     }
 
     await github.repos.updateRelease({
@@ -60,17 +56,14 @@ const updateRelease = async () => {
       body,
       name: oldName,
       draft: oldDraft,
-      prerelease
-    })
+      prerelease,
+    });
 
-    core.info(`Updated release with body: ${body}`)
+    core.info(`Updated release with body: ${body}`);
   } catch (error) {
-    core.setFailed(error.message)
+    core.setFailed(error.message);
   }
-}
-(async () => {
-  await updateRelease();
-})();
+};
 
 module.exports = {
   updateRelease,
