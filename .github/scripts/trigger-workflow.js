@@ -36,7 +36,7 @@ const triggerWorkflow = async () => {
       ref,
       inputs,
     });
-    core.info(`API response status: ${dispatchResp.status} 🚀`);
+    core.info(`API response status: ${dispatchResp.status}.`);
   } catch (error) {
     core.setFailed(error.message);
   }
