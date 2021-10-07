@@ -1,3 +1,15 @@
+## [5.30.0](https://github.com/twilio/twilio-cli-core/compare/5.29.0...5.30.0) (2021-10-07)
+
+
+### Library - Fixes
+
+* fix naming ([#157](https://github.com/twilio/twilio-cli-core/issues/157)) ([d454b81](https://github.com/twilio/twilio-cli-core/commit/d454b811344ae11283e32c13f14e01d9946bfabf))
+
+
+### Library - Chores
+
+* Added changes to use scripts instead of community Github actions ([#155](https://github.com/twilio/twilio-cli-core/issues/155)) ([27bd508](https://github.com/twilio/twilio-cli-core/commit/27bd508171b16eaf0036bdff7e0d21117570bf5f))
+
 ---------------------------
 **Library - Fix**
 - [PR #44](https://github.com/twilio/twilio-oai/pull/44): fix naming of params. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
