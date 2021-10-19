@@ -1,3 +1,15 @@
+## [5.31.0](https://github.com/twilio/twilio-cli-core/compare/5.30.0...5.31.0) (2021-10-19)
+
+
+### Library - Chores
+
+* [Snyk] Security upgrade @oclif/plugin-help from 2.2.3 to 3.2.0 ([#165](https://github.com/twilio/twilio-cli-core/issues/165)) ([188120a](https://github.com/twilio/twilio-cli-core/commit/188120a3e323ea07f2e7f26909ec83ac5a03461d))
+
+
+### Library - Features
+
+* Added the github actions to send the slack notifications ([#164](https://github.com/twilio/twilio-cli-core/issues/164)) ([06e2cb1](https://github.com/twilio/twilio-cli-core/commit/06e2cb1e3a8a6eb2486d8575a5da6c5dcbe3708e))
+
 ---------------------------
 **Api**
 - Corrected enum values for `emergency_address_status` values in `/IncomingPhoneNumbers` response. **(breaking change)**
