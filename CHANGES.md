@@ -1,3 +1,10 @@
+### [5.31.1](https://github.com/twilio/twilio-cli-core/compare/5.31.0...5.31.1) (2021-10-19)
+
+
+### Library - Fixes
+
+* Revert "Resolve sec vulnerability ([#166](https://github.com/twilio/twilio-cli-core/issues/166))" ([#168](https://github.com/twilio/twilio-cli-core/issues/168)) ([7d2a374](https://github.com/twilio/twilio-cli-core/commit/7d2a374b4f5f42106c976616a88d029b2f3bea0a))
+
 ## [5.31.0](https://github.com/twilio/twilio-cli-core/compare/5.30.0...5.31.0) (2021-10-19)
 
 
