@@ -45,7 +45,7 @@ jobs:
         run: npm test
   update-api-specs:
     runs-on: ubuntu-latest
-    needs: [test]
+#     needs: [test]
     outputs:
       change-log: ${{ steps.update-specs.outputs.change-log }}
       version-type: ${{ steps.update-specs.outputs.version-type }}

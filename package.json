@@ -24,8 +24,7 @@
     "lint": "eslint --ext js --ext jsx src/ test/",
     "lint:fix": "npm run lint -- --fix",
     "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
-    "posttest": "eslint --ignore-path .gitignore . && npm audit --audit-level=moderate",
-    "preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions"
+    "posttest": "eslint --ignore-path .gitignore . && npm audit --audit-level=moderate"
   },
   "dependencies": {
     "@actions/core": "^1.0.0",
@@ -64,9 +63,6 @@
     "nyc": "^15.1.0",
     "sinon": "^9.0.2",
     "tmp": "^0.2.1"
-  },
-  "resolutions": {
-    "ansi-regex": "5.0.1"
   },
   "optionalDependencies": {
     "keytar": "^7.6.0"
