@@ -1,0 +1,138 @@
+name: Cli-core Release
+on:
+  workflow_dispatch:
+    inputs:
+      cli-branch:
+        description: 'Run cli workflow in the given branch'
+        default: main
+      homebrew-branch:
+        description: 'HomeBrew branch name'
+        default: main
+      homebrew-prerelease:
+        description: 'HomeBrew prerelease'
+        default: 'false'
+jobs:
+  notify-start:
+    name: Notify Release Started
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK }}
+          SLACK_COLOR: "#36a64f"
+          SLACK_USERNAME: CLI Release Bot
+          SLACK_ICON_EMOJI: ":ship:"
+          SLACK_TITLE: "Twilio Cli"
+          SLACK_MESSAGE: 'Release Started :rocket:'
+          MSG_MINIMAL: actions url
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x,14.x]
+    steps:
+      - name: Checkout cli-core repo
+        uses: actions/checkout@v2
+      - run: npm install
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Run tests
+        run: npm test
+  update-api-specs:
+    runs-on: ubuntu-latest
+#     needs: [test]
+    outputs:
+      change-log: ${{ steps.update-specs.outputs.change-log }}
+      version-type: ${{ steps.update-specs.outputs.version-type }}
+    steps:
+      - name: Create temporary folder for copying json files from OAI repo
+        run: mkdir -p ~/oai_definitions/json
+      - name: Checkout OAI repo
+        uses: actions/checkout@v2
+        with:
+          repository: 'twilio/twilio-oai'
+          token:  ${{ secrets.REPO_ACCESS_TOKEN }}
+      - run: |
+          cp -R spec/json/. ~/oai_definitions/json/
+          cp -R CHANGES.md ~/oai_definitions/CHANGES.md
+      - name: Checkout cli-core repo
+        uses: actions/checkout@v2
+        with:
+          token:  ${{ secrets.REPO_ACCESS_TOKEN }}
+      - name: Update OAI specs
+        id: update-specs
+        run: |
+          npm install
+          cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
+          source .github/scripts/update-api-spec-with-changelog.sh
+          echo "::set-output name=change-log::$changeLog"
+          echo "::set-output name=version-type::$versionType"
+  release:
+    runs-on: ubuntu-latest
+    needs: [update-api-specs]
+    outputs:
+      tag-name: ${{ steps.semantic-release.outputs.TAG_NAME }}
+    steps:
+      - name: Checkout cli-core repo
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - run: |
+          git pull
+          npm install
+      - name: semanticRelease
+        id: semantic-release
+        run: npx semantic-release -t \${version}
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Update release
+        run: |
+          fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
+          node -e "require('$fileName').updateRelease()"
+        env:
+          REPO_ACCESS_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
+          RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
+          REPO_NAME: twilio/twilio-cli-core
+  triggerCliWorkflow:
+    runs-on: ubuntu-latest
+    needs: [ update-api-specs, release]
+    steps:
+      - name: Checkout cli-core repo
+        uses: actions/checkout@v2
+      - run: |
+          git pull
+          npm install
+      - name: Invoke CLI workflow with changelog and version-type
+        run: |
+          fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
+          node -e "require('$fileName').triggerWorkflow()"
+        env:
+          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          WORKFLOW_NAME: 'release.yml'
+          BRANCH_NAME: ${{github.event.inputs.cli-branch}}
+          REPO_NAME: twilio/twilio-cli
+          INPUTS: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}" }'
+  notify-complete-fail:
+    if: ${{ failure() || cancelled() }}
+    needs: [ triggerCliWorkflow ]
+    name: Notify Release Failed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.ALERT_SLACK_WEB_HOOK }}
+          SLACK_COLOR: "#ff3333"
+          SLACK_USERNAME: CLI Release Bot
+          SLACK_ICON_EMOJI: ":ship:"
+          SLACK_TITLE: "Twilio Cli-core"
+          SLACK_MESSAGE: 'Release workflow Failed'
+          MSG_MINIMAL: actions url

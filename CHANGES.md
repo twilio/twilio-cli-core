@@ -1,13 +1,198 @@
+### [5.31.1](https://github.com/twilio/twilio-cli-core/compare/5.31.0...5.31.1) (2021-10-19)
+
+
+### Library - Fixes
+
+* Revert "Resolve sec vulnerability ([#166](https://github.com/twilio/twilio-cli-core/issues/166))" ([#168](https://github.com/twilio/twilio-cli-core/issues/168)) ([7d2a374](https://github.com/twilio/twilio-cli-core/commit/7d2a374b4f5f42106c976616a88d029b2f3bea0a))
+
+## [5.31.0](https://github.com/twilio/twilio-cli-core/compare/5.30.0...5.31.0) (2021-10-19)
+
+
+### Library - Chores
+
+* [Snyk] Security upgrade @oclif/plugin-help from 2.2.3 to 3.2.0 ([#165](https://github.com/twilio/twilio-cli-core/issues/165)) ([188120a](https://github.com/twilio/twilio-cli-core/commit/188120a3e323ea07f2e7f26909ec83ac5a03461d))
+
+
+### Library - Features
+
+* Added the github actions to send the slack notifications ([#164](https://github.com/twilio/twilio-cli-core/issues/164)) ([06e2cb1](https://github.com/twilio/twilio-cli-core/commit/06e2cb1e3a8a6eb2486d8575a5da6c5dcbe3708e))
+
+---------------------------
+**Api**
+- Corrected enum values for `emergency_address_status` values in `/IncomingPhoneNumbers` response. **(breaking change)**
+- Clarify `emergency_address_status` values in `/IncomingPhoneNumbers` response.
+
+**Messaging**
+- Add PUT and List brand vettings api
+- Removes beta feature flag based visibility for us_app_to_person_registered and usecase field.Updates test cases to add POLITICAL usecase. **(breaking change)**
+- Add brand_feedback as optional field to BrandRegistrations
+
+**Video**
+- Add `AudioOnly` to create room
+
+
+## [5.30.0](https://github.com/twilio/twilio-cli-core/compare/5.29.0...5.30.0) (2021-10-07)
+
+
+### Library - Fixes
+
+* fix naming ([#157](https://github.com/twilio/twilio-cli-core/issues/157)) ([d454b81](https://github.com/twilio/twilio-cli-core/commit/d454b811344ae11283e32c13f14e01d9946bfabf))
+
+
+### Library - Chores
+
+* Added changes to use scripts instead of community Github actions ([#155](https://github.com/twilio/twilio-cli-core/issues/155)) ([27bd508](https://github.com/twilio/twilio-cli-core/commit/27bd508171b16eaf0036bdff7e0d21117570bf5f))
+
+---------------------------
+**Library - Fix**
+- [PR #44](https://github.com/twilio/twilio-oai/pull/44): fix naming of params. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Api**
+- Add `emergency_address_status` attribute to `/IncomingPhoneNumbers` response.
+- Add `siprec` resource
+
+**Conversations**
+- Added attachment parameters in configuration for `NewMessage` type of push notifications
+
+**Flex**
+- Adding `flex_insights_hr` object to Flex Configuration
+
+**Numbers**
+- Add API endpoint for Bundle ReplaceItems resource
+- Add API endpoint for Bundle Copies resource
+
+**Serverless**
+- Add domain_base field to Service response
+
+**Taskrouter**
+- Add `If-Match` Header based on ETag for Worker Delete **(breaking change)**
+- Add `If-Match` Header based on Etag for Reservation Update
+- Add `If-Match` Header based on ETag for Worker Update
+- Add `If-Match` Header based on ETag for Worker Delete
+- Add `ETag` as Response Header to Worker
+
+**Trunking**
+- Added `transfer_caller_id` property on Trunks.
+
+**Verify**
+- Document new pilot `whatsapp` channel.
+
+
+## [5.29.0](https://github.com/twilio/twilio-cli-core/compare/5.28.3...5.29.0) (2021-09-23)
+
+
+### Library - Features
+
+* Enable GitHub actions. ([#150](https://github.com/twilio/twilio-cli-core/issues/150)) ([002dd1f](https://github.com/twilio/twilio-cli-core/commit/002dd1f9593187cd580d7c139609420e5a33317f))
+
+
+### Library - Fixes
+
+* Updated api definitions ([906518f](https://github.com/twilio/twilio-cli-core/commit/906518f5fbdfa154604c5288f4ebd9eaf46a48b3))
+
+---------------------------
+**Events**
+- Add segment sink
+
+**Messaging**
+- Add post_approval_required attribute in GET us_app_to_person_usecase api response
+- Add Identity Status, Russell 3000, Tax Exempt Status and Should Skip SecVet fields for Brand Registrations
+- Add Should Skip Secondary Vetting optional flag parameter to create Brand API
+
+
 twilio-cli-core changelog
 =====================
 
-[2021-07-29] Version 5.27.1-rc
 ------------------------------
 **Library - Fix**
 - [PR #137](https://github.com/twilio/twilio-cli-core/pull/137): Update release-feature-branch with main. Thanks to [@ravali-rimmalapudi](https://github.com/ravali-rimmalapudi)!
+[2021-09-09] Version 5.28.3
+**Messaging**
+- Add Identity Status, Russell 3000, Tax Exempt Status and Should Skip SecVet fields for Brand Registrations
+- Add Should Skip Secondary Vetting optional flag parameter to create Brand API
 
 
-[2021-07-29] Version 5.27.0
+[2021-09-09] Version 5.28.2
+---------------------------
+**Api**
+- Revert adding `siprec` resource
+- Add `siprec` resource
+
+**Messaging**
+- Add 'mock' as an optional field to brand_registration api
+- Add 'mock' as an optional field to us_app_to_person api
+- Adds more Use Cases in us_app_to_person_usecase api transaction and updates us_app_to_person_usecase docs
+
+**Verify**
+- Verify List Templates API endpoint added.
+
+
+[2021-08-26] Version 5.28.1
+---------------------------
+**Library - Fix**
+- [PR #145](https://github.com/twilio/twilio-cli-core/pull/145): Cache processing step for Travis builds. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+
+**Library - Chore**
+- [PR #142](https://github.com/twilio/twilio-cli-core/pull/142): Fixes exit codes. Thanks to [@shamantraghav](https://github.com/shamantraghav)!
+
+**Api**
+- Add Programmabled Voice SIP Refer call transfers (`calls-transfers`) to usage records
+- Add Flex Voice Usage category (`flex-usage`) to usage records
+
+**Conversations**
+- Add `Order` query parameter to Message resource read operation
+
+**Insights**
+- Added `partial` to enum processing_state_request
+- Added abnormal session filter in Call Summaries
+
+**Messaging**
+- Add brand_registration_sid as an optional query param for us_app_to_person_usecase api
+
+**Pricing**
+- add trunking_numbers resource (v2)
+- add trunking_country resource (v2)
+
+**Verify**
+- Changed to private beta the `TemplateSid` optional parameter on Verification creation.
+- Added the optional parameter `Order` to the list Challenges endpoint to define the list order.
+
+
+[2021-08-12] Version 5.28.0
+---------------------------
+**Library - Chore**
+- [PR #140](https://github.com/twilio/twilio-cli-core/pull/140): standardize User-Agent string: format and include more details. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+- [PR #139](https://github.com/twilio/twilio-cli-core/pull/139): Add none output and silent flag. Thanks to [@onuzbee](https://github.com/onuzbee)!
+- [PR #136](https://github.com/twilio/twilio-cli-core/pull/136): Integrate with Sonarcloud. Thanks to [@onuzbee](https://github.com/onuzbee)!
+
+**Library - Fix**
+- [PR #138](https://github.com/twilio/twilio-cli-core/pull/138): Added condition to deploy specific regex match tags. Thanks to [@ravali-rimmalapudi](https://github.com/ravali-rimmalapudi)!
+
+**Api**
+- Corrected the `price`, `call_sid_to_coach`, and `uri` data types for Conference, Participant, and Recording **(breaking change)**
+- Made documentation for property `time_limit` in the call api public. **(breaking change)**
+
+**Insights**
+- Added new endpoint to fetch Call Summaries
+
+**Messaging**
+- Revert brand registration api update to add brand_type field
+- Add brand_type field to a2p brand_registration api
+
+**Taskrouter**
+- Add `X-Rate-Limit-Limit`, `X-Rate-Limit-Remaining`, and `X-Rate-Limit-Config` as Response Headers to all TaskRouter endpoints
+
+**Verify**
+- Add `TemplateSid` optional parameter on Verification creation.
+- Include `whatsapp` as a channel type in the verifications API.
+
+
+[2021-07-29] Version 5.27.1
+---------------------------
+**Messaging**
+- Add brand_type field to a2p brand_registration api
+
+
 ---------------------------
 **Api**
 - Added `domain_sid` in sip_credential_list_mapping and sip_ip_access_control_list_mapping APIs **(breaking change)**

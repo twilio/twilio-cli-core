@@ -5,10 +5,13 @@ node_js:
   - lts/*
   - '10'
 cache:
+  if: $(npm audit --audit-level=moderate) = 1
   npm: false
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install -y libsecret-1-dev
+- sudo apt-get update
+- sudo apt-get install -y libsecret-1-dev
+script:
+- npm run test
 deploy:
   provider: npm
   email: team_interfaces@twilio.com
@@ -17,6 +20,7 @@ deploy:
   edge: true
   on:
     tags: true
+    condition: "$TRAVIS_TAG =~ ^[[:digit:]]+\\.[[:digit:]]+\\.[[:digit:]]+$"
     node: lts/*
 notifications:
   slack:
@@ -26,3 +30,8 @@ notifications:
     on_failure: change
     rooms:
       secure: co5l1LIDXNac0VVXrOaOvpqjqkVraMDCW5uErSQ9W3KUSjyRf88sukrRL83xIFMu0U4+W6bj8aHU7DCaE9M1yyndv/GFjr7oAYMdc2VbcHCCMGGBZp3SAo/OgIqoS+GZJMaN2D0Hy9PtkMuzXiZ374WIraj6XJQjCb289WUZZUJJ9f7xEh9ewrIsNXAorfLlNxoxXZbMAmq51j85yen+y0uOKJyV9IlRdp+XGSGPZEFYTDkJgqf0Adah+RfCfaSOzpDWneqLdiXNun6d9yn+0Ok9d9odsg9lFMYyfC2s58R5evxQJrW6lXmV+wwXNZJRxVX3dhwRm1LmKlXs/fmmhL03tWWNCx9+brzq/KniuXhduQOlO181C3HY76LOLJvhig/UYzOTNccxVVVkFTnL4nTqxOO9tQl9FOj0x8X+8BPit9cVgkzXlmD0delDANE7rX0b8kkSzhL+MH5MX85k+3KBlVnTsfDRu+9iPaCt/+GSzFN2u4pIggRVFeea0hnljCIL3U1ZxNJdWDjfQzWuqE5jUELshmftr32Ty5cbn7pfrFfYQ+4kVeAMjweoT5+OcqAYihaD811ItzPO6eApaTZM6x6ZEbtLuvYAI+2AbOnEBqgfMcbzgZFIvhrnzF5ZdmKWe+8+2oENROuS1xkRHSrMr5ipahdSage19zNnO0s=
+addons:
+  sonarcloud:
+    organization: twilio
+    token:
+      secure: Tp64Qz/E6qvVRJBQMNLsm3LeTByYFPA/W2gfTRXXpLsK1S22IEhsfChAGw1mQyZnh5VZTcXG9Grf+LPcm9dDIj+Ze8q3AnfipZCCmu3nk22jx1nhu91hzsQi916GxVTSHTpa24smvGPVCGmF0x9ISjuBTGzlmEd883l9CqRfl4VYeZmWKQoa0qbQzY3/5DE7bWxQwJmGpJzkCMCBjRtuyMiai/N/V8SEdF4lYU9hcaUY9orP1fBsG7v9gByTfNHpWIcelPYBvx3NsBMoXbBEf8r+8y0PxCH0w6bgvJif/RGAqhrIKIwp3ZvMTIsSw+Fokhx7Yj1Z9JiKsmjhODzSIiXTN1xii0igtzq561r9bs1TCChsNfV4k61mD0c0my3xbeIjZyBZWMuNfS1QKGN8wXxWM8GfSWRsbX/5HBHh5ndA/ut5J1JfYN7GV00DsjStGpGf8vZ0ry346BKht3qHdhGDccLC0ZyDUBb6XkZKBa07tjbfdGllPnQEhhJEq9ZDXzmVkeRUBL76zTuc6qzRsASMx1ZpCUr6Z0zXWSlsQQRZQhJ9Ta7n1zwTpIStaZ3I8qd2Tj+QLPX/etG3LMA0MbOvpBq5moD8uyoyA+b/kxMNCb6mdyiK0MfIMIsnDRPDB4mVlt+ebQnMpFTkrwq7UrOCpTkdZx3JfIBQUba12xs=
