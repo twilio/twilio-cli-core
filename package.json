@@ -24,7 +24,7 @@
     "lint": "eslint --ext js --ext jsx src/ test/",
     "lint:fix": "npm run lint -- --fix",
     "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
-    "preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions"  
+    "preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions"
   },
   "dependencies": {
     "@actions/core": "^1.0.0",
