@@ -1,3 +1,37 @@
+## [5.29.0-rc.1](https://github.com/shamantraghav/twilio-cli-core/compare/5.28.0...5.29.0-rc.1) (2021-10-27)
+
+
+### Library - Features
+
+*  Added support to make profile input mandatory based on config property ([#135](https://github.com/shamantraghav/twilio-cli-core/issues/135)) ([fbdc36b](https://github.com/shamantraghav/twilio-cli-core/commit/fbdc36ba99be611dcaf5d08e8697a42e2256b59e))
+* Added the github actions to send the slack notifications ([#164](https://github.com/shamantraghav/twilio-cli-core/issues/164)) ([06e2cb1](https://github.com/shamantraghav/twilio-cli-core/commit/06e2cb1e3a8a6eb2486d8575a5da6c5dcbe3708e))
+* Enable GitHub actions. ([#150](https://github.com/shamantraghav/twilio-cli-core/issues/150)) ([002dd1f](https://github.com/shamantraghav/twilio-cli-core/commit/002dd1f9593187cd580d7c139609420e5a33317f))
+
+
+### Library - Chores
+
+* [Snyk] Security upgrade @oclif/plugin-help from 2.2.3 to 3.2.0 ([#165](https://github.com/shamantraghav/twilio-cli-core/issues/165)) ([188120a](https://github.com/shamantraghav/twilio-cli-core/commit/188120a3e323ea07f2e7f26909ec83ac5a03461d))
+* Added changes to use scripts instead of community Github actions ([#155](https://github.com/shamantraghav/twilio-cli-core/issues/155)) ([27bd508](https://github.com/shamantraghav/twilio-cli-core/commit/27bd508171b16eaf0036bdff7e0d21117570bf5f))
+* Added tests and sonarcloud scan while adding the PR's ([#169](https://github.com/shamantraghav/twilio-cli-core/issues/169)) ([a26d6ee](https://github.com/shamantraghav/twilio-cli-core/commit/a26d6ee81e2a49057581ce0d76b9636295d42f1e))
+* Cache processing step for Travis builds ([#145](https://github.com/shamantraghav/twilio-cli-core/issues/145)) ([33cc65d](https://github.com/shamantraghav/twilio-cli-core/commit/33cc65d82412c30f6c9aec40b2c79e43a80d459b))
+* CLI Profile Remove - Check and Use config file before checking system keychain. ([#126](https://github.com/shamantraghav/twilio-cli-core/issues/126)) ([e326a31](https://github.com/shamantraghav/twilio-cli-core/commit/e326a3195ff9bab2437671f61a4dcdfba15c6100))
+* Refactor profiles usage to projects ([#122](https://github.com/shamantraghav/twilio-cli-core/issues/122)) ([782f6c5](https://github.com/shamantraghav/twilio-cli-core/commit/782f6c50dfb7d2e00df52ef75dfd3e94bc45581c))
+* **release:** set `package.json` to 5.29.0 [skip ci] ([8e5a785](https://github.com/shamantraghav/twilio-cli-core/commit/8e5a7851fc12a9ef06683ef9d82284485166b333)), closes [#150](https://github.com/shamantraghav/twilio-cli-core/issues/150)
+* **release:** set `package.json` to 5.30.0 [skip ci] ([26e4594](https://github.com/shamantraghav/twilio-cli-core/commit/26e459440a4668903d9593538e637f8726c10525)), closes [#157](https://github.com/shamantraghav/twilio-cli-core/issues/157) [#155](https://github.com/shamantraghav/twilio-cli-core/issues/155)
+* **release:** set `package.json` to 5.31.0 [skip ci] ([ad437be](https://github.com/shamantraghav/twilio-cli-core/commit/ad437be6870126db141ddefee9f10a4cb7528728)), closes [#165](https://github.com/shamantraghav/twilio-cli-core/issues/165) [#164](https://github.com/shamantraghav/twilio-cli-core/issues/164)
+* **release:** set `package.json` to 5.31.1 [skip ci] ([dc18140](https://github.com/shamantraghav/twilio-cli-core/commit/dc181406a2583d543c719379cc68dafd818efd07)), closes [#166](https://github.com/shamantraghav/twilio-cli-core/issues/166) [#168](https://github.com/shamantraghav/twilio-cli-core/issues/168)
+* Store API Keys in Config File ([#124](https://github.com/shamantraghav/twilio-cli-core/issues/124)) ([9fb9dd3](https://github.com/shamantraghav/twilio-cli-core/commit/9fb9dd394b85dba6185b4a2033bf822c72d5c94a))
+
+
+### Library - Fixes
+
+* fix naming ([#157](https://github.com/shamantraghav/twilio-cli-core/issues/157)) ([d454b81](https://github.com/shamantraghav/twilio-cli-core/commit/d454b811344ae11283e32c13f14e01d9946bfabf))
+* Merger main into release feature branch ([fbcd3e8](https://github.com/shamantraghav/twilio-cli-core/commit/fbcd3e82c4a480578a6d2b8561cd0f280ad5cb0d))
+* Removed the comment. ([95d4fa4](https://github.com/shamantraghav/twilio-cli-core/commit/95d4fa487886cc05efa75effc38e315d0393ef7c))
+* Revert "Resolve sec vulnerability ([#166](https://github.com/shamantraghav/twilio-cli-core/issues/166))" ([#168](https://github.com/shamantraghav/twilio-cli-core/issues/168)) ([7d2a374](https://github.com/shamantraghav/twilio-cli-core/commit/7d2a374b4f5f42106c976616a88d029b2f3bea0a))
+* Update release-feature-branch with main ([#137](https://github.com/shamantraghav/twilio-cli-core/issues/137)) ([46c4156](https://github.com/shamantraghav/twilio-cli-core/commit/46c415631e74ab1bcac460299a65532211cb2347)), closes [#130](https://github.com/shamantraghav/twilio-cli-core/issues/130)
+* Updated api definitions ([906518f](https://github.com/shamantraghav/twilio-cli-core/commit/906518f5fbdfa154604c5288f4ebd9eaf46a48b3))
+
 ---------------------------
 **Api**
 - Corrected enum values for `emergency_address_status` values in `/IncomingPhoneNumbers` response. **(breaking change)**
