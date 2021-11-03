@@ -1,3 +1,25 @@
+## [5.25.0-rc.1](https://github.com/twilio/twilio-cli-core/compare/5.24.0...5.25.0-rc.1) (2021-11-03)
+
+
+### Library - Chores
+
+* CLI Profile Remove - Check and Use config file before checking system keychain. ([#126](https://github.com/twilio/twilio-cli-core/issues/126)) ([e326a31](https://github.com/twilio/twilio-cli-core/commit/e326a3195ff9bab2437671f61a4dcdfba15c6100))
+* Refactor profiles usage to projects ([#122](https://github.com/twilio/twilio-cli-core/issues/122)) ([782f6c5](https://github.com/twilio/twilio-cli-core/commit/782f6c50dfb7d2e00df52ef75dfd3e94bc45581c))
+* refactor the Twilio vendor extensions into single object ([#125](https://github.com/twilio/twilio-cli-core/issues/125)) ([a2e0fca](https://github.com/twilio/twilio-cli-core/commit/a2e0fca112eccf954d86095af4809445042d1bb6))
+* Store API Keys in Config File ([#124](https://github.com/twilio/twilio-cli-core/issues/124)) ([9fb9dd3](https://github.com/twilio/twilio-cli-core/commit/9fb9dd394b85dba6185b4a2033bf822c72d5c94a))
+
+
+### Library - Fixes
+
+* Removed the comment. ([95d4fa4](https://github.com/twilio/twilio-cli-core/commit/95d4fa487886cc05efa75effc38e315d0393ef7c))
+* Update release-feature-branch with main ([#137](https://github.com/twilio/twilio-cli-core/issues/137)) ([46c4156](https://github.com/twilio/twilio-cli-core/commit/46c415631e74ab1bcac460299a65532211cb2347)), closes [#130](https://github.com/twilio/twilio-cli-core/issues/130)
+
+
+### Library - Features
+
+*  Added support to make profile input mandatory based on config property ([#135](https://github.com/twilio/twilio-cli-core/issues/135)) ([fbdc36b](https://github.com/twilio/twilio-cli-core/commit/fbdc36ba99be611dcaf5d08e8697a42e2256b59e))
+* Merging master into release-feature-branch ([#172](https://github.com/twilio/twilio-cli-core/issues/172)) ([48313d2](https://github.com/twilio/twilio-cli-core/commit/48313d27844d1cf6f5435150deb1e777314cba04)), closes [#130](https://github.com/twilio/twilio-cli-core/issues/130) [#136](https://github.com/twilio/twilio-cli-core/issues/136) [#139](https://github.com/twilio/twilio-cli-core/issues/139) [#138](https://github.com/twilio/twilio-cli-core/issues/138) [#140](https://github.com/twilio/twilio-cli-core/issues/140) [#142](https://github.com/twilio/twilio-cli-core/issues/142) [#145](https://github.com/twilio/twilio-cli-core/issues/145) [#150](https://github.com/twilio/twilio-cli-core/issues/150) [#154](https://github.com/twilio/twilio-cli-core/issues/154) [#156](https://github.com/twilio/twilio-cli-core/issues/156) [#150](https://github.com/twilio/twilio-cli-core/issues/150) [#157](https://github.com/twilio/twilio-cli-core/issues/157) [#158](https://github.com/twilio/twilio-cli-core/issues/158) [#155](https://github.com/twilio/twilio-cli-core/issues/155) [#161](https://github.com/twilio/twilio-cli-core/issues/161) [#157](https://github.com/twilio/twilio-cli-core/issues/157) [#155](https://github.com/twilio/twilio-cli-core/issues/155) [#165](https://github.com/twilio/twilio-cli-core/issues/165) [#166](https://github.com/twilio/twilio-cli-core/issues/166) [#164](https://github.com/twilio/twilio-cli-core/issues/164) [#165](https://github.com/twilio/twilio-cli-core/issues/165) [#164](https://github.com/twilio/twilio-cli-core/issues/164) [#166](https://github.com/twilio/twilio-cli-core/issues/166) [#168](https://github.com/twilio/twilio-cli-core/issues/168) [#166](https://github.com/twilio/twilio-cli-core/issues/166) [#166](https://github.com/twilio/twilio-cli-core/issues/166) [#168](https://github.com/twilio/twilio-cli-core/issues/168) [#169](https://github.com/twilio/twilio-cli-core/issues/169) [#135](https://github.com/twilio/twilio-cli-core/issues/135) [#164](https://github.com/twilio/twilio-cli-core/issues/164) [#150](https://github.com/twilio/twilio-cli-core/issues/150) [#165](https://github.com/twilio/twilio-cli-core/issues/165) [#155](https://github.com/twilio/twilio-cli-core/issues/155) [#169](https://github.com/twilio/twilio-cli-core/issues/169) [#145](https://github.com/twilio/twilio-cli-core/issues/145) [#126](https://github.com/twilio/twilio-cli-core/issues/126) [#122](https://github.com/twilio/twilio-cli-core/issues/122) [#150](https://github.com/twilio/twilio-cli-core/issues/150) [#157](https://github.com/twilio/twilio-cli-core/issues/157) [#155](https://github.com/twilio/twilio-cli-core/issues/155) [#165](https://github.com/twilio/twilio-cli-core/issues/165) [#164](https://github.com/twilio/twilio-cli-core/issues/164) [#166](https://github.com/twilio/twilio-cli-core/issues/166) [#168](https://github.com/twilio/twilio-cli-core/issues/168) [#124](https://github.com/twilio/twilio-cli-core/issues/124) [#157](https://github.com/twilio/twilio-cli-core/issues/157) [#166](https://github.com/twilio/twilio-cli-core/issues/166) [#168](https://github.com/twilio/twilio-cli-core/issues/168) [#130](https://github.com/twilio/twilio-cli-core/issues/130)
+
 ## [5.29.0-rc.1](https://github.com/shamantraghav/twilio-cli-core/compare/5.28.0...5.29.0-rc.1) (2021-10-27)
 
 
