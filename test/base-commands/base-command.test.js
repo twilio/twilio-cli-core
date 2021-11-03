@@ -219,6 +219,38 @@ describe('base-commands', () => {
           ctx.testCmd.output(testData);
           expect(ctx.stdout).to.contain('FOO\tBAR\nfoo\tbar\n2\t2');
         });
+
+      test
+        .twilioCliEnv(Config)
+        .do(async (ctx) => {
+          ctx.testCmd = new BaseCommand(['-o', 'none'], ctx.fakeConfig);
+          await ctx.testCmd.run();
+        })
+        .stdout()
+        .it('should not output to stdout with none flag', (ctx) => {
+          const testData = [
+            { foo: 'foo', bar: 'bar' },
+            { foo: 'test', bar: 'test' },
+          ];
+          ctx.testCmd.output(testData);
+          expect(ctx.stdout).to.be.empty;
+          expect(ctx.testCmd.outputProcessor).to.be.undefined;
+        });
+
+      test
+        .twilioCliEnv(Config)
+        .do(async (ctx) => {
+          ctx.testCmd = new BaseCommand(['--silent'], ctx.fakeConfig);
+          await ctx.testCmd.run();
+        })
+        .stdout()
+        .it('should not output to stdout with silent flag', (ctx) => {
+          const testData = [{ foo: 'foo', bar: 'bar' }];
+          ctx.testCmd.output(testData);
+          expect(ctx.stdout).to.be.empty;
+          expect(ctx.testCmd.logger.config.level).to.equal(LoggingLevel.none);
+          expect(ctx.testCmd.outputProcessor).to.be.undefined;
+        });
     });
 
     describe('getPromptMessage', () => {
