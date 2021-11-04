@@ -1,3 +1,10 @@
+## [5.32.0](https://github.com/twilio/twilio-cli-core/compare/5.31.1...5.32.0) (2021-11-04)
+
+
+### Library - Chores
+
+* Added tests and sonarcloud scan while adding the PR's ([#169](https://github.com/twilio/twilio-cli-core/issues/169)) ([a26d6ee](https://github.com/twilio/twilio-cli-core/commit/a26d6ee81e2a49057581ce0d76b9636295d42f1e))
+
 ---------------------------
 **Library - Chore**
 - [PR #46](https://github.com/twilio/twilio-oai/pull/46): migrate from travis over to gh actions. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
