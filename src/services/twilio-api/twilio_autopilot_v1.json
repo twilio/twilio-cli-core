@@ -1514,7 +1514,7 @@
             }
           },
           {
-            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US`",
+            "description": "The tag that specifies the language of the value. Currently supported tags: `en-US`, as per [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html)",
             "in": "query",
             "name": "Language",
             "schema": {
@@ -2285,7 +2285,7 @@
             }
           },
           {
-            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used by the Query resources to read. For example: `en-US`.",
+            "description": "The string that specifies the language used by the Query resources read. For example:`en-US` as per [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html).",
             "in": "query",
             "name": "Language",
             "schema": {
@@ -2410,7 +2410,7 @@
               "schema": {
                 "properties": {
                   "Language": {
-                    "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the new query. For example: `en-US`.",
+                    "description": "The string that specifies the language used for the new query. For example: `en-US`, as per [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html).",
                     "type": "string"
                   },
                   "ModelBuild": {
@@ -3509,7 +3509,7 @@
             }
           },
           {
-            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the sample. For example: `en-US`.",
+            "description": "The string that specifies the language used for the sample. For example: `en-US`, as per [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html).",
             "in": "query",
             "name": "Language",
             "schema": {
