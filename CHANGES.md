@@ -1,3 +1,10 @@
+### [5.27.1-rc.1](https://github.com/twilio/twilio-cli-core/compare/5.25.0-rc.1...5.27.1-rc.1) (2021-11-12)
+
+
+### Library - Fixes
+
+* Removed change to stop publish from npm. ([#175](https://github.com/twilio/twilio-cli-core/issues/175)) ([a819b6c](https://github.com/twilio/twilio-cli-core/commit/a819b6c98cbfe99e77664a2efdac28c63e9218cc))
+
 ## [5.25.0-rc.1](https://github.com/twilio/twilio-cli-core/compare/5.24.0...5.25.0-rc.1) (2021-11-03)
 
 
