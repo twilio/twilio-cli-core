@@ -21,10 +21,6 @@ const triggerWorkflow = async () => {
       inputs = JSON.parse(inputsJson);
     }
 
-    if(inputs['change-log'] === null){
-      inputs['change-log'] = "";
-    }
-
     const workflow = await octokit.rest.actions.getWorkflow({
       owner,
       repo,
