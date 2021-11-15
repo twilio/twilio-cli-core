@@ -18,8 +18,8 @@ const triggerWorkflow = async () => {
     let inputs = {};
     const inputsJson = process.env.INPUTS;
     console.log("1: ", inputsJson);
-    console.log("2: ", inputsJson[change-log]);
-    if(inputsJson[change-log] === null){
+    console.log("2: ", inputsJson["change-log"]);
+    if(inputsJson["change-log"] === null){
       inputsJson[change-log] == "No new OAI changes";
       console.log("3: ", inputsJson[change-log]);
     }
