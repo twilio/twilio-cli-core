@@ -85,12 +85,12 @@ jobs:
       - run: |
           git pull
           npm install
-      # - name: semanticRelease
-      #   id: semantic-release
-      #   run: npx semantic-release -t \${version}
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: semanticRelease
+        id: semantic-release
+        run: npx semantic-release -t \${version}
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Update release
         run: |
           fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
