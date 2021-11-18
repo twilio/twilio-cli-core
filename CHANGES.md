@@ -1,3 +1,19 @@
+---------------------------
+**Frontline**
+- Added `is_available` to User's resource
+
+**Messaging**
+- Added GET vetting API
+
+**Verify**
+- Add `WHATSAPP` to the attempts API.
+- Allow to update `config.notification_platform` from `none` to `apn` or `fcm` and viceversa for Verify Push
+- Add `none` as a valid `config.notification_platform` value for Verify Push
+
+**Twiml**
+- Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+
+
 ## [5.32.0](https://github.com/twilio/twilio-cli-core/compare/5.31.1...5.32.0) (2021-11-04)
 
 

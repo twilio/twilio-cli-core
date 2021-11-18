@@ -952,7 +952,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Autopilot",
-    "version": "1.23.0"
+    "version": "1.23.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -1514,7 +1514,7 @@
             }
           },
           {
-            "description": "The tag that specifies the language of the value. Currently supported tags: `en-US`, as per [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html)",
+            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US`",
             "in": "query",
             "name": "Language",
             "schema": {
@@ -2285,7 +2285,7 @@
             }
           },
           {
-            "description": "The string that specifies the language used by the Query resources read. For example:`en-US` as per [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html).",
+            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used by the Query resources to read. For example: `en-US`.",
             "in": "query",
             "name": "Language",
             "schema": {
@@ -2410,7 +2410,7 @@
               "schema": {
                 "properties": {
                   "Language": {
-                    "description": "The string that specifies the language used for the new query. For example: `en-US`, as per [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html).",
+                    "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the new query. For example: `en-US`.",
                     "type": "string"
                   },
                   "ModelBuild": {
@@ -3509,7 +3509,7 @@
             }
           },
           {
-            "description": "The string that specifies the language used for the sample. For example: `en-US`, as per [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html).",
+            "description": "The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the sample. For example: `en-US`.",
             "in": "query",
             "name": "Language",
             "schema": {
