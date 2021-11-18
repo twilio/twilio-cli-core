@@ -1,3 +1,16 @@
+### [5.32.1](https://github.com/twilio/twilio-cli-core/compare/5.32.0...5.32.1) (2021-11-18)
+
+
+### Library - Fixes
+
+* Added changes to fix the lcov issue ([#170](https://github.com/twilio/twilio-cli-core/issues/170)) ([a3aaa7b](https://github.com/twilio/twilio-cli-core/commit/a3aaa7b1b02b18c586fe35a15a6fbafa3c92e4eb))
+* Modified flag description to eliminate new line indentation issue ([#174](https://github.com/twilio/twilio-cli-core/issues/174)) ([d8dd071](https://github.com/twilio/twilio-cli-core/commit/d8dd071345e0c5287504caddf807d449481c0baa))
+
+
+### Library - Chores
+
+* update slack alerts color ([#179](https://github.com/twilio/twilio-cli-core/issues/179)) ([c96bbfb](https://github.com/twilio/twilio-cli-core/commit/c96bbfb2ddfc3ec636c92a69b1fedaf2f735fc4a))
+
 ---------------------------
 **Frontline**
 - Added `is_available` to User's resource
