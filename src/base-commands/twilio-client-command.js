@@ -167,7 +167,7 @@ TwilioClientCommand.limitFlags = {
 
 TwilioClientCommand.noHeader = {
   'no-header': flags.boolean({
-    description: 'Skip display of headers.',
+    description: 'Skip including of headers while listing the data.',
   }),
 };
 
