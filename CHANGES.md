@@ -1,3 +1,10 @@
+### [5.32.2](https://github.com/twilio/twilio-cli-core/compare/5.32.1...5.32.2) (2021-12-02)
+
+
+### Library - Fixes
+
+* update vulnerable dependencies packages ([#180](https://github.com/twilio/twilio-cli-core/issues/180)) ([0e5c492](https://github.com/twilio/twilio-cli-core/commit/0e5c492961991be0eb7d8f1a9113a3afacc7f316))
+
 ---------------------------
 **Conversations**
 - Add `Service Webhook Configuration` resource
