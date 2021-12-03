@@ -1,3 +1,34 @@
+### [5.32.2](https://github.com/twilio/twilio-cli-core/compare/5.32.1...5.32.2) (2021-12-02)
+
+
+### Library - Fixes
+
+* update vulnerable dependencies packages ([#180](https://github.com/twilio/twilio-cli-core/issues/180)) ([0e5c492](https://github.com/twilio/twilio-cli-core/commit/0e5c492961991be0eb7d8f1a9113a3afacc7f316))
+
+---------------------------
+**Conversations**
+- Add `Service Webhook Configuration` resource
+
+**Flex**
+- Adding `flex_insights_drilldown` and `flex_url` objects to Flex Configuration
+
+**Messaging**
+- Update us_app_to_person endpoints to remove beta feature flag based access
+
+**Supersim**
+- Add IP Commands resource
+
+**Verify**
+- Add optional `factor_friendly_name` parameter to the create access token endpoint.
+
+**Video**
+- Add maxParticipantDuration param to Rooms
+
+**Twiml**
+- Unrevert Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+- Revert Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+
+
 ### [5.32.1](https://github.com/twilio/twilio-cli-core/compare/5.32.0...5.32.1) (2021-11-18)
 
 
