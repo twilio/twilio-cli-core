@@ -118,6 +118,13 @@ class BaseCommand extends Command {
   }
 
   output(fullData, properties, options) {
+    if (this.flags['no-header']) {
+      if (options) {
+        options.showHeaders = false;
+      } else {
+        options = { showHeaders: false };
+      }
+    }
     if (!this.outputProcessor) {
       // Silenced output
       return;

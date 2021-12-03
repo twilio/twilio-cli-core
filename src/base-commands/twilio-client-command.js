@@ -165,4 +165,10 @@ TwilioClientCommand.limitFlags = {
   }),
 };
 
+TwilioClientCommand.noHeader = {
+  'no-header': flags.boolean({
+    description: 'Skip including of headers while listing the data.',
+  }),
+};
+
 module.exports = TwilioClientCommand;
