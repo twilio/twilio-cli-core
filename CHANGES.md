@@ -1,3 +1,23 @@
+## [5.33.0](https://github.com/twilio/twilio-cli-core/compare/5.32.2...5.33.0) (2021-12-16)
+
+
+### Library - Features
+
+* Add flag no header for list and fetch commands ([#182](https://github.com/twilio/twilio-cli-core/issues/182)) ([22f6ea9](https://github.com/twilio/twilio-cli-core/commit/22f6ea9262e3874a2b9d46cb97e4df14648c0f78))
+
+
+### Library - Chores
+
+* github workflow update ([#183](https://github.com/twilio/twilio-cli-core/issues/183)) ([a96ebc3](https://github.com/twilio/twilio-cli-core/commit/a96ebc35249ce6dc8de424a5d98667a347a450f4))
+* Remove audit run with posttest script ([#186](https://github.com/twilio/twilio-cli-core/issues/186)) ([ea5c744](https://github.com/twilio/twilio-cli-core/commit/ea5c744b6dc00b9aeceb85b45ddee7856bd057fd))
+* revert updated oclif major dependencies ([#185](https://github.com/twilio/twilio-cli-core/issues/185)) ([aa74e0e](https://github.com/twilio/twilio-cli-core/commit/aa74e0e8899fd244995ede6624baf65ccd973ebd))
+* update version of vulnerable dependencies ([#184](https://github.com/twilio/twilio-cli-core/issues/184)) ([b8de6f6](https://github.com/twilio/twilio-cli-core/commit/b8de6f611e53b232edbad1865e26e726f442478d))
+
+
+### Library - Fixes
+
+* Update semantic-release via npm bin ([#187](https://github.com/twilio/twilio-cli-core/issues/187)) ([b35a2ac](https://github.com/twilio/twilio-cli-core/commit/b35a2acbd6032f7cd71ecf01d7f18da190138d97))
+
 ---------------------------
 **Api**
 - Add optional boolean send_as_mms parameter to the create action of Message resource **(breaking change)**
