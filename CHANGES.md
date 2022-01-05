@@ -1,3 +1,165 @@
+## [5.33.0](https://github.com/twilio/twilio-cli-core/compare/5.32.2...5.33.0) (2021-12-16)
+
+
+### Library - Features
+
+* Add flag no header for list and fetch commands ([#182](https://github.com/twilio/twilio-cli-core/issues/182)) ([22f6ea9](https://github.com/twilio/twilio-cli-core/commit/22f6ea9262e3874a2b9d46cb97e4df14648c0f78))
+
+
+### Library - Chores
+
+* github workflow update ([#183](https://github.com/twilio/twilio-cli-core/issues/183)) ([a96ebc3](https://github.com/twilio/twilio-cli-core/commit/a96ebc35249ce6dc8de424a5d98667a347a450f4))
+* Remove audit run with posttest script ([#186](https://github.com/twilio/twilio-cli-core/issues/186)) ([ea5c744](https://github.com/twilio/twilio-cli-core/commit/ea5c744b6dc00b9aeceb85b45ddee7856bd057fd))
+* revert updated oclif major dependencies ([#185](https://github.com/twilio/twilio-cli-core/issues/185)) ([aa74e0e](https://github.com/twilio/twilio-cli-core/commit/aa74e0e8899fd244995ede6624baf65ccd973ebd))
+* update version of vulnerable dependencies ([#184](https://github.com/twilio/twilio-cli-core/issues/184)) ([b8de6f6](https://github.com/twilio/twilio-cli-core/commit/b8de6f611e53b232edbad1865e26e726f442478d))
+
+
+### Library - Fixes
+
+* Update semantic-release via npm bin ([#187](https://github.com/twilio/twilio-cli-core/issues/187)) ([b35a2ac](https://github.com/twilio/twilio-cli-core/commit/b35a2acbd6032f7cd71ecf01d7f18da190138d97))
+
+---------------------------
+**Api**
+- Add optional boolean send_as_mms parameter to the create action of Message resource **(breaking change)**
+- Change team ownership for `call` delete
+
+**Conversations**
+- Change wording for `Service Webhook Configuration` resource fields
+
+**Insights**
+- Added new APIs for updating and getting voice insights flags by accountSid.
+
+**Media**
+- Add max_duration param to MediaProcessor
+
+**Video**
+- Add `EmptyRoomTimeout` and `UnusedRoomTimeout` properties to a room; add corresponding parameters to room creation
+
+**Voice**
+- Add endpoint to delete archived Calls
+
+
+### [5.32.2](https://github.com/twilio/twilio-cli-core/compare/5.32.1...5.32.2) (2021-12-02)
+
+
+### Library - Fixes
+
+* update vulnerable dependencies packages ([#180](https://github.com/twilio/twilio-cli-core/issues/180)) ([0e5c492](https://github.com/twilio/twilio-cli-core/commit/0e5c492961991be0eb7d8f1a9113a3afacc7f316))
+
+---------------------------
+**Conversations**
+- Add `Service Webhook Configuration` resource
+
+**Flex**
+- Adding `flex_insights_drilldown` and `flex_url` objects to Flex Configuration
+
+**Messaging**
+- Update us_app_to_person endpoints to remove beta feature flag based access
+
+**Supersim**
+- Add IP Commands resource
+
+**Verify**
+- Add optional `factor_friendly_name` parameter to the create access token endpoint.
+
+**Video**
+- Add maxParticipantDuration param to Rooms
+
+**Twiml**
+- Unrevert Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+- Revert Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+
+
+### [5.32.1](https://github.com/twilio/twilio-cli-core/compare/5.32.0...5.32.1) (2021-11-18)
+
+
+### Library - Fixes
+
+* Added changes to fix the lcov issue ([#170](https://github.com/twilio/twilio-cli-core/issues/170)) ([a3aaa7b](https://github.com/twilio/twilio-cli-core/commit/a3aaa7b1b02b18c586fe35a15a6fbafa3c92e4eb))
+* Modified flag description to eliminate new line indentation issue ([#174](https://github.com/twilio/twilio-cli-core/issues/174)) ([d8dd071](https://github.com/twilio/twilio-cli-core/commit/d8dd071345e0c5287504caddf807d449481c0baa))
+
+
+### Library - Chores
+
+* update slack alerts color ([#179](https://github.com/twilio/twilio-cli-core/issues/179)) ([c96bbfb](https://github.com/twilio/twilio-cli-core/commit/c96bbfb2ddfc3ec636c92a69b1fedaf2f735fc4a))
+
+---------------------------
+**Frontline**
+- Added `is_available` to User's resource
+
+**Messaging**
+- Added GET vetting API
+
+**Verify**
+- Add `WHATSAPP` to the attempts API.
+- Allow to update `config.notification_platform` from `none` to `apn` or `fcm` and viceversa for Verify Push
+- Add `none` as a valid `config.notification_platform` value for Verify Push
+
+**Twiml**
+- Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+
+
+## [5.32.0](https://github.com/twilio/twilio-cli-core/compare/5.31.1...5.32.0) (2021-11-04)
+
+
+### Library - Chores
+
+* Added tests and sonarcloud scan while adding the PR's ([#169](https://github.com/twilio/twilio-cli-core/issues/169)) ([a26d6ee](https://github.com/twilio/twilio-cli-core/commit/a26d6ee81e2a49057581ce0d76b9636295d42f1e))
+
+---------------------------
+**Library - Chore**
+- [PR #46](https://github.com/twilio/twilio-oai/pull/46): migrate from travis over to gh actions. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Api**
+- Updated `media_url` property to be treated as PII
+
+**Messaging**
+- Added a new enum for brand registration status named DELETED **(breaking change)**
+- Add a new K12_EDUCATION use case in us_app_to_person_usecase api transaction
+- Added a new enum for brand registration status named IN_REVIEW
+
+**Serverless**
+- Add node14 as a valid Build runtime
+
+**Verify**
+- Fix typos in Verify Push Factor documentation for the `config.notification_token` parameter.
+- Added `TemplateCustomSubstitutions` on verification creation
+- Make `TemplateSid` parameter public for Verification resource and `DefaultTemplateSid` parameter public for Service resource. **(breaking change)**
+
+
+### [5.31.1](https://github.com/twilio/twilio-cli-core/compare/5.31.0...5.31.1) (2021-10-19)
+
+
+### Library - Fixes
+
+* Revert "Resolve sec vulnerability ([#166](https://github.com/twilio/twilio-cli-core/issues/166))" ([#168](https://github.com/twilio/twilio-cli-core/issues/168)) ([7d2a374](https://github.com/twilio/twilio-cli-core/commit/7d2a374b4f5f42106c976616a88d029b2f3bea0a))
+
+## [5.31.0](https://github.com/twilio/twilio-cli-core/compare/5.30.0...5.31.0) (2021-10-19)
+
+
+### Library - Chores
+
+* [Snyk] Security upgrade @oclif/plugin-help from 2.2.3 to 3.2.0 ([#165](https://github.com/twilio/twilio-cli-core/issues/165)) ([188120a](https://github.com/twilio/twilio-cli-core/commit/188120a3e323ea07f2e7f26909ec83ac5a03461d))
+
+
+### Library - Features
+
+* Added the github actions to send the slack notifications ([#164](https://github.com/twilio/twilio-cli-core/issues/164)) ([06e2cb1](https://github.com/twilio/twilio-cli-core/commit/06e2cb1e3a8a6eb2486d8575a5da6c5dcbe3708e))
+
+---------------------------
+**Api**
+- Corrected enum values for `emergency_address_status` values in `/IncomingPhoneNumbers` response. **(breaking change)**
+- Clarify `emergency_address_status` values in `/IncomingPhoneNumbers` response.
+
+**Messaging**
+- Add PUT and List brand vettings api
+- Removes beta feature flag based visibility for us_app_to_person_registered and usecase field.Updates test cases to add POLITICAL usecase. **(breaking change)**
+- Add brand_feedback as optional field to BrandRegistrations
+
+**Video**
+- Add `AudioOnly` to create room
+
+
 ### [5.27.1-rc.1](https://github.com/twilio/twilio-cli-core/compare/5.25.0-rc.1...5.27.1-rc.1) (2021-11-12)
 
 
@@ -147,10 +309,8 @@
 twilio-cli-core changelog
 =====================
 
-------------------------------
-**Library - Fix**
-- [PR #137](https://github.com/twilio/twilio-cli-core/pull/137): Update release-feature-branch with main. Thanks to [@ravali-rimmalapudi](https://github.com/ravali-rimmalapudi)!
 [2021-09-09] Version 5.28.3
+---------------------------
 **Messaging**
 - Add Identity Status, Russell 3000, Tax Exempt Status and Should Skip SecVet fields for Brand Registrations
 - Add Should Skip Secondary Vetting optional flag parameter to create Brand API
@@ -237,6 +397,7 @@ twilio-cli-core changelog
 - Add brand_type field to a2p brand_registration api
 
 
+[2021-07-29] Version 5.27.0
 ---------------------------
 **Api**
 - Added `domain_sid` in sip_credential_list_mapping and sip_ip_access_control_list_mapping APIs **(breaking change)**

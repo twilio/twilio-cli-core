@@ -38,6 +38,11 @@
             "nullable": true,
             "type": "string"
           },
+          "max_duration": {
+            "description": "Maximum MediaProcessor duration in minutes",
+            "nullable": true,
+            "type": "integer"
+          },
           "sid": {
             "description": "The unique string that identifies the resource",
             "maxLength": 34,
@@ -233,12 +238,12 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Media",
-    "version": "1.22.0"
+    "version": "1.24.0"
   },
   "openapi": "3.0.1",
   "paths": {
     "/v1/MediaProcessors": {
-      "description": "TODO: Resource-level docs",
+      "description": "A MediaProcessor resource provides the ability to capture content from a web application with a Twilio Media Extension to create a livestream.",
       "get": {
         "description": "Returns a list of MediaProcessors.",
         "operationId": "ListMediaProcessor",
@@ -348,7 +353,7 @@
               "schema": {
                 "properties": {
                   "Extension": {
-                    "description": "The [Media Extension](/docs/live/api/media-extensions-overview) name or URL. Ex: `video-composer-v1-preview`",
+                    "description": "The [Media Extension](/docs/live/api/media-extensions-overview) name or URL. Ex: `video-composer-v1`",
                     "type": "string"
                   },
                   "ExtensionContext": {
@@ -358,6 +363,10 @@
                   "ExtensionEnvironment": {
                     "description": "User-defined environment variables for the Media Extension, represented as a JSON dictionary of key/value strings. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about whether you need to provide this.",
                     "type": "object"
+                  },
+                  "MaxDuration": {
+                    "description": "The maximum time, in seconds, that the MediaProcessor can run before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the MediaProcessor, regardless of whether media is still streaming.",
+                    "type": "integer"
                   },
                   "StatusCallback": {
                     "description": "The URL to which Twilio will send asynchronous webhook requests for every MediaProcessor event. See [Status Callbacks](/docs/live/status-callbacks) for details.",
@@ -424,7 +433,7 @@
       }
     },
     "/v1/MediaProcessors/{Sid}": {
-      "description": "TODO: Resource-level docs",
+      "description": "A MediaProcessor resource provides the ability to capture content from a web application with a Twilio Media Extension to create a livestream.",
       "get": {
         "description": "Returns a single MediaProcessor resource identified by a SID.",
         "operationId": "FetchMediaProcessor",
@@ -539,7 +548,7 @@
       }
     },
     "/v1/PlayerStreamers": {
-      "description": "TODO: Resource-level docs",
+      "description": "A PlayerStreamer resource provides the ability to send a livestream to a JavaScript, iOS, or Android Player SDK.",
       "get": {
         "description": "Returns a list of PlayerStreamers.",
         "operationId": "ListPlayerStreamer",
@@ -712,7 +721,7 @@
       }
     },
     "/v1/PlayerStreamers/{Sid}": {
-      "description": "TODO: Resource-level docs",
+      "description": "A PlayerStreamer resource provides the ability to send a livestream to a JavaScript, iOS, or Android Player SDK.",
       "get": {
         "description": "Returns a single PlayerStreamer resource identified by a SID.",
         "operationId": "FetchPlayerStreamer",
@@ -825,7 +834,7 @@
       }
     },
     "/v1/PlayerStreamers/{Sid}/PlaybackGrant": {
-      "description": "TODO: Resource-level docs",
+      "description": "A PlaybackGrant resource allows developers to generate a grant to initialize the Twilio Live Player SDK and connect to a livestream.",
       "get": {
         "description": "**This method is not enabled.** Returns a single PlaybackGrant resource identified by a SID.",
         "operationId": "FetchPlayerStreamerPlaybackGrant",
