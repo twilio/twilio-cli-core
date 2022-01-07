@@ -14,9 +14,24 @@ describe('services', () => {
         const configData = new ConfigData();
         configData.addProfile('newProfile', constants.FAKE_ACCOUNT_SID, 'dev');
 
-        expect(configData.profiles[0].id).to.equal('newProfile');
-        expect(configData.profiles[0].accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
-        expect(configData.profiles[0].region).to.equal('dev');
+        expect(configData.profiles.newProfile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(configData.profiles.newProfile.region).to.equal('dev');
+      });
+
+      test.it('should add a new profile with apiKey', () => {
+        const configData = new ConfigData();
+        configData.addProfile(
+          'newProfile',
+          constants.FAKE_ACCOUNT_SID,
+          'dev',
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
+
+        expect(configData.profiles.newProfile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(configData.profiles.newProfile.region).to.equal('dev');
+        expect(configData.profiles.newProfile.apiKey).to.equal(constants.FAKE_API_KEY);
+        expect(configData.profiles.newProfile.apiSecret).to.equal(constants.FAKE_API_SECRET);
       });
 
       test.it('should update an existing profile', () => {
@@ -24,9 +39,8 @@ describe('services', () => {
         configData.addProfile('activeProfile', constants.FAKE_ACCOUNT_SID, 'dev');
         configData.addProfile('activeProfile', 'new-account-sid');
 
-        expect(configData.profiles[0].id).to.equal('activeProfile');
-        expect(configData.profiles[0].accountSid).to.equal('new-account-sid');
-        expect(configData.profiles[0].region).to.be.undefined;
+        expect(configData.profiles.activeProfile.accountSid).to.equal('new-account-sid');
+        expect(configData.profiles.activeProfile.region).to.be.undefined;
       });
     });
 
@@ -46,9 +60,9 @@ describe('services', () => {
         expect(profile).to.be.undefined;
       });
 
-      test.it('should return first profile if it exists, and no env vars', () => {
+      test.it('should return first profile if project exists, and no env vars', () => {
         const configData = new ConfigData();
-        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('firstProfile', constants.FAKE_ACCOUNT_SID);
 
         const profile = configData.getProfileById();
         expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
@@ -111,12 +125,49 @@ describe('services', () => {
         expect(profile.apiSecret).to.equal(FAKE_AUTH_TOKEN);
         expect(profile.region).to.equal('region');
       });
+
+      test.it('should return undefined if first profile not exists with apiKey and apiSecret', () => {
+        const configData = new ConfigData();
+        configData.profiles = {};
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+
+        const profile = configData.getProfileById('firstProfile');
+        expect(profile.apiKey).to.be.undefined;
+        expect(profile.apiSecret).to.be.undefined;
+      });
+
+      test.it('should return profile with apiKey and apiSecret', () => {
+        const configData = new ConfigData();
+        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.profiles = {
+          firstProfile: {
+            accountSid: constants.FAKE_ACCOUNT_SID,
+            apiKey: constants.FAKE_API_KEY,
+            apiSecret: constants.FAKE_API_SECRET,
+          },
+        };
+
+        const profile = configData.getProfileById('firstProfile');
+        expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiKey).to.equal(constants.FAKE_API_KEY);
+        expect(profile.apiSecret).to.equal(constants.FAKE_API_SECRET);
+      });
     });
 
     describe('ConfigData.activeProfile', () => {
-      test.it('should return first profile when no active profile is set', () => {
+      test.it('should return undefined when no active profile is set and no projects are set', () => {
         const configData = new ConfigData();
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile('secondProfile', 'new_account_SID');
+        configData.addProfile('thirdProfile', 'newest_account_SID');
+        const active = configData.getActiveProfile();
+
+        expect(active).to.be.undefined;
+      });
+
+      test.it('should return first profile when no active profile is set and with projects', () => {
+        const configData = new ConfigData();
+        configData.addProject('firstProfile', constants.FAKE_ACCOUNT_SID);
         configData.addProfile('secondProfile', 'new_account_SID');
         configData.addProfile('thirdProfile', 'newest_account_SID');
         const active = configData.getActiveProfile();
@@ -137,11 +188,26 @@ describe('services', () => {
         expect(active.accountSid).to.equal('new_account_SID');
       });
 
-      test.it('should not allow the active profile to not exist', () => {
+      test.it('should remove profile from projects if duplicate found', () => {
+        const configData = new ConfigData();
+        configData.addProject('testProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile(
+          'testProfile',
+          constants.FAKE_ACCOUNT_SID,
+          '',
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
+
+        expect(configData.projects).to.be.empty;
+        expect(configData.profiles.testProfile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+      });
+
+      test.it('should allow the active profile to not exist', () => {
         const configData = new ConfigData();
         configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
         expect(configData.setActiveProfile('secondProfile')).to.be.undefined;
-        expect(configData.getActiveProfile().id).to.equal('firstProfile');
+        expect(configData.getActiveProfile()).to.be.undefined;
       });
 
       test.it('should return undefined if profile does not exist and there are no profiles configured', () => {
@@ -154,41 +220,113 @@ describe('services', () => {
     describe('ConfigData.removeProfile', () => {
       test.it('remove a profile that does not exist', () => {
         const configData = new ConfigData();
-        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
-        configData.addProfile('secondProfile', 'new_account_SID');
-        configData.addProfile('thirdProfile', 'newest_account_SID');
+        configData.addProject('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProfile(
+          'secondProfile',
+          'new_account_SID',
+          '',
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
+        configData.addProfile(
+          'thirdProfile',
+          'newest_account_SID',
+          '',
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
         const fakeProfile = {
           id: 'DOES_NOT_EXIST',
           accountSid: 'fake_SID',
         };
-        const originalLength = configData.profiles.length;
+        const originalLength = configData.projects.length;
+        const originalProfilesLength = Object.keys(configData.profiles).length;
         configData.removeProfile(fakeProfile);
 
-        expect(configData.profiles.length).to.equal(originalLength);
+        expect(configData.projects.length).to.equal(originalLength);
+        expect(Object.keys(configData.profiles).length).to.equal(originalProfilesLength);
       });
 
-      test.it('removes profile', () => {
+      test.it('removes profile from projects', () => {
         const configData = new ConfigData();
-        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
-        configData.addProfile('secondProfile', 'new_account_SID');
-        configData.addProfile('thirdProfile', 'newest_account_SID');
+        configData.addProject('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('secondProfile', 'new_account_SID');
+        configData.addProject('thirdProfile', 'newest_account_SID');
+        configData.addProfile(
+          'fourthProfile',
+          'fourth_account_SID',
+          '',
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
         const profile = configData.getProfileById('secondProfile');
+        const originalLengthProfiles = Object.keys(configData.profiles).length;
         configData.removeProfile(profile);
 
-        expect(configData.profiles[1].id).to.equal('thirdProfile');
-        expect(configData.profiles[1].accountSid).to.equal('newest_account_SID');
+        expect(configData.projects[1].id).to.equal('thirdProfile');
+        expect(configData.projects[1].accountSid).to.equal('newest_account_SID');
+        expect(Object.keys(configData.profiles).length).to.equal(originalLengthProfiles);
+      });
+      test.it('removes profile from profiles', () => {
+        const configData = new ConfigData();
+        configData.addProject('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('secondProfile', 'new_account_SID');
+        configData.addProfile('thirdProfile', 'newest_account_SID', '', 'third_api_key', 'third_api_secret');
+        configData.addProfile(
+          'fourthProfile',
+          'fourth_account_SID',
+          '',
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
+        const profile = configData.getProfileById('thirdProfile');
+        const originalLengthProjects = configData.projects.length;
+        configData.removeProfile(profile);
+
+        expect(configData.projects.length).to.equal(originalLengthProjects);
+        expect(configData.profiles[profile.id]).to.be.undefined;
       });
 
-      test.it('removes active profile', () => {
+      test.it('removes active profile of projects', () => {
         const configData = new ConfigData();
-        configData.addProfile('firstProfile', constants.FAKE_ACCOUNT_SID);
-        configData.addProfile('secondProfile', 'new_account_SID');
-        configData.addProfile('thirdProfile', 'newest_account_SID');
+        configData.addProject('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('secondProfile', 'new_account_SID');
+        configData.addProject('thirdProfile', 'newest_account_SID');
+        configData.addProfile(
+          'fourthProfile',
+          'fourth_account_SID',
+          '',
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
         const profile = configData.setActiveProfile('firstProfile');
+        const originalLengthProfiles = Object.keys(configData.profiles).length;
         configData.removeProfile(profile);
 
-        expect(configData.profiles[1].id).to.equal('thirdProfile');
-        expect(configData.profiles[1].accountSid).to.equal('newest_account_SID');
+        expect(configData.projects[1].id).to.equal('thirdProfile');
+        expect(configData.projects[1].accountSid).to.equal('newest_account_SID');
+        expect(configData.activeProfile).to.equal(null);
+        expect(Object.keys(configData.profiles).length).to.equal(originalLengthProfiles);
+      });
+
+      test.it('removes active profile of profiles', () => {
+        const configData = new ConfigData();
+        configData.addProject('firstProfile', constants.FAKE_ACCOUNT_SID);
+        configData.addProject('secondProfile', 'new_account_SID');
+        configData.addProfile('thirdProfile', 'newest_account_SID', '', 'third_api_key', 'third_api_secret');
+        configData.addProfile(
+          'fourthProfile',
+          'fourth_account_SID',
+          '',
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
+        const profile = configData.setActiveProfile('thirdProfile');
+        const originalLengthProjects = configData.projects.length;
+        configData.removeProfile(profile);
+
+        expect(configData.projects.length).to.equal(originalLengthProjects);
+        expect(configData.profiles[profile.id]).to.be.undefined;
         expect(configData.activeProfile).to.equal(null);
       });
     });
@@ -204,12 +342,15 @@ describe('services', () => {
     });
 
     describe('Config', () => {
-      const tempConfigDir = tmp.dirSync({ unsafeCleanup: true });
+      let tempConfigDir;
+      beforeEach(() => {
+        tempConfigDir = tmp.dirSync({ unsafeCleanup: true });
+      });
 
       test.it('saves and loads user configuration with space trimmed', async () => {
         const config = new Config(tempConfigDir.name);
         const userConfig = await config.load();
-        userConfig.addProfile('  profile  \t', 'sid  \n ', '    stage');
+        userConfig.addProfile('  profile  \t', 'sid  \n ', '    stage', 'test_key', 'test_secret');
         userConfig.setActiveProfile('\tprofile\t');
         userConfig.ackPrompt('impromptu');
 
@@ -219,6 +360,24 @@ describe('services', () => {
         const loadedConfig = await config.load();
         expect(loadedConfig).to.deep.equal(userConfig);
         expect(loadedConfig.getActiveProfile().id).to.equal('profile');
+      });
+
+      test.it('should load projects post sanitization and not removed from list on load', async () => {
+        const config = new Config(tempConfigDir.name);
+        const configData = await config.load();
+        configData.addProfile('  profile  ', 'sid_profile  ', '    dev', 'test_key', 'test_secret');
+        configData.addProject('    profile', ' sid_project ', '    dev');
+        await config.save(configData);
+
+        const loadedConfig = await config.load();
+        expect(loadedConfig).to.deep.equal(configData);
+        expect(loadedConfig.projects).to.have.length(1); // Removal shouldn't be performed on projects
+        expect(Object.keys(loadedConfig.profiles)).to.have.length(1);
+        expect(Object.keys(loadedConfig.profiles)[0]).to.equal('profile');
+        expect(loadedConfig.profiles.profile.accountSid).to.equal('sid_profile');
+        expect(loadedConfig.projects[0].id).to.equal('profile');
+        expect(loadedConfig.projects[0].accountSid).to.equal('sid_project');
+        expect(loadedConfig.projects[0].region).to.equal('dev');
       });
 
       test.it('works with config dirs that did not exist', async () => {

@@ -8,6 +8,15 @@ const MessageTemplates = require('./messaging/templates');
 const CLI_NAME = 'twilio-cli';
 
 class ConfigDataProfile {
+  constructor(accountSid, region, apiKey, apiSecret) {
+    this.accountSid = accountSid;
+    this.region = region;
+    this.apiKey = apiKey;
+    this.apiSecret = apiSecret;
+  }
+}
+
+class ConfigDataProject {
   constructor(id, accountSid, region) {
     this.id = id;
     this.accountSid = accountSid;
@@ -20,8 +29,10 @@ class ConfigData {
     this.edge = undefined;
     this.email = {};
     this.prompts = {};
-    this.profiles = [];
+    this.projects = [];
     this.activeProfile = null;
+    this.profiles = {};
+    this.requireProfileInput = undefined;
   }
 
   getProfileFromEnvironment() {
@@ -55,6 +66,14 @@ class ConfigData {
     return undefined;
   }
 
+  getProfileFromConfigFileById(profileId) {
+    let profile = this.profiles[profileId];
+    if (!profile) {
+      profile = this.projects.find((p) => p.id === profileId);
+    }
+    return profile;
+  }
+
   getProfileById(profileId) {
     let profile;
 
@@ -66,7 +85,11 @@ class ConfigData {
       if (profileId) {
         // Clean the profile ID.
         profileId = this.sanitize(profileId);
-        profile = this.profiles.find((p) => p.id === profileId);
+        profile = this.getProfileFromConfigFileById(profileId);
+        // Explicitly add `id` to the returned profile
+        if (profile && !profile.hasOwnProperty('id')) {
+          profile.id = profileId;
+        }
       } else {
         profile = this.getActiveProfile();
       }
@@ -90,39 +113,54 @@ class ConfigData {
 
   getActiveProfile() {
     let profile;
-    if (this.profiles.length > 0) {
+    if (this.projects.length > 0 || Object.keys(this.profiles).length > 0) {
       if (this.activeProfile) {
-        profile = this.profiles.find((p) => p.id === this.activeProfile);
+        profile = this.getProfileFromConfigFileById(this.activeProfile);
       }
+
       if (!profile) {
-        profile = this.profiles[0];
+        profile = this.projects[0];
       }
     }
     return profile;
   }
 
   removeProfile(profileToRemove) {
-    this.profiles = this.profiles.filter((profile) => {
-      return profile.id !== profileToRemove.id;
-    });
+    if (this.profiles[profileToRemove.id]) {
+      delete this.profiles[profileToRemove.id];
+    } else {
+      this.projects = this.projects.filter((profile) => {
+        return profile.id !== profileToRemove.id;
+      });
+    }
     if (profileToRemove.id === this.activeProfile) {
       this.activeProfile = null;
     }
   }
 
-  addProfile(id, accountSid, region) {
-    // Clean all the inputs.
+  addProfile(id, accountSid, region, apiKey, apiSecret) {
+    //  Clean all the inputs.
     id = this.sanitize(id);
     accountSid = this.sanitize(accountSid);
     region = this.sanitize(region);
 
     const existing = this.getProfileById(id);
+
+    //  Remove if existing in historical projects.
     if (existing) {
-      existing.accountSid = accountSid;
-      existing.region = region;
-    } else {
-      this.profiles.push(new ConfigDataProfile(id, accountSid, region));
+      this.projects = this.projects.filter((p) => p.id !== existing.id);
     }
+
+    //  Update profiles object
+    this.profiles[id] = new ConfigDataProfile(accountSid, region, apiKey, apiSecret);
+  }
+
+  addProject(id, accountSid, region) {
+    id = this.sanitize(id);
+    accountSid = this.sanitize(accountSid);
+    region = this.sanitize(region);
+
+    this.projects.push(new ConfigDataProject(id, accountSid, region));
   }
 
   isPromptAcked(promptId) {
@@ -145,10 +183,12 @@ class ConfigData {
   loadFromObject(configObj) {
     this.edge = configObj.edge;
     this.email = configObj.email || {};
+    this.requireProfileInput = configObj.requireProfileInput;
     this.prompts = configObj.prompts || {};
     // Note the historical 'projects' naming.
-    configObj.profiles = configObj.projects || [];
-    configObj.profiles.forEach((profile) => this.addProfile(profile.id, profile.accountSid, profile.region));
+    configObj.projects = configObj.projects || [];
+    configObj.projects.forEach((project) => this.addProject(project.id, project.accountSid, project.region));
+    this.profiles = configObj.profiles || {};
     this.setActiveProfile(configObj.activeProject);
   }
 
@@ -179,9 +219,11 @@ class Config {
     configData = {
       edge: configData.edge,
       email: configData.email,
+      requireProfileInput: configData.requireProfileInput,
       prompts: configData.prompts,
       // Note the historical 'projects' naming.
-      projects: configData.profiles,
+      projects: configData.projects,
+      profiles: configData.profiles,
       activeProject: configData.activeProfile,
     };
 
