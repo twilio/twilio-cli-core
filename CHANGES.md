@@ -1,3 +1,20 @@
+---------------------------
+**Library - Feature**
+- [PR #51](https://github.com/twilio/twilio-oai/pull/51): add GitHub release step during deploy. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Make fixed time scheduling parameters public **(breaking change)**
+
+**Messaging**
+- Add update brand registration API
+
+**Numbers**
+- Add API endpoint for List Bundle Copies resource
+
+**Video**
+- Enable external storage for all customers
+
+
 ## [5.33.0](https://github.com/twilio/twilio-cli-core/compare/5.32.2...5.33.0) (2021-12-16)
 
 
