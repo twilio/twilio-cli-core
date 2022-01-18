@@ -1,3 +1,19 @@
+## [6.0.0](https://github.com/twilio/twilio-cli-core/compare/5.33.0...6.0.0) (2022-01-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Storing profiles in config file instead of keytar.
+
+### Library - Chores
+
+* Update LICENSE ([#189](https://github.com/twilio/twilio-cli-core/issues/189)) ([5b6a3a5](https://github.com/twilio/twilio-cli-core/commit/5b6a3a527251ef595cda317bae12b6de79bcc500))
+
+
+### Library - Features
+
+* Release feature branch ([#188](https://github.com/twilio/twilio-cli-core/issues/188)) ([4380dac](https://github.com/twilio/twilio-cli-core/commit/4380dac7725511f10d0bc8b5d9925bafafc69253))
+
 ---------------------------
 **Library - Feature**
 - [PR #51](https://github.com/twilio/twilio-oai/pull/51): add GitHub release step during deploy. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
