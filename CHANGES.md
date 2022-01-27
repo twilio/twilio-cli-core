@@ -1,3 +1,10 @@
+### [6.0.1](https://github.com/twilio/twilio-cli-core/compare/6.0.0...6.0.1) (2022-01-27)
+
+
+### Library - Chores
+
+* bump dependency axios ([#190](https://github.com/twilio/twilio-cli-core/issues/190)) ([3836cbf](https://github.com/twilio/twilio-cli-core/commit/3836cbf5e14d12b134dceb6772b00c6db1a6109d))
+
 ---------------------------
 **Insights**
 - Added new endpoint to fetch Conference Participant Summary
