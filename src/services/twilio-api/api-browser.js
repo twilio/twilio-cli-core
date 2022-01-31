@@ -54,6 +54,17 @@ class TwilioApiBrowser {
     return apiSpec;
   }
 
+  updateTwilioVendorExtensionProperty(input) {
+    Object.entries(input).forEach(([key, value]) => {
+      if (key === 'x-twilio') {
+        Object.entries(value).forEach(([subKey, subValue]) => {
+          input[subKey] = subValue;
+        });
+        delete input[key];
+      }
+    });
+  }
+
   loadDomains(obj) {
     // Clone the spec since we'll be modifying it.
     const domains = JSON.parse(JSON.stringify(obj));
@@ -71,6 +82,7 @@ class TwilioApiBrowser {
         OPERATIONS.forEach((operationName) => {
           if (operationName in path) {
             const operation = path[operationName];
+            this.updateTwilioVendorExtensionProperty(operation);
             path.operations[operationName] = operation;
             delete path[operationName];
 
@@ -87,14 +99,7 @@ class TwilioApiBrowser {
         });
 
         // Lift the Twilio vendor extension properties.
-        Object.entries(path).forEach(([key, value]) => {
-          if (key === 'x-twilio') {
-            Object.entries(value).forEach(([subKey, subValue]) => {
-              path[subKey] = subValue;
-            });
-            delete path[key];
-          }
-        });
+        this.updateTwilioVendorExtensionProperty(path);
       });
     });
 
