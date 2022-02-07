@@ -142,7 +142,7 @@ jobs:
           REPO_NAME: twilio/twilio-cli
           INPUTS: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}" }'
   notify-complete-fail:
-    if: ${{ failure() || cancelled() }}
+    if: ${{ needs.token-validation.result != 'failure' && (failure() || cancelled()) }}
     needs: [ triggerCliWorkflow ]
     name: Notify Release Failed
     runs-on: ubuntu-latest
