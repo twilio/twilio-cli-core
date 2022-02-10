@@ -1,3 +1,16 @@
+## [6.1.0](https://github.com/twilio/twilio-cli-core/compare/6.0.1...6.1.0) (2022-02-10)
+
+
+### Library - Fixes
+
+* added support for default output prop in operation ([#192](https://github.com/twilio/twilio-cli-core/issues/192)) ([8ae4ba5](https://github.com/twilio/twilio-cli-core/commit/8ae4ba5a418521d5877c7fc753ed08cee2a43f22))
+* Cleaning travis code ([#193](https://github.com/twilio/twilio-cli-core/issues/193)) ([ecb2ae5](https://github.com/twilio/twilio-cli-core/commit/ecb2ae5e61774c4aca577517f5acf1932f192be8))
+
+
+### Library - Chores
+
+* Add Npm Audit workflow ([#196](https://github.com/twilio/twilio-cli-core/issues/196)) ([5dd1887](https://github.com/twilio/twilio-cli-core/commit/5dd1887f03468c902691eac17546a02c59fefbcb))
+
 ---------------------------
 **Api**
 - Add `stream` resource
