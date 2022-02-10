@@ -12,7 +12,7 @@ on:
         description: 'HomeBrew prerelease'
         default: 'false'
 jobs:
-  token-validation:
+  cli-core-token-validation:
     runs-on: ubuntu-latest
     steps:
       - name: Validate REPO_ACCESS_TOKEN
@@ -27,8 +27,26 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
+  
+  cli-token-validation:
+    needs: [ cli-core-token-validation ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cli-core repo
+        uses: actions/checkout@v2
+      - name: Execute py script to validate twilio-cli tokens
+        id: cli_token  
+        run: |
+          output=$(python3 .github/scripts/validate_cli_tokens.py)
+          echo "::set-output name=tokenStatus::$output"
+      - name: Print status
+        run: echo "${{ steps.cli_token.outputs.tokenStatus }}"
+      - name: Validate the github workflow
+        if: ${{ steps.cli_token.outputs.tokenStatus != 'success'}}
+        run: exit 1
+
   notify-start:
-    needs: [ token-validation ]
+    needs: [ cli-token-validation ]
     name: Notify Release Started
     runs-on: ubuntu-latest
     steps:
@@ -48,7 +66,7 @@ jobs:
           SLACK_MESSAGE: 'Release Started :rocket:'
           MSG_MINIMAL: actions url
   test:
-    needs: [ token-validation ]
+    needs: [ cli-token-validation ]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -141,7 +159,7 @@ jobs:
           REPO_NAME: twilio/twilio-cli
           INPUTS: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}" }'
   notify-complete-fail:
-    if: ${{ needs.token-validation.result != 'failure' && (failure() || cancelled()) }}
+    if: ${{ (needs.cli-token-validation.result != 'failure' || needs.cli-core-token-validation.result != 'failure' ) && (failure() || cancelled()) }}
     needs: [ triggerCliWorkflow ]
     name: Notify Release Failed
     runs-on: ubuntu-latest
