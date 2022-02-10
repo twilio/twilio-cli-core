@@ -15,6 +15,12 @@ jobs:
   cli-core-token-validation:
     runs-on: ubuntu-latest
     steps:
+      - name: Trigger CLI token validation workflow
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Cli Release Token Validation
+          repo: twilio/twilio-cli
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Validate REPO_ACCESS_TOKEN
         uses: actions/checkout@v2
         with:
