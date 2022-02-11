@@ -16,7 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger CLI token validation workflow
-        uses: benc-uk/workflow-dispatch@v1
+        run: node .github/scripts/trigger-workflow.js
+        env:
+          WORKFLOW_NAME: '.github/workflows/release-token-validation.yml'
+          REPO_NAME: ${{ github.repository }}
+          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          # BRANCH_NAME: ${{steps.extract_branch.outputs.branch}}
         with:
           workflow: Cli Release Token Validation
           repo: ${{ github.repository_owner }}/twilio-cli
