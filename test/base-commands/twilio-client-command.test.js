@@ -184,14 +184,14 @@ describe('base-commands', () => {
       });
 
     setUpTest([], { commandClass: Throwing20003ClientCommand })
-      .exit(20003)
+      .exit(20)
       .it('should catch access denied errors and enhance the message', (ctx) => {
         expect(ctx.stderr).to.contain('Access Denied');
         expect(ctx.stderr).to.contain('Standard API Keys');
       });
 
     setUpTest([], { commandClass: Throwing20003ClientCommand, envRegion: 'region' })
-      .exit(20003)
+      .exit(20)
       .it('should catch access denied errors but not enhance the message when using env var auth', (ctx) => {
         expect(ctx.stderr).to.contain('Access Denied');
         expect(ctx.stderr).to.not.contain('Standard API Keys');
