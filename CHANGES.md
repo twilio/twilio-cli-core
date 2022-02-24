@@ -1,3 +1,5 @@
+## [6.2.0](https://github.com/twilio/twilio-cli-core/compare/6.1.0...6.2.0) (2022-02-24)
+
 ---------------------------
 **Api**
 - Add `uri` to `stream` resource
