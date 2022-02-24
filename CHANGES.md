@@ -1,3 +1,35 @@
+---------------------------
+**Api**
+- Add `uri` to `stream` resource
+- Add A2P Registration Fee category (`a2p-registration-fee`) to usage records
+
+**Verify**
+- Remove outdated documentation commentary to contact sales. Product is already in public beta.
+
+
+---------------------------
+**Api**
+- Detected a bug and removed optional boolean include_soft_deleted parameter to retrieve soft deleted recordings. **(breaking change)**
+- Add optional boolean include_soft_deleted parameter to retrieve soft deleted recordings.
+
+**Numbers**
+- Unrevert valid_until and sort filter params added to List Bundles resource
+- Revert valid_until and sort filter params added to List Bundles resource
+- Update sorting params added to List Bundles resource in the previous release
+
+**Preview**
+- Moved `web_channels` from preview to beta under `flex-api` **(breaking change)**
+
+**Taskrouter**
+- Add `ETag` as Response Header to List of Task, Reservation & Worker
+
+**Verify**
+- Add optional `metadata` to factors.
+
+**Twiml**
+- Add new Polly Neural voices
+
+
 ## [6.1.0](https://github.com/twilio/twilio-cli-core/compare/6.0.1...6.1.0) (2022-02-10)
 
 
