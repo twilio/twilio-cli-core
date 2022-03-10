@@ -1,3 +1,22 @@
+---------------------------
+**Library - Chore**
+- [PR #52](https://github.com/twilio/twilio-oai/pull/52): push Datadog Release Metric upon deploy success. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Api**
+- Add optional boolean include_soft_deleted parameter to retrieve soft deleted recordings
+
+**Chat**
+- Add `X-Twilio-Wehook-Enabled` header to `delete` method in UserChannel resource
+
+**Numbers**
+- Expose `failure_reason` in the Supporting Documents resources
+
+**Verify**
+- Add optional `metadata` parameter to "verify challenge" endpoint, so the SDK/App can attach relevant information from the device when responding to challenges.
+- remove beta feature flag to list atempt api operations.
+- Add `ttl` and `date_created` properties to `AccessTokens`.
+
+
 ## [6.2.0](https://github.com/twilio/twilio-cli-core/compare/6.1.0...6.2.0) (2022-02-24)
 
 ---------------------------
