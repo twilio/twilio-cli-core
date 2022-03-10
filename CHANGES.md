@@ -1,3 +1,10 @@
+### [6.2.1](https://github.com/twilio/twilio-cli-core/compare/6.2.0...6.2.1) (2022-03-10)
+
+
+### Library - Chores
+
+* Add node v12 support ([#200](https://github.com/twilio/twilio-cli-core/issues/200)) ([ef09c7c](https://github.com/twilio/twilio-cli-core/commit/ef09c7c866f5f399a3343df3cd0a3ec0cbcc28d2))
+
 ---------------------------
 **Library - Chore**
 - [PR #52](https://github.com/twilio/twilio-oai/pull/52): push Datadog Release Metric upon deploy success. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
