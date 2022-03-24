@@ -1,3 +1,5 @@
+## [6.3.0](https://github.com/twilio/twilio-cli-core/compare/6.2.1...6.3.0) (2022-03-24)
+
 ---------------------------
 **Api**
 - Change `stream` url parameter to non optional
