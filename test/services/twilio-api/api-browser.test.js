@@ -151,6 +151,47 @@ describe('services', () => {
           },
         });
       });
+
+      test.it('lift twilio vendor extension property', () => {
+        const browser = new TwilioApiBrowser({
+          api: {
+            paths: {
+              '/v2/Services/{ServiceSid}/Entities/{Identity}/Factors.json': {
+                servers: [
+                  {
+                    url: 'https://api.twilio.com',
+                  },
+                ],
+                get: {
+                  listStuff: '',
+                },
+                post: {
+                  createStuff: '',
+                  'x-twilio': { defaultOutputProperties: ['sid', 'status', 'binding'] },
+                },
+                description: '',
+                'x-twilio': { defaultOutputProperties: ['sid', 'status'] },
+              },
+            },
+          },
+        });
+
+        expect(browser.domains).to.deep.equal({
+          api: {
+            paths: {
+              '/v2/Services/{ServiceSid}/Entities/{Identity}/Factors.json': {
+                operations: {
+                  post: { createStuff: '', defaultOutputProperties: ['sid', 'status', 'binding'] },
+                  get: { listStuff: '' },
+                },
+                server: 'https://api.twilio.com',
+                description: '',
+                defaultOutputProperties: ['sid', 'status'],
+              },
+            },
+          },
+        });
+      });
     });
   });
 });

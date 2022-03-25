@@ -1,3 +1,139 @@
+## [6.3.0](https://github.com/twilio/twilio-cli-core/compare/6.2.1...6.3.0) (2022-03-24)
+
+---------------------------
+**Api**
+- Change `stream` url parameter to non optional
+- Add `verify-totp` and `verify-whatsapp-conversations-business-initiated` categories to `usage_record` API
+
+**Chat**
+- Added v3 Channel update endpoint to support Public to Private channel migration
+
+**Flex**
+- Private Beta release of the Interactions API to support the upcoming release of Flex Conversations at the end of Q1 2022.
+- Adding `channel_configs` object to Flex Configuration
+
+**Media**
+- Add max_duration param to PlayerStreamer
+
+**Supersim**
+- Remove Commands resource, use SmsCommands resource instead **(breaking change)**
+
+**Taskrouter**
+- Add limits to `split_by_wait_time` for Cumulative Statistics Endpoint
+
+**Video**
+- Change recording `status_callback_method` type from `enum` to `http_method` **(breaking change)**
+- Add `status_callback` and `status_callback_method` to composition
+- Add `status_callback` and `status_callback_method` to recording
+
+
+### [6.2.1](https://github.com/twilio/twilio-cli-core/compare/6.2.0...6.2.1) (2022-03-10)
+
+
+### Library - Chores
+
+* Add node v12 support ([#200](https://github.com/twilio/twilio-cli-core/issues/200)) ([ef09c7c](https://github.com/twilio/twilio-cli-core/commit/ef09c7c866f5f399a3343df3cd0a3ec0cbcc28d2))
+
+---------------------------
+**Library - Chore**
+- [PR #52](https://github.com/twilio/twilio-oai/pull/52): push Datadog Release Metric upon deploy success. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Api**
+- Add optional boolean include_soft_deleted parameter to retrieve soft deleted recordings
+
+**Chat**
+- Add `X-Twilio-Wehook-Enabled` header to `delete` method in UserChannel resource
+
+**Numbers**
+- Expose `failure_reason` in the Supporting Documents resources
+
+**Verify**
+- Add optional `metadata` parameter to "verify challenge" endpoint, so the SDK/App can attach relevant information from the device when responding to challenges.
+- remove beta feature flag to list atempt api operations.
+- Add `ttl` and `date_created` properties to `AccessTokens`.
+
+
+## [6.2.0](https://github.com/twilio/twilio-cli-core/compare/6.1.0...6.2.0) (2022-02-24)
+
+---------------------------
+**Api**
+- Add `uri` to `stream` resource
+- Add A2P Registration Fee category (`a2p-registration-fee`) to usage records
+
+**Verify**
+- Remove outdated documentation commentary to contact sales. Product is already in public beta.
+
+
+---------------------------
+**Api**
+- Detected a bug and removed optional boolean include_soft_deleted parameter to retrieve soft deleted recordings. **(breaking change)**
+- Add optional boolean include_soft_deleted parameter to retrieve soft deleted recordings.
+
+**Numbers**
+- Unrevert valid_until and sort filter params added to List Bundles resource
+- Revert valid_until and sort filter params added to List Bundles resource
+- Update sorting params added to List Bundles resource in the previous release
+
+**Preview**
+- Moved `web_channels` from preview to beta under `flex-api` **(breaking change)**
+
+**Taskrouter**
+- Add `ETag` as Response Header to List of Task, Reservation & Worker
+
+**Verify**
+- Add optional `metadata` to factors.
+
+**Twiml**
+- Add new Polly Neural voices
+
+
+## [6.1.0](https://github.com/twilio/twilio-cli-core/compare/6.0.1...6.1.0) (2022-02-10)
+
+
+### Library - Fixes
+
+* added support for default output prop in operation ([#192](https://github.com/twilio/twilio-cli-core/issues/192)) ([8ae4ba5](https://github.com/twilio/twilio-cli-core/commit/8ae4ba5a418521d5877c7fc753ed08cee2a43f22))
+* Cleaning travis code ([#193](https://github.com/twilio/twilio-cli-core/issues/193)) ([ecb2ae5](https://github.com/twilio/twilio-cli-core/commit/ecb2ae5e61774c4aca577517f5acf1932f192be8))
+
+
+### Library - Chores
+
+* Add Npm Audit workflow ([#196](https://github.com/twilio/twilio-cli-core/issues/196)) ([5dd1887](https://github.com/twilio/twilio-cli-core/commit/5dd1887f03468c902691eac17546a02c59fefbcb))
+
+---------------------------
+**Api**
+- Add `stream` resource
+
+**Conversations**
+- Fixed DELETE request to accept "sid_like" params in Address Configuration resources **(breaking change)**
+- Expose Address Configuration resource for `sms` and `whatsapp`
+
+**Fax**
+- Removed deprecated Programmable Fax Create and Update methods **(breaking change)**
+
+**Insights**
+- Rename `call_state` to `call_status` and remove `whisper` in conference participant summary **(breaking change)**
+
+**Numbers**
+- Expose valid_until filters as part of provisionally-approved compliance feature on the List Bundles resource
+
+**Supersim**
+- Fix typo in Fleet resource docs
+- Updated documentation for the Fleet resource indicating that fields related to commands have been deprecated and to use sms_command fields instead.
+- Add support for setting and reading `ip_commands_url` and `ip_commands_method` on Fleets resource for helper libraries
+- Changed `sim` property in requests to create an SMS Command made to the /SmsCommands to accept SIM UniqueNames in addition to SIDs
+
+**Verify**
+- Update list attempts API to include new filters and response fields.
+
+
+### [6.0.1](https://github.com/twilio/twilio-cli-core/compare/6.0.0...6.0.1) (2022-01-27)
+
+
+### Library - Chores
+
+* bump dependency axios ([#190](https://github.com/twilio/twilio-cli-core/issues/190)) ([3836cbf](https://github.com/twilio/twilio-cli-core/commit/3836cbf5e14d12b134dceb6772b00c6db1a6109d))
+
 ---------------------------
 **Insights**
 - Added new endpoint to fetch Conference Participant Summary

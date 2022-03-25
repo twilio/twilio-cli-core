@@ -159,7 +159,7 @@ class CliRequestClient {
     const moreInfoMessage = more_info ? `See ${more_info} for more info.` : '';
     const error = {
       message: `Error code ${code || 'N/A'} from Twilio: ${message || 'No message provided'}. ${moreInfoMessage}`,
-      code: code.toString().substring(0, 2),
+      code,
       details,
     };
 
