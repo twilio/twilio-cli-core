@@ -73,7 +73,11 @@ class BaseCommand extends Command {
         this.logger.error(error.message);
         this.logger.debug(error.stack);
       }
-      this.exit(error.exitCode || 1);
+      let code = 1;
+      if (error.exitCode) {
+        code = parseInt(error.exitCode.toString().substring(0, 2), 10);
+      }
+      this.exit(code);
     } else {
       // System errors
       let url = '';
@@ -118,6 +122,13 @@ class BaseCommand extends Command {
   }
 
   output(fullData, properties, options) {
+    if (this.flags['no-header']) {
+      if (options) {
+        options.showHeaders = false;
+      } else {
+        options = { showHeaders: false };
+      }
+    }
     if (!this.outputProcessor) {
       // Silenced output
       return;

@@ -1,19 +1,14 @@
 {
   "components": {
     "schemas": {
-      "supersim.v1.command": {
+      "supersim.v1.esim_profile": {
         "properties": {
           "account_sid": {
-            "description": "The SID of the Account that created the resource",
+            "description": "The SID of the Account to which the eSIM Profile resource belongs",
             "maxLength": 34,
             "minLength": 34,
             "nullable": true,
             "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "command": {
-            "description": "The message body of the command sent to or from the SIM",
-            "nullable": true,
             "type": "string"
           },
           "date_created": {
@@ -28,12 +23,23 @@
             "nullable": true,
             "type": "string"
           },
-          "direction": {
-            "description": "The direction of the Command",
-            "enum": [
-              "to_sim",
-              "from_sim"
-            ],
+          "eid": {
+            "description": "Identifier of the eUICC that can claim the eSIM Profile",
+            "nullable": true,
+            "type": "string"
+          },
+          "error_code": {
+            "description": "Code indicating the failure if the download of the SIM Profile failed and the eSIM Profile is in `failed` state",
+            "nullable": true,
+            "type": "string"
+          },
+          "error_message": {
+            "description": "Error message describing the failure if the download of the SIM Profile failed and the eSIM Profile is in `failed` state",
+            "nullable": true,
+            "type": "string"
+          },
+          "iccid": {
+            "description": "The ICCID associated with the Sim resource",
             "nullable": true,
             "type": "string"
           },
@@ -42,31 +48,38 @@
             "maxLength": 34,
             "minLength": 34,
             "nullable": true,
-            "pattern": "^HC[0-9a-fA-F]{32}$",
+            "pattern": "^HP[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "sim_sid": {
-            "description": "The SID of the SIM that this Command was sent to or from",
+            "description": "The SID of the Sim resource that this eSIM Profile controls",
             "maxLength": 34,
             "minLength": 34,
             "nullable": true,
             "pattern": "^HS[0-9a-fA-F]{32}$",
             "type": "string"
           },
+          "smdp_plus_address": {
+            "description": "Address of the SM-DP+ server from which the Profile will be downloaded",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          },
           "status": {
-            "description": "The status of the Command",
+            "description": "The status of the eSIM Profile",
             "enum": [
-              "queued",
-              "sent",
-              "delivered",
-              "received",
+              "new",
+              "reserving",
+              "available",
+              "downloaded",
+              "installed",
               "failed"
             ],
             "nullable": true,
             "type": "string"
           },
           "url": {
-            "description": "The absolute URL of the Command resource",
+            "description": "The absolute URL of the eSIM Profile resource",
             "format": "uri",
             "nullable": true,
             "type": "string"
@@ -82,30 +95,6 @@
             "minLength": 34,
             "nullable": true,
             "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "commands_enabled": {
-            "description": "Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands",
-            "nullable": true,
-            "type": "boolean"
-          },
-          "commands_method": {
-            "description": "A string representing the HTTP method to use when making a request to `commands_url`",
-            "enum": [
-              "HEAD",
-              "GET",
-              "POST",
-              "PATCH",
-              "PUT",
-              "DELETE"
-            ],
-            "nullable": true,
-            "type": "string"
-          },
-          "commands_url": {
-            "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number",
-            "format": "uri",
-            "nullable": true,
             "type": "string"
           },
           "data_enabled": {
@@ -135,6 +124,25 @@
           "date_updated": {
             "description": "The ISO 8601 date and time in GMT when the resource was last updated",
             "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "ip_commands_method": {
+            "description": "A string representing the HTTP method to use when making a request to `ip_commands_url`",
+            "enum": [
+              "HEAD",
+              "GET",
+              "POST",
+              "PATCH",
+              "PUT",
+              "DELETE"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "ip_commands_url": {
+            "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device",
+            "format": "uri",
             "nullable": true,
             "type": "string"
           },
@@ -185,6 +193,102 @@
           },
           "url": {
             "description": "The absolute URL of the Fleet resource",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "supersim.v1.ip_command": {
+        "properties": {
+          "account_sid": {
+            "description": "The SID of the Account that created the resource",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "date_created": {
+            "description": "The ISO 8601 date and time in GMT when the resource was created",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "date_updated": {
+            "description": "The ISO 8601 date and time in GMT when the resource was last updated",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "device_ip": {
+            "description": "The IP address of the device that the IP Command was sent to or received from",
+            "nullable": true,
+            "type": "string"
+          },
+          "device_port": {
+            "description": "The port that the IP Command either originated from or was sent to",
+            "nullable": true,
+            "type": "integer"
+          },
+          "direction": {
+            "description": "The direction of the IP Command",
+            "enum": [
+              "to_sim",
+              "from_sim"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "payload": {
+            "description": "The payload of the IP Command sent to or from the Super SIM",
+            "nullable": true,
+            "type": "string"
+          },
+          "payload_type": {
+            "description": "The payload type of the IP Command",
+            "enum": [
+              "text",
+              "binary"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "sid": {
+            "description": "The unique string that identifies the resource",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^HG[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "sim_iccid": {
+            "description": "The ICCID of the Super SIM that this IP Command was sent to or from",
+            "nullable": true,
+            "type": "string"
+          },
+          "sim_sid": {
+            "description": "The SID of the Super SIM that this IP Command was sent to or from",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^HS[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "status": {
+            "description": "The status of the IP Command",
+            "enum": [
+              "queued",
+              "sent",
+              "received",
+              "failed"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "url": {
+            "description": "The absolute URL of the IP Command resource",
             "format": "uri",
             "nullable": true,
             "type": "string"
@@ -613,47 +717,44 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Supersim",
-    "version": "1.20.3"
+    "version": "1.28.0"
   },
   "openapi": "3.0.1",
   "paths": {
-    "/v1/Commands": {
-      "description": "Machine-to-machine commands sent to/from sims",
+    "/v1/ESimProfiles": {
+      "description": "eSIM Profiles that can be loaded onto consumer eUICC SIMs",
       "get": {
-        "description": "Retrieve a list of Commands from your account.",
-        "operationId": "ListCommand",
+        "description": "Retrieve a list of eSIM Profiles.",
+        "operationId": "ListEsimProfile",
         "parameters": [
           {
-            "description": "The SID or unique name of the Sim that Command was sent to or from.",
+            "description": "List the eSIM Profiles that have been associated with an EId.",
             "in": "query",
-            "name": "Sim",
+            "name": "Eid",
             "schema": {
               "type": "string"
             }
           },
           {
-            "description": "The status of the Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [Command Status Values](https://www.twilio.com/docs/wireless/api/command-resource#status-values) for a description of each.",
+            "description": "Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.",
+            "in": "query",
+            "name": "SimSid",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "List the eSIM Profiles that are in a given status.",
             "in": "query",
             "name": "Status",
             "schema": {
               "enum": [
-                "queued",
-                "sent",
-                "delivered",
-                "received",
+                "new",
+                "reserving",
+                "available",
+                "downloaded",
+                "installed",
                 "failed"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "The direction of the Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.",
-            "in": "query",
-            "name": "Direction",
-            "schema": {
-              "enum": [
-                "to_sim",
-                "from_sim"
               ],
               "type": "string"
             }
@@ -675,9 +776,9 @@
               "application/json": {
                 "schema": {
                   "properties": {
-                    "commands": {
+                    "esim_profiles": {
                       "items": {
-                        "$ref": "#/components/schemas/supersim.v1.command"
+                        "$ref": "#/components/schemas/supersim.v1.esim_profile"
                       },
                       "type": "array"
                     },
@@ -712,7 +813,7 @@
                       "type": "object"
                     }
                   },
-                  "title": "ListCommandResponse",
+                  "title": "ListEsimProfileResponse",
                   "type": "object"
                 }
               }
@@ -730,8 +831,8 @@
         ]
       },
       "post": {
-        "description": "Send a Command to a Sim.",
-        "operationId": "CreateCommand",
+        "description": "Order an eSIM Profile.",
+        "operationId": "CreateEsimProfile",
         "requestBody": {
           "content": {
             "application/x-www-form-urlencoded": {
@@ -750,27 +851,18 @@
                     "type": "string"
                   },
                   "CallbackUrl": {
-                    "description": "The URL we should call using the `callback_method` after we have sent the command.",
-                    "format": "uri",
+                    "description": "The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`.",
                     "type": "string"
                   },
-                  "Command": {
-                    "description": "The message body of the command.",
-                    "type": "string"
-                  },
-                  "Sim": {
-                    "description": "The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource) to send the Command to.",
-                    "maxLength": 34,
-                    "minLength": 34,
-                    "pattern": "^HS[0-9a-fA-F]{32}$",
+                  "Eid": {
+                    "description": "Identifier of the eUICC that will claim the eSIM Profile.",
                     "type": "string"
                   }
                 },
                 "required": [
-                  "Sim",
-                  "Command"
+                  "Eid"
                 ],
-                "title": "CreateCommandRequest",
+                "title": "CreateEsimProfileRequest",
                 "type": "object"
               }
             }
@@ -781,7 +873,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/supersim.v1.command"
+                  "$ref": "#/components/schemas/supersim.v1.esim_profile"
                 }
               }
             },
@@ -805,27 +897,23 @@
       "x-twilio": {
         "defaultOutputProperties": [
           "sid",
-          "status",
-          "date_created"
+          "status"
         ],
         "pathType": "list"
       }
     },
-    "/v1/Commands/{Sid}": {
-      "description": "Machine-to-machine commands sent to/from sims",
+    "/v1/ESimProfiles/{Sid}": {
+      "description": "eSIM Profiles that can be loaded onto consumer eUICC SIMs",
       "get": {
-        "description": "Fetch a Command instance from your account.",
-        "operationId": "FetchCommand",
+        "description": "Fetch an eSIM Profile.",
+        "operationId": "FetchEsimProfile",
         "parameters": [
           {
-            "description": "The SID of the Command resource to fetch.",
+            "description": "The SID of the eSIM Profile resource to fetch.",
             "in": "path",
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^HC[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -835,7 +923,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/supersim.v1.command"
+                  "$ref": "#/components/schemas/supersim.v1.esim_profile"
                 }
               }
             },
@@ -859,14 +947,13 @@
       "x-twilio": {
         "defaultOutputProperties": [
           "sid",
-          "status",
-          "date_created"
+          "status"
         ],
         "pathType": "instance"
       }
     },
     "/v1/Fleets": {
-      "description": "Fleets for grouping Super SIMs",
+      "description": "Configure shared settings inherited by all Super SIMs assigned to the Fleet",
       "get": {
         "description": "Retrieve a list of Fleets from your account.",
         "operationId": "ListFleet",
@@ -958,12 +1045,16 @@
             "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {
-                  "CommandsEnabled": {
-                    "description": "Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `true`.",
+                  "DataEnabled": {
+                    "description": "Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity. Defaults to `true`.",
                     "type": "boolean"
                   },
-                  "CommandsMethod": {
-                    "description": "A string representing the HTTP method to use when making a request to `commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
+                  "DataLimit": {
+                    "description": "The total data usage (download and upload combined) in Megabytes that each Sim resource assigned to the Fleet resource can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000).",
+                    "type": "integer"
+                  },
+                  "IpCommandsMethod": {
+                    "description": "A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
                     "enum": [
                       "HEAD",
                       "GET",
@@ -974,18 +1065,10 @@
                     ],
                     "type": "string"
                   },
-                  "CommandsUrl": {
-                    "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                  "IpCommandsUrl": {
+                    "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
                     "format": "uri",
                     "type": "string"
-                  },
-                  "DataEnabled": {
-                    "description": "Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity. Defaults to `true`.",
-                    "type": "boolean"
-                  },
-                  "DataLimit": {
-                    "description": "The total data usage (download and upload combined) in Megabytes that each Sim resource assigned to the Fleet resource can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000).",
-                    "type": "integer"
                   },
                   "NetworkAccessProfile": {
                     "description": "The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to.",
@@ -1062,7 +1145,7 @@
       }
     },
     "/v1/Fleets/{Sid}": {
-      "description": "Fleets for grouping Super SIMs",
+      "description": "Configure shared settings inherited by all Super SIMs assigned to the Fleet",
       "get": {
         "description": "Fetch a Fleet instance from your account.",
         "operationId": "FetchFleet",
@@ -1117,8 +1200,8 @@
             "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {
-                  "CommandsMethod": {
-                    "description": "A string representing the HTTP method to use when making a request to `commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
+                  "IpCommandsMethod": {
+                    "description": "A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
                     "enum": [
                       "HEAD",
                       "GET",
@@ -1129,8 +1212,8 @@
                     ],
                     "type": "string"
                   },
-                  "CommandsUrl": {
-                    "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                  "IpCommandsUrl": {
+                    "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
                     "format": "uri",
                     "type": "string"
                   },
@@ -1197,6 +1280,271 @@
           "sid",
           "unique_name",
           "data_metering"
+        ],
+        "pathType": "instance"
+      }
+    },
+    "/v1/IpCommands": {
+      "description": "Machine-to-machine IP Commands sent to/from Super SIMs",
+      "get": {
+        "description": "Retrieve a list of IP Commands from your account.",
+        "operationId": "ListIpCommand",
+        "parameters": [
+          {
+            "description": "The SID or unique name of the Sim resource that IP Command was sent to or from.",
+            "in": "query",
+            "name": "Sim",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The ICCID of the Sim resource that IP Command was sent to or from.",
+            "in": "query",
+            "name": "SimIccid",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/wireless/api/ipcommand-resource#status-values) for a description of each.",
+            "in": "query",
+            "name": "Status",
+            "schema": {
+              "enum": [
+                "queued",
+                "sent",
+                "received",
+                "failed"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.",
+            "in": "query",
+            "name": "Direction",
+            "schema": {
+              "enum": [
+                "to_sim",
+                "from_sim"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "ip_commands": {
+                      "items": {
+                        "$ref": "#/components/schemas/supersim.v1.ip_command"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "title": "ListIpCommandResponse",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "post": {
+        "description": "Send an IP Command to a Super SIM.",
+        "operationId": "CreateIpCommand",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "CallbackMethod": {
+                    "description": "The HTTP method we should use to call `callback_url`. Can be `GET` or `POST`, and the default is `POST`.",
+                    "enum": [
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "type": "string"
+                  },
+                  "CallbackUrl": {
+                    "description": "The URL we should call using the `callback_method` after we have sent the IP Command.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "DevicePort": {
+                    "description": "The device port to which the IP Command will be sent.",
+                    "type": "integer"
+                  },
+                  "Payload": {
+                    "description": "The payload to be delivered to the device.",
+                    "type": "string"
+                  },
+                  "PayloadType": {
+                    "description": "Indicates how the payload is encoded. Either `text` or `binary`. Defaults to `text`.",
+                    "enum": [
+                      "text",
+                      "binary"
+                    ],
+                    "type": "string"
+                  },
+                  "Sim": {
+                    "description": "The `sid` or `unique_name` of the [Super SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the IP Command to.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Sim",
+                  "Payload",
+                  "DevicePort"
+                ],
+                "title": "CreateIpCommandRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/supersim.v1.ip_command"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://supersim.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "sid",
+          "status",
+          "date_created"
+        ],
+        "pathType": "list"
+      }
+    },
+    "/v1/IpCommands/{Sid}": {
+      "description": "Machine-to-machine IP Commands sent to/from Super SIMs",
+      "get": {
+        "description": "Fetch IP Command instance from your account.",
+        "operationId": "FetchIpCommand",
+        "parameters": [
+          {
+            "description": "The SID of the IP Command resource to fetch.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^HG[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/supersim.v1.ip_command"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "Beta"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://supersim.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "sid",
+          "status",
+          "date_created"
         ],
         "pathType": "instance"
       }
@@ -2425,10 +2773,7 @@
                     "type": "string"
                   },
                   "Sim": {
-                    "description": "The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource) to send the SMS Command to.",
-                    "maxLength": 34,
-                    "minLength": 34,
-                    "pattern": "^HS[0-9a-fA-F]{32}$",
+                    "description": "The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the SMS Command to.",
                     "type": "string"
                   }
                 },
@@ -2609,7 +2954,7 @@
             }
           },
           {
-            "description": "Only include usage that occurred before this time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is the current time.",
+            "description": "Only include usage that occurred before this time (exclusive), specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is the current time.",
             "in": "query",
             "name": "EndTime",
             "schema": {

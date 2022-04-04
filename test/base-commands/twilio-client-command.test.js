@@ -42,12 +42,14 @@ describe('base-commands', () => {
         envEdge,
         configRegion = 'configRegion',
         configEdge,
+        configRequireProfileInput,
       } = {},
     ) => {
       return test
         .do((ctx) => {
           ctx.userConfig = new ConfigData();
           ctx.userConfig.edge = configEdge;
+          ctx.userConfig.requireProfileInput = configRequireProfileInput;
 
           if (envRegion) {
             process.env.TWILIO_REGION = envRegion;
@@ -64,6 +66,7 @@ describe('base-commands', () => {
           } else {
             ctx.userConfig.addProfile('MyFirstProfile', constants.FAKE_ACCOUNT_SID);
             ctx.userConfig.addProfile('region-edge-testing', constants.FAKE_ACCOUNT_SID, configRegion);
+            ctx.userConfig.setActiveProfile('MyFirstProfile');
           }
         })
         .twilioCliEnv(Config)
@@ -87,6 +90,27 @@ describe('base-commands', () => {
           }
         });
     };
+
+    setUpTest([], { configRequireProfileInput: true })
+      .exit(1)
+      .it('should fail if requireProfileInput attribute in config is set but flag is not passed', (ctx) => {
+        expect(ctx.stderr).to.contain('Error: Missing required flag:');
+        expect(ctx.stderr).to.contain('-p, --profile PROFILE');
+      });
+
+    setUpTest(['-p', ''], { configRequireProfileInput: true })
+      .exit(1)
+      .it('should fail if requireProfileInput attribute in config is set but flag is passed as empty string', (ctx) => {
+        expect(ctx.stderr).to.contain('Error: Missing required flag:');
+        expect(ctx.stderr).to.contain('-p, --profile PROFILE');
+      });
+
+    setUpTest(['-p', 'region-edge-testing'], { configRequireProfileInput: true }).it(
+      'should use the profile passed, when requireProfileInput flag is set in config and valid profile is passed',
+      (ctx) => {
+        expect(ctx.testCmd.currentProfile.id).to.equal('region-edge-testing');
+      },
+    );
 
     setUpTest(['-l', 'debug']).it('should create a client for the active profile', (ctx) => {
       expect(ctx.stderr).to.contain('MyFirstProfile');
@@ -126,6 +150,18 @@ describe('base-commands', () => {
         expect(ctx.stderr).to.contain('TWILIO_ACCOUNT_SID');
       });
 
+    setUpTest(['-l', 'debug'], {
+      setUpUserConfig: (x) => {
+        x.addProfile('profile1', constants.FAKE_ACCOUNT_SID);
+      },
+    })
+      .exit(1)
+      .it('should fail for a no active profile', (ctx) => {
+        expect(ctx.stderr).to.contain('There is no active profile set.');
+        expect(ctx.stderr).to.contain(' To activate the profile, run:');
+        expect(ctx.stderr).to.contain('twilio profiles:use');
+      });
+
     setUpTest(['-p', 'region-edge-testing']).it('should create a client for a non-default profile', (ctx) => {
       expect(ctx.testCmd.twilioClient.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
       expect(ctx.testCmd.twilioClient.username).to.equal(constants.FAKE_API_KEY);
@@ -148,14 +184,14 @@ describe('base-commands', () => {
       });
 
     setUpTest([], { commandClass: Throwing20003ClientCommand })
-      .exit(20003)
+      .exit(20)
       .it('should catch access denied errors and enhance the message', (ctx) => {
         expect(ctx.stderr).to.contain('Access Denied');
         expect(ctx.stderr).to.contain('Standard API Keys');
       });
 
     setUpTest([], { commandClass: Throwing20003ClientCommand, envRegion: 'region' })
-      .exit(20003)
+      .exit(20)
       .it('should catch access denied errors but not enhance the message when using env var auth', (ctx) => {
         expect(ctx.stderr).to.contain('Access Denied');
         expect(ctx.stderr).to.not.contain('Standard API Keys');

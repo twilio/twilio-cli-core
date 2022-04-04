@@ -24,19 +24,32 @@ class TwilioClientCommand extends BaseCommand {
   async run() {
     await super.run();
 
+    // check if profile flag is required as per the config
+    if (this.userConfig.requireProfileInput && !this.flags.profile) {
+      throw new TwilioCliError(
+        `Error: Missing required flag:\n -p, --profile PROFILE  ${TwilioClientCommand.flags.profile.description} To disable this check run:\n\n  twilio config:set --no-require-profile-input`,
+      );
+    }
     this.currentProfile = this.userConfig.getProfileById(this.flags.profile);
     let keytarFlag = false;
     const pluginName = (this.config.userAgent || ' ').split(' ')[0];
 
-    const reportUnconfigured = (verb, message = '') => {
+    const reportUnconfigured = (verb, message = '', commandName = 'create') => {
       const profileParam = this.flags.profile ? ` --profile "${this.flags.profile}"` : '';
-      throw new TwilioCliError(`To ${verb} the profile, run:\n\n  twilio profiles:create${profileParam}${message}`);
+      throw new TwilioCliError(
+        `To ${verb} the profile, run:\n\n  twilio profiles:${commandName}${profileParam}${message}`,
+      );
     };
 
     if (!this.currentProfile) {
       const profileName = this.flags.profile ? ` "${this.flags.profile}"` : '';
-      this.logger.error(`Could not find profile${profileName}.`);
-      reportUnconfigured('create', `\n\n${HELP_ENVIRONMENT_VARIABLES}`);
+      if (Object.keys(this.userConfig.profiles).length !== 0 && !profileName) {
+        this.logger.error(`There is no active profile set.`);
+        reportUnconfigured('activate', '', 'use');
+      } else {
+        this.logger.error(`Could not find profile${profileName}.`);
+        reportUnconfigured('create', `\n\n${HELP_ENVIRONMENT_VARIABLES}`);
+      }
     }
 
     this.logger.debug(`Using profile: ${this.currentProfile.id}`);
@@ -162,6 +175,12 @@ TwilioClientCommand.limitFlags = {
     default: false,
     hidden: true,
     exclusive: [CliFlags.LIMIT],
+  }),
+};
+
+TwilioClientCommand.noHeader = {
+  'no-header': flags.boolean({
+    description: 'Skip including of headers while listing the data.',
   }),
 };
 

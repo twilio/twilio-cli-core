@@ -1,3 +1,471 @@
+## [6.3.0](https://github.com/twilio/twilio-cli-core/compare/6.2.1...6.3.0) (2022-03-24)
+
+---------------------------
+**Api**
+- Change `stream` url parameter to non optional
+- Add `verify-totp` and `verify-whatsapp-conversations-business-initiated` categories to `usage_record` API
+
+**Chat**
+- Added v3 Channel update endpoint to support Public to Private channel migration
+
+**Flex**
+- Private Beta release of the Interactions API to support the upcoming release of Flex Conversations at the end of Q1 2022.
+- Adding `channel_configs` object to Flex Configuration
+
+**Media**
+- Add max_duration param to PlayerStreamer
+
+**Supersim**
+- Remove Commands resource, use SmsCommands resource instead **(breaking change)**
+
+**Taskrouter**
+- Add limits to `split_by_wait_time` for Cumulative Statistics Endpoint
+
+**Video**
+- Change recording `status_callback_method` type from `enum` to `http_method` **(breaking change)**
+- Add `status_callback` and `status_callback_method` to composition
+- Add `status_callback` and `status_callback_method` to recording
+
+
+### [6.2.1](https://github.com/twilio/twilio-cli-core/compare/6.2.0...6.2.1) (2022-03-10)
+
+
+### Library - Chores
+
+* Add node v12 support ([#200](https://github.com/twilio/twilio-cli-core/issues/200)) ([ef09c7c](https://github.com/twilio/twilio-cli-core/commit/ef09c7c866f5f399a3343df3cd0a3ec0cbcc28d2))
+
+---------------------------
+**Library - Chore**
+- [PR #52](https://github.com/twilio/twilio-oai/pull/52): push Datadog Release Metric upon deploy success. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Api**
+- Add optional boolean include_soft_deleted parameter to retrieve soft deleted recordings
+
+**Chat**
+- Add `X-Twilio-Wehook-Enabled` header to `delete` method in UserChannel resource
+
+**Numbers**
+- Expose `failure_reason` in the Supporting Documents resources
+
+**Verify**
+- Add optional `metadata` parameter to "verify challenge" endpoint, so the SDK/App can attach relevant information from the device when responding to challenges.
+- remove beta feature flag to list atempt api operations.
+- Add `ttl` and `date_created` properties to `AccessTokens`.
+
+
+## [6.2.0](https://github.com/twilio/twilio-cli-core/compare/6.1.0...6.2.0) (2022-02-24)
+
+---------------------------
+**Api**
+- Add `uri` to `stream` resource
+- Add A2P Registration Fee category (`a2p-registration-fee`) to usage records
+
+**Verify**
+- Remove outdated documentation commentary to contact sales. Product is already in public beta.
+
+
+---------------------------
+**Api**
+- Detected a bug and removed optional boolean include_soft_deleted parameter to retrieve soft deleted recordings. **(breaking change)**
+- Add optional boolean include_soft_deleted parameter to retrieve soft deleted recordings.
+
+**Numbers**
+- Unrevert valid_until and sort filter params added to List Bundles resource
+- Revert valid_until and sort filter params added to List Bundles resource
+- Update sorting params added to List Bundles resource in the previous release
+
+**Preview**
+- Moved `web_channels` from preview to beta under `flex-api` **(breaking change)**
+
+**Taskrouter**
+- Add `ETag` as Response Header to List of Task, Reservation & Worker
+
+**Verify**
+- Add optional `metadata` to factors.
+
+**Twiml**
+- Add new Polly Neural voices
+
+
+## [6.1.0](https://github.com/twilio/twilio-cli-core/compare/6.0.1...6.1.0) (2022-02-10)
+
+
+### Library - Fixes
+
+* added support for default output prop in operation ([#192](https://github.com/twilio/twilio-cli-core/issues/192)) ([8ae4ba5](https://github.com/twilio/twilio-cli-core/commit/8ae4ba5a418521d5877c7fc753ed08cee2a43f22))
+* Cleaning travis code ([#193](https://github.com/twilio/twilio-cli-core/issues/193)) ([ecb2ae5](https://github.com/twilio/twilio-cli-core/commit/ecb2ae5e61774c4aca577517f5acf1932f192be8))
+
+
+### Library - Chores
+
+* Add Npm Audit workflow ([#196](https://github.com/twilio/twilio-cli-core/issues/196)) ([5dd1887](https://github.com/twilio/twilio-cli-core/commit/5dd1887f03468c902691eac17546a02c59fefbcb))
+
+---------------------------
+**Api**
+- Add `stream` resource
+
+**Conversations**
+- Fixed DELETE request to accept "sid_like" params in Address Configuration resources **(breaking change)**
+- Expose Address Configuration resource for `sms` and `whatsapp`
+
+**Fax**
+- Removed deprecated Programmable Fax Create and Update methods **(breaking change)**
+
+**Insights**
+- Rename `call_state` to `call_status` and remove `whisper` in conference participant summary **(breaking change)**
+
+**Numbers**
+- Expose valid_until filters as part of provisionally-approved compliance feature on the List Bundles resource
+
+**Supersim**
+- Fix typo in Fleet resource docs
+- Updated documentation for the Fleet resource indicating that fields related to commands have been deprecated and to use sms_command fields instead.
+- Add support for setting and reading `ip_commands_url` and `ip_commands_method` on Fleets resource for helper libraries
+- Changed `sim` property in requests to create an SMS Command made to the /SmsCommands to accept SIM UniqueNames in addition to SIDs
+
+**Verify**
+- Update list attempts API to include new filters and response fields.
+
+
+### [6.0.1](https://github.com/twilio/twilio-cli-core/compare/6.0.0...6.0.1) (2022-01-27)
+
+
+### Library - Chores
+
+* bump dependency axios ([#190](https://github.com/twilio/twilio-cli-core/issues/190)) ([3836cbf](https://github.com/twilio/twilio-cli-core/commit/3836cbf5e14d12b134dceb6772b00c6db1a6109d))
+
+---------------------------
+**Insights**
+- Added new endpoint to fetch Conference Participant Summary
+- Added new endpoint to fetch Conference Summary
+
+**Messaging**
+- Add government_entity parameter to brand apis
+
+**Verify**
+- Add Access Token fetch endpoint to retrieve a previously created token.
+- Add Access Token payload to the Access Token creation endpoint, including a unique Sid, so it's addressable while it's TTL is valid.
+
+
+## [6.0.0](https://github.com/twilio/twilio-cli-core/compare/5.33.0...6.0.0) (2022-01-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Storing profiles in config file instead of keytar.
+
+### Library - Chores
+
+* Update LICENSE ([#189](https://github.com/twilio/twilio-cli-core/issues/189)) ([5b6a3a5](https://github.com/twilio/twilio-cli-core/commit/5b6a3a527251ef595cda317bae12b6de79bcc500))
+
+
+### Library - Features
+
+* Release feature branch ([#188](https://github.com/twilio/twilio-cli-core/issues/188)) ([4380dac](https://github.com/twilio/twilio-cli-core/commit/4380dac7725511f10d0bc8b5d9925bafafc69253))
+
+---------------------------
+**Library - Feature**
+- [PR #51](https://github.com/twilio/twilio-oai/pull/51): add GitHub release step during deploy. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Make fixed time scheduling parameters public **(breaking change)**
+
+**Messaging**
+- Add update brand registration API
+
+**Numbers**
+- Add API endpoint for List Bundle Copies resource
+
+**Video**
+- Enable external storage for all customers
+
+
+## [5.33.0](https://github.com/twilio/twilio-cli-core/compare/5.32.2...5.33.0) (2021-12-16)
+
+
+### Library - Features
+
+* Add flag no header for list and fetch commands ([#182](https://github.com/twilio/twilio-cli-core/issues/182)) ([22f6ea9](https://github.com/twilio/twilio-cli-core/commit/22f6ea9262e3874a2b9d46cb97e4df14648c0f78))
+
+
+### Library - Chores
+
+* github workflow update ([#183](https://github.com/twilio/twilio-cli-core/issues/183)) ([a96ebc3](https://github.com/twilio/twilio-cli-core/commit/a96ebc35249ce6dc8de424a5d98667a347a450f4))
+* Remove audit run with posttest script ([#186](https://github.com/twilio/twilio-cli-core/issues/186)) ([ea5c744](https://github.com/twilio/twilio-cli-core/commit/ea5c744b6dc00b9aeceb85b45ddee7856bd057fd))
+* revert updated oclif major dependencies ([#185](https://github.com/twilio/twilio-cli-core/issues/185)) ([aa74e0e](https://github.com/twilio/twilio-cli-core/commit/aa74e0e8899fd244995ede6624baf65ccd973ebd))
+* update version of vulnerable dependencies ([#184](https://github.com/twilio/twilio-cli-core/issues/184)) ([b8de6f6](https://github.com/twilio/twilio-cli-core/commit/b8de6f611e53b232edbad1865e26e726f442478d))
+
+
+### Library - Fixes
+
+* Update semantic-release via npm bin ([#187](https://github.com/twilio/twilio-cli-core/issues/187)) ([b35a2ac](https://github.com/twilio/twilio-cli-core/commit/b35a2acbd6032f7cd71ecf01d7f18da190138d97))
+
+---------------------------
+**Api**
+- Add optional boolean send_as_mms parameter to the create action of Message resource **(breaking change)**
+- Change team ownership for `call` delete
+
+**Conversations**
+- Change wording for `Service Webhook Configuration` resource fields
+
+**Insights**
+- Added new APIs for updating and getting voice insights flags by accountSid.
+
+**Media**
+- Add max_duration param to MediaProcessor
+
+**Video**
+- Add `EmptyRoomTimeout` and `UnusedRoomTimeout` properties to a room; add corresponding parameters to room creation
+
+**Voice**
+- Add endpoint to delete archived Calls
+
+
+### [5.32.2](https://github.com/twilio/twilio-cli-core/compare/5.32.1...5.32.2) (2021-12-02)
+
+
+### Library - Fixes
+
+* update vulnerable dependencies packages ([#180](https://github.com/twilio/twilio-cli-core/issues/180)) ([0e5c492](https://github.com/twilio/twilio-cli-core/commit/0e5c492961991be0eb7d8f1a9113a3afacc7f316))
+
+---------------------------
+**Conversations**
+- Add `Service Webhook Configuration` resource
+
+**Flex**
+- Adding `flex_insights_drilldown` and `flex_url` objects to Flex Configuration
+
+**Messaging**
+- Update us_app_to_person endpoints to remove beta feature flag based access
+
+**Supersim**
+- Add IP Commands resource
+
+**Verify**
+- Add optional `factor_friendly_name` parameter to the create access token endpoint.
+
+**Video**
+- Add maxParticipantDuration param to Rooms
+
+**Twiml**
+- Unrevert Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+- Revert Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+
+
+### [5.32.1](https://github.com/twilio/twilio-cli-core/compare/5.32.0...5.32.1) (2021-11-18)
+
+
+### Library - Fixes
+
+* Added changes to fix the lcov issue ([#170](https://github.com/twilio/twilio-cli-core/issues/170)) ([a3aaa7b](https://github.com/twilio/twilio-cli-core/commit/a3aaa7b1b02b18c586fe35a15a6fbafa3c92e4eb))
+* Modified flag description to eliminate new line indentation issue ([#174](https://github.com/twilio/twilio-cli-core/issues/174)) ([d8dd071](https://github.com/twilio/twilio-cli-core/commit/d8dd071345e0c5287504caddf807d449481c0baa))
+
+
+### Library - Chores
+
+* update slack alerts color ([#179](https://github.com/twilio/twilio-cli-core/issues/179)) ([c96bbfb](https://github.com/twilio/twilio-cli-core/commit/c96bbfb2ddfc3ec636c92a69b1fedaf2f735fc4a))
+
+---------------------------
+**Frontline**
+- Added `is_available` to User's resource
+
+**Messaging**
+- Added GET vetting API
+
+**Verify**
+- Add `WHATSAPP` to the attempts API.
+- Allow to update `config.notification_platform` from `none` to `apn` or `fcm` and viceversa for Verify Push
+- Add `none` as a valid `config.notification_platform` value for Verify Push
+
+**Twiml**
+- Add supported SSML children to `<emphasis>`, `<lang>`, `<p>`, `<prosody>`, `<s>`, and `<w>`.
+
+
+## [5.32.0](https://github.com/twilio/twilio-cli-core/compare/5.31.1...5.32.0) (2021-11-04)
+
+
+### Library - Chores
+
+* Added tests and sonarcloud scan while adding the PR's ([#169](https://github.com/twilio/twilio-cli-core/issues/169)) ([a26d6ee](https://github.com/twilio/twilio-cli-core/commit/a26d6ee81e2a49057581ce0d76b9636295d42f1e))
+
+---------------------------
+**Library - Chore**
+- [PR #46](https://github.com/twilio/twilio-oai/pull/46): migrate from travis over to gh actions. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Api**
+- Updated `media_url` property to be treated as PII
+
+**Messaging**
+- Added a new enum for brand registration status named DELETED **(breaking change)**
+- Add a new K12_EDUCATION use case in us_app_to_person_usecase api transaction
+- Added a new enum for brand registration status named IN_REVIEW
+
+**Serverless**
+- Add node14 as a valid Build runtime
+
+**Verify**
+- Fix typos in Verify Push Factor documentation for the `config.notification_token` parameter.
+- Added `TemplateCustomSubstitutions` on verification creation
+- Make `TemplateSid` parameter public for Verification resource and `DefaultTemplateSid` parameter public for Service resource. **(breaking change)**
+
+
+### [5.31.1](https://github.com/twilio/twilio-cli-core/compare/5.31.0...5.31.1) (2021-10-19)
+
+
+### Library - Fixes
+
+* Revert "Resolve sec vulnerability ([#166](https://github.com/twilio/twilio-cli-core/issues/166))" ([#168](https://github.com/twilio/twilio-cli-core/issues/168)) ([7d2a374](https://github.com/twilio/twilio-cli-core/commit/7d2a374b4f5f42106c976616a88d029b2f3bea0a))
+
+## [5.31.0](https://github.com/twilio/twilio-cli-core/compare/5.30.0...5.31.0) (2021-10-19)
+
+
+### Library - Chores
+
+* [Snyk] Security upgrade @oclif/plugin-help from 2.2.3 to 3.2.0 ([#165](https://github.com/twilio/twilio-cli-core/issues/165)) ([188120a](https://github.com/twilio/twilio-cli-core/commit/188120a3e323ea07f2e7f26909ec83ac5a03461d))
+
+
+### Library - Features
+
+* Added the github actions to send the slack notifications ([#164](https://github.com/twilio/twilio-cli-core/issues/164)) ([06e2cb1](https://github.com/twilio/twilio-cli-core/commit/06e2cb1e3a8a6eb2486d8575a5da6c5dcbe3708e))
+
+---------------------------
+**Api**
+- Corrected enum values for `emergency_address_status` values in `/IncomingPhoneNumbers` response. **(breaking change)**
+- Clarify `emergency_address_status` values in `/IncomingPhoneNumbers` response.
+
+**Messaging**
+- Add PUT and List brand vettings api
+- Removes beta feature flag based visibility for us_app_to_person_registered and usecase field.Updates test cases to add POLITICAL usecase. **(breaking change)**
+- Add brand_feedback as optional field to BrandRegistrations
+
+**Video**
+- Add `AudioOnly` to create room
+
+
+### [5.27.1-rc.1](https://github.com/twilio/twilio-cli-core/compare/5.25.0-rc.1...5.27.1-rc.1) (2021-11-12)
+
+
+### Library - Fixes
+
+* Removed change to stop publish from npm. ([#175](https://github.com/twilio/twilio-cli-core/issues/175)) ([a819b6c](https://github.com/twilio/twilio-cli-core/commit/a819b6c98cbfe99e77664a2efdac28c63e9218cc))
+
+## [5.25.0-rc.1](https://github.com/twilio/twilio-cli-core/compare/5.24.0...5.25.0-rc.1) (2021-11-03)
+
+
+### Library - Chores
+
+* CLI Profile Remove - Check and Use config file before checking system keychain. ([#126](https://github.com/twilio/twilio-cli-core/issues/126)) ([e326a31](https://github.com/twilio/twilio-cli-core/commit/e326a3195ff9bab2437671f61a4dcdfba15c6100))
+* Refactor profiles usage to projects ([#122](https://github.com/twilio/twilio-cli-core/issues/122)) ([782f6c5](https://github.com/twilio/twilio-cli-core/commit/782f6c50dfb7d2e00df52ef75dfd3e94bc45581c))
+* refactor the Twilio vendor extensions into single object ([#125](https://github.com/twilio/twilio-cli-core/issues/125)) ([a2e0fca](https://github.com/twilio/twilio-cli-core/commit/a2e0fca112eccf954d86095af4809445042d1bb6))
+* Store API Keys in Config File ([#124](https://github.com/twilio/twilio-cli-core/issues/124)) ([9fb9dd3](https://github.com/twilio/twilio-cli-core/commit/9fb9dd394b85dba6185b4a2033bf822c72d5c94a))
+
+
+### Library - Fixes
+
+* Removed the comment. ([95d4fa4](https://github.com/twilio/twilio-cli-core/commit/95d4fa487886cc05efa75effc38e315d0393ef7c))
+* Update release-feature-branch with main ([#137](https://github.com/twilio/twilio-cli-core/issues/137)) ([46c4156](https://github.com/twilio/twilio-cli-core/commit/46c415631e74ab1bcac460299a65532211cb2347)), closes [#130](https://github.com/twilio/twilio-cli-core/issues/130)
+
+
+### Library - Features
+
+*  Added support to make profile input mandatory based on config property ([#135](https://github.com/twilio/twilio-cli-core/issues/135)) ([fbdc36b](https://github.com/twilio/twilio-cli-core/commit/fbdc36ba99be611dcaf5d08e8697a42e2256b59e))
+* Merging master into release-feature-branch ([#172](https://github.com/twilio/twilio-cli-core/issues/172)) ([48313d2](https://github.com/twilio/twilio-cli-core/commit/48313d27844d1cf6f5435150deb1e777314cba04)), closes [#130](https://github.com/twilio/twilio-cli-core/issues/130) [#136](https://github.com/twilio/twilio-cli-core/issues/136) [#139](https://github.com/twilio/twilio-cli-core/issues/139) [#138](https://github.com/twilio/twilio-cli-core/issues/138) [#140](https://github.com/twilio/twilio-cli-core/issues/140) [#142](https://github.com/twilio/twilio-cli-core/issues/142) [#145](https://github.com/twilio/twilio-cli-core/issues/145) [#150](https://github.com/twilio/twilio-cli-core/issues/150) [#154](https://github.com/twilio/twilio-cli-core/issues/154) [#156](https://github.com/twilio/twilio-cli-core/issues/156) [#150](https://github.com/twilio/twilio-cli-core/issues/150) [#157](https://github.com/twilio/twilio-cli-core/issues/157) [#158](https://github.com/twilio/twilio-cli-core/issues/158) [#155](https://github.com/twilio/twilio-cli-core/issues/155) [#161](https://github.com/twilio/twilio-cli-core/issues/161) [#157](https://github.com/twilio/twilio-cli-core/issues/157) [#155](https://github.com/twilio/twilio-cli-core/issues/155) [#165](https://github.com/twilio/twilio-cli-core/issues/165) [#166](https://github.com/twilio/twilio-cli-core/issues/166) [#164](https://github.com/twilio/twilio-cli-core/issues/164) [#165](https://github.com/twilio/twilio-cli-core/issues/165) [#164](https://github.com/twilio/twilio-cli-core/issues/164) [#166](https://github.com/twilio/twilio-cli-core/issues/166) [#168](https://github.com/twilio/twilio-cli-core/issues/168) [#166](https://github.com/twilio/twilio-cli-core/issues/166) [#166](https://github.com/twilio/twilio-cli-core/issues/166) [#168](https://github.com/twilio/twilio-cli-core/issues/168) [#169](https://github.com/twilio/twilio-cli-core/issues/169) [#135](https://github.com/twilio/twilio-cli-core/issues/135) [#164](https://github.com/twilio/twilio-cli-core/issues/164) [#150](https://github.com/twilio/twilio-cli-core/issues/150) [#165](https://github.com/twilio/twilio-cli-core/issues/165) [#155](https://github.com/twilio/twilio-cli-core/issues/155) [#169](https://github.com/twilio/twilio-cli-core/issues/169) [#145](https://github.com/twilio/twilio-cli-core/issues/145) [#126](https://github.com/twilio/twilio-cli-core/issues/126) [#122](https://github.com/twilio/twilio-cli-core/issues/122) [#150](https://github.com/twilio/twilio-cli-core/issues/150) [#157](https://github.com/twilio/twilio-cli-core/issues/157) [#155](https://github.com/twilio/twilio-cli-core/issues/155) [#165](https://github.com/twilio/twilio-cli-core/issues/165) [#164](https://github.com/twilio/twilio-cli-core/issues/164) [#166](https://github.com/twilio/twilio-cli-core/issues/166) [#168](https://github.com/twilio/twilio-cli-core/issues/168) [#124](https://github.com/twilio/twilio-cli-core/issues/124) [#157](https://github.com/twilio/twilio-cli-core/issues/157) [#166](https://github.com/twilio/twilio-cli-core/issues/166) [#168](https://github.com/twilio/twilio-cli-core/issues/168) [#130](https://github.com/twilio/twilio-cli-core/issues/130)
+
+## [5.29.0-rc.1](https://github.com/shamantraghav/twilio-cli-core/compare/5.28.0...5.29.0-rc.1) (2021-10-27)
+
+
+### Library - Features
+
+*  Added support to make profile input mandatory based on config property ([#135](https://github.com/shamantraghav/twilio-cli-core/issues/135)) ([fbdc36b](https://github.com/shamantraghav/twilio-cli-core/commit/fbdc36ba99be611dcaf5d08e8697a42e2256b59e))
+* Added the github actions to send the slack notifications ([#164](https://github.com/shamantraghav/twilio-cli-core/issues/164)) ([06e2cb1](https://github.com/shamantraghav/twilio-cli-core/commit/06e2cb1e3a8a6eb2486d8575a5da6c5dcbe3708e))
+* Enable GitHub actions. ([#150](https://github.com/shamantraghav/twilio-cli-core/issues/150)) ([002dd1f](https://github.com/shamantraghav/twilio-cli-core/commit/002dd1f9593187cd580d7c139609420e5a33317f))
+
+
+### Library - Chores
+
+* [Snyk] Security upgrade @oclif/plugin-help from 2.2.3 to 3.2.0 ([#165](https://github.com/shamantraghav/twilio-cli-core/issues/165)) ([188120a](https://github.com/shamantraghav/twilio-cli-core/commit/188120a3e323ea07f2e7f26909ec83ac5a03461d))
+* Added changes to use scripts instead of community Github actions ([#155](https://github.com/shamantraghav/twilio-cli-core/issues/155)) ([27bd508](https://github.com/shamantraghav/twilio-cli-core/commit/27bd508171b16eaf0036bdff7e0d21117570bf5f))
+* Added tests and sonarcloud scan while adding the PR's ([#169](https://github.com/shamantraghav/twilio-cli-core/issues/169)) ([a26d6ee](https://github.com/shamantraghav/twilio-cli-core/commit/a26d6ee81e2a49057581ce0d76b9636295d42f1e))
+* Cache processing step for Travis builds ([#145](https://github.com/shamantraghav/twilio-cli-core/issues/145)) ([33cc65d](https://github.com/shamantraghav/twilio-cli-core/commit/33cc65d82412c30f6c9aec40b2c79e43a80d459b))
+* CLI Profile Remove - Check and Use config file before checking system keychain. ([#126](https://github.com/shamantraghav/twilio-cli-core/issues/126)) ([e326a31](https://github.com/shamantraghav/twilio-cli-core/commit/e326a3195ff9bab2437671f61a4dcdfba15c6100))
+* Refactor profiles usage to projects ([#122](https://github.com/shamantraghav/twilio-cli-core/issues/122)) ([782f6c5](https://github.com/shamantraghav/twilio-cli-core/commit/782f6c50dfb7d2e00df52ef75dfd3e94bc45581c))
+* **release:** set `package.json` to 5.29.0 [skip ci] ([8e5a785](https://github.com/shamantraghav/twilio-cli-core/commit/8e5a7851fc12a9ef06683ef9d82284485166b333)), closes [#150](https://github.com/shamantraghav/twilio-cli-core/issues/150)
+* **release:** set `package.json` to 5.30.0 [skip ci] ([26e4594](https://github.com/shamantraghav/twilio-cli-core/commit/26e459440a4668903d9593538e637f8726c10525)), closes [#157](https://github.com/shamantraghav/twilio-cli-core/issues/157) [#155](https://github.com/shamantraghav/twilio-cli-core/issues/155)
+* **release:** set `package.json` to 5.31.0 [skip ci] ([ad437be](https://github.com/shamantraghav/twilio-cli-core/commit/ad437be6870126db141ddefee9f10a4cb7528728)), closes [#165](https://github.com/shamantraghav/twilio-cli-core/issues/165) [#164](https://github.com/shamantraghav/twilio-cli-core/issues/164)
+* **release:** set `package.json` to 5.31.1 [skip ci] ([dc18140](https://github.com/shamantraghav/twilio-cli-core/commit/dc181406a2583d543c719379cc68dafd818efd07)), closes [#166](https://github.com/shamantraghav/twilio-cli-core/issues/166) [#168](https://github.com/shamantraghav/twilio-cli-core/issues/168)
+* Store API Keys in Config File ([#124](https://github.com/shamantraghav/twilio-cli-core/issues/124)) ([9fb9dd3](https://github.com/shamantraghav/twilio-cli-core/commit/9fb9dd394b85dba6185b4a2033bf822c72d5c94a))
+
+
+### Library - Fixes
+
+* fix naming ([#157](https://github.com/shamantraghav/twilio-cli-core/issues/157)) ([d454b81](https://github.com/shamantraghav/twilio-cli-core/commit/d454b811344ae11283e32c13f14e01d9946bfabf))
+* Merger main into release feature branch ([fbcd3e8](https://github.com/shamantraghav/twilio-cli-core/commit/fbcd3e82c4a480578a6d2b8561cd0f280ad5cb0d))
+* Removed the comment. ([95d4fa4](https://github.com/shamantraghav/twilio-cli-core/commit/95d4fa487886cc05efa75effc38e315d0393ef7c))
+* Revert "Resolve sec vulnerability ([#166](https://github.com/shamantraghav/twilio-cli-core/issues/166))" ([#168](https://github.com/shamantraghav/twilio-cli-core/issues/168)) ([7d2a374](https://github.com/shamantraghav/twilio-cli-core/commit/7d2a374b4f5f42106c976616a88d029b2f3bea0a))
+* Update release-feature-branch with main ([#137](https://github.com/shamantraghav/twilio-cli-core/issues/137)) ([46c4156](https://github.com/shamantraghav/twilio-cli-core/commit/46c415631e74ab1bcac460299a65532211cb2347)), closes [#130](https://github.com/shamantraghav/twilio-cli-core/issues/130)
+* Updated api definitions ([906518f](https://github.com/shamantraghav/twilio-cli-core/commit/906518f5fbdfa154604c5288f4ebd9eaf46a48b3))
+
+---------------------------
+**Api**
+- Corrected enum values for `emergency_address_status` values in `/IncomingPhoneNumbers` response. **(breaking change)**
+- Clarify `emergency_address_status` values in `/IncomingPhoneNumbers` response.
+
+**Messaging**
+- Add PUT and List brand vettings api
+- Removes beta feature flag based visibility for us_app_to_person_registered and usecase field.Updates test cases to add POLITICAL usecase. **(breaking change)**
+- Add brand_feedback as optional field to BrandRegistrations
+
+**Video**
+- Add `AudioOnly` to create room
+
+
+## [5.30.0](https://github.com/twilio/twilio-cli-core/compare/5.29.0...5.30.0) (2021-10-07)
+
+
+### Library - Fixes
+
+* fix naming ([#157](https://github.com/twilio/twilio-cli-core/issues/157)) ([d454b81](https://github.com/twilio/twilio-cli-core/commit/d454b811344ae11283e32c13f14e01d9946bfabf))
+
+
+### Library - Chores
+
+* Added changes to use scripts instead of community Github actions ([#155](https://github.com/twilio/twilio-cli-core/issues/155)) ([27bd508](https://github.com/twilio/twilio-cli-core/commit/27bd508171b16eaf0036bdff7e0d21117570bf5f))
+
+---------------------------
+**Library - Fix**
+- [PR #44](https://github.com/twilio/twilio-oai/pull/44): fix naming of params. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Api**
+- Add `emergency_address_status` attribute to `/IncomingPhoneNumbers` response.
+- Add `siprec` resource
+
+**Conversations**
+- Added attachment parameters in configuration for `NewMessage` type of push notifications
+
+**Flex**
+- Adding `flex_insights_hr` object to Flex Configuration
+
+**Numbers**
+- Add API endpoint for Bundle ReplaceItems resource
+- Add API endpoint for Bundle Copies resource
+
+**Serverless**
+- Add domain_base field to Service response
+
+**Taskrouter**
+- Add `If-Match` Header based on ETag for Worker Delete **(breaking change)**
+- Add `If-Match` Header based on Etag for Reservation Update
+- Add `If-Match` Header based on ETag for Worker Update
+- Add `If-Match` Header based on ETag for Worker Delete
+- Add `ETag` as Response Header to Worker
+
+**Trunking**
+- Added `transfer_caller_id` property on Trunks.
+
+**Verify**
+- Document new pilot `whatsapp` channel.
+
+
 ## [5.29.0](https://github.com/twilio/twilio-cli-core/compare/5.28.3...5.29.0) (2021-09-23)
 
 
