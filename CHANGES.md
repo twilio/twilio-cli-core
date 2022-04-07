@@ -1,3 +1,15 @@
+---------------------------
+**Api**
+- Updated `provider_sid` visibility to private
+
+**Verify**
+- Verify List Attempts API summary endpoint added.
+- Update PII documentation for `AccessTokens` `factor_friendly_name` property.
+
+**Voice**
+- make annotation parameter from /Calls API private
+
+
 ## [6.3.0](https://github.com/twilio/twilio-cli-core/compare/6.2.1...6.3.0) (2022-03-24)
 
 ---------------------------
