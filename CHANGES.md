@@ -1,3 +1,10 @@
+### [6.3.1](https://github.com/twilio/twilio-cli-core/compare/6.3.0...6.3.1) (2022-04-07)
+
+
+### Library - Chores
+
+* remove outdated announcements ([960a478](https://github.com/twilio/twilio-cli-core/commit/960a478c9155e0f61b1e575f4aa0791162456800))
+
 ---------------------------
 **Api**
 - Updated `provider_sid` visibility to private
