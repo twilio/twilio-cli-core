@@ -1,3 +1,5 @@
+### [6.3.2](https://github.com/twilio/twilio-cli-core/compare/6.3.1...6.3.2) (2022-04-21)
+
 ---------------------------
 **Library - Fix**
 - [PR #54](https://github.com/twilio/twilio-oai/pull/54): switch api-def object types to open-api any types. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
