@@ -40,7 +40,7 @@
           },
           "links": {
             "description": "The URLs of the Service's nested resources",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -100,7 +100,7 @@
           },
           "links": {
             "description": "The URLs of the Asset resource's nested resources",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -205,10 +205,7 @@
           },
           "asset_versions": {
             "description": "The list of Asset Version resource SIDs that are included in the Build",
-            "items": {
-              "format": "object",
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -226,24 +223,18 @@
           },
           "dependencies": {
             "description": "A list of objects that describe the Dependencies included in the Build",
-            "items": {
-              "format": "object",
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
           "function_versions": {
             "description": "The list of Function Version resource SIDs that are included in the Build",
-            "items": {
-              "format": "object",
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
           "links": {
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -380,7 +371,7 @@
           },
           "links": {
             "description": "The URLs of the Environment resource's nested resources",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -667,7 +658,7 @@
           },
           "links": {
             "description": "The URLs of nested resources of the Function resource",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -721,7 +712,7 @@
             "type": "string"
           },
           "links": {
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -833,7 +824,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Serverless",
-    "version": "1.28.1"
+    "version": "1.28.2"
   },
   "openapi": "3.0.1",
   "paths": {

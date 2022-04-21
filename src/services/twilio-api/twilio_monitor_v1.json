@@ -263,9 +263,7 @@
           },
           "event_data": {
             "description": "A JSON string that represents an object with additional data about the event",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "event_date": {
             "description": "The ISO 8601 date and time in GMT when the event was recorded",
@@ -280,7 +278,7 @@
           },
           "links": {
             "description": "The absolute URLs of related resources",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -345,7 +343,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Monitor",
-    "version": "1.28.1"
+    "version": "1.28.2"
   },
   "openapi": "3.0.1",
   "paths": {

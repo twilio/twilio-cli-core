@@ -133,7 +133,7 @@
           },
           "links": {
             "description": "The URLs of related resources",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -246,7 +246,7 @@
           },
           "links": {
             "description": "The URLs of related resources",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -326,9 +326,7 @@
           },
           "grant": {
             "description": "The grant that authorizes the player sdk to connect to the livestream",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "sid": {
             "description": "The unique string that identifies the PlayerStreamer associated with this PlaybackGrant.",
@@ -368,7 +366,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Media",
-    "version": "1.28.1"
+    "version": "1.28.2"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -491,9 +489,7 @@
                     "type": "string"
                   },
                   "ExtensionEnvironment": {
-                    "description": "User-defined environment variables for the Media Extension, represented as a JSON dictionary of key/value strings. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about whether you need to provide this.",
-                    "format": "object",
-                    "type": "object"
+                    "description": "User-defined environment variables for the Media Extension, represented as a JSON dictionary of key/value strings. See the documentation for the specific [Media Extension](/docs/live/api/media-extensions-overview) you are using for more information about whether you need to provide this."
                   },
                   "MaxDuration": {
                     "description": "The maximum time, in seconds, that the MediaProcessor can run before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the MediaProcessor, regardless of whether media is still streaming.",

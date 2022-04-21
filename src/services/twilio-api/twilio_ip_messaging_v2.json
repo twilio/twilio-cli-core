@@ -101,24 +101,18 @@
             "type": "string"
           },
           "limits": {
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "links": {
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
           "media": {
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "notifications": {
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "post_webhook_retry_count": {
             "nullable": true,
@@ -218,7 +212,7 @@
             "type": "string"
           },
           "links": {
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -283,7 +277,7 @@
             "type": "string"
           },
           "links": {
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -346,9 +340,7 @@
             "type": "string"
           },
           "configuration": {
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "format": "date-time",
@@ -568,9 +560,7 @@
             "type": "string"
           },
           "media": {
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "service_sid": {
             "maxLength": 34,
@@ -713,7 +703,7 @@
             "type": "integer"
           },
           "links": {
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -846,7 +836,7 @@
             "type": "integer"
           },
           "links": {
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -921,7 +911,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Ip_messaging",
-    "version": "1.28.1"
+    "version": "1.28.2"
   },
   "openapi": "3.0.1",
   "paths": {

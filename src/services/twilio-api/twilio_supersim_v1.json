@@ -307,10 +307,7 @@
           },
           "identifiers": {
             "description": "The MCC/MNCs included in the Network resource",
-            "items": {
-              "format": "object",
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -359,7 +356,7 @@
             "type": "string"
           },
           "links": {
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -394,10 +391,7 @@
           },
           "identifiers": {
             "description": "The MCC/MNCs included in the resource",
-            "items": {
-              "format": "object",
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -467,7 +461,7 @@
             "type": "string"
           },
           "links": {
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -689,9 +683,7 @@
           },
           "period": {
             "description": "The time period for which the usage is reported.",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "sim_sid": {
             "description": "SID of a Sim resource to which the UsageRecord belongs.",
@@ -725,7 +717,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Supersim",
-    "version": "1.28.1"
+    "version": "1.28.2"
   },
   "openapi": "3.0.1",
   "paths": {

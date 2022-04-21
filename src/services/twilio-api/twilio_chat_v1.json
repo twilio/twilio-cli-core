@@ -118,21 +118,17 @@
           },
           "limits": {
             "description": "An object that describes the limits of the service instance",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "links": {
             "description": "The absolute URLs of the Service's Channels, Roles, and Users",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
           "notifications": {
             "description": "The notification configuration for the Service instance",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "post_webhook_url": {
             "description": "The URL for post-event webhooks",
@@ -188,9 +184,7 @@
           },
           "webhooks": {
             "description": "An object that contains information about the webhooks configured for this service",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           }
         },
         "type": "object"
@@ -234,7 +228,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the Members, Messages , Invites and, if it exists, the last Message for the Channel",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -650,7 +644,7 @@
           },
           "links": {
             "description": "The absolute URLs of the Channel and Binding resources related to the user",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -712,7 +706,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the Members, Messages , Invites and, if it exists, the last Message for the Channel",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -771,7 +765,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Chat",
-    "version": "1.28.1"
+    "version": "1.28.2"
   },
   "openapi": "3.0.1",
   "paths": {

@@ -86,7 +86,7 @@
             "type": "string"
           },
           "links": {
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -344,7 +344,7 @@
           },
           "links": {
             "description": "The absolute URLs of related resources",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -695,9 +695,7 @@
           },
           "rate_limits": {
             "description": "Rate limit and/or classification set by each carrier",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "sid": {
             "description": "The unique string that identifies a US A2P Compliance resource",
@@ -725,10 +723,7 @@
         "properties": {
           "us_app_to_person_usecases": {
             "description": "Human readable A2P Use Case details",
-            "items": {
-              "format": "object",
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           }
@@ -739,10 +734,7 @@
         "properties": {
           "usecases": {
             "description": "Human readable Messaging Service Use Case details",
-            "items": {
-              "format": "object",
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           }
@@ -770,7 +762,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Messaging",
-    "version": "1.28.1"
+    "version": "1.28.2"
   },
   "openapi": "3.0.1",
   "paths": {

@@ -30,7 +30,7 @@
           },
           "links": {
             "description": "Nested resource URLs",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -90,9 +90,7 @@
           },
           "context": {
             "description": "The current state of the execution flow",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the Engagement was created",
@@ -116,7 +114,7 @@
           },
           "links": {
             "description": "The URLs of the Engagement's nested resources",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -158,9 +156,7 @@
           },
           "context": {
             "description": "Flow state",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "engagement_sid": {
             "description": "Engagement SID",
@@ -199,9 +195,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the resource was created",
@@ -233,7 +227,7 @@
           },
           "links": {
             "description": "The URLs of related resources",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -281,9 +275,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "engagement_sid": {
             "description": "The SID of the Engagement",
@@ -343,9 +335,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the resource was created",
@@ -369,7 +359,7 @@
           },
           "links": {
             "description": "Nested resource URLs",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -411,9 +401,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "execution_sid": {
             "description": "The SID of the Execution",
@@ -452,9 +440,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the resource was created",
@@ -486,7 +472,7 @@
           },
           "links": {
             "description": "The URLs of related resources",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -534,9 +520,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "execution_sid": {
             "description": "The SID of the Execution",
@@ -592,7 +576,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Studio",
-    "version": "1.28.1"
+    "version": "1.28.2"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -805,9 +789,7 @@
                     "type": "string"
                   },
                   "Parameters": {
-                    "description": "A JSON string we will add to your flow's context and that you can access as variables inside your flow. For example, if you pass in `Parameters={'name':'Zeke'}` then inside a widget you can reference the variable `{{flow.data.name}}` which will return the string 'Zeke'. Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string.",
-                    "format": "object",
-                    "type": "object"
+                    "description": "A JSON string we will add to your flow's context and that you can access as variables inside your flow. For example, if you pass in `Parameters={'name':'Zeke'}` then inside a widget you can reference the variable `{{flow.data.name}}` which will return the string 'Zeke'. Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string."
                   },
                   "To": {
                     "description": "The Contact phone number to start a Studio Flow Engagement, available as variable `{{contact.channel.address}}`.",
@@ -1441,9 +1423,7 @@
                     "type": "string"
                   },
                   "Parameters": {
-                    "description": "JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.",
-                    "format": "object",
-                    "type": "object"
+                    "description": "JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string."
                   },
                   "To": {
                     "description": "The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`.",

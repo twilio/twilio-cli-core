@@ -21,7 +21,7 @@
             "type": "string"
           },
           "links": {
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -64,7 +64,7 @@
           },
           "links": {
             "description": "Nested resource URLs.",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -130,7 +130,7 @@
           },
           "links": {
             "description": "Nested resource URLs.",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -144,9 +144,7 @@
           },
           "sink_configuration": {
             "description": "JSON Sink configuration.",
-            "format": "object",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "sink_type": {
             "description": "Sink type.",
@@ -227,7 +225,7 @@
           },
           "links": {
             "description": "Nested resource URLs.",
-            "format": "object",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -314,7 +312,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Events",
-    "version": "1.28.1"
+    "version": "1.28.2"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -633,9 +631,7 @@
                     "type": "string"
                   },
                   "SinkConfiguration": {
-                    "description": "The information required for Twilio to connect to the provided Sink encoded as JSON.",
-                    "format": "object",
-                    "type": "object"
+                    "description": "The information required for Twilio to connect to the provided Sink encoded as JSON."
                   },
                   "SinkType": {
                     "description": "The Sink type. Can only be \"kinesis\" or \"webhook\" currently.",
@@ -1075,10 +1071,7 @@
                   },
                   "Types": {
                     "description": "An array of objects containing the subscribed Event Types",
-                    "items": {
-                      "format": "object",
-                      "type": "object"
-                    },
+                    "items": {},
                     "type": "array"
                   }
                 },
