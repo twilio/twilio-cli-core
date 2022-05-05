@@ -204,7 +204,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Fax",
-    "version": "1.28.2"
+    "version": "1.29.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -325,6 +325,7 @@
         }
       ],
       "x-twilio": {
+        "className": "fax",
         "defaultOutputProperties": [
           "sid",
           "from",
@@ -430,6 +431,7 @@
         }
       ],
       "x-twilio": {
+        "className": "fax_media",
         "defaultOutputProperties": [
           "content_type",
           "url"
@@ -538,6 +540,7 @@
         }
       ],
       "x-twilio": {
+        "className": "fax_media",
         "defaultOutputProperties": [
           "content_type",
           "url"
@@ -622,6 +625,7 @@
         }
       ],
       "x-twilio": {
+        "className": "fax",
         "defaultOutputProperties": [
           "sid",
           "from",

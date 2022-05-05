@@ -186,7 +186,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Accounts",
-    "version": "1.28.2"
+    "version": "1.29.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -222,6 +222,7 @@
         }
       ],
       "x-twilio": {
+        "className": "auth_token_promotion",
         "defaultOutputProperties": [
           "account_sid",
           "auth_token",
@@ -279,6 +280,7 @@
         }
       ],
       "x-twilio": {
+        "className": "secondary_auth_token",
         "defaultOutputProperties": [
           "account_sid",
           "secondary_auth_token",

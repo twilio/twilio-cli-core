@@ -245,7 +245,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Bulkexports",
-    "version": "1.28.2"
+    "version": "1.29.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -492,6 +492,7 @@
         }
       ],
       "x-twilio": {
+        "className": "export_configuration",
         "defaultOutputProperties": [
           "enabled",
           "resource_type",
@@ -836,6 +837,7 @@
         }
       ],
       "x-twilio": {
+        "className": "export_custom_job",
         "defaultOutputProperties": [
           "details",
           "email",
