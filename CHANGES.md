@@ -1,3 +1,5 @@
+## [6.4.0](https://github.com/twilio/twilio-cli-core/compare/6.3.2...6.4.0) (2022-05-05)
+
 ---------------------------
 **Library - Fix**
 - [PR #56](https://github.com/twilio/twilio-oai/pull/56): add class_name property to twilio vendor extension. Thanks to [@charan678](https://github.com/charan678)!
