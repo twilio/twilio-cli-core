@@ -4581,6 +4581,12 @@
             "nullable": true,
             "type": "integer"
           },
+          "media_url": {
+            "description": "The URL of the media file.",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          },
           "price": {
             "description": "The one-time cost of creating the recording.",
             "nullable": true,
@@ -9196,7 +9202,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Api",
-    "version": "1.29.0"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
