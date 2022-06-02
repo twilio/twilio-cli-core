@@ -76,8 +76,7 @@
           },
           "attributes": {
             "description": "An object that contains application-specific data",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "call_recording_enabled": {
             "description": "Whether call recording is enabled",
@@ -90,6 +89,12 @@
             "nullable": true,
             "type": "string"
           },
+          "channel_configs": {
+            "description": "Flex Conversations channels' attachments configurations",
+            "items": {},
+            "nullable": true,
+            "type": "array"
+          },
           "chat_service_instance_sid": {
             "description": "The SID of the chat service this user belongs to",
             "maxLength": 34,
@@ -100,8 +105,7 @@
           },
           "crm_attributes": {
             "description": "An object that contains the CRM attributes",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "crm_callback_url": {
             "description": "The CRM Callback URL",
@@ -144,8 +148,7 @@
           },
           "flex_insights_hr": {
             "description": "Object that controls workspace reporting",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "flex_service_instance_sid": {
             "description": "The SID of the Flex service instance",
@@ -163,16 +166,13 @@
           },
           "integrations": {
             "description": "A list of objects that contain the configurations for the Integrations supported in this configuration",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
           "markdown": {
             "description": "Configurable parameters for Markdown",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "messaging_service_instance_sid": {
             "description": "The SID of the Messaging service instance",
@@ -184,18 +184,15 @@
           },
           "notifications": {
             "description": "Configurable parameters for Notifications",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "outbound_call_flows": {
             "description": "The list of outbound call flows",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "plugin_service_attributes": {
             "description": "The plugin service attributes",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "plugin_service_enabled": {
             "description": "Whether the plugin service enabled",
@@ -204,13 +201,11 @@
           },
           "public_attributes": {
             "description": "The list of public attributes",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "queue_stats_configuration": {
             "description": "Configurable parameters for Queues Statistics",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "runtime_domain": {
             "description": "The URL where the Flex instance is hosted",
@@ -254,9 +249,7 @@
           },
           "taskrouter_skills": {
             "description": "The Skill description for TaskRouter workers",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -278,21 +271,17 @@
           },
           "taskrouter_taskqueues": {
             "description": "The list of TaskRouter TaskQueues",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
           "taskrouter_worker_attributes": {
             "description": "The TaskRouter Worker attributes",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "taskrouter_worker_channels": {
             "description": "The TaskRouter default channel capacities and availability for workers",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "taskrouter_workspace_sid": {
             "description": "The SID of the TaskRouter Workspace",
@@ -304,13 +293,11 @@
           },
           "ui_attributes": {
             "description": "The object that describes Flex UI characteristics and settings",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "ui_dependencies": {
             "description": "The object that defines the NPM packages and versions to be used in Hosted Flex",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "ui_language": {
             "description": "The primary language of the Flex UI",
@@ -391,8 +378,7 @@
           },
           "integration": {
             "description": "An object that contains specific parameters for the integration",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "integration_type": {
             "description": "The software that will handle inbound messages.",
@@ -424,6 +410,161 @@
           },
           "url": {
             "description": "The absolute URL of the Flex Flow resource",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "flex.v1.interaction": {
+        "properties": {
+          "channel": {
+            "description": "The Interaction's channel",
+            "nullable": true
+          },
+          "links": {
+            "format": "uri-map",
+            "nullable": true,
+            "type": "object"
+          },
+          "routing": {
+            "description": "The Interaction's routing logic",
+            "nullable": true
+          },
+          "sid": {
+            "description": "The unique string that identifies the resource",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^KD[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "flex.v1.interaction.interaction_channel": {
+        "properties": {
+          "interaction_sid": {
+            "description": "The Interaction Sid for this channel.",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^KD[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "links": {
+            "format": "uri-map",
+            "nullable": true,
+            "type": "object"
+          },
+          "sid": {
+            "description": "The unique string that identifies the resource",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^UO[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "type": {
+            "description": "The Interaction Channel's type.",
+            "enum": [
+              "voice",
+              "sms",
+              "email",
+              "web",
+              "whatsapp",
+              "chat"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "flex.v1.interaction.interaction_channel.interaction_channel_invite": {
+        "properties": {
+          "channel_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^UO[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "interaction_sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^KD[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "routing": {
+            "nullable": true
+          },
+          "sid": {
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^KG[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "url": {
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "flex.v1.interaction.interaction_channel.interaction_channel_participant": {
+        "properties": {
+          "channel_sid": {
+            "description": "The Channel Sid for this Participant.",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^UO[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "interaction_sid": {
+            "description": "The Interaction Sid for this channel.",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^KD[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "sid": {
+            "description": "The unique string that identifies the resource",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^UT[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "type": {
+            "description": "Participant type.",
+            "enum": [
+              "supervisor",
+              "customer",
+              "external",
+              "agent",
+              "unknown"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "url": {
             "format": "uri",
             "nullable": true,
             "type": "string"
@@ -499,7 +640,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Flex",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -1281,6 +1422,839 @@
           "friendly_name",
           "channel_type",
           "integration_type"
+        ],
+        "pathType": "instance"
+      }
+    },
+    "/v1/Interactions": {
+      "description": "TODO: Resource-level docs",
+      "post": {
+        "description": "Create a new Interaction.",
+        "operationId": "CreateInteraction",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Channel": {
+                    "description": "The Interaction's channel."
+                  },
+                  "Routing": {
+                    "description": "The Interaction's routing logic."
+                  }
+                },
+                "required": [
+                  "Channel",
+                  "Routing"
+                ],
+                "title": "CreateInteractionRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/flex.v1.interaction"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://flex-api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "sid"
+        ],
+        "pathType": "list"
+      }
+    },
+    "/v1/Interactions/{InteractionSid}/Channels": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "List all Channels for an Interaction.",
+        "operationId": "ListInteractionChannel",
+        "parameters": [
+          {
+            "description": "The Interaction Sid for this channel.",
+            "in": "path",
+            "name": "InteractionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^KD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "channels": {
+                      "items": {
+                        "$ref": "#/components/schemas/flex.v1.interaction.interaction_channel"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "title": "ListInteractionChannelResponse",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://flex-api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "className": "interaction_channel",
+        "defaultOutputProperties": [
+          "sid"
+        ],
+        "pathType": "list"
+      }
+    },
+    "/v1/Interactions/{InteractionSid}/Channels/{ChannelSid}/Invites": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "operationId": "ListInteractionChannelInvite",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "InteractionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^KD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "ChannelSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^UO[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "invites": {
+                      "items": {
+                        "$ref": "#/components/schemas/flex.v1.interaction.interaction_channel.interaction_channel_invite"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "title": "ListInteractionChannelInviteResponse",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "post": {
+        "description": "",
+        "operationId": "CreateInteractionChannelInvite",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "InteractionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^KD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "ChannelSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^UO[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Routing": {
+                    "description": ""
+                  }
+                },
+                "required": [
+                  "Routing"
+                ],
+                "title": "CreateInteractionChannelInviteRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/flex.v1.interaction.interaction_channel.interaction_channel_invite"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://flex-api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "className": "interaction_channel_invite",
+        "defaultOutputProperties": [
+          "sid"
+        ],
+        "pathType": "list"
+      }
+    },
+    "/v1/Interactions/{InteractionSid}/Channels/{ChannelSid}/Participants": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "List all Participants for a Channel.",
+        "operationId": "ListInteractionChannelParticipant",
+        "parameters": [
+          {
+            "description": "The Interaction Sid for this channel.",
+            "in": "path",
+            "name": "InteractionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^KD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Channel Sid for this Participant.",
+            "in": "path",
+            "name": "ChannelSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^UO[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "participants": {
+                      "items": {
+                        "$ref": "#/components/schemas/flex.v1.interaction.interaction_channel.interaction_channel_participant"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "title": "ListInteractionChannelParticipantResponse",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "post": {
+        "description": "Add a Participant to a Channel.",
+        "operationId": "CreateInteractionChannelParticipant",
+        "parameters": [
+          {
+            "description": "The Interaction Sid for the new Channel Participant.",
+            "in": "path",
+            "name": "InteractionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^KD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Channel Sid for the new Channel Participant.",
+            "in": "path",
+            "name": "ChannelSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^UO[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "MediaProperties": {
+                    "description": "JSON representing the Media Properties for the new Participant."
+                  },
+                  "Type": {
+                    "description": "Participant type.  Can be: `agent`, `customer`, `supervisor`, `external` or `unknown`.",
+                    "enum": [
+                      "supervisor",
+                      "customer",
+                      "external",
+                      "agent",
+                      "unknown"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Type",
+                  "MediaProperties"
+                ],
+                "title": "CreateInteractionChannelParticipantRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/flex.v1.interaction.interaction_channel.interaction_channel_participant"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://flex-api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "className": "interaction_channel_participant",
+        "defaultOutputProperties": [
+          "sid"
+        ],
+        "pathType": "list"
+      }
+    },
+    "/v1/Interactions/{InteractionSid}/Channels/{ChannelSid}/Participants/{Sid}": {
+      "description": "TODO: Resource-level docs",
+      "post": {
+        "description": "Update an existing Channel Participant.",
+        "operationId": "UpdateInteractionChannelParticipant",
+        "parameters": [
+          {
+            "description": "The Interaction Sid for this channel.",
+            "in": "path",
+            "name": "InteractionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^KD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Channel Sid for this Participant.",
+            "in": "path",
+            "name": "ChannelSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^UO[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique string created by Twilio to identify an Interaction Channel resource.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^UO[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Status": {
+                    "description": "The Participant's status. Can be: `closed` or `wrapup`.  Participant must be an agent.",
+                    "enum": [
+                      "close",
+                      "closed",
+                      "wrapup"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Status"
+                ],
+                "title": "UpdateInteractionChannelParticipantRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/flex.v1.interaction.interaction_channel.interaction_channel_participant"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://flex-api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "className": "interaction_channel_participant",
+        "defaultOutputProperties": [
+          "sid"
+        ],
+        "pathType": "instance"
+      }
+    },
+    "/v1/Interactions/{InteractionSid}/Channels/{Sid}": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "Fetch a Channel for an Interaction.",
+        "operationId": "FetchInteractionChannel",
+        "parameters": [
+          {
+            "description": "The Interaction Sid for this channel.",
+            "in": "path",
+            "name": "InteractionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^KD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Channel Sid for this Participant.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^UO[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/flex.v1.interaction.interaction_channel"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "post": {
+        "description": "Update an existing Interaction.",
+        "operationId": "UpdateInteractionChannel",
+        "parameters": [
+          {
+            "description": "The Interaction Sid for this channel.",
+            "in": "path",
+            "name": "InteractionSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^KD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique string created by Twilio to identify an Interaction Channel resource.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^UO[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Routing": {
+                    "description": "The Interaction Channel's routing parameters.  Optional, may contain `status` to set the agent's Reservation state to either `closed` or `wrapup`.  Default is `wrapup` if unspecified."
+                  },
+                  "Status": {
+                    "description": "The Interaction Channel's status. Can be: `closed` or `wrapup`.",
+                    "enum": [
+                      "close",
+                      "closed",
+                      "wrapup"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Status"
+                ],
+                "title": "UpdateInteractionChannelRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/flex.v1.interaction.interaction_channel"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://flex-api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "className": "interaction_channel",
+        "defaultOutputProperties": [
+          "sid"
+        ],
+        "pathType": "instance"
+      }
+    },
+    "/v1/Interactions/{Sid}": {
+      "description": "TODO: Resource-level docs",
+      "get": {
+        "description": "",
+        "operationId": "FetchInteraction",
+        "parameters": [
+          {
+            "description": "The SID of the Interaction resource to fetch.",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^KD[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/flex.v1.interaction"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://flex-api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "sid"
         ],
         "pathType": "instance"
       }

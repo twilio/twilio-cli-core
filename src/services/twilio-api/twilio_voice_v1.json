@@ -92,6 +92,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -117,6 +118,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -136,6 +138,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -177,6 +180,7 @@
           },
           "links": {
             "description": "The URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -301,11 +305,13 @@
           },
           "iso_code": {
             "description": "The ISO country code",
+            "format": "iso-country-code",
             "nullable": true,
             "type": "string"
           },
           "links": {
             "description": "A list of URLs related to this resource",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -355,11 +361,13 @@
           },
           "iso_code": {
             "description": "The ISO country code",
+            "format": "iso-country-code",
             "nullable": true,
             "type": "string"
           },
           "links": {
             "description": "A list of URLs related to this resource",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -545,7 +553,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Voice",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -598,6 +606,7 @@
         }
       ],
       "x-twilio": {
+        "className": "archived_call",
         "defaultOutputProperties": [],
         "pathType": "instance"
       }
@@ -719,6 +728,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "StatusCallbackUrl": {
@@ -736,6 +746,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceFallbackUrl": {
@@ -753,6 +764,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceUrl": {
@@ -927,6 +939,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "StatusCallbackUrl": {
@@ -944,6 +957,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceFallbackUrl": {
@@ -961,6 +975,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceUrl": {
@@ -1309,6 +1324,7 @@
         }
       ],
       "x-twilio": {
+        "className": "connection_policy_target",
         "defaultOutputProperties": [
           "sid",
           "friendly_name",
@@ -1502,6 +1518,7 @@
         }
       ],
       "x-twilio": {
+        "className": "connection_policy_target",
         "defaultOutputProperties": [
           "sid",
           "friendly_name",
@@ -1718,6 +1735,7 @@
             "in": "query",
             "name": "IsoCode",
             "schema": {
+              "format": "iso-country-code",
               "type": "string"
             }
           },
@@ -1858,6 +1876,7 @@
             "name": "IsoCode",
             "required": true,
             "schema": {
+              "format": "iso-country-code",
               "type": "string"
             }
           }
@@ -1909,6 +1928,7 @@
             "name": "IsoCode",
             "required": true,
             "schema": {
+              "format": "iso-country-code",
               "type": "string"
             }
           },
@@ -1989,6 +2009,7 @@
         }
       ],
       "x-twilio": {
+        "className": "highrisk_special_prefix",
         "defaultOutputProperties": [
           "prefix"
         ],
@@ -2350,6 +2371,7 @@
         }
       ],
       "x-twilio": {
+        "className": "settings",
         "defaultOutputProperties": [
           "dialing_permissions_inheritance"
         ],

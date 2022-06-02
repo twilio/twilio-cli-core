@@ -53,6 +53,7 @@
           },
           "subresource_uris": {
             "description": "Account Instance Subresources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -118,6 +119,7 @@
           },
           "iso_country": {
             "description": "The ISO country code of the address",
+            "format": "iso-country-code",
             "nullable": true,
             "type": "string"
           },
@@ -191,8 +193,7 @@
           },
           "capabilities": {
             "description": "Indicate if a phone can receive calls or messages",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
@@ -225,11 +226,13 @@
           },
           "friendly_name": {
             "description": "The string that you assigned to describe the resource",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -259,6 +262,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -278,6 +282,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -303,6 +308,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -343,6 +349,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -362,6 +369,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -430,6 +438,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -449,6 +458,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -480,6 +490,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -504,6 +515,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -523,6 +535,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -621,11 +634,13 @@
           },
           "country_code": {
             "description": "The ISO-3166-1 country code of the country.",
+            "format": "iso-country-code",
             "nullable": true,
             "type": "string"
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -652,6 +667,7 @@
           },
           "capabilities": {
             "description": "Whether a phone number can receive calls or messages",
+            "format": "phone-number-capabilities",
             "nullable": true,
             "properties": {
               "fax": {
@@ -671,11 +687,13 @@
           },
           "friendly_name": {
             "description": "A formatted version of the phone number",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
           "iso_country": {
             "description": "The ISO country code of this phone number",
+            "format": "iso-country-code",
             "nullable": true,
             "type": "string"
           },
@@ -687,7 +705,7 @@
           "latitude": {
             "description": "The latitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "locality": {
             "description": "The locality or city of this phone number's location",
@@ -697,10 +715,11 @@
           "longitude": {
             "description": "The longitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -736,6 +755,7 @@
           },
           "capabilities": {
             "description": "Whether a phone number can receive calls or messages",
+            "format": "phone-number-capabilities",
             "nullable": true,
             "properties": {
               "fax": {
@@ -755,11 +775,13 @@
           },
           "friendly_name": {
             "description": "A formatted version of the phone number",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
           "iso_country": {
             "description": "The ISO country code of this phone number",
+            "format": "iso-country-code",
             "nullable": true,
             "type": "string"
           },
@@ -771,7 +793,7 @@
           "latitude": {
             "description": "The latitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "locality": {
             "description": "The locality or city of this phone number's location",
@@ -781,10 +803,11 @@
           "longitude": {
             "description": "The longitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -820,6 +843,7 @@
           },
           "capabilities": {
             "description": "Whether a phone number can receive calls or messages",
+            "format": "phone-number-capabilities",
             "nullable": true,
             "properties": {
               "fax": {
@@ -839,11 +863,13 @@
           },
           "friendly_name": {
             "description": "A formatted version of the phone number",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
           "iso_country": {
             "description": "The ISO country code of this phone number",
+            "format": "iso-country-code",
             "nullable": true,
             "type": "string"
           },
@@ -855,7 +881,7 @@
           "latitude": {
             "description": "The latitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "locality": {
             "description": "The locality or city of this phone number's location",
@@ -865,10 +891,11 @@
           "longitude": {
             "description": "The longitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -904,6 +931,7 @@
           },
           "capabilities": {
             "description": "Whether a phone number can receive calls or messages",
+            "format": "phone-number-capabilities",
             "nullable": true,
             "properties": {
               "fax": {
@@ -923,11 +951,13 @@
           },
           "friendly_name": {
             "description": "A formatted version of the phone number",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
           "iso_country": {
             "description": "The ISO country code of this phone number",
+            "format": "iso-country-code",
             "nullable": true,
             "type": "string"
           },
@@ -939,7 +969,7 @@
           "latitude": {
             "description": "The latitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "locality": {
             "description": "The locality or city of this phone number's location",
@@ -949,10 +979,11 @@
           "longitude": {
             "description": "The longitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -988,6 +1019,7 @@
           },
           "capabilities": {
             "description": "Whether a phone number can receive calls or messages",
+            "format": "phone-number-capabilities",
             "nullable": true,
             "properties": {
               "fax": {
@@ -1007,11 +1039,13 @@
           },
           "friendly_name": {
             "description": "A formatted version of the phone number",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
           "iso_country": {
             "description": "The ISO country code of this phone number",
+            "format": "iso-country-code",
             "nullable": true,
             "type": "string"
           },
@@ -1023,7 +1057,7 @@
           "latitude": {
             "description": "The latitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "locality": {
             "description": "The locality or city of this phone number's location",
@@ -1033,10 +1067,11 @@
           "longitude": {
             "description": "The longitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -1072,6 +1107,7 @@
           },
           "capabilities": {
             "description": "Whether a phone number can receive calls or messages",
+            "format": "phone-number-capabilities",
             "nullable": true,
             "properties": {
               "fax": {
@@ -1091,11 +1127,13 @@
           },
           "friendly_name": {
             "description": "A formatted version of the phone number",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
           "iso_country": {
             "description": "The ISO country code of this phone number",
+            "format": "iso-country-code",
             "nullable": true,
             "type": "string"
           },
@@ -1107,7 +1145,7 @@
           "latitude": {
             "description": "The latitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "locality": {
             "description": "The locality or city of this phone number's location",
@@ -1117,10 +1155,11 @@
           "longitude": {
             "description": "The longitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -1156,6 +1195,7 @@
           },
           "capabilities": {
             "description": "Whether a phone number can receive calls or messages",
+            "format": "phone-number-capabilities",
             "nullable": true,
             "properties": {
               "fax": {
@@ -1175,11 +1215,13 @@
           },
           "friendly_name": {
             "description": "A formatted version of the phone number",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
           "iso_country": {
             "description": "The ISO country code of this phone number",
+            "format": "iso-country-code",
             "nullable": true,
             "type": "string"
           },
@@ -1191,7 +1233,7 @@
           "latitude": {
             "description": "The latitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "locality": {
             "description": "The locality or city of this phone number's location",
@@ -1201,10 +1243,11 @@
           "longitude": {
             "description": "The longitude of this phone number's location",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -1257,11 +1300,6 @@
             "minLength": 34,
             "nullable": true,
             "pattern": "^AC[0-9a-fA-F]{32}$",
-            "type": "string"
-          },
-          "annotation": {
-            "description": "The annotation provided for the call",
-            "nullable": true,
             "type": "string"
           },
           "answered_by": {
@@ -1353,6 +1391,7 @@
           },
           "price_unit": {
             "description": "The currency in which `Price` is measured.",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -1392,6 +1431,7 @@
           },
           "subresource_uris": {
             "description": "A list of related subresources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -1426,13 +1466,11 @@
         "properties": {
           "request": {
             "description": "Call Request.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "response": {
             "description": "Call Response with Events.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           }
         },
         "type": "object"
@@ -1538,9 +1576,7 @@
           },
           "issues": {
             "description": "Issues experienced during the call",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -1659,6 +1695,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -1757,6 +1794,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -1853,8 +1891,7 @@
           },
           "encryption_details": {
             "description": "How to decrypt the recording.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "error_code": {
             "description": "More information about why the recording is missing, if status is `absent`.",
@@ -1868,6 +1905,7 @@
           },
           "price_unit": {
             "description": "The currency used in the price property.",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -2018,6 +2056,67 @@
             ],
             "nullable": true,
             "type": "string"
+          },
+          "uri": {
+            "description": "The URI of the resource, relative to `https://api.twilio.com`",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "api.v2010.account.call.stream": {
+        "properties": {
+          "account_sid": {
+            "description": "The SID of the Account that created this resource",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "call_sid": {
+            "description": "The SID of the Call the resource is associated with",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^CA[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "date_updated": {
+            "description": "The RFC 2822 date and time in GMT that this resource was last updated",
+            "format": "date-time-rfc-2822",
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of this resource",
+            "nullable": true,
+            "type": "string"
+          },
+          "sid": {
+            "description": "The SID of the Stream resource.",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^MZ[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "status": {
+            "description": "The status - one of `stopped`, `in-progress`",
+            "enum": [
+              "in-progress",
+              "stopped"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "uri": {
+            "description": "The URI of the resource, relative to `https://api.twilio.com`",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
           }
         },
         "type": "object"
@@ -2099,6 +2198,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -2165,8 +2265,7 @@
           },
           "encryption_details": {
             "description": "How to decrypt the recording.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "error_code": {
             "description": "More information about why the recording is missing, if status is `absent`.",
@@ -2180,6 +2279,7 @@
           },
           "price_unit": {
             "description": "The currency used in the price property.",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -2360,6 +2460,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -2463,6 +2564,7 @@
           },
           "capabilities": {
             "description": "Indicate if a phone can receive calls or messages",
+            "format": "phone-number-capabilities",
             "nullable": true,
             "properties": {
               "fax": {
@@ -2542,6 +2644,7 @@
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -2571,6 +2674,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -2590,6 +2694,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -2619,6 +2724,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -2659,6 +2765,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -2678,6 +2785,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -2710,8 +2818,7 @@
           },
           "configuration": {
             "description": "A JSON string that represents the current configuration",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
@@ -2753,6 +2860,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -2882,6 +2990,7 @@
           },
           "capabilities": {
             "description": "Indicate if a phone can receive calls or messages",
+            "format": "phone-number-capabilities",
             "nullable": true,
             "properties": {
               "fax": {
@@ -2961,6 +3070,7 @@
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -2990,6 +3100,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3009,6 +3120,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3038,6 +3150,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3078,6 +3191,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3097,6 +3211,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3166,6 +3281,7 @@
           },
           "capabilities": {
             "description": "Indicate if a phone can receive calls or messages",
+            "format": "phone-number-capabilities",
             "nullable": true,
             "properties": {
               "fax": {
@@ -3245,6 +3361,7 @@
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -3274,6 +3391,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3293,6 +3411,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3322,6 +3441,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3362,6 +3482,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3381,6 +3502,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3450,6 +3572,7 @@
           },
           "capabilities": {
             "description": "Indicate if a phone can receive calls or messages",
+            "format": "phone-number-capabilities",
             "nullable": true,
             "properties": {
               "fax": {
@@ -3529,6 +3652,7 @@
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -3558,6 +3682,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3577,6 +3702,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3606,6 +3732,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3646,6 +3773,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3665,6 +3793,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -3776,6 +3905,7 @@
           },
           "from": {
             "description": "The phone number that initiated the message",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -3804,6 +3934,7 @@
           },
           "price_unit": {
             "description": "The currency in which price is measured",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -3837,6 +3968,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -4094,6 +4226,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -4192,6 +4325,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -4262,6 +4396,7 @@
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -4439,13 +4574,18 @@
           },
           "encryption_details": {
             "description": "How to decrypt the recording.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "error_code": {
             "description": "More information about why the recording is missing, if status is `absent`.",
             "nullable": true,
             "type": "integer"
+          },
+          "media_url": {
+            "description": "The URL of the media file.",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
           },
           "price": {
             "description": "The one-time cost of creating the recording.",
@@ -4493,13 +4633,15 @@
               "stopped",
               "processing",
               "completed",
-              "absent"
+              "absent",
+              "deleted"
             ],
             "nullable": true,
             "type": "string"
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -4589,6 +4731,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           }
@@ -4669,6 +4812,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           }
@@ -4714,6 +4858,7 @@
           },
           "price_unit": {
             "description": "The currency in which price is measured",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -4817,6 +4962,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -4836,6 +4982,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -4921,6 +5068,7 @@
           },
           "subresource_uris": {
             "description": "The list of credentials associated with this credential list.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -5068,6 +5216,7 @@
           },
           "subresource_uris": {
             "description": "A list mapping resources associated with the SIP Domain resource",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -5087,6 +5236,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -5106,6 +5256,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -5119,6 +5270,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -5404,6 +5556,7 @@
           },
           "subresource_uris": {
             "description": "The IP addresses associated with this resource.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -5503,6 +5656,7 @@
           "ice_servers": {
             "description": "An array representing the ephemeral credentials",
             "items": {
+              "format": "ice-servers",
               "properties": {
                 "credential": {
                   "type": "string"
@@ -5579,6 +5733,7 @@
           },
           "price_unit": {
             "description": "The currency in which price is measured",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -5654,6 +5809,7 @@
           "category": {
             "description": "The category of usage",
             "enum": [
+              "a2p-registration-fees",
               "agent-conference",
               "answering-machine-detection",
               "authy-authentications",
@@ -5847,6 +6003,8 @@
               "turnmegabytes-uswest",
               "twilio-interconnect",
               "verify-push",
+              "verify-totp",
+              "verify-whatsapp-conversations-business-initiated",
               "video-recordings",
               "voice-insights",
               "voice-insights-client-insights-on-demand-minute",
@@ -5926,6 +6084,7 @@
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -5937,6 +6096,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -5982,6 +6142,7 @@
           "category": {
             "description": "The category of usage",
             "enum": [
+              "a2p-registration-fees",
               "agent-conference",
               "answering-machine-detection",
               "authy-authentications",
@@ -6175,6 +6336,8 @@
               "turnmegabytes-uswest",
               "twilio-interconnect",
               "verify-push",
+              "verify-totp",
+              "verify-whatsapp-conversations-business-initiated",
               "video-recordings",
               "voice-insights",
               "voice-insights-client-insights-on-demand-minute",
@@ -6254,6 +6417,7 @@
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -6265,6 +6429,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -6310,6 +6475,7 @@
           "category": {
             "description": "The category of usage",
             "enum": [
+              "a2p-registration-fees",
               "agent-conference",
               "answering-machine-detection",
               "authy-authentications",
@@ -6503,6 +6669,8 @@
               "turnmegabytes-uswest",
               "twilio-interconnect",
               "verify-push",
+              "verify-totp",
+              "verify-whatsapp-conversations-business-initiated",
               "video-recordings",
               "voice-insights",
               "voice-insights-client-insights-on-demand-minute",
@@ -6582,6 +6750,7 @@
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -6593,6 +6762,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -6638,6 +6808,7 @@
           "category": {
             "description": "The category of usage",
             "enum": [
+              "a2p-registration-fees",
               "agent-conference",
               "answering-machine-detection",
               "authy-authentications",
@@ -6831,6 +7002,8 @@
               "turnmegabytes-uswest",
               "twilio-interconnect",
               "verify-push",
+              "verify-totp",
+              "verify-whatsapp-conversations-business-initiated",
               "video-recordings",
               "voice-insights",
               "voice-insights-client-insights-on-demand-minute",
@@ -6910,6 +7083,7 @@
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -6921,6 +7095,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -6966,6 +7141,7 @@
           "category": {
             "description": "The category of usage",
             "enum": [
+              "a2p-registration-fees",
               "agent-conference",
               "answering-machine-detection",
               "authy-authentications",
@@ -7159,6 +7335,8 @@
               "turnmegabytes-uswest",
               "twilio-interconnect",
               "verify-push",
+              "verify-totp",
+              "verify-whatsapp-conversations-business-initiated",
               "video-recordings",
               "voice-insights",
               "voice-insights-client-insights-on-demand-minute",
@@ -7238,6 +7416,7 @@
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -7249,6 +7428,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -7294,6 +7474,7 @@
           "category": {
             "description": "The category of usage",
             "enum": [
+              "a2p-registration-fees",
               "agent-conference",
               "answering-machine-detection",
               "authy-authentications",
@@ -7487,6 +7668,8 @@
               "turnmegabytes-uswest",
               "twilio-interconnect",
               "verify-push",
+              "verify-totp",
+              "verify-whatsapp-conversations-business-initiated",
               "video-recordings",
               "voice-insights",
               "voice-insights-client-insights-on-demand-minute",
@@ -7566,6 +7749,7 @@
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -7577,6 +7761,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -7622,6 +7807,7 @@
           "category": {
             "description": "The category of usage",
             "enum": [
+              "a2p-registration-fees",
               "agent-conference",
               "answering-machine-detection",
               "authy-authentications",
@@ -7815,6 +8001,8 @@
               "turnmegabytes-uswest",
               "twilio-interconnect",
               "verify-push",
+              "verify-totp",
+              "verify-whatsapp-conversations-business-initiated",
               "video-recordings",
               "voice-insights",
               "voice-insights-client-insights-on-demand-minute",
@@ -7894,6 +8082,7 @@
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -7905,6 +8094,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -7950,6 +8140,7 @@
           "category": {
             "description": "The category of usage",
             "enum": [
+              "a2p-registration-fees",
               "agent-conference",
               "answering-machine-detection",
               "authy-authentications",
@@ -8143,6 +8334,8 @@
               "turnmegabytes-uswest",
               "twilio-interconnect",
               "verify-push",
+              "verify-totp",
+              "verify-whatsapp-conversations-business-initiated",
               "video-recordings",
               "voice-insights",
               "voice-insights-client-insights-on-demand-minute",
@@ -8222,6 +8415,7 @@
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -8233,6 +8427,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -8278,6 +8473,7 @@
           "category": {
             "description": "The category of usage",
             "enum": [
+              "a2p-registration-fees",
               "agent-conference",
               "answering-machine-detection",
               "authy-authentications",
@@ -8471,6 +8667,8 @@
               "turnmegabytes-uswest",
               "twilio-interconnect",
               "verify-push",
+              "verify-totp",
+              "verify-whatsapp-conversations-business-initiated",
               "video-recordings",
               "voice-insights",
               "voice-insights-client-insights-on-demand-minute",
@@ -8550,6 +8748,7 @@
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
+            "format": "currency",
             "nullable": true,
             "type": "string"
           },
@@ -8561,6 +8760,7 @@
           },
           "subresource_uris": {
             "description": "A list of related resources identified by their relative URIs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -8608,6 +8808,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -8688,6 +8889,7 @@
           "usage_category": {
             "description": "The usage category the trigger watches",
             "enum": [
+              "a2p-registration-fees",
               "agent-conference",
               "answering-machine-detection",
               "authy-authentications",
@@ -8881,6 +9083,8 @@
               "turnmegabytes-uswest",
               "twilio-interconnect",
               "verify-push",
+              "verify-totp",
+              "verify-whatsapp-conversations-business-initiated",
               "video-recordings",
               "voice-insights",
               "voice-insights-client-insights-on-demand-minute",
@@ -8965,6 +9169,7 @@
           },
           "phone_number": {
             "description": "The phone number to verify in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -8997,7 +9202,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Api",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -9190,6 +9395,7 @@
             "in": "query",
             "name": "IsoCountry",
             "schema": {
+              "format": "iso-country-code",
               "type": "string"
             }
           },
@@ -9306,6 +9512,7 @@
                   },
                   "IsoCountry": {
                     "description": "The ISO country code of the new address.",
+                    "format": "iso-country-code",
                     "type": "string"
                   },
                   "PostalCode": {
@@ -9828,6 +10035,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsFallbackUrl": {
@@ -9845,6 +10053,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsStatusCallback": {
@@ -9872,6 +10081,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceCallerIdLookup": {
@@ -9888,6 +10098,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceFallbackUrl": {
@@ -9905,6 +10116,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceUrl": {
@@ -10106,6 +10318,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsFallbackUrl": {
@@ -10123,6 +10336,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsStatusCallback": {
@@ -10150,6 +10364,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceCallerIdLookup": {
@@ -10166,6 +10381,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceFallbackUrl": {
@@ -10183,6 +10399,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceUrl": {
@@ -10490,6 +10707,7 @@
         }
       ],
       "x-twilio": {
+        "className": "available_phone_number_country",
         "defaultOutputProperties": [
           "country_code",
           "country",
@@ -10522,6 +10740,7 @@
             "name": "CountryCode",
             "required": true,
             "schema": {
+              "format": "iso-country-code",
               "type": "string"
             }
           }
@@ -10553,6 +10772,7 @@
         }
       ],
       "x-twilio": {
+        "className": "available_phone_number_country",
         "defaultOutputProperties": [
           "country_code",
           "country",
@@ -10585,6 +10805,7 @@
             "name": "CountryCode",
             "required": true,
             "schema": {
+              "format": "iso-country-code",
               "type": "string"
             }
           },
@@ -10665,6 +10886,7 @@
             "in": "query",
             "name": "NearNumber",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -10839,6 +11061,7 @@
             "name": "CountryCode",
             "required": true,
             "schema": {
+              "format": "iso-country-code",
               "type": "string"
             }
           },
@@ -10919,6 +11142,7 @@
             "in": "query",
             "name": "NearNumber",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -11093,6 +11317,7 @@
             "name": "CountryCode",
             "required": true,
             "schema": {
+              "format": "iso-country-code",
               "type": "string"
             }
           },
@@ -11173,6 +11398,7 @@
             "in": "query",
             "name": "NearNumber",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -11347,6 +11573,7 @@
             "name": "CountryCode",
             "required": true,
             "schema": {
+              "format": "iso-country-code",
               "type": "string"
             }
           },
@@ -11427,6 +11654,7 @@
             "in": "query",
             "name": "NearNumber",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -11601,6 +11829,7 @@
             "name": "CountryCode",
             "required": true,
             "schema": {
+              "format": "iso-country-code",
               "type": "string"
             }
           },
@@ -11681,6 +11910,7 @@
             "in": "query",
             "name": "NearNumber",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -11855,6 +12085,7 @@
             "name": "CountryCode",
             "required": true,
             "schema": {
+              "format": "iso-country-code",
               "type": "string"
             }
           },
@@ -11935,6 +12166,7 @@
             "in": "query",
             "name": "NearNumber",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -12109,6 +12341,7 @@
             "name": "CountryCode",
             "required": true,
             "schema": {
+              "format": "iso-country-code",
               "type": "string"
             }
           },
@@ -12189,6 +12422,7 @@
             "in": "query",
             "name": "NearNumber",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -12416,6 +12650,7 @@
             "in": "query",
             "name": "To",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -12424,6 +12659,7 @@
             "in": "query",
             "name": "From",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -12627,6 +12863,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Byoc": {
@@ -12658,6 +12895,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "FallbackUrl": {
@@ -12699,6 +12937,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Record": {
@@ -12730,6 +12969,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "RecordingTrack": {
@@ -12770,6 +13010,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "TimeLimit": {
@@ -12898,6 +13139,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   }
                 },
@@ -13613,8 +13855,7 @@
                     "type": "integer"
                   },
                   "Parameter": {
-                    "description": "A single level JSON string that is required when accepting certain information specific only to ACH payments. The information that has to be included here depends on the <Pay> Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors).",
-                    "type": "object"
+                    "description": "A single-level JSON object used to pass custom parameters to payment processors. (Required for ACH payments). The information that has to be included here depends on the <Pay> Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors)."
                   },
                   "PaymentConnector": {
                     "description": "This is the unique name corresponding to the Payment Gateway Connector installed in the Twilio Add-ons. Learn more about [<Pay> Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`.",
@@ -14008,6 +14249,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "RecordingTrack": {
@@ -15138,6 +15380,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Track": {
@@ -15258,6 +15501,1010 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/api.v2010.account.call.siprec"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "call_sid",
+          "name"
+        ],
+        "pathType": "instance"
+      }
+    },
+    "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Streams.json": {
+      "description": "TODO: Resource-level docs",
+      "post": {
+        "description": "Create a Stream",
+        "operationId": "CreateStream",
+        "parameters": [
+          {
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this Stream resource.",
+            "in": "path",
+            "name": "AccountSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^AC[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with.",
+            "in": "path",
+            "name": "CallSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^CA[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Name": {
+                    "description": "The user-specified name of this Stream, if one was given when the Stream was created. This may be used to stop the Stream.",
+                    "type": "string"
+                  },
+                  "Parameter1.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter1.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter10.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter10.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter11.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter11.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter12.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter12.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter13.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter13.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter14.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter14.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter15.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter15.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter16.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter16.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter17.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter17.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter18.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter18.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter19.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter19.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter2.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter2.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter20.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter20.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter21.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter21.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter22.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter22.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter23.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter23.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter24.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter24.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter25.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter25.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter26.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter26.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter27.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter27.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter28.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter28.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter29.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter29.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter3.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter3.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter30.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter30.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter31.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter31.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter32.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter32.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter33.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter33.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter34.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter34.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter35.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter35.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter36.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter36.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter37.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter37.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter38.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter38.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter39.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter39.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter4.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter4.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter40.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter40.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter41.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter41.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter42.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter42.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter43.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter43.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter44.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter44.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter45.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter45.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter46.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter46.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter47.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter47.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter48.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter48.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter49.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter49.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter5.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter5.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter50.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter50.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter51.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter51.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter52.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter52.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter53.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter53.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter54.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter54.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter55.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter55.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter56.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter56.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter57.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter57.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter58.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter58.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter59.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter59.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter6.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter6.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter60.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter60.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter61.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter61.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter62.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter62.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter63.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter63.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter64.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter64.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter65.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter65.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter66.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter66.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter67.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter67.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter68.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter68.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter69.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter69.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter7.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter7.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter70.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter70.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter71.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter71.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter72.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter72.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter73.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter73.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter74.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter74.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter75.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter75.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter76.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter76.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter77.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter77.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter78.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter78.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter79.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter79.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter8.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter8.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter80.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter80.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter81.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter81.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter82.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter82.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter83.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter83.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter84.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter84.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter85.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter85.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter86.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter86.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter87.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter87.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter88.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter88.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter89.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter89.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter9.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter9.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter90.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter90.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter91.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter91.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter92.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter92.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter93.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter93.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter94.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter94.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter95.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter95.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter96.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter96.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter97.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter97.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter98.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter98.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "Parameter99.Name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "Parameter99.Value": {
+                    "description": "Parameter value",
+                    "type": "string"
+                  },
+                  "StatusCallback": {
+                    "description": "Absolute URL of the status callback.",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "StatusCallbackMethod": {
+                    "description": "The http method for the status_callback (one of GET, POST).",
+                    "enum": [
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "format": "http-method",
+                    "type": "string"
+                  },
+                  "Track": {
+                    "description": "One of `inbound_track`, `outbound_track`, `both_tracks`.",
+                    "enum": [
+                      "inbound_track",
+                      "outbound_track",
+                      "both_tracks"
+                    ],
+                    "type": "string"
+                  },
+                  "Url": {
+                    "description": "Relative or absolute url where WebSocket connection will be established.",
+                    "format": "uri",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Url"
+                ],
+                "title": "CreateStreamRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.v2010.account.call.stream"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "call_sid",
+          "name"
+        ],
+        "pathType": "list"
+      }
+    },
+    "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Streams/{Sid}.json": {
+      "description": "TODO: Resource-level docs",
+      "post": {
+        "description": "Stop a Stream using either the SID of the Stream resource or the `name` used when creating the resource",
+        "operationId": "UpdateStream",
+        "parameters": [
+          {
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this Stream resource.",
+            "in": "path",
+            "name": "AccountSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^AC[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with.",
+            "in": "path",
+            "name": "CallSid",
+            "required": true,
+            "schema": {
+              "maxLength": 34,
+              "minLength": 34,
+              "pattern": "^CA[0-9a-fA-F]{32}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The SID of the Stream resource, or the `name` used when creating the resource",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Status": {
+                    "description": "The status. Must have the value `stopped`",
+                    "enum": [
+                      "stopped"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Status"
+                ],
+                "title": "UpdateStreamRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.v2010.account.call.stream"
                 }
               }
             },
@@ -15425,6 +16672,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "FallbackUrl": {
@@ -15442,6 +16690,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Status": {
@@ -15467,6 +16716,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "TimeLimit": {
@@ -15912,6 +17162,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "ConferenceStatusCallback": {
@@ -15936,6 +17187,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "ConferenceTrim": {
@@ -16000,6 +17252,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "RecordingTrack": {
@@ -16044,6 +17297,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "TimeLimit": {
@@ -16068,6 +17322,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "WaitUrl": {
@@ -16289,6 +17544,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "AnnounceUrl": {
@@ -16329,6 +17585,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "HoldUrl": {
@@ -16350,6 +17607,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "WaitUrl": {
@@ -16861,6 +18119,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "AnnounceUrl": {
@@ -17165,6 +18424,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "DeauthorizeCallbackUrl": {
@@ -17276,6 +18536,7 @@
             "in": "query",
             "name": "PhoneNumber",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -17428,6 +18689,7 @@
                   },
                   "PhoneNumber": {
                     "description": "The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.",
+                    "format": "phone-number",
                     "type": "string"
                   },
                   "SmsApplicationSid": {
@@ -17447,6 +18709,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsFallbackUrl": {
@@ -17464,6 +18727,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsUrl": {
@@ -17486,6 +18750,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "TrunkSid": {
@@ -17516,6 +18781,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceFallbackUrl": {
@@ -17533,6 +18799,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceReceiveMode": {
@@ -17629,6 +18896,7 @@
             "in": "query",
             "name": "PhoneNumber",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -17777,6 +19045,7 @@
                   },
                   "PhoneNumber": {
                     "description": "The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.",
+                    "format": "phone-number",
                     "type": "string"
                   },
                   "SmsApplicationSid": {
@@ -17796,6 +19065,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsFallbackUrl": {
@@ -17813,6 +19083,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsUrl": {
@@ -17835,6 +19106,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "TrunkSid": {
@@ -17865,6 +19137,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceFallbackUrl": {
@@ -17882,6 +19155,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceReceiveMode": {
@@ -17981,6 +19255,7 @@
             "in": "query",
             "name": "PhoneNumber",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -18129,6 +19404,7 @@
                   },
                   "PhoneNumber": {
                     "description": "The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.",
+                    "format": "phone-number",
                     "type": "string"
                   },
                   "SmsApplicationSid": {
@@ -18148,6 +19424,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsFallbackUrl": {
@@ -18165,6 +19442,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsUrl": {
@@ -18187,6 +19465,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "TrunkSid": {
@@ -18217,6 +19496,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceFallbackUrl": {
@@ -18234,6 +19514,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceReceiveMode": {
@@ -18333,6 +19614,7 @@
             "in": "query",
             "name": "PhoneNumber",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -18481,6 +19763,7 @@
                   },
                   "PhoneNumber": {
                     "description": "The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.",
+                    "format": "phone-number",
                     "type": "string"
                   },
                   "SmsApplicationSid": {
@@ -18500,6 +19783,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsFallbackUrl": {
@@ -18517,6 +19801,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsUrl": {
@@ -18539,6 +19824,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "TrunkSid": {
@@ -18569,6 +19855,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceFallbackUrl": {
@@ -18586,6 +19873,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceReceiveMode": {
@@ -18949,6 +20237,7 @@
         }
       ],
       "x-twilio": {
+        "className": "assigned_add_on_extension",
         "defaultOutputProperties": [
           "sid",
           "unique_name",
@@ -19040,6 +20329,7 @@
         }
       ],
       "x-twilio": {
+        "className": "assigned_add_on_extension",
         "defaultOutputProperties": [
           "sid",
           "unique_name",
@@ -19380,6 +20670,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsFallbackUrl": {
@@ -19397,6 +20688,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsUrl": {
@@ -19419,6 +20711,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "TrunkSid": {
@@ -19449,6 +20742,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceFallbackUrl": {
@@ -19466,6 +20760,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceReceiveMode": {
@@ -19670,6 +20965,7 @@
         }
       ],
       "x-twilio": {
+        "className": "new_key",
         "defaultOutputProperties": [
           "sid",
           "friendly_name",
@@ -19876,6 +21172,7 @@
             "in": "query",
             "name": "To",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -19884,6 +21181,7 @@
             "in": "query",
             "name": "From",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -20040,6 +21338,7 @@
                   },
                   "From": {
                     "description": "A Twilio phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, an [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), or a [Channel Endpoint address](https://www.twilio.com/docs/sms/channels#channel-addresses) that is enabled for the type of message you want to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-code) purchased from Twilio also work here. You cannot, for example, spoof messages from a private cell phone number. If you are using `messaging_service_sid`, this parameter must be empty.",
+                    "format": "phone-number",
                     "type": "string"
                   },
                   "MaxPrice": {
@@ -20080,7 +21379,7 @@
                     "type": "string"
                   },
                   "SendAsMms": {
-                    "description": "If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media. This is a Beta Feature.",
+                    "description": "If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media.",
                     "type": "boolean"
                   },
                   "SendAt": {
@@ -20099,6 +21398,7 @@
                   },
                   "To": {
                     "description": "The destination phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format for SMS/MMS or [Channel user address](https://www.twilio.com/docs/sms/channels#channel-addresses) for other 3rd-party channels.",
+                    "format": "phone-number",
                     "type": "string"
                   },
                   "ValidityPeriod": {
@@ -20924,6 +22224,7 @@
             "in": "query",
             "name": "PhoneNumber",
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -21040,6 +22341,7 @@
                   },
                   "PhoneNumber": {
                     "description": "The phone number to verify in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number.",
+                    "format": "phone-number",
                     "type": "string"
                   },
                   "StatusCallback": {
@@ -21057,6 +22359,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   }
                 },
@@ -21096,6 +22399,7 @@
         }
       ],
       "x-twilio": {
+        "className": "validation_request",
         "defaultOutputProperties": [
           "sid",
           "phone_number",
@@ -21670,6 +22974,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Url": {
@@ -21968,6 +23273,14 @@
               "minLength": 34,
               "pattern": "^CF[0-9a-fA-F]{32}$",
               "type": "string"
+            }
+          },
+          {
+            "description": "A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days.",
+            "in": "query",
+            "name": "IncludeSoftDeleted",
+            "schema": {
+              "type": "boolean"
             }
           },
           {
@@ -22905,6 +24218,14 @@
               "pattern": "^RE[0-9a-fA-F]{32}$",
               "type": "string"
             }
+          },
+          {
+            "description": "A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days.",
+            "in": "query",
+            "name": "IncludeSoftDeleted",
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -23829,6 +25150,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceFallbackUrl": {
@@ -23846,6 +25168,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceStatusCallbackMethod": {
@@ -23858,6 +25181,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceStatusCallbackUrl": {
@@ -24092,6 +25416,7 @@
         }
       ],
       "x-twilio": {
+        "className": "auth_calls_credential_list_mapping",
         "defaultOutputProperties": [
           "sid",
           "friendly_name"
@@ -24224,6 +25549,7 @@
         }
       ],
       "x-twilio": {
+        "className": "auth_calls_credential_list_mapping",
         "defaultOutputProperties": [
           "sid",
           "friendly_name"
@@ -24408,6 +25734,7 @@
         }
       ],
       "x-twilio": {
+        "className": "auth_calls_ip_access_control_list_mapping",
         "defaultOutputProperties": [
           "sid",
           "friendly_name"
@@ -24540,6 +25867,7 @@
         }
       ],
       "x-twilio": {
+        "className": "auth_calls_ip_access_control_list_mapping",
         "defaultOutputProperties": [
           "sid",
           "friendly_name"
@@ -24724,6 +26052,7 @@
         }
       ],
       "x-twilio": {
+        "className": "auth_registrations_credential_list_mapping",
         "defaultOutputProperties": [
           "sid",
           "friendly_name"
@@ -24856,6 +26185,7 @@
         }
       ],
       "x-twilio": {
+        "className": "auth_registrations_credential_list_mapping",
         "defaultOutputProperties": [
           "sid",
           "friendly_name"
@@ -25668,6 +26998,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceFallbackUrl": {
@@ -25685,6 +27016,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceStatusCallbackMethod": {
@@ -25697,6 +27029,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceStatusCallbackUrl": {
@@ -26716,6 +28049,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsFallbackUrl": {
@@ -26733,6 +28067,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsUrl": {
@@ -26929,6 +28264,7 @@
         }
       ],
       "x-twilio": {
+        "className": "new_signing_key",
         "defaultOutputProperties": [
           "sid",
           "friendly_name",
@@ -27416,6 +28752,7 @@
             "name": "Category",
             "schema": {
               "enum": [
+                "a2p-registration-fees",
                 "agent-conference",
                 "answering-machine-detection",
                 "authy-authentications",
@@ -27609,6 +28946,8 @@
                 "turnmegabytes-uswest",
                 "twilio-interconnect",
                 "verify-push",
+                "verify-totp",
+                "verify-whatsapp-conversations-business-initiated",
                 "video-recordings",
                 "voice-insights",
                 "voice-insights-client-insights-on-demand-minute",
@@ -27795,6 +29134,7 @@
             "name": "Category",
             "schema": {
               "enum": [
+                "a2p-registration-fees",
                 "agent-conference",
                 "answering-machine-detection",
                 "authy-authentications",
@@ -27988,6 +29328,8 @@
                 "turnmegabytes-uswest",
                 "twilio-interconnect",
                 "verify-push",
+                "verify-totp",
+                "verify-whatsapp-conversations-business-initiated",
                 "video-recordings",
                 "voice-insights",
                 "voice-insights-client-insights-on-demand-minute",
@@ -28174,6 +29516,7 @@
             "name": "Category",
             "schema": {
               "enum": [
+                "a2p-registration-fees",
                 "agent-conference",
                 "answering-machine-detection",
                 "authy-authentications",
@@ -28367,6 +29710,8 @@
                 "turnmegabytes-uswest",
                 "twilio-interconnect",
                 "verify-push",
+                "verify-totp",
+                "verify-whatsapp-conversations-business-initiated",
                 "video-recordings",
                 "voice-insights",
                 "voice-insights-client-insights-on-demand-minute",
@@ -28553,6 +29898,7 @@
             "name": "Category",
             "schema": {
               "enum": [
+                "a2p-registration-fees",
                 "agent-conference",
                 "answering-machine-detection",
                 "authy-authentications",
@@ -28746,6 +30092,8 @@
                 "turnmegabytes-uswest",
                 "twilio-interconnect",
                 "verify-push",
+                "verify-totp",
+                "verify-whatsapp-conversations-business-initiated",
                 "video-recordings",
                 "voice-insights",
                 "voice-insights-client-insights-on-demand-minute",
@@ -28932,6 +30280,7 @@
             "name": "Category",
             "schema": {
               "enum": [
+                "a2p-registration-fees",
                 "agent-conference",
                 "answering-machine-detection",
                 "authy-authentications",
@@ -29125,6 +30474,8 @@
                 "turnmegabytes-uswest",
                 "twilio-interconnect",
                 "verify-push",
+                "verify-totp",
+                "verify-whatsapp-conversations-business-initiated",
                 "video-recordings",
                 "voice-insights",
                 "voice-insights-client-insights-on-demand-minute",
@@ -29311,6 +30662,7 @@
             "name": "Category",
             "schema": {
               "enum": [
+                "a2p-registration-fees",
                 "agent-conference",
                 "answering-machine-detection",
                 "authy-authentications",
@@ -29504,6 +30856,8 @@
                 "turnmegabytes-uswest",
                 "twilio-interconnect",
                 "verify-push",
+                "verify-totp",
+                "verify-whatsapp-conversations-business-initiated",
                 "video-recordings",
                 "voice-insights",
                 "voice-insights-client-insights-on-demand-minute",
@@ -29690,6 +31044,7 @@
             "name": "Category",
             "schema": {
               "enum": [
+                "a2p-registration-fees",
                 "agent-conference",
                 "answering-machine-detection",
                 "authy-authentications",
@@ -29883,6 +31238,8 @@
                 "turnmegabytes-uswest",
                 "twilio-interconnect",
                 "verify-push",
+                "verify-totp",
+                "verify-whatsapp-conversations-business-initiated",
                 "video-recordings",
                 "voice-insights",
                 "voice-insights-client-insights-on-demand-minute",
@@ -30069,6 +31426,7 @@
             "name": "Category",
             "schema": {
               "enum": [
+                "a2p-registration-fees",
                 "agent-conference",
                 "answering-machine-detection",
                 "authy-authentications",
@@ -30262,6 +31620,8 @@
                 "turnmegabytes-uswest",
                 "twilio-interconnect",
                 "verify-push",
+                "verify-totp",
+                "verify-whatsapp-conversations-business-initiated",
                 "video-recordings",
                 "voice-insights",
                 "voice-insights-client-insights-on-demand-minute",
@@ -30448,6 +31808,7 @@
             "name": "Category",
             "schema": {
               "enum": [
+                "a2p-registration-fees",
                 "agent-conference",
                 "answering-machine-detection",
                 "authy-authentications",
@@ -30641,6 +32002,8 @@
                 "turnmegabytes-uswest",
                 "twilio-interconnect",
                 "verify-push",
+                "verify-totp",
+                "verify-whatsapp-conversations-business-initiated",
                 "video-recordings",
                 "voice-insights",
                 "voice-insights-client-insights-on-demand-minute",
@@ -30854,6 +32217,7 @@
             "name": "UsageCategory",
             "schema": {
               "enum": [
+                "a2p-registration-fees",
                 "agent-conference",
                 "answering-machine-detection",
                 "authy-authentications",
@@ -31047,6 +32411,8 @@
                 "turnmegabytes-uswest",
                 "twilio-interconnect",
                 "verify-push",
+                "verify-totp",
+                "verify-whatsapp-conversations-business-initiated",
                 "video-recordings",
                 "voice-insights",
                 "voice-insights-client-insights-on-demand-minute",
@@ -31199,6 +32565,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "CallbackUrl": {
@@ -31236,6 +32603,7 @@
                   "UsageCategory": {
                     "description": "The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value.",
                     "enum": [
+                      "a2p-registration-fees",
                       "agent-conference",
                       "answering-machine-detection",
                       "authy-authentications",
@@ -31429,6 +32797,8 @@
                       "turnmegabytes-uswest",
                       "twilio-interconnect",
                       "verify-push",
+                      "verify-totp",
+                      "verify-whatsapp-conversations-business-initiated",
                       "video-recordings",
                       "voice-insights",
                       "voice-insights-client-insights-on-demand-minute",
@@ -31666,6 +33036,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "CallbackUrl": {

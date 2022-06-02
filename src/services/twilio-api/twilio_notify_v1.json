@@ -153,6 +153,7 @@
           },
           "links": {
             "description": "The URLs of the resources related to the service",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -238,6 +239,7 @@
           },
           "links": {
             "description": "The URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -296,13 +298,11 @@
           },
           "alexa": {
             "description": "Deprecated",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "apn": {
             "description": "The APNS-specific payload that overrides corresponding attributes in a generic payload for APNS Bindings",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "body": {
             "description": "The notification body text",
@@ -311,8 +311,7 @@
           },
           "data": {
             "description": "The custom key-value pairs of the notification's payload",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT when the resource was created",
@@ -322,18 +321,15 @@
           },
           "facebook_messenger": {
             "description": "Deprecated",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "fcm": {
             "description": "The FCM-specific payload that overrides corresponding attributes in generic payload for FCM Bindings",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "gcm": {
             "description": "The GCM-specific payload that overrides corresponding attributes in generic payload for GCM Bindings",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "identities": {
             "description": "The list of identity values of the Users to notify",
@@ -378,8 +374,7 @@
           },
           "sms": {
             "description": "The SMS-specific payload that overrides corresponding attributes in generic payload for SMS Bindings",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "sound": {
             "description": "The name of the sound to be played for the notification",
@@ -428,7 +423,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Notify",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -1339,36 +1334,30 @@
                     "type": "string"
                   },
                   "Alexa": {
-                    "description": "Deprecated.",
-                    "type": "object"
+                    "description": "Deprecated."
                   },
                   "Apn": {
-                    "description": "The APNS-specific payload that overrides corresponding attributes in the generic payload for APNS Bindings. This property maps to the APNS `Payload` item, therefore the `aps` key must be used to change standard attributes. Adds custom key-value pairs to the root of the dictionary. See the [APNS documentation](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingwithAPNs.html) for more details. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed.",
-                    "type": "object"
+                    "description": "The APNS-specific payload that overrides corresponding attributes in the generic payload for APNS Bindings. This property maps to the APNS `Payload` item, therefore the `aps` key must be used to change standard attributes. Adds custom key-value pairs to the root of the dictionary. See the [APNS documentation](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingwithAPNs.html) for more details. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed."
                   },
                   "Body": {
                     "description": "The notification text. For FCM and GCM, translates to `data.twi_body`. For APNS, translates to `aps.alert.body`. For SMS, translates to `body`. SMS requires either this `body` value, or `media_urls` attribute defined in the `sms` parameter of the notification.",
                     "type": "string"
                   },
                   "Data": {
-                    "description": "The custom key-value pairs of the notification's payload. For FCM and GCM, this value translates to `data` in the FCM and GCM payloads. FCM and GCM [reserve certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref) that cannot be used in those channels. For APNS, attributes of `data` are inserted into the APNS payload as custom properties outside of the `aps` dictionary. In all channels, we reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed and are rejected as 400 Bad request with no delivery attempted. For SMS, this parameter is not supported and is omitted from deliveries to those channels.",
-                    "type": "object"
+                    "description": "The custom key-value pairs of the notification's payload. For FCM and GCM, this value translates to `data` in the FCM and GCM payloads. FCM and GCM [reserve certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref) that cannot be used in those channels. For APNS, attributes of `data` are inserted into the APNS payload as custom properties outside of the `aps` dictionary. In all channels, we reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed and are rejected as 400 Bad request with no delivery attempted. For SMS, this parameter is not supported and is omitted from deliveries to those channels."
                   },
                   "DeliveryCallbackUrl": {
                     "description": "URL to send webhooks.",
                     "type": "string"
                   },
                   "FacebookMessenger": {
-                    "description": "Deprecated.",
-                    "type": "object"
+                    "description": "Deprecated."
                   },
                   "Fcm": {
-                    "description": "The FCM-specific payload that overrides corresponding attributes in the generic payload for FCM Bindings. This property maps to the root JSON dictionary. See the [FCM documentation](https://firebase.google.com/docs/cloud-messaging/http-server-ref#downstream) for more details. Target parameters `to`, `registration_ids`, `condition`, and `notification_key` are not allowed in this parameter. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed. FCM also [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref), which cannot be used in that channel.",
-                    "type": "object"
+                    "description": "The FCM-specific payload that overrides corresponding attributes in the generic payload for FCM Bindings. This property maps to the root JSON dictionary. See the [FCM documentation](https://firebase.google.com/docs/cloud-messaging/http-server-ref#downstream) for more details. Target parameters `to`, `registration_ids`, `condition`, and `notification_key` are not allowed in this parameter. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed. FCM also [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref), which cannot be used in that channel."
                   },
                   "Gcm": {
-                    "description": "The GCM-specific payload that overrides corresponding attributes in the generic payload for GCM Bindings.  This property maps to the root JSON dictionary. See the [GCM documentation](https://firebase.google.com/docs/cloud-messaging/http-server-ref) for more details. Target parameters `to`, `registration_ids`, and `notification_key` are not allowed. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed. GCM also [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref).",
-                    "type": "object"
+                    "description": "The GCM-specific payload that overrides corresponding attributes in the generic payload for GCM Bindings.  This property maps to the root JSON dictionary. See the [GCM documentation](https://firebase.google.com/docs/cloud-messaging/http-server-ref) for more details. Target parameters `to`, `registration_ids`, and `notification_key` are not allowed. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed. GCM also [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref)."
                   },
                   "Identity": {
                     "description": "The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Delivery will be attempted only to Bindings with an Identity in this list. No more than 20 items are allowed in this list.",
@@ -1393,8 +1382,7 @@
                     "type": "array"
                   },
                   "Sms": {
-                    "description": "The SMS-specific payload that overrides corresponding attributes in the generic payload for SMS Bindings.  Each attribute in this value maps to the corresponding `form` parameter of the Twilio [Message](https://www.twilio.com/docs/sms/send-messages) resource.  These parameters of the Message resource are supported in snake case format: `body`, `media_urls`, `status_callback`, and `max_price`.  The `status_callback` parameter overrides the corresponding parameter in the messaging service, if configured. The `media_urls` property expects a JSON array.",
-                    "type": "object"
+                    "description": "The SMS-specific payload that overrides corresponding attributes in the generic payload for SMS Bindings.  Each attribute in this value maps to the corresponding `form` parameter of the Twilio [Message](https://www.twilio.com/docs/sms/send-messages) resource.  These parameters of the Message resource are supported in snake case format: `body`, `media_urls`, `status_callback`, and `max_price`.  The `status_callback` parameter overrides the corresponding parameter in the messaging service, if configured. The `media_urls` property expects a JSON array."
                   },
                   "Sound": {
                     "description": "The name of the sound to be played for the notification. For FCM and GCM, this Translates to `data.twi_sound`.  For APNS, this translates to `aps.sound`.  SMS does not support this property.",

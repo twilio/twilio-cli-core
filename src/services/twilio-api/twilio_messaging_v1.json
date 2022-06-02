@@ -86,6 +86,7 @@
             "type": "string"
           },
           "links": {
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -301,6 +302,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -330,6 +332,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -341,6 +344,7 @@
           },
           "links": {
             "description": "The absolute URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -514,6 +518,7 @@
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -690,8 +695,7 @@
           },
           "rate_limits": {
             "description": "Rate limit and/or classification set by each carrier",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "sid": {
             "description": "The unique string that identifies a US A2P Compliance resource",
@@ -719,9 +723,7 @@
         "properties": {
           "us_app_to_person_usecases": {
             "description": "Human readable A2P Use Case details",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           }
@@ -732,9 +734,7 @@
         "properties": {
           "usecases": {
             "description": "Human readable Messaging Service Use Case details",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           }
@@ -762,7 +762,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Messaging",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -809,6 +809,7 @@
         }
       ],
       "x-twilio": {
+        "className": "deactivations",
         "defaultOutputProperties": [
           "redirect_to"
         ],
@@ -914,6 +915,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "FallbackToLongCode": {
@@ -939,6 +941,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "InboundRequestUrl": {
@@ -1092,6 +1095,7 @@
         }
       ],
       "x-twilio": {
+        "className": "external_campaign",
         "defaultOutputProperties": [
           "campaign_id",
           "messaging_service_sid"
@@ -1320,6 +1324,7 @@
         }
       ],
       "x-twilio": {
+        "className": "us_app_to_person",
         "defaultOutputProperties": [
           "brand_registration_sid",
           "campaign_status",
@@ -1385,6 +1390,7 @@
         }
       ],
       "x-twilio": {
+        "className": "us_app_to_person_usecase",
         "defaultOutputProperties": [
           "us_app_to_person_usecases"
         ],
@@ -1492,6 +1498,7 @@
         }
       ],
       "x-twilio": {
+        "className": "us_app_to_person",
         "defaultOutputProperties": [
           "brand_registration_sid",
           "campaign_status",
@@ -2400,6 +2407,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "FallbackToLongCode": {
@@ -2425,6 +2433,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "InboundRequestUrl": {
@@ -2842,6 +2851,7 @@
         }
       ],
       "x-twilio": {
+        "className": "brand_vetting",
         "defaultOutputProperties": [
           "account_sid",
           "brand_sid",
@@ -2912,6 +2922,7 @@
         }
       ],
       "x-twilio": {
+        "className": "brand_vetting",
         "defaultOutputProperties": [
           "account_sid",
           "brand_sid",

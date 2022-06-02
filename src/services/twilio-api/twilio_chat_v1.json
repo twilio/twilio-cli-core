@@ -118,18 +118,17 @@
           },
           "limits": {
             "description": "An object that describes the limits of the service instance",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "links": {
             "description": "The absolute URLs of the Service's Channels, Roles, and Users",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
           "notifications": {
             "description": "The notification configuration for the Service instance",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "post_webhook_url": {
             "description": "The URL for post-event webhooks",
@@ -185,8 +184,7 @@
           },
           "webhooks": {
             "description": "An object that contains information about the webhooks configured for this service",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           }
         },
         "type": "object"
@@ -230,6 +228,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the Members, Messages , Invites and, if it exists, the last Message for the Channel",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -645,6 +644,7 @@
           },
           "links": {
             "description": "The absolute URLs of the Channel and Binding resources related to the user",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -706,6 +706,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the Members, Messages , Invites and, if it exists, the last Message for the Channel",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -764,7 +765,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Chat",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -3550,6 +3551,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_channel",
         "defaultOutputProperties": [
           "channel_sid",
           "status"
@@ -3758,6 +3760,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnChannelAdd.Method": {
@@ -3770,6 +3773,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnChannelAdd.Url": {
@@ -3787,6 +3791,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnChannelAdded.Url": {
@@ -3804,6 +3809,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnChannelDestroy.Url": {
@@ -3821,6 +3827,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnChannelDestroyed.Url": {
@@ -3838,6 +3845,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnChannelUpdate.Url": {
@@ -3855,6 +3863,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnChannelUpdated.Url": {
@@ -3872,6 +3881,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnMemberAdd.Url": {
@@ -3889,6 +3899,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnMemberAdded.Url": {
@@ -3906,6 +3917,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnMemberRemove.Url": {
@@ -3923,6 +3935,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnMemberRemoved.Url": {
@@ -3940,6 +3953,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnMessageRemove.Url": {
@@ -3957,6 +3971,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnMessageRemoved.Url": {
@@ -3974,6 +3989,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnMessageSend.Url": {
@@ -3991,6 +4007,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnMessageSent.Url": {
@@ -4008,6 +4025,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnMessageUpdate.Url": {
@@ -4025,6 +4043,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Webhooks.OnMessageUpdated.Url": {

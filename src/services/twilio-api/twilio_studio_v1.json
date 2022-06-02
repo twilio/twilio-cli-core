@@ -30,6 +30,7 @@
           },
           "links": {
             "description": "Nested resource URLs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -89,8 +90,7 @@
           },
           "context": {
             "description": "The current state of the execution flow",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the Engagement was created",
@@ -114,6 +114,7 @@
           },
           "links": {
             "description": "The URLs of the Engagement's nested resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -155,8 +156,7 @@
           },
           "context": {
             "description": "Flow state",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "engagement_sid": {
             "description": "Engagement SID",
@@ -195,8 +195,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the resource was created",
@@ -228,6 +227,7 @@
           },
           "links": {
             "description": "The URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -275,8 +275,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "engagement_sid": {
             "description": "The SID of the Engagement",
@@ -336,8 +335,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the resource was created",
@@ -361,6 +359,7 @@
           },
           "links": {
             "description": "Nested resource URLs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -402,8 +401,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "execution_sid": {
             "description": "The SID of the Execution",
@@ -442,8 +440,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the resource was created",
@@ -475,6 +472,7 @@
           },
           "links": {
             "description": "The URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -522,8 +520,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "execution_sid": {
             "description": "The SID of the Execution",
@@ -579,7 +576,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Studio",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -788,14 +785,15 @@
                 "properties": {
                   "From": {
                     "description": "The Twilio phone number to send messages or initiate calls from during the Flow Engagement. Available as variable `{{flow.channel.address}}`",
+                    "format": "phone-number",
                     "type": "string"
                   },
                   "Parameters": {
-                    "description": "A JSON string we will add to your flow's context and that you can access as variables inside your flow. For example, if you pass in `Parameters={'name':'Zeke'}` then inside a widget you can reference the variable `{{flow.data.name}}` which will return the string 'Zeke'. Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string.",
-                    "type": "object"
+                    "description": "A JSON string we will add to your flow's context and that you can access as variables inside your flow. For example, if you pass in `Parameters={'name':'Zeke'}` then inside a widget you can reference the variable `{{flow.data.name}}` which will return the string 'Zeke'. Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string."
                   },
                   "To": {
                     "description": "The Contact phone number to start a Studio Flow Engagement, available as variable `{{contact.channel.address}}`.",
+                    "format": "phone-number",
                     "type": "string"
                   }
                 },
@@ -903,6 +901,7 @@
         }
       ],
       "x-twilio": {
+        "className": "engagement_context",
         "defaultOutputProperties": [
           "context"
         ],
@@ -1174,6 +1173,7 @@
         }
       ],
       "x-twilio": {
+        "className": "step_context",
         "defaultOutputProperties": [
           "context"
         ],
@@ -1421,14 +1421,15 @@
                 "properties": {
                   "From": {
                     "description": "The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`. For SMS, this can also be a Messaging Service SID.",
+                    "format": "phone-number",
                     "type": "string"
                   },
                   "Parameters": {
-                    "description": "JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.",
-                    "type": "object"
+                    "description": "JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string."
                   },
                   "To": {
                     "description": "The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`.",
+                    "format": "phone-number",
                     "type": "string"
                   }
                 },
@@ -1536,6 +1537,7 @@
         }
       ],
       "x-twilio": {
+        "className": "execution_context",
         "defaultOutputProperties": [
           "context"
         ],
@@ -1649,6 +1651,7 @@
         }
       ],
       "x-twilio": {
+        "className": "execution_step",
         "defaultOutputProperties": [
           "sid",
           "name",
@@ -1727,6 +1730,7 @@
         }
       ],
       "x-twilio": {
+        "className": "execution_step",
         "defaultOutputProperties": [
           "sid",
           "name",
@@ -1805,6 +1809,7 @@
         }
       ],
       "x-twilio": {
+        "className": "execution_step_context",
         "defaultOutputProperties": [
           "context"
         ],

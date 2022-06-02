@@ -66,6 +66,7 @@
           },
           "links": {
             "description": "The URL of the media file associated with the composition",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -113,6 +114,26 @@
             "nullable": true,
             "type": "string"
           },
+          "status_callback": {
+            "description": "The URL called to send status information on every composition event.",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          },
+          "status_callback_method": {
+            "description": "The HTTP method used to call `status_callback`",
+            "enum": [
+              "HEAD",
+              "GET",
+              "POST",
+              "PATCH",
+              "PUT",
+              "DELETE"
+            ],
+            "format": "http-method",
+            "nullable": true,
+            "type": "string"
+          },
           "trim": {
             "description": "Whether to remove intervals with no media",
             "nullable": true,
@@ -126,8 +147,7 @@
           },
           "video_layout": {
             "description": "An object that describes the video layout of the composition",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           }
         },
         "type": "object"
@@ -218,6 +238,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -234,8 +255,7 @@
           },
           "video_layout": {
             "description": "A JSON object that describes the video layout of the Composition",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           }
         },
         "type": "object"
@@ -339,11 +359,11 @@
           },
           "grouping_sids": {
             "description": "A list of SIDs related to the recording",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "links": {
             "description": "The URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -387,6 +407,26 @@
               "deleted",
               "failed"
             ],
+            "nullable": true,
+            "type": "string"
+          },
+          "status_callback": {
+            "description": "The URL called to send status information on every recording event.",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          },
+          "status_callback_method": {
+            "description": "The HTTP method used to call `status_callback`",
+            "enum": [
+              "HEAD",
+              "GET",
+              "POST",
+              "PATCH",
+              "PUT",
+              "DELETE"
+            ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -518,8 +558,14 @@
             "nullable": true,
             "type": "string"
           },
+          "large_room": {
+            "description": "Indicates if this is a large room.",
+            "nullable": true,
+            "type": "boolean"
+          },
           "links": {
             "description": "The URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -582,6 +628,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -667,6 +714,7 @@
           },
           "links": {
             "description": "The URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -810,6 +858,7 @@
           "rules": {
             "description": "A collection of Subscribe Rules that describe how to include or exclude matching tracks",
             "items": {
+              "format": "object",
               "type": "object"
             },
             "nullable": true,
@@ -936,11 +985,11 @@
           },
           "grouping_sids": {
             "description": "A list of SIDs related to the Recording",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "links": {
             "description": "The URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -1044,6 +1093,7 @@
           "rules": {
             "description": "A collection of recording Rules that describe how to include or exclude matching tracks for recording",
             "items": {
+              "format": "recording-rule",
               "properties": {
                 "all": {
                   "type": "boolean"
@@ -1090,7 +1140,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Video",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -1262,6 +1312,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Trim": {
@@ -1269,8 +1320,7 @@
                     "type": "boolean"
                   },
                   "VideoLayout": {
-                    "description": "An object that describes the video layout of the composition hook in terms of regions. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info.",
-                    "type": "object"
+                    "description": "An object that describes the video layout of the composition hook in terms of regions. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info."
                   }
                 },
                 "required": [
@@ -1459,6 +1509,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Trim": {
@@ -1466,8 +1517,7 @@
                     "type": "boolean"
                   },
                   "VideoLayout": {
-                    "description": "A JSON object that describes the video layout of the composition hook in terms of regions. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info.",
-                    "type": "object"
+                    "description": "A JSON object that describes the video layout of the composition hook in terms of regions. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info."
                   }
                 },
                 "required": [
@@ -1616,6 +1666,7 @@
         }
       ],
       "x-twilio": {
+        "className": "composition_settings",
         "defaultOutputProperties": [
           "friendly_name",
           "aws_storage_enabled",
@@ -1801,6 +1852,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Trim": {
@@ -1808,8 +1860,7 @@
                     "type": "boolean"
                   },
                   "VideoLayout": {
-                    "description": "An object that describes the video layout of the composition in terms of regions. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info. Please, be aware that either video_layout or audio_sources have to be provided to get a valid creation request",
-                    "type": "object"
+                    "description": "An object that describes the video layout of the composition in terms of regions. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info. Please, be aware that either video_layout or audio_sources have to be provided to get a valid creation request"
                   }
                 },
                 "required": [
@@ -2045,6 +2096,7 @@
         }
       ],
       "x-twilio": {
+        "className": "recording_settings",
         "defaultOutputProperties": [
           "friendly_name",
           "aws_storage_enabled",
@@ -2441,6 +2493,10 @@
                     "description": "Deprecated, now always considered to be true.",
                     "type": "boolean"
                   },
+                  "LargeRoom": {
+                    "description": "When set to true, indicated that this is the large room.",
+                    "type": "boolean"
+                  },
                   "MaxParticipantDuration": {
                     "description": "The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours).",
                     "type": "integer"
@@ -2458,8 +2514,7 @@
                     "type": "boolean"
                   },
                   "RecordingRules": {
-                    "description": "A collection of Recording Rules that describe how to include or exclude matching tracks for recording",
-                    "type": "object"
+                    "description": "A collection of Recording Rules that describe how to include or exclude matching tracks for recording"
                   },
                   "StatusCallback": {
                     "description": "The URL we should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info.",
@@ -2476,6 +2531,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "Type": {
@@ -2489,7 +2545,7 @@
                     "type": "string"
                   },
                   "UniqueName": {
-                    "description": "An application-defined string that uniquely identifies the resource. It can be used as a `room_sid` in place of the resource's `sid` in the URL to address the resource. This value is unique for `in-progress` rooms. SDK clients can use this name to connect to the room. REST API clients can use this name in place of the Room SID to interact with the room as long as the room is `in-progress`.",
+                    "description": "An application-defined string that uniquely identifies the resource. It can be used as a `room_sid` in place of the resource's `sid` in the URL to address the resource, assuming it does not contain any [reserved characters](https://tools.ietf.org/html/rfc3986#section-2.2) that would need to be URL encoded. This value is unique for `in-progress` rooms. SDK clients can use this name to connect to the room. REST API clients can use this name in place of the Room SID to interact with the room as long as the room is `in-progress`.",
                     "type": "string"
                   },
                   "UnusedRoomTimeout": {
@@ -2942,8 +2998,7 @@
               "schema": {
                 "properties": {
                   "Rules": {
-                    "description": "A JSON-encoded array of subscribe rules. See the [Specifying Subscribe Rules](https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr) section for further information.",
-                    "type": "object"
+                    "description": "A JSON-encoded array of subscribe rules. See the [Specifying Subscribe Rules](https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr) section for further information."
                   }
                 },
                 "title": "UpdateRoomParticipantSubscribeRuleRequest",
@@ -2979,6 +3034,7 @@
         }
       ],
       "x-twilio": {
+        "className": "subscribe_rules",
         "defaultOutputProperties": [
           "participant_sid",
           "room_sid",
@@ -3351,8 +3407,7 @@
               "schema": {
                 "properties": {
                   "Rules": {
-                    "description": "A JSON-encoded array of recording rules.",
-                    "type": "object"
+                    "description": "A JSON-encoded array of recording rules."
                   }
                 },
                 "title": "UpdateRoomRecordingRuleRequest",
@@ -3388,6 +3443,7 @@
         }
       ],
       "x-twilio": {
+        "className": "recording_rules",
         "defaultOutputProperties": [
           "room_sid",
           "rules"
@@ -3533,6 +3589,7 @@
         }
       ],
       "x-twilio": {
+        "className": "room_recording",
         "defaultOutputProperties": [
           "sid",
           "date_created",
@@ -3645,6 +3702,7 @@
         }
       ],
       "x-twilio": {
+        "className": "room_recording",
         "defaultOutputProperties": [
           "sid",
           "date_created",

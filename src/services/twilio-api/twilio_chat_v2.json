@@ -118,23 +118,21 @@
           },
           "limits": {
             "description": "An object that describes the limits of the service instance",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "links": {
             "description": "The absolute URLs of the Service's Channels, Roles, and Users",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
           "media": {
             "description": "The properties of the media that the service supports",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "notifications": {
             "description": "The notification configuration for the Service instance",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "post_webhook_retry_count": {
             "description": "The number of times calls to the `post_webhook_url` will be retried",
@@ -253,6 +251,7 @@
           },
           "links": {
             "description": "The absolute URLs of the Binding's User",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -328,6 +327,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the Members, Messages , Invites and, if it exists, the last Message for the Channel",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -400,8 +400,7 @@
           },
           "configuration": {
             "description": "The JSON string that describes the configuration object for the channel webhook",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the resource was created",
@@ -659,8 +658,7 @@
           },
           "media": {
             "description": "A Media object that describes the Message's media if attached; otherwise, null",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "service_sid": {
             "description": "The SID of the Service that the resource is associated with",
@@ -828,6 +826,7 @@
           },
           "links": {
             "description": "The absolute URLs of the Channel and Binding resources related to the user",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -980,6 +979,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the Members, Messages , Invites and, if it exists, the last Message for the Channel",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -1061,7 +1061,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Chat",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -4772,6 +4772,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_binding",
         "defaultOutputProperties": [
           "sid",
           "endpoint",
@@ -4900,6 +4901,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_binding",
         "defaultOutputProperties": [
           "sid",
           "endpoint",
@@ -5013,6 +5015,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_channel",
         "defaultOutputProperties": [
           "channel_sid",
           "status"
@@ -5052,6 +5055,18 @@
             "name": "ChannelSid",
             "required": true,
             "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The X-Twilio-Webhook-Enabled HTTP request header",
+            "in": "header",
+            "name": "X-Twilio-Webhook-Enabled",
+            "schema": {
+              "enum": [
+                "true",
+                "false"
+              ],
               "type": "string"
             }
           }
@@ -5219,6 +5234,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_channel",
         "defaultOutputProperties": [
           "channel_sid",
           "status"
@@ -5463,6 +5479,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   }
                 },

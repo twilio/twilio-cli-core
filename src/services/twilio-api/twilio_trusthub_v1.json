@@ -35,6 +35,7 @@
           },
           "links": {
             "description": "The URLs of the Assigned Items of the Customer-Profile resource",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -223,9 +224,7 @@
           },
           "results": {
             "description": "The results of the Evaluation resource",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -266,8 +265,7 @@
           },
           "attributes": {
             "description": "The set of parameters that compose the End Users resource",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the resource was created",
@@ -312,9 +310,7 @@
         "properties": {
           "fields": {
             "description": "The required information for creating an End-User.",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -354,8 +350,7 @@
           },
           "requirements": {
             "description": "The sid of a Policy object that dictates requirements",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "sid": {
             "description": "The unique string that identifies the Policy resource",
@@ -386,8 +381,7 @@
           },
           "attributes": {
             "description": "The set of parameters that compose the Supporting Documents resource",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the resource was created",
@@ -450,9 +444,7 @@
         "properties": {
           "fields": {
             "description": "The required information for creating a Supporting Document",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -517,6 +509,7 @@
           },
           "links": {
             "description": "The URLs of the Assigned Items of the Customer-Profile resource",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -697,9 +690,7 @@
           },
           "results": {
             "description": "The results of the Evaluation resource",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -757,7 +748,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Trusthub",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -939,6 +930,7 @@
         }
       ],
       "x-twilio": {
+        "className": "customer_profiles",
         "defaultOutputProperties": [
           "sid",
           "policy_sid",
@@ -1126,6 +1118,7 @@
         }
       ],
       "x-twilio": {
+        "className": "customer_profiles_channel_endpoint_assignment",
         "defaultOutputProperties": [
           "sid"
         ],
@@ -1233,6 +1226,7 @@
         }
       ],
       "x-twilio": {
+        "className": "customer_profiles_channel_endpoint_assignment",
         "defaultOutputProperties": [
           "sid"
         ],
@@ -1394,6 +1388,7 @@
         }
       ],
       "x-twilio": {
+        "className": "customer_profiles_entity_assignments",
         "defaultOutputProperties": [
           "sid"
         ],
@@ -1501,6 +1496,7 @@
         }
       ],
       "x-twilio": {
+        "className": "customer_profiles_entity_assignments",
         "defaultOutputProperties": [
           "sid"
         ],
@@ -1662,6 +1658,7 @@
         }
       ],
       "x-twilio": {
+        "className": "customer_profiles_evaluations",
         "defaultOutputProperties": [
           "sid"
         ],
@@ -1726,6 +1723,7 @@
         }
       ],
       "x-twilio": {
+        "className": "customer_profiles_evaluations",
         "defaultOutputProperties": [
           "sid"
         ],
@@ -1883,6 +1881,7 @@
         }
       ],
       "x-twilio": {
+        "className": "customer_profiles",
         "defaultOutputProperties": [
           "sid",
           "policy_sid",
@@ -2117,8 +2116,7 @@
               "schema": {
                 "properties": {
                   "Attributes": {
-                    "description": "The set of parameters that are the attributes of the End User resource which are derived End User Types.",
-                    "type": "object"
+                    "description": "The set of parameters that are the attributes of the End User resource which are derived End User Types."
                   },
                   "FriendlyName": {
                     "description": "The string that you assigned to describe the resource.",
@@ -2267,8 +2265,7 @@
               "schema": {
                 "properties": {
                   "Attributes": {
-                    "description": "The set of parameters that are the attributes of the End User resource which are derived End User Types.",
-                    "type": "object"
+                    "description": "The set of parameters that are the attributes of the End User resource which are derived End User Types."
                   },
                   "FriendlyName": {
                     "description": "The string that you assigned to describe the resource.",
@@ -2398,6 +2395,7 @@
         }
       ],
       "x-twilio": {
+        "className": "policies",
         "defaultOutputProperties": [
           "sid",
           "friendly_name"
@@ -2451,6 +2449,7 @@
         }
       ],
       "x-twilio": {
+        "className": "policies",
         "defaultOutputProperties": [
           "sid",
           "friendly_name"
@@ -2684,8 +2683,7 @@
               "schema": {
                 "properties": {
                   "Attributes": {
-                    "description": "The set of parameters that are the attributes of the Supporting Documents resource which are derived Supporting Document Types.",
-                    "type": "object"
+                    "description": "The set of parameters that are the attributes of the Supporting Documents resource which are derived Supporting Document Types."
                   },
                   "FriendlyName": {
                     "description": "The string that you assigned to describe the resource.",
@@ -2834,8 +2832,7 @@
               "schema": {
                 "properties": {
                   "Attributes": {
-                    "description": "The set of parameters that are the attributes of the Supporting Document resource which are derived Supporting Document Types.",
-                    "type": "object"
+                    "description": "The set of parameters that are the attributes of the Supporting Document resource which are derived Supporting Document Types."
                   },
                   "FriendlyName": {
                     "description": "The string that you assigned to describe the resource.",
@@ -3060,6 +3057,7 @@
         }
       ],
       "x-twilio": {
+        "className": "trust_products",
         "defaultOutputProperties": [
           "sid",
           "policy_sid",
@@ -3219,6 +3217,7 @@
         }
       ],
       "x-twilio": {
+        "className": "trust_products",
         "defaultOutputProperties": [
           "sid",
           "policy_sid",
@@ -3406,6 +3405,7 @@
         }
       ],
       "x-twilio": {
+        "className": "trust_products_channel_endpoint_assignment",
         "defaultOutputProperties": [
           "sid"
         ],
@@ -3513,6 +3513,7 @@
         }
       ],
       "x-twilio": {
+        "className": "trust_products_channel_endpoint_assignment",
         "defaultOutputProperties": [
           "sid"
         ],
@@ -3674,6 +3675,7 @@
         }
       ],
       "x-twilio": {
+        "className": "trust_products_entity_assignments",
         "defaultOutputProperties": [
           "sid"
         ],
@@ -3781,6 +3783,7 @@
         }
       ],
       "x-twilio": {
+        "className": "trust_products_entity_assignments",
         "defaultOutputProperties": [
           "sid"
         ],
@@ -3942,6 +3945,7 @@
         }
       ],
       "x-twilio": {
+        "className": "trust_products_evaluations",
         "defaultOutputProperties": [
           "sid"
         ],
@@ -4006,6 +4010,7 @@
         }
       ],
       "x-twilio": {
+        "className": "trust_products_evaluations",
         "defaultOutputProperties": [
           "sid"
         ],

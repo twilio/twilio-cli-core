@@ -30,14 +30,11 @@
           },
           "definition": {
             "description": "JSON representation of flow definition",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "errors": {
             "description": "List of error in the flow definition",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -48,6 +45,7 @@
           },
           "links": {
             "description": "Nested resource URLs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -86,9 +84,7 @@
           },
           "warnings": {
             "description": "List of warnings in the flow definition",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -117,8 +113,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the resource was created",
@@ -142,6 +137,7 @@
           },
           "links": {
             "description": "Nested resource URLs",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -183,8 +179,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "execution_sid": {
             "description": "The SID of the Execution",
@@ -223,8 +218,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "description": "The ISO 8601 date and time in GMT when the resource was created",
@@ -256,6 +250,7 @@
           },
           "links": {
             "description": "The URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -303,8 +298,7 @@
           },
           "context": {
             "description": "The current state of the flow",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "execution_sid": {
             "description": "The SID of the Execution",
@@ -368,14 +362,11 @@
           },
           "definition": {
             "description": "JSON representation of flow definition",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "errors": {
             "description": "List of error in the flow definition",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -478,7 +469,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Studio",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -572,8 +563,7 @@
                     "type": "string"
                   },
                   "Definition": {
-                    "description": "JSON representation of flow definition.",
-                    "type": "object"
+                    "description": "JSON representation of flow definition."
                   },
                   "FriendlyName": {
                     "description": "The string that you assigned to describe the Flow.",
@@ -650,8 +640,7 @@
                     "type": "string"
                   },
                   "Definition": {
-                    "description": "JSON representation of flow definition.",
-                    "type": "object"
+                    "description": "JSON representation of flow definition."
                   },
                   "FriendlyName": {
                     "description": "The string that you assigned to describe the Flow.",
@@ -704,6 +693,7 @@
         }
       ],
       "x-twilio": {
+        "className": "flow_validate",
         "defaultOutputProperties": [
           "valid"
         ],
@@ -841,14 +831,15 @@
                 "properties": {
                   "From": {
                     "description": "The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`. For SMS, this can also be a Messaging Service SID.",
+                    "format": "phone-number",
                     "type": "string"
                   },
                   "Parameters": {
-                    "description": "JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string.",
-                    "type": "object"
+                    "description": "JSON data that will be added to the Flow's context and that can be accessed as variables inside your Flow. For example, if you pass in `Parameters={\"name\":\"Zeke\"}`, a widget in your Flow can reference the variable `{{flow.data.name}}`, which returns \"Zeke\". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode the JSON string."
                   },
                   "To": {
                     "description": "The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`.",
+                    "format": "phone-number",
                     "type": "string"
                   }
                 },
@@ -955,6 +946,7 @@
         }
       ],
       "x-twilio": {
+        "className": "execution_context",
         "defaultOutputProperties": [
           "context"
         ],
@@ -1068,6 +1060,7 @@
         }
       ],
       "x-twilio": {
+        "className": "execution_step",
         "defaultOutputProperties": [
           "sid",
           "name",
@@ -1146,6 +1139,7 @@
         }
       ],
       "x-twilio": {
+        "className": "execution_step",
         "defaultOutputProperties": [
           "sid",
           "name",
@@ -1224,6 +1218,7 @@
         }
       ],
       "x-twilio": {
+        "className": "execution_step_context",
         "defaultOutputProperties": [
           "context"
         ],
@@ -1510,8 +1505,7 @@
                     "type": "string"
                   },
                   "Definition": {
-                    "description": "JSON representation of flow definition.",
-                    "type": "object"
+                    "description": "JSON representation of flow definition."
                   },
                   "FriendlyName": {
                     "description": "The string that you assigned to describe the Flow.",
@@ -1666,6 +1660,7 @@
         }
       ],
       "x-twilio": {
+        "className": "flow_revision",
         "defaultOutputProperties": [
           "sid",
           "friendly_name",
@@ -1730,6 +1725,7 @@
         }
       ],
       "x-twilio": {
+        "className": "flow_revision",
         "defaultOutputProperties": [
           "sid",
           "friendly_name",
@@ -1845,6 +1841,7 @@
         }
       ],
       "x-twilio": {
+        "className": "flow_test_user",
         "defaultOutputProperties": [
           "test_users"
         ],

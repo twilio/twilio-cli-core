@@ -5,18 +5,15 @@
         "properties": {
           "add_ons": {
             "description": "A JSON string with the results of the Add-ons you specified",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "caller_name": {
             "description": "The name of the phone number's owner",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "carrier": {
             "description": "The telecom company that provides the phone number",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "country_code": {
             "description": "The ISO country code for the phone number",
@@ -30,6 +27,7 @@
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -63,7 +61,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Lookups",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -79,6 +77,7 @@
             "name": "PhoneNumber",
             "required": true,
             "schema": {
+              "format": "phone-number",
               "type": "string"
             }
           },
@@ -117,6 +116,7 @@
             "in": "query",
             "name": "AddOnsData",
             "schema": {
+              "format": "prefixed-collapsible-map-AddOns",
               "type": "object"
             }
           }

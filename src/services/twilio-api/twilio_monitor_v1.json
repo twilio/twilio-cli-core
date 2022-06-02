@@ -64,6 +64,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -174,6 +175,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -261,8 +263,7 @@
           },
           "event_data": {
             "description": "A JSON string that represents an object with additional data about the event",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "event_date": {
             "description": "The ISO 8601 date and time in GMT when the event was recorded",
@@ -277,6 +278,7 @@
           },
           "links": {
             "description": "The absolute URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -341,7 +343,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Monitor",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {

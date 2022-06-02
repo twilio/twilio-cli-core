@@ -39,6 +39,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the webhook and default service configurations.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -106,6 +107,64 @@
         },
         "type": "object"
       },
+      "conversations.v1.configuration_address": {
+        "properties": {
+          "account_sid": {
+            "description": "The unique ID of the Account the address belongs to.",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "address": {
+            "description": "The unique address to be configured.",
+            "nullable": true,
+            "type": "string"
+          },
+          "auto_creation": {
+            "description": "Auto Creation configuration for the address.",
+            "nullable": true
+          },
+          "date_created": {
+            "description": "The date that this resource was created.",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "date_updated": {
+            "description": "The date that this resource was last updated.",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "friendly_name": {
+            "description": "The human-readable name of this configuration.",
+            "nullable": true,
+            "type": "string"
+          },
+          "sid": {
+            "description": "A 34 character string that uniquely identifies this resource.",
+            "maxLength": 34,
+            "minLength": 34,
+            "nullable": true,
+            "pattern": "^IG[0-9a-fA-F]{32}$",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type of Address.",
+            "nullable": true,
+            "type": "string"
+          },
+          "url": {
+            "description": "An absolute URL for this address configuration.",
+            "format": "uri",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "conversations.v1.conversation": {
         "properties": {
           "account_sid": {
@@ -122,8 +181,7 @@
             "type": "string"
           },
           "bindings": {
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "chat_service_sid": {
             "description": "The unique ID of the Conversation Service this conversation belongs to.",
@@ -152,6 +210,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the participants, messages and webhooks of this conversation.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -183,8 +242,7 @@
           },
           "timers": {
             "description": "Timer date values for this conversation.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "unique_name": {
             "description": "An application-defined string that uniquely identifies the resource",
@@ -247,8 +305,7 @@
           },
           "delivery": {
             "description": "An object that contains the summary of delivery statuses for the message to non-chat participants.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "index": {
             "description": "The index of the message within the Conversation.",
@@ -257,14 +314,13 @@
           },
           "links": {
             "description": "Absolute URL to access the receipts of this message.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
           "media": {
             "description": "An array of objects that describe the Message's media if attached, otherwise, null.",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -433,8 +489,7 @@
           },
           "messaging_binding": {
             "description": "Information about how this participant exchanges messages with the conversation.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "role_sid": {
             "description": "The SID of a conversation-level Role to assign to the participant",
@@ -473,8 +528,7 @@
           },
           "configuration": {
             "description": "The configuration of this webhook.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "conversation_sid": {
             "description": "The unique ID of the Conversation for this webhook.",
@@ -642,8 +696,7 @@
           },
           "conversation_timers": {
             "description": "Timer date values for this conversation.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "conversation_unique_name": {
             "description": "An application-defined string that uniquely identifies the Conversation resource",
@@ -652,6 +705,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the participant and conversation of this Participant Conversation.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -662,8 +716,7 @@
           },
           "participant_messaging_binding": {
             "description": "Information about how this participant exchanges messages with the conversation.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "participant_sid": {
             "description": "The unique ID of the Participant.",
@@ -782,6 +835,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the conversations, users, roles, bindings and configuration of this service.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -921,6 +975,7 @@
           },
           "links": {
             "description": "Absolute URL to access the push notifications configuration of this service.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -950,8 +1005,7 @@
           },
           "added_to_conversation": {
             "description": "The Push Notification configuration for being added to a Conversation.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "chat_service_sid": {
             "description": "The SID of the Conversation Service that the Configuration applies to.",
@@ -968,13 +1022,11 @@
           },
           "new_message": {
             "description": "The Push Notification configuration for New Messages.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "removed_from_conversation": {
             "description": "The Push Notification configuration for being removed from a Conversation.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "url": {
             "description": "An absolute URL for this configuration.",
@@ -1057,8 +1109,7 @@
             "type": "string"
           },
           "bindings": {
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "chat_service_sid": {
             "description": "The unique ID of the Conversation Service this conversation belongs to.",
@@ -1087,6 +1138,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the participants, messages and webhooks of this conversation.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -1118,8 +1170,7 @@
           },
           "timers": {
             "description": "Timer date values for this conversation.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "unique_name": {
             "description": "An application-defined string that uniquely identifies the resource",
@@ -1190,8 +1241,7 @@
           },
           "delivery": {
             "description": "An object that contains the summary of delivery statuses for the message to non-chat participants.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "index": {
             "description": "The index of the message within the Conversation.",
@@ -1200,14 +1250,13 @@
           },
           "links": {
             "description": "Absolute URL to access the receipts of this message.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
           "media": {
             "description": "An array of objects that describe the Message's media if attached, otherwise, null.",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "type": "array"
           },
@@ -1392,8 +1441,7 @@
           },
           "messaging_binding": {
             "description": "Information about how this participant exchanges messages with the conversation.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "role_sid": {
             "description": "The SID of a conversation-level Role to assign to the participant",
@@ -1440,8 +1488,7 @@
           },
           "configuration": {
             "description": "The configuration of this webhook.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "conversation_sid": {
             "description": "The unique ID of the Conversation for this webhook.",
@@ -1550,8 +1597,7 @@
           },
           "conversation_timers": {
             "description": "Timer date values for this conversation.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "conversation_unique_name": {
             "description": "An application-defined string that uniquely identifies the Conversation resource.",
@@ -1560,6 +1606,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the participant and conversation of this Participant Conversation.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -1570,8 +1617,7 @@
           },
           "participant_messaging_binding": {
             "description": "Information about how this participant exchanges messages with the conversation.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "participant_sid": {
             "description": "The unique ID of the Participant.",
@@ -1717,6 +1763,7 @@
             "type": "boolean"
           },
           "links": {
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -1815,6 +1862,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the participant and conversation of this user conversation.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -1837,8 +1885,7 @@
           },
           "timers": {
             "description": "Timer date values for this conversation.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "unique_name": {
             "description": "An application-defined string that uniquely identifies the Conversation resource.",
@@ -1922,6 +1969,7 @@
             "type": "boolean"
           },
           "links": {
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -2020,6 +2068,7 @@
           },
           "links": {
             "description": "Absolute URLs to access the participant and conversation of this user conversation.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -2042,8 +2091,7 @@
           },
           "timers": {
             "description": "Timer date values for this conversation.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "unique_name": {
             "description": "An application-defined string that uniquely identifies the Conversation resource.",
@@ -2092,7 +2140,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Conversations",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -2190,6 +2238,397 @@
           "account_sid",
           "default_chat_service_sid",
           "default_messaging_service_sid"
+        ],
+        "pathType": "instance"
+      }
+    },
+    "/v1/Configuration/Addresses": {
+      "description": "Address Configuration resource manages the configurations related to a unique address within Conversations",
+      "get": {
+        "description": "Retrieve a list of address configurations for an account",
+        "operationId": "ListConfigurationAddress",
+        "parameters": [
+          {
+            "description": "Filter the address configurations by its type. This value can be one of: `whatsapp`, `sms`.",
+            "in": "query",
+            "name": "Type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "in": "query",
+            "name": "PageSize",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "address_configurations": {
+                      "items": {
+                        "$ref": "#/components/schemas/conversations.v1.configuration_address"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "first_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "next_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "page": {
+                          "type": "integer"
+                        },
+                        "page_size": {
+                          "type": "integer"
+                        },
+                        "previous_page_url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "title": "ListConfigurationAddressResponse",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "post": {
+        "description": "Create a new address configuration",
+        "operationId": "CreateConfigurationAddress",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "Address": {
+                    "description": "The unique address to be configured. The address can be a whatsapp address or phone number",
+                    "type": "string"
+                  },
+                  "AutoCreation.ConversationServiceSid": {
+                    "description": "Conversation Service for the auto-created conversation. If not set, the conversation is created in the default service.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^IS[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "AutoCreation.Enabled": {
+                    "description": "Enable/Disable auto-creating conversations for messages to this address",
+                    "type": "boolean"
+                  },
+                  "AutoCreation.StudioFlowSid": {
+                    "description": "For type `studio`, the studio flow SID where the webhook should be sent to.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^FW[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "AutoCreation.StudioRetryCount": {
+                    "description": "For type `studio`, number of times to retry the webhook request",
+                    "type": "integer"
+                  },
+                  "AutoCreation.Type": {
+                    "description": "Type of Auto Creation. Value can be one of `webhook`, `studio` or `default`.",
+                    "enum": [
+                      "webhook",
+                      "studio",
+                      "default"
+                    ],
+                    "type": "string"
+                  },
+                  "AutoCreation.WebhookFilters": {
+                    "description": "The list of events, firing webhook event for this Conversation. Values can be any of the following: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationStateUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onDeliveryUpdated`",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "AutoCreation.WebhookMethod": {
+                    "description": "For type `webhook`, the HTTP method to be used when sending a webhook request.",
+                    "enum": [
+                      "GET",
+                      "POST"
+                    ],
+                    "type": "string"
+                  },
+                  "AutoCreation.WebhookUrl": {
+                    "description": "For type `webhook`, the url for the webhook request.",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "The human-readable name of this configuration, limited to 256 characters. Optional.",
+                    "type": "string"
+                  },
+                  "Type": {
+                    "description": "Type of Address. Value can be `whatsapp` or `sms`.",
+                    "enum": [
+                      "sms",
+                      "whatsapp",
+                      "messenger",
+                      "gbm"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Type",
+                  "Address"
+                ],
+                "title": "CreateConfigurationAddressRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/conversations.v1.configuration_address"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://conversations.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "className": "address_configuration",
+        "defaultOutputProperties": [
+          "sid",
+          "type",
+          "address",
+          "friendly_name"
+        ],
+        "pathType": "list"
+      }
+    },
+    "/v1/Configuration/Addresses/{Sid}": {
+      "delete": {
+        "description": "Remove an existing address configuration",
+        "operationId": "DeleteConfigurationAddress",
+        "parameters": [
+          {
+            "description": "The SID of the Address Configuration resource. This value can be either the `sid` or the `address` of the configuration",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "description": "Address Configuration resource manages the configurations related to a unique address within Conversations",
+      "get": {
+        "description": "Fetch an address configuration ",
+        "operationId": "FetchConfigurationAddress",
+        "parameters": [
+          {
+            "description": "The SID of the Address Configuration resource. This value can be either the `sid` or the `address` of the configuration",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/conversations.v1.configuration_address"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "post": {
+        "description": "Update an existing address configuration",
+        "operationId": "UpdateConfigurationAddress",
+        "parameters": [
+          {
+            "description": "The SID of the Address Configuration resource. This value can be either the `sid` or the `address` of the configuration",
+            "in": "path",
+            "name": "Sid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "AutoCreation.ConversationServiceSid": {
+                    "description": "Conversation Service for the auto-created conversation. If not set, the conversation is created in the default service.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^IS[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "AutoCreation.Enabled": {
+                    "description": "Enable/Disable auto-creating conversations for messages to this address",
+                    "type": "boolean"
+                  },
+                  "AutoCreation.StudioFlowSid": {
+                    "description": "For type `studio`, the studio flow SID where the webhook should be sent to.",
+                    "maxLength": 34,
+                    "minLength": 34,
+                    "pattern": "^FW[0-9a-fA-F]{32}$",
+                    "type": "string"
+                  },
+                  "AutoCreation.StudioRetryCount": {
+                    "description": "For type `studio`, number of times to retry the webhook request",
+                    "type": "integer"
+                  },
+                  "AutoCreation.Type": {
+                    "description": "Type of Auto Creation. Value can be one of `webhook`, `studio` or `default`.",
+                    "enum": [
+                      "webhook",
+                      "studio",
+                      "default"
+                    ],
+                    "type": "string"
+                  },
+                  "AutoCreation.WebhookFilters": {
+                    "description": "The list of events, firing webhook event for this Conversation. Values can be any of the following: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationStateUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onDeliveryUpdated`",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "AutoCreation.WebhookMethod": {
+                    "description": "For type `webhook`, the HTTP method to be used when sending a webhook request.",
+                    "enum": [
+                      "GET",
+                      "POST"
+                    ],
+                    "type": "string"
+                  },
+                  "AutoCreation.WebhookUrl": {
+                    "description": "For type `webhook`, the url for the webhook request.",
+                    "type": "string"
+                  },
+                  "FriendlyName": {
+                    "description": "The human-readable name of this configuration, limited to 256 characters. Optional.",
+                    "type": "string"
+                  }
+                },
+                "title": "UpdateConfigurationAddressRequest",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/conversations.v1.configuration_address"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "x-maturity": [
+          "GA"
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://conversations.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "className": "address_configuration",
+        "defaultOutputProperties": [
+          "sid",
+          "type",
+          "address",
+          "friendly_name"
         ],
         "pathType": "instance"
       }
@@ -2791,6 +3230,7 @@
         }
       ],
       "x-twilio": {
+        "className": "delivery_receipt",
         "defaultOutputProperties": [
           "sid",
           "message_sid",
@@ -2867,6 +3307,7 @@
         }
       ],
       "x-twilio": {
+        "className": "delivery_receipt",
         "defaultOutputProperties": [
           "sid",
           "message_sid",
@@ -6156,6 +6597,7 @@
         }
       ],
       "x-twilio": {
+        "className": "delivery_receipt",
         "defaultOutputProperties": [
           "sid",
           "message_sid",
@@ -6244,6 +6686,7 @@
         }
       ],
       "x-twilio": {
+        "className": "delivery_receipt",
         "defaultOutputProperties": [
           "sid",
           "message_sid",
@@ -8629,6 +9072,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_conversation",
         "defaultOutputProperties": [
           "conversation_sid",
           "user_sid",
@@ -8838,6 +9282,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_conversation",
         "defaultOutputProperties": [
           "conversation_sid",
           "user_sid",
@@ -9350,6 +9795,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_conversation",
         "defaultOutputProperties": [
           "conversation_sid",
           "user_sid",
@@ -9523,6 +9969,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_conversation",
         "defaultOutputProperties": [
           "conversation_sid",
           "user_sid",

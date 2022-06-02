@@ -21,6 +21,7 @@
             "type": "string"
           },
           "links": {
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -63,6 +64,7 @@
           },
           "links": {
             "description": "Nested resource URLs.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -128,6 +130,7 @@
           },
           "links": {
             "description": "Nested resource URLs.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -141,8 +144,7 @@
           },
           "sink_configuration": {
             "description": "JSON Sink configuration.",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "sink_type": {
             "description": "Sink type.",
@@ -223,6 +225,7 @@
           },
           "links": {
             "description": "Nested resource URLs.",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -309,7 +312,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Events",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -454,6 +457,7 @@
         }
       ],
       "x-twilio": {
+        "className": "schema_version",
         "defaultOutputProperties": [
           "id",
           "schema_version",
@@ -514,6 +518,7 @@
         }
       ],
       "x-twilio": {
+        "className": "schema_version",
         "defaultOutputProperties": [
           "id",
           "schema_version",
@@ -628,8 +633,7 @@
                     "type": "string"
                   },
                   "SinkConfiguration": {
-                    "description": "The information required for Twilio to connect to the provided Sink encoded as JSON.",
-                    "type": "object"
+                    "description": "The information required for Twilio to connect to the provided Sink encoded as JSON."
                   },
                   "SinkType": {
                     "description": "The Sink type. Can only be \"kinesis\" or \"webhook\" currently.",
@@ -883,6 +887,7 @@
         }
       ],
       "x-twilio": {
+        "className": "sink_test",
         "defaultOutputProperties": [
           "result"
         ],
@@ -954,6 +959,7 @@
         }
       ],
       "x-twilio": {
+        "className": "sink_validate",
         "defaultOutputProperties": [
           "result"
         ],
@@ -1069,9 +1075,7 @@
                   },
                   "Types": {
                     "description": "An array of objects containing the subscribed Event Types",
-                    "items": {
-                      "type": "object"
-                    },
+                    "items": {},
                     "type": "array"
                   }
                 },
@@ -1694,6 +1698,7 @@
         }
       ],
       "x-twilio": {
+        "className": "event_type",
         "defaultOutputProperties": [
           "type",
           "schema_id",
@@ -1745,6 +1750,7 @@
         }
       ],
       "x-twilio": {
+        "className": "event_type",
         "defaultOutputProperties": [
           "type",
           "schema_id",

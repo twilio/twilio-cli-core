@@ -101,20 +101,18 @@
             "type": "string"
           },
           "limits": {
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "links": {
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
           "media": {
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "notifications": {
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "post_webhook_retry_count": {
             "nullable": true,
@@ -214,6 +212,7 @@
             "type": "string"
           },
           "links": {
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -278,6 +277,7 @@
             "type": "string"
           },
           "links": {
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -340,8 +340,7 @@
             "type": "string"
           },
           "configuration": {
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "date_created": {
             "format": "date-time",
@@ -561,8 +560,7 @@
             "type": "string"
           },
           "media": {
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "service_sid": {
             "maxLength": 34,
@@ -705,6 +703,7 @@
             "type": "integer"
           },
           "links": {
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -837,6 +836,7 @@
             "type": "integer"
           },
           "links": {
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -911,7 +911,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Ip_messaging",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -4622,6 +4622,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_binding",
         "defaultOutputProperties": [
           "sid",
           "endpoint",
@@ -4750,6 +4751,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_binding",
         "defaultOutputProperties": [
           "sid",
           "endpoint",
@@ -4863,6 +4865,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_channel",
         "defaultOutputProperties": [
           "channel_sid",
           "status"
@@ -5069,6 +5072,7 @@
         }
       ],
       "x-twilio": {
+        "className": "user_channel",
         "defaultOutputProperties": [
           "channel_sid",
           "status"
@@ -5313,6 +5317,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   }
                 },

@@ -13,18 +13,15 @@
           },
           "commands": {
             "description": "An object that describes the aggregated Commands usage for all SIMs during the specified period",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "data": {
             "description": "An object that describes the aggregated Data usage for all SIMs over the period",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "period": {
             "description": "The time period for which usage is reported",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           }
         },
         "type": "object"
@@ -242,6 +239,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -285,6 +283,7 @@
           },
           "links": {
             "description": "The URLs of related subresources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
@@ -322,6 +321,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -341,6 +341,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -386,6 +387,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -405,6 +407,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -434,8 +437,7 @@
           },
           "cell_location_estimate": {
             "description": "An object with the estimated location where the device's Data Session took place",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "end": {
             "description": "The date that the record ended, given as GMT in ISO 8601 format",
@@ -520,18 +522,15 @@
           },
           "commands": {
             "description": "An object that describes the SIM's usage of Commands during the specified period",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "data": {
             "description": "An object that describes the SIM's data usage during the specified period",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "period": {
             "description": "The time period for which the usage is reported",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "sim_sid": {
             "description": "The SID of the Sim resource that this Usage Record is for",
@@ -562,7 +561,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Wireless",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -708,6 +707,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "CallbackUrl": {
@@ -1425,6 +1425,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "CallbackUrl": {
@@ -1442,6 +1443,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "CommandsCallbackUrl": {
@@ -1474,6 +1476,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsFallbackUrl": {
@@ -1491,6 +1494,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "SmsUrl": {
@@ -1526,6 +1530,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceFallbackUrl": {
@@ -1543,6 +1548,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "VoiceUrl": {

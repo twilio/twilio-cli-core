@@ -51,6 +51,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -72,13 +73,13 @@
           },
           "links": {
             "description": "The URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
           "recording": {
             "description": "The recording settings for the trunk",
-            "nullable": true,
-            "type": "object"
+            "nullable": true
           },
           "secure": {
             "description": "Whether Secure Trunking is enabled for the trunk",
@@ -331,6 +332,7 @@
           },
           "capabilities": {
             "description": "Indicate if a phone can receive calls or messages",
+            "format": "string-map",
             "nullable": true,
             "type": "object"
           },
@@ -353,11 +355,13 @@
           },
           "links": {
             "description": "The URLs of related resources",
+            "format": "uri-map",
             "nullable": true,
             "type": "object"
           },
           "phone_number": {
             "description": "The phone number in E.164 format",
+            "format": "phone-number",
             "nullable": true,
             "type": "string"
           },
@@ -387,6 +391,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -406,6 +411,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -431,6 +437,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -471,6 +478,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -490,6 +498,7 @@
               "PUT",
               "DELETE"
             ],
+            "format": "http-method",
             "nullable": true,
             "type": "string"
           },
@@ -549,7 +558,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Trunking",
-    "version": "1.25.1"
+    "version": "1.29.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -652,6 +661,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "DisasterRecoveryUrl": {
@@ -837,6 +847,7 @@
                       "PUT",
                       "DELETE"
                     ],
+                    "format": "http-method",
                     "type": "string"
                   },
                   "DisasterRecoveryUrl": {
