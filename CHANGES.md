@@ -1,3 +1,5 @@
+### [6.4.2](https://github.com/twilio/twilio-cli-core/compare/6.4.1...6.4.2) (2022-06-16)
+
 ---------------------------
 **Lookups**
 - Adding support for Lookup V2 API
