@@ -1,3 +1,16 @@
+---------------------------
+**Lookups**
+- Adding support for Lookup V2 API
+
+**Studio**
+- Corrected PII labels to be 30 days and added context to be PII
+
+**Twiml**
+- Add `statusCallbackMethod` attribute, nested `<Config` and `<Parameter>` elements to `<VirtualAgent>` noun.
+- Add support for new Amazon Polly voices (Q2 2022) for `Say` verb
+- Add support for `<Conversation>` noun
+
+
 ### [6.4.1](https://github.com/twilio/twilio-cli-core/compare/6.4.0...6.4.1) (2022-05-19)
 
 ---------------------------
