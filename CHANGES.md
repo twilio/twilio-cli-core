@@ -1,3 +1,5 @@
+## [6.5.0](https://github.com/twilio/twilio-cli-core/compare/6.4.2...6.5.0) (2022-06-30)
+
 ---------------------------
 **Library - Chore**
 - [PR #64](https://github.com/twilio/twilio-oai/pull/64): adding the preview spec back. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
