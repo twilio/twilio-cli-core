@@ -1,3 +1,5 @@
+## [6.6.0](https://github.com/twilio/twilio-cli-core/compare/6.5.0...6.6.0) (2022-07-14)
+
 ---------------------------
 **Library - Test**
 - [PR #67](https://github.com/twilio/twilio-oai/pull/67): Adding misc as PR type. Thanks to [@rakatyal](https://github.com/rakatyal)!
