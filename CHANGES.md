@@ -1,3 +1,63 @@
+## [6.6.0](https://github.com/twilio/twilio-cli-core/compare/6.5.0...6.6.0) (2022-07-14)
+
+---------------------------
+**Library - Test**
+- [PR #67](https://github.com/twilio/twilio-oai/pull/67): Adding misc as PR type. Thanks to [@rakatyal](https://github.com/rakatyal)!
+
+**Library - Fix**
+- [PR #63](https://github.com/twilio/twilio-oai/pull/63): move the className extension to the operation when necessary. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Conversations**
+- Allowed to use `identity` as part of Participant's resource **(breaking change)**
+
+**Lookups**
+- Remove `enhanced_line_type` from the lookup response **(breaking change)**
+
+**Supersim**
+- Add support for `sim_ip_addresses` resource to helper libraries
+
+**Verify**
+- Changed summary param `service_sid` to `verify_service_sid` to be consistent with list attempts API **(breaking change)**
+- Make `code` optional on Verification check to support `sna` attempts.
+
+
+## [6.5.0](https://github.com/twilio/twilio-cli-core/compare/6.4.2...6.5.0) (2022-06-30)
+
+---------------------------
+**Library - Chore**
+- [PR #64](https://github.com/twilio/twilio-oai/pull/64): adding the preview spec back. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+- [PR #61](https://github.com/twilio/twilio-oai/pull/61): drop unneeded class names. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Added `amazon-polly` to `usage_record` API.
+
+**Insights**
+- Added `annotation` field in call summary
+- Added new endpoint to fetch/create/update Call Annotations
+
+**Verify**
+- Remove `api.verify.totp` beta flag and set maturity to `beta` for Verify TOTP properties and parameters. **(breaking change)**
+- Changed summary param `verify_service_sid` to `service_sid` to be consistent with list attempts API **(breaking change)**
+
+**Twiml**
+- Add `maxQueueSize` to `Enqueue`
+
+
+### [6.4.2](https://github.com/twilio/twilio-cli-core/compare/6.4.1...6.4.2) (2022-06-16)
+
+---------------------------
+**Lookups**
+- Adding support for Lookup V2 API
+
+**Studio**
+- Corrected PII labels to be 30 days and added context to be PII
+
+**Twiml**
+- Add `statusCallbackMethod` attribute, nested `<Config` and `<Parameter>` elements to `<VirtualAgent>` noun.
+- Add support for new Amazon Polly voices (Q2 2022) for `Say` verb
+- Add support for `<Conversation>` noun
+
+
 ### [6.4.1](https://github.com/twilio/twilio-cli-core/compare/6.4.0...6.4.1) (2022-05-19)
 
 ---------------------------

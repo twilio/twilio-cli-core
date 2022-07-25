@@ -5811,6 +5811,7 @@
             "enum": [
               "a2p-registration-fees",
               "agent-conference",
+              "amazon-polly",
               "answering-machine-detection",
               "authy-authentications",
               "authy-calls-outbound",
@@ -6144,6 +6145,7 @@
             "enum": [
               "a2p-registration-fees",
               "agent-conference",
+              "amazon-polly",
               "answering-machine-detection",
               "authy-authentications",
               "authy-calls-outbound",
@@ -6477,6 +6479,7 @@
             "enum": [
               "a2p-registration-fees",
               "agent-conference",
+              "amazon-polly",
               "answering-machine-detection",
               "authy-authentications",
               "authy-calls-outbound",
@@ -6810,6 +6813,7 @@
             "enum": [
               "a2p-registration-fees",
               "agent-conference",
+              "amazon-polly",
               "answering-machine-detection",
               "authy-authentications",
               "authy-calls-outbound",
@@ -7143,6 +7147,7 @@
             "enum": [
               "a2p-registration-fees",
               "agent-conference",
+              "amazon-polly",
               "answering-machine-detection",
               "authy-authentications",
               "authy-calls-outbound",
@@ -7476,6 +7481,7 @@
             "enum": [
               "a2p-registration-fees",
               "agent-conference",
+              "amazon-polly",
               "answering-machine-detection",
               "authy-authentications",
               "authy-calls-outbound",
@@ -7809,6 +7815,7 @@
             "enum": [
               "a2p-registration-fees",
               "agent-conference",
+              "amazon-polly",
               "answering-machine-detection",
               "authy-authentications",
               "authy-calls-outbound",
@@ -8142,6 +8149,7 @@
             "enum": [
               "a2p-registration-fees",
               "agent-conference",
+              "amazon-polly",
               "answering-machine-detection",
               "authy-authentications",
               "authy-calls-outbound",
@@ -8475,6 +8483,7 @@
             "enum": [
               "a2p-registration-fees",
               "agent-conference",
+              "amazon-polly",
               "answering-machine-detection",
               "authy-authentications",
               "authy-calls-outbound",
@@ -8891,6 +8900,7 @@
             "enum": [
               "a2p-registration-fees",
               "agent-conference",
+              "amazon-polly",
               "answering-machine-detection",
               "authy-authentications",
               "authy-calls-outbound",
@@ -9202,7 +9212,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Api",
-    "version": "1.29.1"
+    "version": "1.31.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -9575,6 +9585,7 @@
           "validated",
           "verified"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -9688,6 +9699,7 @@
           "phone_number",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/Addresses.json",
         "pathType": "list"
       }
     },
@@ -9892,6 +9904,7 @@
           "validated",
           "verified"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -10163,6 +10176,7 @@
           "friendly_name",
           "date_created"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -10446,6 +10460,7 @@
           "friendly_name",
           "date_created"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -10546,6 +10561,7 @@
           "connect_app_sid",
           "connect_app_friendly_name"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -10611,6 +10627,7 @@
           "connect_app_sid",
           "connect_app_friendly_name"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -10713,6 +10730,7 @@
           "country",
           "beta"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -10778,6 +10796,7 @@
           "country",
           "beta"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -11034,6 +11053,7 @@
           "region",
           "beta"
         ],
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json",
         "pathType": "list"
       }
     },
@@ -11290,6 +11310,7 @@
           "region",
           "beta"
         ],
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json",
         "pathType": "list"
       }
     },
@@ -11546,6 +11567,7 @@
           "region",
           "beta"
         ],
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json",
         "pathType": "list"
       }
     },
@@ -11802,6 +11824,7 @@
           "region",
           "beta"
         ],
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json",
         "pathType": "list"
       }
     },
@@ -12058,6 +12081,7 @@
           "region",
           "beta"
         ],
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json",
         "pathType": "list"
       }
     },
@@ -12314,6 +12338,7 @@
           "region",
           "beta"
         ],
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json",
         "pathType": "list"
       }
     },
@@ -12570,6 +12595,7 @@
           "region",
           "beta"
         ],
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json",
         "pathType": "list"
       }
     },
@@ -12624,6 +12650,7 @@
           "balance",
           "currency"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -13068,7 +13095,16 @@
         ],
         "x-maturity": [
           "GA"
-        ]
+        ],
+        "x-twilio": {
+          "conditional": [
+            [
+              "url",
+              "twiml",
+              "application_sid"
+            ]
+          ]
+        }
       },
       "servers": [
         {
@@ -13083,6 +13119,7 @@
           "status",
           "start_time"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -13186,6 +13223,7 @@
           "quality_score_average",
           "start_date"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "list"
       }
     },
@@ -13296,6 +13334,7 @@
           "quality_score_average",
           "start_date"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "instance"
       }
     },
@@ -13408,6 +13447,7 @@
           "request",
           "response"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "list"
       }
     },
@@ -13554,6 +13594,7 @@
           "quality_score",
           "date_created"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "instance"
       }
     },
@@ -13703,6 +13744,7 @@
           "error_code",
           "message_date"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "list"
       }
     },
@@ -13782,6 +13824,7 @@
           "error_code",
           "message_date"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "instance"
       }
     },
@@ -13835,7 +13878,7 @@
                     "type": "number"
                   },
                   "Currency": {
-                    "description": "The currency of the `charge_amount`, formatted as [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format. The default value is `USD` and all values allowed from the <Pay> Connector are accepted.",
+                    "description": "The currency of the `charge_amount`, formatted as [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format. The default value is `USD` and all values allowed from the Pay Connector are accepted.",
                     "type": "string"
                   },
                   "Description": {
@@ -13858,7 +13901,7 @@
                     "description": "A single-level JSON object used to pass custom parameters to payment processors. (Required for ACH payments). The information that has to be included here depends on the <Pay> Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors)."
                   },
                   "PaymentConnector": {
-                    "description": "This is the unique name corresponding to the Payment Gateway Connector installed in the Twilio Add-ons. Learn more about [<Pay> Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`.",
+                    "description": "This is the unique name corresponding to the Pay Connector installed in the Twilio Add-ons. Learn more about [<Pay> Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`.",
                     "type": "string"
                   },
                   "PaymentMethod": {
@@ -13939,6 +13982,7 @@
         "defaultOutputProperties": [
           "sid"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "list"
       }
     },
@@ -14007,7 +14051,7 @@
                     "type": "string"
                   },
                   "Status": {
-                    "description": "Indicates whether the current payment session should be cancelled or completed. When `cancel` the payment session is cancelled. When `complete`, Twilio sends the payment information to the selected <Pay> connector for processing.",
+                    "description": "Indicates whether the current payment session should be cancelled or completed. When `cancel` the payment session is cancelled. When `complete`, Twilio sends the payment information to the selected Pay Connector for processing.",
                     "enum": [
                       "complete",
                       "cancel"
@@ -14060,6 +14104,7 @@
         "defaultOutputProperties": [
           "sid"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "instance"
       }
     },
@@ -14301,6 +14346,7 @@
           "start_time",
           "duration"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "list"
       }
     },
@@ -14526,6 +14572,7 @@
           "start_time",
           "duration"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "instance"
       }
     },
@@ -15430,6 +15477,7 @@
           "call_sid",
           "name"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "list"
       }
     },
@@ -15526,6 +15574,7 @@
           "call_sid",
           "name"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "instance"
       }
     },
@@ -16434,6 +16483,7 @@
           "call_sid",
           "name"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "list"
       }
     },
@@ -16530,6 +16580,7 @@
           "call_sid",
           "name"
         ],
+        "parent": "/Accounts/{AccountSid}/Calls.json",
         "pathType": "instance"
       }
     },
@@ -16773,6 +16824,7 @@
           "status",
           "start_time"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -16949,6 +17001,7 @@
           "friendly_name",
           "status"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -17375,6 +17428,7 @@
           "muted",
           "hold"
         ],
+        "parent": "/Accounts/{AccountSid}/Conferences.json",
         "pathType": "list"
       }
     },
@@ -17656,6 +17710,7 @@
           "muted",
           "hold"
         ],
+        "parent": "/Accounts/{AccountSid}/Conferences.json",
         "pathType": "instance"
       }
     },
@@ -17798,6 +17853,7 @@
           "start_time",
           "duration"
         ],
+        "parent": "/Accounts/{AccountSid}/Conferences.json",
         "pathType": "list"
       }
     },
@@ -18023,6 +18079,7 @@
           "start_time",
           "duration"
         ],
+        "parent": "/Accounts/{AccountSid}/Conferences.json",
         "pathType": "instance"
       }
     },
@@ -18173,6 +18230,7 @@
           "friendly_name",
           "status"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -18273,6 +18331,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -18494,6 +18553,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -18841,7 +18901,15 @@
         ],
         "x-maturity": [
           "GA"
-        ]
+        ],
+        "x-twilio": {
+          "conditional": [
+            [
+              "phone_number",
+              "area_code"
+            ]
+          ]
+        }
       },
       "servers": [
         {
@@ -18854,6 +18922,7 @@
           "phone_number",
           "friendly_name"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -19213,6 +19282,7 @@
           "phone_number",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers.json",
         "pathType": "list"
       }
     },
@@ -19572,6 +19642,7 @@
           "phone_number",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers.json",
         "pathType": "list"
       }
     },
@@ -19931,6 +20002,7 @@
           "phone_number",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers.json",
         "pathType": "list"
       }
     },
@@ -20117,6 +20189,7 @@
           "friendly_name",
           "description"
         ],
+        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers.json",
         "pathType": "list"
       }
     },
@@ -20244,6 +20317,7 @@
           "friendly_name",
           "product_name"
         ],
+        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns.json",
         "pathType": "list"
       }
     },
@@ -20336,6 +20410,7 @@
           "friendly_name",
           "product_name"
         ],
+        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns.json",
         "pathType": "instance"
       }
     },
@@ -20470,6 +20545,7 @@
           "friendly_name",
           "description"
         ],
+        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers.json",
         "pathType": "instance"
       }
     },
@@ -20815,6 +20891,7 @@
           "phone_number",
           "friendly_name"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -20957,7 +21034,10 @@
         ],
         "x-maturity": [
           "GA"
-        ]
+        ],
+        "x-twilio": {
+          "className": "new_key"
+        }
       },
       "servers": [
         {
@@ -20965,12 +21045,12 @@
         }
       ],
       "x-twilio": {
-        "className": "new_key",
         "defaultOutputProperties": [
           "sid",
           "friendly_name",
           "date_created"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -21146,6 +21226,7 @@
           "friendly_name",
           "date_created"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -21434,7 +21515,19 @@
         ],
         "x-maturity": [
           "GA"
-        ]
+        ],
+        "x-twilio": {
+          "conditional": [
+            [
+              "from",
+              "messaging_service_sid"
+            ],
+            [
+              "body",
+              "media_url"
+            ]
+          ]
+        }
       },
       "servers": [
         {
@@ -21450,6 +21543,7 @@
           "direction",
           "date_sent"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -21536,6 +21630,7 @@
           "outcome",
           "date_created"
         ],
+        "parent": "/Accounts/{AccountSid}/Messages.json",
         "pathType": "list"
       }
     },
@@ -21676,6 +21771,7 @@
           "parent_sid",
           "content_type"
         ],
+        "parent": "/Accounts/{AccountSid}/Messages.json",
         "pathType": "list"
       }
     },
@@ -21809,6 +21905,7 @@
           "parent_sid",
           "content_type"
         ],
+        "parent": "/Accounts/{AccountSid}/Messages.json",
         "pathType": "instance"
       }
     },
@@ -21994,6 +22091,7 @@
           "direction",
           "date_sent"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -22131,6 +22229,7 @@
           "error_code",
           "message_date"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -22198,6 +22297,7 @@
           "error_code",
           "message_date"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -22391,7 +22491,10 @@
         ],
         "x-maturity": [
           "GA"
-        ]
+        ],
+        "x-twilio": {
+          "className": "validation_request"
+        }
       },
       "servers": [
         {
@@ -22399,12 +22502,12 @@
         }
       ],
       "x-twilio": {
-        "className": "validation_request",
         "defaultOutputProperties": [
           "sid",
           "phone_number",
           "friendly_name"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -22580,6 +22683,7 @@
           "phone_number",
           "friendly_name"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -22743,6 +22847,7 @@
           "current_size",
           "average_wait_time"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -22857,6 +22962,7 @@
           "position",
           "wait_time"
         ],
+        "parent": "/Accounts/{AccountSid}/Queues.json",
         "pathType": "list"
       }
     },
@@ -23025,6 +23131,7 @@
           "position",
           "wait_time"
         ],
+        "parent": "/Accounts/{AccountSid}/Queues.json",
         "pathType": "instance"
       }
     },
@@ -23205,6 +23312,7 @@
           "current_size",
           "average_wait_time"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -23365,6 +23473,7 @@
           "start_time",
           "duration"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -23479,6 +23588,7 @@
           "status",
           "duration"
         ],
+        "parent": "/Accounts/{AccountSid}/Recordings.json",
         "pathType": "list"
       }
     },
@@ -23613,6 +23723,7 @@
           "status",
           "duration"
         ],
+        "parent": "/Accounts/{AccountSid}/Recordings.json",
         "pathType": "instance"
       }
     },
@@ -23727,6 +23838,7 @@
           "add_on_sid",
           "date_created"
         ],
+        "parent": "/Accounts/{AccountSid}/Recordings.json",
         "pathType": "list"
       }
     },
@@ -23852,6 +23964,7 @@
           "label",
           "content_type"
         ],
+        "parent": "/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults.json",
         "pathType": "list"
       }
     },
@@ -24009,6 +24122,7 @@
           "label",
           "content_type"
         ],
+        "parent": "/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults.json",
         "pathType": "instance"
       }
     },
@@ -24143,6 +24257,7 @@
           "add_on_sid",
           "date_created"
         ],
+        "parent": "/Accounts/{AccountSid}/Recordings.json",
         "pathType": "instance"
       }
     },
@@ -24262,7 +24377,21 @@
           "start_time",
           "duration"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
+      }
+    },
+    "/2010-04-01/Accounts/{AccountSid}/SIP.json": {
+      "description": "TODO: Resource-level docs",
+      "servers": [
+        {
+          "url": "https://api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "defaultOutputProperties": [],
+        "parent": "/Accounts.json",
+        "pathType": "list"
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists.json": {
@@ -24419,6 +24548,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP.json",
         "pathType": "list"
       }
     },
@@ -24606,6 +24736,7 @@
           "username",
           "credential_list_sid"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/CredentialLists.json",
         "pathType": "list"
       }
     },
@@ -24817,6 +24948,7 @@
           "username",
           "credential_list_sid"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/CredentialLists.json",
         "pathType": "instance"
       }
     },
@@ -24994,6 +25126,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP.json",
         "pathType": "instance"
       }
     },
@@ -25236,6 +25369,35 @@
           "domain_name",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP.json",
+        "pathType": "list"
+      }
+    },
+    "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth.json": {
+      "description": "TODO: Resource-level docs",
+      "servers": [
+        {
+          "url": "https://api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "className": "auth_types",
+        "defaultOutputProperties": [],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains.json",
+        "pathType": "list"
+      }
+    },
+    "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls.json": {
+      "description": "TODO: Resource-level docs",
+      "servers": [
+        {
+          "url": "https://api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "className": "auth_type_calls",
+        "defaultOutputProperties": [],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth.json",
         "pathType": "list"
       }
     },
@@ -25421,6 +25583,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls.json",
         "pathType": "list"
       }
     },
@@ -25554,6 +25717,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls.json",
         "pathType": "instance"
       }
     },
@@ -25739,6 +25903,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls.json",
         "pathType": "list"
       }
     },
@@ -25872,7 +26037,22 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls.json",
         "pathType": "instance"
+      }
+    },
+    "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations.json": {
+      "description": "TODO: Resource-level docs",
+      "servers": [
+        {
+          "url": "https://api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "className": "auth_type_registrations",
+        "defaultOutputProperties": [],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth.json",
+        "pathType": "list"
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings.json": {
@@ -26057,6 +26237,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations.json",
         "pathType": "list"
       }
     },
@@ -26190,6 +26371,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations.json",
         "pathType": "instance"
       }
     },
@@ -26374,6 +26556,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains.json",
         "pathType": "list"
       }
     },
@@ -26506,6 +26689,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains.json",
         "pathType": "instance"
       }
     },
@@ -26690,6 +26874,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains.json",
         "pathType": "list"
       }
     },
@@ -26822,6 +27007,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/Domains.json",
         "pathType": "instance"
       }
     },
@@ -27081,6 +27267,7 @@
           "domain_name",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP.json",
         "pathType": "instance"
       }
     },
@@ -27238,6 +27425,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP.json",
         "pathType": "list"
       }
     },
@@ -27429,6 +27617,7 @@
           "ip_address",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/IpAccessControlLists.json",
         "pathType": "list"
       }
     },
@@ -27648,6 +27837,7 @@
           "ip_address",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP/IpAccessControlLists.json",
         "pathType": "instance"
       }
     },
@@ -27825,6 +28015,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts/{AccountSid}/SIP.json",
         "pathType": "instance"
       }
     },
@@ -27942,6 +28133,7 @@
           "short_code",
           "friendly_name"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -28114,6 +28306,7 @@
           "short_code",
           "friendly_name"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -28256,7 +28449,10 @@
         ],
         "x-maturity": [
           "GA"
-        ]
+        ],
+        "x-twilio": {
+          "className": "new_signing_key"
+        }
       },
       "servers": [
         {
@@ -28264,12 +28460,12 @@
         }
       ],
       "x-twilio": {
-        "className": "new_signing_key",
         "defaultOutputProperties": [
           "sid",
           "friendly_name",
           "secret"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -28444,6 +28640,7 @@
           "sid",
           "friendly_name"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
       }
     },
@@ -28513,6 +28710,7 @@
           "username",
           "ice_servers"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -28615,6 +28813,7 @@
           "status",
           "duration"
         ],
+        "parent": "/Accounts.json",
         "pathType": "list"
       }
     },
@@ -28725,7 +28924,21 @@
           "status",
           "duration"
         ],
+        "parent": "/Accounts.json",
         "pathType": "instance"
+      }
+    },
+    "/2010-04-01/Accounts/{AccountSid}/Usage.json": {
+      "description": "TODO: Resource-level docs",
+      "servers": [
+        {
+          "url": "https://api.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "defaultOutputProperties": [],
+        "parent": "/Accounts.json",
+        "pathType": "list"
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records.json": {
@@ -28754,6 +28967,7 @@
               "enum": [
                 "a2p-registration-fees",
                 "agent-conference",
+                "amazon-polly",
                 "answering-machine-detection",
                 "authy-authentications",
                 "authy-calls-outbound",
@@ -29107,6 +29321,7 @@
           "count",
           "count_unit"
         ],
+        "parent": "/Accounts/{AccountSid}/Usage.json",
         "pathType": "list"
       }
     },
@@ -29136,6 +29351,7 @@
               "enum": [
                 "a2p-registration-fees",
                 "agent-conference",
+                "amazon-polly",
                 "answering-machine-detection",
                 "authy-authentications",
                 "authy-calls-outbound",
@@ -29489,6 +29705,7 @@
           "count",
           "count_unit"
         ],
+        "parent": "/Accounts/{AccountSid}/Usage/Records.json",
         "pathType": "list"
       }
     },
@@ -29518,6 +29735,7 @@
               "enum": [
                 "a2p-registration-fees",
                 "agent-conference",
+                "amazon-polly",
                 "answering-machine-detection",
                 "authy-authentications",
                 "authy-calls-outbound",
@@ -29871,6 +30089,7 @@
           "count",
           "count_unit"
         ],
+        "parent": "/Accounts/{AccountSid}/Usage/Records.json",
         "pathType": "list"
       }
     },
@@ -29900,6 +30119,7 @@
               "enum": [
                 "a2p-registration-fees",
                 "agent-conference",
+                "amazon-polly",
                 "answering-machine-detection",
                 "authy-authentications",
                 "authy-calls-outbound",
@@ -30253,6 +30473,7 @@
           "count",
           "count_unit"
         ],
+        "parent": "/Accounts/{AccountSid}/Usage/Records.json",
         "pathType": "list"
       }
     },
@@ -30282,6 +30503,7 @@
               "enum": [
                 "a2p-registration-fees",
                 "agent-conference",
+                "amazon-polly",
                 "answering-machine-detection",
                 "authy-authentications",
                 "authy-calls-outbound",
@@ -30635,6 +30857,7 @@
           "count",
           "count_unit"
         ],
+        "parent": "/Accounts/{AccountSid}/Usage/Records.json",
         "pathType": "list"
       }
     },
@@ -30664,6 +30887,7 @@
               "enum": [
                 "a2p-registration-fees",
                 "agent-conference",
+                "amazon-polly",
                 "answering-machine-detection",
                 "authy-authentications",
                 "authy-calls-outbound",
@@ -31017,6 +31241,7 @@
           "count",
           "count_unit"
         ],
+        "parent": "/Accounts/{AccountSid}/Usage/Records.json",
         "pathType": "list"
       }
     },
@@ -31046,6 +31271,7 @@
               "enum": [
                 "a2p-registration-fees",
                 "agent-conference",
+                "amazon-polly",
                 "answering-machine-detection",
                 "authy-authentications",
                 "authy-calls-outbound",
@@ -31399,6 +31625,7 @@
           "count",
           "count_unit"
         ],
+        "parent": "/Accounts/{AccountSid}/Usage/Records.json",
         "pathType": "list"
       }
     },
@@ -31428,6 +31655,7 @@
               "enum": [
                 "a2p-registration-fees",
                 "agent-conference",
+                "amazon-polly",
                 "answering-machine-detection",
                 "authy-authentications",
                 "authy-calls-outbound",
@@ -31781,6 +32009,7 @@
           "count",
           "count_unit"
         ],
+        "parent": "/Accounts/{AccountSid}/Usage/Records.json",
         "pathType": "list"
       }
     },
@@ -31810,6 +32039,7 @@
               "enum": [
                 "a2p-registration-fees",
                 "agent-conference",
+                "amazon-polly",
                 "answering-machine-detection",
                 "authy-authentications",
                 "authy-calls-outbound",
@@ -32163,6 +32393,7 @@
           "count",
           "count_unit"
         ],
+        "parent": "/Accounts/{AccountSid}/Usage/Records.json",
         "pathType": "list"
       }
     },
@@ -32219,6 +32450,7 @@
               "enum": [
                 "a2p-registration-fees",
                 "agent-conference",
+                "amazon-polly",
                 "answering-machine-detection",
                 "authy-authentications",
                 "authy-calls-outbound",
@@ -32605,6 +32837,7 @@
                     "enum": [
                       "a2p-registration-fees",
                       "agent-conference",
+                      "amazon-polly",
                       "answering-machine-detection",
                       "authy-authentications",
                       "authy-calls-outbound",
@@ -32894,6 +33127,7 @@
           "usage_category",
           "trigger_by"
         ],
+        "parent": "/Accounts/{AccountSid}/Usage.json",
         "pathType": "list"
       }
     },
@@ -33088,6 +33322,7 @@
           "usage_category",
           "trigger_by"
         ],
+        "parent": "/Accounts/{AccountSid}/Usage.json",
         "pathType": "instance"
       }
     },

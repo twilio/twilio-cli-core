@@ -417,10 +417,24 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Pricing",
-    "version": "1.29.1"
+    "version": "1.31.0"
   },
   "openapi": "3.0.1",
   "paths": {
+    "/v1/Messaging": {
+      "description": "TODO: Resource-level docs",
+      "servers": [
+        {
+          "url": "https://pricing.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "name"
+        ],
+        "pathType": "instance"
+      }
+    },
     "/v1/Messaging/Countries": {
       "description": "Messaging pricing by country",
       "get": {
@@ -510,6 +524,7 @@
           "inbound_sms_prices",
           "price_unit"
         ],
+        "parent": "/Messaging",
         "pathType": "list"
       }
     },
@@ -563,7 +578,22 @@
           "inbound_sms_prices",
           "price_unit"
         ],
+        "parent": "/Messaging",
         "pathType": "instance"
+      }
+    },
+    "/v1/PhoneNumbers": {
+      "description": "TODO: Resource-level docs",
+      "servers": [
+        {
+          "url": "https://pricing.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "name"
+        ],
+        "pathType": "list"
       }
     },
     "/v1/PhoneNumbers/Countries": {
@@ -653,6 +683,7 @@
           "country",
           "price_unit"
         ],
+        "parent": "/PhoneNumbers",
         "pathType": "list"
       }
     },
@@ -703,6 +734,21 @@
         "defaultOutputProperties": [
           "country",
           "price_unit"
+        ],
+        "parent": "/PhoneNumbers",
+        "pathType": "instance"
+      }
+    },
+    "/v1/Voice": {
+      "description": "TODO: Resource-level docs",
+      "servers": [
+        {
+          "url": "https://pricing.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "name"
         ],
         "pathType": "instance"
       }
@@ -794,6 +840,7 @@
           "country",
           "price_unit"
         ],
+        "parent": "/Voice",
         "pathType": "list"
       }
     },
@@ -845,6 +892,7 @@
           "country",
           "price_unit"
         ],
+        "parent": "/Voice",
         "pathType": "instance"
       }
     },
@@ -898,6 +946,7 @@
           "inbound_call_price",
           "price_unit"
         ],
+        "parent": "/Voice",
         "pathType": "instance"
       }
     }

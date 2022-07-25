@@ -2140,7 +2140,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Conversations",
-    "version": "1.29.1"
+    "version": "1.31.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -2734,6 +2734,7 @@
           "pre_webhook_url",
           "post_webhook_url"
         ],
+        "parent": "/Configuration",
         "pathType": "instance"
       }
     },
@@ -3123,6 +3124,7 @@
           "author",
           "date_created"
         ],
+        "parent": "/Conversations",
         "pathType": "list"
       }
     },
@@ -3237,6 +3239,7 @@
           "status",
           "date_created"
         ],
+        "parent": "/Conversations/{ConversationSid}/Messages",
         "pathType": "list"
       }
     },
@@ -3314,6 +3317,7 @@
           "status",
           "date_created"
         ],
+        "parent": "/Conversations/{ConversationSid}/Messages",
         "pathType": "instance"
       }
     },
@@ -3523,6 +3527,7 @@
           "author",
           "date_created"
         ],
+        "parent": "/Conversations",
         "pathType": "instance"
       }
     },
@@ -3718,6 +3723,7 @@
           "sid",
           "messaging_binding"
         ],
+        "parent": "/Conversations",
         "pathType": "list"
       }
     },
@@ -3741,9 +3747,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3794,9 +3797,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -3841,9 +3841,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -3945,6 +3942,7 @@
           "sid",
           "messaging_binding"
         ],
+        "parent": "/Conversations",
         "pathType": "instance"
       }
     },
@@ -4140,6 +4138,7 @@
           "sid",
           "target"
         ],
+        "parent": "/Conversations",
         "pathType": "list"
       }
     },
@@ -4334,6 +4333,7 @@
           "sid",
           "target"
         ],
+        "parent": "/Conversations",
         "pathType": "instance"
       }
     },
@@ -5528,6 +5528,7 @@
           "endpoint",
           "identity"
         ],
+        "parent": "/Services",
         "pathType": "list"
       }
     },
@@ -5637,6 +5638,7 @@
           "endpoint",
           "identity"
         ],
+        "parent": "/Services",
         "pathType": "instance"
       }
     },
@@ -5764,6 +5766,7 @@
         "defaultOutputProperties": [
           "chat_service_sid"
         ],
+        "parent": "/Services",
         "pathType": "instance"
       }
     },
@@ -5918,6 +5921,7 @@
         "defaultOutputProperties": [
           "chat_service_sid"
         ],
+        "parent": "/Services/{ChatServiceSid}/Configuration",
         "pathType": "instance"
       }
     },
@@ -6041,6 +6045,7 @@
         "defaultOutputProperties": [
           "chat_service_sid"
         ],
+        "parent": "/Services/{ChatServiceSid}/Configuration",
         "pathType": "instance"
       }
     },
@@ -6253,6 +6258,7 @@
           "friendly_name",
           "date_created"
         ],
+        "parent": "/Services",
         "pathType": "list"
       }
     },
@@ -6478,6 +6484,7 @@
           "author",
           "date_created"
         ],
+        "parent": "/Services/{ChatServiceSid}/Conversations",
         "pathType": "list"
       }
     },
@@ -6604,6 +6611,7 @@
           "status",
           "date_created"
         ],
+        "parent": "/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Messages",
         "pathType": "list"
       }
     },
@@ -6693,6 +6701,7 @@
           "status",
           "date_created"
         ],
+        "parent": "/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Messages",
         "pathType": "instance"
       }
     },
@@ -6938,6 +6947,7 @@
           "author",
           "date_created"
         ],
+        "parent": "/Services/{ChatServiceSid}/Conversations",
         "pathType": "instance"
       }
     },
@@ -7157,6 +7167,7 @@
           "sid",
           "messaging_binding"
         ],
+        "parent": "/Services/{ChatServiceSid}/Conversations",
         "pathType": "list"
       }
     },
@@ -7192,9 +7203,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7257,9 +7265,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           }
@@ -7316,9 +7321,6 @@
             "name": "Sid",
             "required": true,
             "schema": {
-              "maxLength": 34,
-              "minLength": 34,
-              "pattern": "^MB[0-9a-fA-F]{32}$",
               "type": "string"
             }
           },
@@ -7420,6 +7422,7 @@
           "sid",
           "messaging_binding"
         ],
+        "parent": "/Services/{ChatServiceSid}/Conversations",
         "pathType": "instance"
       }
     },
@@ -7639,6 +7642,7 @@
           "sid",
           "target"
         ],
+        "parent": "/Services/{ChatServiceSid}/Conversations",
         "pathType": "list"
       }
     },
@@ -7869,6 +7873,7 @@
           "sid",
           "target"
         ],
+        "parent": "/Services/{ChatServiceSid}/Conversations",
         "pathType": "instance"
       }
     },
@@ -8102,6 +8107,7 @@
           "friendly_name",
           "date_created"
         ],
+        "parent": "/Services",
         "pathType": "instance"
       }
     },
@@ -8221,6 +8227,7 @@
           "participant_sid",
           "conversation_sid"
         ],
+        "parent": "/Services",
         "pathType": "list"
       }
     },
@@ -8398,6 +8405,7 @@
           "friendly_name",
           "type"
         ],
+        "parent": "/Services",
         "pathType": "list"
       }
     },
@@ -8579,6 +8587,7 @@
           "friendly_name",
           "type"
         ],
+        "parent": "/Services",
         "pathType": "instance"
       }
     },
@@ -8765,6 +8774,7 @@
           "sid",
           "identity"
         ],
+        "parent": "/Services",
         "pathType": "list"
       }
     },
@@ -8965,6 +8975,7 @@
           "sid",
           "identity"
         ],
+        "parent": "/Services",
         "pathType": "instance"
       }
     },
@@ -9080,6 +9091,7 @@
           "friendly_name",
           "date_created"
         ],
+        "parent": "/Services/{ChatServiceSid}/Users",
         "pathType": "list"
       }
     },
@@ -9290,6 +9302,7 @@
           "friendly_name",
           "date_created"
         ],
+        "parent": "/Services/{ChatServiceSid}/Users",
         "pathType": "instance"
       }
     },
@@ -9803,6 +9816,7 @@
           "friendly_name",
           "date_created"
         ],
+        "parent": "/Users",
         "pathType": "list"
       }
     },
@@ -9977,6 +9991,7 @@
           "friendly_name",
           "date_created"
         ],
+        "parent": "/Users",
         "pathType": "instance"
       }
     }
