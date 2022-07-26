@@ -1,6 +1,6 @@
 {
   "extends": [
-    "twilio", 
+    "twilio",
     "twilio-mocha"
   ],
   "parserOptions": {
@@ -8,6 +8,13 @@
   },
   "rules": {
     "global-require": "off",
-    "prefer-named-capture-group": "off"
+    "prefer-named-capture-group": "off",
+    "sonarjs/cognitive-complexity": "off",
+    "sonarjs/no-identical-expressions": "off",
+    "sonarjs/no-duplicate-string": "off",
+    "sonarjs/no-identical-functions": "off",
+    "sonarjs/no-collapsible-if": "off",
+    "sonarjs/prefer-immediate-return": "off",
+    "no-throw-literal": "off"
   }
 }
