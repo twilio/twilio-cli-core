@@ -54,7 +54,7 @@
     "@twilio/cli-test": "^2.1.0",
     "chai": "^4.2.0",
     "conventional-changelog-conventionalcommits": "^4.6.0",
-    "eslint": "^7.5.0",
+    "eslint": "^8.20.0",
     "eslint-config-twilio": "~2.0.0",
     "eslint-config-twilio-mocha": "~2.0.0",
     "mocha": "^10.0.0",
