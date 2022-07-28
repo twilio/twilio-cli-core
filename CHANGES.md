@@ -1,3 +1,16 @@
+---------------------------
+**Flex**
+- Add `status`, `error_code`, and `error_message` fields to Interaction `Channel`
+- Adding `messenger` and `gbm` as supported channels for Interactions API
+
+**Messaging**
+- Update alpha_sender docs with new valid characters
+
+**Verify**
+- Reorder Verification Check parameters so `code` stays as the first parameter **(breaking change)**
+- Rollback List Attempts API V2 back to pilot stage.
+
+
 ## [6.6.0](https://github.com/twilio/twilio-cli-core/compare/6.5.0...6.6.0) (2022-07-14)
 
 ---------------------------
