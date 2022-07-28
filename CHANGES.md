@@ -1,3 +1,28 @@
+## [6.7.0](https://github.com/twilio/twilio-cli-core/compare/6.6.0...6.7.0) (2022-07-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* add node engine support from 14.x+ (#204)
+
+### Library - Chores
+
+* add node engine support from 14.x+ ([#204](https://github.com/twilio/twilio-cli-core/issues/204)) ([7b81cb2](https://github.com/twilio/twilio-cli-core/commit/7b81cb2199e255197c144c43d4cd2ca952b5e06d))
+* update vulnerabilities dependencies ([#205](https://github.com/twilio/twilio-cli-core/issues/205)) ([105be81](https://github.com/twilio/twilio-cli-core/commit/105be81767ebbc13fc35db7cf076729cd9dee935))
+
+---------------------------
+**Flex**
+- Add `status`, `error_code`, and `error_message` fields to Interaction `Channel`
+- Adding `messenger` and `gbm` as supported channels for Interactions API
+
+**Messaging**
+- Update alpha_sender docs with new valid characters
+
+**Verify**
+- Reorder Verification Check parameters so `code` stays as the first parameter **(breaking change)**
+- Rollback List Attempts API V2 back to pilot stage.
+
+
 ## [6.6.0](https://github.com/twilio/twilio-cli-core/compare/6.5.0...6.6.0) (2022-07-14)
 
 ---------------------------
