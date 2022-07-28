@@ -227,7 +227,7 @@ BaseCommand.flags = {
   }),
 
   silent: oclifFlags.boolean({
-    description: 'Suppress output and logs. This is a shorthand for "-l none -o none".',
+    description: 'Suppress  output and logs. This is a shorthand for "-l none -o none".',
     default: false,
   }),
 };
