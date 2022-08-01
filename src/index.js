@@ -13,7 +13,6 @@ module.exports = {
     templating: require('./services/messaging/templating'),
     namingConventions: require('./services/naming-conventions'),
     outputFormats: require('./services/output-formats'),
-    secureStorage: require('./services/secure-storage'),
   },
   configureEnv: require('./services/env'),
   releaseScripts: {
