@@ -14,7 +14,7 @@ const updateRelease = async () => {
     const tag = process.env.TAG_NAME;
 
     //https://docs.github.com/en/rest/releases/releases#get-a-release-by-tag-name
-    const getReleaseResponse = await octokit.request('GET /repos/{owner}/{repo}/releases/tags/{tag}',{
+    const getReleaseResponse = await octokit.rest.repos.getReleaseByTag({
       owner,
       repo,
       tag,
@@ -55,7 +55,7 @@ const updateRelease = async () => {
     }
 
     //https://docs.github.com/en/rest/releases/releases#update-a-release
-    await octokit.request('PATCH /repos/{owner}/{repo}/releases/{release_id}', {
+    await octokit.rest.repos.updateRelease( {
       owner,
       release_id: oldReleaseId,
       repo,
