@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const { GitHub } = require('@actions/github');
+const { Octokit } = require("@octokit/core");
 
 /**
  * Functionality from tubone24/update_release.
@@ -7,14 +7,19 @@ const { GitHub } = require('@actions/github');
  */
 const updateRelease = async () => {
   try {
-    const github = new GitHub(process.env.REPO_ACCESS_TOKEN);
+    const octokit = new Octokit({
+      auth: process.env.REPO_ACCESS_TOKEN
+    })
     const [owner, repo] = process.env.REPO_NAME ? process.env.REPO_NAME.split('/') : [null, null];
     const tag = process.env.TAG_NAME;
-    const getReleaseResponse = await github.repos.getReleaseByTag({
+
+    //https://docs.github.com/en/rest/releases/releases#get-a-release-by-tag-name
+    const getReleaseResponse = await octokit.rest.repos.getReleaseByTag({
       owner,
       repo,
       tag,
     });
+
 
     const {
       data: {
@@ -49,7 +54,8 @@ const updateRelease = async () => {
       prerelease = oldPrerelease;
     }
 
-    await github.repos.updateRelease({
+    //https://docs.github.com/en/rest/releases/releases#update-a-release
+    await octokit.rest.repos.updateRelease({
       owner,
       release_id: oldReleaseId,
       repo,
