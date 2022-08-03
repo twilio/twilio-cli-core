@@ -55,7 +55,7 @@ const updateRelease = async () => {
     }
 
     //https://docs.github.com/en/rest/releases/releases#update-a-release
-    await octokit.rest.repos.updateRelease( {
+    await octokit.rest.repos.updateRelease({
       owner,
       release_id: oldReleaseId,
       repo,
