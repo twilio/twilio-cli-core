@@ -1,5 +1,5 @@
-const { Command, flags: oclifFlags } = require('@oclif/command');
-const { CLIError } = require('@oclif/errors');
+const { Command, Flags: oclifFlags } = require('@oclif/core');
+const { Errors } = require('@oclif/core');
 
 const pkg = require('../../package.json');
 const MessageTemplates = require('../services/messaging/templates');
@@ -32,7 +32,7 @@ class BaseCommand extends Command {
   }
 
   async run() {
-    const { args, flags } = this.parse(this.constructor);
+    const { args, flags } = await this.parse(this.constructor);
     this.args = args;
     this.flags = flags;
     await this.loadConfig();
@@ -61,7 +61,7 @@ class BaseCommand extends Command {
   }
 
   async catch(error) {
-    if (!this.logger || instanceOf(error, CLIError)) {
+    if (!this.logger || instanceOf(error, Errors.CLIError)) {
       return super.catch(error);
     }
 

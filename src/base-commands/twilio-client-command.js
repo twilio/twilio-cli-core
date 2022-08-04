@@ -1,4 +1,4 @@
-const { flags } = require('@oclif/command');
+const { Flags: flags } = require('@oclif/core');
 
 const BaseCommand = require('./base-command');
 const CliRequestClient = require('../services/cli-http-client');
