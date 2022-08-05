@@ -64,9 +64,6 @@
     "sinon": "^9.0.2",
     "tmp": "^0.2.1"
   },
-  "optionalDependencies": {
-    "keytar": "^7.6.0"
-  },
   "engines": {
     "node": ">=14.0.0"
   }

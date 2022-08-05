@@ -41,7 +41,3 @@ Manages the CLI configuration options, such as Twilio profiles and credentials.
 ### Logger
 
 Standardizes logging output of debug, info, warning, and error messages to stderr (all go to stderr to allow differentiation between command output and logging messages).
-
-### SecureStorage
-
-An abstraction around the keytar npm package which further abstracts platform-level data encryption services for storing Twilio credentials securely.

@@ -36,7 +36,6 @@ describe('base-commands', () => {
       args = [],
       {
         setUpUserConfig = undefined,
-        mockSecureStorage = true,
         commandClass: CommandClass = TestClientCommand,
         envRegion,
         envEdge,
@@ -64,8 +63,21 @@ describe('base-commands', () => {
           if (setUpUserConfig) {
             setUpUserConfig(ctx.userConfig);
           } else {
-            ctx.userConfig.addProfile('MyFirstProfile', constants.FAKE_ACCOUNT_SID);
-            ctx.userConfig.addProfile('region-edge-testing', constants.FAKE_ACCOUNT_SID, configRegion);
+            ctx.userConfig.addProfile(
+              'MyFirstProfile',
+              constants.FAKE_ACCOUNT_SID,
+              undefined,
+              constants.FAKE_API_KEY,
+              `${constants.FAKE_API_SECRET}MyFirstProfile`,
+            );
+            ctx.userConfig.addProfile(
+              'region-edge-testing',
+              constants.FAKE_ACCOUNT_SID,
+              configRegion,
+              constants.FAKE_API_KEY,
+              `${constants.FAKE_API_SECRET}region-edge-testing`,
+            );
+            ctx.userConfig.addProfile('no-credentials-profile', constants.FAKE_ACCOUNT_SID, configRegion);
             ctx.userConfig.setActiveProfile('MyFirstProfile');
           }
         })
@@ -73,15 +85,6 @@ describe('base-commands', () => {
         .stderr()
         .do(async (ctx) => {
           ctx.testCmd = new CommandClass(args, ctx.fakeConfig);
-          ctx.testCmd.secureStorage = {
-            async getCredentials(profileId) {
-              return {
-                apiKey: mockSecureStorage ? constants.FAKE_API_KEY : 'error',
-                apiSecret: constants.FAKE_API_SECRET + profileId,
-              };
-            },
-          };
-
           // This is essentially what oclif does behind the scenes.
           try {
             await ctx.testCmd.run();
@@ -169,12 +172,12 @@ describe('base-commands', () => {
       expect(ctx.testCmd.twilioClient.region).to.equal('configRegion');
     });
 
-    setUpTest(['-p', 'region-edge-testing'], { mockSecureStorage: false })
+    setUpTest(['-p', 'no-credentials-profile'])
       .exit(1)
-      .it('should handle a secure storage error', (ctx) => {
-        expect(ctx.stderr).to.contain('Could not get credentials for profile "region-edge-testing"');
+      .it('should handle no profile error', (ctx) => {
+        expect(ctx.stderr).to.contain('Could not get credentials for profile "no-credentials-profile"');
         expect(ctx.stderr).to.contain('To reconfigure the profile, run:');
-        expect(ctx.stderr).to.contain('twilio profiles:create --profile "region-edge-testing"');
+        expect(ctx.stderr).to.contain('twilio profiles:create --profile "no-credentials-profile"');
       });
 
     setUpTest([], { commandClass: ThrowingUnknownClientCommand })
