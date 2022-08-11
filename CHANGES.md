@@ -1,3 +1,23 @@
+## [6.8.0](https://github.com/twilio/twilio-cli-core/compare/6.7.0...6.8.0) (2022-08-10)
+
+
+### Library - Fixes
+
+* cleanup keytar ([#209](https://github.com/twilio/twilio-cli-core/issues/209)) ([7a37f0b](https://github.com/twilio/twilio-cli-core/commit/7a37f0b859c445fbdc803267200912301493cccd))
+* Fixing ocktokit api calls ([#211](https://github.com/twilio/twilio-cli-core/issues/211)) ([b025ba2](https://github.com/twilio/twilio-cli-core/commit/b025ba2eec6aba0f3bd5a59847aabcb87a9211ad))
+* update description ([#207](https://github.com/twilio/twilio-cli-core/issues/207)) ([79c1cc5](https://github.com/twilio/twilio-cli-core/commit/79c1cc5f281f62f94314763f356a8ec94a0b0d3b))
+
+---------------------------
+**Library - Feature**
+- [PR #72](https://github.com/twilio/twilio-oai/pull/72): Addition of spec files for preview domain. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Routes**
+- Inbound Proccessing Region API - Public GA
+
+**Supersim**
+- Allow updating `DataLimit` on a Fleet
+
+
 ## [6.7.0](https://github.com/twilio/twilio-cli-core/compare/6.6.0...6.7.0) (2022-07-28)
 
 

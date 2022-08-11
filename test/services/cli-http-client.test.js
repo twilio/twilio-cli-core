@@ -21,11 +21,9 @@ describe('services', () => {
           expect(options.url).to.equal('https://foo.com/bar');
           return { status: 200, data: 'foo', headers: {} };
         },
-        true,
         'blah',
       );
       expect(client.commandName).to.equal('blah');
-      expect(client.keytarWord).to.equal('keytar');
       expect(client.pluginName).to.equal('blah');
       const response = await client.request({
         method: 'POST',
@@ -43,9 +41,8 @@ describe('services', () => {
 
     test.it('should add the correct http agent for proxy', async () => {
       process.env.HTTP_PROXY = 'http://someproxy.com:8080';
-      const client = new CliRequestClient('blah', logger, { defaults: {} }, false, 'blah');
+      const client = new CliRequestClient('blah', logger, { defaults: {} }, 'blah');
       const httpAgent = client.http.defaults.httpsAgent;
-      expect(client.keytarWord).to.equal('');
       expect(client.pluginName).to.equal('blah');
       expect(httpAgent.proxy.host).to.equal('someproxy.com');
       expect(httpAgent.proxy.port).to.equal(8080);
@@ -74,20 +71,17 @@ describe('services', () => {
     test
       .nock('https://foo.com', (api) => {
         api.get('/bar').reply(200, '', {
-          'User-Agent': `twilio-cli/2.27.1 ${pkg.name}\/${
-            pkg.version
-          } \(${os.platform()} ${os.arch()}\) dummyCommand keytar`,
+          'User-Agent': `twilio-cli/2.27.1 ${pkg.name}\/${pkg.version} \(${os.platform()} ${os.arch()}\) dummyCommand`,
         });
       })
       .it('correctly sets user-agent', async () => {
-        const client = new CliRequestClient('dummyCommand', logger, '', true, 'twilio-cli/2.27.1');
+        const client = new CliRequestClient('dummyCommand', logger, '', 'twilio-cli/2.27.1');
         const response = await client.request({
           method: 'GET',
           uri: 'https://foo.com/bar',
         });
-        expect(client.keytarWord).to.equal('keytar');
         expect(client.lastRequest.headers['User-Agent']).to.equal(
-          `twilio-cli/2.27.1 ${pkg.name}\/${pkg.version} \(${os.platform()} ${os.arch()}\) dummyCommand keytar`,
+          `twilio-cli/2.27.1 ${pkg.name}\/${pkg.version} \(${os.platform()} ${os.arch()}\) dummyCommand`,
         );
         expect(response.statusCode).to.equal(200);
       });
@@ -95,17 +89,17 @@ describe('services', () => {
     test
       .nock('https://foo.com', (api) => {
         api.get('/bar').reply(200, '', {
-          'User-Agent': ` ${pkg.name}\/${pkg.version} \(${os.platform()} ${os.arch()}\) dummyCommand keytar`,
+          'User-Agent': ` ${pkg.name}\/${pkg.version} \(${os.platform()} ${os.arch()}\) dummyCommand`,
         });
       })
       .it('correctly sets user-agent with empty plugin value', async () => {
-        const client = new CliRequestClient('dummyCommand', logger, '', true, '');
+        const client = new CliRequestClient('dummyCommand', logger, '', '');
         const response = await client.request({
           method: 'GET',
           uri: 'https://foo.com/bar',
         });
         expect(client.lastRequest.headers['User-Agent']).to.equal(
-          ` ${pkg.name}\/${pkg.version} \(${os.platform()} ${os.arch()}\) dummyCommand keytar`,
+          ` ${pkg.name}\/${pkg.version} \(${os.platform()} ${os.arch()}\) dummyCommand`,
         );
         expect(response.statusCode).to.equal(200);
       });

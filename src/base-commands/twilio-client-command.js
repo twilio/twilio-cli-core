@@ -31,7 +31,6 @@ class TwilioClientCommand extends BaseCommand {
       );
     }
     this.currentProfile = this.userConfig.getProfileById(this.flags.profile);
-    let keytarFlag = false;
     const pluginName = (this.config.userAgent || ' ').split(' ')[0];
 
     const reportUnconfigured = (verb, message = '', commandName = 'create') => {
@@ -55,17 +54,11 @@ class TwilioClientCommand extends BaseCommand {
     this.logger.debug(`Using profile: ${this.currentProfile.id}`);
 
     if (!this.currentProfile.apiKey || !this.currentProfile.apiSecret) {
-      const creds = await this.secureStorage.getCredentials(this.currentProfile.id);
-      if (creds.apiKey === 'error') {
-        this.logger.error(`Could not get credentials for profile "${this.currentProfile.id}".`);
-        reportUnconfigured('reconfigure');
-      }
-      this.currentProfile.apiKey = creds.apiKey;
-      this.currentProfile.apiSecret = creds.apiSecret;
-      keytarFlag = true;
+      this.logger.error(`Could not get credentials for profile "${this.currentProfile.id}".`);
+      reportUnconfigured('reconfigure');
     }
 
-    this.httpClient = new CliRequestClient(this.id, this.logger, undefined, keytarFlag, pluginName);
+    this.httpClient = new CliRequestClient(this.id, this.logger, undefined, pluginName);
   }
 
   async catch(error) {

@@ -14,7 +14,7 @@ const NETWORK_ERROR_CODES = new Set(['ETIMEDOUT', 'ESOCKETTIMEDOUT', 'ECONNABORT
 const STANDARD_HEADERS = ['user-agent', 'accept-charset', 'connection', 'authorization', 'accept', 'content-type'];
 
 class CliRequestClient {
-  constructor(commandName, logger, http, keytarFlag = false, extensions = ' ') {
+  constructor(commandName, logger, http, extensions = ' ') {
     this.commandName = commandName;
     this.logger = logger;
     this.pluginName = extensions;
@@ -27,7 +27,6 @@ class CliRequestClient {
       this.http.defaults.proxy = false;
       this.http.defaults.httpsAgent = new HttpsProxyAgent(process.env.HTTP_PROXY);
     }
-    this.keytarWord = keytarFlag ? 'keytar' : '';
   }
 
   /**
@@ -72,7 +71,6 @@ class CliRequestClient {
     componentInfo.push(userAgentArr[0]); // Api client version
     componentInfo.push(userAgentArr[3]); // nodejs version
     componentInfo.push(this.commandName); // cli-command
-    componentInfo.push(this.keytarWord); // keytar flag
     headers['User-Agent'] = `${this.pluginName} ${pkg.name}/${pkg.version} ${componentInfo.filter(Boolean).join(' ')}`;
 
     const options = {
