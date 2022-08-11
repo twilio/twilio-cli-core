@@ -1,3 +1,18 @@
+## [7.0.0](https://github.com/twilio/twilio-cli-core/compare/6.8.1...7.0.0) (2022-08-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* unlocking oclif v2
+
+Co-authored-by: sr010 <87780745+sr010@users.noreply.github.com>
+Co-authored-by: sburman <sburman@twilio.com>
+Co-authored-by: shrutiburman <87537688+shrutiburman@users.noreply.github.com>
+
+### Library - Fixes
+
+* Replace oclif-v1 dependencies with oclif-v2 version ([#212](https://github.com/twilio/twilio-cli-core/issues/212)) ([d87c83a](https://github.com/twilio/twilio-cli-core/commit/d87c83aca231ace8d58c12cad7b6b34c528cce6a)), closes [#207](https://github.com/twilio/twilio-cli-core/issues/207) [#211](https://github.com/twilio/twilio-cli-core/issues/211)
+
 ### [6.8.1](https://github.com/twilio/twilio-cli-core/compare/6.8.0...6.8.1) (2022-08-11)
 
 
