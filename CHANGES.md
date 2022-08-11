@@ -1,3 +1,10 @@
+### [6.8.1](https://github.com/twilio/twilio-cli-core/compare/6.8.0...6.8.1) (2022-08-11)
+
+
+### Library - Fixes
+
+* Octokit changes reversed ([#213](https://github.com/twilio/twilio-cli-core/issues/213)) ([e66838c](https://github.com/twilio/twilio-cli-core/commit/e66838c5d256267f9508c76054eac0df75540690))
+
 ## [6.8.0](https://github.com/twilio/twilio-cli-core/compare/6.7.0...6.8.0) (2022-08-10)
 
 
