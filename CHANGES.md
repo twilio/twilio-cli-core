@@ -1,3 +1,5 @@
+## [7.1.0](https://github.com/twilio/twilio-cli-core/compare/7.0.0...7.1.0) (2022-08-25)
+
 ---------------------------
 **Library - Test**
 - [PR #73](https://github.com/twilio/twilio-oai/pull/73): add test-docker rule. Thanks to [@beebzz](https://github.com/beebzz)!
