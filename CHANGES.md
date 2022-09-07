@@ -1,3 +1,62 @@
+## [7.1.0](https://github.com/twilio/twilio-cli-core/compare/7.0.0...7.1.0) (2022-08-25)
+
+---------------------------
+**Library - Test**
+- [PR #73](https://github.com/twilio/twilio-oai/pull/73): add test-docker rule. Thanks to [@beebzz](https://github.com/beebzz)!
+
+**Api**
+- Remove `beta feature` from scheduling params and remove optimize parameters. **(breaking change)**
+
+**Routes**
+- Remove Duplicate Create Method - Update Method will work even if Inbound Processing Region is currently empty/404. **(breaking change)**
+
+**Twiml**
+- Add new Polly Neural voices
+- Add new languages to SSML `<lang>`.
+
+
+## [7.0.0](https://github.com/twilio/twilio-cli-core/compare/6.8.1...7.0.0) (2022-08-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* unlocking oclif v2
+
+Co-authored-by: sr010 <87780745+sr010@users.noreply.github.com>
+Co-authored-by: sburman <sburman@twilio.com>
+Co-authored-by: shrutiburman <87537688+shrutiburman@users.noreply.github.com>
+
+### Library - Fixes
+
+* Replace oclif-v1 dependencies with oclif-v2 version ([#212](https://github.com/twilio/twilio-cli-core/issues/212)) ([d87c83a](https://github.com/twilio/twilio-cli-core/commit/d87c83aca231ace8d58c12cad7b6b34c528cce6a)), closes [#207](https://github.com/twilio/twilio-cli-core/issues/207) [#211](https://github.com/twilio/twilio-cli-core/issues/211)
+
+### [6.8.1](https://github.com/twilio/twilio-cli-core/compare/6.8.0...6.8.1) (2022-08-11)
+
+
+### Library - Fixes
+
+* Octokit changes reversed ([#213](https://github.com/twilio/twilio-cli-core/issues/213)) ([e66838c](https://github.com/twilio/twilio-cli-core/commit/e66838c5d256267f9508c76054eac0df75540690))
+
+## [6.8.0](https://github.com/twilio/twilio-cli-core/compare/6.7.0...6.8.0) (2022-08-10)
+
+
+### Library - Fixes
+
+* cleanup keytar ([#209](https://github.com/twilio/twilio-cli-core/issues/209)) ([7a37f0b](https://github.com/twilio/twilio-cli-core/commit/7a37f0b859c445fbdc803267200912301493cccd))
+* Fixing ocktokit api calls ([#211](https://github.com/twilio/twilio-cli-core/issues/211)) ([b025ba2](https://github.com/twilio/twilio-cli-core/commit/b025ba2eec6aba0f3bd5a59847aabcb87a9211ad))
+* update description ([#207](https://github.com/twilio/twilio-cli-core/issues/207)) ([79c1cc5](https://github.com/twilio/twilio-cli-core/commit/79c1cc5f281f62f94314763f356a8ec94a0b0d3b))
+
+---------------------------
+**Library - Feature**
+- [PR #72](https://github.com/twilio/twilio-oai/pull/72): Addition of spec files for preview domain. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Routes**
+- Inbound Proccessing Region API - Public GA
+
+**Supersim**
+- Allow updating `DataLimit` on a Fleet
+
+
 ## [6.7.0](https://github.com/twilio/twilio-cli-core/compare/6.6.0...6.7.0) (2022-07-28)
 
 
