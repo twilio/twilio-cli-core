@@ -1,3 +1,21 @@
+---------------------------
+**Flex**
+- Removed redundant `close` status from Flex Interactions flow **(breaking change)**
+- Adding `debugger_integration` and `flex_ui_status_report` to Flex Configuration
+
+**Messaging**
+- Add create, list and get tollfree verification API
+
+**Verify**
+- Verify SafeList API endpoints added.
+
+**Video**
+- Add `Anonymize` API
+
+**Twiml**
+- Update `event` value `call-in-progress` to `call-answered`
+
+
 ## [7.1.0](https://github.com/twilio/twilio-cli-core/compare/7.0.0...7.1.0) (2022-08-25)
 
 ---------------------------
