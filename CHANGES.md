@@ -1,3 +1,16 @@
+## [7.2.0](https://github.com/twilio/twilio-cli-core/compare/7.1.0...7.2.0) (2022-09-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* update description (#207)
+
+### Library - Fixes
+
+* cleanup keytar ([#209](https://github.com/twilio/twilio-cli-core/issues/209)) ([9f1c2d9](https://github.com/twilio/twilio-cli-core/commit/9f1c2d9b4607c6bc83b80bfde5cf3eb1ce558fe7))
+* Fixing ocktokit api calls ([#211](https://github.com/twilio/twilio-cli-core/issues/211)) ([b5150dd](https://github.com/twilio/twilio-cli-core/commit/b5150dd84c4a9fec036666c5c1b63b55ebfcb969))
+* update description ([#207](https://github.com/twilio/twilio-cli-core/issues/207)) ([80ae344](https://github.com/twilio/twilio-cli-core/commit/80ae3443ed5c0b40d3ba5ec73c47ccd9caf2376a))
+
 ---------------------------
 **Flex**
 - Removed redundant `close` status from Flex Interactions flow **(breaking change)**
