@@ -1,3 +1,10 @@
+### [7.2.1](https://github.com/twilio/twilio-cli-core/compare/7.2.0...7.2.1) (2022-09-19)
+
+
+### Library - Chores
+
+* Update package.json ([41a1498](https://github.com/twilio/twilio-cli-core/commit/41a149890b713fa6f137dda341286d08ca70db31))
+
 ## [7.2.0](https://github.com/twilio/twilio-cli-core/compare/7.1.0...7.2.0) (2022-09-08)
 
 
