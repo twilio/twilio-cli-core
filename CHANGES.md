@@ -1,3 +1,5 @@
+## [7.3.0](https://github.com/twilio/twilio-cli-core/compare/7.2.1...7.3.0) (2022-10-06)
+
 ---------------------------
 **Library - Feature**
 - [PR #77](https://github.com/twilio/twilio-oai/pull/77): add helper libs semantic types configuration. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
