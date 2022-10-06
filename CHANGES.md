@@ -1,3 +1,15 @@
+---------------------------
+**Library - Feature**
+- [PR #77](https://github.com/twilio/twilio-oai/pull/77): add helper libs semantic types configuration. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Added `virtual-agent` to `usage_record` API.
+- Add AMD attributes to participant create request
+
+**Twiml**
+- Add AMD attributes to `Number` and `Sip`
+
+
 ### [7.2.1](https://github.com/twilio/twilio-cli-core/compare/7.2.0...7.2.1) (2022-09-19)
 
 
