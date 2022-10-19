@@ -271,7 +271,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.36.0"
+    "version": "1.37.0"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -518,7 +518,7 @@
           "webhook_url"
         ],
         "pathType": "instance",
-        "className": "export_configuration"
+        "mountName": "export_configuration"
       },
       "get": {
         "description": "Fetch a specific Export Configuration.",
@@ -639,7 +639,7 @@
         ],
         "pathType": "list",
         "parent": "/Exports",
-        "className": "export_custom_job"
+        "mountName": "export_custom_jobs"
       },
       "get": {
         "description": "",
