@@ -1,3 +1,5 @@
+## [7.4.0](https://github.com/twilio/twilio-cli-core/compare/7.3.0...7.4.0) (2022-10-19)
+
 ---------------------------
 **Library - Chore**
 - [PR #79](https://github.com/twilio/twilio-oai/pull/79): update mountName and className extensions. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
