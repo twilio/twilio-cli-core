@@ -1,3 +1,5 @@
+### [7.4.1](https://github.com/twilio/twilio-cli-core/compare/7.4.0...7.4.1) (2022-11-02)
+
 ---------------------------
 **Library - Fix**
 - [PR #80](https://github.com/twilio/twilio-oai/pull/80): update parent logic for handling of parents vs. containers. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
