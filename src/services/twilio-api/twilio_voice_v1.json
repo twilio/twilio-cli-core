@@ -553,7 +553,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.37.0"
+    "version": "1.37.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -1308,7 +1308,7 @@
           "enabled"
         ],
         "pathType": "list",
-        "parent": "/ConnectionPolicies",
+        "parent": "/ConnectionPolicies/{Sid}",
         "className": "connection_policy_target"
       },
       "post": {
@@ -1488,7 +1488,7 @@
           "enabled"
         ],
         "pathType": "instance",
-        "parent": "/ConnectionPolicies",
+        "parent": "/ConnectionPolicies/{Sid}",
         "className": "connection_policy_target"
       },
       "get": {
@@ -1946,8 +1946,8 @@
           "prefix"
         ],
         "pathType": "list",
-        "parent": "/DialingPermissions/Countries",
-        "className": "highrisk_special_prefix"
+        "parent": "/DialingPermissions/Countries/{IsoCode}",
+        "mountName": "highrisk_special_prefixes"
       },
       "get": {
         "description": "Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",

@@ -2037,7 +2037,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.37.0"
+    "version": "1.37.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -2055,7 +2055,7 @@
           "date_created"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -2231,7 +2231,7 @@
           "date_created"
         ],
         "pathType": "list",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -2412,7 +2412,7 @@
           "event_date"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -2479,7 +2479,7 @@
           "event_date"
         ],
         "pathType": "list",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -2693,7 +2693,7 @@
           "reason"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -2904,7 +2904,7 @@
           "reason"
         ],
         "pathType": "list",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -3162,7 +3162,7 @@
           "date_created"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -3333,7 +3333,7 @@
           "date_created"
         ],
         "pathType": "list",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -3503,7 +3503,7 @@
           "task_order"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -3706,7 +3706,7 @@
           "task_order"
         ],
         "pathType": "list",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -3748,6 +3748,14 @@
               "minLength": 34,
               "maxLength": 34,
               "pattern": "^WK[0-9a-fA-F]{32}$"
+            }
+          },
+          {
+            "name": "Ordering",
+            "in": "query",
+            "description": "Sorting parameter for TaskQueues",
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -3922,7 +3930,7 @@
           "tasks_completed"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces/{WorkspaceSid}/TaskQueues",
+        "parent": "/Workspaces/{WorkspaceSid}/TaskQueues/{Sid}",
         "className": "task_queue_cumulative_statistics"
       },
       "get": {
@@ -4032,7 +4040,7 @@
           "total_tasks"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces/{WorkspaceSid}/TaskQueues",
+        "parent": "/Workspaces/{WorkspaceSid}/TaskQueues/{Sid}",
         "className": "task_queue_real_time_statistics"
       },
       "get": {
@@ -4106,7 +4114,7 @@
           "cumulative"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces/{WorkspaceSid}/TaskQueues",
+        "parent": "/Workspaces/{WorkspaceSid}/TaskQueues/{Sid}",
         "className": "task_queue_statistics"
       },
       "get": {
@@ -4370,7 +4378,7 @@
           "worker_sid"
         ],
         "pathType": "list",
-        "parent": "/Workspaces/{WorkspaceSid}/Tasks"
+        "parent": "/Workspaces/{WorkspaceSid}/Tasks/{Sid}"
       },
       "get": {
         "description": "",
@@ -4406,6 +4414,17 @@
             "schema": {
               "type": "string",
               "$ref": "#/components/schemas/task_reservation_enum_status"
+            }
+          },
+          {
+            "name": "WorkerSid",
+            "in": "query",
+            "description": "The SID of the reserved Worker resource to read.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^WK[0-9a-fA-F]{32}$"
             }
           },
           {
@@ -4496,7 +4515,7 @@
           "worker_sid"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces/{WorkspaceSid}/Tasks"
+        "parent": "/Workspaces/{WorkspaceSid}/Tasks/{Sid}"
       },
       "get": {
         "description": "",
@@ -4948,7 +4967,7 @@
           "available"
         ],
         "pathType": "list",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -5025,6 +5044,14 @@
               "minLength": 34,
               "maxLength": 34,
               "pattern": "^WQ[0-9a-fA-F]{32}$"
+            }
+          },
+          {
+            "name": "Ordering",
+            "in": "query",
+            "description": "Sorting parameter for Workers",
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -5182,7 +5209,7 @@
           "available"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -5389,7 +5416,7 @@
           "task_channel_unique_name"
         ],
         "pathType": "list",
-        "parent": "/Workspaces/{WorkspaceSid}/Workers",
+        "parent": "/Workspaces/{WorkspaceSid}/Workers/{Sid}",
         "mountName": "worker_channels"
       },
       "get": {
@@ -5506,7 +5533,7 @@
           "task_channel_unique_name"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces/{WorkspaceSid}/Workers",
+        "parent": "/Workspaces/{WorkspaceSid}/Workers/{Sid}",
         "mountName": "worker_channels"
       },
       "get": {
@@ -5660,7 +5687,7 @@
           "cumulative"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces/{WorkspaceSid}/Workers",
+        "parent": "/Workspaces/{WorkspaceSid}/Workers/{Sid}",
         "className": "worker_statistics"
       },
       "get": {
@@ -5762,7 +5789,7 @@
           "date_created"
         ],
         "pathType": "list",
-        "parent": "/Workspaces/{WorkspaceSid}/Workers"
+        "parent": "/Workspaces/{WorkspaceSid}/Workers/{Sid}"
       },
       "get": {
         "description": "",
@@ -5887,7 +5914,7 @@
           "date_created"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces/{WorkspaceSid}/Workers"
+        "parent": "/Workspaces/{WorkspaceSid}/Workers/{Sid}"
       },
       "get": {
         "description": "",
@@ -6448,7 +6475,7 @@
           "reservations_rescinded"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces/{WorkspaceSid}/Workers",
+        "parent": "/Workspaces/{WorkspaceSid}/Workers/{Sid}",
         "className": "workers_cumulative_statistics"
       },
       "get": {
@@ -6536,7 +6563,7 @@
           "total_workers"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces/{WorkspaceSid}/Workers",
+        "parent": "/Workspaces/{WorkspaceSid}/Workers/{Sid}",
         "className": "workers_real_time_statistics"
       },
       "get": {
@@ -6600,7 +6627,7 @@
           "document_content_type"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -6798,7 +6825,7 @@
           "document_content_type"
         ],
         "pathType": "list",
-        "parent": "/Workspaces"
+        "parent": "/Workspaces/{Sid}"
       },
       "get": {
         "description": "",
@@ -6987,7 +7014,7 @@
           "tasks_completed"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces/{WorkspaceSid}/Workflows",
+        "parent": "/Workspaces/{WorkspaceSid}/Workflows/{Sid}",
         "className": "workflow_cumulative_statistics"
       },
       "get": {
@@ -7097,7 +7124,7 @@
           "total_tasks"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces/{WorkspaceSid}/Workflows",
+        "parent": "/Workspaces/{WorkspaceSid}/Workflows/{Sid}",
         "className": "workflow_real_time_statistics"
       },
       "get": {
@@ -7171,7 +7198,7 @@
           "cumulative"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces/{WorkspaceSid}/Workflows",
+        "parent": "/Workspaces/{WorkspaceSid}/Workflows/{Sid}",
         "className": "workflow_statistics"
       },
       "get": {
@@ -7617,7 +7644,7 @@
           "tasks_completed"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces",
+        "parent": "/Workspaces/{Sid}",
         "className": "workspace_cumulative_statistics"
       },
       "get": {
@@ -7715,7 +7742,7 @@
           "total_tasks"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces",
+        "parent": "/Workspaces/{Sid}",
         "className": "workspace_real_time_statistics"
       },
       "get": {
@@ -7777,7 +7804,7 @@
           "cumulative"
         ],
         "pathType": "instance",
-        "parent": "/Workspaces",
+        "parent": "/Workspaces/{Sid}",
         "className": "workspace_statistics"
       },
       "get": {

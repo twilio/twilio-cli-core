@@ -886,7 +886,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.37.0"
+    "version": "1.37.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -906,7 +906,7 @@
           "period_type"
         ],
         "pathType": "list",
-        "parent": "/Sims"
+        "parent": "/Sims/{Sid}"
       },
       "get": {
         "description": "Retrieve a list of Billing Periods for a Super SIM.",
@@ -1005,7 +1005,8 @@
           "sid",
           "status"
         ],
-        "pathType": "list"
+        "pathType": "list",
+        "mountName": "esim_profiles"
       },
       "post": {
         "description": "Order an eSIM Profile.",
@@ -1177,7 +1178,8 @@
           "sid",
           "status"
         ],
-        "pathType": "instance"
+        "pathType": "instance",
+        "mountName": "esim_profiles"
       },
       "get": {
         "description": "Fetch an eSIM Profile.",
@@ -2227,7 +2229,7 @@
           "sid"
         ],
         "pathType": "list",
-        "parent": "/NetworkAccessProfiles",
+        "parent": "/NetworkAccessProfiles/{Sid}",
         "className": "network_access_profile_network"
       },
       "get": {
@@ -2384,7 +2386,7 @@
           "sid"
         ],
         "pathType": "instance",
-        "parent": "/NetworkAccessProfiles",
+        "parent": "/NetworkAccessProfiles/{Sid}",
         "className": "network_access_profile_network"
       },
       "delete": {
@@ -2898,7 +2900,7 @@
           "ip_address_version"
         ],
         "pathType": "list",
-        "parent": "/Sims",
+        "parent": "/Sims/{Sid}",
         "mountName": "sim_ip_addresses"
       },
       "get": {

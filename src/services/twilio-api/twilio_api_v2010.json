@@ -9454,6 +9454,81 @@
           "price"
         ]
       },
+      "api.v2010.account.call.user_defined_message": {
+        "type": "object",
+        "properties": {
+          "account_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "Account Sid."
+          },
+          "call_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^CA[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "Call Sid."
+          },
+          "sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^KX[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "A string that uniquely identifies this User Defined Message."
+          },
+          "date_created": {
+            "type": "string",
+            "format": "date-time-rfc-2822",
+            "nullable": true,
+            "description": "The date this User Defined Message was created"
+          }
+        }
+      },
+      "api.v2010.account.call.user_defined_message_subscription": {
+        "type": "object",
+        "properties": {
+          "account_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "Account Sid."
+          },
+          "call_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^CA[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "Call Sid."
+          },
+          "sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^ZY[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "User Defined Message Subscription Sid"
+          },
+          "date_created": {
+            "type": "string",
+            "format": "date-time-rfc-2822",
+            "nullable": true,
+            "description": "The date this User Defined Message Subscription was created"
+          },
+          "uri": {
+            "type": "string",
+            "nullable": true,
+            "description": "The URI of the resource, relative to `https://api.twilio.com`."
+          }
+        }
+      },
       "api.v2010.account.validation_request": {
         "type": "object",
         "properties": {
@@ -9512,7 +9587,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.37.0"
+    "version": "1.37.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -9790,7 +9865,7 @@
           "verified"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "post": {
         "description": "",
@@ -10013,7 +10088,7 @@
           "verified"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "delete": {
         "description": "",
@@ -10217,7 +10292,7 @@
           "date_created"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "post": {
         "description": "Create a new application within your account",
@@ -10489,7 +10564,7 @@
           "date_created"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "delete": {
         "description": "Delete the application by the specified application sid",
@@ -10772,7 +10847,7 @@
           "connect_app_friendly_name"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Fetch an instance of an authorized-connect-app",
@@ -10838,7 +10913,7 @@
           "connect_app_friendly_name"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of authorized-connect-apps belonging to the account used to make the request",
@@ -10940,7 +11015,7 @@
           "beta"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json",
+        "parent": "/Accounts/{Sid}.json",
         "className": "available_phone_number_country"
       },
       "get": {
@@ -11043,7 +11118,7 @@
           "beta"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json",
+        "parent": "/Accounts/{Sid}.json",
         "className": "available_phone_number_country"
       },
       "get": {
@@ -11109,7 +11184,7 @@
           "beta"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json"
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json"
       },
       "get": {
         "description": "",
@@ -11366,7 +11441,7 @@
           "beta"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json"
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json"
       },
       "get": {
         "description": "",
@@ -11623,7 +11698,7 @@
           "beta"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json"
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json"
       },
       "get": {
         "description": "",
@@ -11880,7 +11955,7 @@
           "beta"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json"
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json"
       },
       "get": {
         "description": "",
@@ -12137,7 +12212,7 @@
           "beta"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json"
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json"
       },
       "get": {
         "description": "",
@@ -12394,7 +12469,7 @@
           "beta"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json"
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json"
       },
       "get": {
         "description": "",
@@ -12651,7 +12726,7 @@
           "beta"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers.json"
+        "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json"
       },
       "get": {
         "description": "",
@@ -12908,7 +12983,7 @@
           "currency"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child accounts do not contain balance information",
@@ -12965,7 +13040,7 @@
           "start_time"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "post": {
         "description": "Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections",
@@ -13428,7 +13503,7 @@
           "start_time"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "delete": {
         "description": "Delete a Call record from your account. Once the record is deleted, it will no longer appear in the API and Account Portal logs.",
@@ -13667,7 +13742,7 @@
           "response"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Calls.json"
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of all events for a call.",
@@ -13781,7 +13856,7 @@
           "date_created"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Calls.json"
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
       },
       "get": {
         "description": "Fetch a Feedback resource from a call",
@@ -14137,7 +14212,7 @@
           "message_date"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Calls.json"
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
       },
       "get": {
         "description": "",
@@ -14217,7 +14292,7 @@
           "message_date"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Calls.json"
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
       },
       "get": {
         "description": "",
@@ -14368,7 +14443,7 @@
           "duration"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Calls.json"
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
       },
       "post": {
         "description": "Create a recording for the call",
@@ -14610,7 +14685,7 @@
           "duration"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Calls.json"
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
       },
       "post": {
         "description": "Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of recording sid to reference current active recording.",
@@ -14827,7 +14902,7 @@
           "status"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Fetch an instance of a conference",
@@ -14976,7 +15051,7 @@
           "status"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of conferences belonging to the account used to make the request",
@@ -15151,7 +15226,7 @@
           "duration"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Conferences.json"
+        "parent": "/Accounts/{AccountSid}/Conferences/{Sid}.json"
       },
       "post": {
         "description": "Changes the status of the recording to paused, stopped, or in-progress. Note: To use `Twilio.CURRENT`, pass it as recording sid.",
@@ -15370,7 +15445,7 @@
           "duration"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Conferences.json"
+        "parent": "/Accounts/{AccountSid}/Conferences/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of recordings belonging to the call used to make the request",
@@ -15510,7 +15585,7 @@
           "friendly_name"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Fetch an instance of a connect-app",
@@ -15729,7 +15804,7 @@
           "friendly_name"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of connect-apps belonging to the account used to make the request",
@@ -15831,7 +15906,7 @@
           "friendly_name"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Addresses.json"
+        "parent": "/Accounts/{AccountSid}/Addresses/{Sid}.json"
       },
       "get": {
         "description": "",
@@ -15945,7 +16020,7 @@
           "friendly_name"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "post": {
         "description": "Update an incoming-phone-number instance.",
@@ -16285,7 +16360,7 @@
           "friendly_name"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of incoming-phone-numbers belonging to the account used to make the request.",
@@ -16649,7 +16724,7 @@
           "description"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers.json"
+        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json"
       },
       "get": {
         "description": "Fetch an instance of an Add-on installation currently assigned to this Number.",
@@ -16784,7 +16859,7 @@
           "description"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers.json"
+        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of Add-on installations currently assigned to this Number.",
@@ -16971,7 +17046,7 @@
           "product_name"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns.json",
+        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{Sid}.json",
         "className": "assigned_add_on_extension"
       },
       "get": {
@@ -17064,7 +17139,7 @@
           "product_name"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns.json",
+        "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{Sid}.json",
         "className": "assigned_add_on_extension"
       },
       "get": {
@@ -18253,7 +18328,7 @@
           "date_created"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "",
@@ -18429,7 +18504,7 @@
           "date_created"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "",
@@ -18588,7 +18663,7 @@
           "content_type"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Messages.json"
+        "parent": "/Accounts/{AccountSid}/Messages/{Sid}.json"
       },
       "delete": {
         "description": "Delete media from your account. Once delete, you will no longer be billed",
@@ -18722,7 +18797,7 @@
           "content_type"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Messages.json"
+        "parent": "/Accounts/{AccountSid}/Messages/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of Media resources belonging to the account used to make the request",
@@ -18864,7 +18939,7 @@
           "wait_time"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Queues.json"
+        "parent": "/Accounts/{AccountSid}/Queues/{Sid}.json"
       },
       "get": {
         "description": "Fetch a specific member from the queue",
@@ -19033,7 +19108,7 @@
           "wait_time"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Queues.json"
+        "parent": "/Accounts/{AccountSid}/Queues/{Sid}.json"
       },
       "get": {
         "description": "Retrieve the members of the queue",
@@ -19150,7 +19225,7 @@
           "date_sent"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "post": {
         "description": "Send a message from the account used to make the request",
@@ -19271,6 +19346,17 @@
                   "SendAsMms": {
                     "type": "boolean",
                     "description": "If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media."
+                  },
+                  "ContentSid": {
+                    "type": "string",
+                    "minLength": 34,
+                    "maxLength": 34,
+                    "pattern": "^HX[0-9a-fA-F]{32}$",
+                    "description": "The SID of the Content object returned at Content API content create time (https://www.twilio.com/docs/content-api/create-and-send-your-first-content-api-template#create-a-template). If this parameter is not specified, then the Content API will not be utilized."
+                  },
+                  "ContentVariables": {
+                    "type": "string",
+                    "description": "Key-value pairs of variable names to substitution values, used alongside a content_sid. If not specified, Content API will default to the default variables defined at create time."
                   },
                   "From": {
                     "type": "string",
@@ -19465,7 +19551,7 @@
           "date_sent"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "delete": {
         "description": "Deletes a message record from your account",
@@ -19646,7 +19732,7 @@
           "date_created"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Messages.json"
+        "parent": "/Accounts/{AccountSid}/Messages/{Sid}.json"
       },
       "post": {
         "description": "",
@@ -19730,7 +19816,7 @@
           "secret"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "post": {
         "description": "Create a new Signing Key for the account making the request.",
@@ -19890,7 +19976,7 @@
           "message_date"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Fetch a notification belonging to the account used to make the request",
@@ -19958,7 +20044,7 @@
           "message_date"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of notifications belonging to the account used to make the request",
@@ -20095,7 +20181,7 @@
           "friendly_name"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Fetch an outgoing-caller-id belonging to the account used to make the request",
@@ -20271,7 +20357,7 @@
           "friendly_name"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of outgoing-caller-ids belonging to the account used to make the request",
@@ -20483,7 +20569,7 @@
           "hold"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Conferences.json"
+        "parent": "/Accounts/{AccountSid}/Conferences/{Sid}.json"
       },
       "get": {
         "description": "Fetch an instance of a participant",
@@ -20765,7 +20851,7 @@
           "hold"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Conferences.json"
+        "parent": "/Accounts/{AccountSid}/Conferences/{Sid}.json"
       },
       "post": {
         "description": "",
@@ -21228,7 +21314,7 @@
           "sid"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Calls.json"
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
       },
       "post": {
         "description": "create an instance of payments. This will start a new payments session",
@@ -21376,7 +21462,7 @@
           "sid"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Calls.json"
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
       },
       "post": {
         "description": "update an instance of payments with different phases of payment flows.",
@@ -21491,7 +21577,7 @@
           "average_wait_time"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Fetch an instance of a queue identified by the QueueSid",
@@ -21672,7 +21758,7 @@
           "average_wait_time"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of queues belonging to the account used to make the request",
@@ -21837,7 +21923,7 @@
           "duration"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Fetch an instance of a recording",
@@ -21957,7 +22043,7 @@
           "duration"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of recordings belonging to the account used to make the request",
@@ -22117,7 +22203,7 @@
           "date_created"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Recordings.json"
+        "parent": "/Accounts/{AccountSid}/Recordings/{Sid}.json"
       },
       "get": {
         "description": "Fetch an instance of an AddOnResult",
@@ -22252,7 +22338,7 @@
           "date_created"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Recordings.json"
+        "parent": "/Accounts/{AccountSid}/Recordings/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of results belonging to the recording",
@@ -22366,7 +22452,7 @@
           "content_type"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults.json"
+        "parent": "/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{Sid}.json"
       },
       "get": {
         "description": "Fetch an instance of a result payload",
@@ -22524,7 +22610,7 @@
           "content_type"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults.json"
+        "parent": "/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of payloads belonging to the AddOnResult",
@@ -22651,7 +22737,7 @@
           "duration"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Recordings.json"
+        "parent": "/Accounts/{AccountSid}/Recordings/{Sid}.json"
       },
       "get": {
         "description": "",
@@ -22786,7 +22872,7 @@
           "duration"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Recordings.json"
+        "parent": "/Accounts/{AccountSid}/Recordings/{Sid}.json"
       },
       "get": {
         "description": "",
@@ -22900,7 +22986,7 @@
           "friendly_name"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Fetch an instance of a short code",
@@ -23073,7 +23159,7 @@
           "friendly_name"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of short-codes belonging to the account used to make the request",
@@ -23190,7 +23276,7 @@
           "friendly_name"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "",
@@ -23362,7 +23448,7 @@
       "x-twilio": {
         "defaultOutputProperties": [],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth.json": {
@@ -23375,7 +23461,7 @@
       "x-twilio": {
         "defaultOutputProperties": [],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/SIP/Domains.json",
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{Sid}.json",
         "className": "auth_types"
       }
     },
@@ -24381,7 +24467,7 @@
           "credential_list_sid"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/SIP/CredentialLists.json"
+        "parent": "/Accounts/{AccountSid}/SIP/CredentialLists/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of credentials.",
@@ -24569,7 +24655,7 @@
           "credential_list_sid"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/SIP/CredentialLists.json"
+        "parent": "/Accounts/{AccountSid}/SIP/CredentialLists/{Sid}.json"
       },
       "get": {
         "description": "Fetch a single credential.",
@@ -25116,7 +25202,7 @@
           "friendly_name"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/SIP/Domains.json"
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{Sid}.json"
       },
       "post": {
         "description": "Create a CredentialListMapping resource for an account.",
@@ -25301,7 +25387,7 @@
           "friendly_name"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/SIP/Domains.json"
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{Sid}.json"
       },
       "get": {
         "description": "Fetch a single CredentialListMapping resource from an account.",
@@ -26273,7 +26359,7 @@
           "friendly_name"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/SIP/Domains.json"
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{Sid}.json"
       },
       "get": {
         "description": "Fetch an IpAccessControlListMapping resource.",
@@ -26406,7 +26492,7 @@
           "friendly_name"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/SIP/Domains.json"
+        "parent": "/Accounts/{AccountSid}/SIP/Domains/{Sid}.json"
       },
       "post": {
         "description": "Create a new IpAccessControlListMapping resource.",
@@ -26592,7 +26678,7 @@
           "friendly_name"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/SIP/IpAccessControlLists.json"
+        "parent": "/Accounts/{AccountSid}/SIP/IpAccessControlLists/{Sid}.json"
       },
       "get": {
         "description": "Read multiple IpAddress resources.",
@@ -26784,7 +26870,7 @@
           "friendly_name"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/SIP/IpAccessControlLists.json"
+        "parent": "/Accounts/{AccountSid}/SIP/IpAccessControlLists/{Sid}.json"
       },
       "get": {
         "description": "Read one IpAddress resource.",
@@ -27003,7 +27089,7 @@
           "name"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Calls.json"
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
       },
       "post": {
         "description": "Create a Siprec",
@@ -27904,7 +27990,7 @@
           "name"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Calls.json"
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
       },
       "post": {
         "description": "Stop a Siprec using either the SID of the Siprec resource or the `name` used when creating the resource",
@@ -27999,7 +28085,7 @@
           "name"
         ],
         "pathType": "list",
-        "parent": "/Accounts/{AccountSid}/Calls.json"
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
       },
       "post": {
         "description": "Create a Stream",
@@ -28904,7 +28990,7 @@
           "name"
         ],
         "pathType": "instance",
-        "parent": "/Accounts/{AccountSid}/Calls.json"
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
       },
       "post": {
         "description": "Stop a Stream using either the SID of the Stream resource or the `name` used when creating the resource",
@@ -28999,7 +29085,7 @@
           "ice_servers"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "post": {
         "description": "Create a new token for ICE servers",
@@ -29071,7 +29157,7 @@
           "duration"
         ],
         "pathType": "instance",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Fetch an instance of a Transcription",
@@ -29182,7 +29268,7 @@
           "duration"
         ],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       },
       "get": {
         "description": "Retrieve a list of transcriptions belonging to the account used to make the request",
@@ -29280,7 +29366,7 @@
       "x-twilio": {
         "defaultOutputProperties": [],
         "pathType": "list",
-        "parent": "/Accounts.json"
+        "parent": "/Accounts/{Sid}.json"
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records.json": {
@@ -30950,6 +31036,267 @@
           }
         ],
         "operationId": "ListUsageTrigger",
+        "x-maturity": [
+          "GA"
+        ]
+      }
+    },
+    "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessages.json": {
+      "servers": [
+        {
+          "url": "https://api.twilio.com"
+        }
+      ],
+      "description": "TODO: Resource-level docs",
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "sid"
+        ],
+        "pathType": "list",
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
+      },
+      "post": {
+        "description": "Create a new User Defined Message for the given call sid.",
+        "parameters": [
+          {
+            "name": "AccountSid",
+            "in": "path",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created User Defined Message.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^AC[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "CallSid",
+            "in": "path",
+            "description": "The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Message is associated with.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^CA[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.v2010.account.call.user_defined_message"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "operationId": "CreateUserDefinedMessage",
+        "x-maturity": [
+          "GA"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "title": "CreateUserDefinedMessageRequest",
+                "properties": {
+                  "Content": {
+                    "type": "string",
+                    "description": "A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated."
+                  },
+                  "IdempotencyKey": {
+                    "type": "string",
+                    "description": "A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated."
+                  }
+                },
+                "required": [
+                  "Content"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessageSubscriptions.json": {
+      "servers": [
+        {
+          "url": "https://api.twilio.com"
+        }
+      ],
+      "description": "TODO: Resource-level docs",
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "sid"
+        ],
+        "pathType": "list",
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
+      },
+      "post": {
+        "description": "Subscribe to User Defined Messages for a given call sid.",
+        "parameters": [
+          {
+            "name": "AccountSid",
+            "in": "path",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that subscribed to the User Defined Messages.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^AC[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "CallSid",
+            "in": "path",
+            "description": "The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Messages subscription is associated with. This refers to the call sid that is producing the user defined messages.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^CA[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.v2010.account.call.user_defined_message_subscription"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "operationId": "CreateUserDefinedMessageSubscription",
+        "x-maturity": [
+          "GA"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "title": "CreateUserDefinedMessageSubscriptionRequest",
+                "properties": {
+                  "Callback": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "The URL we should call using the `method` to send user defined events to your application. URLs must contain a valid hostname (underscores are not permitted)."
+                  },
+                  "Method": {
+                    "type": "string",
+                    "format": "http-method",
+                    "enum": [
+                      "HEAD",
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE"
+                    ],
+                    "description": "The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`."
+                  },
+                  "IdempotencyKey": {
+                    "type": "string",
+                    "description": "A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated."
+                  }
+                },
+                "required": [
+                  "Callback",
+                  "Method"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessageSubscriptions/{Sid}.json": {
+      "servers": [
+        {
+          "url": "https://api.twilio.com"
+        }
+      ],
+      "description": "TODO: Resource-level docs",
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "sid"
+        ],
+        "pathType": "instance",
+        "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json"
+      },
+      "delete": {
+        "description": "Delete a specific User Defined Message Subscription.",
+        "parameters": [
+          {
+            "name": "AccountSid",
+            "in": "path",
+            "description": "The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that subscribed to the User Defined Messages.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^AC[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "CallSid",
+            "in": "path",
+            "description": "The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Messages subscription is associated with. This refers to the call sid that is producing the user defined messages.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^CA[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "Sid",
+            "in": "path",
+            "description": "The SID that uniquely identifies this User Defined Message Subscription.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^ZY[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully."
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "operationId": "DeleteUserDefinedMessageSubscription",
         "x-maturity": [
           "GA"
         ]
