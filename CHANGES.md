@@ -1,3 +1,5 @@
+### [7.4.2](https://github.com/twilio/twilio-cli-core/compare/7.4.1...7.4.2) (2022-11-17)
+
 ---------------------------
 **Api**
 - Set the Content resource to have public visibility as Preview
