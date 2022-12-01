@@ -1,3 +1,10 @@
+### [7.4.3](https://github.com/twilio/twilio-cli-core/compare/7.4.2...7.4.3) (2022-12-01)
+
+
+### Library - Chores
+
+* Update package.json ([2b2fbe6](https://github.com/twilio/twilio-cli-core/commit/2b2fbe634b1640b880d8757fb94bdddc857d4727))
+
 ---------------------------
 **Flex**
 - Adding new `assessments` api in version `v1`
