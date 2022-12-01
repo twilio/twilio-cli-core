@@ -1,3 +1,18 @@
+---------------------------
+**Flex**
+- Adding new `assessments` api in version `v1`
+
+**Lookups**
+- Add `identity_match` package to the lookup response
+
+**Messaging**
+- Added `validated` parameter to Link Shortening API
+
+**Serverless**
+- Add node16 as a valid Build runtime
+- Add ie1 and au1 as supported regions for all endpoints.
+
+
 ### [7.4.2](https://github.com/twilio/twilio-cli-core/compare/7.4.1...7.4.2) (2022-11-17)
 
 ---------------------------
