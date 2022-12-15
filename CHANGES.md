@@ -1,3 +1,5 @@
+## [7.5.0](https://github.com/twilio/twilio-cli-core/compare/7.4.3...7.5.0) (2022-12-15)
+
 ---------------------------
 **Api**
 - Add `street_secondary` param to address create and update
