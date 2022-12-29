@@ -1,3 +1,5 @@
+### [7.5.1](https://github.com/twilio/twilio-cli-core/compare/7.5.0...7.5.1) (2022-12-29)
+
 ---------------------------
 **Library - Fix**
 - [PR #83](https://github.com/twilio/twilio-oai/pull/83): singularize ice-server. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
