@@ -1,3 +1,14 @@
+---------------------------
+**Conversations**
+- Add support for creating Multi-Channel Rich Content Messages
+
+**Lookups**
+- Changed the no data message for match postal code from `no_data` to `data_not_available` in identity match package
+
+**Messaging**
+- Add update/edit tollfree verification API
+
+
 ### [7.5.1](https://github.com/twilio/twilio-cli-core/compare/7.5.0...7.5.1) (2022-12-29)
 
 ---------------------------
