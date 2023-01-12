@@ -1,3 +1,5 @@
+### [7.5.2](https://github.com/twilio/twilio-cli-core/compare/7.5.1...7.5.2) (2023-01-12)
+
 ---------------------------
 **Conversations**
 - Add support for creating Multi-Channel Rich Content Messages
