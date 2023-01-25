@@ -41,7 +41,7 @@
     "qs": "^6.9.4",
     "semver": "^7.3.2",
     "tsv": "^0.2.0",
-    "twilio": "^3.80.0",
+    "twilio": "^4.0.0",
     "@oclif/core": "^1.16.0"
   },
   "devDependencies": {
