@@ -1,3 +1,5 @@
+### [7.5.3](https://github.com/twilio/twilio-cli-core/compare/7.5.2...7.5.3) (2023-01-26)
+
 ---------------------------
 **Library - Fix**
 - [PR #87](https://github.com/twilio/twilio-oai/pull/87): use long property descriptions if available. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
