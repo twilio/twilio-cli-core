@@ -1,3 +1,12 @@
+---------------------------
+**Library - Feature**
+- [PR #88](https://github.com/twilio/twilio-oai/pull/88): add Page and PageToken parameters to read operations. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Lookups**
+- Add `disposable_phone_number_risk` package to the lookup response
+- Add `sms_pumping_risk` package to the lookup response
+
+
 ### [7.5.3](https://github.com/twilio/twilio-cli-core/compare/7.5.2...7.5.3) (2023-01-26)
 
 ---------------------------
