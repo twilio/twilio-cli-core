@@ -1,3 +1,5 @@
+## [7.6.0](https://github.com/twilio/twilio-cli-core/compare/7.5.3...7.6.0) (2023-02-09)
+
 ---------------------------
 **Library - Feature**
 - [PR #88](https://github.com/twilio/twilio-oai/pull/88): add Page and PageToken parameters to read operations. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
