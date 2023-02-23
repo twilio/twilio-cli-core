@@ -1,3 +1,15 @@
+### [7.6.1](https://github.com/twilio/twilio-cli-core/compare/7.6.0...7.6.1) (2023-02-23)
+
+
+### Library - Chores
+
+* update twilio node mvr version ([#218](https://github.com/twilio/twilio-cli-core/issues/218)) ([71c5a98](https://github.com/twilio/twilio-cli-core/commit/71c5a98eacbf5f3867bfdfd5a2bc18afd299beb7))
+
+
+### Library - Fixes
+
+* using npx instead of npm bin ([#220](https://github.com/twilio/twilio-cli-core/issues/220)) ([b3d59e9](https://github.com/twilio/twilio-cli-core/commit/b3d59e9abd7e1c43008993ac9b76576323e037f9))
+
 ---------------------------
 **Api**
 - Remove `scheduled_for` property from message resource
