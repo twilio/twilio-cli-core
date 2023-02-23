@@ -1,3 +1,9 @@
+---------------------------
+**Api**
+- Remove `scheduled_for` property from message resource
+- Add `scheduled_for` property to message resource
+
+
 ## [7.6.0](https://github.com/twilio/twilio-cli-core/compare/7.5.3...7.6.0) (2023-02-09)
 
 ---------------------------
