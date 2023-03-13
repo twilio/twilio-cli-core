@@ -1,16 +1,14 @@
 name: Cli-core Release
+run-name: Cli-core Release ${{ inputs.cli-branch }} ${{ inputs.rc-branch }}
 on:
   workflow_dispatch:
     inputs:
       cli-branch:
-        description: 'Run cli workflow in the given branch'
+        description: 'CLI Major Version Release branch name'
         default: main
-      homebrew-branch:
-        description: 'HomeBrew branch name'
-        default: main
-      homebrew-prerelease:
-        description: 'HomeBrew prerelease'
-        default: 'false'
+        required: true
+      rc-branch:
+        description: 'CLI Release Candidate branch name'
 jobs:
   cli-core-token-validation:
     runs-on: ubuntu-latest
@@ -31,7 +29,7 @@ jobs:
           WORKFLOW_NAME: '.github/workflows/release-token-validation.yml'
           REPO_NAME: ${{ github.repository_owner }}/twilio-cli
           REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-          BRANCH_NAME: ${{steps.extract_branch.outputs.branch}}
+          BRANCH_NAME: ${{github.event.inputs.cli-branch}}
       - name: Validate REPO_ACCESS_TOKEN
         uses: actions/checkout@v2
         with:
@@ -174,10 +172,30 @@ jobs:
           WORKFLOW_NAME: 'release.yml'
           BRANCH_NAME: ${{github.event.inputs.cli-branch}}
           REPO_NAME:  ${{ github.repository_owner }}/twilio-cli
-          INPUTS: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}" }'
+          INPUTS: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "branch": "${{github.event.inputs.cli-branch}}" }'
+  triggerCliWorkflowForRC:
+    if: ${{github.event.inputs.rc-branch != ''}}
+    runs-on: ubuntu-latest
+    needs: [ update-api-specs, release ]
+    steps:
+      - name: Checkout cli-core repo
+        uses: actions/checkout@v2
+      - run: |
+          git pull
+          make install
+      - name: Invoke CLI workflow with changelog and version-type
+        run: |
+          fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
+          node -e "require('$fileName').triggerWorkflow()"
+        env:
+          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          WORKFLOW_NAME: 'release.yml'
+          BRANCH_NAME: ${{github.event.inputs.rc-branch}}
+          REPO_NAME:  ${{ github.repository_owner }}/twilio-cli
+          INPUTS: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "branch": "${{github.event.inputs.rc-branch}}" }'
   notify-complete-fail:
     if: ${{ (needs.cli-token-validation.result != 'failure' || needs.cli-core-token-validation.result != 'failure' ) && (failure() || cancelled()) }}
-    needs: [ triggerCliWorkflow ]
+    needs: [ triggerCliWorkflow, triggerCliWorkflowForRC ]
     name: Notify Release Failed
     runs-on: ubuntu-latest
     steps:

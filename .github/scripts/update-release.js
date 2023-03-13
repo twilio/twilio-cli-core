@@ -12,6 +12,7 @@ const updateRelease = async () => {
     })
     const [owner, repo] = process.env.REPO_NAME ? process.env.REPO_NAME.split('/') : [null, null];
     const tag = process.env.TAG_NAME;
+    console.log(`Info: Owner: ${owner}, Repo: ${repo}, Tag: ${tag}`);
 
     //https://docs.github.com/en/rest/releases/releases#get-a-release-by-tag-name
     const getReleaseResponse = await octokit.request('GET /repos/{owner}/{repo}/releases/tags/{tag}',{
