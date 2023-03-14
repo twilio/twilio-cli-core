@@ -1,3 +1,14 @@
+---------------------------
+**Api**
+- Add new categories for whatsapp template
+
+**Lookups**
+- Remove `validation_results` from the `default_output_properties`
+
+**Supersim**
+- Add ESimProfile's `matching_id` and `activation_code` parameters to libraries
+
+
 ### [7.6.1](https://github.com/twilio/twilio-cli-core/compare/7.6.0...7.6.1) (2023-02-23)
 
 
