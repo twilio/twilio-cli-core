@@ -1,3 +1,5 @@
+### [7.6.2](https://github.com/twilio/twilio-cli-core/compare/7.6.1...7.6.2) (2023-03-14)
+
 ---------------------------
 **Api**
 - Add new categories for whatsapp template
