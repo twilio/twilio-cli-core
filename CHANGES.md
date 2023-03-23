@@ -1,3 +1,5 @@
+## [7.7.0](https://github.com/twilio/twilio-cli-core/compare/7.6.2...7.7.0) (2023-03-23)
+
 ---------------------------
 **Api**
 - Revert Corrected the data type for `friendly_name` in Available Phone Number Local, Mobile and TollFree resources
