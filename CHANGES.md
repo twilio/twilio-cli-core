@@ -1,3 +1,5 @@
+## [7.8.0](https://github.com/twilio/twilio-cli-core/compare/7.7.0...7.8.0) (2023-04-06)
+
 ---------------------------
 **Conversations**
 - Expose query parameters `start_date`, `end_date` and `state` in list operation on Conversations resource for sorting and filtering
