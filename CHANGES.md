@@ -1,3 +1,10 @@
+## [7.9.0](https://github.com/twilio/twilio-cli-core/compare/7.8.0...7.9.0) (2023-04-20)
+
+
+### Library - Fixes
+
+* Move make install step after node setup tp fix npm failures ([#222](https://github.com/twilio/twilio-cli-core/issues/222)) ([1a37412](https://github.com/twilio/twilio-cli-core/commit/1a37412dd39844728d9803838de4b34ed8f42e73))
+
 ---------------------------
 **Messaging**
 - Remove `messaging_service_sids` and `messaging_service_sid_action` from domain config endpoint **(breaking change)**
