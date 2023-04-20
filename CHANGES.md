@@ -1,3 +1,12 @@
+---------------------------
+**Messaging**
+- Remove `messaging_service_sids` and `messaging_service_sid_action` from domain config endpoint **(breaking change)**
+- Add error_code and rejection_reason properties to tollfree verification API response
+
+**Numbers**
+- Added the new Eligibility API under version `/v1`.
+
+
 ## [7.8.0](https://github.com/twilio/twilio-cli-core/compare/7.7.0...7.8.0) (2023-04-06)
 
 ---------------------------
