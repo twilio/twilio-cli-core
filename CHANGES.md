@@ -1,3 +1,11 @@
+---------------------------
+**Conversations**
+- Remove `start_date`, `end_date` and `state` query parameters from list operation on Conversations resource **(breaking change)**
+
+**Twiml**
+- Add support for new Amazon Polly voices (Q1 2023) for `Say` verb
+
+
 ## [7.9.0](https://github.com/twilio/twilio-cli-core/compare/7.8.0...7.9.0) (2023-04-20)
 
 
