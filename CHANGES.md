@@ -1,3 +1,5 @@
+### [7.10.1](https://github.com/twilio/twilio-cli-core/compare/7.10.0...7.10.1) (2023-05-18)
+
 ---------------------------
 **Conversations**
 - Added  `AddressCountry` parameter to Address Configuration endpoint, to support regional short code addresses
