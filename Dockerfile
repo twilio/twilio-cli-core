@@ -1,4 +1,4 @@
-FROM node:14.21.3
+FROM node:18.16.0
 RUN apt-get update && apt-get install -y libsecret-1-dev
 
 RUN mkdir /cli-core
