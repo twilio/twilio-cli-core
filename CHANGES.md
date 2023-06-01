@@ -1,3 +1,10 @@
+### [7.10.2](https://github.com/twilio/twilio-cli-core/compare/7.10.1...7.10.2) (2023-06-01)
+
+
+### Library - Fixes
+
+* Update Dockerfile base to be consistent with twilio-cli ([#226](https://github.com/twilio/twilio-cli-core/issues/226)) ([73a3c09](https://github.com/twilio/twilio-cli-core/commit/73a3c091ad8c23d98dc8e54311ab27c9502e6965))
+
 ---------------------------
 **Api**
 - Add `Trim` to create Conference Participant API
