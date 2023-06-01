@@ -1,3 +1,14 @@
+---------------------------
+**Api**
+- Add `Trim` to create Conference Participant API
+
+**Intelligence**
+- First public beta release for Voice Intelligence APIs with client libraries
+
+**Messaging**
+- Add new `errors` attribute to us_app_to_person resource. This attribute will provide additional information about campaign registration errors.
+
+
 ### [7.10.1](https://github.com/twilio/twilio-cli-core/compare/7.10.0...7.10.1) (2023-05-18)
 
 ---------------------------
