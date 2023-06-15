@@ -1,3 +1,12 @@
+---------------------------
+**Api**
+- Added `content_sid` as conditional parameter
+- Removed `content_sid` as optional field **(breaking change)**
+
+**Insights**
+- Added `annotation` to list summary output
+
+
 ### [7.10.2](https://github.com/twilio/twilio-cli-core/compare/7.10.1...7.10.2) (2023-06-01)
 
 
