@@ -1,3 +1,5 @@
+## [7.11.0](https://github.com/twilio/twilio-cli-core/compare/7.10.2...7.11.0) (2023-06-15)
+
 ---------------------------
 **Api**
 - Added `content_sid` as conditional parameter
