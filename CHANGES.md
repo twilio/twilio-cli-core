@@ -1,3 +1,5 @@
+## [7.12.0](https://github.com/twilio/twilio-cli-core/compare/7.11.0...7.12.0) (2023-06-28)
+
 ---------------------------
 **Lookups**
 - Add `reassigned_number` package to the lookup response
