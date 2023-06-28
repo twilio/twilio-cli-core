@@ -1,3 +1,14 @@
+---------------------------
+**Lookups**
+- Add `reassigned_number` package to the lookup response
+
+**Numbers**
+- Add hosted_number_order under version `/v2`.
+- Update properties in Porting and Bulk Porting APIs. **(breaking change)**
+- Added bulk Portability API under version `/v1`.
+- Added Portability API under version `/v1`.
+
+
 ## [7.11.0](https://github.com/twilio/twilio-cli-core/compare/7.10.2...7.11.0) (2023-06-15)
 
 ---------------------------
