@@ -1,3 +1,5 @@
+## [7.13.0](https://github.com/twilio/twilio-cli-core/compare/7.12.0...7.13.0) (2023-07-13)
+
 ---------------------------
 **Flex**
 - Adding `interaction_context_sid` as optional parameter in Interactions API
