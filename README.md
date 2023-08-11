@@ -5,7 +5,7 @@
 This module contains core functionality for the twilio-cli.
 
 ## Requirements
-Currently, Node 14+ is supported. We support the [LTS versions](https://nodejs.org/en/about/releases) of Node.
+Currently, Node 18+ is supported. We support the [LTS versions](https://nodejs.org/en/about/releases) of Node.
 
 ## Base commands
 
