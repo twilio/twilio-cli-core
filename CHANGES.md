@@ -1,3 +1,35 @@
+---------------------------
+**Insights**
+- Normalize annotations parameters in list summary api to be prefixed
+
+**Numbers**
+- Change Bulk_hosted_sid from BHR to BH prefix in HNO and dependent under version `/v2` API's. **(breaking change)**
+- Added parameter target_account_sid to portability and account_sid to response body
+
+**Verify**
+- Remove beta feature flag to list attempts API.
+- Remove beta feature flag to verifications summary attempts API.
+
+
+---------------------------
+**Api**
+- Added `voice-intelligence`, `voice-intelligence-transcription` and `voice-intelligence-operators` to `usage_record` API.
+- Added `tts-google` to `usage_record` API.
+
+**Lookups**
+- Add new `disposable_phone_number_risk` package to the lookup response
+
+**Verify**
+- Documentation of list attempts API was improved by correcting `date_created_after` and `date_created_before` expected date format.
+- Documentation was improved by correcting `date_created_after` and `date_created_before` expected date format parameter on attempts summary API.
+- Documentation was improved by adding `WHATSAPP` as optional valid parameter on attempts summary API.
+
+**Twiml**
+- Added support for he-il inside of ssm_lang.json that was missing
+- Added support for he-il language in say.json that was missing
+- Add `statusCallback` and `statusCallbackMethod` attributes to `<Siprec>`.
+
+
 ## [7.13.0](https://github.com/twilio/twilio-cli-core/compare/7.12.0...7.13.0) (2023-07-13)
 
 ---------------------------
