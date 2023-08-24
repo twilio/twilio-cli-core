@@ -1,3 +1,19 @@
+---------------------------
+**Api**
+- Add new property `RiskCheck` for SMS pumping protection feature only (public beta to be available soon): Include this parameter with a value of `disable` to skip any kind of risk check on the respective message request
+
+**Flex**
+- Changing `sid<UO>` path param to `sid<UT>` in interaction channel participant update endpoint **(breaking change)**
+
+**Messaging**
+- Add Channel Sender api
+- Fixing country code docs and removing Zipwhip references
+
+**Numbers**
+- Request status changed in numbers/v2/BulkHostedNumberOrders **(breaking change)**
+- Add bulk hosting orders API under version `/v2
+
+
 ## [7.14.0](https://github.com/twilio/twilio-cli-core/compare/7.13.0...7.14.0) (2023-08-14)
 
 ---------------------------
