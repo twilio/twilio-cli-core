@@ -1,3 +1,5 @@
+## [7.15.0](https://github.com/twilio/twilio-cli-core/compare/7.14.0...7.15.0) (2023-08-24)
+
 ---------------------------
 **Api**
 - Add new property `RiskCheck` for SMS pumping protection feature only (public beta to be available soon): Include this parameter with a value of `disable` to skip any kind of risk check on the respective message request
