@@ -1,3 +1,21 @@
+---------------------------
+**Api**
+- Make message tagging parameters public **(breaking change)**
+
+**Flex**
+- Adding `agent_conv_end_methods` to Flex Configuration
+
+**Messaging**
+- Mark Mesasging Services fallback_to_long_code feature obsolete
+
+**Numbers**
+- Add Create Port In request api
+- Renaming sid for bulk_hosting_sid and remove account_sid response field in numbers/v2/BulkHostedNumberOrders **(breaking change)**
+
+**Pricing**
+- gate resources behind a beta_feature
+
+
 ## [7.15.0](https://github.com/twilio/twilio-cli-core/compare/7.14.0...7.15.0) (2023-08-24)
 
 ---------------------------
