@@ -1,3 +1,5 @@
+## [7.16.0](https://github.com/twilio/twilio-cli-core/compare/7.15.0...7.16.0) (2023-09-08)
+
 ---------------------------
 **Api**
 - Make message tagging parameters public **(breaking change)**
