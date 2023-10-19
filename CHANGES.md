@@ -1,3 +1,5 @@
+## [7.18.0](https://github.com/twilio/twilio-cli-core/compare/7.17.0...7.18.0) (2023-10-19)
+
 ---------------------------
 **Accounts**
 - Updated Safelist metadata to correct the docs.
