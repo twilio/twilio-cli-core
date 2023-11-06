@@ -1,3 +1,20 @@
+---------------------------
+**Flex**
+- Adding `provisioning_status` for Email Manager
+
+**Intelligence**
+- Add text-generation operator (for example conversation summary) results to existing OperatorResults collection.
+
+**Messaging**
+- Add DELETE support to Tollfree Verification resource
+
+**Serverless**
+- Add node18 as a valid Build runtime
+
+**Verify**
+- Update Verify TOTP maturity to GA.
+
+
 ## [7.18.0](https://github.com/twilio/twilio-cli-core/compare/7.17.0...7.18.0) (2023-10-19)
 
 ---------------------------
