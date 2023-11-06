@@ -1,3 +1,5 @@
+### [7.18.1](https://github.com/twilio/twilio-cli-core/compare/7.18.0...7.18.1) (2023-11-06)
+
 ---------------------------
 **Flex**
 - Adding `provisioning_status` for Email Manager
