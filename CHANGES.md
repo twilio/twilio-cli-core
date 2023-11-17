@@ -1,3 +1,25 @@
+---------------------------
+**Library - Chore**
+- [PR #98](https://github.com/twilio/twilio-oai/pull/98): removing oauth. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Api**
+- Update documentation to reflect RiskCheck GA
+
+**Messaging**
+- Add tollfree edit_allowed and edit_reason fields
+- Update Phone Number, Short Code, Alpha Sender, US A2P and Channel Sender documentation
+
+**Taskrouter**
+- Add container attribute to task_queue_bulk_real_time_statistics endpoint
+
+**Trusthub**
+- Rename did to tollfree_phone_number in compliance_tollfree_inquiry.json
+- Add new optional field notification_email to compliance_tollfree_inquiry.json
+
+**Verify**
+- Add `Tags` optional parameter on Verification creation.
+
+
 ### [7.18.1](https://github.com/twilio/twilio-cli-core/compare/7.18.0...7.18.1) (2023-11-06)
 
 ---------------------------
