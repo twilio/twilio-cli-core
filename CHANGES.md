@@ -1,3 +1,5 @@
+### [7.18.3](https://github.com/twilio/twilio-cli-core/compare/7.18.2...7.18.3) (2023-12-01)
+
 ---------------------------
 **Verify**
 - Add `VerifyEventSubscriptionEnabled` parameter to service create and update endpoints.
