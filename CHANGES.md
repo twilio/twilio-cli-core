@@ -1,3 +1,26 @@
+---------------------------
+**Api**
+- Updated service base url for connect apps and authorized connect apps APIs **(breaking change)**
+
+**Events**
+- Marked as GA
+
+**Insights**
+- decommission voice-qualitystats-endpoint role
+
+**Numbers**
+- Add Get Port In request api
+
+**Taskrouter**
+- Add `jitter_buffer_size` param in update reservation
+
+**Trusthub**
+- Add additional optional fields in compliance_tollfree_inquiry.json
+
+**Verify**
+- Remove `Tags` from Public Docs **(breaking change)**
+
+
 ### [7.18.3](https://github.com/twilio/twilio-cli-core/compare/7.18.2...7.18.3) (2023-12-01)
 
 ---------------------------
