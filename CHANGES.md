@@ -1,3 +1,5 @@
+## [7.19.0](https://github.com/twilio/twilio-cli-core/compare/7.18.3...7.19.0) (2023-12-14)
+
 ---------------------------
 **Api**
 - Updated service base url for connect apps and authorized connect apps APIs **(breaking change)**
