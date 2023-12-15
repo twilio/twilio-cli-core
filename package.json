@@ -32,7 +32,7 @@
     "@oclif/plugin-help": "^3.2.2",
     "@oclif/plugin-plugins": "^2.1.0",
     "@octokit/rest": "^19.0.3",
-    "axios": "^0.25.0",
+    "axios": "^1.6.0",
     "chalk": "^4.1.2",
     "columnify": "^1.5.4",
     "fs-extra": "^9.0.1",
