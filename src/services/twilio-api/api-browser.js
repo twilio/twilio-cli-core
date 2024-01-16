@@ -71,6 +71,7 @@ class TwilioApiBrowser {
 
     Object.values(domains).forEach((spec) => {
       Object.values(spec.paths).forEach((path) => {
+        if (path === '/healthcheck') return;
         // Naive assumption: The Twilio APIs only have a single server.
         path.server = path.servers[0].url;
         delete path.servers;
