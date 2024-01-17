@@ -70,8 +70,10 @@ class TwilioApiBrowser {
     const domains = JSON.parse(JSON.stringify(obj));
 
     Object.values(domains).forEach((spec) => {
-      Object.values(spec.paths).forEach((path) => {
-        if (path === '/healthcheck') return;
+      Object.entries(spec.paths).forEach((entry) => {
+        const key = entry[0];
+        const path = entry[1];
+        if (key === '/healthcheck') return;
         // Naive assumption: The Twilio APIs only have a single server.
         path.server = path.servers[0].url;
         delete path.servers;
