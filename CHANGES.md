@@ -1,3 +1,11 @@
+### [7.19.1](https://github.com/twilio/twilio-cli-core/compare/7.19.0...7.19.1) (2024-01-17)
+
+
+### Library - Chores
+
+* skip healthcheck api ([#236](https://github.com/twilio/twilio-cli-core/issues/236)) ([0f52d2b](https://github.com/twilio/twilio-cli-core/commit/0f52d2b0b8cbcbdd5623c48c8e21abf6f08d0566))
+* **deps:** bump axios from 0.25.0 to 1.6.0 ([#232](https://github.com/twilio/twilio-cli-core/issues/232)) ([caf0f9e](https://github.com/twilio/twilio-cli-core/commit/caf0f9e2a89798dde91e4cfa68ef23ff8431804e))
+
 ---------------------------
 **Push**
 - Migrated to new Push API V4 with Resilient Notification Delivery.
