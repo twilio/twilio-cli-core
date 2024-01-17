@@ -1,3 +1,8 @@
+---------------------------
+**Push**
+- Migrated to new Push API V4 with Resilient Notification Delivery.
+
+
 ## [7.19.0](https://github.com/twilio/twilio-cli-core/compare/7.18.3...7.19.0) (2023-12-14)
 
 ---------------------------
