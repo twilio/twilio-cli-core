@@ -41,7 +41,7 @@ class TwilioApiBrowser {
 
       apiSpec = fs
         .readdirSync(__dirname)
-        .filter((filename) => filename.match(specPattern) && !filename.match('twilio_preview.json'))
+        .filter((filename) => filename.match(specPattern))
         .map((filename) => {
           const domainName = filename.match(specPattern)[specNameIndex];
 

@@ -11,11 +11,13 @@ describe('services', () => {
         expect(browser.domains.api.paths['/2010-04-01/Accounts/{AccountSid}/Calls.json'].operations.post).to.exist;
         expect(browser.domains.api.paths['/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json'].operations.get).to.exist;
       });
-
-      test.it('loads the JSON from disk except for preview', () => {
-        const browser = new TwilioApiBrowser();
-        expect(browser.domains.api.paths['/BulkExports/Exports/Jobs/{JobSid}']).to.not.exist;
-      });
+      /*
+       * enable it after one build is done, and the path is loaded.
+       * test.it('loads the JSON from disk for preview', () => {
+       *   const browser = new TwilioApiBrowser();
+       *   expect(browser.domains.api.paths['/BulkExports/Exports/Jobs/{JobSid}']).to.exist;
+       * });
+       */
 
       test.it('loads JSONs split by version', () => {
         const browser = new TwilioApiBrowser();
