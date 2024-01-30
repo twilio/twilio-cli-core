@@ -62,26 +62,26 @@ jobs:
         if: ${{ steps.cli_token.outputs.tokenStatus != 'success'}}
         run: exit 1
 
-  notify-start:
-    needs: [ cli-token-validation ]
-    name: Notify Release Started
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Extract branch name
-        id: extract_branch
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      - name: Slack Notification
-        if: ${{steps.extract_branch.outputs.branch == 'main' }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK }}
-          SLACK_COLOR: "#36a64f"
-          SLACK_USERNAME: CLI Release Bot
-          SLACK_ICON_EMOJI: ":ship:"
-          SLACK_TITLE: "Twilio Cli"
-          SLACK_MESSAGE: 'Release Started :rocket:'
-          MSG_MINIMAL: actions url
+#  notify-start:
+#    needs: [ cli-token-validation ]
+#    name: Notify Release Started
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Extract branch name
+#        id: extract_branch
+#        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+#      - name: Slack Notification
+#        if: ${{steps.extract_branch.outputs.branch == 'main' }}
+#        uses: rtCamp/action-slack-notify@v2
+#        env:
+#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK }}
+#          SLACK_COLOR: "#36a64f"
+#          SLACK_USERNAME: CLI Release Bot
+#          SLACK_ICON_EMOJI: ":ship:"
+#          SLACK_TITLE: "Twilio Cli"
+#          SLACK_MESSAGE: 'Release Started :rocket:'
+#          MSG_MINIMAL: actions url
   test:
     needs: [ cli-token-validation ]
     runs-on: ubuntu-latest
@@ -175,20 +175,20 @@ jobs:
           BRANCH_NAME: ${{github.event.inputs.cli-branch}}
           REPO_NAME:  ${{ github.repository_owner }}/twilio-cli
           INPUTS: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}" }'
-  notify-complete-fail:
-    if: ${{ (needs.cli-token-validation.result != 'failure' || needs.cli-core-token-validation.result != 'failure' ) && (failure() || cancelled()) }}
-    needs: [ triggerCliWorkflow ]
-    name: Notify Release Failed
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.ALERT_SLACK_WEB_HOOK }}
-          SLACK_COLOR: "#ff3333"
-          SLACK_USERNAME: CLI Release Bot
-          SLACK_ICON_EMOJI: ":ship:"
-          SLACK_TITLE: "Twilio Cli-core"
-          SLACK_MESSAGE: 'Release workflow Failed'
-          MSG_MINIMAL: actions url
+#  notify-complete-fail:
+#    if: ${{ (needs.cli-token-validation.result != 'failure' || needs.cli-core-token-validation.result != 'failure' ) && (failure() || cancelled()) }}
+#    needs: [ triggerCliWorkflow ]
+#    name: Notify Release Failed
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Slack Notification
+#        uses: rtCamp/action-slack-notify@v2
+#        env:
+#          SLACK_WEBHOOK: ${{ secrets.ALERT_SLACK_WEB_HOOK }}
+#          SLACK_COLOR: "#ff3333"
+#          SLACK_USERNAME: CLI Release Bot
+#          SLACK_ICON_EMOJI: ":ship:"
+#          SLACK_TITLE: "Twilio Cli-core"
+#          SLACK_MESSAGE: 'Release workflow Failed'
+#          MSG_MINIMAL: actions url
