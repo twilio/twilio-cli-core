@@ -1,3 +1,5 @@
+## [7.21.0](https://github.com/twilio/twilio-cli-core/compare/7.20.0...7.21.0) (2024-01-30)
+
 ---------------------------
 **Oauth**
 - updated openid discovery endpoint uri **(breaking change)**
