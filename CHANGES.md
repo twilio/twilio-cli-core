@@ -1,3 +1,13 @@
+---------------------------
+**Oauth**
+- updated openid discovery endpoint uri **(breaking change)**
+- Added device code authorization endpoint
+- added oauth JWKS endpoint
+- Get userinfo resource
+- OpenID discovery resource
+- Add new API for token endpoint
+
+
 ## [7.20.0](https://github.com/twilio/twilio-cli-core/compare/7.19.1...7.20.0) (2024-01-24)
 
 
