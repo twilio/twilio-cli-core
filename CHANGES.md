@@ -1,3 +1,15 @@
+## [7.20.0](https://github.com/twilio/twilio-cli-core/compare/7.19.1...7.20.0) (2024-01-30)
+
+
+### Library - Fixes
+
+* added fix for preview domain ([e158bd6](https://github.com/twilio/twilio-cli-core/commit/e158bd604228f8157685f609adceef8b345fd9d2))
+
+
+### Library - Chores
+
+* disable notification ([67f71ed](https://github.com/twilio/twilio-cli-core/commit/67f71edfb571a85f8deb46dbe8502537bf8e756a))
+
 ---------------------------
 **Oauth**
 - updated openid discovery endpoint uri **(breaking change)**
