@@ -1,4 +1,4 @@
-## [7.20.0](https://github.com/twilio/twilio-cli-core/compare/7.19.1...7.20.0) (2024-01-25)
+## [7.20.0](https://github.com/twilio/twilio-cli-core/compare/7.19.1...7.20.0) (2024-01-24)
 
 
 ### Library - Fixes
