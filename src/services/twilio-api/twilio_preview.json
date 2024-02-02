@@ -6796,7 +6796,7 @@
           {
             "name": "ServiceSid",
             "in": "path",
-            "description": "Blah blah blah",
+            "description": "",
             "schema": {
               "type": "string",
               "minLength": 34,
