@@ -2597,6 +2597,309 @@
             "nullable": true
           }
         }
+      },
+      "preview.flows.page_meta_data": {
+        "type": "object",
+        "description": "The metadata for Pagination",
+        "properties": {
+          "first_page_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "next_page_url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer"
+          },
+          "page_size": {
+            "type": "integer"
+          },
+          "previous_page_url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "key": {
+            "type": "string"
+          }
+        }
+      },
+      "preview.flows.flow_resource": {
+        "type": "object",
+        "description": "The resource representation of a Flow",
+        "properties": {
+          "sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^YJ[0-9a-fA-F]{32}$"
+          },
+          "account_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$"
+          },
+          "instance_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^GO[0-9a-fA-F]{32}$"
+          },
+          "unique_name": {
+            "type": "string",
+            "description": "A unique human legible name."
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of what this Flow is/does"
+          },
+          "version": {
+            "type": "integer",
+            "description": "The version of this object.",
+            "minimum": 1,
+            "format": "int64"
+          },
+          "date_created": {
+            "type": "string",
+            "description": "The Flow creation timestamp.",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "type": "string",
+            "description": "The Flow updated timestamp.",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "sid",
+          "instance_sid",
+          "unique_name",
+          "account_sid",
+          "date_created",
+          "date_updated"
+        ]
+      },
+      "preview.flows.list_flows_response": {
+        "type": "object",
+        "description": "The response object returned for listing Flows.",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/preview.flows.page_meta_data"
+          },
+          "flows": {
+            "type": "array",
+            "description": "The list of Flows.",
+            "items": {
+              "$ref": "#/components/schemas/preview.flows.flow_resource"
+            }
+          }
+        }
+      },
+      "preview.flows.flow_execution_enum_status": {
+        "type": "string",
+        "enum": [
+          "ACTIVE",
+          "ENDED"
+        ]
+      },
+      "preview.flows.flow_execution_resource": {
+        "type": "object",
+        "description": "The resource representation of a Flow Execution",
+        "properties": {
+          "sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^QW[0-9a-fA-F]{32}$"
+          },
+          "instance_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^GO[0-9a-fA-F]{32}$"
+          },
+          "account_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$"
+          },
+          "flow_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^YJ[0-9a-fA-F]{32}$"
+          },
+          "status": {
+            "type": "string",
+            "$ref": "#/components/schemas/preview.flows.flow_execution_enum_status",
+            "description": "The status of the Execution. Can be: `ACTIVE` or `ENDED`."
+          },
+          "root_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^QW[0-9a-fA-F]{32}$"
+          },
+          "date_created": {
+            "type": "string",
+            "description": "The Flow Execution creation timestamp.",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "type": "string",
+            "description": "The Flow Execution updated timestamp.",
+            "format": "date-time"
+          },
+          "date_started": {
+            "type": "string",
+            "description": "The Flow Execution updated timestamp.",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "sid",
+          "flow_sid",
+          "account_sid",
+          "status",
+          "date_created",
+          "date_updated"
+        ]
+      },
+      "preview.flows.list_flow_executions_response": {
+        "type": "object",
+        "description": "The response object returned for listing Flow Executions.",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/preview.flows.page_meta_data"
+          },
+          "executions": {
+            "type": "array",
+            "description": "The list of Flow Executions.",
+            "items": {
+              "$ref": "#/components/schemas/preview.flows.flow_execution_resource"
+            }
+          }
+        }
+      },
+      "preview.flows.flow_execution_step_enum_status": {
+        "type": "string",
+        "enum": [
+          "RUNNING",
+          "COMPLETED",
+          "FAILED"
+        ]
+      },
+      "preview.flows.flow_execution_step_resource": {
+        "type": "object",
+        "description": "The resource representation of a Flow Execution",
+        "properties": {
+          "sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^QV[0-9a-fA-F]{32}$"
+          },
+          "instance_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^GO[0-9a-fA-F]{32}$"
+          },
+          "execution_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^QW[0-9a-fA-F]{32}$"
+          },
+          "account_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$"
+          },
+          "flow_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^YJ[0-9a-fA-F]{32}$"
+          },
+          "flow_revision_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^YN[0-9a-fA-F]{32}$"
+          },
+          "status": {
+            "type": "string",
+            "$ref": "#/components/schemas/preview.flows.flow_execution_step_enum_status",
+            "description": "The status of the Execution. Can be: `RUNNING`, `FAILED` or `COMPLETED`."
+          },
+          "transitioned_from": {
+            "type": "string",
+            "description": "Preceeding step of this step."
+          },
+          "transitioned_to": {
+            "type": "string",
+            "description": "Next step from this step."
+          },
+          "context": {
+            "type": "object",
+            "description": "The context of the step."
+          },
+          "date_started": {
+            "type": "string",
+            "description": "Step start timestamp.",
+            "format": "date-time"
+          },
+          "date_created": {
+            "type": "string",
+            "description": "Step creation timestamp.",
+            "format": "date-time"
+          },
+          "date_updated": {
+            "type": "string",
+            "description": "Step updated timestamp.",
+            "format": "date-time"
+          },
+          "date_ended": {
+            "type": "string",
+            "description": "Step ended timestamp.",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "sid",
+          "flow_sid",
+          "account_sid",
+          "status",
+          "date_created",
+          "date_updated"
+        ]
+      },
+      "preview.flows.list_flow_execution_step_response": {
+        "type": "object",
+        "description": "The response object returned for listing Flow Executions.",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/preview.flows.page_meta_data"
+          },
+          "steps": {
+            "type": "array",
+            "description": "The list of Flow Executions.",
+            "items": {
+              "$ref": "#/components/schemas/preview.flows.flow_execution_step_resource"
+            }
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -6493,7 +6796,7 @@
           {
             "name": "ServiceSid",
             "in": "path",
-            "description": "",
+            "description": "Blah blah blah",
             "schema": {
               "type": "string",
               "minLength": 34,
@@ -14407,6 +14710,525 @@
           "Preview"
         ]
       }
+    },
+    "/Flex/Instances/{InstanceSid}/Flows": {
+      "servers": [
+        {
+          "url": "https://preview.twilio.com"
+        }
+      ],
+      "description": "Operations for Composer flows",
+      "x-twilio": {
+        "defaultOutputProperties": ["sid","unique_name","description"],
+        "pathType": "list",
+        "mountName": "flow"
+      },
+      "get": {
+        "description": "Returns a list of available Flows.",
+        "tags": [
+          "PreviewComposerFlows"
+        ],
+        "parameters": [
+          {
+            "name": "InstanceSid",
+            "in": "path",
+            "description": "The Instance Sid.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^GO[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "How many resources to return in each list page. The default is 100, and the maximum is 1000.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000
+            }
+          },
+          {
+            "name": "PageToken",
+            "in": "query",
+            "description": "The page token. This is provided by the API.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/preview.flows.list_flows_response"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "operationId": "listFlows",
+        "x-maturity": [
+          "Preview"
+        ]
+      }
+
+    },
+    "/Flex/Instances/{InstanceSid}/Flows/{Sid}": {
+      "servers": [
+        {
+          "url": "https://preview.twilio.com"
+        }
+      ],
+      "description": "Composer flows",
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "sid",
+          "unique_name",
+          "date_created"
+        ],
+        "pathType": "instance",
+        "dependentProperties": {
+          "executions": {
+            "mapping": {
+              "flow_sid": "sid",
+              "instance_sid": "instance_sid"
+            },
+            "resource_url": "/Flex/Instances/{instance_sid}/Flows/{flow_sid}/Executions"
+          }
+        }
+      },
+      "get": {
+        "description": "Retrieve a specific Flow.",
+        "tags": [
+          "PreviewComposerFlows"
+        ],
+        "parameters": [
+          {
+            "name": "Sid",
+            "in": "path",
+            "description": "The SID of the Flow resource to fetch.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^YJ[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "InstanceSid",
+            "in": "path",
+            "description": "The Instance Sid.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^GO[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/preview.flows.flow_resource"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "operationId": "FetchFlow",
+        "x-maturity": [
+          "Preview"
+        ]
+      }
+    },
+    "/Flex/Instances/{InstanceSid}/Flows/{FlowSid}/Executions": {
+      "servers": [
+        {
+          "url": "https://preview.twilio.com"
+        }
+      ],
+      "description": "Composer Execution operations.",
+      "x-twilio": {
+        "defaultOutputProperties": ["sid","status","date_created"],
+        "pathType": "list",
+        "mountName": "flow_execution",
+        "parent": "/Flex/Instances/{InstanceSid}/Flows/{Sid}"
+      },
+      "get": {
+        "description": "Retrieve a list of all Executions for the Flow.",
+        "tags": [
+          "PreviewComposerFlows"
+        ],
+        "parameters": [
+          {
+            "name": "InstanceSid",
+            "in": "path",
+            "description": "The Instance Sid.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^GO[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "FlowSid",
+            "in": "path",
+            "description": "The SID of the Flow with the Execution resources to read.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^YJ[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "How many resources to return in each list page. The default is 100, and the maximum is 1000.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000
+            }
+          },
+          {
+            "name": "PageToken",
+            "in": "query",
+            "description": "The page token. This is provided by the API.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/preview.flows.list_flow_executions_response"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "operationId": "listExecutions",
+        "x-maturity": [
+          "Preview"
+        ]
+      }
+
+    },
+    "/Flex/Instances/{InstanceSid}/Flows/{FlowSid}/Executions/{Sid}": {
+      "servers": [
+        {
+          "url": "https://preview.twilio.com"
+        }
+      ],
+      "description": "Composer flow executions",
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "sid",
+          "status",
+          "date_created"
+        ],
+        "pathType": "instance",
+        "dependentProperties": {
+          "steps": {
+            "mapping": {
+              "execution_sid": "sid",
+              "instance_sid": "instance_sid",
+              "flow_sid": "flow_sid"
+            },
+            "resource_url": "/Flex/Instances/{instance_sid}/Flows/{flow_sid}/Executions/{execution_sid}/Steps"
+          }
+        }
+      },
+      "get": {
+        "description": "Retrieve a specific Flow execution.",
+        "tags": [
+          "PreviewComposerFlows"
+        ],
+        "parameters": [
+          {
+            "name": "FlowSid",
+            "in": "path",
+            "description": "The SID of the Flow with the Execution resource to fetch",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^YJ[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "InstanceSid",
+            "in": "path",
+            "description": "The Instance Sid.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^GO[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "Sid",
+            "in": "path",
+            "description": "The SID of the Execution resource to fetch.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^QW[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/preview.flows.flow_execution_resource"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "operationId": "FetchExecution",
+        "x-maturity": [
+          "Preview"
+        ]
+      }
+    },
+    "/Flex/Instances/{InstanceSid}/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps": {
+      "servers": [
+        {
+          "url": "https://preview.twilio.com"
+        }
+      ],
+      "description": "Composer Execution Step Operations.",
+      "x-twilio": {
+        "defaultOutputProperties": ["sid","status","date_created"],
+        "pathType": "list",
+        "mountName": "flow_execution_step",
+        "parent": "/Flex/Instances/{InstanceSid}/Flows/{FlowSid}/Executions/{Sid}"
+      },
+      "get": {
+        "description": "Retrieve a list of all Steps for an Execution.",
+        "tags": [
+          "PreviewComposerFlows"
+        ],
+        "parameters": [
+          {
+            "name": "InstanceSid",
+            "in": "path",
+            "description": "The Instance Sid.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^GO[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "FlowSid",
+            "in": "path",
+            "description": "The SID of the Flow with the Execution resources to read.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^YJ[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "ExecutionSid",
+            "in": "path",
+            "description": "TThe SID of the Execution with the Steps to read.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^QW[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "How many resources to return in each list page. The default is 100, and the maximum is 1000.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000
+            }
+          },
+          {
+            "name": "PageToken",
+            "in": "query",
+            "description": "The page token. This is provided by the API.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/preview.flows.list_flow_execution_steps_response"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "operationId": "listExecutionSteps",
+        "x-maturity": [
+          "Preview"
+        ]
+      }
+
+    },
+    "/Flex/Instances/{InstanceSid}/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps/{Sid}": {
+      "servers": [
+        {
+          "url": "https://preview.twilio.com"
+        }
+      ],
+      "description": "Single step from a flow execution.",
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "sid",
+          "status",
+          "date_created"
+        ],
+        "pathType": "instance"
+      },
+      "get": {
+        "description": "Retrieve a specific Flow execution step.",
+        "tags": [
+          "PreviewComposerFlows"
+        ],
+        "parameters": [
+          {
+            "name": "FlowSid",
+            "in": "path",
+            "description": "The SID of the Flow with the Execution resource to fetch",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^YJ[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "InstanceSid",
+            "in": "path",
+            "description": "The Instance Sid.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^GO[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "ExecutionSid",
+            "in": "path",
+            "description": "The Execution sid for this step.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^QW[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          },
+          {
+            "name": "Sid",
+            "in": "path",
+            "description": "The SID of the Execution step resource to fetch.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^QV[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/preview.flows.flow_execution_step_resource"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "operationId": "FetchExecutionStep",
+        "x-maturity": [
+          "Preview"
+        ]
+      }
     }
   },
   "servers": [
@@ -14531,6 +15353,9 @@
     },
     {
       "name": "PreviewWirelessUsage"
+    },
+    {
+      "name": "PreviewComposerFlows"
     }
   ],
   "x-maturity": [

@@ -20,7 +20,7 @@ class JsonSchemaConverter {
 
   convertSchema(schema, value) {
     if (schema) {
-      if (!value) {
+      if (value === undefined || value === null) {
         if (!schema.nullable) {
           this.logger.debug(`Null value found when nullable not allowed by schema: ${JSON.stringify(schema)}`);
         }
