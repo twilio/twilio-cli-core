@@ -1,3 +1,5 @@
+## [7.22.0](https://github.com/twilio/twilio-cli-core/compare/7.21.0...7.22.0) (2024-02-09)
+
 ---------------------------
 **Library - Chore**
 - [PR #103](https://github.com/twilio/twilio-oai/pull/103): initiate cli release commit. Thanks to [@sbansla](https://github.com/sbansla)!
