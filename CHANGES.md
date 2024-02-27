@@ -1,3 +1,26 @@
+---------------------------
+**Api**
+- remove feedback and feedback summary from call resource
+
+**Flex**
+- Adding `routing_properties` to Interactions Channels Participant
+
+**Lookups**
+- Add new `line_status` package to the lookup response
+- Remove `live_activity` package from the lookup response **(breaking change)**
+
+**Messaging**
+- Add tollfree multiple rejection reasons response array
+
+**Trusthub**
+- Add ENUM for businessRegistrationAuthority in compliance_registration. **(breaking change)**
+- Add new field in isIsvEmbed in compliance_registration.
+- Add additional optional fields in compliance_registration for Individual business type.
+
+**Twiml**
+- Add support for new Amazon Polly and Google voices (Q1 2024) for `Say` verb
+
+
 ## [7.22.0](https://github.com/twilio/twilio-cli-core/compare/7.21.0...7.22.0) (2024-02-09)
 
 ---------------------------
