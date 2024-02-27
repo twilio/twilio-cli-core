@@ -1,3 +1,5 @@
+## [7.23.0](https://github.com/twilio/twilio-cli-core/compare/7.22.0...7.23.0) (2024-02-27)
+
 ---------------------------
 **Api**
 - remove feedback and feedback summary from call resource
