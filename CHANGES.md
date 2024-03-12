@@ -1,3 +1,28 @@
+---------------------------
+**Api**
+- Correct precedence documentation for application_sid vs status_callback in message creation
+- Mark MaxPrice as deprecated
+
+**Flex**
+- Making `plugins` visibility to public
+
+**Messaging**
+- Add new `errors` attribute to the Brand Registration resource.
+- Mark `brand_feedback` attribute as deprecated.
+- Mark `failure_reason` attribute as deprecated.
+- The new `errors` attribute is expected to provide additional information about Brand registration failures and feedback (if any has been provided by The Campaign Registry). Consumers should use this attribute instead of `brand_feedback` and `failure_reason`.
+
+**Numbers**
+- Correcting mount_name for porting port in fetch API
+
+**Trusthub**
+- Add new field in statusCallbackUrl in compliance_registration.
+- Add new field in isvRegisteringForSelfOrTenant in compliance_registration.
+
+**Twiml**
+- Expanded description of Action parameter for Message verb
+
+
 ## [7.23.0](https://github.com/twilio/twilio-cli-core/compare/7.22.0...7.23.0) (2024-02-27)
 
 ---------------------------
