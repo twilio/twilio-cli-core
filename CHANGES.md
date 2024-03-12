@@ -1,3 +1,5 @@
+### [7.23.1](https://github.com/twilio/twilio-cli-core/compare/7.23.0...7.23.1) (2024-03-12)
+
 ---------------------------
 **Api**
 - Correct precedence documentation for application_sid vs status_callback in message creation
