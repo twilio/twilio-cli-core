@@ -1,3 +1,5 @@
+### [7.23.2](https://github.com/twilio/twilio-cli-core/compare/7.23.1...7.23.2) (2024-04-01)
+
 ---------------------------
 **Api**
 - Add property `queue_time` to conference participant resource
