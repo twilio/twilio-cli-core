@@ -75,15 +75,12 @@ class TwilioApiBrowser {
         const path = entry[1];
         if (key === '/healthcheck') return;
         // Naive assumption: The Twilio APIs only have a single server.
-        if(path.servers !== undefined)
-          path.server = path.servers[0].url;
-        else
-          path.server = spec.servers[0].url;
+        if (path.servers === undefined) path.server = spec.servers[0].url;
+        else path.server = path.servers[0].url;
         delete path.servers;
 
         path.operations = {};
-        if(path.description === undefined)
-          path.description = "";
+        if (path.description === undefined) path.description = '';
         path.description = path.description.replace(/(\r\n|\n|\r)/gm, ' ');
 
         // Move the operations into an operations object.
