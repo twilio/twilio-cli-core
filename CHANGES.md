@@ -1,3 +1,14 @@
+---------------------------
+**Flex**
+- Add header `ui_version` to `web_channels` API
+
+**Messaging**
+- Redeploy after failed pipeline
+
+**Numbers**
+- Add Delete Port In request phone number api and Add Delete Port In request api
+
+
 ### [7.23.3](https://github.com/twilio/twilio-cli-core/compare/7.23.2...7.23.3) (2024-04-04)
 
 ---------------------------
