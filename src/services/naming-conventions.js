@@ -2,7 +2,7 @@ const kebabCase = (input) => {
   return input
     .trim()
     .replace(/[ _]/g, '-') // from snake_case (or spaces)
-    .replace(/([a-z])([A-Z])/g, '$1-$2') // from PascalCase or camelCase
+    .replace(/([a-z])([A-Z])/g, '$1-$2') // from PascalCase or camelCase 
     .replace(/(\d[A-Z]*)([A-Z])/g, '$1-$2') // handling numbers followed by letters
     .toLowerCase()
     .replace(/-+/g, '-') // remove duplicate dashes
