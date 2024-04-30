@@ -1,3 +1,21 @@
+### [7.23.4](https://github.com/twilio/twilio-cli-core/compare/7.23.3...7.23.4) (2024-04-18)
+
+
+### Library - Fixes
+
+* corrected kebabCase for parameters with numbers ([#246](https://github.com/twilio/twilio-cli-core/issues/246)) ([fc4861e](https://github.com/twilio/twilio-cli-core/commit/fc4861ef6a2f1866088ee24adedee47516a7dcb0))
+
+---------------------------
+**Flex**
+- Add header `ui_version` to `web_channels` API
+
+**Messaging**
+- Redeploy after failed pipeline
+
+**Numbers**
+- Add Delete Port In request phone number api and Add Delete Port In request api
+
+
 ### [7.23.3](https://github.com/twilio/twilio-cli-core/compare/7.23.2...7.23.3) (2024-04-04)
 
 ---------------------------
