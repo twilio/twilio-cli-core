@@ -1,3 +1,11 @@
+## [7.24.0](https://github.com/twilio/twilio-cli-core/compare/7.23.4...7.24.0) (2024-05-24)
+
+
+### Library - Chores
+
+* fixed path level server and description requirement in spec file ([#247](https://github.com/twilio/twilio-cli-core/issues/247)) ([fe3db94](https://github.com/twilio/twilio-cli-core/commit/fe3db9452e802645ba098201f671bb95801c3def))
+* fixing kebab-case error ([#248](https://github.com/twilio/twilio-cli-core/issues/248)) ([31b1e31](https://github.com/twilio/twilio-cli-core/commit/31b1e31ecdb2fb555f72bbec235d9323be4ed726))
+
 ---------------------------
 **Api**
 - Add ie1 as supported region for UserDefinedMessage and UserDefinedMessageSubscription.
