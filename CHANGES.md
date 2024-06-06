@@ -1,3 +1,14 @@
+---------------------------
+**Api**
+- Mark MaxPrice as obsolete
+
+**Lookups**
+- Update examples for `phone_number_quality_score`
+
+**Messaging**
+- List tollfree verifications on parent account and all sub-accounts
+
+
 ## [7.24.0](https://github.com/twilio/twilio-cli-core/compare/7.23.4...7.24.0) (2024-05-24)
 
 
