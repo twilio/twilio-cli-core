@@ -1,3 +1,5 @@
+### [7.24.1](https://github.com/twilio/twilio-cli-core/compare/7.24.0...7.24.1) (2024-06-06)
+
 ---------------------------
 **Api**
 - Mark MaxPrice as obsolete
