@@ -1,3 +1,5 @@
+## [7.25.0](https://github.com/twilio/twilio-cli-core/compare/7.24.1...7.25.0) (2024-06-18)
+
 --------------------------
 
 **Library - Feature**
