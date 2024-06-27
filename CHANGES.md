@@ -1,3 +1,25 @@
+--------------------------
+**Library - Chore**
+- [PR #113](https://github.com/twilio/twilio-oai/pull/113): regenerated from open-api. Thanks to [@sbansla](https://github.com/sbansla)!
+- [PR #112](https://github.com/twilio/twilio-oai/pull/112): disable example validation. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Api**
+- Add `transcription` resource
+- Add beta feature request managed cert
+
+**Flex**
+- Changed mount name for flex_team v2 api
+
+**Intelligence**
+- Add `X-Rate-Limit-Limit`, `X-Rate-Limit-Remaining`, and `X-Rate-Limit-Config` as Response Headers to Operator resources
+
+**Numbers**
+- Added include_constraints query parameter to the Regulations API
+
+**Twiml**
+- Add support for `<Transcription>` noun
+
+
 ## [7.25.0](https://github.com/twilio/twilio-cli-core/compare/7.24.1...7.25.0) (2024-06-18)
 
 --------------------------
