@@ -1,3 +1,5 @@
+### [7.25.1](https://github.com/twilio/twilio-cli-core/compare/7.25.0...7.25.1) (2024-06-27)
+
 --------------------------
 **Library - Chore**
 - [PR #113](https://github.com/twilio/twilio-oai/pull/113): regenerated from open-api. Thanks to [@sbansla](https://github.com/sbansla)!
