@@ -1,3 +1,5 @@
+## [7.26.0](https://github.com/twilio/twilio-cli-core/compare/7.25.2...7.26.0) (2024-09-05)
+
 --------------------------
 **Iam**
 - updated library_visibility public for new public apikeys
