@@ -1,3 +1,12 @@
+--------------------------
+**Iam**
+- updated library_visibility public for new public apikeys
+
+**Numbers**
+- Add new field in Error Codes for Regulatory Compliance.
+- Change typing of Port In Request date_created field to date_time instead of date **(breaking change)**
+
+
 ### [7.25.2](https://github.com/twilio/twilio-cli-core/compare/7.25.1...7.25.2) (2024-08-26)
 
 --------------------------
