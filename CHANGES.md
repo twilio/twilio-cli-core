@@ -1,3 +1,5 @@
+### [7.26.1](https://github.com/twilio/twilio-cli-core/compare/7.26.0...7.26.1) (2024-09-18)
+
 --------------------------
 **Intelligence**
 - Remove public from operator_type
