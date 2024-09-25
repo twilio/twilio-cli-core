@@ -1,3 +1,5 @@
+### [7.26.2](https://github.com/twilio/twilio-cli-core/compare/7.26.1...7.26.2) (2024-09-25)
+
 --------------------------
 **Library - Chore**
 - [PR #121](https://github.com/twilio/twilio-oai/pull/121): content sdk changes moved to content v1 in internal open api repo. Thanks to [@sbansla](https://github.com/sbansla)!
