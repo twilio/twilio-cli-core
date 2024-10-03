@@ -1,3 +1,5 @@
+### [7.26.3](https://github.com/twilio/twilio-cli-core/compare/7.26.2...7.26.3) (2024-10-03)
+
 --------------------------
 **Messaging**
 - Add A2P external campaign CnpMigration flag
