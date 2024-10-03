@@ -1,3 +1,15 @@
+--------------------------
+**Messaging**
+- Add A2P external campaign CnpMigration flag
+
+**Numbers**
+- Add address sid to portability API
+
+**Verify**
+- Add `SnaClientToken` optional parameter on Verification check.
+- Add `EnableSnaClientToken` optional parameter for Verification creation.
+
+
 ### [7.26.2](https://github.com/twilio/twilio-cli-core/compare/7.26.1...7.26.2) (2024-09-25)
 
 --------------------------
