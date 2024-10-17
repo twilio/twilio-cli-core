@@ -1,3 +1,10 @@
+### [7.26.4](https://github.com/twilio/twilio-cli-core/compare/7.26.3...7.26.4) (2024-10-17)
+
+
+### Library - Chores
+
+* bump axios version ([#250](https://github.com/twilio/twilio-cli-core/issues/250)) ([eb69532](https://github.com/twilio/twilio-cli-core/commit/eb695321dac6837b4caa29f45692b4744350898d))
+
 --------------------------
 **Api**
 - Add response key `country` to fetch AvailablePhoneNumber resource by specific country.
