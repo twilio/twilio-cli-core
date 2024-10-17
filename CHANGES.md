@@ -1,3 +1,11 @@
+--------------------------
+**Api**
+- Add response key `country` to fetch AvailablePhoneNumber resource by specific country.
+
+**Messaging**
+- Make library and doc public for requestManagedCert Endpoint
+
+
 ### [7.26.3](https://github.com/twilio/twilio-cli-core/compare/7.26.2...7.26.3) (2024-10-03)
 
 --------------------------
