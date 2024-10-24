@@ -1,3 +1,10 @@
+### [7.26.5](https://github.com/twilio/twilio-cli-core/compare/7.26.4...7.26.5) (2024-10-24)
+
+
+### Library - Chores
+
+* update twilio version to use patched axios version ([#251](https://github.com/twilio/twilio-cli-core/issues/251)) ([6554866](https://github.com/twilio/twilio-cli-core/commit/65548666636927573de8bbc6ee737d5424abcc34))
+
 --------------------------
 **Conversations**
 - Expose ConversationWithParticipants resource that allows creating a conversation with participants
