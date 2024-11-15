@@ -1,3 +1,5 @@
+### [7.26.6](https://github.com/twilio/twilio-cli-core/compare/7.26.5...7.26.6) (2024-11-15)
+
 --------------------------
 **Api**
 - Added `ivr-virtual-agent-custom-voices` and `ivr-virtual-agent-genai` to `usage_record` API.
