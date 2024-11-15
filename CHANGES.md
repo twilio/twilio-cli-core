@@ -1,3 +1,13 @@
+--------------------------
+**Api**
+- Added `ivr-virtual-agent-custom-voices` and `ivr-virtual-agent-genai` to `usage_record` API.
+- Add open-api file tag to realtime_transcriptions
+
+**Taskrouter**
+- Add `api-tag` property to workers reservation
+- Add `api-tag` property to task reservation
+
+
 ### [7.26.5](https://github.com/twilio/twilio-cli-core/compare/7.26.4...7.26.5) (2024-10-24)
 
 
