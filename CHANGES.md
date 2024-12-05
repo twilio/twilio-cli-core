@@ -1,3 +1,5 @@
+### [7.26.7](https://github.com/twilio/twilio-cli-core/compare/7.26.6...7.26.7) (2024-12-05)
+
 --------------------------
 **Api**
 - Add optional parameter `intelligence_service` to `transcription`
