@@ -1,3 +1,18 @@
+--------------------------
+**Api**
+- Add optional parameter `intelligence_service` to `transcription`
+- Updated `phone_number_sid` to be populated for sip trunking terminating calls.
+
+**Numbers**
+- Add Update Hosted Number Order V2 API endpoint
+- Update Port in docs
+
+**Twiml**
+- Add optional parameter `intelligence_service` to `<Transcription>`
+- Add support for new `<ConversationRelay>` and `<Assistant>` noun
+- Add `events` attribute to `<Dial>` verb
+
+
 ### [7.26.6](https://github.com/twilio/twilio-cli-core/compare/7.26.5...7.26.6) (2024-11-15)
 
 --------------------------
