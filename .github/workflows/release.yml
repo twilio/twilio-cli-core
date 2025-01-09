@@ -125,6 +125,7 @@ jobs:
         run: |
           make install
           cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
+          ls
           source .github/scripts/update-api-spec-with-changelog.sh
           echo "::set-output name=change-log::$changeLog"
           echo "::set-output name=version-type::$versionType"
