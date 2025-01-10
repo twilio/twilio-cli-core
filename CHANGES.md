@@ -1,3 +1,10 @@
+### [7.26.8](https://github.com/twilio/twilio-cli-core/compare/7.26.7...7.26.8) (2025-01-10)
+
+
+### Library - Chores
+
+* bump mock-fs version to fix test failure ([#253](https://github.com/twilio/twilio-cli-core/issues/253)) ([4bbcc66](https://github.com/twilio/twilio-cli-core/commit/4bbcc664965a586e71728d66d12cb814c37670da))
+
 --------------------------
 **Numbers**
 - Change beta feature flag to use v2/BulkHostedNumberOrders
