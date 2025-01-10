@@ -1,3 +1,13 @@
+--------------------------
+**Numbers**
+- Change beta feature flag to use v2/BulkHostedNumberOrders
+
+
+--------------------------
+**Library - Chore**
+- [PR #126](https://github.com/twilio/twilio-oai/pull/126): release twilio-oai. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+
 ### [7.26.7](https://github.com/twilio/twilio-cli-core/compare/7.26.6...7.26.7) (2024-12-05)
 
 --------------------------
