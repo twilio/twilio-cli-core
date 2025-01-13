@@ -1,3 +1,5 @@
+### [7.26.9](https://github.com/twilio/twilio-cli-core/compare/7.26.8...7.26.9) (2025-01-13)
+
 ---------------------------
 **Messaging**
 - Adds validity period Default value in service resource documentation
