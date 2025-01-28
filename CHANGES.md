@@ -1,3 +1,5 @@
+### [7.26.10](https://github.com/twilio/twilio-cli-core/compare/7.26.9...7.26.10) (2025-01-28)
+
 ---------------------------
 **Api**
 - Add open-api file tag to `conference/call recordings` and `recording_transcriptions`.
