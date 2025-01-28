@@ -1,3 +1,17 @@
+---------------------------
+**Api**
+- Add open-api file tag to `conference/call recordings` and `recording_transcriptions`.
+
+**Events**
+- Add support for subaccount subscriptions (beta)
+
+**Insights**
+- add new region to conference APIs
+
+**Lookups**
+- Add new `parnter_sub_id` query parameter to the lookup request
+
+
 ### [7.26.9](https://github.com/twilio/twilio-cli-core/compare/7.26.8...7.26.9) (2025-01-13)
 
 ---------------------------
