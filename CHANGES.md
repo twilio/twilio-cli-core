@@ -1,3 +1,5 @@
+### [7.26.11](https://github.com/twilio/twilio-cli-core/compare/7.26.10...7.26.11) (2025-02-11)
+
 ---------------------------
 **Api**
 - Change downstream url and change media type for file `base/api/v2010/validation_request.json`.
