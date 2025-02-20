@@ -1,3 +1,5 @@
+### [7.26.12](https://github.com/twilio/twilio-cli-core/compare/7.26.11...7.26.12) (2025-02-20)
+
 ---------------------------
 **Flex**
 - Adding Digital Transfers APIs under v1/Interactions
