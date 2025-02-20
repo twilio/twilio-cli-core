@@ -1,3 +1,14 @@
+---------------------------
+**Flex**
+- Adding Digital Transfers APIs under v1/Interactions
+
+**Numbers**
+- Convert webhook_type to ienum type in v1/Porting/Configuration/Webhook/{webhook_type}
+
+**Trusthub**
+- Changing TrustHub SupportingDocument status enum from lowercase to uppercase since kyc-orch returns status capitalized and rest proxy requires strict casing
+
+
 ### [7.26.11](https://github.com/twilio/twilio-cli-core/compare/7.26.10...7.26.11) (2025-02-11)
 
 ---------------------------
