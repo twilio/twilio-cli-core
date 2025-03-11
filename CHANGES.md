@@ -1,3 +1,5 @@
+## [7.27.0](https://github.com/twilio/twilio-cli-core/compare/7.26.12...7.27.0) (2025-03-11)
+
 --------------------------
 **Api**
 - Add the missing `emergency_enabled` field for `Address Service` endpoints
