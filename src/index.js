@@ -18,5 +18,6 @@ module.exports = {
   releaseScripts: {
     UpdateRelease: require('../.github/scripts/update-release'),
     TriggerWorkflow: require('../.github/scripts/trigger-workflow'),
+    TriggerWaitWorkflow: require('../.github/scripts/trigger-and-wait'),
   },
 };
