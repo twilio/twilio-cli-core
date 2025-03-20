@@ -29,7 +29,7 @@
   "dependencies": {
     "@actions/core": "^1.0.0",
     "@actions/github": "^5.0.3",
-    "@oclif/plugin-help": "^3.2.2",
+    "@oclif/plugin-help": "^4.0.0",
     "@oclif/plugin-plugins": "^2.1.0",
     "@octokit/rest": "^19.0.3",
     "axios": "^1.7.4",
