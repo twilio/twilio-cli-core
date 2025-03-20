@@ -1,3 +1,19 @@
+## [7.27.0](https://github.com/twilio/twilio-cli-core/compare/7.26.12...7.27.0) (2025-03-11)
+
+--------------------------
+**Api**
+- Add the missing `emergency_enabled` field for `Address Service` endpoints
+
+**Messaging**
+- Add missing enums for A2P and TF
+
+**Numbers**
+- add missing enum values to hosted_number_order_status
+
+**Twiml**
+- Convert Twiml Attribute `speechModel` of type enum to string **(breaking change)**
+
+
 ### [7.26.12](https://github.com/twilio/twilio-cli-core/compare/7.26.11...7.26.12) (2025-02-20)
 
 ---------------------------
