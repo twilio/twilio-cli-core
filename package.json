@@ -56,7 +56,7 @@
     "eslint-config-twilio": "~2.0.0",
     "eslint-config-twilio-mocha": "~2.0.0",
     "mocha": "^10.0.0",
-    "mock-fs": "^5.5.0",
+    "mock-fs": "5.4.1",
     "nock": "^13.0.2",
     "nyc": "^15.1.0",
     "sinon": "^9.0.2",
