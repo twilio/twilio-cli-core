@@ -1,7 +1,8 @@
 const fs = require('fs');
 
 const { expect, test } = require('@twilio/cli-test');
-const mock = require('mock-fs');
+const { Volume } = require('memfs');
+const { patchFs } = require('fs-monkey');
 
 const { ChangeLogHelper } = require('../../.github/scripts/change-log-helper');
 
@@ -12,50 +13,53 @@ const oaiChangelogFile = 'OAI_CHANGES.md';
 
 describe('release-scripts', () => {
   describe('change-log-helper', () => {
+    let unpatch;
     beforeEach(() => {
-      mock({
-        'CHANGES.md':
-          '[2021-08-26] Version 2.28.1\n' +
-          '---------------------------\n' +
-          '**Test**\n' +
-          '- Changes for test\n' +
-          '\n' +
-          '[2021-08-12] Version 2.28.0\n' +
-          '---------------------------\n' +
-          '**Library - Test**\n' +
-          '- Test changes Library\n' +
-          '\n' +
-          '\n' +
-          '[2021-07-29] Version 2.27.1\n' +
-          '---------------------------\n' +
-          '**Test**\n' +
-          '- Add test changes',
-        'OAI_CHANGES.md':
-          '[2021-09-08] Version 1.21.0\n' +
-          '---------------------------\n' +
-          '**OAI**\n' +
-          '- Latest changes from OAI\n' +
-          '\n' +
-          '**Second change**\n' +
-          '- Added OAI change\n' +
-          '\n' +
-          '\n' +
-          '[2021-08-25] Version 1.20.1\n' +
-          '---------------------------\n' +
-          '**Previous OAI change**\n' +
-          '- Previous OAI\n' +
-          '- Test Change OAI\n' +
-          '\n' +
-          '\n' +
-          '[2021-08-11] Version 1.20.0\n' +
-          '---------------------------\n' +
-          '**Third Version**\n' +
-          '- Changes in third version\n' +
-          '\n',
-      });
+      unpatch = patchFs(
+        Volume.fromJSON({
+          'CHANGES.md':
+            '[2021-08-26] Version 2.28.1\n' +
+            '---------------------------\n' +
+            '**Test**\n' +
+            '- Changes for test\n' +
+            '\n' +
+            '[2021-08-12] Version 2.28.0\n' +
+            '---------------------------\n' +
+            '**Library - Test**\n' +
+            '- Test changes Library\n' +
+            '\n' +
+            '\n' +
+            '[2021-07-29] Version 2.27.1\n' +
+            '---------------------------\n' +
+            '**Test**\n' +
+            '- Add test changes',
+          'OAI_CHANGES.md':
+            '[2021-09-08] Version 1.21.0\n' +
+            '---------------------------\n' +
+            '**OAI**\n' +
+            '- Latest changes from OAI\n' +
+            '\n' +
+            '**Second change**\n' +
+            '- Added OAI change\n' +
+            '\n' +
+            '\n' +
+            '[2021-08-25] Version 1.20.1\n' +
+            '---------------------------\n' +
+            '**Previous OAI change**\n' +
+            '- Previous OAI\n' +
+            '- Test Change OAI\n' +
+            '\n' +
+            '\n' +
+            '[2021-08-11] Version 1.20.0\n' +
+            '---------------------------\n' +
+            '**Third Version**\n' +
+            '- Changes in third version\n' +
+            '\n',
+        }),
+      );
     });
     afterEach(() => {
-      mock.restore();
+      unpatch();
     });
     test.it('change-log-helper Default', () => {
       const changeLogHelper = new ChangeLogHelper();
