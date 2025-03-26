@@ -101,6 +101,9 @@ jobs:
         run: make test
   update-api-specs:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
     needs: [ test ]
     outputs:
       change-log: ${{ steps.update-specs.outputs.change-log }}
