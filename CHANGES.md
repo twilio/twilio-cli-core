@@ -1,3 +1,16 @@
+### [7.27.2](https://github.com/twilio/twilio-cli-core/compare/7.27.1...7.27.2) (2025-03-26)
+
+
+### Library - Fixes
+
+* revert use node 18 to update api specs ([#264](https://github.com/twilio/twilio-cli-core/issues/264)) ([3efc9ab](https://github.com/twilio/twilio-cli-core/commit/3efc9abc997d9bc351ade1e66de306bd307478c0)), closes [#262](https://github.com/twilio/twilio-cli-core/issues/262)
+* reverting dependencies to previous version ([#265](https://github.com/twilio/twilio-cli-core/issues/265)) ([f3da929](https://github.com/twilio/twilio-cli-core/commit/f3da9298145fe3d1e57db454f064028b86740763))
+
+
+### Library - Chores
+
+* point to node 18 for release job ([#267](https://github.com/twilio/twilio-cli-core/issues/267)) ([4ae9ef1](https://github.com/twilio/twilio-cli-core/commit/4ae9ef128e74a18f1252cffbc129645bd65c7ac5))
+
 ### [7.27.1](https://github.com/twilio/twilio-cli-core/compare/7.27.0...7.27.1) (2025-03-26)
 
 
