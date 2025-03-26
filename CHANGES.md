@@ -1,3 +1,18 @@
+### [7.27.1](https://github.com/twilio/twilio-cli-core/compare/7.27.0...7.27.1) (2025-03-26)
+
+
+### Library - Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([#256](https://github.com/twilio/twilio-cli-core/issues/256)) ([a40c963](https://github.com/twilio/twilio-cli-core/commit/a40c9635398da49cce55c259cf5b926e62a21e08))
+
+
+### Library - Chores
+
+* fix mock-fs version to fix test failure ([#257](https://github.com/twilio/twilio-cli-core/issues/257)) ([b3da940](https://github.com/twilio/twilio-cli-core/commit/b3da940e444f960928ed069e2e071020a41c46bb))
+* upgrade mockfs version ([#255](https://github.com/twilio/twilio-cli-core/issues/255)) ([b9ba996](https://github.com/twilio/twilio-cli-core/commit/b9ba99665e73f07890405e80fc0e77e68f2f0636))
+* use node 18 to release ([009bf5c](https://github.com/twilio/twilio-cli-core/commit/009bf5cfe5adbed0a735ac0a07e6bd293fcd1ed2))
+* use node 18 to update api specs ([#262](https://github.com/twilio/twilio-cli-core/issues/262)) ([c23135b](https://github.com/twilio/twilio-cli-core/commit/c23135b7c45668b1e95aa3e6dafb9e5f6e7986dd))
+
 --------------------------
 **Accounts**
 - Update Safelist API docs as part of prefix supoort
