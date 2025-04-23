@@ -13,6 +13,8 @@ const updateRelease = async () => {
     const [owner, repo] = process.env.REPO_NAME ? process.env.REPO_NAME.split('/') : [null, null];
     const tag = process.env.TAG_NAME;
 
+    updatePackageJson(process.env.CLI_CORE_TAG) 
+
     //https://docs.github.com/en/rest/releases/releases#get-a-release-by-tag-name
     const getReleaseResponse = await octokit.request('GET /repos/{owner}/{repo}/releases/tags/{tag}',{
       owner,
@@ -68,6 +70,26 @@ const updateRelease = async () => {
     core.info(`Updated release with body: ${body}`);
   } catch (error) {
     core.setFailed(error.message);
+  }
+};
+
+const updatePackageJson = (value) => {
+  try {
+    // Path to package.json
+    const packageJsonPath = path.resolve(process.cwd(), 'package.json');
+
+    // Read and parse package.json
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+
+    // Update the desired key
+    packageJson["dependencies"]["@twilio/cli-core"] = value;
+
+    // Write the updated object back to package.json
+    fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), 'utf8');
+
+    console.info(`Updated package.json: Set '${key}' to '${value}'`);
+  } catch (error) {
+    console.error(`Failed to update package.json: ${error.message}`);
   }
 };
 
