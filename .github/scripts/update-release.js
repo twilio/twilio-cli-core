@@ -1,5 +1,7 @@
 const core = require('@actions/core');
 const { Octokit } = require("@octokit/core");
+const path = require('path');
+const fs = require('fs');
 
 /**
  * Functionality from tubone24/update_release.
@@ -13,7 +15,7 @@ const updateRelease = async () => {
     const [owner, repo] = process.env.REPO_NAME ? process.env.REPO_NAME.split('/') : [null, null];
     const tag = process.env.TAG_NAME;
 
-    updatePackageJson(process.env.CLI_CORE_TAG) 
+    updatePackageJson(process.env.CLI_CORE_TAG)
 
     //https://docs.github.com/en/rest/releases/releases#get-a-release-by-tag-name
     const getReleaseResponse = await octokit.request('GET /repos/{owner}/{repo}/releases/tags/{tag}',{
@@ -87,7 +89,7 @@ const updatePackageJson = (value) => {
     // Write the updated object back to package.json
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), 'utf8');
 
-    console.info(`Updated package.json: Set '${key}' to '${value}'`);
+    console.info(`Updated package.json: Set twilio-cli-core to '${value}'`);
   } catch (error) {
     console.error(`Failed to update package.json: ${error.message}`);
   }
