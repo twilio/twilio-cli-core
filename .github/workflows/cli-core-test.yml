@@ -13,7 +13,7 @@ jobs:
         node-version: [lts, 22.x, 20.x]
     steps:
       - name: Checkout cli core repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0
@@ -36,7 +36,7 @@ jobs:
     name: Notify Test Failed
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
