@@ -135,7 +135,7 @@ jobs:
       tag-name: ${{ steps.semantic-release.outputs.TAG_NAME }}
     steps:
       - name: Checkout cli-core repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
       - run: |
@@ -165,7 +165,7 @@ jobs:
     needs: [ update-api-specs, release]
     steps:
       - name: Checkout cli-core repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - run: |
           git pull
           make install
