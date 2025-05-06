@@ -14,7 +14,9 @@ const updateRelease = async () => {
     })
     const [owner, repo] = process.env.REPO_NAME ? process.env.REPO_NAME.split('/') : [null, null];
     const tag = process.env.TAG_NAME;
+    const githubWorkspace = process.env.GITHUB_WORKSPACE;
 
+    console.log(`GITHUB_WORKSPACE: ${githubWorkspace}`);
     updatePackageJson(process.env.CLI_CORE_TAG)
 
     //https://docs.github.com/en/rest/releases/releases#get-a-release-by-tag-name
