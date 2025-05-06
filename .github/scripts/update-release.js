@@ -16,8 +16,9 @@ const updateRelease = async () => {
     const tag = process.env.TAG_NAME;
     const githubWorkspace = process.env.GITHUB_WORKSPACE;
 
-    console.log(`GITHUB_WORKSPACE: ${githubWorkspace}`);
-    updatePackageJson(process.env.CLI_CORE_TAG)
+    if( !process.env.GITHUB_WORKSPACE.includes('twilio-cli-core') ) {
+      updatePackageJson(process.env.CLI_CORE_TAG)
+    }
 
     //https://docs.github.com/en/rest/releases/releases#get-a-release-by-tag-name
     const getReleaseResponse = await octokit.request('GET /repos/{owner}/{repo}/releases/tags/{tag}',{
