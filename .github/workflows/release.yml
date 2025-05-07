@@ -148,7 +148,7 @@ jobs:
       - name: semanticRelease
         id: semantic-release
         run: |
-          echo ${version}
+          echo $version
 #          DEBUG=semantic-release:* npx semantic-release  -t \${version}
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
