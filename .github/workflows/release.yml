@@ -84,7 +84,7 @@ jobs:
 #          MSG_MINIMAL: actions url
   test:
     needs: [ cli-token-validation ]
-    runs-on: ubuntu-latest
+#    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [20.x, 22.x, lts/*]
