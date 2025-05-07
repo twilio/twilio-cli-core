@@ -62,17 +62,17 @@ const updateRelease = async () => {
     }
 
     //https://docs.github.com/en/rest/releases/releases#update-a-release
-    await octokit.request('PATCH /repos/{owner}/{repo}/releases/{release_id}', {
-      owner,
-      release_id: oldReleaseId,
-      repo,
-      body,
-      name: oldName,
-      draft: oldDraft,
-      prerelease,
-    });
-
-    core.info(`Updated release with body: ${body}`);
+    // await octokit.request('PATCH /repos/{owner}/{repo}/releases/{release_id}', {
+    //   owner,
+    //   release_id: oldReleaseId,
+    //   repo,
+    //   body,
+    //   name: oldName,
+    //   draft: oldDraft,
+    //   prerelease,
+    // });
+    //
+    // core.info(`Updated release with body: ${body}`);
   } catch (error) {
     core.setFailed(error.message);
   }
