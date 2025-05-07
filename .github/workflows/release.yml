@@ -150,9 +150,9 @@ jobs:
         run: |
           echo $version
           DEBUG=semantic-release:* npx semantic-release --dry-run --branch dii-1856
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-#          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 #      - name: Update release
 #        run: |
 #          fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
