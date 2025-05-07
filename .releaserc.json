@@ -4,6 +4,10 @@
     {
       "name": "release-feature-branch",
       "prerelease": "rc"
+    },
+    {
+      "name": "dii-1568",
+      "prerelease": "rc"
     }
   ],
   "plugins": [
