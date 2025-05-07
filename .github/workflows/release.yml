@@ -12,55 +12,55 @@ on:
         description: 'HomeBrew prerelease'
         default: 'false'
 jobs:
-  cli-core-token-validation:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout cli-core repo
-        uses: actions/checkout@v2
-      - run: |
-          git pull
-          make install
-      - name: Extract branch name
-        id: extract_branch
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      - name: Trigger CLI token validation workflow
-        run: |
-          fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
-          node -e "require('$fileName').triggerWorkflow()"
-        env:
-          WORKFLOW_NAME: '.github/workflows/release-token-validation.yml'
-          REPO_NAME: ${{ github.repository_owner }}/twilio-cli
-          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-          BRANCH_NAME: ${{steps.extract_branch.outputs.branch}}
-      - name: Validate REPO_ACCESS_TOKEN
-        uses: actions/checkout@v2
-        with:
-          repository: '${{ github.repository_owner }}/twilio-oai'
-          token:  ${{ secrets.REPO_ACCESS_TOKEN }}
-      - name: Validate AWS tokens
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: us-east-1
-
-  cli-token-validation:
-    needs: [ cli-core-token-validation ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout cli-core repo
-        uses: actions/checkout@v2
-      - name: Execute py script to validate twilio-cli tokens
-        id: cli_token
-        run: |
-          output=$(python3 .github/scripts/validate_cli_tokens.py)
-          echo "::set-output name=tokenStatus::$output"
-      - name: Print status
-        run: echo "${{ steps.cli_token.outputs.tokenStatus }}"
-      - name: Validate the github workflow
-        if: ${{ steps.cli_token.outputs.tokenStatus != 'success'}}
-        run: exit 1
+#  cli-core-token-validation:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout cli-core repo
+#        uses: actions/checkout@v2
+#      - run: |
+#          git pull
+#          make install
+#      - name: Extract branch name
+#        id: extract_branch
+#        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+#      - name: Trigger CLI token validation workflow
+#        run: |
+#          fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
+#          node -e "require('$fileName').triggerWorkflow()"
+#        env:
+#          WORKFLOW_NAME: '.github/workflows/release-token-validation.yml'
+#          REPO_NAME: ${{ github.repository_owner }}/twilio-cli
+#          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+#          BRANCH_NAME: ${{steps.extract_branch.outputs.branch}}
+#      - name: Validate REPO_ACCESS_TOKEN
+#        uses: actions/checkout@v2
+#        with:
+#          repository: '${{ github.repository_owner }}/twilio-oai'
+#          token:  ${{ secrets.REPO_ACCESS_TOKEN }}
+#      - name: Validate AWS tokens
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+#          aws-region: us-east-1
+#
+#  cli-token-validation:
+#    needs: [ cli-core-token-validation ]
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout cli-core repo
+#        uses: actions/checkout@v2
+#      - name: Execute py script to validate twilio-cli tokens
+#        id: cli_token
+#        run: |
+#          output=$(python3 .github/scripts/validate_cli_tokens.py)
+#          echo "::set-output name=tokenStatus::$output"
+#      - name: Print status
+#        run: echo "${{ steps.cli_token.outputs.tokenStatus }}"
+#      - name: Validate the github workflow
+#        if: ${{ steps.cli_token.outputs.tokenStatus != 'success'}}
+#        run: exit 1
 
 #  notify-start:
 #    needs: [ cli-token-validation ]
@@ -99,38 +99,38 @@ jobs:
           cache: 'npm'
       - name: Run tests
         run: make test
-  update-api-specs:
-    runs-on: ubuntu-latest
-    needs: [ test ]
-    outputs:
-      change-log: ${{ steps.update-specs.outputs.change-log }}
-      version-type: ${{ steps.update-specs.outputs.version-type }}
-    steps:
-      - name: Create temporary folder for copying json files from OAI repo
-        run: mkdir -p ~/oai_definitions/json
-      - name: Checkout OAI repo
-        uses: actions/checkout@v2
-        with:
-          repository: '${{ github.repository_owner }}/twilio-oai'
-          token:  ${{ secrets.REPO_ACCESS_TOKEN }}
-      - run: |
-          cp -R spec/json/. ~/oai_definitions/json/
-          cp -R CHANGES.md ~/oai_definitions/CHANGES.md
-      - name: Checkout cli-core repo
-        uses: actions/checkout@v2
-        with:
-          token:  ${{ secrets.REPO_ACCESS_TOKEN }}
-      - name: Update OAI specs
-        id: update-specs
-        run: |
-          make install
-          cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
-          source .github/scripts/update-api-spec-with-changelog.sh
-          echo "::set-output name=change-log::$changeLog"
-          echo "::set-output name=version-type::$versionType"
+#  update-api-specs:
+#    runs-on: ubuntu-latest
+#    needs: [ test ]
+#    outputs:
+#      change-log: ${{ steps.update-specs.outputs.change-log }}
+#      version-type: ${{ steps.update-specs.outputs.version-type }}
+#    steps:
+#      - name: Create temporary folder for copying json files from OAI repo
+#        run: mkdir -p ~/oai_definitions/json
+#      - name: Checkout OAI repo
+#        uses: actions/checkout@v2
+#        with:
+#          repository: '${{ github.repository_owner }}/twilio-oai'
+#          token:  ${{ secrets.REPO_ACCESS_TOKEN }}
+#      - run: |
+#          cp -R spec/json/. ~/oai_definitions/json/
+#          cp -R CHANGES.md ~/oai_definitions/CHANGES.md
+#      - name: Checkout cli-core repo
+#        uses: actions/checkout@v2
+#        with:
+#          token:  ${{ secrets.REPO_ACCESS_TOKEN }}
+#      - name: Update OAI specs
+#        id: update-specs
+#        run: |
+#          make install
+#          cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
+#          source .github/scripts/update-api-spec-with-changelog.sh
+#          echo "::set-output name=change-log::$changeLog"
+#          echo "::set-output name=version-type::$versionType"
   release:
     runs-on: ubuntu-latest
-    needs: [update-api-specs]
+#    needs: [update-api-specs]
     outputs:
       tag-name: ${{ steps.semantic-release.outputs.TAG_NAME }}
     steps:
@@ -147,39 +147,41 @@ jobs:
           node-version: 18.x
       - name: semanticRelease
         id: semantic-release
-        run: DEBUG=semantic-release:* npx semantic-release  -t \${version}
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Update release
         run: |
-          fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
-          node -e "require('$fileName').updateRelease()"
-        env:
-          REPO_ACCESS_TOKEN: ${{ github.token }}
-          TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
-          RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
-          REPO_NAME:  ${{ github.repository }}
-  triggerCliWorkflow:
-    runs-on: ubuntu-latest
-    needs: [ update-api-specs, release]
-    steps:
-      - name: Checkout cli-core repo
-        uses: actions/checkout@v4
-      - run: |
-          git pull
-          make install
-      - name: Invoke CLI workflow with changelog and version-type
-        run: |
-          fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
-          node -e "require('$fileName').triggerWorkflow()"
-        env:
-          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-          WORKFLOW_NAME: 'release.yml'
-          BRANCH_NAME: ${{github.event.inputs.cli-branch}}
-          REPO_NAME:  ${{ github.repository_owner }}/twilio-cli
-          INPUTS: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}" }'
-          CLI_CORE_TAG: ${{needs.release.outputs.tag-name}}
+          echo ${version}
+#          DEBUG=semantic-release:* npx semantic-release  -t \${version}
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+#          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+#      - name: Update release
+#        run: |
+#          fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
+#          node -e "require('$fileName').updateRelease()"
+#        env:
+#          REPO_ACCESS_TOKEN: ${{ github.token }}
+#          TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
+#          RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
+#          REPO_NAME:  ${{ github.repository }}
+#  triggerCliWorkflow:
+#    runs-on: ubuntu-latest
+#    needs: [ update-api-specs, release]
+#    steps:
+#      - name: Checkout cli-core repo
+#        uses: actions/checkout@v4
+#      - run: |
+#          git pull
+#          make install
+#      - name: Invoke CLI workflow with changelog and version-type
+#        run: |
+#          fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
+#          node -e "require('$fileName').triggerWorkflow()"
+#        env:
+#          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+#          WORKFLOW_NAME: 'release.yml'
+#          BRANCH_NAME: ${{github.event.inputs.cli-branch}}
+#          REPO_NAME:  ${{ github.repository_owner }}/twilio-cli
+#          INPUTS: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}" }'
+#          CLI_CORE_TAG: ${{needs.release.outputs.tag-name}}
 #  notify-complete-fail:
 #    if: ${{ (needs.cli-token-validation.result != 'failure' || needs.cli-core-token-validation.result != 'failure' ) && (failure() || cancelled()) }}
 #    needs: [ triggerCliWorkflow ]
