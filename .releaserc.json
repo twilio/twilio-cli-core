@@ -2,7 +2,7 @@
   "branches": [
     "main",
     {
-      "name": "dii-1856",
+      "name": "cli-integration-test",
       "prerelease": "rc"
     }
   ],
