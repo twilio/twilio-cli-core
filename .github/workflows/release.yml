@@ -170,7 +170,7 @@ jobs:
       - run: |
           git pull
           make install
-      - name: Invoke CLI workflow with changelog and version-type
+      - name: Invoke CLI workflow with changelog and version-types
         run: |
           fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
           node -e "require('$fileName').triggerWorkflow()"
