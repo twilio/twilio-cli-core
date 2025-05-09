@@ -16,6 +16,8 @@ const updateRelease = async () => {
     const tag = process.env.TAG_NAME;
     const githubWorkspace = process.env.GITHUB_WORKSPACE;
 
+    console.log("GITHUB_WORKSPACE: ", githubWorkspace);
+
     if( !process.env.GITHUB_WORKSPACE.includes('twilio-cli-core') ) {
       updatePackageJson(process.env.CLI_CORE_TAG)
     }
