@@ -148,7 +148,7 @@ jobs:
       - name: semanticRelease
         id: semantic-release
         run: |
-          DEBUG=semantic-release:* npx semantic-release
+          DEBUG=semantic-release:* npx semantic-release --dry-run
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
