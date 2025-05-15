@@ -2,8 +2,8 @@
   "branches": [
     "main",
     {
-      "name": "cli-integration-test",
-      "prerelease": "alpha"
+      "name": "release-feature-branch",
+      "prerelease": "rc"
     }
   ],
   "plugins": [
