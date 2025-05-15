@@ -11,7 +11,7 @@ Currently, Node 14+ is supported. We support the [LTS versions](https://nodejs.o
 
 ### BaseCommand
 
-The base command class for _all_ twilio-cli commands. Includes support for configuration management, logging, and output formatting.
+The base command class for _all_ twilio-cli command. Includes support for configuration management, logging, and output formatting.
 
 ### TwilioClientCommand
 
