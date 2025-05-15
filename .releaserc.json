@@ -3,7 +3,7 @@
     "main",
     {
       "name": "cli-integration-test",
-      "prerelease": "rc"
+      "prerelease": "alpha"
     }
   ],
   "plugins": [
