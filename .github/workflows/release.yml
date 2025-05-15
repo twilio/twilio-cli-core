@@ -148,19 +148,19 @@ jobs:
       - name: semanticRelease
         id: semantic-release
         run: |
-          DEBUG=semantic-release:* npx semantic-release -t \${version}
+          DEBUG=semantic-release:* npx semantic-release --dry-run
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Update release
-        run: |
-          fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
-          node -e "require('$fileName').updateRelease()"
-        env:
-          REPO_ACCESS_TOKEN: ${{ github.token }}
-          TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
-          RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
-          REPO_NAME:  ${{ github.repository }}
+#      - name: Update release
+#        run: |
+#          fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
+#          node -e "require('$fileName').updateRelease()"
+#        env:
+#          REPO_ACCESS_TOKEN: ${{ github.token }}
+#          TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
+#          RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
+#          REPO_NAME:  ${{ github.repository }}
   triggerCliWorkflow:
     runs-on: ubuntu-latest
     needs: [ update-api-specs, release]
