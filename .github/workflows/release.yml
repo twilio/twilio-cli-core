@@ -149,7 +149,6 @@ jobs:
         id: semantic-release
         run: |
           DEBUG=semantic-release:* npx semantic-release
-          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -181,7 +180,7 @@ jobs:
           BRANCH_NAME: ${{github.event.inputs.cli-branch}}
           REPO_NAME:  ${{ github.repository_owner }}/twilio-cli
           INPUTS: '{ "change-log": "change", "version-type": "2", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}" }'
-          CLI_CORE_TAG: $TAG_NAME
+          CLI_CORE_TAG: ${{ needs.release.outputs.tag-name }}
 #  notify-complete-fail:
 #    if: ${{ (needs.cli-token-validation.result != 'failure' || needs.cli-core-token-validation.result != 'failure' ) && (failure() || cancelled()) }}
 #    needs: [ triggerCliWorkflow ]
