@@ -58,6 +58,14 @@
         "changelogFile": "CHANGES.md"
       }
     ],
+    "@semantic-release/npm",
+    [
+      "@semantic-release/github",
+      {
+        "successComment": false,
+        "npmPublish": false
+      }
+    ],
     [
       "@semantic-release/git",
       {
