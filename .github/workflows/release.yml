@@ -148,19 +148,15 @@ jobs:
         id: semantic-release
         run: |
           DEBUG=semantic-release:* npx semantic-release
-          echo '::set-output name=TAG_NAME::1.0.0-alpha.1'
-          echo "Github Output"
-          cat $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-#      - name: Update release
-#        run: |
-#          fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
-#          node -e "require('$fileName').updateRelease()"
-#        env:
-#          REPO_ACCESS_TOKEN: ${{ github.token }}
-#          TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
+      - name: Update release
+        run: |
+          echo ${GITHUB_ENV}
+        env:
+          REPO_ACCESS_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
 #          RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
 #          REPO_NAME:  ${{ github.repository }}
   triggerCliWorkflow:
@@ -182,7 +178,8 @@ jobs:
           WORKFLOW_NAME: 'release.yml'
           BRANCH_NAME: ${{github.event.inputs.cli-branch}}
           REPO_NAME:  ${{ github.repository_owner }}/twilio-cli
-          INPUTS: '{ "change-log": "changelog6", "version-type": "2", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}", "tag-name": "${{needs.release.outputs.tag-name}}" }'
+          INPUTS: '{ "change-log": "changelog6", "version-type": "2", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}" }'
+          CLI_CORE_TAG: ${{needs.release.outputs.tag-name}}
 #  notify-complete-fail:
 #    if: ${{ (needs.cli-token-validation.result != 'failure' || needs.cli-core-token-validation.result != 'failure' ) && (failure() || cancelled()) }}
 #    needs: [ triggerCliWorkflow ]
