@@ -82,7 +82,7 @@ jobs:
 #          SLACK_MESSAGE: 'Release Started :rocket:'
 #          MSG_MINIMAL: actions url
   test:
-    needs: [ cli-token-validation ]
+    needs: [ cli-core-token-validation ]
     runs-on: ubuntu-latest
     strategy:
       matrix:
