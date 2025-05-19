@@ -131,7 +131,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [update-api-specs]
     outputs:
-      tag-name: ${{ steps.semantic-release.outputs.tag-name }}
+      tag-name: ${{ steps.semantic-release.outputs.tag_name }}
     steps:
       - name: Checkout cli-core repo
         uses: actions/checkout@v4
@@ -171,6 +171,7 @@ jobs:
           make install
       - name: Invoke CLI workflow with changelog and version-type
         run: |
+          cat $GITHUB_ENV
           fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
           node -e "require('$fileName').triggerWorkflow()"
         env:
@@ -178,8 +179,7 @@ jobs:
           WORKFLOW_NAME: 'release.yml'
           BRANCH_NAME: ${{github.event.inputs.cli-branch}}
           REPO_NAME:  ${{ github.repository_owner }}/twilio-cli
-          INPUTS: '{ "change-log": "changelog6", "version-type": "2", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}" }'
-          CLI_CORE_TAG: ${{needs.release.outputs.tag_name}}
+          INPUTS: '{ "change-log": "changelog6", "version-type": "2", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}", "tag-name": "${{needs.release.outputs.tag_name}}" }'
 #  notify-complete-fail:
 #    if: ${{ (needs.cli-token-validation.result != 'failure' || needs.cli-core-token-validation.result != 'failure' ) && (failure() || cancelled()) }}
 #    needs: [ triggerCliWorkflow ]
