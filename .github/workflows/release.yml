@@ -148,7 +148,8 @@ jobs:
         id: semantic-release
         run: |
           DEBUG=semantic-release:* npx semantic-release
-          cat $GITHUB_OUTPUT | grep 'TAG_NAME'
+          echo "Github Output"
+          cat $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
