@@ -148,6 +148,7 @@ jobs:
         id: semantic-release
         run: |
           DEBUG=semantic-release:* npx semantic-release
+          echo '::set-output name=TAG_NAME::1.0.0-alpha.1'
           echo "Github Output"
           cat $GITHUB_OUTPUT
         env:
