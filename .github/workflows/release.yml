@@ -131,7 +131,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [update-api-specs]
     outputs:
-      tag-name: ${{ steps.semantic-release.outputs.tag_name }}
+      tag-name: ${{ steps.semantic-release.outputs.TAG_NAME }}
     steps:
       - name: Checkout cli-core repo
         uses: actions/checkout@v4
@@ -148,7 +148,7 @@ jobs:
         id: semantic-release
         run: |
           DEBUG=semantic-release:* npx semantic-release
-          cat $GITHUB_OUTPUT | grep 'tag_name'
+          cat $GITHUB_OUTPUT | grep 'TAG_NAME'
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
