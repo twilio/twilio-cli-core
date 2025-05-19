@@ -153,7 +153,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Update release
         run: |
-          echo ${GITHUB_ENV}
+          cat $GITHUB_ENV
         env:
           REPO_ACCESS_TOKEN: ${{ github.token }}
           TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
