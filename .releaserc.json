@@ -83,7 +83,7 @@
     [
       "@semantic-release/exec",
       {
-        "successCmd": "echo '::set-output name=TAG_NAME::${nextRelease.version}'"
+        "successCmd": "echo '::set-output name=tag-name::${nextRelease.version}'"
       }
     ]
   ]
