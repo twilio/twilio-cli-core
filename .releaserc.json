@@ -83,7 +83,7 @@
     [
       "@semantic-release/exec",
       {
-        "successCmd": "echo '::set-output name=tag-name::${nextRelease.version}'"
+        "successCmd": "echo 'tag-name=${nextRelease.version}' >> $GITHUB_OUTPUT"
       }
     ]
   ]
