@@ -15,7 +15,6 @@
     "sonarjs/no-identical-functions": "off",
     "sonarjs/no-collapsible-if": "off",
     "sonarjs/prefer-immediate-return": "off",
-    "no-throw-literal": "off",
-    "max-classes-per-file": ["error", 3]
+    "no-throw-literal": "off"
   }
 }
