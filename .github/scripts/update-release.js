@@ -54,7 +54,7 @@ const updateRelease = async () => {
       prerelease = oldPrerelease;
     }
 
-    // https://docs.github.com/en/rest/releases/releases#update-a-release
+    //https://docs.github.com/en/rest/releases/releases#update-a-release
     await octokit.request('PATCH /repos/{owner}/{repo}/releases/{release_id}', {
       owner,
       release_id: oldReleaseId,
