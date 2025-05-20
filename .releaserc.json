@@ -62,8 +62,7 @@
     [
       "@semantic-release/github",
       {
-        "successComment": false,
-        "npmPublish": false
+        "successComment": false
       }
     ],
     [
