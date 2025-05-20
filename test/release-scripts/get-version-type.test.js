@@ -1,4 +1,4 @@
-// eslint-disable max-classes-per-file
+/* eslint-disable max-classes-per-file */
 const { expect, test } = require('@twilio/cli-test');
 const proxyquire = require('proxyquire');
 
