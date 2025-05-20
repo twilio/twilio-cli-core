@@ -154,11 +154,13 @@ jobs:
         id: update-release
         run: |
           echo "::set-output name=TAG_NAME::$TAG_NAME"
+          fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
+          node -e "require('$fileName').updateRelease()"
         env:
           REPO_ACCESS_TOKEN: ${{ github.token }}
           TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
-#          RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
-#          REPO_NAME:  ${{ github.repository }}
+          RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
+          REPO_NAME:  ${{ github.repository }}
   triggerCliWorkflow:
     runs-on: ubuntu-latest
     needs: [ update-api-specs, release]
