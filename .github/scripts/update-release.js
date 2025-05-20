@@ -1,7 +1,5 @@
 const core = require('@actions/core');
 const { Octokit } = require("@octokit/core");
-const path = require('path');
-const fs = require('fs');
 
 /**
  * Functionality from tubone24/update_release.
@@ -14,13 +12,6 @@ const updateRelease = async () => {
     })
     const [owner, repo] = process.env.REPO_NAME ? process.env.REPO_NAME.split('/') : [null, null];
     const tag = process.env.TAG_NAME;
-    const githubWorkspace = process.env.GITHUB_WORKSPACE;
-
-    console.log("GITHUB_WORKSPACE: ", githubWorkspace);
-
-    if( !process.env.GITHUB_WORKSPACE.includes('twilio-cli-core') ) {
-      updatePackageJson(process.env.CLI_CORE_TAG)
-    }
 
     //https://docs.github.com/en/rest/releases/releases#get-a-release-by-tag-name
     const getReleaseResponse = await octokit.request('GET /repos/{owner}/{repo}/releases/tags/{tag}',{
@@ -77,26 +68,6 @@ const updateRelease = async () => {
     core.info(`Updated release with body: ${body}`);
   } catch (error) {
     core.setFailed(error.message);
-  }
-};
-
-const updatePackageJson = (value) => {
-  try {
-    // Path to package.json
-    const packageJsonPath = path.resolve(process.cwd(), 'package.json');
-
-    // Read and parse package.json
-    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-
-    // Update the desired key
-    packageJson["dependencies"]["@twilio/cli-core"] = value;
-
-    // Write the updated object back to package.json
-    fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), 'utf8');
-
-    console.info(`Updated package.json: Set twilio-cli-core to '${value}'`);
-  } catch (error) {
-    console.error(`Failed to update package.json: ${error.message}`);
   }
 };
 
