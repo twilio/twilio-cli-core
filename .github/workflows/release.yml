@@ -45,21 +45,21 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
-#  cli-token-validation:
-#    needs: [ cli-core-token-validation ]
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout cli-core repo
-#        uses: actions/checkout@v2
-#      - name: Execute py script to validate twilio-cli tokens
-#        id: cli_token
-#        run: |
-#          output=$(python3 .github/scripts/validate_cli_tokens.py)
-#      - name: Print status
-#        run: echo "${{ steps.cli_token.outputs.tokenStatus }}"
-#      - name: Validate the github workflow
-#        if: ${{ steps.cli_token.outputs.tokenStatus != 'success'}}
-#        run: exit 1
+  cli-token-validation:
+     needs: [ cli-core-token-validation ]
+     runs-on: ubuntu-latest
+     steps:
+       - name: Checkout cli-core repo
+         uses: actions/checkout@v2
+       - name: Execute py script to validate twilio-cli tokens
+         id: cli_token
+         run: |
+           output=$(python3 .github/scripts/validate_cli_tokens.py)
+       - name: Print status
+         run: echo "${{ steps.cli_token.outputs.tokenStatus }}"
+       - name: Validate the github workflow
+         if: ${{ steps.cli_token.outputs.tokenStatus != 'success'}}
+         run: exit 1
 
 #  notify-start:
 #    needs: [ cli-token-validation ]
@@ -81,26 +81,26 @@ jobs:
 #          SLACK_TITLE: "Twilio Cli"
 #          SLACK_MESSAGE: 'Release Started :rocket:'
 #          MSG_MINIMAL: actions url
-#  test:
-#    needs: [ cli-core-token-validation ]
-#    runs-on: ubuntu-latest
-#    strategy:
-#      matrix:
-#        node-version: [20.x, 22.x, lts/*]
-#    steps:
-#      - name: Checkout cli-core repo
-#        uses: actions/checkout@v4
-#      - run: make install
-#      - name: Use Node.js ${{ matrix.node-version }}
-#        uses: actions/setup-node@v4
-#        with:
-#          node-version: ${{ matrix.node-version }}
-#          cache: 'npm'
-#      - name: Run tests
-#        run: make test
+  test:
+     needs: [ cli-token-validation ]
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+         node-version: [20.x, 22.x, lts/*]
+     steps:
+       - name: Checkout cli-core repo
+         uses: actions/checkout@v4
+       - run: make install
+       - name: Use Node.js ${{ matrix.node-version }}
+         uses: actions/setup-node@v4
+         with:
+           node-version: ${{ matrix.node-version }}
+           cache: 'npm'
+       - name: Run tests
+         run: make test
   update-api-specs:
     runs-on: ubuntu-latest
-    needs: [ cli-core-token-validation ]
+    needs: [ test ]
     outputs:
       change-log: ${{ steps.update-specs.outputs.change-log }}
       version-type: ${{ steps.update-specs.outputs.version-type }}
@@ -171,7 +171,6 @@ jobs:
           make install
       - name: Invoke CLI workflow with changelog and version-type
         run: |
-          cat $GITHUB_ENV
           fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
           node -e "require('$fileName').triggerWorkflow()"
         env:
