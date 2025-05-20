@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { expect, test } = require('@twilio/cli-test');
 const proxyquire = require('proxyquire');
 
