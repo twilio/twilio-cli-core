@@ -39,7 +39,7 @@ if [ -n "$(git status --porcelain)" ]; then
   fi
   echo "Commit message:$commitMessage"
   git commit -m "$commitMessage"
-  git push origin "$branch"
+#  git push origin "$branch"
 else
   echo "No changes to commit";
 fi
