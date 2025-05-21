@@ -1,3 +1,42 @@
+--------------------------
+**Accounts**
+- Changes to add date_of_consent param in Bulk Consent API
+
+**Api**
+- Change `friendly_name`, `date_created` and `date_updated` properties to type `string`.
+
+**Twiml**
+- Update twiml definition for `<ConversationRelay>` and `<Assistant>`
+
+
+--------------------------
+**Api**
+- Add `response_key` for `Usage Triggers` fetch endpoint.
+
+**Flex**
+- Add Update Interaction API
+- Adding `webhook_ttid` as optional parameter in Interactions API
+
+**Serverless**
+- Add node22 as a valid Build runtime
+- Add node20 as a valid Build runtime
+
+**Video**
+- removed `transcribe_participants_on_connect` and `transcriptions_configuration` from the room resource **(breaking change)**
+- Added `transcribe_participants_on_connect` and `transcriptions_configuration` to the room resource
+
+
+--------------------------
+**Library - Chore**
+- [PR #131](https://github.com/twilio/twilio-oai/pull/131): Trigger cli core release. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Library - Fix**
+- [PR #130](https://github.com/twilio/twilio-oai/pull/130): added a commit to trigger cli-core release. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Studio**
+- Add documentation for parent_step_sid field in Step resource
+
+
 ### [7.27.2](https://github.com/twilio/twilio-cli-core/compare/7.27.1...7.27.2) (2025-03-26)
 
 
