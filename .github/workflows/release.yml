@@ -46,21 +46,21 @@ jobs:
           aws-region: us-east-1
 
   cli-token-validation:
-     needs: [ cli-core-token-validation ]
-     runs-on: ubuntu-latest
-     steps:
-       - name: Checkout cli-core repo
-         uses: actions/checkout@v2
-       - name: Execute py script to validate twilio-cli tokens
-         id: cli_token
-         run: |
-           output=$(python3 .github/scripts/validate_cli_tokens.py)
+    needs: [ cli-core-token-validation ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cli-core repo
+        uses: actions/checkout@v2
+      - name: Execute py script to validate twilio-cli tokens
+        id: cli_token
+        run: |
+          output=$(python3 .github/scripts/validate_cli_tokens.py)
            echo "::set-output name=tokenStatus::$output"
-       - name: Print status
-         run: echo "${{ steps.cli_token.outputs.tokenStatus }}"
-       - name: Validate the github workflow
-         if: ${{ steps.cli_token.outputs.tokenStatus != 'success'}}
-         run: exit 1
+      - name: Print status
+        run: echo "${{ steps.cli_token.outputs.tokenStatus }}"
+      - name: Validate the github workflow
+        if: ${{ steps.cli_token.outputs.tokenStatus != 'success'}}
+        run: exit 1
 
 #  notify-start:
 #    needs: [ cli-token-validation ]
