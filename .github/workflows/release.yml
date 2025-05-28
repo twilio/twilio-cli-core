@@ -55,7 +55,7 @@ jobs:
         id: cli_token
         run: |
           output=$(python3 .github/scripts/validate_cli_tokens.py)
-           echo "::set-output name=tokenStatus::$output"
+          echo "::set-output name=tokenStatus::$output"
       - name: Print status
         run: echo "${{ steps.cli_token.outputs.tokenStatus }}"
       - name: Validate the github workflow
