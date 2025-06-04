@@ -65,5 +65,12 @@
   },
   "engines": {
     "node": ">=14.0.0"
+  },
+  "overrides": {
+    "@actions/core": {
+      "@actions/http-client": {
+        "undici": "5.25.5"
+      }
+    }
   }
 }
