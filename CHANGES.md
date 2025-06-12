@@ -1,3 +1,26 @@
+## [7.28.0-rc1.1](https://github.com/twilio/twilio-cli-core/compare/7.27.2...7.28.0-rc1.1) (2025-06-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* Node 18 is no longer supported. From version 8.0.0, only Node 20 and later version is supported. (#278)
+
+### Library - Features
+
+* Node 18 is no longer supported. From version 8.0.0, only Node 20 and later version is supported. ([#278](https://github.com/twilio/twilio-cli-core/issues/278)) ([1a6cb09](https://github.com/twilio/twilio-cli-core/commit/1a6cb090b2c6ec3cd6a56e2744df38561a4e04a8))
+
+
+### Library - Chores
+
+* Cli integration test ([#272](https://github.com/twilio/twilio-cli-core/issues/272)) ([1e3760d](https://github.com/twilio/twilio-cli-core/commit/1e3760d868133b93b41ba460630de0e95541733e))
+* Mvr release prep ([#279](https://github.com/twilio/twilio-cli-core/issues/279)) ([55fd171](https://github.com/twilio/twilio-cli-core/commit/55fd171997da8b389eb19b219c4e85bd3e298560))
+
+
+### Library - Fixes
+
+* change require to import ([76f9eb9](https://github.com/twilio/twilio-cli-core/commit/76f9eb906f688d14468584212673fc82a62651db))
+* change require to import ([4e04f56](https://github.com/twilio/twilio-cli-core/commit/4e04f566932a52cd8b2d97a96af5392e9621df4a))
+
 --------------------------
 **Api**
 - Change DependentPhoneNumber `capabilities` type `object` and `date_created`, `date_updated` to `date_time<rfc2822>`
