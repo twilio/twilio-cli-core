@@ -1,3 +1,43 @@
+### [7.27.3-alpha1.1](https://github.com/twilio/twilio-cli-core/compare/7.27.2...7.27.3-alpha1.1) (2025-06-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* Node 18 is no longer supported. From version 8.0.0, only Node 20 and later version is supported. (#278)
+
+### Library - Features
+
+* Node 18 is no longer supported. From version 8.0.0, only Node 20 and later version is supported. ([#278](https://github.com/twilio/twilio-cli-core/issues/278)) ([1a6cb09](https://github.com/twilio/twilio-cli-core/commit/1a6cb090b2c6ec3cd6a56e2744df38561a4e04a8))
+
+
+### Library - Chores
+
+* **release:** set `package.json` to 7.28.0-rc.1 [skip ci] ([e121a79](https://github.com/twilio/twilio-cli-core/commit/e121a790df7f78829b624d191ee55ca22522656a)), closes [#278](https://github.com/twilio/twilio-cli-core/issues/278) [#278](https://github.com/twilio/twilio-cli-core/issues/278) [#272](https://github.com/twilio/twilio-cli-core/issues/272)
+* change require to import ([5e2916d](https://github.com/twilio/twilio-cli-core/commit/5e2916d5a8ae45e57d2841b96fd5232d2a0d66ea))
+* Cli integration test ([#272](https://github.com/twilio/twilio-cli-core/issues/272)) ([1e3760d](https://github.com/twilio/twilio-cli-core/commit/1e3760d868133b93b41ba460630de0e95541733e))
+
+
+### Library - Fixes
+
+* change require to import ([9f5fb16](https://github.com/twilio/twilio-cli-core/commit/9f5fb16ae7918c109a2e94be961945ae58311004))
+* change require to import ([92494c1](https://github.com/twilio/twilio-cli-core/commit/92494c1a4457756b54e6b60e7266e06a1f86273b))
+* change require to import ([5e3ec83](https://github.com/twilio/twilio-cli-core/commit/5e3ec833a4f0973b9c044a2564b0f9e6538d48a1))
+* change require to import ([e0d6079](https://github.com/twilio/twilio-cli-core/commit/e0d607961d03c3cfa9f6dcdb34382fdaf7e8c8e5))
+* change require to import ([cf6762f](https://github.com/twilio/twilio-cli-core/commit/cf6762ffe9a311d01163fc97f0b2c1b4a3e14ab6))
+* change require to import ([b5f5d36](https://github.com/twilio/twilio-cli-core/commit/b5f5d364d12a74b18f4b762a2dc6c5a49d4f2756))
+* change require to import ([42f5f66](https://github.com/twilio/twilio-cli-core/commit/42f5f66c4a1ab9ebcacdb9f3c63f3468740ab267))
+* change require to import ([6b77598](https://github.com/twilio/twilio-cli-core/commit/6b77598bcb80288b269c19f1297fe8c231fb8aec))
+* change require to import ([6be85c9](https://github.com/twilio/twilio-cli-core/commit/6be85c9a0ccf5ad75680c5122bcde9c4c0ac89d5))
+* change require to import ([19d901c](https://github.com/twilio/twilio-cli-core/commit/19d901cf696d8465c13dc6271d894d8d11953fe9))
+* change require to import ([7519ab7](https://github.com/twilio/twilio-cli-core/commit/7519ab705f4662ea73b80a1574ee65c4a82f7c9e))
+* change require to import ([3e9c098](https://github.com/twilio/twilio-cli-core/commit/3e9c098c07c067b09ff4952733d0fe5f4cecf9a8))
+* change require to import ([691dfb2](https://github.com/twilio/twilio-cli-core/commit/691dfb255da5d2f0a8e8babdb14776b620131570))
+* change require to import ([e2c56fe](https://github.com/twilio/twilio-cli-core/commit/e2c56fe0b674389c3ad49fa87aa1f2fa72c96259))
+* change require to import ([545f2a9](https://github.com/twilio/twilio-cli-core/commit/545f2a9908ad47f5c3cb51503c770f4bad1d23fa))
+* change require to import ([448f585](https://github.com/twilio/twilio-cli-core/commit/448f58539e1ceac6fadee7f042ca39e7dc72a3d5))
+* mvr preparations ([80576c7](https://github.com/twilio/twilio-cli-core/commit/80576c7ee2e0232b6aa63b6d673824da590ada10))
+* test for node 18 ([e879624](https://github.com/twilio/twilio-cli-core/commit/e879624992e4c14b52c3a82609651b02a4816f55))
+
 ## [7.28.0-rc.1](https://github.com/twilio/twilio-cli-core/compare/7.27.2...7.28.0-rc.1) (2025-06-12)
 
 
