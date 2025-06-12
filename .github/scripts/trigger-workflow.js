@@ -1,30 +1,25 @@
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-
 const core = require('@actions/core');
+
 import { Octokit } from '@octokit/rest';
 
 /**
  * Functionality from benc-uk/workflow-dispatch.
  * Link: https://github.com/benc-uk/workflow-dispatch
  */
-export async function triggerWorkflow()  {
+export async function triggerWorkflow() {
   try {
-    const octokit = new Octokit({
-      auth: process.env.REPO_ACCESS_TOKEN,
-    });
+    const { Octokit } = await import('@octokit/rest');
+    const octokit = new Octokit({ auth: process.env.REPO_ACCESS_TOKEN });
     const workflowRef = process.env.WORKFLOW_NAME;
     const ref = process.env.BRANCH_NAME;
     const [owner, repo] = process.env.REPO_NAME ? process.env.REPO_NAME.split('/') : [null, null];
 
-    // Decode inputs, this MUST be a valid JSON string
     let inputs = {};
     const inputsJson = process.env.INPUTS;
     if (inputsJson) {
       inputs = JSON.parse(inputsJson);
     }
-
-    if(inputs['change-log'] === null){
+    if (inputs['change-log'] === null) {
       inputs['change-log'] = "";
     }
 
@@ -33,7 +28,6 @@ export async function triggerWorkflow()  {
       repo,
       workflow_id: workflowRef,
     });
-
     core.info(`Workflow id is: ${workflow.data.id}`);
 
     const dispatchResp = await octokit.rest.actions.createWorkflowDispatch({
@@ -47,4 +41,4 @@ export async function triggerWorkflow()  {
   } catch (error) {
     core.setFailed(error.message);
   }
-};
+}
