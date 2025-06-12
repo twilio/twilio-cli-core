@@ -2,7 +2,7 @@
   "branches": [
     "main",
     {
-      "name": "release-for-test",
+      "name": "mvr-release-prep",
       "prerelease": "rc"
     }
   ],
