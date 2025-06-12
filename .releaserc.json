@@ -3,7 +3,7 @@
     "main",
     {
       "name": "mvr-release-prep",
-      "prerelease": "alpha"
+      "prerelease": "rc"
     }
   ],
   "plugins": [
@@ -13,7 +13,7 @@
         "preset": "angular",
         "releaseRules": [{
           "type": "chore",
-          "release": "major"
+          "release": "minor"
         },{
           "type": "oaiFix",
           "release": "patch"
