@@ -3,7 +3,7 @@
     "main",
     {
       "name": "mvr-release-prep",
-      "prerelease": "alpha"
+      "prerelease": "alpha1"
     }
   ],
   "plugins": [
