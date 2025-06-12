@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-import Octokit from '@octokit/rest';
+import { Octokit } from '@octokit/rest';
 
 /**
  * Functionality from benc-uk/workflow-dispatch.
