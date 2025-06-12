@@ -1,5 +1,5 @@
-import * as core from '@actions/core';
-import { Octokit } from '@octokit/rest';
+const core = require('@actions/core');
+const { Octokit } = await import('@octokit/rest');
 
 /**
  * Functionality from benc-uk/workflow-dispatch.
