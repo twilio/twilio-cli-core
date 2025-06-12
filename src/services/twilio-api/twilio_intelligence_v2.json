@@ -722,7 +722,8 @@
           "GET",
           "POST",
           "NULL"
-        ]
+        ],
+        "description": "The HTTP method for the Webhook. One of `GET` or `POST`."
       },
       "intelligence.v2.transcript": {
         "type": "object",
@@ -2841,7 +2842,7 @@
                           "sid": "EYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                           "friendly_name": "Summarize Conversations",
                           "description": "Summarize Conversations",
-                          "docs_link": "https://www.twilio.com/docs/voice/intelligence/key-concepts#language-operators",
+                          "docs_link": "https://www.twilio.com/docs/conversational-intelligence/key-concepts#language-operators",
                           "output_type": "text-generation",
                           "supported_languages": [
                             "en"
@@ -2992,7 +2993,7 @@
                       "sid": "EYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "friendly_name": "Summarize Conversations",
                       "description": "Summarize Conversations",
-                      "docs_link": "https://www.twilio.com/docs/voice/intelligence/key-concepts#language-operators",
+                      "docs_link": "https://www.twilio.com/docs/conversational-intelligence/key-concepts#language-operators",
                       "output_type": "text-generation",
                       "supported_languages": [
                         "en"
@@ -5261,6 +5262,9 @@
     },
     {
       "name": "IntelligenceV2Transcript"
+    },
+    {
+      "name": "IntelligenceV2Version"
     }
   ],
   "security": [
