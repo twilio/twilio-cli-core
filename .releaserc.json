@@ -2,8 +2,8 @@
   "branches": [
     "main",
     {
-      "name": "mvr-release-prep",
-      "prerelease": "alpha1"
+      "name": "release-feature-branch",
+      "prerelease": "rc"
     }
   ],
   "plugins": [
