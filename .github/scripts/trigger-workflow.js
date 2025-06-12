@@ -1,5 +1,8 @@
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 const core = require('@actions/core');
-const { Octokit } = await import('@octokit/rest');
+import { Octokit } from '@octokit/rest';
 
 /**
  * Functionality from benc-uk/workflow-dispatch.
