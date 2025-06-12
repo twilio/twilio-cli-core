@@ -180,7 +180,7 @@ jobs:
           WORKFLOW_NAME: 'release.yml'
           BRANCH_NAME: ${{github.event.inputs.cli-branch}}
           REPO_NAME:  ${{ github.repository_owner }}/twilio-cli
-          INPUTS: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}", "tag-name": "${{ needs.release.outputs.tag-name }}" }'
+          INPUTS: '{ "change-log": "changelog1", "version-type": "${{needs.update-api-specs.outputs.version-type}}", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}", "tag-name": "${{ needs.release.outputs.tag-name }}" }'
 #  notify-complete-fail:
 #    if: ${{ (needs.cli-token-validation.result != 'failure' || needs.cli-core-token-validation.result != 'failure' ) && (failure() || cancelled()) }}
 #    needs: [ triggerCliWorkflow ]
