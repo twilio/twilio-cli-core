@@ -164,7 +164,7 @@ jobs:
           REPO_NAME:  ${{ github.repository }}
   triggerCliWorkflow:
     runs-on: ubuntu-latest
-    needs: [update-api-specs, release]
+    needs: [ update-api-specs, release]
     steps:
       - name: Checkout cli-core repo
         uses: actions/checkout@v4
