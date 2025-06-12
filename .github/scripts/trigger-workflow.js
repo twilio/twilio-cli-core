@@ -5,7 +5,7 @@ import { Octokit } from '@octokit/rest';
  * Functionality from benc-uk/workflow-dispatch.
  * Link: https://github.com/benc-uk/workflow-dispatch
  */
-const triggerWorkflow = async () => {
+export async function triggerWorkflow()  {
   try {
     const octokit = new Octokit({
       auth: process.env.REPO_ACCESS_TOKEN,
@@ -44,8 +44,4 @@ const triggerWorkflow = async () => {
   } catch (error) {
     core.setFailed(error.message);
   }
-};
-
-module.exports = {
-  triggerWorkflow,
 };
