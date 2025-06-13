@@ -1,7 +1,10 @@
 {
   "branches": [
     "main",
-    "rc-release"
+    {
+      "name": "release-feature-branch",
+      "prerelease": "rc"
+    }
   ],
   "plugins": [
     [
