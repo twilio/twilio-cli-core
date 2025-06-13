@@ -81,7 +81,8 @@
         "type": "string",
         "enum": [
           "push"
-        ]
+        ],
+        "description": "The Type of the Factor. Currently only `push` is supported."
       },
       "verify.v2.service.rate_limit.bucket": {
         "type": "object",
@@ -289,7 +290,8 @@
           "expired",
           "approved",
           "denied"
-        ]
+        ],
+        "description": "The Status of this Challenge. One of `pending`, `expired`, `approved` or `denied`."
       },
       "challenge_enum_challenge_reasons": {
         "type": "string",
@@ -297,14 +299,16 @@
           "none",
           "not_needed",
           "not_requested"
-        ]
+        ],
+        "description": "Reason for the Challenge to be in certain `status`. One of `none`, `not_needed` or `not_requested`."
       },
       "challenge_enum_factor_types": {
         "type": "string",
         "enum": [
           "push",
           "totp"
-        ]
+        ],
+        "description": "The Factor Type of this Challenge. Currently `push` and `totp` are supported."
       },
       "challenge_enum_list_orders": {
         "type": "string",
@@ -475,14 +479,16 @@
         "enum": [
           "unverified",
           "verified"
-        ]
+        ],
+        "description": "The Status of this Factor. One of `unverified` or `verified`."
       },
       "factor_enum_factor_types": {
         "type": "string",
         "enum": [
           "push",
           "totp"
-        ]
+        ],
+        "description": "The Type of this Factor. Currently `push` and `totp` are supported."
       },
       "factor_enum_notification_platforms": {
         "type": "string",
@@ -528,7 +534,8 @@
         "type": "string",
         "enum": [
           "form-push"
-        ]
+        ],
+        "description": "The Type of this Form. Currently only `form-push` is supported."
       },
       "verify.v2.service.messaging_configuration": {
         "type": "object",
@@ -685,14 +692,16 @@
         "enum": [
           "unverified",
           "verified"
-        ]
+        ],
+        "description": "The Status of this Factor. One of `unverified` or `verified`."
       },
       "new_factor_enum_factor_types": {
         "type": "string",
         "enum": [
           "push",
           "totp"
-        ]
+        ],
+        "description": "The Type of this Factor. Currently `push` and `totp` are supported."
       },
       "new_factor_enum_notification_platforms": {
         "type": "string",
@@ -897,7 +906,7 @@
           "friendly_name": {
             "type": "string",
             "nullable": true,
-            "description": "The name that appears in the body of your verification messages. It can be up to 30 characters long and can include letters, numbers, spaces, dashes, underscores. Phone numbers, special characters or links are NOT allowed. **This value should not contain PII.**"
+            "description": "The name that appears in the body of your verification messages. It can be up to 30 characters long and can include letters, numbers, spaces, dashes, underscores. Phone numbers, special characters or links are NOT allowed. It cannot contain more than 4 (consecutive or non-consecutive) digits. **This value should not contain PII.**"
           },
           "code_length": {
             "type": "integer",
@@ -1204,8 +1213,11 @@
           "sms",
           "call",
           "email",
-          "whatsapp"
-        ]
+          "whatsapp",
+          "rbm",
+          "sna"
+        ],
+        "description": "A string specifying the communication channel used for the verification attempt. i.e SMS, CALL, etc."
       },
       "verification_attempt_enum_call_status": {
         "type": "string",
@@ -1273,7 +1285,7 @@
             "description": "Total of attempts made that were not confirmed by the end user, according to the provided filters."
           },
           "conversion_rate_percentage": {
-            "type": "number",
+            "type": "string",
             "nullable": true,
             "description": "Percentage of the confirmed messages over the total, defined by (total_converted/total_attempts)*100. "
           },
@@ -1534,7 +1546,8 @@
         "enum": [
           "GET",
           "POST"
-        ]
+        ],
+        "description": "The method to be used when calling the webhook's URL."
       }
     }
   },
@@ -1673,6 +1686,68 @@
               }
             },
             "description": "Created"
+          },
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/verify.v2.service.access_token"
+                },
+                "examples": {
+                  "createWithTtl200": {
+                    "value": {
+                      "sid": "YKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "entity_identity": "ff483d1ff591898a9942916050d2ca3f",
+                      "factor_type": "push",
+                      "factor_friendly_name": "John Doe iPhone",
+                      "ttl": 300,
+                      "date_created": "2015-07-30T20:00:00Z",
+                      "token": "eyJ6aXAiOiJERUYiLCJraWQiOiJTQVNfUzNfX19LTVNfdjEiLCJjdHkiOiJ0d2lsaW8tZnBhO3Y9MSIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJkaXIifQ..qjltWfIgQaTwp2De.81Z_6W4kR-hdlAUvJQCbwS8CQ7QAoFRkOvNMoySEj8zEB4BAY3MXhPARfaK4Lnr4YceA2cXEmrzPKQ7bPm0XZMGYm1fqLYzAR8YAqUetI9WEdQLFytg1h4XnJnXhgd99eNXsLkpKHhsCnFkchV9eGpRrdrfB0STR5Xq0fdakomb98iuIFt1XtP0_iqxvxQZKe1O4035XhK_ELVwQBz_qdI77XRZBFM0REAzlnEOe61nOcQxkaIM9Qel9L7RPhcndcCPFAyYjxo6Ri5c4vOnszLDiHmeK9Ep9fRE5-Oz0px0ZEg_FgTUEPFPo2OHQj076H1plJnFr-qPINDJkUL_i7loqG1IlapOi1JSlflPH-Ebj4hhpBdMIcs-OX7jhqzmVqkIKWkpPyPEmfvY2-eA5Zpoo08YpqAJ3G1l_xEcHl28Ijkefj1mdb6E8POx41skAwXCpdfIbzWzV_VjFpmwhacS3JZNt9C4hVG4Yp-RGPEl1C7aJHRIUavAmoRHaXbfG20zzv5Zu0P5PcopDszzoqVfZpzc.GCt35DWTurtP-QaIL5aBSQ",
+                      "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AccessTokens/YKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -1711,6 +1786,14 @@
               },
               "examples": {
                 "createWithTtl": {
+                  "value": {
+                    "FactorType": "push",
+                    "FactorFriendlyName": "John Doe iPhone",
+                    "Identity": "ff483d1ff591898a9942916050d2ca3f",
+                    "Ttl": 300
+                  }
+                },
+                "createWithTtl200": {
                   "value": {
                     "FactorType": "push",
                     "FactorFriendlyName": "John Doe iPhone",
@@ -6871,7 +6954,6 @@
                       "skip_sms_to_landlines": false,
                       "dtmf_input_required": false,
                       "tts_name": "name",
-                      "mailer_sid": "MDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "do_not_share_warning_enabled": false,
                       "custom_code_enabled": true,
                       "push": {
@@ -7191,7 +7273,6 @@
                           "skip_sms_to_landlines": false,
                           "dtmf_input_required": false,
                           "tts_name": "name",
-                          "mailer_sid": "MDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                           "do_not_share_warning_enabled": false,
                           "custom_code_enabled": true,
                           "push": {
@@ -7375,7 +7456,6 @@
                       "skip_sms_to_landlines": false,
                       "dtmf_input_required": false,
                       "tts_name": "name",
-                      "mailer_sid": "MDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "do_not_share_warning_enabled": false,
                       "custom_code_enabled": true,
                       "push": {
@@ -7529,7 +7609,6 @@
                       "skip_sms_to_landlines": false,
                       "dtmf_input_required": false,
                       "tts_name": "name",
-                      "mailer_sid": "MDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "do_not_share_warning_enabled": false,
                       "custom_code_enabled": true,
                       "push": {
@@ -9202,6 +9281,70 @@
               }
             },
             "description": "Created"
+          },
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/verify.v2.service.verification_check"
+                },
+                "examples": {
+                  "verificationChecks200": {
+                    "value": {
+                      "sid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "to": "+15017122661",
+                      "channel": "sms",
+                      "status": "approved",
+                      "valid": true,
+                      "amount": null,
+                      "payee": null,
+                      "sna_attempts_error_codes": [],
+                      "date_created": "2015-07-30T20:00:00Z",
+                      "date_updated": "2015-07-30T20:00:00Z"
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -9261,6 +9404,15 @@
                     "To": "recipient@foo.com",
                     "VerificationSid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "Code": "123456"
+                  }
+                },
+                "verificationChecks200": {
+                  "value": {
+                    "To": "+15017122661",
+                    "VerificationSid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "Code": "1234",
+                    "Amount": "\u20ac39.99",
+                    "Payee": "Acme Inc."
                   }
                 },
                 "snaVerificationChecks": {
