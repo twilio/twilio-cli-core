@@ -1,3 +1,95 @@
+## [8.0.0-rc.1](https://github.com/twilio/twilio-cli-core/compare/7.27.2...8.0.0-rc.1) (2025-06-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* node 20 update
+* node 20 update
+* Node 18 is no longer supported. From version 8.0.0, only Node 20 and later version is supported. (#278)
+
+### Library - Features
+
+* Node 18 is no longer supported. From version 8.0.0, only Node 20 and later version is supported. ([#278](https://github.com/twilio/twilio-cli-core/issues/278)) ([1a6cb09](https://github.com/twilio/twilio-cli-core/commit/1a6cb090b2c6ec3cd6a56e2744df38561a4e04a8))
+* Update README.md ([#286](https://github.com/twilio/twilio-cli-core/issues/286)) ([9fdb447](https://github.com/twilio/twilio-cli-core/commit/9fdb44746752def53d579d5e70821cc1fde9cbdf))
+* Update README.md ([#287](https://github.com/twilio/twilio-cli-core/issues/287)) ([8c7ce10](https://github.com/twilio/twilio-cli-core/commit/8c7ce10cbee2960f00bd900f9a8be8c5434c87d6))
+
+
+### Library - Chores
+
+* Cli integration test ([#272](https://github.com/twilio/twilio-cli-core/issues/272)) ([1e3760d](https://github.com/twilio/twilio-cli-core/commit/1e3760d868133b93b41ba460630de0e95541733e))
+* Mvr release prep ([#279](https://github.com/twilio/twilio-cli-core/issues/279)) ([55fd171](https://github.com/twilio/twilio-cli-core/commit/55fd171997da8b389eb19b219c4e85bd3e298560))
+* rc release test ([86130f9](https://github.com/twilio/twilio-cli-core/commit/86130f914f6f1079d559d83f1507dd6b891a4ba5))
+* rc release test ([3dc1861](https://github.com/twilio/twilio-cli-core/commit/3dc18617a3afaf4366cf807385cee2b85f611e86))
+* rc release test ([4bfbc52](https://github.com/twilio/twilio-cli-core/commit/4bfbc5252f69d2bacd35e8641c6aadbe62477206))
+* rc release test ([a19ae08](https://github.com/twilio/twilio-cli-core/commit/a19ae0833a7f9d6763c9f388b5d2de44d67d384a))
+* rc release test ([afa10a8](https://github.com/twilio/twilio-cli-core/commit/afa10a817859d9eb368823d46408a0a8f928ee33))
+
+--------------------------
+**Api**
+- Change DependentPhoneNumber `capabilities` type `object` and `date_created`, `date_updated` to `date_time<rfc2822>`
+- Updated the `Default` value from 0 to 1 in the Recordings Resource `channels` property
+
+**Serverless**
+- Update `ienum` type level in Logs api
+
+**Verify**
+- Update Channel list in Verify Attempst API
+- Update `ienum` type for Conversion_Status in Verify Attempts API
+
+**Twiml**
+- Add `us2` to the list of supported values for the region attribute in the `<Conference>` TwiML noun.
+
+
+--------------------------
+**Api**
+- Added several usage category enums to `usage_record` API
+
+**Numbers**
+- Update the porting documentation
+
+**Verify**
+- Update `ienum` type for Channels in Verify Attempts API
+
+
+--------------------------
+**Accounts**
+- Changes to add date_of_consent param in Bulk Consent API
+
+**Api**
+- Change `friendly_name`, `date_created` and `date_updated` properties to type `string`.
+
+**Twiml**
+- Update twiml definition for `<ConversationRelay>` and `<Assistant>`
+
+
+--------------------------
+**Api**
+- Add `response_key` for `Usage Triggers` fetch endpoint.
+
+**Flex**
+- Add Update Interaction API
+- Adding `webhook_ttid` as optional parameter in Interactions API
+
+**Serverless**
+- Add node22 as a valid Build runtime
+- Add node20 as a valid Build runtime
+
+**Video**
+- removed `transcribe_participants_on_connect` and `transcriptions_configuration` from the room resource **(breaking change)**
+- Added `transcribe_participants_on_connect` and `transcriptions_configuration` to the room resource
+
+
+--------------------------
+**Library - Chore**
+- [PR #131](https://github.com/twilio/twilio-oai/pull/131): Trigger cli core release. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Library - Fix**
+- [PR #130](https://github.com/twilio/twilio-oai/pull/130): added a commit to trigger cli-core release. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Studio**
+- Add documentation for parent_step_sid field in Step resource
+
+
 ### [7.27.2](https://github.com/twilio/twilio-cli-core/compare/7.27.1...7.27.2) (2025-03-26)
 
 
