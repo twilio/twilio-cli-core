@@ -565,7 +565,8 @@
           "delivered",
           "undelivered",
           "sent"
-        ]
+        ],
+        "description": "The message delivery status, can be `read`, `failed`, `delivered`, `undelivered`, `sent` or null."
       },
       "conversations.v1.conversation.conversation_participant": {
         "type": "object",
@@ -947,7 +948,8 @@
           "apn",
           "gcm",
           "fcm"
-        ]
+        ],
+        "description": "The type of push-notification service the credential is for. Can be: `fcm`, `gcm`, or `apn`."
       },
       "conversations.v1.participant_conversation": {
         "type": "object",
@@ -1086,7 +1088,8 @@
           "inactive",
           "active",
           "closed"
-        ]
+        ],
+        "description": "The current state of this User Conversation. One of `inactive`, `active` or `closed`."
       },
       "conversations.v1.role": {
         "type": "object",
@@ -1162,7 +1165,8 @@
         "enum": [
           "conversation",
           "service"
-        ]
+        ],
+        "description": "The type of role. Can be: `conversation` for [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) roles or `service` for [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) roles."
       },
       "conversations.v1.service": {
         "type": "object",
@@ -1736,7 +1740,8 @@
           "delivered",
           "undelivered",
           "sent"
-        ]
+        ],
+        "description": "The message delivery status, can be `read`, `failed`, `delivered`, `undelivered`, `sent` or null."
       },
       "conversations.v1.service.service_conversation.service_conversation_participant": {
         "type": "object",
@@ -2238,7 +2243,8 @@
           "inactive",
           "active",
           "closed"
-        ]
+        ],
+        "description": "The current state of this User Conversation. One of `inactive`, `active` or `closed`."
       },
       "conversations.v1.service.service_role": {
         "type": "object",
@@ -2314,7 +2320,8 @@
         "enum": [
           "conversation",
           "service"
-        ]
+        ],
+        "description": "The type of role. Can be: `conversation` for [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) roles or `service` for [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) roles."
       },
       "service_stats_conversations_ratelimitingerrors_enum_source": {
         "type": "string",
@@ -2575,7 +2582,8 @@
           "inactive",
           "active",
           "closed"
-        ]
+        ],
+        "description": "The current state of this User Conversation. One of `inactive`, `active` or `closed`."
       },
       "conversations.v1.service.service_configuration.service_webhook_configuration": {
         "type": "object",
@@ -2893,7 +2901,8 @@
           "inactive",
           "active",
           "closed"
-        ]
+        ],
+        "description": "The current state of this User Conversation. One of `inactive`, `active` or `closed`."
       }
     }
   },
@@ -3168,12 +3177,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -4245,6 +4254,12 @@
               "conversation_sid": "sid"
             },
             "resource_url": "/v1/Conversations/{conversation_sid}/Webhooks"
+          },
+          "export": {
+            "mapping": {
+              "conversation_sid": "sid"
+            },
+            "resource_url": "/v1/Conversations/{conversation_sid}/Export"
           }
         },
         "pathType": "list"
@@ -4294,7 +4309,8 @@
                       "links": {
                         "participants": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
                         "messages": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
-                        "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks"
+                        "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks",
+                        "export": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Export"
                       }
                     }
                   },
@@ -4316,7 +4332,8 @@
                       "links": {
                         "participants": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
                         "messages": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
-                        "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks"
+                        "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks",
+                        "export": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Export"
                       }
                     }
                   },
@@ -4343,7 +4360,8 @@
                       "links": {
                         "participants": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
                         "messages": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
-                        "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks"
+                        "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks",
+                        "export": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Export"
                       }
                     }
                   }
@@ -4523,12 +4541,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -4621,7 +4639,8 @@
                           "links": {
                             "participants": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
                             "messages": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
-                            "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks"
+                            "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks",
+                            "export": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Export"
                           }
                         }
                       ],
@@ -4718,6 +4737,12 @@
               "conversation_sid": "sid"
             },
             "resource_url": "/v1/Conversations/{conversation_sid}/Webhooks"
+          },
+          "export": {
+            "mapping": {
+              "conversation_sid": "sid"
+            },
+            "resource_url": "/v1/Conversations/{conversation_sid}/Export"
           }
         },
         "pathType": "instance"
@@ -4776,7 +4801,8 @@
                       "links": {
                         "participants": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
                         "messages": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
-                        "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks"
+                        "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks",
+                        "export": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Export"
                       }
                     }
                   }
@@ -4987,7 +5013,8 @@
                       "links": {
                         "participants": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
                         "messages": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
-                        "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks"
+                        "webhooks": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks",
+                        "export": "https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Export"
                       }
                     }
                   }
@@ -5442,12 +5469,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -6270,12 +6297,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -6815,12 +6842,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -7405,12 +7432,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 5, and the maximum is 5.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 5
             }
           },
           {
@@ -8537,12 +8564,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -9027,12 +9054,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -9397,12 +9424,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -10010,12 +10037,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -10589,12 +10616,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -11039,6 +11066,13 @@
               "conversation_sid": "sid"
             },
             "resource_url": "/v1/Services/{chat_service_sid}/Conversations/{conversation_sid}/Webhooks"
+          },
+          "export": {
+            "mapping": {
+              "chat_service_sid": "chat_service_sid",
+              "conversation_sid": "sid"
+            },
+            "resource_url": "/v1/Services/{chat_service_sid}/Conversations/{conversation_sid}/Export"
           }
         },
         "parent": "/Services/{Sid}",
@@ -11101,7 +11135,8 @@
                       "links": {
                         "participants": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
                         "messages": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
-                        "webhooks": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks"
+                        "webhooks": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks",
+                        "export": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Export"
                       }
                     }
                   },
@@ -11123,7 +11158,8 @@
                       "links": {
                         "participants": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
                         "messages": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
-                        "webhooks": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks"
+                        "webhooks": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks",
+                        "export": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Export"
                       }
                     }
                   }
@@ -11306,12 +11342,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -11404,7 +11440,8 @@
                           "links": {
                             "participants": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
                             "messages": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
-                            "webhooks": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks"
+                            "webhooks": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks",
+                            "export": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Export"
                           }
                         }
                       ],
@@ -11504,6 +11541,13 @@
               "conversation_sid": "sid"
             },
             "resource_url": "/v1/Services/{chat_service_sid}/Conversations/{conversation_sid}/Webhooks"
+          },
+          "export": {
+            "mapping": {
+              "chat_service_sid": "chat_service_sid",
+              "conversation_sid": "sid"
+            },
+            "resource_url": "/v1/Services/{chat_service_sid}/Conversations/{conversation_sid}/Export"
           }
         },
         "parent": "/Services/{Sid}",
@@ -11575,7 +11619,8 @@
                       "links": {
                         "participants": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
                         "messages": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
-                        "webhooks": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks"
+                        "webhooks": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks",
+                        "export": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Export"
                       }
                     }
                   }
@@ -11810,7 +11855,8 @@
                       "links": {
                         "participants": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants",
                         "messages": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
-                        "webhooks": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks"
+                        "webhooks": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks",
+                        "export": "https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Export"
                       }
                     }
                   }
@@ -12296,12 +12342,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -13193,12 +13239,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -13772,12 +13818,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -14586,12 +14632,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 5, and the maximum is 5.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 5
             }
           },
           {
@@ -15841,12 +15887,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -16238,12 +16284,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -16906,12 +16952,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -17808,12 +17854,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -18410,12 +18456,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -19226,12 +19272,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -19436,6 +19482,9 @@
     },
     {
       "name": "ConversationsV1DeliveryReceipt"
+    },
+    {
+      "name": "ConversationsV1Export"
     },
     {
       "name": "ConversationsV1Message"
