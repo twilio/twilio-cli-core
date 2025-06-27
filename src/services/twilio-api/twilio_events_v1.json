@@ -328,11 +328,6 @@
             "format": "uri-map",
             "nullable": true,
             "description": "Contains a dictionary of URL links to nested resources of this Subscription."
-          },
-          "receive_events_from_subaccounts": {
-            "type": "boolean",
-            "nullable": true,
-            "description": "Receive events from all children accounts in the parent account subscription."
           }
         }
       }
@@ -2145,6 +2140,59 @@
               }
             },
             "description": "Created"
+          },
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/events.v1.sink.sink_test"
+                },
+                "examples": {
+                  "create200": {
+                    "value": {
+                      "result": "submitted"
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2562,6 +2610,63 @@
               }
             },
             "description": "Created"
+          },
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/events.v1.subscription.subscribed_event"
+                },
+                "examples": {
+                  "create200": {
+                    "value": {
+                      "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "subscription_sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "type": "com.twilio.messaging.message.delivered",
+                      "schema_version": 2,
+                      "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/com.twilio.messaging.message.delivered"
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            },
+            "description": "OK"
           }
         },
         "security": [
@@ -2592,6 +2697,12 @@
               },
               "examples": {
                 "create": {
+                  "value": {
+                    "Type": "com.twilio.messaging.message.delivered",
+                    "SchemaVersion": 2
+                  }
+                },
+                "create200": {
                   "value": {
                     "Type": "com.twilio.messaging.message.delivered",
                     "SchemaVersion": 2
@@ -3056,47 +3167,6 @@
                       }
                     }
                   },
-                  "readResultsWithBetaSubaccounts": {
-                    "value": {
-                      "subscriptions": [
-                        {
-                          "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                          "date_created": "2015-07-30T20:00:00Z",
-                          "date_updated": "2015-07-30T20:01:33Z",
-                          "sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                          "sink_sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                          "description": "A subscription",
-                          "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                          "receive_events_from_subaccounts": true,
-                          "links": {
-                            "subscribed_events": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents"
-                          }
-                        },
-                        {
-                          "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                          "date_created": "2015-07-30T20:00:00Z",
-                          "date_updated": "2015-07-30T20:01:33Z",
-                          "sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
-                          "sink_sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                          "description": "Another subscription",
-                          "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
-                          "receive_events_from_subaccounts": false,
-                          "links": {
-                            "subscribed_events": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab/SubscribedEvents"
-                          }
-                        }
-                      ],
-                      "meta": {
-                        "page": 0,
-                        "page_size": 20,
-                        "first_page_url": "https://events.twilio.com/v1/Subscriptions?PageSize=20&Page=0",
-                        "previous_page_url": null,
-                        "url": "https://events.twilio.com/v1/Subscriptions?PageSize=20&Page=0",
-                        "next_page_url": null,
-                        "key": "subscriptions"
-                      }
-                    }
-                  },
                   "readResultsFilteredBySinkSid": {
                     "value": {
                       "subscriptions": [
@@ -3216,21 +3286,6 @@
                       },
                       "receive_events_from_subaccounts": false
                     }
-                  },
-                  "createWithBetaSubaccounts": {
-                    "value": {
-                      "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                      "date_created": "2015-07-30T20:00:00Z",
-                      "date_updated": "2015-07-30T20:01:33Z",
-                      "sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                      "sink_sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                      "description": "A subscription",
-                      "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                      "receive_events_from_subaccounts": true,
-                      "links": {
-                        "subscribed_events": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents"
-                      }
-                    }
                   }
                 }
               }
@@ -3304,10 +3359,6 @@
                       "type": "object"
                     },
                     "description": "An array of objects containing the subscribed Event Types"
-                  },
-                  "ReceiveEventsFromSubaccounts": {
-                    "type": "boolean",
-                    "description": "Receive events from all children accounts in the parent account subscription."
                   }
                 },
                 "required": [
@@ -3325,17 +3376,6 @@
                       "{\"type\": \"com.twilio.messaging.message.delivered\",\"schema_version\": 1}",
                       "{\"type\": \"com.twilio.messaging.message.failed\",\"schema_version\": 12}"
                     ]
-                  }
-                },
-                "createWithBetaSubaccounts": {
-                  "value": {
-                    "SinkSid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                    "Description": "A subscription",
-                    "Types": [
-                      "{\"type\": \"com.twilio.messaging.message.delivered\",\"schema_version\": 1}",
-                      "{\"type\": \"com.twilio.messaging.message.failed\",\"schema_version\": 12}"
-                    ],
-                    "ReceiveEventsFromSubaccounts": true
                   }
                 }
               }
@@ -3410,21 +3450,6 @@
                         "subscribed_events": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents"
                       },
                       "receive_events_from_subaccounts": false
-                    }
-                  },
-                  "fetchWithBetaSubaccounts": {
-                    "value": {
-                      "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                      "date_created": "2015-07-30T20:00:00Z",
-                      "date_updated": "2015-07-30T20:01:33Z",
-                      "sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                      "sink_sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                      "description": "A subscription",
-                      "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                      "receive_events_from_subaccounts": true,
-                      "links": {
-                        "subscribed_events": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents"
-                      }
                     }
                   }
                 }
@@ -3518,21 +3543,6 @@
                       },
                       "receive_events_from_subaccounts": false
                     }
-                  },
-                  "updateWithBetaSubaccounts": {
-                    "value": {
-                      "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                      "date_created": "2015-07-30T20:00:00Z",
-                      "date_updated": "2020-07-30T20:01:33Z",
-                      "sid": "DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                      "sink_sid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
-                      "description": "Updated description",
-                      "receive_events_from_subaccounts": true,
-                      "url": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                      "links": {
-                        "subscribed_events": "https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents"
-                      }
-                    }
                   }
                 }
               }
@@ -3599,10 +3609,6 @@
                     "maxLength": 34,
                     "pattern": "^DG[0-9a-fA-F]{32}$",
                     "description": "The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created."
-                  },
-                  "ReceiveEventsFromSubaccounts": {
-                    "type": "boolean",
-                    "description": "Receive events from all children accounts in the parent account subscription."
                   }
                 }
               },
@@ -3611,13 +3617,6 @@
                   "value": {
                     "SinkSid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
                     "Description": "Updated description"
-                  }
-                },
-                "updateWithBetaSubaccounts": {
-                  "value": {
-                    "SinkSid": "DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
-                    "Description": "Updated description",
-                    "ReceiveEventsFromSubaccounts": true
                   }
                 }
               }
@@ -3669,6 +3668,9 @@
       "name": "EventsV1EventType"
     },
     {
+      "name": "EventsV1Index"
+    },
+    {
       "name": "EventsV1Replay"
     },
     {
@@ -3691,6 +3693,9 @@
     },
     {
       "name": "EventsV1Subscription"
+    },
+    {
+      "name": "EventsV1Version"
     }
   ],
   "security": [
