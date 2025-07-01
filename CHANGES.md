@@ -1,3 +1,10 @@
+### [1.0.1](https://github.com/tiwarishubham635/twilio-cli-core/compare/1.0.0...1.0.1) (2025-07-01)
+
+
+### Library - Chores
+
+* Update README.md ([956491d](https://github.com/tiwarishubham635/twilio-cli-core/commit/956491d904cf1a19931ad5416d3633286a0b0dd5))
+
 ## 1.0.0 (2025-06-27)
 
 
