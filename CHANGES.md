@@ -1,3 +1,5 @@
+### [8.0.1](https://github.com/twilio/twilio-cli-core/compare/8.0.0...8.0.1) (2025-07-03)
+
 --------------------------
 **Bulkexports**
 - Changed the type of 'details' field to be a list of objects instead of a single object
