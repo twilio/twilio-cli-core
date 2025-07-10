@@ -4,7 +4,7 @@ cp -R ~/oai_definitions/json/. src/services/twilio-api/
 echo "Running update changelog script"
 node .github/scripts/update-change-log.js
 changeLog=''
-versionType=-1
+versionType=2
 if [ -f changeLog.md ]; then
   changeLog=$(cat changeLog.md)
   rm -rf changeLog.md
