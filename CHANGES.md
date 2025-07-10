@@ -1,3 +1,5 @@
+### [8.0.3](https://github.com/twilio/twilio-cli-core/compare/8.0.2...8.0.3) (2025-07-10)
+
 ### [8.0.2](https://github.com/twilio/twilio-cli-core/compare/8.0.1...8.0.2) (2025-07-10)
 
 
