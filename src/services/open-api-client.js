@@ -159,11 +159,14 @@ class OpenApiClient {
       schema = this.getRef(schema.$ref, domain);
     }
 
+    const safeSchema = Object.create(null);
     Object.entries(schema).forEach(([key, value]) => {
-      schema[key] = this.evaluateRefs(value, domain);
+      if (key !== '__proto__' && key !== 'constructor' && key !== 'prototype') {
+        safeSchema[key] = this.evaluateRefs(value, domain);
+      }
     });
 
-    return schema;
+    return safeSchema;
   }
 
   getRef(ref, domain) {
