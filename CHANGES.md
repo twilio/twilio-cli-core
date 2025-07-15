@@ -1,3 +1,37 @@
+### [8.0.3](https://github.com/twilio/twilio-cli-core/compare/8.0.2...8.0.3) (2025-07-10)
+
+### [8.0.2](https://github.com/twilio/twilio-cli-core/compare/8.0.1...8.0.2) (2025-07-10)
+
+
+### Library - Chores
+
+* take default minor versiontype ([#292](https://github.com/twilio/twilio-cli-core/issues/292)) ([55ead22](https://github.com/twilio/twilio-cli-core/commit/55ead222380f8586cc0abb668cac687c6273a973))
+
+### [8.0.1](https://github.com/twilio/twilio-cli-core/compare/8.0.0...8.0.1) (2025-07-03)
+
+--------------------------
+**Bulkexports**
+- Changed the type of 'details' field to be a list of objects instead of a single object
+
+**Conversations**
+- Updates to `method` casing for ConfgurationAddress, ConversationScopedWebhook, and ServiceConversationScopedWebhook for RestProxy compatibility
+
+**Proxy**
+- remove shortcodes resource as its no longer used
+
+**Serverless**
+- Change log field level from type `ienum` to `string` in Logs api
+
+**Taskrouter**
+- Remove `URL-encoded` from attributes param definition in tasks
+
+**Trunking**
+- Added `symmetric_rtp_enabled` property on Trunks.
+
+**Twiml**
+- Add support for `<WhatsApp>` noun under `<Dial>` verb
+
+
 ## [8.0.0](https://github.com/twilio/twilio-cli-core/compare/7.27.2...8.0.0) (2025-06-24)
 
 
