@@ -22,13 +22,12 @@ jobs:
       - name: Update cli-core version and run tests
         run: |
           ls
-          echo $GITHUB_WORKSPACE
-#          node .github/scripts/update-cli-core-release-version.js
-#          make install
-#          make test
+          node .github/scripts/update-cli-core-release-version.js
+          make install
+          make test
         env:
           REPO_NAME:  ${{ github.repository_owner }}/twilio-cli
-#          CLI_CORE_TAG: ${{ needs.release.outputs.tag-name }}
+          CLI_CORE_TAG: "8.0.2"
   cli-core-token-validation:
     runs-on: ubuntu-latest
     steps:
