@@ -1,3 +1,13 @@
+--------------------------
+**Events**
+- Remove `SinkSid` parameter when updating subscriptions. **(breaking change)**
+
+**Twiml**
+- Remove Duplicates.
+- Add Polly Generative voices.
+- Add Latest Google (Chirp3-HD) voices.
+
+
 ### [8.0.3](https://github.com/twilio/twilio-cli-core/compare/8.0.2...8.0.3) (2025-07-10)
 
 ### [8.0.2](https://github.com/twilio/twilio-cli-core/compare/8.0.1...8.0.2) (2025-07-10)
