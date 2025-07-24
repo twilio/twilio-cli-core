@@ -1,3 +1,11 @@
+## [8.1.0](https://github.com/twilio/twilio-cli-core/compare/8.0.3...8.1.0) (2025-07-24)
+
+
+### Library - Chores
+
+* test cli-core released version before triggering cli release ([#293](https://github.com/twilio/twilio-cli-core/issues/293)) ([6535e6e](https://github.com/twilio/twilio-cli-core/commit/6535e6ebca43263a468515963a41ee7d989d65c9))
+* upgrade axios version ([#294](https://github.com/twilio/twilio-cli-core/issues/294)) ([ce88e95](https://github.com/twilio/twilio-cli-core/commit/ce88e95b156d0e2576a5eb3f79a109c5486f5055))
+
 --------------------------
 **Events**
 - Remove `SinkSid` parameter when updating subscriptions. **(breaking change)**
