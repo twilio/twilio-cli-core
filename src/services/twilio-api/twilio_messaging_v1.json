@@ -155,9 +155,7 @@
           },
           "errors": {
             "type": "array",
-            "items": {
-              "type": "object"
-            },
+            "items": {},
             "nullable": true,
             "description": "A list of errors that occurred during the brand registration process."
           },
@@ -509,7 +507,6 @@
             "nullable": true
           },
           "cert_in_validation": {
-            "type": "object",
             "nullable": true,
             "description": "Optional JSON field describing the status and upload date of a new certificate in the process of validation"
           }
@@ -1276,7 +1273,6 @@
             "description": "A list of rejection reasons and codes describing why a Tollfree Verification has been rejected."
           },
           "resource_links": {
-            "type": "object",
             "nullable": true,
             "description": "The URLs of the documents associated with the Tollfree Verification resource."
           },
@@ -1404,7 +1400,6 @@
             "description": "Indicates whether the campaign was registered externally or not."
           },
           "rate_limits": {
-            "type": "object",
             "nullable": true,
             "description": "Rate limit and/or classification set by each carrier, Ex. AT&T or T-Mobile."
           },
@@ -3436,6 +3431,19 @@
           }
         ],
         "operationId": "FetchBrandVetting"
+      }
+    },
+    "/v1/a2p/BrandRegistrations/{BrandRegistrationSid}/2fa": {
+      "servers": [
+        {
+          "url": "https://messaging.twilio.com"
+        }
+      ],
+      "description": "Submit brand for 2fa verification",
+      "x-twilio": {
+        "parent": "/a2p/BrandRegistrations/{Sid}",
+        "mountName": "brand_registration_2fa",
+        "pathType": "instance"
       }
     },
     "/v1/Services/{MessagingServiceSid}/ChannelSenders": {
@@ -6533,7 +6541,6 @@
                       "usecase": "marketing",
                       "us_app_to_person_registered": false,
                       "use_inbound_webhook_on_number": true,
-                      "sending_windows": [],
                       "links": {
                         "phone_numbers": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers",
                         "short_codes": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes",
@@ -6828,12 +6835,6 @@
                           "usecase": "marketing",
                           "us_app_to_person_registered": false,
                           "use_inbound_webhook_on_number": false,
-                          "sending_windows": [
-                            {
-                              "start_time": "10:00",
-                              "end_time": "21:00"
-                            }
-                          ],
                           "links": {
                             "phone_numbers": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers",
                             "short_codes": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes",
@@ -7015,7 +7016,6 @@
                       "usecase": "marketing",
                       "us_app_to_person_registered": false,
                       "use_inbound_webhook_on_number": true,
-                      "sending_windows": [],
                       "links": {
                         "phone_numbers": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers",
                         "short_codes": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes",
@@ -7224,12 +7224,6 @@
                       "usecase": "marketing",
                       "us_app_to_person_registered": false,
                       "use_inbound_webhook_on_number": true,
-                      "sending_windows": [
-                        {
-                          "start_time": "10:00",
-                          "end_time": "21:00"
-                        }
-                      ],
                       "links": {
                         "phone_numbers": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers",
                         "short_codes": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes",
@@ -10665,6 +10659,9 @@
     },
     {
       "name": "MessagingV1WhatsappTemplate"
+    },
+    {
+      "name": "MessagingV1TwoFactorAuthentication"
     }
   ],
   "security": [

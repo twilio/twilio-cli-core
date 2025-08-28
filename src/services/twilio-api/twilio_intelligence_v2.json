@@ -3498,12 +3498,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 5000.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 5000
             }
           },
           {
@@ -3886,7 +3886,8 @@
                     "FriendlyName": "some friendly name",
                     "LanguageCode": "en-US",
                     "WebhookUrl": "https://www.twilio.com",
-                    "WebhookHttpMethod": "POST"
+                    "WebhookHttpMethod": "POST",
+                    "EncryptionCredentialSid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                   }
                 }
               }
@@ -4447,7 +4448,8 @@
                     "UniqueName": "something",
                     "FriendlyName": "some friendly name",
                     "WebhookUrl": "https://www.sendgrid.com",
-                    "WebhookHttpMethod": "GET"
+                    "WebhookHttpMethod": "GET",
+                    "EncryptionCredentialSid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                   }
                 }
               }
@@ -4478,6 +4480,12 @@
             },
             "resource_url": "/v2/Transcripts/{transcript_sid}/Sentences"
           },
+          "encrypted_sentences": {
+            "mapping": {
+              "transcript_sid": "sid"
+            },
+            "resource_url": "/v2/Transcripts/{transcript_sid}/Sentences/Encrypted"
+          },
           "media": {
             "mapping": {
               "sid": "sid"
@@ -4489,6 +4497,12 @@
               "transcript_sid": "sid"
             },
             "resource_url": "/v2/Transcripts/{transcript_sid}/OperatorResults"
+          },
+          "encrypted_operator_results": {
+            "mapping": {
+              "transcript_sid": "sid"
+            },
+            "resource_url": "/v2/Transcripts/{transcript_sid}/OperatorResults/Encrypted"
           }
         },
         "pathType": "list"
@@ -4529,8 +4543,10 @@
                       "redaction": true,
                       "links": {
                         "sentences": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sentences",
+                        "encrypted_sentences": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sentences/Encrypted",
                         "media": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media",
-                        "operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults"
+                        "operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults",
+                        "encrypted_operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults/Encrypted"
                       }
                     }
                   },
@@ -4556,8 +4572,10 @@
                       "redaction": true,
                       "links": {
                         "sentences": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sentences",
+                        "encrypted_sentences": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sentences/Encrypted",
                         "media": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media",
-                        "operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults"
+                        "operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults",
+                        "encrypted_operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults/Encrypted"
                       }
                     }
                   }
@@ -4874,8 +4892,10 @@
                           "redaction": true,
                           "links": {
                             "sentences": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sentences",
+                            "encrypted_sentences": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sentences/Encrypted",
                             "media": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media",
-                            "operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults"
+                            "operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults",
+                            "encrypted_operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults/Encrypted"
                           }
                         }
                       ],
@@ -4924,8 +4944,10 @@
                           "redaction": true,
                           "links": {
                             "sentences": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sentences",
+                            "encrypted_sentences": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sentences/Encrypted",
                             "media": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media",
-                            "operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults"
+                            "operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults",
+                            "encrypted_operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults/Encrypted"
                           }
                         }
                       ],
@@ -5027,6 +5049,12 @@
             },
             "resource_url": "/v2/Transcripts/{transcript_sid}/Sentences"
           },
+          "encrypted_sentences": {
+            "mapping": {
+              "transcript_sid": "sid"
+            },
+            "resource_url": "/v2/Transcripts/{transcript_sid}/Sentences/Encrypted"
+          },
           "media": {
             "mapping": {
               "sid": "sid"
@@ -5038,6 +5066,12 @@
               "transcript_sid": "sid"
             },
             "resource_url": "/v2/Transcripts/{transcript_sid}/OperatorResults"
+          },
+          "encrypted_operator_results": {
+            "mapping": {
+              "transcript_sid": "sid"
+            },
+            "resource_url": "/v2/Transcripts/{transcript_sid}/OperatorResults/Encrypted"
           }
         },
         "pathType": "instance"
@@ -5088,8 +5122,10 @@
                       "redaction": true,
                       "links": {
                         "sentences": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sentences",
+                        "encrypted_sentences": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sentences/Encrypted",
                         "media": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media",
-                        "operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults"
+                        "operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults",
+                        "encrypted_operator_results": "https://intelligence.twilio.com/v2/Transcripts/GTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OperatorResults/Encrypted"
                       }
                     }
                   }
@@ -5216,6 +5252,12 @@
   "tags": [
     {
       "name": "IntelligenceV2CustomOperator"
+    },
+    {
+      "name": "IntelligenceV2EncryptedOperatorResults"
+    },
+    {
+      "name": "IntelligenceV2EncryptedSentences"
     },
     {
       "name": "IntelligenceV2Media"
