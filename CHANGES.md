@@ -1,3 +1,10 @@
+### [8.1.1](https://github.com/twilio/twilio-cli-core/compare/8.1.0...8.1.1) (2025-08-28)
+
+
+### Library - Chores
+
+* skip twilio_voice_oneconsole.json due to missing components ([#295](https://github.com/twilio/twilio-cli-core/issues/295)) ([b1eb402](https://github.com/twilio/twilio-cli-core/commit/b1eb402c23ddfadb4be45660c19f71ad9f4a54d8))
+
 --------------------------
 **Studio**
 - Add `type` to Step resource APIs
