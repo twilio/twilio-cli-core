@@ -1,3 +1,8 @@
+--------------------------
+**Api**
+- Remove usage category enum from usage record and usage triggers API **(breaking change)**
+
+
 ### [8.1.1](https://github.com/twilio/twilio-cli-core/compare/8.1.0...8.1.1) (2025-08-28)
 
 
