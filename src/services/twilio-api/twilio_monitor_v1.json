@@ -609,13 +609,13 @@
                     "value": {
                       "alerts": [],
                       "meta": {
-                        "first_page_url": "https://monitor.twilio.com/v1/Alerts?LogLevel=log_level&StartDate=2016-01-01&EndDate=2016-01-01&PageSize=50&Page=0",
+                        "first_page_url": "https://monitor.twilio.com/v1/Alerts?LogLevel=log_level&StartDate=2016-01-01T00:00:00Z&EndDate=2016-01-01T00:00:00Z&PageSize=50&Page=0",
                         "key": "alerts",
                         "next_page_url": null,
                         "page": 0,
                         "page_size": 50,
                         "previous_page_url": null,
-                        "url": "https://monitor.twilio.com/v1/Alerts?LogLevel=log_level&StartDate=2016-01-01&EndDate=2016-01-01&PageSize=50&Page=0"
+                        "url": "https://monitor.twilio.com/v1/Alerts?LogLevel=log_level&StartDate=2016-01-01T00:00:00Z&EndDate=2016-01-01T00:00:00Z&PageSize=50&Page=0"
                       }
                     }
                   },
@@ -641,13 +641,13 @@
                         }
                       ],
                       "meta": {
-                        "first_page_url": "https://monitor.twilio.com/v1/Alerts?LogLevel=log_level&StartDate=2016-01-01&EndDate=2016-01-01&PageSize=50&Page=0",
+                        "first_page_url": "https://monitor.twilio.com/v1/Alerts?LogLevel=log_level&StartDate=2016-01-01T00:00:00Z&EndDate=2016-01-01T00:00:00Z&PageSize=50&Page=0",
                         "key": "alerts",
                         "next_page_url": null,
                         "page": 0,
                         "page_size": 50,
                         "previous_page_url": null,
-                        "url": "https://monitor.twilio.com/v1/Alerts?LogLevel=log_level&StartDate=2016-01-01&EndDate=2016-01-01&PageSize=50&Page=0"
+                        "url": "https://monitor.twilio.com/v1/Alerts?LogLevel=log_level&StartDate=2016-01-01T00:00:00Z&EndDate=2016-01-01T00:00:00Z&PageSize=50&Page=0"
                       }
                     }
                   }
@@ -760,8 +760,8 @@
                       "event_date": "2014-10-03T16:48:25Z",
                       "event_type": "account.updated",
                       "links": {
-                        "actor": "https://api.twilio.com/2010-04-01/Accounts/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "resource": "https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "actor": "https://monitor.twilio.com/v1/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "resource": "https://monitor.twilio.com/v1/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                       },
                       "resource_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "resource_type": "account",
@@ -1043,8 +1043,8 @@
                           "event_date": "2014-10-03T16:48:25Z",
                           "event_type": "account.updated",
                           "links": {
-                            "actor": "https://api.twilio.com/2010-04-01/Accounts/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                            "resource": "https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                            "actor": "https://monitor.twilio.com/v1/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                            "resource": "https://monitor.twilio.com/v1/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                           },
                           "resource_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                           "resource_type": "account",

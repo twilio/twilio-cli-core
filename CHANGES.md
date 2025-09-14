@@ -1,3 +1,67 @@
+## [8.2.0](https://github.com/twilio/twilio-cli-core/compare/8.1.1...8.2.0) (2025-09-04)
+
+--------------------------
+**Api**
+- Remove usage category enum from usage record and usage triggers API **(breaking change)**
+
+
+### [8.1.1](https://github.com/twilio/twilio-cli-core/compare/8.1.0...8.1.1) (2025-08-28)
+
+
+### Library - Chores
+
+* skip twilio_voice_oneconsole.json due to missing components ([#295](https://github.com/twilio/twilio-cli-core/issues/295)) ([b1eb402](https://github.com/twilio/twilio-cli-core/commit/b1eb402c23ddfadb4be45660c19f71ad9f4a54d8))
+
+--------------------------
+**Studio**
+- Add `type` to Step resource APIs
+
+**Verify**
+- Allow to update all passkeys parameters in the service update
+
+
+--------------------------
+**Accounts**
+- Update beta feature flag for consent and contact bulk upsert APIs
+
+**Api**
+- Add multiple missing usage categories to usage records and usage triggers api
+- Add `channels-whatsapp-template-marketing` and `channels-whatsapp-template-utility` to usage categories
+
+**Conversations**
+- Fix `state` spelling for `initializing` enum value
+- Update `state` to include `intializing` for ServiceConversationWithParticipants and ConversationWithParticipants
+
+**Flex**
+- Adding new optional parameter `identity` to `web_channels` API in version `v2`
+
+**Trusthub**
+- Add required Permissions to the ComplianceInquiries API
+
+**Verify**
+- Add passkeys support to Verify API creating and updating services.
+- Update `ienum` type for Factor creation
+- Add passkeys as challenge and factor type
+
+
+## [8.1.0](https://github.com/twilio/twilio-cli-core/compare/8.0.3...8.1.0) (2025-07-24)
+
+
+### Library - Chores
+
+* test cli-core released version before triggering cli release ([#293](https://github.com/twilio/twilio-cli-core/issues/293)) ([6535e6e](https://github.com/twilio/twilio-cli-core/commit/6535e6ebca43263a468515963a41ee7d989d65c9))
+* upgrade axios version ([#294](https://github.com/twilio/twilio-cli-core/issues/294)) ([ce88e95](https://github.com/twilio/twilio-cli-core/commit/ce88e95b156d0e2576a5eb3f79a109c5486f5055))
+
+--------------------------
+**Events**
+- Remove `SinkSid` parameter when updating subscriptions. **(breaking change)**
+
+**Twiml**
+- Remove Duplicates.
+- Add Polly Generative voices.
+- Add Latest Google (Chirp3-HD) voices.
+
+
 ### [8.0.3](https://github.com/twilio/twilio-cli-core/compare/8.0.2...8.0.3) (2025-07-10)
 
 ### [8.0.2](https://github.com/twilio/twilio-cli-core/compare/8.0.1...8.0.2) (2025-07-10)

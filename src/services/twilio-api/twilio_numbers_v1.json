@@ -228,6 +228,21 @@
             "items": {},
             "nullable": true
           },
+          "bundle_sid": {
+            "type": "string",
+            "nullable": true,
+            "description": "The bundle sid is an optional identifier to reference a group of regulatory documents for a port request."
+          },
+          "portability_advance_carrier": {
+            "type": "string",
+            "nullable": true,
+            "description": "A field only required for Japan port in requests. It is a unique identifier for the donor carrier service the line is being ported from."
+          },
+          "auto_cancel_approval_numbers": {
+            "type": "string",
+            "nullable": true,
+            "description": "Japan specific field, indicates the number of phone numbers to automatically approve for cancellation."
+          },
           "documents": {
             "type": "array",
             "items": {
@@ -996,6 +1011,9 @@
                           "not_portability_reason_code": 0
                         }
                       ],
+                      "bundle_sid": null,
+                      "portability_advance_carrier": null,
+                      "auto_cancel_approval_numbers": null,
                       "documents": [
                         "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                       ],
@@ -1142,6 +1160,9 @@
                       "port_in_request_sid": "KWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "url": "https://numbers.twilio.com/v1/Porting/PortIn/KWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "bundle_sid": null,
+                      "portability_advance_carrier": null,
+                      "auto_cancel_approval_numbers": null,
                       "notification_emails": [
                         "user@domain.com"
                       ],
@@ -1553,7 +1574,6 @@
       "description": "",
       "x-twilio": {
         "defaultOutputProperties": [],
-        "mountName": "porting_webhook_configurations",
         "pathType": "list"
       },
       "post": {
@@ -1649,6 +1669,9 @@
               }
             }
           }
+        },
+        "x-twilio": {
+          "mountName": "porting_webhook_configurations"
         }
       },
       "get": {
@@ -1735,10 +1758,7 @@
             "accountSid_authToken": []
           }
         ],
-        "operationId": "FetchPortingWebhookConfigurationFetch",
-        "x-twilio": {
-          "mountName": "porting_webhook_configuration_fetch"
-        }
+        "operationId": "FetchPortingWebhookConfigurationFetch"
       }
     },
     "/v1/Porting/Configuration/Webhook/{WebhookType}": {
