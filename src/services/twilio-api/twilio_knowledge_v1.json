@@ -338,6 +338,10 @@
             "description": "The key of the tag.",
             "type": "string"
           },
+          "twilio_tag": {
+            "description": "Whether the tag is a Twilio tag.",
+            "type": "boolean"
+          },
           "allows_multiple": {
             "description": "Whether the tag allows multiple values.",
             "type": "boolean"
@@ -920,6 +924,13 @@
           }
         ]
       }
+    },
+    "/v1/Knowledge/Upload": {
+      "servers": [
+        {
+          "url": "https://knowledge.twilio.com"
+        }
+      ]
     }
   }
 }

@@ -1,3 +1,25 @@
+--------------------------
+**Api**
+- Added optional parameter `CallerDisplayName` for conference participant outbound
+- Updated description for property `to` in the participant create request
+
+
+--------------------------
+**Api**
+- Add `date_created` property to media resource and date_created filtering parameters for read action
+- Updated the Recordings Resource `channels` property to clarify channels = # of channels in the recording resource and how to specify the # of channels in recording download
+
+**Intelligence**
+- Add encryption_credential_sid field in transcripts and services in v2
+
+**Trusthub**
+- Remove beta feature flag for all TH APIs
+- Remove beta feature flag for ComplianceInquiries API to support OneConsole traffic
+
+**Twiml**
+- Add new noun `<AiSession>`
+
+
 ## [8.2.0](https://github.com/twilio/twilio-cli-core/compare/8.1.1...8.2.0) (2025-09-04)
 
 --------------------------
