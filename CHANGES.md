@@ -1,3 +1,10 @@
+### [8.2.1](https://github.com/twilio/twilio-cli-core/compare/8.2.0...8.2.1) (2025-09-25)
+
+
+### Library - Chores
+
+* update axios ([#290](https://github.com/twilio/twilio-cli-core/issues/290)) ([f666826](https://github.com/twilio/twilio-cli-core/commit/f6668260d940ae6da2f6e23b7d8c9c3aad6d90bd))
+
 --------------------------
 **Api**
 - Added optional parameter `CallerDisplayName` for conference participant outbound
