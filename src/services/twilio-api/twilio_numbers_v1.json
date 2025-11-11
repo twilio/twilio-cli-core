@@ -219,6 +219,11 @@
             "nullable": true,
             "description": "The status of the port in request. The possible values are: In progress, Completed, Expired, In review, Waiting for Signature, Action Required, and Canceled."
           },
+          "order_cancellation_reason": {
+            "type": "string",
+            "nullable": true,
+            "description": "If the order is cancelled this field will provide further context on the cause of the cancellation."
+          },
           "losing_carrier_information": {
             "nullable": true,
             "$ref": "#/components/schemas/numbers.v1.porting_losing_carrier_information",
@@ -257,6 +262,15 @@
           "date_created": {
             "type": "string",
             "format": "date-time",
+            "nullable": true
+          },
+          "support_ticket_id": {
+            "type": "integer",
+            "description": "Unique ID of the request's support ticket"
+          },
+          "signature_request_url": {
+            "format": "uri",
+            "type": "string",
             "nullable": true
           }
         }
@@ -586,6 +600,54 @@
           }
         }
       },
+      "numbers.v1.port_in_request_list": {
+        "type": "object",
+        "properties": {
+          "port_in_request_sid": {
+            "type": "string",
+            "nullable": false,
+            "description": "The SID of the Port-in request"
+          },
+          "port_in_request_status": {
+            "type": "string",
+            "nullable": true,
+            "description": "Status of the Port In Request"
+          },
+          "status_last_updated_timestamp": {
+            "type": "string",
+            "nullable": true,
+            "description": "The last updated timestamp of the request"
+          },
+          "phone_numbers_requested": {
+            "type": "integer",
+            "nullable": true,
+            "description": "Amount of phone numbers requested"
+          },
+          "phone_numbers_ported": {
+            "type": "integer",
+            "nullable": true,
+            "description": "Amount of phone numbers ported"
+          },
+          "suggested_action": {
+            "type": "string",
+            "nullable": true,
+            "description": "Suggested action on this ticket"
+          }
+        }
+      },
+      "numbers.v1.port_in_request_list_meta": {
+        "type": "object",
+        "properties": {
+          "previous_token": {
+            "type": "string",
+            "nullable": true
+          },
+          "next_token": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
       "numbers.v1.porting_port_in_create": {
         "title": "PortIn request",
         "type": "object",
@@ -845,6 +907,322 @@
           "external_porting_vendor_phone_number_id": {
             "type": "string",
             "nullable": true
+          }
+        }
+      },
+      "numbers.v1.available_phone_number": {
+        "type": "object",
+        "properties": {
+          "Did": {
+            "type": "string",
+            "format": "phone-number",
+            "nullable": true,
+            "description": "The phone number in E.164 format."
+          },
+          "InventoryDidSid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^ID[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "The unique string that identifies the inventory DID resource."
+          },
+          "FriendlyName": {
+            "type": "string",
+            "nullable": true,
+            "description": "A human-readable phone number in national format."
+          },
+          "Type": {
+            "type": "string",
+            "nullable": true,
+            "description": "The type of phone number. Can be Local, Mobile, TollFree, etc."
+          },
+          "Npa": {
+            "type": "string",
+            "nullable": true,
+            "description": "The North American Numbering Plan (NANP) area code of the phone number."
+          },
+          "Nxx": {
+            "type": "string",
+            "nullable": true,
+            "description": "The three-digit exchange code of the phone number."
+          },
+          "Locked": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Whether the phone number is locked for purchase."
+          },
+          "LockedUntil": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The Unix timestamp when the phone number lock expires."
+          },
+          "Capabilities": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "Voice": {
+                "type": "boolean"
+              },
+              "RestrictedVoice": {
+                "type": "boolean"
+              },
+              "Sms": {
+                "type": "boolean"
+              },
+              "RestrictedSms": {
+                "type": "boolean"
+              },
+              "Mms": {
+                "type": "boolean"
+              },
+              "RestrictedMms": {
+                "type": "boolean"
+              },
+              "Fax": {
+                "type": "boolean"
+              },
+              "RestrictedFax": {
+                "type": "boolean"
+              },
+              "Sip": {
+                "type": "boolean"
+              }
+            },
+            "description": "The set of Boolean properties that describes the SMS, MMS, Voice, and Fax capabilities of the phone number."
+          },
+          "Geography": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "IsoCountry": {
+                "type": "string",
+                "format": "iso-country-code"
+              },
+              "Region": {
+                "type": "string"
+              },
+              "Locality": {
+                "type": "string"
+              },
+              "PostalCode": {
+                "type": "string"
+              },
+              "Latitude": {
+                "type": "number"
+              },
+              "Longitude": {
+                "type": "number"
+              },
+              "Lata": {
+                "type": "string"
+              },
+              "RateCenter": {
+                "type": "string"
+              }
+            },
+            "description": "The geographic information associated with the phone number."
+          },
+          "AddressRequirements": {
+            "type": "string",
+            "nullable": true,
+            "description": "The type of Address resource the phone number requires."
+          },
+          "Certifications": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "Resident": {
+                "type": "boolean"
+              },
+              "Non-Resident": {
+                "type": "boolean"
+              }
+            },
+            "description": "The certifications required for the phone number."
+          },
+          "Billing": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "RecurringBillableItemSid": {
+                "type": "string",
+                "minLength": 34,
+                "maxLength": 34,
+                "pattern": "^BI[0-9a-fA-F]{32}$"
+              },
+              "SetupBillableItemSid": {
+                "type": "string",
+                "minLength": 34,
+                "maxLength": 34,
+                "pattern": "^BI[0-9a-fA-F]{32}$"
+              }
+            },
+            "description": "The billing information for the phone number."
+          },
+          "DateCreated": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "The date and time in GMT when the resource was created specified in ISO 8601 format."
+          },
+          "DateUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "The date and time in GMT when the resource was last updated specified in ISO 8601 format."
+          },
+          "Beta": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Whether the phone number is in beta."
+          },
+          "VoiceEmergencyCapable": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Whether the phone number can handle emergency calls."
+          },
+          "Flags": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "National": {
+                "type": "boolean"
+              },
+              "International": {
+                "type": "boolean"
+              }
+            },
+            "description": "The flags that describe the phone number features."
+          }
+        }
+      },
+      "numbers.v1.a2p_registration_details": {
+        "type": "object",
+        "required": [
+          "accountSid",
+          "phoneNumberSid",
+          "phoneNumber",
+          "externalPhoneNumberStatus"
+        ],
+        "properties": {
+          "accountSid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "nullable": false,
+            "description": "Account Sid that the phone number belongs to in Twilio. This is only returned for phone numbers that already exist in Twilio\u2019s inventory and belong to your account or sub account."
+          },
+          "phoneNumberSid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^PN[0-9a-fA-F]{32}$",
+            "nullable": false,
+            "description": "Phone Number SID for the requested phone number resource"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": false
+          },
+          "externalPhoneNumberStatus": {
+            "type": "string",
+            "nullable": false
+          },
+          "campaignSid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^CM[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "Campaign Sid associated with the phone number"
+          },
+          "messagingServiceSid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^MG[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "Messaging Service Sid that the number is associated with"
+          },
+          "externalCampaignId": {
+            "type": "string",
+            "nullable": true,
+            "description": "The identifier for a campaign in the registrar. Typically, this is the TCR Campaign Id."
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "The date and time when the A2P registration details were last updated"
+          }
+        }
+      },
+      "numbers.v1.a2p_brand_campaign_compliance_registration_sids": {
+        "type": "object",
+        "properties": {
+          "campaignComplianceRegistrationSid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^BU[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "Sid associated with campaign compliance registration"
+          },
+          "brandComplianceRegistrationSid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^BU[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "Sid associated with brand compliance registration"
+          }
+        }
+      },
+      "numbers.v1.a2p_registration_details_list": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/numbers.v1.a2p_registration_details"
+            }
+          }
+        }
+      },
+      "numbers.v1.a2p_registration_details_fetch": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/numbers.v1.a2p_registration_details"
+          },
+          {
+            "$ref": "#/components/schemas/numbers.v1.a2p_brand_campaign_compliance_registration_sids"
+          }
+        ],
+        "description": "Single A2P registration details response including brand and campaign compliance registration SIDs"
+      },
+      "numbers.v1.a2p_registration_details_campaign_list": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/numbers.v1.a2p_registration_details"
+            },
+            "description": "List of A2P registration details for numbers in the campaign"
+          },
+          "nextToken": {
+            "type": "string",
+            "nullable": true,
+            "description": "Token for pagination to retrieve the next page of results"
           }
         }
       }
@@ -1246,7 +1624,9 @@
                       "target_port_in_date": "2023-09-10",
                       "target_port_in_time_range_start": "10:00:00+01:00",
                       "target_port_in_time_range_end": "20:00:00+01:00",
+                      "support_ticket_id": 123456,
                       "port_in_request_status": "pending",
+                      "order_cancellation_reason": null,
                       "date_created": "2023-09-10T06:52:21Z",
                       "losing_carrier_information": {
                         "customer_type": "Business",
@@ -1282,6 +1662,7 @@
                       "documents": [
                         "RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                       ],
+                      "signature_request_url": null,
                       "url": "https://numbers.twilio.com/v1/Porting/PortIn/KWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                   }
@@ -1434,6 +1815,8 @@
                       "target_port_in_time_range_start": "10:00:00+01:00",
                       "target_port_in_time_range_end": "20:00:00+01:00",
                       "port_in_request_status": "pending",
+                      "support_ticket_id": 123456,
+                      "order_cancellation_reason": null,
                       "date_created": "2023-09-10T06:52:21Z",
                       "losing_carrier_information": {
                         "customer_type": "Business",
@@ -1474,7 +1857,8 @@
                       ],
                       "documents": [
                         "RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                      ]
+                      ],
+                      "signature_request_url": null
                     }
                   }
                 }
@@ -1525,6 +1909,185 @@
           }
         ],
         "operationId": "FetchPortingPortIn"
+      }
+    },
+    "/v1/Porting/PortIn/PortInRequests": {
+      "servers": [
+        {
+          "url": "https://numbers.twilio.com"
+        }
+      ],
+      "description": "",
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "port_in_request_sid"
+        ],
+        "mountName": "porting_all_port_ins",
+        "pathType": "list"
+      },
+      "get": {
+        "description": "Retrieve a list of all PortInRequests for a user",
+        "summary": "Fetch all PortInRequests for a user",
+        "tags": [
+          "NumbersV1PortingPortIn"
+        ],
+        "parameters": [
+          {
+            "name": "Token",
+            "in": "query",
+            "required": false,
+            "description": "Page start token, if null then it will start from the beginning",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Size",
+            "in": "query",
+            "description": "Number of items per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20,
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "PortInRequestSid",
+            "in": "query",
+            "description": "Filter by Port in request SID, supports multiple values separated by comma",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PortInRequestStatus",
+            "in": "query",
+            "description": "Filter by Port In request status",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CreatedBefore",
+            "in": "query",
+            "description": "Find all created before a certain date",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "CreatedAfter",
+            "in": "query",
+            "description": "Find all created after a certain date",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "port_in_requests": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/numbers.v1.port_in_request_list"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/numbers.v1.port_in_request_list_meta"
+                    }
+                  },
+                  "title": "ListPortInRequestsResponse"
+                },
+                "examples": {
+                  "readFull": {
+                    "value": {
+                      "port_in_requests": [
+                        {
+                          "port_in_request_sid": "KWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                          "port_in_request_status": "In Review",
+                          "status_last_updated_timestamp": "2025-07-30T05:21:12Z",
+                          "phone_numbers_requested": 1,
+                          "phone_numbers_ported": 0,
+                          "suggested_action": null
+                        }
+                      ],
+                      "meta": {
+                        "next_token": null,
+                        "previous_token": null
+                      }
+                    }
+                  },
+                  "readEmpty": {
+                    "value": {
+                      "port_in_requests": [],
+                      "meta": {
+                        "next_token": null,
+                        "previous_token": null
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "operationId": "ListPortInRequests"
       }
     },
     "/v1/Porting/PortIn/{PortInRequestSid}/PhoneNumber/{PhoneNumberSid}": {
@@ -2437,6 +3000,12 @@
     },
     {
       "name": "NumbersV1Version"
+    },
+    {
+      "name": "NumbersV1AvailablePhoneNumber"
+    },
+    {
+      "name": "NumbersV1A2pRegistrationDetails"
     }
   ],
   "security": [

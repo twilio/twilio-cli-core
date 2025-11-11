@@ -1,3 +1,40 @@
+--------------------------
+**Twiml**
+- Add new noun `<ConversationRelaySession>`
+- Add support for `<Recording>` noun under `<Start>` verb
+
+
+--------------------------
+**Ai**
+- Add `error` as possible transcript status
+- Add `error` as possible transcript status
+
+**Chat**
+- Updated v2 UserChannel `channel_status` from `not_participating` to `notParticipating`
+
+**Intelligence**
+- Make intelligence work with RestProxy
+- Add additional enums to better represent the possible states
+- Add `error` enum to transcription status to better align with possible outputs
+- Add `json` output type to text classification
+
+**Trusthub**
+- Remove required parameter Primary Profile Sid from compliance_inquiry and compliance_inquiry_individual
+
+**Accounts**
+- Add Messaging GeoPermissions API changes
+
+
+--------------------------
+**Api**
+- Updated description for property `CallerDisplayName` for participant create request
+
+
+--------------------------
+**Insights**
+- Replace `field` with `key` in Request Filters and Response Metadata Filters and  for Reports API
+
+
 ### [8.2.1](https://github.com/twilio/twilio-cli-core/compare/8.2.0...8.2.1) (2025-09-25)
 
 

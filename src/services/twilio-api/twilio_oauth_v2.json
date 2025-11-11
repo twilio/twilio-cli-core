@@ -339,6 +339,17 @@
           }
         }
       },
+      "V2OauthAuth0CallbackResponse": {
+        "type": "object",
+        "properties": {
+          "redirect_to": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "description": "The redirect URL"
+          }
+        }
+      },
       "Error": {
         "description": "Generic error",
         "type": "object",
@@ -361,6 +372,15 @@
             "type": "integer",
             "format": "int32"
           }
+        }
+      }
+    },
+    "headers": {
+      "Access-Control-Max-Age": {
+        "description": "Indicates how long the results of preflight request can be cached for",
+        "schema": {
+          "type": "integer",
+          "example": 3600
         }
       }
     },
