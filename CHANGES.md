@@ -1,3 +1,5 @@
+### [8.2.3](https://github.com/twilio/twilio-cli-core/compare/8.2.2...8.2.3) (2025-11-20)
+
 --------------------------
 **Memory**
 - # Memory API Changes
