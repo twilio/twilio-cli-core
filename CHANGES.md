@@ -1,3 +1,9 @@
+--------------------------
+**Memory**
+- # Memory API Changes
+- Added initial Memory API endpoints with darkseagreen badge status
+
+
 ### [8.2.2](https://github.com/twilio/twilio-cli-core/compare/8.2.1...8.2.2) (2025-11-11)
 
 --------------------------
