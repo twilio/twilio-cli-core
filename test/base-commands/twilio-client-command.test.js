@@ -337,6 +337,10 @@ describe('base-commands', () => {
           expect(ctx.testCmd.twilioApiClient.region).to.equal('region');
         },
       );
+      setUpTest([], { envRegion: 'ie1' }).it('should use the set edge from region', (ctx) => {
+        expect(ctx.testCmd.twilioApiClient.edge).to.equal('dublin');
+        expect(ctx.testCmd.twilioApiClient.region).to.equal('ie1');
+      });
     });
   });
 });
