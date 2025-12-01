@@ -160,7 +160,7 @@ class TwilioClientCommand extends BaseCommand {
     }
     return new ClientClass(this.currentProfile.apiKey, this.currentProfile.apiSecret, {
       accountSid: this.flags[CliFlags.ACCOUNT_SID] || this.currentProfile.accountSid,
-      edge: process.env.TWILIO_EDGE || this.userConfig.edge || edgeValue,
+      edge: edgeValue,
       region: this.currentProfile.region,
       httpClient: this.httpClient,
     });
