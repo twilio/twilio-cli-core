@@ -342,17 +342,25 @@ describe('base-commands', () => {
         expect(ctx.testCmd.twilioApiClient.region).to.equal('ie1');
       });
 
-      setUpTest(['-l', 'debug'], { configEdge: 'custom-edge', envRegion: 'ie1' }).it(
+      setUpTest(['-l', 'debug'], { configEdge: 'custom-edge' }).it(
         'should warn when both edge and region are set',
         (ctx) => {
           // Access twilioApiClient first to trigger buildClient
           expect(ctx.testCmd.twilioApiClient.edge).to.equal('custom-edge');
-          expect(ctx.testCmd.twilioApiClient.region).to.equal('ie1');
           // Now check for the warning
           expect(ctx.stderr).to.contain('Deprecation Warning');
           expect(ctx.stderr).to.contain('For regional processing, DNS is of format product.edge.region.twilio.com');
         },
       );
+
+      setUpTest(['-l', 'debug'], { envRegion: 'ie1' }).it('should warn when both edge and region are set', (ctx) => {
+        // Access twilioApiClient first to trigger buildClient
+        expect(ctx.testCmd.twilioApiClient.edge).to.equal('dublin');
+        expect(ctx.testCmd.twilioApiClient.region).to.equal('ie1');
+        // Now check for the warning
+        expect(ctx.stderr).to.contain('Deprecation Warning');
+        expect(ctx.stderr).to.contain('For regional processing, DNS is of format product.edge.region.twilio.com');
+      });
 
       setUpTest(['-l', 'debug'], { envRegion: 'ie1' }).it('should warn when setting default edge for region', (ctx) => {
         // Access twilioApiClient first to trigger buildClient
