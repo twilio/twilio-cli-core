@@ -155,7 +155,7 @@ class TwilioClientCommand extends BaseCommand {
     }
 
     if (regionValue && !edgeValue && REGION_EDGE_MAP[regionValue]) {
-      this.logger.warn('Deprecation warning: Setting default `edge` for provided `region`');
+      this.logger.warn('Deprecation Warning: Setting default `edge` for provided `region`');
       edgeValue = REGION_EDGE_MAP[regionValue];
     }
     return new ClientClass(this.currentProfile.apiKey, this.currentProfile.apiSecret, {
