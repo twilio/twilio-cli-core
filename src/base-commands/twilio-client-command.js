@@ -135,9 +135,32 @@ class TwilioClientCommand extends BaseCommand {
   }
 
   buildClient(ClientClass) {
+    const REGION_EDGE_MAP = {
+      au1: 'sydney',
+      br1: 'sao-paulo',
+      de1: 'frankfurt',
+      ie1: 'dublin',
+      jp1: 'tokyo',
+      jp2: 'osaka',
+      sg1: 'singapore',
+      us1: 'ashburn',
+      us2: 'umatilla',
+    };
+    let edgeValue = process.env.TWILIO_EDGE || this.userConfig.edge;
+    const regionValue = this.currentProfile.region;
+    if (edgeValue !== undefined && regionValue !== undefined) {
+      this.logger.warn(
+        'Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com;otherwise use product.twilio.com',
+      );
+    }
+
+    if (regionValue && !edgeValue && REGION_EDGE_MAP[regionValue]) {
+      this.logger.warn('Deprecation warning: Setting default `edge` for provided `region`');
+      edgeValue = REGION_EDGE_MAP[regionValue];
+    }
     return new ClientClass(this.currentProfile.apiKey, this.currentProfile.apiSecret, {
       accountSid: this.flags[CliFlags.ACCOUNT_SID] || this.currentProfile.accountSid,
-      edge: process.env.TWILIO_EDGE || this.userConfig.edge,
+      edge: process.env.TWILIO_EDGE || this.userConfig.edge || edgeValue,
       region: this.currentProfile.region,
       httpClient: this.httpClient,
     });
