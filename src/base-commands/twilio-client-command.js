@@ -150,7 +150,7 @@ class TwilioClientCommand extends BaseCommand {
     const regionValue = this.currentProfile.region;
     if (edgeValue !== undefined && regionValue !== undefined) {
       this.logger.warn(
-        'Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com;otherwise use product.twilio.com',
+        'Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com; otherwise use product.twilio.com',
       );
     }
 
