@@ -6,7 +6,11 @@ const { TwilioApiClient, TwilioApiFlags } = require('../services/twilio-api');
 const { TwilioCliError } = require('../services/error');
 const { translateValues, instanceOf } = require('../services/javascript-utilities');
 const { camelCase, kebabCase } = require('../services/naming-conventions');
-const { ACCESS_DENIED, HELP_ENVIRONMENT_VARIABLES, REGION_AUTH_TOKEN_REQUIRED } = require('../services/messaging/help-messages');
+const {
+  ACCESS_DENIED,
+  HELP_ENVIRONMENT_VARIABLES,
+  REGION_AUTH_TOKEN_REQUIRED,
+} = require('../services/messaging/help-messages');
 
 // CLI flags are kebab-cased, whereas API flags are PascalCased.
 const CliFlags = translateValues(TwilioApiFlags, kebabCase);
@@ -68,8 +72,10 @@ class TwilioClientCommand extends BaseCommand {
      */
     if (instanceOf(error, TwilioCliError) && error.exitCode === ACCESS_DENIED_CODE) {
       if (!this.currentProfile.id.startsWith('${TWILIO')) {
-        // Auth *not* using env vars.
-        // Check if this is a regional profile
+        /*
+         * Auth *not* using env vars.
+         * Check if this is a regional profile
+         */
         if (this.currentProfile.region) {
           error.message += `\n\n${REGION_AUTH_TOKEN_REQUIRED}`;
         } else {
@@ -140,9 +146,35 @@ class TwilioClientCommand extends BaseCommand {
   }
 
   buildClient(ClientClass) {
+    const REGION_EDGE_MAP = {
+      au1: 'sydney',
+      br1: 'sao-paulo',
+      de1: 'frankfurt',
+      ie1: 'dublin',
+      jp1: 'tokyo',
+      jp2: 'osaka',
+      sg1: 'singapore',
+      us1: 'ashburn',
+      us2: 'umatilla',
+    };
+    let edgeValue = process.env.TWILIO_EDGE || this.currentProfile.edge || this.userConfig.edge;
+    const regionValue = this.currentProfile.region;
+    if (
+      (edgeValue !== undefined && regionValue === undefined) ||
+      (edgeValue === undefined && regionValue !== undefined)
+    ) {
+      this.logger.warn(
+        'Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com; otherwise use product.twilio.com',
+      );
+    }
+
+    if (regionValue && !edgeValue && REGION_EDGE_MAP[regionValue]) {
+      this.logger.warn('Deprecation Warning: Setting default `edge` for provided `region`');
+      edgeValue = REGION_EDGE_MAP[regionValue];
+    }
     return new ClientClass(this.currentProfile.apiKey, this.currentProfile.apiSecret, {
       accountSid: this.flags[CliFlags.ACCOUNT_SID] || this.currentProfile.accountSid,
-      edge: process.env.TWILIO_EDGE || this.currentProfile.edge || this.userConfig.edge,
+      edge: edgeValue,
       region: this.currentProfile.region,
       httpClient: this.httpClient,
     });

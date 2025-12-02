@@ -37,7 +37,8 @@ class ConfigData {
   }
 
   getProfileFromEnvironment() {
-    const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_API_KEY, TWILIO_API_SECRET, TWILIO_REGION, TWILIO_EDGE } = process.env;
+    const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_API_KEY, TWILIO_API_SECRET, TWILIO_REGION, TWILIO_EDGE } =
+      process.env;
     if (!TWILIO_ACCOUNT_SID) {
       return undefined;
     }
@@ -209,7 +210,7 @@ class ConfigData {
         profile.region,
         profile.edge,
         profile.apiKey,
-        profile.apiSecret
+        profile.apiSecret,
       );
     });
 
