@@ -8,9 +8,10 @@ const MessageTemplates = require('./messaging/templates');
 const CLI_NAME = 'twilio-cli';
 
 class ConfigDataProfile {
-  constructor(accountSid, region, apiKey, apiSecret) {
+  constructor(accountSid, region, edge, apiKey, apiSecret) {
     this.accountSid = accountSid;
     this.region = region;
+    this.edge = edge;
     this.apiKey = apiKey;
     this.apiSecret = apiSecret;
   }
@@ -36,7 +37,7 @@ class ConfigData {
   }
 
   getProfileFromEnvironment() {
-    const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_API_KEY, TWILIO_API_SECRET, TWILIO_REGION } = process.env;
+    const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_API_KEY, TWILIO_API_SECRET, TWILIO_REGION, TWILIO_EDGE } = process.env;
     if (!TWILIO_ACCOUNT_SID) {
       return undefined;
     }
@@ -49,6 +50,7 @@ class ConfigData {
         apiKey: TWILIO_API_KEY,
         apiSecret: TWILIO_API_SECRET,
         region: TWILIO_REGION,
+        edge: TWILIO_EDGE,
       };
     }
 
@@ -60,6 +62,7 @@ class ConfigData {
         apiKey: TWILIO_ACCOUNT_SID,
         apiSecret: TWILIO_AUTH_TOKEN,
         region: TWILIO_REGION,
+        edge: TWILIO_EDGE,
       };
     }
 
@@ -138,11 +141,19 @@ class ConfigData {
     }
   }
 
-  addProfile(id, accountSid, region, apiKey, apiSecret) {
+  addProfile(id, accountSid, region, edge, apiKey, apiSecret) {
+    // Handle backward compatibility: if called with 5 params (old signature), edge is actually apiKey
+    if (arguments.length === 5) {
+      apiSecret = apiKey;
+      apiKey = edge;
+      edge = undefined;
+    }
+
     //  Clean all the inputs.
     id = this.sanitize(id);
     accountSid = this.sanitize(accountSid);
     region = this.sanitize(region);
+    edge = this.sanitize(edge);
 
     const existing = this.getProfileById(id);
 
@@ -152,7 +163,7 @@ class ConfigData {
     }
 
     //  Update profiles object
-    this.profiles[id] = new ConfigDataProfile(accountSid, region, apiKey, apiSecret);
+    this.profiles[id] = new ConfigDataProfile(accountSid, region, edge, apiKey, apiSecret);
   }
 
   addProject(id, accountSid, region) {
@@ -188,7 +199,20 @@ class ConfigData {
     // Note the historical 'projects' naming.
     configObj.projects = configObj.projects || [];
     configObj.projects.forEach((project) => this.addProject(project.id, project.accountSid, project.region));
-    this.profiles = configObj.profiles || {};
+
+    // Load profiles properly through ConfigDataProfile constructor
+    const profiles = configObj.profiles || {};
+    Object.keys(profiles).forEach((profileId) => {
+      const profile = profiles[profileId];
+      this.profiles[profileId] = new ConfigDataProfile(
+        profile.accountSid,
+        profile.region,
+        profile.edge,
+        profile.apiKey,
+        profile.apiSecret
+      );
+    });
+
     this.setActiveProfile(configObj.activeProject);
   }
 
