@@ -1,15 +1,3 @@
-### Unreleased
-
-### Library - Fixes
-
-* Add `edge` parameter to ConfigDataProfile class for storing edge location per profile
-* Add `TWILIO_EDGE` environment variable support to getProfileFromEnvironment()
-* Update addProfile() to accept edge parameter with backward compatibility for existing 5-parameter calls
-* Update buildClient() in TwilioClientCommand to prioritize edge resolution: process.env.TWILIO_EDGE > profile.edge > userConfig.edge
-* Add REGION_AUTH_TOKEN_REQUIRED error message constant for regional authentication failures
-* Enhance CliRequestClient.formatErrorMessage() to add hints for error code 20003 when accessing regional resources
-* Add comprehensive test coverage for edge parameter functionality including backward compatibility tests
-
 ### [8.2.3](https://github.com/twilio/twilio-cli-core/compare/8.2.2...8.2.3) (2025-11-20)
 
 --------------------------
