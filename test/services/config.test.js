@@ -42,6 +42,57 @@ describe('services', () => {
         expect(configData.profiles.activeProfile.accountSid).to.equal('new-account-sid');
         expect(configData.profiles.activeProfile.region).to.be.undefined;
       });
+
+      test.it('should add a new profile with edge parameter', () => {
+        const configData = new ConfigData();
+        configData.addProfile(
+          'regionalProfile',
+          constants.FAKE_ACCOUNT_SID,
+          'au1',
+          'sydney',
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
+
+        expect(configData.profiles.regionalProfile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(configData.profiles.regionalProfile.region).to.equal('au1');
+        expect(configData.profiles.regionalProfile.edge).to.equal('sydney');
+        expect(configData.profiles.regionalProfile.apiKey).to.equal(constants.FAKE_API_KEY);
+        expect(configData.profiles.regionalProfile.apiSecret).to.equal(constants.FAKE_API_SECRET);
+      });
+
+      test.it('should handle undefined edge gracefully', () => {
+        const configData = new ConfigData();
+        configData.addProfile(
+          'noEdgeProfile',
+          constants.FAKE_ACCOUNT_SID,
+          'dev',
+          undefined,
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
+
+        expect(configData.profiles.noEdgeProfile.edge).to.be.undefined;
+        expect(configData.profiles.noEdgeProfile.region).to.equal('dev');
+      });
+
+      test.it('should maintain backward compatibility with 5-parameter calls', () => {
+        const configData = new ConfigData();
+        // Old signature: id, accountSid, region, apiKey, apiSecret
+        configData.addProfile(
+          'legacyProfile',
+          constants.FAKE_ACCOUNT_SID,
+          'dev',
+          constants.FAKE_API_KEY,
+          constants.FAKE_API_SECRET,
+        );
+
+        expect(configData.profiles.legacyProfile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(configData.profiles.legacyProfile.region).to.equal('dev');
+        expect(configData.profiles.legacyProfile.edge).to.be.undefined;
+        expect(configData.profiles.legacyProfile.apiKey).to.equal(constants.FAKE_API_KEY);
+        expect(configData.profiles.legacyProfile.apiSecret).to.equal(constants.FAKE_API_SECRET);
+      });
     });
 
     describe('ConfigData.getProfileById', () => {
@@ -124,6 +175,38 @@ describe('services', () => {
         expect(profile.apiKey).to.equal(constants.FAKE_ACCOUNT_SID);
         expect(profile.apiSecret).to.equal(FAKE_AUTH_TOKEN);
         expect(profile.region).to.equal('region');
+      });
+
+      test.it('should return profile populated with edge env var', () => {
+        const configData = new ConfigData();
+        configData.addProfile('envProfile', constants.FAKE_ACCOUNT_SID);
+
+        process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
+        process.env.TWILIO_AUTH_TOKEN = FAKE_AUTH_TOKEN;
+        process.env.TWILIO_EDGE = 'sydney';
+
+        const profile = configData.getProfileById();
+        expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiKey).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiSecret).to.equal(FAKE_AUTH_TOKEN);
+        expect(profile.edge).to.equal('sydney');
+      });
+
+      test.it('should return profile populated with both region and edge env vars', () => {
+        const configData = new ConfigData();
+        configData.addProfile('envProfile', constants.FAKE_ACCOUNT_SID);
+
+        process.env.TWILIO_ACCOUNT_SID = constants.FAKE_ACCOUNT_SID;
+        process.env.TWILIO_AUTH_TOKEN = FAKE_AUTH_TOKEN;
+        process.env.TWILIO_REGION = 'au1';
+        process.env.TWILIO_EDGE = 'sydney';
+
+        const profile = configData.getProfileById();
+        expect(profile.accountSid).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiKey).to.equal(constants.FAKE_ACCOUNT_SID);
+        expect(profile.apiSecret).to.equal(FAKE_AUTH_TOKEN);
+        expect(profile.region).to.equal('au1');
+        expect(profile.edge).to.equal('sydney');
       });
 
       test.it('should return undefined if first profile not exists with apiKey and apiSecret', () => {

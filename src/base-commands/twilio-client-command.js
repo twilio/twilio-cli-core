@@ -6,7 +6,11 @@ const { TwilioApiClient, TwilioApiFlags } = require('../services/twilio-api');
 const { TwilioCliError } = require('../services/error');
 const { translateValues, instanceOf } = require('../services/javascript-utilities');
 const { camelCase, kebabCase } = require('../services/naming-conventions');
-const { ACCESS_DENIED, HELP_ENVIRONMENT_VARIABLES } = require('../services/messaging/help-messages');
+const {
+  ACCESS_DENIED,
+  HELP_ENVIRONMENT_VARIABLES,
+  REGION_AUTH_TOKEN_REQUIRED,
+} = require('../services/messaging/help-messages');
 
 // CLI flags are kebab-cased, whereas API flags are PascalCased.
 const CliFlags = translateValues(TwilioApiFlags, kebabCase);
@@ -68,8 +72,15 @@ class TwilioClientCommand extends BaseCommand {
      */
     if (instanceOf(error, TwilioCliError) && error.exitCode === ACCESS_DENIED_CODE) {
       if (!this.currentProfile.id.startsWith('${TWILIO')) {
-        // Auth *not* using env vars.
-        error.message += `\n\n${ACCESS_DENIED}`;
+        /*
+         * Auth *not* using env vars.
+         * Check if this is a regional profile
+         */
+        if (this.currentProfile.region) {
+          error.message += `\n\n${REGION_AUTH_TOKEN_REQUIRED}`;
+        } else {
+          error.message += `\n\n${ACCESS_DENIED}`;
+        }
       }
     }
 
@@ -146,7 +157,7 @@ class TwilioClientCommand extends BaseCommand {
       us1: 'ashburn',
       us2: 'umatilla',
     };
-    let edgeValue = process.env.TWILIO_EDGE || this.userConfig.edge;
+    let edgeValue = process.env.TWILIO_EDGE || this.currentProfile.edge || this.userConfig.edge;
     const regionValue = this.currentProfile.region;
     if (
       (edgeValue !== undefined && regionValue === undefined) ||

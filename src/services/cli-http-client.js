@@ -155,8 +155,18 @@ class CliRequestClient {
   // In the rare event parameters are missing, display a readable message
   formatErrorMessage({ code, message, more_info, details }) {
     const moreInfoMessage = more_info ? `See ${more_info} for more info.` : '';
+    let errorMessage = `Error code ${code || 'N/A'} from Twilio: ${
+      message || 'No message provided'
+    }. ${moreInfoMessage}`;
+
+    // Add hint for regional authentication failures
+    if ((code === 20003 || code === '20003') && message && message.toLowerCase().includes('authenticate')) {
+      errorMessage +=
+        '\n\nHint: If accessing regional resources, ensure you are using region-specific credentials from the API Keys section of your regional console.';
+    }
+
     const error = {
-      message: `Error code ${code || 'N/A'} from Twilio: ${message || 'No message provided'}. ${moreInfoMessage}`,
+      message: errorMessage,
       code,
       details,
     };

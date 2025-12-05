@@ -20,6 +20,20 @@ exports.ACCESS_DENIED = `${CLI_NAME} profiles use Standard API Keys which are no
 
 ${ENV_VARS_USAGE}`;
 
+exports.REGION_AUTH_TOKEN_REQUIRED = `Authentication failed. When using regional resources, you must authenticate with a region-specific Auth Token.
+
+To obtain a region-specific Auth Token:
+1. Log into the Twilio Console
+2. Navigate to Account > API Keys & Tokens section
+3. Use the Auth Token for that specific region located below the API Keys
+4. Use this region-specific Auth Token when creating your profile
+
+Example:
+  $ twilio profiles:create --region au1 --edge sydney
+  ? Auth Token: [enter your AU1-specific auth token here]
+
+For more information, visit: https://www.twilio.com/docs/global-infrastructure/edge-locations`;
+
 exports.NETWORK_ERROR = `${CLI_NAME} encountered a network connectivity error. \
 Please check your network connection and try your command again. \
 Check on Twilio service status at https://status.twilio.com/`;
