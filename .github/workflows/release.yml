@@ -148,9 +148,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
 
-      # Ensure npm 11.5.1 or later is installed
+      # Ensure npm 10.5.1 or later is installed for OIDC/provenance support
       - name: Update npm
         run: npm install -g npm@latest
 
@@ -159,7 +158,8 @@ jobs:
         run: DEBUG=semantic-release:* npx semantic-release -t \${version}
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true # required for OIDC
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true # Enable provenance attestation via OIDC
       - name: Update release
         id: update-release
         run: |
