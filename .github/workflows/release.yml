@@ -159,6 +159,7 @@ jobs:
         run: DEBUG=semantic-release:* npx semantic-release -t \${version}
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true # required for OIDC
       - name: Update release
         id: update-release
