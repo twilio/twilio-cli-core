@@ -1,3 +1,18 @@
+### [8.2.4](https://github.com/twilio/twilio-cli-core/compare/8.2.3...8.2.4) (2025-12-08)
+
+
+### Library - Fixes
+
+* Add edge parameter support for regional authentication ([#298](https://github.com/twilio/twilio-cli-core/issues/298)) ([9f023f4](https://github.com/twilio/twilio-cli-core/commit/9f023f4770250e6b7b43b395e6b5bbcdce4a8820))
+* Regional Endpoint Processing ([#296](https://github.com/twilio/twilio-cli-core/issues/296)) ([b3786ca](https://github.com/twilio/twilio-cli-core/commit/b3786caee149a27895e52392faf43e0aa5b017cc)), closes [#297](https://github.com/twilio/twilio-cli-core/issues/297)
+
+
+### Library - Chores
+
+* add npm token for semantic-release authentication ([e13b03c](https://github.com/twilio/twilio-cli-core/commit/e13b03c64f80103ed15e20a55efe58a0aab2d8e4))
+* Add trusted publisher ([#299](https://github.com/twilio/twilio-cli-core/issues/299)) ([a544aea](https://github.com/twilio/twilio-cli-core/commit/a544aeab2654be55062bffe145e86262bf4aa19b))
+* remove registry url ([6a1c488](https://github.com/twilio/twilio-cli-core/commit/6a1c488ec14e14b3b8b62f20c6fa01c2f1e2caae))
+
 --------------------------
 **Api**
 - Add `twiml_session` resource for calls
