@@ -1,3 +1,15 @@
+--------------------------
+**Api**
+- Add `twiml_session` resource for calls
+- Add `twiml_session` resource for calls
+
+**Monitor**
+- Update default output properties
+
+**Trusthub**
+- Added customer_profile_sid in toll-free initialize api payload.
+
+
 ### [8.2.3](https://github.com/twilio/twilio-cli-core/compare/8.2.2...8.2.3) (2025-11-20)
 
 --------------------------
