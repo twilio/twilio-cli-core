@@ -1,3 +1,10 @@
+### [8.2.5](https://github.com/twilio/twilio-cli-core/compare/8.2.4...8.2.5) (2025-12-08)
+
+
+### Library - Chores
+
+* add content write permission ([eb07e0d](https://github.com/twilio/twilio-cli-core/commit/eb07e0d0ff88461e543877b1efad6bced7581aad))
+
 ### [8.2.4](https://github.com/twilio/twilio-cli-core/compare/8.2.3...8.2.4) (2025-12-08)
 
 
