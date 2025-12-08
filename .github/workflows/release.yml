@@ -145,9 +145,15 @@ jobs:
           git pull
           make install
       - name: Use Node.js 18.x
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      # Ensure npm 11.5.1 or later is installed
+      - name: Update npm
+        run: npm install -g npm@latest
+
       - name: semanticRelease
         id: semantic-release
         run: DEBUG=semantic-release:* npx semantic-release -t \${version}
