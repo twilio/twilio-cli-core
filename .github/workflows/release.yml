@@ -144,7 +144,7 @@ jobs:
       - run: |
           git pull
           make install
-      - name: Use Node.js 18.x
+      - name: Use Node 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
