@@ -318,7 +318,13 @@
   ],
   "tags": [
     {
+      "name": "FrontlineV1Index"
+    },
+    {
       "name": "FrontlineV1User"
+    },
+    {
+      "name": "FrontlineV1Version"
     }
   ],
   "security": [

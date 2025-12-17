@@ -444,62 +444,6 @@
               }
             },
             "description": "OK"
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "description": "Twilio-specific error code",
-                      "type": "integer",
-                      "format": "int32"
-                    },
-                    "message": {
-                      "description": "Error message",
-                      "type": "string"
-                    },
-                    "more_info": {
-                      "description": "Link to Error Code References",
-                      "type": "string"
-                    },
-                    "status": {
-                      "description": "HTTP response status code",
-                      "type": "integer",
-                      "format": "int32"
-                    }
-                  }
-                }
-              }
-            },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Request limit per time window",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Remaining requests in the current time window",
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset": {
-                "description": "Unix timestamp when the rate limit resets",
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Retry-After": {
-                "description": "Seconds to wait before retrying",
-                "schema": {
-                  "type": "integer"
-                }
-              }
-            }
           }
         },
         "security": [
@@ -747,62 +691,6 @@
               }
             },
             "description": "OK"
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "description": "Twilio-specific error code",
-                      "type": "integer",
-                      "format": "int32"
-                    },
-                    "message": {
-                      "description": "Error message",
-                      "type": "string"
-                    },
-                    "more_info": {
-                      "description": "Link to Error Code References",
-                      "type": "string"
-                    },
-                    "status": {
-                      "description": "HTTP response status code",
-                      "type": "integer",
-                      "format": "int32"
-                    }
-                  }
-                }
-              }
-            },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Request limit per time window",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Remaining requests in the current time window",
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset": {
-                "description": "Unix timestamp when the rate limit resets",
-                "schema": {
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Retry-After": {
-                "description": "Seconds to wait before retrying",
-                "schema": {
-                  "type": "integer"
-                }
-              }
-            }
           }
         },
         "security": [

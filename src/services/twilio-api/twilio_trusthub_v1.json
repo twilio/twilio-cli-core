@@ -143,6 +143,17 @@
         ],
         "description": "Describe how a user opts-in to text messages."
       },
+      "compliance_tollfree_inquiry_enum_business_type": {
+        "type": "string",
+        "enum": [
+          "PRIVATE_PROFIT",
+          "PUBLIC_PROFIT",
+          "NON_PROFIT",
+          "SOLE_PROPRIETOR",
+          "GOVERNMENT"
+        ],
+        "description": "Type of Business."
+      },
       "trusthub.v1.customer_profile": {
         "type": "object",
         "properties": {
@@ -1726,6 +1737,14 @@
                       "registration_id": "tri1.us1.trusthub.ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.tollfree.PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "url": "https://trusthub.twilio.com/v1/ComplianceInquiries/Tollfree/Initialize"
                     }
+                  },
+                  "create3": {
+                    "value": {
+                      "inquiry_id": "inq_aaaaaaaaaaaaaaaaaaaaaaaa",
+                      "inquiry_session_token": "new.session.token",
+                      "registration_id": "tri1.us1.trusthub.ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.tollfree.PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "url": "https://trusthub.twilio.com/v1/ComplianceInquiries/Tollfree/Initialize"
+                    }
                   }
                 }
               }
@@ -1887,6 +1906,56 @@
                   "SkipMessagingUseCase": {
                     "type": "boolean",
                     "description": "Skip the messaging use case screen of the inquiry form."
+                  },
+                  "BusinessRegistrationNumber": {
+                    "type": "string",
+                    "description": "The Business Registration Number of the business or organization."
+                  },
+                  "BusinessRegistrationAuthority": {
+                    "type": "string",
+                    "description": "The Business Registration Authority of the business or organization."
+                  },
+                  "BusinessRegistrationCountry": {
+                    "type": "string",
+                    "description": "The Business Registration Country of the business or organization."
+                  },
+                  "BusinessType": {
+                    "$ref": "#/components/schemas/compliance_tollfree_inquiry_enum_business_type"
+                  },
+                  "DoingBusinessAs": {
+                    "type": "string",
+                    "description": "Trade name, sub entity, or downstream business name of business being submitted for verification."
+                  },
+                  "OptInConfirmationMessage": {
+                    "type": "string",
+                    "description": "The confirmation message sent to users when they opt in to receive messages."
+                  },
+                  "HelpMessageSample": {
+                    "type": "string",
+                    "description": "A sample help message provided to users."
+                  },
+                  "PrivacyPolicyUrl": {
+                    "type": "string",
+                    "description": "The URL to the privacy policy for the business or organization."
+                  },
+                  "TermsAndConditionsUrl": {
+                    "type": "string",
+                    "description": "The URL to the terms and conditions for the business or organization."
+                  },
+                  "AgeGatedContent": {
+                    "type": "boolean",
+                    "description": "Indicates if the content is age gated."
+                  },
+                  "ExternalReferenceId": {
+                    "type": "string",
+                    "description": "A legally recognized business registration number."
+                  },
+                  "OptInKeywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "List of keywords that users can text in to opt in to receive messages."
                   }
                 },
                 "required": [
@@ -1966,6 +2035,54 @@
                     "AdditionalInformation": "see our privacy policy here www.johnscoffeeshop.com/privacypolicy",
                     "ThemeSetId": "theme_set_id",
                     "SkipMessagingUseCase": true
+                  }
+                },
+                "create3": {
+                  "value": {
+                    "TollfreePhoneNumber": "+123445566",
+                    "NotificationEmail": "jeff@twilio.com",
+                    "BusinessName": "Owl, Inc.",
+                    "BusinessStreetAddress": "123 Main Street",
+                    "BusinessStreetAddress2": "Suite 101",
+                    "BusinessCity": "Anytown",
+                    "BusinessStateProvinceRegion": "AA",
+                    "BusinessPostalCode": "11111",
+                    "BusinessCountry": "US",
+                    "BusinessWebsite": "http://www.company.com",
+                    "BusinessContactFirstName": "firstname",
+                    "BusinessContactLastName": "lastname",
+                    "BusinessContactEmail": "email@company.com",
+                    "BusinessContactPhone": "+1231231234",
+                    "UseCaseCategories": [
+                      "TWO_FACTOR_AUTHENTICATION",
+                      "MARKETING"
+                    ],
+                    "UseCaseSummary": "This number is used to send out promotional offers and coupons to the customers of John's Coffee Shop",
+                    "ProductionMessageSample": "lorem ipsum",
+                    "OptInImageUrls": [
+                      "https://testbusiness.com/images/image1.jpg",
+                      "https://testbusiness.com/images/image2.jpg"
+                    ],
+                    "OptInType": "VERBAL",
+                    "MessageVolume": "10",
+                    "AdditionalInformation": "see our privacy policy here www.johnscoffeeshop.com/privacypolicy",
+                    "ThemeSetId": "theme_set_id",
+                    "SkipMessagingUseCase": true,
+                    "BusinessRegistrationNumber": "BRN123456",
+                    "BusinessRegistrationAuthority": "Some Authority",
+                    "BusinessRegistrationCountry": "US",
+                    "BusinessType": "NON_PROFIT",
+                    "DoingBusinessAs": "John's Coffee Shop",
+                    "OptInConfirmationMessage": "Thank you for opting in!",
+                    "HelpMessageSample": "Reply HELP for help, STOP to unsubscribe.",
+                    "PrivacyPolicyUrl": "http://www.company.com/privacy",
+                    "TermsAndConditionsUrl": "http://www.company.com/terms",
+                    "AgeGatedContent": false,
+                    "ExternalReferenceId": "EXT123456",
+                    "OptInKeywords": [
+                      "JOIN",
+                      "SUBSCRIBE"
+                    ]
                   }
                 }
               }
@@ -2291,7 +2408,7 @@
                           "policy_sid": "RNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                           "friendly_name": "friendly_name",
                           "status": "twilio-approved",
-                          "email": "email",
+                          "email": "notification@email.com",
                           "status_callback": "http://www.example.com",
                           "valid_until": "2020-07-31T01:00:00Z",
                           "date_created": "2019-07-30T22:29:24Z",
@@ -2543,7 +2660,7 @@
                       "policy_sid": "RNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "friendly_name": "friendly_name",
                       "status": "draft",
-                      "email": "email",
+                      "email": "notification@email.com",
                       "status_callback": "http://www.example.com",
                       "valid_until": null,
                       "date_created": "2019-07-30T22:29:24Z",
@@ -2564,7 +2681,7 @@
                       "policy_sid": "RNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "friendly_name": "friendly_name",
                       "status": "in-review",
-                      "email": "email",
+                      "email": "notification@email.com",
                       "status_callback": "http://www.example.com",
                       "valid_until": null,
                       "date_created": "2019-07-30T22:29:24Z",
@@ -2654,10 +2771,9 @@
               "examples": {
                 "update": {
                   "value": {
-                    "Status": "draft",
                     "StatusCallback": "http://www.example.com",
                     "FriendlyName": "friendly_name",
-                    "Email": "email"
+                    "Email": "notification@email.com"
                   }
                 },
                 "updateToInReview": {
@@ -7147,7 +7263,7 @@
                       "policy_sid": "RNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "friendly_name": "friendly_name",
                       "status": "draft",
-                      "email": "email",
+                      "email": "notification@email.com",
                       "status_callback": "http://www.example.com",
                       "valid_until": null,
                       "date_created": "2019-07-30T22:29:24Z",
@@ -7247,7 +7363,7 @@
                 "create": {
                   "value": {
                     "FriendlyName": "friendly_name",
-                    "Email": "email",
+                    "Email": "notification@email.com",
                     "PolicySid": "RNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "StatusCallback": "http://www.example.com"
                   }
@@ -7407,7 +7523,7 @@
                           "policy_sid": "RNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                           "friendly_name": "friendly_name",
                           "status": "twilio-approved",
-                          "email": "email",
+                          "email": "notification@email.com",
                           "status_callback": "http://www.example.com",
                           "valid_until": "2020-07-31T01:00:00Z",
                           "date_created": "2019-07-30T22:29:24Z",
@@ -7554,7 +7670,7 @@
                       "friendly_name": "friendly_name",
                       "status": "draft",
                       "valid_until": null,
-                      "email": "email",
+                      "email": "notification@email.com",
                       "status_callback": "http://www.example.com",
                       "date_created": "2019-07-30T22:29:24Z",
                       "date_updated": "2019-07-31T01:09:00Z",
@@ -7655,7 +7771,7 @@
                       "policy_sid": "RNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "friendly_name": "friendly_name",
                       "status": "draft",
-                      "email": "email",
+                      "email": "notification@email.com",
                       "status_callback": "http://www.example.com",
                       "valid_until": null,
                       "date_created": "2019-07-30T22:29:24Z",
@@ -7676,7 +7792,7 @@
                       "policy_sid": "RNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "friendly_name": "friendly_name",
                       "status": "in-review",
-                      "email": "email",
+                      "email": "notification@email.com",
                       "status_callback": "http://www.example.com",
                       "valid_until": null,
                       "date_created": "2019-07-30T22:29:24Z",
@@ -7766,10 +7882,9 @@
               "examples": {
                 "update": {
                   "value": {
-                    "Status": "draft",
                     "StatusCallback": "http://www.example.com",
                     "FriendlyName": "friendly_name",
-                    "Email": "email"
+                    "Email": "notification@email.com"
                   }
                 },
                 "updateToInReview": {

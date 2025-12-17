@@ -216,7 +216,22 @@
           },
           "capabilities": {
             "type": "object",
-            "format": "string-map",
+            "format": "phone-number-capabilities",
+            "x-class-extra-annotation": "@JsonInclude(JsonInclude.Include.NON_NULL)",
+            "properties": {
+              "mms": {
+                "type": "boolean"
+              },
+              "sms": {
+                "type": "boolean"
+              },
+              "voice": {
+                "type": "boolean"
+              },
+              "fax": {
+                "type": "boolean"
+              }
+            },
             "nullable": true,
             "description": "The set of Boolean properties that indicate whether a phone number can receive calls or messages.  Capabilities are  `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`."
           },
@@ -2286,7 +2301,7 @@
                         "mms": true
                       },
                       "links": {
-                        "phone_number": "https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+                        "phone_number": "https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                       }
                     }
                   }
@@ -2460,7 +2475,7 @@
                         "mms": true
                       },
                       "links": {
-                        "phone_number": "https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+                        "phone_number": "https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                       }
                     }
                   }
@@ -2642,13 +2657,13 @@
                   "readFull": {
                     "value": {
                       "meta": {
-                        "first_page_url": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers?PageSize=1&Page=0",
+                        "first_page_url": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers?PageSize=50&Page=0",
                         "key": "phone_numbers",
                         "next_page_url": null,
                         "page": 0,
-                        "page_size": 1,
+                        "page_size": 50,
                         "previous_page_url": null,
-                        "url": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers?PageSize=1&Page=0"
+                        "url": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers?PageSize=50&Page=0"
                       },
                       "phone_numbers": [
                         {
@@ -2682,7 +2697,7 @@
                             "mms": true
                           },
                           "links": {
-                            "phone_number": "https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+                            "phone_number": "https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                           }
                         }
                       ]
@@ -2691,13 +2706,13 @@
                   "readEmpty": {
                     "value": {
                       "meta": {
-                        "first_page_url": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers?PageSize=1&Page=0",
+                        "first_page_url": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers?PageSize=50&Page=0",
                         "key": "phone_numbers",
                         "next_page_url": null,
                         "page": 0,
-                        "page_size": 1,
+                        "page_size": 50,
                         "previous_page_url": null,
-                        "url": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers?PageSize=1&Page=0"
+                        "url": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers?PageSize=50&Page=0"
                       },
                       "phone_numbers": []
                     }
@@ -2872,7 +2887,7 @@
           }
         ],
         "responses": {
-          "202": {
+          "200": {
             "content": {
               "application/json": {
                 "schema": {
@@ -2924,7 +2939,7 @@
                 }
               }
             },
-            "description": "Accepted"
+            "description": "OK"
           }
         },
         "security": [

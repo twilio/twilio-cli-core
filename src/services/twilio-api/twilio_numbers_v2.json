@@ -7,6 +7,238 @@
       }
     },
     "schemas": {
+      "numbers.v2.address": {
+        "type": "object",
+        "properties": {
+          "sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^AD[0-9a-fA-F]{32}$",
+            "nullable": false,
+            "description": "A 34 character string that uniquely identifies this Address resource."
+          },
+          "account_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "nullable": false,
+            "description": "The unique SID identifier of the Account."
+          },
+          "customer_name": {
+            "type": "string",
+            "nullable": true,
+            "description": "The name of the customer associated with this address."
+          },
+          "date_created": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": false,
+            "description": "The date that this resource was created, given in RFC 2822 format."
+          },
+          "date_updated": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": false,
+            "description": "The date that this resource was last updated, given in RFC 2822 format."
+          },
+          "emergency_enabled": {
+            "type": "boolean",
+            "nullable": false,
+            "description": "Whether this address is enabled for emergency services."
+          },
+          "friendly_name": {
+            "type": "string",
+            "nullable": true,
+            "description": "A human-readable description of this resource, up to 64 characters."
+          },
+          "iso_country": {
+            "type": "string",
+            "nullable": false,
+            "description": "The ISO country code of this address."
+          },
+          "locality": {
+            "type": "string",
+            "nullable": true,
+            "description": "The locality or city of this address."
+          },
+          "postal_code": {
+            "type": "string",
+            "nullable": true,
+            "description": "The postal code of this address."
+          },
+          "region": {
+            "type": "string",
+            "nullable": true,
+            "description": "The state or region of this address."
+          },
+          "source": {
+            "type": "string",
+            "nullable": false,
+            "description": "The source system that created this address."
+          },
+          "status": {
+            "type": "string",
+            "nullable": false,
+            "description": "The status of this address."
+          },
+          "street": {
+            "type": "string",
+            "nullable": true,
+            "description": "The street address."
+          },
+          "street_secondary": {
+            "type": "string",
+            "nullable": true,
+            "description": "The additional street address information."
+          },
+          "subresource_uris": {
+            "type": "object",
+            "nullable": false,
+            "description": "A list of related resources identified by their URIs."
+          },
+          "validated": {
+            "type": "boolean",
+            "nullable": false,
+            "description": "Whether this address has been validated."
+          },
+          "verified": {
+            "type": "boolean",
+            "nullable": false,
+            "description": "Whether this address has been verified."
+          }
+        }
+      },
+      "numbers.v2.address_list": {
+        "type": "object",
+        "properties": {
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/numbers.v2.address"
+            },
+            "description": "List of address resources."
+          },
+          "paging": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "nullable": true
+              },
+              "next_page_uri": {
+                "type": "string",
+                "nullable": true
+              },
+              "previous_page_uri": {
+                "type": "string",
+                "nullable": true
+              },
+              "page_size": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "num_pages": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "total": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "before_sid": {
+                "type": "string",
+                "nullable": true
+              },
+              "after_sid": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            "description": "Paging metadata for the list."
+          }
+        }
+      },
+      "numbers.v2.address_create": {
+        "type": "object",
+        "required": [
+          "street",
+          "iso_country"
+        ],
+        "properties": {
+          "friendly_name": {
+            "type": "string",
+            "nullable": true,
+            "description": "A human-readable description of this resource, up to 64 characters."
+          },
+          "customer_name": {
+            "type": "string",
+            "nullable": true,
+            "description": "The name of the customer associated with this address."
+          },
+          "street": {
+            "type": "string",
+            "nullable": false,
+            "description": "The street address."
+          },
+          "street_secondary": {
+            "type": "string",
+            "nullable": true,
+            "description": "The additional street address information."
+          },
+          "locality": {
+            "type": "string",
+            "nullable": true,
+            "description": "The locality or city of this address."
+          },
+          "region": {
+            "type": "string",
+            "nullable": true,
+            "description": "The state or region of this address."
+          },
+          "postal_code": {
+            "type": "string",
+            "nullable": true,
+            "description": "The postal code of this address."
+          },
+          "iso_country": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 2,
+            "nullable": false,
+            "description": "The ISO country code of this address."
+          },
+          "source": {
+            "type": "string",
+            "nullable": true,
+            "description": "The source system that created this address."
+          },
+          "force_validation": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Whether to force validation of the address."
+          },
+          "bypass_validation": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Whether to bypass validation of the address."
+          },
+          "auto_correct_address": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Whether to automatically correct the address."
+          },
+          "emergency_enabled": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Whether this address is enabled for emergency services."
+          }
+        }
+      },
       "numbers.v2.authorization_document": {
         "type": "object",
         "properties": {
@@ -1751,6 +1983,11 @@
             "type": "string",
             "nullable": true,
             "example": "Enter between 2 - 11 characters.\nInclude at least one letter."
+          },
+          "uso_enabled": {
+            "description": "Whether USO (Unified Sender Onboarding) is enabled for this country",
+            "type": "boolean",
+            "nullable": true
           }
         }
       },
@@ -2115,6 +2352,8 @@
   },
   "openapi": "3.0.1",
   "paths": {
+    "/v2/Addresses": {},
+    "/v2/Addresses/{addressSid}": {},
     "/v2/HostedNumber/AuthorizationDocuments/{Sid}": {
       "servers": [
         {
@@ -9282,6 +9521,9 @@
         ],
         "operationId": "FetchShortCodeApplication"
       }
+    },
+    "/v2/ShortCodes/Applications/{Sid}/Cancel": {
+      "description": "Cancel an existing short code application"
     },
     "/v2/ShortCodes/Applications/Bundles/{BundleSid}/Inquiries": {
       "description": "Initialize a Persona inquiry session for a shortcodes application"

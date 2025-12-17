@@ -553,6 +553,70 @@
         "description": "The ID of the sender in `whatsapp:<E.164_PHONE_NUMBER>` format.",
         "example": "whatsapp:+15017122661",
         "nullable": true
+      },
+      "messaging.v2.domain_cert_v4": {
+        "type": "object",
+        "properties": {
+          "domain_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^DN[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "The unique string that we created to identify the Domain resource."
+          },
+          "date_updated": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "Date that this Domain was last updated."
+          },
+          "date_expires": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "Date that the private certificate associated with this domain expires. You will need to update the certificate before that date to ensure your shortened links will continue to work."
+          },
+          "date_created": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "Date that this Domain was registered to the Twilio platform to create a new Domain object."
+          },
+          "domain_name": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "description": "Full url path for this domain."
+          },
+          "certificate_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^CW[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "The unique string that we created to identify this Certificate resource."
+          },
+          "managed": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Boolean field that indicates whether the certificate is managed by Twilio or uploaded by the customer."
+          },
+          "requesting": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Boolean field that indicates whether a Twilio managed cert request is in progress or completed. True indicates a request is in progress and false indicates the request has completed or not requested yet."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "cert_in_validation": {
+            "nullable": true,
+            "description": "Optional JSON field describing the status and upload date of a new certificate in the process of validation"
+          }
+        }
       }
     },
     "examples": {
@@ -2004,6 +2068,122 @@
           }
         ],
         "operationId": "DeleteChannelsSender"
+      }
+    },
+    "/v2/LinkShortening/Domains/{DomainSid}/Certificate": {
+      "servers": [
+        {
+          "url": "https://messaging.twilio.com"
+        }
+      ],
+      "description": "",
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "certificate_sid",
+          "domain_name",
+          "domain_sid",
+          "date_expires",
+          "date_created",
+          "date_updated",
+          "url"
+        ],
+        "mountName": "domain_certs",
+        "className": "domain_certs",
+        "pathType": "instance"
+      },
+      "get": {
+        "description": "",
+        "summary": "",
+        "tags": [
+          "MessagingV2DomainCerts"
+        ],
+        "parameters": [
+          {
+            "name": "DomainSid",
+            "in": "path",
+            "description": "Unique string used to identify the domain that this certificate should be associated with.",
+            "schema": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^DN[0-9a-fA-F]{32}$"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/messaging.v2.domain_cert_v4"
+                },
+                "examples": {
+                  "fetch": {
+                    "value": {
+                      "certificate_sid": "CWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "domain_name": "https://api.example.com",
+                      "domain_sid": "DNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "date_expires": "2021-02-06T18:02:04Z",
+                      "date_created": "2021-02-06T18:02:04Z",
+                      "date_updated": "2021-02-06T18:02:04Z",
+                      "url": "https://messaging.twilio.com/v2/LinkShortening/Domains/DNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Certificate",
+                      "cert_in_validation": {
+                        "date_expires": "2021-02-06T18:02:04Z",
+                        "status": "pending"
+                      },
+                      "managed": false,
+                      "requesting": false
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "accountSid_authToken": []
+          }
+        ],
+        "operationId": "FetchDomainCertV4"
       }
     }
   },

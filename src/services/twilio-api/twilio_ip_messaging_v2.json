@@ -1039,12 +1039,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -2004,12 +2004,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -2226,12 +2226,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 5, and the maximum is 5.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 5
             }
           },
           {
@@ -3928,12 +3928,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -4680,12 +4680,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -5527,12 +5527,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -6199,12 +6199,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -7066,12 +7066,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -7796,12 +7796,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 100
             }
           },
           {
@@ -8029,12 +8029,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -8440,12 +8440,12 @@
           {
             "name": "PageSize",
             "in": "query",
-            "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+            "description": "How many resources to return in each list page. The default is 50, and the maximum is 50.",
             "schema": {
               "type": "integer",
               "format": "int64",
               "minimum": 1,
-              "maximum": 1000
+              "maximum": 50
             }
           },
           {
@@ -9000,6 +9000,9 @@
     },
     {
       "name": "IpMessagingV2Webhook"
+    },
+    {
+      "name": "Ip_messagingV2Version"
     }
   ],
   "security": [

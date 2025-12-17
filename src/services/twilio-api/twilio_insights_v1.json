@@ -1555,7 +1555,7 @@
           },
           "clientQueryId": {
             "type": "string",
-            "example": "ConversationsCount"
+            "example": "OperatorResultCount"
           },
           "query": {
             "type": "object",
@@ -1566,8 +1566,7 @@
                   "type": "string"
                 },
                 "example": [
-                  "#:",
-                  "#: OperatorResults"
+                  "OperatorResult.Count"
                 ]
               },
               "dimensions": {
@@ -1576,8 +1575,8 @@
                   "type": "string"
                 },
                 "example": [
-                  "DateCreated",
-                  "OperatorResults"
+                  "OperatorResult.CreatedDate",
+                  "OperatorResult.ConversationId"
                 ]
               },
               "filters": {
@@ -1648,6 +1647,7 @@
               "granularity": {
                 "type": "string",
                 "enum": [
+                  "hour",
                   "day",
                   "week",
                   "month",
@@ -1678,7 +1678,7 @@
                   "properties": {
                     "field": {
                       "type": "string",
-                      "example": "#: OperatorResults"
+                      "example": "OperatorResult.Count"
                     },
                     "direction": {
                       "type": "string",
@@ -1799,7 +1799,7 @@
                       "name": {
                         "type": "string"
                       },
-                      "title": {
+                      "displayName": {
                         "type": "string"
                       },
                       "description": {
@@ -1826,7 +1826,7 @@
                       "name": {
                         "type": "string"
                       },
-                      "title": {
+                      "displayName": {
                         "type": "string"
                       },
                       "description": {

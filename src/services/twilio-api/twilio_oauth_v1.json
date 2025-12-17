@@ -365,7 +365,13 @@
       "name": "OauthV1Authorize"
     },
     {
+      "name": "OauthV1Index"
+    },
+    {
       "name": "OauthV1Token"
+    },
+    {
+      "name": "OauthV1Version"
     }
   ],
   "security": [
