@@ -1,3 +1,5 @@
+## [8.3.0](https://github.com/twilio/twilio-cli-core/compare/8.2.5...8.3.0) (2025-12-17)
+
 --------------------------
 **Trunking**
 - Corrected the type used for phone number capabilities when accessed through a Trunk. **(breaking change)**
