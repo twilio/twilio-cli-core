@@ -1553,10 +1553,6 @@
             "type": "string",
             "example": "Omnichannel"
           },
-          "clientQueryId": {
-            "type": "string",
-            "example": "OperatorResultCount"
-          },
           "query": {
             "type": "object",
             "properties": {
@@ -1593,12 +1589,7 @@
                       "type": "string",
                       "enum": [
                         "and",
-                        "or",
-                        "eq",
-                        "ne",
-                        "gt",
-                        "lt",
-                        "in"
+                        "or"
                       ],
                       "example": "and"
                     },
@@ -1614,8 +1605,6 @@
                           "op": {
                             "type": "string",
                             "enum": [
-                              "and",
-                              "or",
                               "eq",
                               "ne",
                               "gt",
@@ -1799,9 +1788,6 @@
                       "name": {
                         "type": "string"
                       },
-                      "displayName": {
-                        "type": "string"
-                      },
                       "description": {
                         "type": "string"
                       },
@@ -1824,9 +1810,6 @@
                     ],
                     "properties": {
                       "name": {
-                        "type": "string"
-                      },
-                      "displayName": {
                         "type": "string"
                       },
                       "description": {

@@ -13523,6 +13523,11 @@
                     "type": "integer",
                     "description": "The maximum duration of the call in seconds. Constraints depend on account and configuration."
                   },
+                  "ClientNotificationUrl": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "The URL that we should use to deliver `push call notification`."
+                  },
                   "Url": {
                     "type": "string",
                     "format": "uri",
@@ -28154,6 +28159,11 @@
                   "CallToken": {
                     "type": "string",
                     "description": "A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call."
+                  },
+                  "ClientNotificationUrl": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "The URL that we should use to deliver `push call notification`."
                   },
                   "CallerDisplayName": {
                     "type": "string",
