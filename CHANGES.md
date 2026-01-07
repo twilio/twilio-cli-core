@@ -1,3 +1,5 @@
+### [8.3.1](https://github.com/twilio/twilio-cli-core/compare/8.3.0...8.3.1) (2026-01-07)
+
 --------------------------
 **Api**
 - Added optional parameter `clientNotificationUrl` for create call api
