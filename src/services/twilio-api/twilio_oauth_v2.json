@@ -18,7 +18,10 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "x-twilio": {
+      "apiStandards": "v0.1"
+    }
   },
   "servers": [
     {
@@ -138,6 +141,76 @@
           }
         }
       }
+    },
+    "/v2/authorize": {
+      "x-twilio": {
+        "defaultOutputProperties": [
+          "redirect_to"
+        ],
+        "pathType": "list"
+      },
+      "get": {
+        "security": [],
+        "tags": [
+          "OauthV2Authorize"
+        ],
+        "summary": "Retrieves authorize uri",
+        "operationId": "FetchOauth2Authorize",
+        "parameters": [
+          {
+            "name": "response_type",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "code"
+            }
+          },
+          {
+            "name": "client_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "OQ7cda1a615f05a95634e643aaaf7081d7"
+            }
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "www.twilio.com"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "offline_access"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "xvz"
+            }
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": "Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/oauth.v2.authorize"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -251,10 +324,15 @@
         "properties": {
           "accountSid": {
             "type": "string",
-            "minLength": 34,
             "maxLength": 34,
             "pattern": "^AC[0-9a-fA-F]{32}$",
             "description": "The SID of the account to be authorized for the user."
+          },
+          "organizationSid": {
+            "pattern": "OR[0-9a-f]{32}",
+            "type": "string",
+            "format": "OrganizationSid",
+            "example": "ORbfd85878416fbd8418bedafce743700a"
           },
           "authorizationContext": {
             "type": "string",
@@ -263,6 +341,11 @@
               "user",
               "organization"
             ]
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether this request represents user activity (true) or polling (false)",
+            "default": true
           }
         }
       },
@@ -286,6 +369,18 @@
           "isValid": {
             "type": "boolean",
             "description": "True if session is valid, false if expired or invalid"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "datetime string when the session expires, only present if isValid is true"
+          },
+          "lastActiveAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "datetime string when the session was refreshed, only present if isValid is true"
           }
         }
       },
@@ -299,6 +394,15 @@
             "type": "string"
           },
           "callbackUri": {
+            "type": "string"
+          },
+          "returnTo": {
+            "type": "string"
+          },
+          "g": {
+            "type": "string"
+          },
+          "t": {
             "type": "string"
           }
         }
@@ -362,6 +466,37 @@
           }
         }
       },
+      "V2Oauth2ServiceTokenResponse": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "nullable": true,
+            "description": "Token which carries the necessary information to access a Twilio resource directly."
+          },
+          "token_type": {
+            "type": "string",
+            "nullable": true,
+            "description": "Token type"
+          },
+          "expires_in": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          }
+        }
+      },
+      "oauth.v2.authorize": {
+        "type": "object",
+        "properties": {
+          "redirect_to": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "description": "The callback URL"
+          }
+        }
+      },
       "V2OauthAuth0CallbackResponse": {
         "type": "object",
         "properties": {
@@ -370,6 +505,25 @@
             "format": "uri",
             "nullable": true,
             "description": "The redirect URL"
+          }
+        }
+      },
+      "SessionMetadataResponse": {
+        "type": "object",
+        "required": [
+          "isHipaaUser",
+          "sessionIdleTimeout",
+          "isVerificationRequired"
+        ],
+        "properties": {
+          "isHipaaUser": {
+            "type": "boolean"
+          },
+          "sessionIdleTimeout": {
+            "type": "integer"
+          },
+          "isVerificationRequired": {
+            "type": "boolean"
           }
         }
       },
@@ -396,6 +550,35 @@
             "format": "int32"
           }
         }
+      },
+      "ErrorThrottled": {
+        "description": "Generic error",
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "Twilio-specific error code",
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "description": "Error message",
+            "type": "string"
+          },
+          "more_info": {
+            "description": "Link to Error Code References",
+            "type": "string"
+          },
+          "status": {
+            "description": "HTTP response status code",
+            "type": "integer",
+            "format": "int32"
+          },
+          "throttled_until": {
+            "description": "how long request is throttled for",
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       }
     },
     "headers": {
@@ -414,6 +597,26 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "client_error": {
+                "value": {
+                  "code": 400,
+                  "message": "bad request",
+                  "more_info": "https://www.twilio.com/docs/errors/400",
+                  "status": 400
+                }
+              }
+            }
+          }
+        }
+      },
+      "ErrorClientErrorResponseThrottled": {
+        "description": "Request was throttled",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorThrottled"
             },
             "examples": {
               "client_error": {

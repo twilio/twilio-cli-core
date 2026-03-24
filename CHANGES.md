@@ -1,3 +1,31 @@
+--------------------------
+**Data-ingress**
+- # API Changes
+- Added stage-us1 to supportedRealms for all endpoints
+- **Content updates**:
+- Removed estimatedCompletionTime from `LongRunningOperationResponse`
+- Moved operationId from `LongRunningOperationResponse` to headers
+- **Added 1 new path(s)**:
+- `/v1/ControlPlane/Operations/{OperationId}` (GetControlPlaneOperationStatus)
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- Initial release with 10 paths and 22 operations
+
+**Memory**
+- **Added 1 new path(s)**:
+- `/v1/ControlPlane/Operations/{operationId}` (FetchOperation)
+- Minor updates (formatting, metadata)
+
+
+--------------------------
+**Twiml**
+- Rename `recording_configuration` to `recording_configuration_id` attribute in `<Conference>`, `<Dial>`, `<Record>` verbs and `<Recording>` noun
+
+**Ace**
+- # ACE Signals API Changes
 ### [8.3.2](https://github.com/twilio/twilio-cli-core/compare/8.3.1...8.3.2) (2026-02-18)
 
 

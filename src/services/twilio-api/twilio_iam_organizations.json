@@ -16,7 +16,10 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "x-twilio": {
+      "apiStandards": "v0.1"
+    }
   },
   "tags": [
     {
@@ -1618,6 +1621,383 @@
             }
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "SCIM"
+        ],
+        "summary": "Patch SCIM User",
+        "operationId": "PatchOrganizationUser",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrganizationSid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "OR[0-9a-f]{32}",
+              "type": "string",
+              "format": "OrganizationSid",
+              "example": "OR50835cc756f1a5503f7a88f23409bd4b"
+            }
+          },
+          {
+            "name": "UserSid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "US[0-9a-f]{32}",
+              "type": "string",
+              "format": "UserSid",
+              "example": "USa9ddadb0ff7a25ac0ace028a1846729f"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScimPatchRequest"
+              }
+            },
+            "application/scim+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScimPatchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "User object with updated attributes",
+            "content": {
+              "application/scim+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScimUser"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or business rules violation",
+            "content": {
+              "application/scim+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScimError"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/scim+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScimError"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/scim+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScimError"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/scim+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScimError"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version conflict",
+            "content": {
+              "application/scim+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScimError"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests",
+            "content": {
+              "application/scim+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScimError"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "Specify the origin(s) allowed to access the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "description": "Specify the HTTP methods allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "POST, OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "description": "Specify the headers allowed when accessing the resource",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Authorization"
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "Indicates whether the browser should include credentials",
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "Access-Control-Expose-Headers": {
+                "description": "Headers exposed to the client",
+                "schema": {
+                  "type": "string",
+                  "example": "X-Custom-Header1, X-Custom-Header2"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/Organizations/{OrganizationSid}/Accounts": {
@@ -1717,7 +2097,27 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwilioServiceErrorResponse"
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "description": "Twilio-specific error code",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "message": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "more_info": {
+                      "description": "Link to Error Code References",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP response status code",
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
                 }
               }
             },
@@ -1763,7 +2163,27 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwilioServiceErrorResponse"
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "description": "Twilio-specific error code",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "message": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "more_info": {
+                      "description": "Link to Error Code References",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP response status code",
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
                 }
               }
             },
@@ -1895,7 +2315,27 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwilioServiceErrorResponse"
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "description": "Twilio-specific error code",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "message": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "more_info": {
+                      "description": "Link to Error Code References",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP response status code",
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
                 }
               }
             },
@@ -1941,7 +2381,27 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwilioServiceErrorResponse"
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "description": "Twilio-specific error code",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "message": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "more_info": {
+                      "description": "Link to Error Code References",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP response status code",
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
                 }
               }
             },
@@ -2105,7 +2565,27 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwilioServiceErrorResponse"
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "description": "Twilio-specific error code",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "message": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "more_info": {
+                      "description": "Link to Error Code References",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP response status code",
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
                 }
               }
             },
@@ -2151,7 +2631,27 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwilioServiceErrorResponse"
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "description": "Twilio-specific error code",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "message": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "more_info": {
+                      "description": "Link to Error Code References",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP response status code",
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
                 }
               }
             },

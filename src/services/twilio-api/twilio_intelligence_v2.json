@@ -910,7 +910,10 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "x-twilio": {
+      "apiStandards": "v0.1"
+    }
   },
   "openapi": "3.0.1",
   "paths": {
@@ -3088,6 +3091,22 @@
             "description": "The page token. This is provided by the API.",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "LanguageCode",
+            "in": "query",
+            "description": "Returns Operator Types that support the provided language code.",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "readFull": {
+                "value": "en"
+              },
+              "readEmpty": {
+                "value": "en"
+              }
             }
           }
         ],

@@ -255,6 +255,15 @@
             "type": "string",
             "description": "The SID of the Twilio Voice application.",
             "nullable": true
+          },
+          "account_type": {
+            "type": "string",
+            "enum": [
+              "ISV",
+              "ISVSubAccount"
+            ],
+            "description": "The account type for ISV Account Type Migration. Set to 'ISV' or 'ISVSubAccount' to configure, null or empty string to clear, or omit to preserve the existing value.",
+            "nullable": true
           }
         },
         "description": "The configuration settings for creating a sender."
@@ -380,7 +389,7 @@
           },
           "vertical": {
             "type": "string",
-            "description": "The vertical of the sender. Allowed values are:\n- `Automotive`\n- `Beauty, Spa and Salon`\n- `Clothing and Apparel`\n- `Education`\n- `Entertainment`\n- `Event Planning and Service`\n- `Finance and Banking`\n- `Food and Grocery`\n- `Public Service`\n- `Hotel and Lodging`\n- `Medical and Health`\n- `Non-profit`\n- `Professional Services`\n- `Shopping and Retail`\n- `Travel and Transportation`\n- `Restaurant`\n- `Other`\n",
+            "description": "The vertical of the sender. Allowed values are:\n- `Alcohol`\n- `Automotive`\n- `Beauty, Spa and Salon`\n- `Clothing and Apparel`\n- `Education`\n- `Entertainment`\n- `Event Planning and Service`\n- `Finance and Banking`\n- `Food and Grocery`\n- `Hotel and Lodging`\n- `Matrimony Service`\n- `Medical and Health`\n- `Non-profit`\n- `Online Gambling`\n- `OTC Drugs`\n- `Other`\n- `Physical Gambling`\n- `Professional Services`\n- `Public Service`\n- `Restaurant`\n- `Shopping and Retail`\n- `Travel and Transportation`\n",
             "nullable": true
           },
           "websites": {
@@ -446,7 +455,7 @@
           },
           "vertical": {
             "type": "string",
-            "description": "The vertical of the sender. Allowed values are:\n- `Automotive`\n- `Beauty, Spa and Salon`\n- `Clothing and Apparel`\n- `Education`\n- `Entertainment`\n- `Event Planning and Service`\n- `Finance and Banking`\n- `Food and Grocery`\n- `Public Service`\n- `Hotel and Lodging`\n- `Medical and Health`\n- `Non-profit`\n- `Professional Services`\n- `Shopping and Retail`\n- `Travel and Transportation`\n- `Restaurant`\n- `Other`\n",
+            "description": "The vertical of the sender. Allowed values are:\n- `Alcohol`\n- `Automotive`\n- `Beauty, Spa and Salon`\n- `Clothing and Apparel`\n- `Education`\n- `Entertainment`\n- `Event Planning and Service`\n- `Finance and Banking`\n- `Food and Grocery`\n- `Hotel and Lodging`\n- `Matrimony Service`\n- `Medical and Health`\n- `Non-profit`\n- `Online Gambling`\n- `OTC Drugs`\n- `Other`\n- `Physical Gambling`\n- `Professional Services`\n- `Public Service`\n- `Restaurant`\n- `Shopping and Retail`\n- `Travel and Transportation`\n",
             "nullable": true
           },
           "websites": {
@@ -617,6 +626,64 @@
             "description": "Optional JSON field describing the status and upload date of a new certificate in the process of validation"
           }
         }
+      },
+      "messaging.v2.presigned_url.request": {
+        "type": "object",
+        "properties": {
+          "imageContentMd5": {
+            "type": "string",
+            "description": "Base64-encoded MD5 hash of the image"
+          },
+          "imageContentType": {
+            "type": "string",
+            "description": "MIME type of the image (e.g., image/png, image/jpeg)"
+          },
+          "imageKind": {
+            "type": "string",
+            "description": "Type of image (logo, hero, etc.)"
+          },
+          "imageName": {
+            "type": "string",
+            "description": "Name of the image file"
+          },
+          "imageSizeBytes": {
+            "type": "integer",
+            "description": "Size of the image in bytes"
+          },
+          "imageHeight": {
+            "type": "integer",
+            "description": "Height of the image in pixels"
+          },
+          "imageWidth": {
+            "type": "integer",
+            "description": "Width of the image in pixels"
+          }
+        },
+        "required": [
+          "imageContentMd5",
+          "imageContentType",
+          "imageKind",
+          "imageName",
+          "imageSizeBytes"
+        ]
+      },
+      "messaging.v2.presigned_url.response": {
+        "type": "object",
+        "properties": {
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fetchUrl": {
+            "type": "string"
+          },
+          "uploadUrl": {
+            "type": "string"
+          },
+          "uploadFields": {
+            "type": "object"
+          }
+        }
       }
     },
     "examples": {
@@ -674,7 +741,8 @@
             "waba_id": "1234567XXX",
             "verification_method": "sms",
             "verification_code": null,
-            "voice_application_sid": "APXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+            "voice_application_sid": "APXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            "account_type": null
           },
           "webhook": {
             "callback_url": "https://callback.example.com",
@@ -825,7 +893,8 @@
             "waba_id": "1234567XXX",
             "verification_method": null,
             "verification_code": null,
-            "voice_application_sid": "APXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+            "voice_application_sid": "APXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            "account_type": null
           },
           "webhook": {
             "callback_url": "https://callback.example.com",
@@ -882,7 +951,8 @@
             "waba_id": "1234567XXX",
             "verification_method": null,
             "verification_code": null,
-            "voice_application_sid": "APXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+            "voice_application_sid": "APXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            "account_type": null
           },
           "webhook": {
             "callback_url": "https://callback.example.com",
@@ -1021,17 +1091,41 @@
           "phone_number": "+14081111111"
         }
       },
-      "create_test_device_response": {
+      "test_device_response": {
         "value": {
           "phone_number": "+14081111111",
           "status": "PENDING"
+        }
+      },
+      "list_test_devices_response": {
+        "value": {
+          "phone_numbers": [
+            {
+              "phone_number": "+14081111111",
+              "status": "ACCEPTED"
+            },
+            {
+              "phone_number": "+14082222222",
+              "status": "PENDING"
+            }
+          ],
+          "meta": {
+            "page": 0,
+            "page_size": 10,
+            "first_page_url": "https://messaging.twilio.com/v2/Channels/Senders/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TestDevices?PageSize=10&Page=0",
+            "previous_page_url": null,
+            "url": "https://messaging.twilio.com/v2/Channels/Senders/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TestDevices?PageSize=10&Page=0",
+            "next_page_url": null,
+            "key": "test_devices"
+          }
         }
       },
       "whatsapp_patch_update_configuration_request": {
         "value": {
           "configuration": {
             "verification_code": "123456",
-            "voice_application_sid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "voice_application_sid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "account_type": null
           }
         }
       },
@@ -1170,7 +1264,8 @@
           "profile": null,
           "configuration": {
             "verification_code": "123456",
-            "voice_application_sid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "voice_application_sid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "account_type": null
           }
         }
       },
@@ -1319,7 +1414,10 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "x-twilio": {
+      "apiStandards": "v0.1"
+    }
   },
   "openapi": "3.0.1",
   "paths": {
@@ -1850,7 +1948,8 @@
                         "waba_id": "1234567XXX",
                         "verification_method": "sms",
                         "verification_code": null,
-                        "voice_application_sid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "voice_application_sid": "APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "account_type": null
                       },
                       "webhook": {
                         "callback_url": "https://callback.example.com",

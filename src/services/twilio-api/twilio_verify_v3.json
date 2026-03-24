@@ -25,7 +25,10 @@
     },
     "version": "1.0.0",
     "title": "Sample/reference Twilio API.",
-    "description": "This is the reference API for the rest-proxy server."
+    "description": "This is the reference API for the rest-proxy server.",
+    "x-twilio": {
+      "apiStandards": "v1.0"
+    }
   },
   "paths": {
     "/v2/test/fixed/response/without/body": {}

@@ -1316,6 +1316,14 @@
             "nullable": true,
             "description": "The SID of the transcriptions's room."
           },
+          "source_sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^CA[0-9a-fA-F]{32}$",
+            "nullable": true,
+            "description": "The SID of the transcriptions's associated call."
+          },
           "status": {
             "$ref": "#/components/schemas/room_transcriptions_enum_status"
           },
@@ -1391,7 +1399,10 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "x-twilio": {
+      "apiStandards": "v0.1"
+    }
   },
   "openapi": "3.0.1",
   "paths": {
@@ -7248,6 +7259,7 @@
                       "ttid": "video_extension_2c70be23-4788-423d-9351-df6705efa035",
                       "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "room_sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "source_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "date_created": "2015-07-30T20:00:00Z",
                       "date_updated": "2015-07-30T20:00:00Z",
                       "start_time": "2015-07-30T20:00:00Z",
@@ -7348,6 +7360,7 @@
                       "ttid": "video_extension_2c70be23-4788-423d-9351-df6705efa035",
                       "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "room_sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "source_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "date_created": "2015-07-30T20:00:00Z",
                       "date_updated": "2015-07-30T20:00:00Z",
                       "start_time": "2015-07-30T20:00:00Z",
@@ -7417,13 +7430,28 @@
                 "properties": {
                   "Status": {
                     "$ref": "#/components/schemas/room_transcriptions_enum_status"
+                  },
+                  "Configuration": {
+                    "type": "object",
+                    "description": "A collection of properties that describe transcription behaviour."
                   }
                 }
               },
               "examples": {
-                "update": {
+                "updateStatus": {
                   "value": {
                     "Status": "stopped"
+                  }
+                },
+                "updateConfiguration": {
+                  "value": {
+                    "Configuration": "{\"LanguageCode\": \"EN-us\", \"ProfanityFilter\": true}"
+                  }
+                },
+                "updateAllFields": {
+                  "value": {
+                    "Status": "started",
+                    "Configuration": "{\"LanguageCode\": \"EN-us\", \"ProfanityFilter\": true}"
                   }
                 }
               }
@@ -7564,6 +7592,7 @@
                           "ttid": "video_extension_2c70be23-4788-423d-9351-df6705efa035",
                           "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                           "room_sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                          "source_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                           "date_created": "2015-07-30T20:00:00Z",
                           "date_updated": "2015-07-30T20:00:00Z",
                           "start_time": "2015-07-30T20:00:00Z",
@@ -7666,6 +7695,7 @@
                       "ttid": "video_extension_2c70be23-4788-423d-9351-df6705efa035",
                       "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "room_sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "source_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                       "date_created": "2015-07-30T20:00:00Z",
                       "date_updated": "2015-07-30T20:00:00Z",
                       "start_time": "2015-07-30T20:00:00Z",
