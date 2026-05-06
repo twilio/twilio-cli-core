@@ -1,3 +1,5 @@
+### [8.3.4](https://github.com/twilio/twilio-cli-core/compare/8.3.3...8.3.4) (2026-05-06)
+
 --------------------------
 **Twiml**
 - Set `recording_configuration_id` attribute to public visibility in `<Conference>`, `<Dial>`, `<Record>` verbs and `<Recording>` noun
