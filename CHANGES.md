@@ -1,3 +1,73 @@
+--------------------------
+**Twiml**
+- Set `recording_configuration_id` attribute to public visibility in `<Conference>`, `<Dial>`, `<Record>` verbs and `<Recording>` noun
+
+**Api**
+- Add RecordingConfigurationId parameter for CreateCall, CreateCallRecording, CreateConferenceRecording, and CreateParticipant endpoints
+
+**Authy**
+- # Changelog
+- ## v1
+- Added Authy API v1 under `/v1` — initial onboarding of Public API (`/v1/protected/*`), Device API (`/v1/json/*`), and Dashboard API (`/v1/dashboard/*`) behind REST Proxy using transparent proxy mode.
+
+**Data-ingress**
+- **Content updates**:
+- Updated description for `CreateDataSync`
+- Updated description for `DeleteCloudAppDataset`
+- Updated description for `DeleteWarehouseDataset`
+- Minor updates (formatting, metadata)
+- updated operationId for dataplane APIs,Minor updates (formatting, metadata)
+- libraryVisibility to private
+- **Added 1 new path(s)**:
+- `/v1/DataSyncs/Latest` (GetLatestDataSyncs)
+
+**Memory**
+- **Content updates**:
+- Remove Prefer/Async-Operation headers
+- **Content updates**:
+- Added 301 response for `ListIdentifiers` and `GetIdentifier`
+- Added 308 response for `DeleteProfile`, `CreateIdentifier`, `PatchIdentifier`, and `DeleteIdentifier`
+- **Modified 1 path(s)**:
+- `/v1/ControlPlane/Stores/{storeId}` (added delete)
+- Minor updates (formatting, metadata)
+
+**Voice**
+- Added `I-Twilio-Auth-Account` to `downstreamRequest` headers in POST /v3/Transcriptions transactions to document RestProxy account header injection
+- Added initial version of Transcriptions V3 API
+- Added POST /v3/Transcriptions endpoint to create a new transcription from a source ID or media URL
+
+
+--------------------------
+**Library - Fix**
+- [PR #140](https://github.com/twilio/twilio-oai/pull/140): operation validation. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Twiml**
+- Add `backgroundNoiseReduction`, `speechTimeout`, `deepgramSmartFormat`, `ignoreBackchannel`, `events` attributes to `<ConversationRelay>`
+
+**Api**
+- Enabled incoming phone numbers(IPN) public apis in stage-ie1
+
+**Data-ingress**
+- **Content updates**:
+- Added parameter(s) to `GetDataSync`: datasetId
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- **Content updates**:
+- Added properties to `CloudAppSourceUpdate`: config
+- Added properties to `CloudAppDatasetUpdate`: schedule
+- Added properties to `WarehouseSourceUpdate`: config
+- Added properties to `WarehouseDatasetUpdate`: schedule
+- **Content updates**:
+- Updated description for `GetCloudAppPreviewResult`
+- Updated description for `GetWarehousePreviewResult`
+- Updated description for `GetDataSampleResult`
+- Add schema oneOf back without discriminator
+- Minor updates (formatting, metadata)
+- Added prod-us1 to supportedRealms for all endpoints
+- Minor updates (formatting, metadata)
 ### [8.3.3](https://github.com/twilio/twilio-cli-core/compare/8.3.2...8.3.3) (2026-03-24)
 
 --------------------------
