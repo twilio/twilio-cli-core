@@ -159,6 +159,112 @@ describe('services', () => {
         });
       });
 
+      test.it('resolves $ref parameters at path level and merges into operations', () => {
+        const browser = new TwilioApiBrowser({
+          memory: {
+            paths: {
+              '/v1/Stores/{StoreId}/Items/{ItemId}': {
+                servers: [{ url: 'https://memory.twilio.com' }],
+                parameters: [
+                  { $ref: '#/components/parameters/StoreId' },
+                  { $ref: '#/components/parameters/ItemId' },
+                ],
+                get: { description: 'Fetch item' },
+                delete: { description: 'Remove item' },
+                description: 'An item resource',
+                'x-twilio': { defaultOutputProperties: ['sid'] },
+              },
+            },
+            components: {
+              parameters: {
+                StoreId: { name: 'StoreId', in: 'path', required: true, schema: { type: 'string' } },
+                ItemId: { name: 'ItemId', in: 'path', required: true, schema: { type: 'string' } },
+              },
+            },
+          },
+        });
+
+        const path = browser.domains.memory.paths['/v1/Stores/{StoreId}/Items/{ItemId}'];
+        expect(path.operations.get.parameters).to.have.lengthOf(2);
+        expect(path.operations.get.parameters[0].name).to.equal('StoreId');
+        expect(path.operations.get.parameters[1].name).to.equal('ItemId');
+        expect(path.operations.delete.parameters).to.have.lengthOf(2);
+        expect(path.operations.delete.parameters[0].name).to.equal('StoreId');
+      });
+
+      test.it('resolves $ref parameters at operation level', () => {
+        const browser = new TwilioApiBrowser({
+          memory: {
+            paths: {
+              '/v1/Things/{ThingId}': {
+                servers: [{ url: 'https://memory.twilio.com' }],
+                delete: {
+                  description: 'Remove thing',
+                  parameters: [{ $ref: '#/components/parameters/ThingId' }],
+                },
+                description: 'A thing resource',
+                'x-twilio': { defaultOutputProperties: ['sid'] },
+              },
+            },
+            components: {
+              parameters: {
+                ThingId: { name: 'ThingId', in: 'path', required: true, schema: { type: 'string' } },
+              },
+            },
+          },
+        });
+
+        const path = browser.domains.memory.paths['/v1/Things/{ThingId}'];
+        expect(path.operations.delete.parameters).to.have.lengthOf(1);
+        expect(path.operations.delete.parameters[0].name).to.equal('ThingId');
+      });
+
+      test.it('operation-level params take precedence over path-level params on name conflict', () => {
+        const browser = new TwilioApiBrowser({
+          memory: {
+            paths: {
+              '/v1/Items/{ItemId}': {
+                servers: [{ url: 'https://memory.twilio.com' }],
+                parameters: [
+                  { name: 'ItemId', in: 'path', required: true, description: 'path-level', schema: { type: 'string' } },
+                ],
+                get: {
+                  description: 'Fetch item',
+                  parameters: [
+                    { name: 'ItemId', in: 'path', required: true, description: 'operation-level', schema: { type: 'string' } },
+                  ],
+                },
+                description: 'Item resource',
+                'x-twilio': { defaultOutputProperties: ['sid'] },
+              },
+            },
+          },
+        });
+
+        const path = browser.domains.memory.paths['/v1/Items/{ItemId}'];
+        expect(path.operations.get.parameters).to.have.lengthOf(1);
+        expect(path.operations.get.parameters[0].description).to.equal('operation-level');
+      });
+
+      test.it('handles unresolvable $ref gracefully', () => {
+        const browser = new TwilioApiBrowser({
+          memory: {
+            paths: {
+              '/v1/Broken/{Id}': {
+                servers: [{ url: 'https://memory.twilio.com' }],
+                parameters: [{ $ref: '#/components/parameters/DoesNotExist' }],
+                get: { description: 'Fetch broken' },
+                description: 'Broken resource',
+                'x-twilio': { defaultOutputProperties: ['sid'] },
+              },
+            },
+          },
+        });
+
+        const path = browser.domains.memory.paths['/v1/Broken/{Id}'];
+        expect(path.operations.get.parameters || []).to.have.lengthOf(0);
+      });
+
       test.it('lift twilio vendor extension property', () => {
         const browser = new TwilioApiBrowser({
           api: {

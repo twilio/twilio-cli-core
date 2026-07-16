@@ -181,6 +181,23 @@ describe('services', () => {
         });
 
       test
+        .nock('https://api.twilio.com', (api) => {
+          api.delete(`/2010-04-01/Accounts/${accountSid}/Calls/${callSid}.json`).reply(202, {
+            message: 'Resource scheduled for deletion',
+            status: 'accepted',
+          });
+        })
+        .it('can remove resources with 202 response body', async () => {
+          const response = await apiClient.remove({
+            domain: 'api',
+            path: '/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json',
+            pathParams: { Sid: callSid },
+          });
+
+          expect(response).to.eql({ message: 'Resource scheduled for deletion', status: 'accepted' });
+        });
+
+      test
         .nock('https://api.dev.twilio.com', (api) => {
           api.post(`/2010-04-01/Accounts/${accountSid}/Messages.json`).reply(201, {
             status: 'queued',
