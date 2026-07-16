@@ -83,11 +83,32 @@ class TwilioApiBrowser {
         if (path.description === undefined) path.description = '';
         path.description = path.description.replace(/(\r\n|\n|\r)/gm, ' ');
 
+        // Resolve $ref in path-level parameters and merge into each operation.
+        const pathParams = (path.parameters || []).map((p) =>
+          p.$ref ? this.resolveParameterRef(p.$ref, spec) : p,
+        ).filter(Boolean);
+        delete path.parameters;
+
         // Move the operations into an operations object.
         OPERATIONS.forEach((operationName) => {
           if (operationName in path) {
             const operation = path[operationName];
             this.updateTwilioVendorExtensionProperty(operation);
+
+            // Resolve $ref in operation-level parameters.
+            if (operation.parameters) {
+              operation.parameters = operation.parameters.map((p) =>
+                p.$ref ? this.resolveParameterRef(p.$ref, spec) : p,
+              ).filter(Boolean);
+            }
+
+            // Merge path-level parameters into the operation (operation-level takes precedence).
+            if (pathParams.length > 0) {
+              const opParamNames = new Set((operation.parameters || []).map((p) => p.name));
+              const merged = pathParams.filter((p) => !opParamNames.has(p.name));
+              operation.parameters = (operation.parameters || []).concat(merged);
+            }
+
             path.operations[operationName] = operation;
             delete path[operationName];
 
@@ -109,6 +130,16 @@ class TwilioApiBrowser {
     });
 
     return domains;
+  }
+
+  resolveParameterRef(ref, spec) {
+    // Resolve local $ref like "#/components/parameters/StoreId"
+    const parts = ref.replace(/^#\//, '').split('/');
+    let node = spec;
+    for (const part of parts) {
+      node = node && node[part];
+    }
+    return node || null;
   }
 
   requestPropertiesToParameters(requestBody) {

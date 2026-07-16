@@ -69,9 +69,13 @@ class TwilioApiClient {
   async remove(opts) {
     opts.method = 'delete';
 
-    const { statusCode } = await this.request(opts);
+    const { statusCode, body } = await this.request(opts);
 
-    return statusCode === 204;
+    /*
+     * APIs that return a body (e.g. 202 Accepted) surface it for the caller.
+     * Existing no-body APIs (204 No Content) continue to return true/false.
+     */
+    return body || statusCode === 204;
   }
 
   async list(opts) {
