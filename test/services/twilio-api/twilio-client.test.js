@@ -181,6 +181,206 @@ describe('services', () => {
         });
 
       test
+        .nock('https://api.twilio.com', (api) => {
+          api.delete(`/2010-04-01/Accounts/${accountSid}/Calls/${callSid}.json`).reply(202, {
+            message: 'Resource scheduled for deletion',
+            status: 'accepted',
+          });
+        })
+        .it('can remove resources with 202 response body', async () => {
+          const response = await apiClient.remove({
+            domain: 'api',
+            path: '/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json',
+            pathParams: { Sid: callSid },
+          });
+
+          expect(response).to.eql({ message: 'Resource scheduled for deletion', status: 'accepted' });
+        });
+
+      test
+        .nock('https://conversations.twilio.com', (api) => {
+          api.get('/v1/Conversations?PageSize=50').reply(200, {
+            conversations: [{ sid: callSid }],
+            meta: {
+              key: 'conversations',
+              pageSize: 1,
+              nextToken: 'token-page-2',
+            },
+          });
+          api.get('/v1/Conversations?PageSize=50&pageToken=token-page-2').reply(200, {
+            conversations: [{ sid: callSid }],
+            meta: {
+              key: 'conversations',
+              pageSize: 1,
+            },
+          });
+        })
+        .it('can list resources with token-based pagination', async () => {
+          const response = await apiClient.list({
+            domain: 'conversations',
+            path: '/v1/Conversations',
+            data: { PageSize: 50 },
+          });
+
+          expect(response).to.eql([{ sid: callSid }, { sid: callSid }]);
+        });
+
+      test
+        .nock('https://conversations.twilio.com', (api) => {
+          api.get('/v1/Conversations?PageSize=50').reply(200, {
+            conversations: [{ sid: callSid }],
+            meta: {
+              key: 'conversations',
+              pageSize: 1,
+              nextToken: 'token-2',
+            },
+          });
+          api.get('/v1/Conversations?PageSize=50&pageToken=token-2').reply(200, {
+            conversations: [{ sid: callSid }],
+            meta: {
+              key: 'conversations',
+              pageSize: 1,
+            },
+          });
+        })
+        .it('uses meta.key to locate items array', async () => {
+          const response = await apiClient.list({
+            domain: 'conversations',
+            path: '/v1/Conversations',
+            data: { PageSize: 50 },
+          });
+
+          expect(response).to.eql([{ sid: callSid }, { sid: callSid }]);
+        });
+
+      test
+        .nock('https://conversations.twilio.com', (api) => {
+          api.get('/v1/Conversations?PageSize=50').reply(200, {
+            conversations: [{ sid: callSid }],
+            meta: {
+              key: 'conversations',
+              pageSize: 1,
+              pagination: {
+                nextToken: 'nested-token-2',
+              },
+            },
+          });
+          api.get('/v1/Conversations?PageSize=50&pageToken=nested-token-2').reply(200, {
+            conversations: [{ sid: callSid }],
+            meta: {
+              key: 'conversations',
+              pageSize: 1,
+            },
+          });
+        })
+        .it('supports nested meta.pagination.nextToken', async () => {
+          const response = await apiClient.list({
+            domain: 'conversations',
+            path: '/v1/Conversations',
+            data: { PageSize: 50 },
+          });
+
+          expect(response).to.eql([{ sid: callSid }, { sid: callSid }]);
+        });
+
+      test
+        .nock('https://studio.twilio.com', (api) => {
+          api.get('/v1/Flows?PageSize=50').reply(200, {
+            flows: [{ friendly_name: 'Flow A' }, { friendly_name: 'Flow B' }], // eslint-disable-line camelcase
+          });
+        })
+        .it('can list resources without pagination metadata', async () => {
+          const response = await apiClient.list({
+            domain: 'studio',
+            path: '/v1/Flows',
+            data: { PageSize: 50 },
+          });
+
+          expect(response).to.eql([{ friendlyName: 'Flow A' }, { friendlyName: 'Flow B' }]);
+        });
+
+      test
+        .nock('https://api.twilio.com', (api) => {
+          api.get(`/2010-04-01/Accounts/${accountSid}/Calls.json?PageSize=2`).reply(200, {
+            calls: [{ sid: callSid }],
+            meta: {
+              key: 'calls',
+              pageSize: 1,
+              nextToken: 'page2-token',
+            },
+          });
+          api.get(`/2010-04-01/Accounts/${accountSid}/Calls.json?PageSize=2&pageToken=page2-token`).reply(200, {
+            calls: [{ sid: callSid }],
+            meta: {
+              key: 'calls',
+              pageSize: 1,
+            },
+          });
+        })
+        .it('preserves pathParams across token-based paginated requests', async () => {
+          const response = await apiClient.list({
+            domain: 'api',
+            path: '/2010-04-01/Accounts/{AccountSid}/Calls.json',
+            data: { PageSize: 2 },
+          });
+
+          expect(response).to.eql([{ sid: callSid }, { sid: callSid }]);
+        });
+
+      test.it('getResponseItems uses meta.key to locate items in response', () => {
+        const body = {
+          profiles: ['profile_001', 'profile_002'],
+          meta: { key: 'profiles', pageSize: 2 },
+        };
+        const items = apiClient.getResponseItems(body);
+        expect(items).to.eql(['profile_001', 'profile_002']);
+      });
+
+      test.it('getResponseItems falls back to finding single array when meta.key is absent', () => {
+        const body = {
+          identifiers: [{ idType: 'email', values: ['test@example.com'] }],
+        };
+        const items = apiClient.getResponseItems(body);
+        expect(items).to.eql([{ idType: 'email', values: ['test@example.com'] }]);
+      });
+
+      test
+        .nock('https://conversations.twilio.com', (api) => {
+          api.get('/v1/Conversations?PageSize=50').reply(200, {
+            conversations: [{ sid: callSid }],
+            meta: {
+              key: 'conversations',
+              pageSize: 1,
+              nextToken: 'token-abc',
+            },
+          });
+          api.get('/v1/Conversations?PageSize=50&pageToken=token-abc').reply(200, {
+            conversations: [{ sid: callSid }],
+            meta: {
+              key: 'conversations',
+              pageSize: 1,
+              nextToken: 'token-def',
+            },
+          });
+          api.get('/v1/Conversations?PageSize=50&pageToken=token-def').reply(200, {
+            conversations: [],
+            meta: {
+              key: 'conversations',
+              pageSize: 0,
+            },
+          });
+        })
+        .it('stops pagination when page returns empty results', async () => {
+          const response = await apiClient.list({
+            domain: 'conversations',
+            path: '/v1/Conversations',
+            data: { PageSize: 50 },
+          });
+
+          expect(response).to.eql([{ sid: callSid }, { sid: callSid }]);
+        });
+
+      test
         .nock('https://api.dev.twilio.com', (api) => {
           api.post(`/2010-04-01/Accounts/${accountSid}/Messages.json`).reply(201, {
             status: 'queued',
