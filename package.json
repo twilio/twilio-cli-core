@@ -18,9 +18,11 @@
     "/bin",
     "/src",
     "/.github/scripts/update-release.js",
-    "/.github/scripts/trigger-workflow.js"
+    "/.github/scripts/trigger-workflow.js",
+    "/.github/scripts/restore-lockfile-registry.js"
   ],
   "scripts": {
+    "postinstall": "node .github/scripts/restore-lockfile-registry.js",
     "lint": "eslint --ext js --ext jsx src/ test/",
     "lint:fix": "npm run lint -- --fix",
     "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
