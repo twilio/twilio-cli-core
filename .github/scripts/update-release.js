@@ -1,12 +1,11 @@
 const core = require('@actions/core');
-const { Octokit } = require("@octokit/core");
-
 /**
  * Functionality from tubone24/update_release.
  * Link: https://github.com/tubone24/update_release
  */
 const updateRelease = async () => {
   try {
+    const { Octokit } = await import('@octokit/core');
     const octokit = new Octokit({
       auth: process.env.REPO_ACCESS_TOKEN
     })
