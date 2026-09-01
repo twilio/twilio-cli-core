@@ -137,8 +137,8 @@ describe('services', () => {
               },
               '/v2/Gadgets.json': {
                 operations: {
-                  post: { createStuff: '' },
-                  get: { listStuff: '' },
+                  post: { createStuff: '', httpMethod: 'post' },
+                  get: { listStuff: '', httpMethod: 'get' },
                 },
                 server: 'https://neato.twilio.com',
                 description: 'v2 list Gadgets here',
@@ -146,9 +146,9 @@ describe('services', () => {
               },
               '/v2/Gadgets/{Sid}.json': {
                 operations: {
-                  get: { fetchStuff: '' },
-                  post: { updateStuff: '' },
-                  delete: { removeStuff: '' },
+                  get: { fetchStuff: '', httpMethod: 'get' },
+                  post: { updateStuff: '', httpMethod: 'post' },
+                  delete: { removeStuff: '', httpMethod: 'delete' },
                 },
                 server: 'https://neato.twilio.com',
                 description: 'v2 instance Gadgets here',
@@ -188,8 +188,8 @@ describe('services', () => {
             paths: {
               '/v2/Services/{ServiceSid}/Entities/{Identity}/Factors.json': {
                 operations: {
-                  post: { createStuff: '', defaultOutputProperties: ['sid', 'status', 'binding'] },
-                  get: { listStuff: '' },
+                  post: { createStuff: '', defaultOutputProperties: ['sid', 'status', 'binding'], httpMethod: 'post' },
+                  get: { listStuff: '', httpMethod: 'get' },
                 },
                 server: 'https://api.twilio.com',
                 description: '',

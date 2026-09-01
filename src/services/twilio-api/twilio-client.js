@@ -59,7 +59,18 @@ class TwilioApiClient {
   }
 
   async update(opts) {
-    opts.method = 'post';
+    const domainPaths = (this.apiClient.apiBrowser.domains[opts.domain] || {}).paths || {};
+    const operations = (domainPaths[opts.path] || {}).operations || {};
+    // Sierra APIs use PUT for update; legacy Twilio APIs use POST (no PUT operation).
+    opts.method = operations.update ? 'put' : 'post';
+
+    const { body } = await this.request(opts);
+
+    return body;
+  }
+
+  async patch(opts) {
+    opts.method = 'patch';
 
     const { body } = await this.request(opts);
 
@@ -69,9 +80,13 @@ class TwilioApiClient {
   async remove(opts) {
     opts.method = 'delete';
 
-    const { statusCode } = await this.request(opts);
+    const { statusCode, body } = await this.request(opts);
 
-    return statusCode === 204;
+    /*
+     * APIs that return a body (e.g. 202 Accepted) surface it for the caller.
+     * Existing no-body APIs (204 No Content) continue to return true/false.
+     */
+    return body || statusCode === 204;
   }
 
   async list(opts) {
@@ -83,7 +98,7 @@ class TwilioApiClient {
       opts.method = 'get';
 
       // eslint-disable-next-line no-await-in-loop
-      const { body } = await this.request(opts);
+      const { body, rawBody } = await this.request(opts);
       const pageItems = this.getResponseItems(body);
 
       // Append all the items from the next page.
@@ -94,14 +109,38 @@ class TwilioApiClient {
         return items.slice(0, limit);
       }
 
-      // If there's another page of results, "Let's Get It".
-      const nextPageUri = (body.meta && body.meta.nextPageUrl) || body.nextPageUri;
+      const nextPage = this.getNextPageInfo(rawBody || body, opts);
 
-      if (!nextPageUri) {
+      if (!nextPage) {
         break;
       }
 
-      opts = {
+      opts = nextPage;
+    }
+
+    return items;
+  }
+
+  getNextPageInfo(body, opts) {
+    // Token-based pagination: meta.nextToken at top level or nested under meta.pagination.
+    const meta = body.meta || {};
+    const nextToken = meta.nextToken || (meta.pagination && meta.pagination.nextToken);
+
+    if (nextToken) {
+      return {
+        domain: opts.domain,
+        host: opts.host,
+        path: opts.path,
+        pathParams: opts.pathParams,
+        data: { ...(opts.data || {}), pageToken: nextToken },
+      };
+    }
+
+    // URL-based pagination: meta.next_page_url / meta.nextPageUrl or nextPageUri.
+    const nextPageUri = meta.next_page_url || meta.nextPageUrl || body.next_page_uri || body.nextPageUri;
+
+    if (nextPageUri) {
+      return {
         domain: opts.domain,
         host: opts.host,
         path: opts.path,
@@ -109,7 +148,7 @@ class TwilioApiClient {
       };
     }
 
-    return items;
+    return null;
   }
 
   getLimit(options) {
@@ -131,7 +170,15 @@ class TwilioApiClient {
   }
 
   getResponseItems(responseBody) {
-    // Find any properties that are arrays. We expect this to be exactly 1.
+    // Use meta.key to locate the items array when available.
+    const meta = responseBody.meta || {};
+    const key = meta.key || (meta.pagination && meta.pagination.key);
+
+    if (key && Array.isArray(responseBody[key])) {
+      return responseBody[key];
+    }
+
+    // Fallback: find any properties that are arrays. We expect this to be exactly 1.
     const arrayProps = Object.values(responseBody).filter(Array.isArray);
 
     if (arrayProps.length === 1) {

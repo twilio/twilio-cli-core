@@ -44,16 +44,7 @@ class CliRequestClient {
    * @param {boolean} [opts.allowRedirects] - Should the client follow redirects
    * @param {boolean} [opts.forever] - Set to true to use the forever-agent
    */
-  async request(opts) {
-    opts = opts || {};
-    if (!opts.method) {
-      throw new Error('http method is required');
-    }
-
-    if (!opts.uri) {
-      throw new Error('uri is required');
-    }
-
+  buildHeaders(opts) {
     const headers = opts.headers || {};
 
     if (!headers.Connection && !headers.connection) {
@@ -64,15 +55,15 @@ class CliRequestClient {
       const b64Auth = Buffer.from(`${opts.username}:${opts.password}`).toString('base64');
       headers.Authorization = `Basic ${b64Auth}`;
     }
-    // User-Agent will have these info : <plugin/version> <core-api-lib>/<core-api-lib-version> (<os-name> <os-arch>) <extensions>
-    const componentInfo = [];
-    componentInfo.push(`(${os.platform()} ${os.arch()})`); // (<os-name> <os-arch>)
-    const userAgentArr = (headers['User-Agent'] || ' ').split(' '); // contains twilio-node/version (darwin x64) node/v16.4.2
-    componentInfo.push(userAgentArr[0]); // Api client version
-    componentInfo.push(userAgentArr[3]); // nodejs version
-    componentInfo.push(this.commandName); // cli-command
+
+    const userAgentArr = (headers['User-Agent'] || ' ').split(' ');
+    const componentInfo = [`(${os.platform()} ${os.arch()})`, userAgentArr[0], userAgentArr[3], this.commandName];
     headers['User-Agent'] = `${this.pluginName} ${pkg.name}/${pkg.version} ${componentInfo.filter(Boolean).join(' ')}`;
 
+    return headers;
+  }
+
+  buildOptions(opts, headers) {
     const options = {
       timeout: opts.timeout || 30000,
       maxRedirects: opts.allowRedirects ? 10 : 0,
@@ -87,7 +78,10 @@ class CliRequestClient {
     };
 
     if (opts.data) {
-      options.data = qs.stringify(opts.data, { arrayFormat: 'repeat' });
+      const contentType = headers['Content-Type'] || headers['content-type'] || '';
+      options.data = contentType.includes('application/json')
+        ? JSON.stringify(opts.data)
+        : qs.stringify(opts.data, { arrayFormat: 'repeat' });
     }
 
     if (opts.params) {
@@ -96,6 +90,22 @@ class CliRequestClient {
         return qs.stringify(params, { arrayFormat: 'repeat' });
       };
     }
+
+    return options;
+  }
+
+  async request(opts) {
+    opts = opts || {};
+    if (!opts.method) {
+      throw new Error('http method is required');
+    }
+
+    if (!opts.uri) {
+      throw new Error('uri is required');
+    }
+
+    const headers = this.buildHeaders(opts);
+    const options = this.buildOptions(opts, headers);
 
     this.lastRequest = options;
     this.logRequest(options);
@@ -153,11 +163,30 @@ class CliRequestClient {
 
   /* eslint-disable camelcase */
   // In the rare event parameters are missing, display a readable message
-  formatErrorMessage({ code, message, more_info, details }) {
-    const moreInfoMessage = more_info ? `See ${more_info} for more info.` : '';
-    let errorMessage = `Error code ${code || 'N/A'} from Twilio: ${
-      message || 'No message provided'
-    }. ${moreInfoMessage}`;
+  formatErrorMessage({ code, message, more_info, details, httpStatusCode, userError, params }) {
+    let errorMessage;
+
+    if (httpStatusCode === undefined) {
+      const moreInfoMessage = more_info ? `See ${more_info} for more info.` : '';
+      errorMessage = `Error code ${code || 'N/A'} from Twilio: ${message || 'No message provided'}. ${moreInfoMessage}`;
+    } else {
+      errorMessage = `Error code ${code || 'N/A'} from Twilio: ${message || 'No message provided'}.`;
+      errorMessage += ` HTTP ${httpStatusCode}.`;
+
+      if (userError !== undefined) {
+        errorMessage += userError ? ' This is a user error.' : ' This is a system error.';
+      }
+
+      if (params) {
+        const paramEntries = Object.entries(params);
+        if (paramEntries.length > 0) {
+          errorMessage += '\n\nAdditional details:';
+          paramEntries.forEach(([key, value]) => {
+            errorMessage += `\n  ${key}: ${value}`;
+          });
+        }
+      }
+    }
 
     // Add hint for regional authentication failures
     if ((code === 20003 || code === '20003') && message && message.toLowerCase().includes('authenticate')) {

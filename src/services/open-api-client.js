@@ -26,13 +26,25 @@ class OpenApiClient {
       throw new Error(`Path not found: ${opts.domain}.${opts.path}`);
     }
 
-    const operation = path.operations[opts.method];
+    /*
+     * api-browser.js stores PUT as 'update' and PATCH as 'patch' in path.operations.
+     * GET, POST, DELETE keep their HTTP method name as the key.
+     */
+    const METHOD_TO_OPERATION_KEY = { put: 'update', patch: 'patch' };
+    const operationKey = METHOD_TO_OPERATION_KEY[opts.method] || opts.method;
+    const operation = path.operations[operationKey];
 
     if (!operation) {
       throw new Error(`Operation not found: ${opts.domain}.${opts.path}.${opts.method}`);
     }
 
-    const isPost = opts.method.toLowerCase() === 'post';
+    const requestBodyContent = (operation.requestBody || {}).content || {};
+    if ('application/json' in requestBodyContent) {
+      opts.headers = opts.headers || {};
+      opts.headers['Content-Type'] = 'application/json';
+    }
+
+    const isBodyMethod = ['post', 'put', 'patch'].includes(opts.method.toLowerCase());
     const params = this.getParams(opts, operation);
 
     if (!opts.uri) {
@@ -51,8 +63,8 @@ class OpenApiClient {
     uri.hostname = this.getHost(uri.hostname, opts);
     opts.uri = uri.href;
 
-    opts.params = isPost ? null : params;
-    opts.data = isPost ? params : null;
+    opts.params = isBodyMethod ? null : params;
+    opts.data = isBodyMethod ? params : null;
 
     const response = await this.httpClient.request(opts);
 
@@ -69,11 +81,44 @@ class OpenApiClient {
       if (parameter.in === 'query' && doesObjectHaveProperty(opts.data, parameter.name)) {
         let value = opts.data[parameter.name];
         if (parameter.schema.type === 'boolean') {
-          value = value.toString();
+          value = value === 'true' || value === true;
+        } else if (parameter.schema.type === 'object' && typeof value === 'string') {
+          try {
+            value = JSON.parse(value);
+          } catch (e) {
+            logger.debug(`Could not parse value for "${parameter.name}" as JSON: ${e.message}`);
+          }
+        } else if (parameter.schema.type === 'array') {
+          // oclif multiple:true gives an array of strings; parse each element that looks like JSON
+          if (typeof value === 'string') {
+            try {
+              value = JSON.parse(value);
+            } catch (e) {
+              logger.debug(`Could not parse value for "${parameter.name}" as JSON: ${e.message}`);
+            }
+          } else if (Array.isArray(value)) {
+            value = value.map((item) => {
+              if (typeof item !== 'string') return item;
+              try {
+                return JSON.parse(item);
+              } catch (e) {
+                return item;
+              }
+            });
+            // Unwrap when a single --flag '[...]' produces [[...]] (parsed JSON array inside oclif array)
+            if (value.length === 1 && Array.isArray(value[0])) {
+              value = value[0];
+            }
+          }
         }
         params[parameter.name] = value;
       }
     });
+
+    // Pass through pagination token if present.
+    if (doesObjectHaveProperty(opts.data, 'pageToken')) {
+      params.pageToken = opts.data.pageToken;
+    }
 
     return params;
   }
@@ -117,6 +162,7 @@ class OpenApiClient {
 
   parseResponse(domain, operation, response, requestOpts) {
     if (response.body) {
+      response.rawBody = response.body;
       const responseSchema = this.getResponseSchema(domain, operation, response.statusCode, requestOpts.headers.Accept);
 
       // If we were able to find the schema for the response body, convert it.
