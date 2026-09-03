@@ -174,7 +174,7 @@ jobs:
       - name: Update release
         id: update-release
         run: |
-          echo "::set-output name=TAG_NAME::$TAG_NAME"
+          echo "TAG_NAME=$TAG_NAME" >> "$GITHUB_OUTPUT"
           fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
           node -e "require('$fileName').updateRelease()"
         env:

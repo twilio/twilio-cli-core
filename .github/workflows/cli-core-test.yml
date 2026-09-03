@@ -36,7 +36,34 @@ jobs:
           fetch-depth: 0
       - name: Artifactory OIDC Auth
         uses: twilio/sdk-actions/artifactory-oidc@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
-      - run: make install
+      - name: Install
+        id: install
+        shell: bash
+        run: |
+          set -o pipefail
+          make install 2>&1 | tee /tmp/install.log
+      - name: Explain install failure
+        if: failure() && steps.install.outcome == 'failure'
+        shell: bash
+        run: |
+          BLOCKED=$(grep -oE 'package [^ ]+ download was blocked by jfrog packages curation[^"]*' /tmp/install.log || true)
+          FORBIDDEN=$(grep -E 'npm error 40[13]' /tmp/install.log || true)
+          if [ -n "$BLOCKED" ]; then
+            echo "::error title=Blocked by JFrog Curation::$(echo "$BLOCKED" | head -1)"
+            {
+              echo "## Install blocked by JFrog Curation"
+              echo
+              echo "Not a code failure. Every blocked package in this run:"
+              echo '```'
+              echo "$BLOCKED"
+              echo '```'
+              [ -n "$FORBIDDEN" ] && { echo '```'; echo "$FORBIDDEN"; echo '```'; }
+              echo "Fix by requesting a Curation exception, or by removing the dependency."
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::error title=make install failed::No Curation block detected; see the step log."
+          fi
+          exit 1
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
