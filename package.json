@@ -18,11 +18,9 @@
     "/bin",
     "/src",
     "/.github/scripts/update-release.js",
-    "/.github/scripts/trigger-workflow.js",
-    "/.github/scripts/restore-lockfile-registry.js"
+    "/.github/scripts/trigger-workflow.js"
   ],
   "scripts": {
-    "postinstall": "node .github/scripts/restore-lockfile-registry.js",
     "lint": "eslint --ext js --ext jsx src/ test/",
     "lint:fix": "npm run lint -- --fix",
     "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
@@ -35,7 +33,7 @@
     "@oclif/plugin-help": "^5.1.3",
     "@oclif/plugin-plugins": "2.1.0",
     "@octokit/rest": "^21.1.1",
-    "axios": "^1.18.0",
+    "axios": "^1.19.0",
     "chalk": "^4.1.2",
     "columnify": "^1.5.4",
     "fs-extra": "^9.0.1",
@@ -44,14 +42,14 @@
     "qs": "^6.9.4",
     "semver": "^7.5.2",
     "tsv": "^0.2.0",
-    "twilio": "^5.3.0",
+    "twilio": "^6.0.0",
     "proxyquire": "^2.1.3"
   },
   "devDependencies": {
     "@oclif/test": "^1.2.6",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/exec": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/exec": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
     "@twilio/cli-test": "^2.1.0",
     "chai": "^4.2.0",
     "conventional-changelog-conventionalcommits": "^4.6.0",
@@ -66,6 +64,6 @@
     "tmp": "^0.2.1"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   }
 }

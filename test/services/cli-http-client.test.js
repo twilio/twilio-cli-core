@@ -119,5 +119,62 @@ describe('services', () => {
         });
         expect(response.statusCode).to.equal(200);
       });
+
+    test.it('formats legacy error response (more_info schema)', () => {
+      const client = new CliRequestClient('blah', logger);
+      const result = client.formatErrorMessage({
+        code: 20404,
+        message: 'Resource not found',
+        more_info: 'https://www.twilio.com/docs/errors/20404', // eslint-disable-line camelcase
+        details: { foo: 'bar' },
+      });
+      expect(result.message).to.contain('Error code 20404 from Twilio: Resource not found.');
+      expect(result.message).to.contain('See https://www.twilio.com/docs/errors/20404 for more info.');
+      expect(result.code).to.equal(20404);
+      expect(result.details).to.deep.equal({ foo: 'bar' });
+    });
+
+    test.it('formats new error response (httpStatusCode schema)', () => {
+      const client = new CliRequestClient('blah', logger);
+      const result = client.formatErrorMessage({
+        code: 50001,
+        message: 'Invalid store ID',
+        httpStatusCode: 400,
+        userError: true,
+        params: { twilioErrorCodeUrl: 'https://www.twilio.com/docs/errors/50001' },
+      });
+      expect(result.message).to.contain('Error code 50001 from Twilio: Invalid store ID.');
+      expect(result.message).to.contain('HTTP 400.');
+      expect(result.message).to.contain('This is a user error.');
+      expect(result.message).to.contain('twilioErrorCodeUrl: https://www.twilio.com/docs/errors/50001');
+      expect(result.code).to.equal(50001);
+    });
+
+    test.it('formats new error response with system error', () => {
+      const client = new CliRequestClient('blah', logger);
+      const result = client.formatErrorMessage({
+        code: 60001,
+        message: 'Internal failure',
+        httpStatusCode: 500,
+        userError: false,
+      });
+      expect(result.message).to.contain('Error code 60001 from Twilio: Internal failure.');
+      expect(result.message).to.contain('HTTP 500.');
+      expect(result.message).to.contain('This is a system error.');
+    });
+
+    test.it('formats new error response without optional fields', () => {
+      const client = new CliRequestClient('blah', logger);
+      const result = client.formatErrorMessage({
+        code: 40001,
+        message: 'Bad request',
+        httpStatusCode: 400,
+      });
+      expect(result.message).to.contain('Error code 40001 from Twilio: Bad request.');
+      expect(result.message).to.contain('HTTP 400.');
+      expect(result.message).not.to.contain('user error');
+      expect(result.message).not.to.contain('system error');
+      expect(result.message).not.to.contain('Additional details');
+    });
   });
 });

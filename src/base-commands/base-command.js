@@ -139,9 +139,13 @@ class BaseCommand extends Command {
       return;
     }
 
-    const limitedData = properties ? this.getLimitedData(dataArray, properties) : null;
+    // Wrap primitive arrays (e.g. ["id1", "id2"]) into objects for columnar display.
+    const hasPrimitives = dataArray.length > 0 && typeof dataArray[0] !== 'object';
+    const displayArray = hasPrimitives ? dataArray.map((item) => ({ value: item })) : dataArray;
 
-    process.stdout.write(`${this.outputProcessor(dataArray, limitedData || dataArray, options)}\n`);
+    const limitedData = properties ? this.getLimitedData(displayArray, properties) : null;
+
+    process.stdout.write(`${this.outputProcessor(dataArray, limitedData || displayArray, options)}\n`);
   }
 
   getLimitedData(dataArray, properties) {
@@ -172,6 +176,10 @@ class BaseCommand extends Command {
     });
 
     if (invalidPropertyNames.size > 0) {
+      if (invalidPropertyNames.size === propNames.length) {
+        // All requested properties are invalid — display all columns instead.
+        return null;
+      }
       const warn = this.logger.warn.bind(this.logger);
       invalidPropertyNames.forEach((p) => {
         warn(`"${p}" is not a valid property name.`);
