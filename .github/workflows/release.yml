@@ -16,6 +16,9 @@ permissions:
   id-token: write  # Required for OIDC
   contents: write
 
+env:
+  ARTIFACTORY_URL: ${{ vars.ARTIFACTORY_URL }}
+
 jobs:
   cli-core-token-validation:
     runs-on: ubuntu-latest
@@ -89,16 +92,22 @@ jobs:
 #          MSG_MINIMAL: actions url
   test:
     needs: [ cli-token-validation ]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
     strategy:
       matrix:
-        node-version: [20.x, 22.x, lts/*]
+        node-version: [ 22.x, lts/* ]
     steps:
       - name: Checkout cli-core repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - name: Artifactory OIDC Auth
+        uses: twilio/sdk-actions/artifactory-oidc@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
       - run: make install
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
@@ -140,16 +149,16 @@ jobs:
       tag-name: ${{ steps.update-release.outputs.TAG_NAME }}
     steps:
       - name: Checkout cli-core repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           persist-credentials: false
       - run: |
           git pull
           make install
-      - name: Use Node 20
-        uses: actions/setup-node@v4
+      - name: Use Node 22
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
-          node-version: '20'
+          node-version: '22'
 
       # Ensure npm 11.5.1 or later is installed
       - name: Update npm
@@ -165,7 +174,7 @@ jobs:
       - name: Update release
         id: update-release
         run: |
-          echo "::set-output name=TAG_NAME::$TAG_NAME"
+          echo "TAG_NAME=$TAG_NAME" >> "$GITHUB_OUTPUT"
           fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
           node -e "require('$fileName').updateRelease()"
         env:
