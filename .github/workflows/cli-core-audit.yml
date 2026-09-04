@@ -31,6 +31,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: make install
+      - name: Verify lockfile has no Artifactory URLs
+        run: |
+          node .github/scripts/restore-lockfile-registry.js
+          if ! git diff --quiet -- package-lock.json yarn.lock 2>/dev/null; then
+            echo "::error::package-lock.json/yarn.lock contains Artifactory URLs. Run 'node .github/scripts/restore-lockfile-registry.js' locally and commit the result."
+            git diff -- package-lock.json yarn.lock
+            exit 1
+          fi
       - name: Run audit check
         run: npm audit --audit-level=moderate --production
         # minimum vulnerability level that will cause the command to fail
