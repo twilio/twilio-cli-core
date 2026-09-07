@@ -28,6 +28,9 @@ jobs:
       - run: |
           git pull
           make install
+      # Release gate: never publish a build whose ejs has slipped back to 3.x.
+      - name: Verify ejs override (CVE-2023-29827)
+        run: node .github/scripts/verify-ejs-override.js
       - name: Extract branch name
         id: extract_branch
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
