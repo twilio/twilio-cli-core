@@ -26,6 +26,9 @@
     "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
     "posttest": "eslint --ignore-path .gitignore ."
   },
+  "overrides": {
+    "ejs": "^6.0.1"
+  },
   "dependencies": {
     "@actions/core": "^2.0.0",
     "@actions/github": "^9.0.0",
