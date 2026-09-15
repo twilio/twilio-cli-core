@@ -21,7 +21,7 @@ env:
 
 jobs:
   cli-core-token-validation:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
     steps:
       - name: Checkout cli-core repo
         uses: actions/checkout@v2
@@ -46,12 +46,12 @@ jobs:
           repository: '${{ github.repository_owner }}/twilio-oai'
           token:  ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Validate AWS tokens
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: us-east-1
+        run: aws sts get-caller-identity
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+          AWS_DEFAULT_REGION: us-east-1
 
   cli-token-validation:
     needs: [ cli-core-token-validation ]
@@ -114,7 +114,11 @@ jobs:
       - name: Run tests
         run: make test
   update-api-specs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
     needs: [ test ]
     outputs:
       change-log: ${{ steps.update-specs.outputs.change-log }}
@@ -143,7 +147,11 @@ jobs:
           echo "::set-output name=change-log::$changeLog"
           echo "::set-output name=version-type::$versionType"
   release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
     needs: [update-api-specs]
     outputs:
       tag-name: ${{ steps.update-release.outputs.TAG_NAME }}
@@ -183,7 +191,11 @@ jobs:
           RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
           REPO_NAME:  ${{ github.repository }}
   post-build-checks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
     needs: [ release ]
     steps:
       - name: Clone twilio-cli repo
@@ -199,7 +211,11 @@ jobs:
           REPO_NAME: ${{ github.repository_owner }}/twilio-cli
           CLI_CORE_TAG: ${{ needs.release.outputs.tag-name }}
   triggerCliWorkflow:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
     needs: [ update-api-specs, release, post-build-checks]
     steps:
       - name: Checkout cli-core repo
