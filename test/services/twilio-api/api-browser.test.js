@@ -199,6 +199,94 @@ describe('services', () => {
           },
         });
       });
+
+      test.it('resolves a $ref schema on a request body property', () => {
+        const browser = new TwilioApiBrowser({
+          api: {
+            paths: {
+              '/v1/Widgets.json': {
+                servers: [
+                  {
+                    url: 'https://api.twilio.com',
+                  },
+                ],
+                post: {
+                  requestBody: {
+                    content: {
+                      'application/json': {
+                        schema: {
+                          type: 'object',
+                          properties: {
+                            traits: { $ref: '#/components/schemas/TraitGroups' },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+                description: '',
+              },
+            },
+            components: {
+              schemas: {
+                TraitGroups: {
+                  type: 'object',
+                  description: 'Multiple trait groups.',
+                },
+              },
+            },
+          },
+        });
+
+        const traitsParam = browser.domains.api.paths['/v1/Widgets.json'].operations.post.parameters.find(
+          (param) => param.name === 'traits',
+        );
+
+        expect(traitsParam.schema).to.deep.equal({
+          type: 'object',
+          description: 'Multiple trait groups.',
+        });
+      });
+
+      test.it('keeps a request body property that shares a name with a path parameter', () => {
+        const browser = new TwilioApiBrowser({
+          api: {
+            paths: {
+              '/v1/Widgets/{idType}.json': {
+                servers: [
+                  {
+                    url: 'https://api.twilio.com',
+                  },
+                ],
+                parameters: [{ name: 'idType', in: 'path', schema: { type: 'string' } }],
+                patch: {
+                  requestBody: {
+                    content: {
+                      'application/json': {
+                        schema: {
+                          type: 'object',
+                          required: ['idType'],
+                          properties: {
+                            idType: { type: 'string', description: 'The identifier type to update.' },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+                description: '',
+              },
+            },
+          },
+        });
+
+        const idTypeParams = browser.domains.api.paths['/v1/Widgets/{idType}.json'].operations.patch.parameters.filter(
+          (param) => param.name === 'idType',
+        );
+
+        expect(idTypeParams).to.have.lengthOf(2);
+        expect(idTypeParams.map((param) => param.in).sort()).to.eql(['path', 'query']);
+      });
     });
   });
 });

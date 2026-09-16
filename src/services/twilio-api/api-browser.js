@@ -6,16 +6,6 @@ let apiSpec; // Lazy-loaded below.
 
 const OPERATIONS = ['post', 'get', 'delete', 'put', 'patch'];
 
-/*
- * Maps PUT and PATCH HTTP methods to the operation key used in path.operations.
- * get/post/delete keep their HTTP method name as the key so the existing
- * open-api-client.js lookup (path.operations[opts.method]) continues to work.
- */
-const HTTP_METHOD_TO_OPERATION_KEY = {
-  put: 'update',
-  patch: 'patch',
-};
-
 class TwilioApiBrowser {
   constructor(spec) {
     spec = spec || this.loadApiSpecFromDisk();
@@ -107,17 +97,14 @@ class TwilioApiBrowser {
         delete path.parameters;
 
         /*
-         * Move the operations into an operations object.
-         * PUT and PATCH are stored under action-name keys ('update', 'patch').
-         * GET, POST, DELETE keep their HTTP method name as the key.
+         * Move the operations into an operations object, keyed by HTTP method name.
          */
         OPERATIONS.forEach((operationName) => {
           if (operationName in path) {
             const operation = path[operationName];
             this.updateTwilioVendorExtensionProperty(operation);
-            const operationKey = HTTP_METHOD_TO_OPERATION_KEY[operationName] || operationName;
             operation.httpMethod = operationName;
-            path.operations[operationKey] = operation;
+            path.operations[operationName] = operation;
             delete path[operationName];
 
             /*
@@ -143,7 +130,18 @@ class TwilioApiBrowser {
 
             if (parameters.length > 0) {
               const existingParams = operation.parameters || [];
-              const newParams = parameters.filter((p) => !existingParams.find((e) => e.name === p.name));
+              /*
+               * Some APIs legitimately require the same value in two places, e.g. a
+               * path param (`idType` in `/Identifiers/{idType}`) that must ALSO be
+               * repeated in the request body. Only treat a body-derived parameter as
+               * a duplicate (and drop it) when an existing parameter shares both its
+               * name AND its `in` location — a same-named path/header parameter is a
+               * different parameter that happens to need the same flag value routed
+               * to both places, not a redundant declaration.
+               */
+              const newParams = parameters.filter(
+                (p) => !existingParams.find((e) => e.name === p.name && e.in === p.in),
+              );
               operation.parameters = existingParams.concat(newParams);
             }
           }
@@ -168,12 +166,20 @@ class TwilioApiBrowser {
 
     const { properties, required } = this.flattenSchema(type.schema || {}, spec);
     Object.entries(properties).forEach(([name, schema]) => {
+      /*
+       * A property's own schema can itself be a bare $ref (e.g. a nested object
+       * property typed via a shared component schema). Resolve it here so
+       * downstream flag parsing (open-api-client.js's getParams) sees the real
+       * `type` and correctly JSON.parses object/array flag values instead of
+       * forwarding the raw string, which the API then rejects as a bad request.
+       */
+      const resolvedSchema = this.resolveSchemaRef(schema, spec);
       parameters.push({
         name,
-        schema,
+        schema: resolvedSchema,
         in: 'query',
         required: required.includes(name),
-        description: schema.description,
+        description: schema.description || resolvedSchema.description,
       });
     });
 
