@@ -55,7 +55,7 @@
     "@semantic-release/changelog": "^7.0.0",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^11.0.1",
-    "@twilio/cli-test": "^2.1.0",
+    "@twilio/cli-test": "4.0.0",
     "chai": "^4.2.0",
     "conventional-changelog-conventionalcommits": "^10.4.0",
     "eslint": "^8.20.0",
