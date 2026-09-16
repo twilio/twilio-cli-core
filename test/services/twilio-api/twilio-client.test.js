@@ -133,6 +133,24 @@ describe('services', () => {
         });
 
       test
+        .nock('https://memory.twilio.com', (api) => {
+          api.put('/v1/Stores/mem_store_00000000000000000000000000/Profiles/Bulk').reply(202, {
+            message: 'Profile batch accepted for processing.',
+          });
+        })
+        .it('falls back to PUT for create when a resource has no POST operation', async () => {
+          const response = await apiClient.create({
+            domain: 'memory',
+            path: '/v1/Stores/{storeId}/Profiles/Bulk',
+            pathParams: { storeId: 'mem_store_00000000000000000000000000' },
+            data: {},
+          });
+
+          expect(response).to.eql({ message: 'Profile batch accepted for processing.' });
+          expect(httpClient.lastRequest.method.toLowerCase()).to.equal('put');
+        });
+
+      test
         .nock('https://api.twilio.com', (api) => {
           api.get(`/2010-04-01/Accounts/${accountSid}/Calls/${callSid}.json`).reply(200, {
             status: 'in-progress',

@@ -26,13 +26,8 @@ class OpenApiClient {
       throw new Error(`Path not found: ${opts.domain}.${opts.path}`);
     }
 
-    /*
-     * api-browser.js stores PUT as 'update' and PATCH as 'patch' in path.operations.
-     * GET, POST, DELETE keep their HTTP method name as the key.
-     */
-    const METHOD_TO_OPERATION_KEY = { put: 'update', patch: 'patch' };
-    const operationKey = METHOD_TO_OPERATION_KEY[opts.method] || opts.method;
-    const operation = path.operations[operationKey];
+    // api-browser.js stores each operation in path.operations keyed by HTTP method name.
+    const operation = path.operations[opts.method];
 
     if (!operation) {
       throw new Error(`Operation not found: ${opts.domain}.${opts.path}.${opts.method}`);
@@ -82,6 +77,19 @@ class OpenApiClient {
         let value = opts.data[parameter.name];
         if (parameter.schema.type === 'boolean') {
           value = value === 'true' || value === true;
+        } else if (
+          (parameter.schema.type === 'integer' || parameter.schema.type === 'number') &&
+          typeof value === 'string'
+        ) {
+          /*
+           * oclif flags are strings by default, but a strict-validating API expects
+           * a real JSON number for integer/number-typed params. Leave the value
+           * alone if it doesn't actually parse as a number, rather than sending NaN.
+           */
+          const numericValue = Number(value);
+          if (!Number.isNaN(numericValue)) {
+            value = numericValue;
+          }
         } else if (parameter.schema.type === 'object' && typeof value === 'string') {
           try {
             value = JSON.parse(value);

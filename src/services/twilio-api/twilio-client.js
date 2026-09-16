@@ -43,7 +43,11 @@ class TwilioApiClient {
   }
 
   async create(opts) {
-    opts.method = 'post';
+    const domainPaths = (this.apiClient.apiBrowser.domains[opts.domain] || {}).paths || {};
+    const operations = (domainPaths[opts.path] || {}).operations || {};
+    // Most resources create via POST; some list-type resources (bulk upsert,
+    // singleton settings) only define PUT. Fall back to PUT when there's no POST operation.
+    opts.method = operations.post ? 'post' : 'put';
 
     const { body } = await this.request(opts);
 
@@ -61,8 +65,8 @@ class TwilioApiClient {
   async update(opts) {
     const domainPaths = (this.apiClient.apiBrowser.domains[opts.domain] || {}).paths || {};
     const operations = (domainPaths[opts.path] || {}).operations || {};
-    // Sierra APIs use PUT for update; legacy Twilio APIs use POST (no PUT operation).
-    opts.method = operations.update ? 'put' : 'post';
+    // Some APIs use PUT for update; legacy Twilio APIs use POST (no PUT operation).
+    opts.method = operations.put ? 'put' : 'post';
 
     const { body } = await this.request(opts);
 
