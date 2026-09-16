@@ -28,9 +28,6 @@ jobs:
       - run: |
           git pull
           make install
-      - name: Extract branch name
-        id: extract_branch
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       - name: Trigger CLI token validation workflow
         run: |
           fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
@@ -39,7 +36,7 @@ jobs:
           WORKFLOW_NAME: '.github/workflows/release-token-validation.yml'
           REPO_NAME: ${{ github.repository_owner }}/twilio-cli
           REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-          BRANCH_NAME: ${{steps.extract_branch.outputs.branch}}
+          BRANCH_NAME: ${{github.event.inputs.cli-branch}}
       - name: Validate REPO_ACCESS_TOKEN
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
