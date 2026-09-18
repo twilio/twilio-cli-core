@@ -1,0 +1,70 @@
+# Second half of the release, run once an oai spec PR merges to main.
+#
+# The spec update can no longer push to main (the org branch ruleset requires a
+# PR), so release.yml proposes the specs as a PR and stops. Merging that PR
+# lands here and runs the actual release.
+name: Cli-core Release On Spec Merge
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/services/twilio-api/**'
+      - 'CHANGES.md'
+
+permissions:
+  id-token: write
+  contents: write
+
+env:
+  ARTIFACTORY_URL: ${{ vars.ARTIFACTORY_URL }}
+
+jobs:
+  derive-changelog:
+    runs-on: ubuntu-x64
+    # Only api-definitions commits start a release. Notably this skips the
+    # "chore(release): set package.json ..." commit, so releases don't loop.
+    if: >-
+      github.repository_owner == 'twilio' &&
+      (startsWith(github.event.head_commit.message, 'oaiFeat:') ||
+       startsWith(github.event.head_commit.message, 'oaiFix:'))
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      change-log: ${{ steps.derive.outputs.change-log }}
+      version-type: ${{ steps.derive.outputs.version-type }}
+    steps:
+      - name: Checkout OAI repo
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          repository: '${{ github.repository_owner }}/twilio-oai'
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          path: twilio-oai
+      - name: Checkout cli-core repo
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          path: cli-core
+          # The changelog is derived by diffing the spec commit against its
+          # parent, so both commits must be present.
+          fetch-depth: 2
+      - name: Artifactory OIDC Auth
+        uses: twilio/sdk-actions/artifactory-oidc@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
+      - name: Derive changelog and version type from the spec commit
+        id: derive
+        working-directory: cli-core
+        env:
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          make install
+          cp -R ../twilio-oai/CHANGES.md OAI_CHANGES.md
+          bash .github/scripts/changelog-from-commit.sh "$COMMIT_SHA"
+          rm -f OAI_CHANGES.md
+
+  release:
+    needs: [ derive-changelog ]
+    uses: ./.github/workflows/release-core.yml
+    secrets: inherit
+    with:
+      change-log: ${{ needs.derive-changelog.outputs.change-log }}
+      version-type: ${{ needs.derive-changelog.outputs.version-type }}

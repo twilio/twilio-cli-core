@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 const { ChangeLogHelper } = require('./change-log-helper');
 
-const ch = new ChangeLogHelper();
+// Filenames are overridable so the post-merge release stage can compute the version type
+// against the CHANGES.md as it stood *before* the twilio-oai commit landed.
+const ch = new ChangeLogHelper(process.env.CLI_CORE_CHANGELOG, process.env.OAI_CHANGELOG);
 
 const getVersionType = async () => {
   const latestDate = await ch.getLatestChangelogGeneratedDate();

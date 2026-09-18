@@ -120,6 +120,7 @@ jobs:
     outputs:
       change-log: ${{ steps.update-specs.outputs.change-log }}
       version-type: ${{ steps.update-specs.outputs.version-type }}
+      spec-pr-opened: ${{ steps.update-specs.outputs.spec-pr-opened }}
     steps:
       - name: Create temporary folder for copying json files from OAI repo
         run: mkdir -p ~/oai_definitions/json
@@ -137,99 +138,44 @@ jobs:
           token:  ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Update OAI specs
         id: update-specs
+        env:
+          GH_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         run: |
           make install
           cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
-          source .github/scripts/update-api-spec-with-changelog.sh
-          echo "::set-output name=change-log::$changeLog"
-          echo "::set-output name=version-type::$versionType"
+          bash .github/scripts/update-api-spec-with-changelog.sh
+  # When there was nothing new to propose, main is already up to date and we
+  # release straight away. When a spec PR *was* opened, the release instead runs
+  # from release-on-spec-merge.yml once that PR merges.
   release:
-    runs-on: ubuntu-x64
-    if: github.repository_owner == 'twilio'
-    permissions:
-      contents: read
-      id-token: write
-    needs: [update-api-specs]
-    outputs:
-      tag-name: ${{ steps.update-release.outputs.TAG_NAME }}
-    steps:
-      - name: Checkout cli-core repo
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-        with:
-          persist-credentials: false
-      - run: |
-          git pull
-          make install
-      - name: Use Node 22
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
-        with:
-          node-version: '22'
+    needs: [ update-api-specs ]
+    if: needs.update-api-specs.outputs.spec-pr-opened == 'false'
+    uses: ./.github/workflows/release-core.yml
+    secrets: inherit
+    with:
+      change-log: ${{ needs.update-api-specs.outputs.change-log }}
+      version-type: ${{ needs.update-api-specs.outputs.version-type }}
+      cli-branch: ${{ github.event.inputs.cli-branch }}
+      homebrew-branch: ${{ github.event.inputs.homebrew-branch }}
+      homebrew-prerelease: ${{ github.event.inputs.homebrew-prerelease }}
 
-      # Ensure npm 11.5.1 or later is installed
-      - name: Update npm
-        run: npm install -g npm@latest
+  summarize:
+    needs: [ update-api-specs ]
+    if: needs.update-api-specs.outputs.spec-pr-opened == 'true'
+    runs-on: ubuntu-x64
+    steps:
+      - name: Explain what happens next
+        run: |
+          {
+            echo "### twilio-oai def PR opened"
+            echo
+            echo "The branch ruleset on \`main\` requires changes to go through a pull request,"
+            echo "so the specs were proposed as a PR instead of pushed."
+            echo
+            echo "**The release has not run yet.** Approve and merge that PR and the"
+            echo "\`Cli-core Release On Spec Merge\` workflow will publish the release."
+          } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: semanticRelease
-        id: semantic-release
-        run: DEBUG=semantic-release:* npx semantic-release -t \${version}
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true # required for OIDC
-      - name: Update release
-        id: update-release
-        run: |
-          echo "TAG_NAME=$TAG_NAME" >> "$GITHUB_OUTPUT"
-          fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
-          node -e "require('$fileName').updateRelease()"
-        env:
-          REPO_ACCESS_TOKEN: ${{ github.token }}
-          TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
-          RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
-          REPO_NAME:  ${{ github.repository }}
-  post-build-checks:
-    runs-on: ubuntu-x64
-    if: github.repository_owner == 'twilio'
-    permissions:
-      contents: read
-      id-token: write
-    needs: [ release ]
-    steps:
-      - name: Clone twilio-cli repo
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-        with:
-          repository: '${{ github.repository_owner }}/twilio-cli'
-      - name: Update cli-core version and run tests
-        run: |
-          node .github/scripts/update-cli-core-release-version.js
-          make install
-          make test
-        env:
-          REPO_NAME: ${{ github.repository_owner }}/twilio-cli
-          CLI_CORE_TAG: ${{ needs.release.outputs.tag-name }}
-  triggerCliWorkflow:
-    runs-on: ubuntu-x64
-    if: github.repository_owner == 'twilio'
-    permissions:
-      contents: read
-      id-token: write
-    needs: [ update-api-specs, release, post-build-checks]
-    steps:
-      - name: Checkout cli-core repo
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-      - run: |
-          git pull
-          make install
-      - name: Invoke CLI workflow with changelog and version-type
-        run: |
-          fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
-          node -e "require('$fileName').triggerWorkflow()"
-        env:
-          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-          WORKFLOW_NAME: 'release.yml'
-          BRANCH_NAME: ${{github.event.inputs.cli-branch}}
-          REPO_NAME:  ${{ github.repository_owner }}/twilio-cli
-          INPUTS: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}", "homebrew-branch": "${{github.event.inputs.homebrew-branch}}", "homebrew-prerelease": "${{github.event.inputs.homebrew-prerelease}}", "tag-name": "${{ needs.release.outputs.tag-name }}" }'
 #  notify-complete-fail:
 #    if: ${{ (needs.cli-token-validation.result != 'failure' || needs.cli-core-token-validation.result != 'failure' ) && (failure() || cancelled()) }}
 #    needs: [ triggerCliWorkflow ]
