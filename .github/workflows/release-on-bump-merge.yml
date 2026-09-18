@@ -1,0 +1,24 @@
+# Entry point for stage 3: a release PR just merged, so publish it.
+name: Cli-core Release On Bump Merge
+
+on:
+  push:
+    branches: [ main ]
+  # Dispatchable so a release that failed after its PR merged can be retried
+  # without opening another PR.
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  publish:
+    # Only release PRs publish. Everything else that lands on main is ignored,
+    # which is also what stops a release from triggering another release.
+    if: >-
+      github.repository_owner == 'twilio' &&
+      (github.event_name == 'workflow_dispatch' ||
+       startsWith(github.event.head_commit.message, 'chore(release):'))
+    uses: ./.github/workflows/release-publish.yml
+    secrets: inherit
