@@ -16,18 +16,18 @@ permissions:
   id-token: write  # Required for OIDC
   contents: write
 
+env:
+  ARTIFACTORY_URL: ${{ vars.ARTIFACTORY_URL }}
+
 jobs:
   cli-core-token-validation:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
     steps:
       - name: Checkout cli-core repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - run: |
           git pull
           make install
-      - name: Extract branch name
-        id: extract_branch
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       - name: Trigger CLI token validation workflow
         run: |
           fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
@@ -36,14 +36,14 @@ jobs:
           WORKFLOW_NAME: '.github/workflows/release-token-validation.yml'
           REPO_NAME: ${{ github.repository_owner }}/twilio-cli
           REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
-          BRANCH_NAME: ${{steps.extract_branch.outputs.branch}}
+          BRANCH_NAME: ${{github.event.inputs.cli-branch}}
       - name: Validate REPO_ACCESS_TOKEN
-        uses: actions/checkout@v2
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           repository: '${{ github.repository_owner }}/twilio-oai'
           token:  ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Validate AWS tokens
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@67fbcbb121271f7775d2e7715933280b06314838
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -52,10 +52,10 @@ jobs:
 
   cli-token-validation:
     needs: [ cli-core-token-validation ]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
     steps:
       - name: Checkout cli-core repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
       - name: Execute py script to validate twilio-cli tokens
         id: cli_token
         run: |
@@ -89,23 +89,33 @@ jobs:
 #          MSG_MINIMAL: actions url
   test:
     needs: [ cli-token-validation ]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
     strategy:
       matrix:
-        node-version: [20.x, 22.x, lts/*]
+        node-version: [ 22.x, lts/* ]
     steps:
       - name: Checkout cli-core repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - name: Artifactory OIDC Auth
+        uses: twilio/sdk-actions/artifactory-oidc@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
       - run: make install
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: Run tests
         run: make test
   update-api-specs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
     needs: [ test ]
     outputs:
       change-log: ${{ steps.update-specs.outputs.change-log }}
@@ -114,7 +124,7 @@ jobs:
       - name: Create temporary folder for copying json files from OAI repo
         run: mkdir -p ~/oai_definitions/json
       - name: Checkout OAI repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           repository: '${{ github.repository_owner }}/twilio-oai'
           token:  ${{ secrets.REPO_ACCESS_TOKEN }}
@@ -122,7 +132,7 @@ jobs:
           cp -R spec/json/. ~/oai_definitions/json/
           cp -R CHANGES.md ~/oai_definitions/CHANGES.md
       - name: Checkout cli-core repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           token:  ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Update OAI specs
@@ -134,22 +144,26 @@ jobs:
           echo "::set-output name=change-log::$changeLog"
           echo "::set-output name=version-type::$versionType"
   release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
     needs: [update-api-specs]
     outputs:
       tag-name: ${{ steps.update-release.outputs.TAG_NAME }}
     steps:
       - name: Checkout cli-core repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           persist-credentials: false
       - run: |
           git pull
           make install
-      - name: Use Node 20
-        uses: actions/setup-node@v4
+      - name: Use Node 22
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
-          node-version: '20'
+          node-version: '22'
 
       # Ensure npm 11.5.1 or later is installed
       - name: Update npm
@@ -165,7 +179,7 @@ jobs:
       - name: Update release
         id: update-release
         run: |
-          echo "::set-output name=TAG_NAME::$TAG_NAME"
+          echo "TAG_NAME=$TAG_NAME" >> "$GITHUB_OUTPUT"
           fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
           node -e "require('$fileName').updateRelease()"
         env:
@@ -174,11 +188,15 @@ jobs:
           RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
           REPO_NAME:  ${{ github.repository }}
   post-build-checks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
     needs: [ release ]
     steps:
       - name: Clone twilio-cli repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           repository: '${{ github.repository_owner }}/twilio-cli'
       - name: Update cli-core version and run tests
@@ -190,11 +208,15 @@ jobs:
           REPO_NAME: ${{ github.repository_owner }}/twilio-cli
           CLI_CORE_TAG: ${{ needs.release.outputs.tag-name }}
   triggerCliWorkflow:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
     needs: [ update-api-specs, release, post-build-checks]
     steps:
       - name: Checkout cli-core repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - run: |
           git pull
           make install

@@ -45,8 +45,10 @@ class TwilioApiClient {
   async create(opts) {
     const domainPaths = (this.apiClient.apiBrowser.domains[opts.domain] || {}).paths || {};
     const operations = (domainPaths[opts.path] || {}).operations || {};
-    // Most resources create via POST; some list-type resources (bulk upsert,
-    // singleton settings) only define PUT. Fall back to PUT when there's no POST operation.
+    /*
+     * Most resources create via POST; some list-type resources (bulk upsert,
+     * singleton settings) only define PUT. Fall back to PUT when there's no POST operation.
+     */
     opts.method = operations.post ? 'post' : 'put';
 
     const { body } = await this.request(opts);

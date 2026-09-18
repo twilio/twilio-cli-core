@@ -4,8 +4,7 @@ githooks:
 	ln -sf ../../githooks/pre-commit .git/hooks/pre-commit
 
 install: githooks
-	rm -f package-lock.json
-	npm install --no-optional
+	npm ci --omit=optional
 
 test:
 	npm test
