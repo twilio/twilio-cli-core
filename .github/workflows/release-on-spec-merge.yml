@@ -61,10 +61,9 @@ jobs:
           bash .github/scripts/changelog-from-commit.sh "$COMMIT_SHA"
           rm -f OAI_CHANGES.md
 
-  release:
+  prepare-release:
     needs: [ derive-changelog ]
-    uses: ./.github/workflows/release-core.yml
+    uses: ./.github/workflows/release-prepare.yml
     secrets: inherit
     with:
       change-log: ${{ needs.derive-changelog.outputs.change-log }}
-      version-type: ${{ needs.derive-changelog.outputs.version-type }}
