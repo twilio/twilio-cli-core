@@ -53,10 +53,12 @@ jobs:
       - name: Derive changelog and version type from the spec commit
         id: derive
         working-directory: cli-core
+        env:
+          COMMIT_SHA: ${{ github.sha }}
         run: |
           make install
           cp -R ../twilio-oai/CHANGES.md OAI_CHANGES.md
-          bash .github/scripts/changelog-from-commit.sh "${{ github.sha }}"
+          bash .github/scripts/changelog-from-commit.sh "$COMMIT_SHA"
           rm -f OAI_CHANGES.md
 
   release:
