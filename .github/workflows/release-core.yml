@@ -47,7 +47,7 @@ jobs:
       contents: read
       id-token: write
     outputs:
-      tag-name: ${{ steps.update-release.outputs.TAG_NAME }}
+      tag-name: ${{ steps.semantic-release.outputs.TAG_NAME }}
     steps:
       - name: Checkout cli-core repo
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
@@ -94,13 +94,20 @@ jobs:
             "Version bump and changelog for the \`${TAG_NAME}\` release, which is already published to npm and tagged. Merging this keeps \`main\` in sync with the published version."
 
       - name: Update release
-        id: update-release
+        if: ${{ inputs.change-log != '' }}
+        # Appends the api-definitions changelog to the release notes that
+        # @semantic-release/github already wrote. Skipped when there is no
+        # changelog, because update-release.js then re-PATCHes the body
+        # unchanged.
+        #
+        # Uses REPO_ACCESS_TOKEN, not github.token: this job runs with
+        # contents: read, so GITHUB_TOKEN cannot PATCH a release and the
+        # request fails with "Resource not accessible by integration".
         run: |
-          echo "TAG_NAME=$TAG_NAME" >> "$GITHUB_OUTPUT"
           fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
           node -e "require('$fileName').updateRelease()"
         env:
-          REPO_ACCESS_TOKEN: ${{ github.token }}
+          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
           TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
           RELEASE_BODY: ${{ inputs.change-log }}
           REPO_NAME: ${{ github.repository }}
