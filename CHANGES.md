@@ -1,3 +1,386 @@
+--------------------------
+**Audiences**
+- Backticked brace- and angle-bracket-bearing tokens in descriptions for MDX safety.
+- Updated a prose reference to the renamed `FetchCohortSnapshot` operation.
+- Renamed 3 `Get*` operations to `Fetch*` to match the operationId standard: `FetchCohort`, `FetchCohortSnapshot`, `FetchCohortOperation`. The transpiler skips operations whose operationId does not start with a standard keyword, which had been dropping all three from generated output.
+- Set `libraryVisibility` to `private` (was `hidden`) so the spec is eligible for the private docs pipeline.
+- Backticked brace- and angle-bracket-bearing tokens in descriptions for MDX safety.
+- **Removed 6 path(s)**:
+- `/preview/Audiences` (ListAudiences, CreateAudience)
+- `/preview/Audiences/{audienceId}` (FetchAudience, UpdateAudience, DeleteAudience)
+- `/preview/Snapshots` (ListSnapshots, CreateSnapshot)
+- `/preview/Snapshots/{snapshotId}` (FetchSnapshot, DeleteSnapshot)
+- `/preview/Snapshots/{snapshotId}/Profiles` (ListSnapshotProfiles)
+- `/preview/Operations/{operationId}` (FetchOperation)
+
+**Conversations**
+- Add PATCH support for partial updates to Configuration
+- Add `VIDEO` to the Conversations v2 Communication channel enum.
+
+**Data-ingress**
+- # API Changes
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- Initial release with 13 paths and 13 operations
+
+**Destinations**
+- Added `prod-ie1` to `supportedRealms` and `iamOperationEnabledRealms` for all endpoints
+- Removed the unused `admin-api` placeholder from `supportedRealms` on the public endpoints;
+- One Admin routes now live in `admin_openapi.yaml`.
+- **Added 6 new path(s)** (admin_openapi.yaml):
+- `/v1/ControlPlane/Destinations` (AdminListDestinations)
+- `/v1/ControlPlane/Destinations/{destinationId}` (AdminGetDestination)
+- `/v1/ControlPlane/Subscriptions` (AdminListSubscriptions)
+- `/v1/ControlPlane/Subscriptions/{subscriptionId}` (AdminGetSubscription)
+- `/v1/ControlPlane/Subscriptions/{subscriptionId}/EventTypes` (AdminListSubscribedEvents)
+- `/v1/ControlPlane/Subscriptions/{subscriptionId}/EventTypes/{eventType}` (AdminGetSubscribedEvent)
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- **Content updates**:
+- Updated description for `CreateDestination`
+
+**Email**
+- # API Changes
+- **Added 1 new path(s)**:
+- `/v1/Sends/Cohorts` (sendCohort)
+- **Content updates**:
+- Updated summary for `sendTransactional`
+- Added parameter(s) to `sendTransactional`: X-Twilio-Version
+- Updated schema description for `SuppressionsGroup`
+- Added properties to `SuppressionsGroup`: type
+- Removed properties from `SuppressionsGroup`: mode
+- Updated schema description for `SuppressionsGlobal`
+- Added properties to `SuppressionsGlobal`: type
+- Removed properties from `SuppressionsGlobal`: mode
+- Updated schema description for `Suppressions`
+- Updated schema description for `LongRunningOperationResponse`
+- **Content updates**:
+- Updated description for `SendEmail`
+- Added parameter(s) to `SendEmail`: Content-Encoding, Idempotency-Key
+- Updated schema description for `Envelope`
+- Updated schema description for `SuppressionsGroup`
+- Updated schema description for `SuppressionsGlobal`
+
+**Iam**
+- Removed redirect_urls from the GET /v1/Account/AuthorizedApps/{consentSid} response
+- Added company_name, homepage_url, tos_url, and redirect_urls to the GET /v1/Account/AuthorizedApps/{consentSid} response
+- Added GET /v1/Account/AuthorizedApps/{consentSid} - fetch authorized app details, including allowed permissions, by consent identifier SID
+- added container-scoped entitlements endpoint (GET /v2/Container/{containerId}/Entitlements)
+
+**Instrumentation**
+- # API Changes
+- **Content updates**:
+- Added `IdempotencyKeyHeader` to Create/Patch/Delete `AutoInstrumentationRule`; corrected the shared header's description
+- Added `operationId`/`createdAt` to `LongRunningOperationResponse`; corrected example `status` from `RUNNING` to `PENDING`
+- Renamed `Signal.timestamp` → `occurredAt`, `HourlyStats.hourTimestamp` → `hourAt`; uppercased `Signal.type` and `ListSignals`' `signalType` enums to SCREAMING_SNAKE_CASE
+- Renamed `UserBehaviors` request/response fields to camelCase; added the `summaryDelivery` webhook callback
+- Reshaped `PaginationMeta` (added required `key`, corrected `pageSize` bounds) and all 6 list operations (`ListEventSources`, `ListEventSourceDatasets`, `ListEventSchemas`, `ListAutoInstrumentationRules`, `ListSignals`, `ListSignalStats`) to the `meta` envelope; added `ListSignalStats`' `500` response
+- Narrowed the domain's default `supportedRealms` to `dev-us1` only; `POST /v1/UserBehaviors` (`AnalyzeUserBehaviors`) keeps its own `dev-us1`/`stage-us1` override (prod withheld pending stage validation) — every other operation is now dev-only
+- **Content updates**:
+- Fixed stale `tdi_` TTID prefix throughout (path params, examples, transaction URLs) to `events_`; unified dataset/schema ID formats (`tdi_dat_`/`tdi_dataset_` → `events_dataset_`, `tdi_schema_` → `events_evsch_`); fixed rule-version examples to match the real `version: integer` field
+- Fixed `operationId` to use the domain-agnostic `proc_job_` TTID prefix; corrected the `OperationId` parameter's length constraint (`max=34` → `max=35`) and added a `pattern`
+- Fixed two length constraints hardcoded for the old `tdi_` prefix length: `IngestEventBatch`'s `sourceId` path parameter (`maxLength` 37 → 40); removed the stale, redundant `Twilio-Write-Key` header parameter
+- Added the missing `AutoInstrumentationRuleId` regex `pattern`
+- Fixed `info.title` ("Twilio Data Ingress - Instrumentation API" → "Events Domain - Instrumentation API")
+- **Added 1 new API path**:
+- `/v1/UserBehaviors` (AnalyzeUserBehaviors)
+- **Initial release** — 21 paths, 37 operations across three API surfaces:
+- **Control Plane** (`/v1/ControlPlane/…`):
+- `/v1/ControlPlane/EventSources` (CreateEventSource, ListEventSources)
+- `/v1/ControlPlane/EventSources/{sourceId}` (FetchEventSource, PatchEventSource, DeleteEventSource)
+- `/v1/ControlPlane/EventSources/{sourceId}/WriteKeys` (CreateWriteKey, ListWriteKeys)
+- `/v1/ControlPlane/EventSources/{sourceId}/WriteKeys/{writeKey}` (DeleteWriteKey)
+- `/v1/ControlPlane/EventSources/{sourceId}/Datasets` (CreateEventSourceDataset, ListEventSourceDatasets)
+- `/v1/ControlPlane/EventSources/{sourceId}/Datasets/{datasetId}` (FetchEventSourceDataset, PatchEventSourceDataset, DeleteEventSourceDataset)
+- `/v1/ControlPlane/EventSources/{sourceId}/EventSchemas` (CreateEventSchema, ListEventSchemas)
+- `/v1/ControlPlane/EventSources/{sourceId}/EventSchemas/{schemaId}` (FetchEventSchema, PatchEventSchema, DeleteEventSchema)
+- `/v1/ControlPlane/EventSources/{sourceId}/AutoInstrumentationRules` (CreateAutoInstrumentationRule, ListAutoInstrumentationRules)
+- `/v1/ControlPlane/EventSources/{sourceId}/AutoInstrumentationRules/{autoInstrumentationRuleId}` (FetchAutoInstrumentationRule, PatchAutoInstrumentationRule, DeleteAutoInstrumentationRule)
+- `/v1/ControlPlane/EventSources/{sourceId}/AutoInstrumentationRules/{autoInstrumentationRuleId}/Versions` (ListAutoInstrumentationRuleVersions)
+- `/v1/ControlPlane/EventSources/{sourceId}/AutoInstrumentationRules/{autoInstrumentationRuleId}/Versions/{version}` (FetchAutoInstrumentationRuleVersion)
+- `/v1/ControlPlane/Datasets` (ListDatasets)
+- `/v1/ControlPlane/Datasets/{datasetId}` (FetchDataset)
+- `/v1/ControlPlane/Operations/{operationId}` (FetchControlPlaneOperationStatus)
+- `/v1/ControlPlane/Datasets` (ListDatasets)
+- `/v1/ControlPlane/Datasets/{datasetId}` (FetchDataset)
+- **Event Ingestion** (`/v1/EventSources/…`):
+- `/v1/EventSources/{sourceId}/Batch` (IngestEventBatch)
+- `/v1/EventSources/{sourceId}/AutoInstrumentationRules/{autoInstrumentationRuleId}/Preview` (TriggerAutoInstrumentationPreview)
+- `/v1/EventSources/{sourceId}/AutoInstrumentationRules/{autoInstrumentationRuleId}/Preview/{operationId}` (GetAutoInstrumentationPreviewResult)
+- **Signal API** (`/v1/EventSources/…`):
+- `/v1/EventSources/{sourceId}/Signals` (IngestSignals, ListSignals)
+- `/v1/EventSources/{sourceId}/Signals/{signalKey}` (GetSignalBySignalKey)
+- `/v1/EventSources/{sourceId}/SignalStats` (ListSignalStats)
+
+**Memory**
+- **Added 2 new path(s)** for Trait Extraction Strategies:
+- `/v1/ControlPlane/TraitExtractionStrategies` (ListTraitExtractionStrategies, CreateTraitExtractionStrategy)
+- `/v1/ControlPlane/TraitExtractionStrategies/{traitStrategyId}` (FetchTraitExtractionStrategy, UpdateTraitExtractionStrategy, DeleteTraitExtractionStrategy)
+
+**Messaging**
+- Remove the WhatsApp Senders v1 endpoints (`/v1/Channels/WhatsApp/Senders`) from RestProxy; the sender was routed to the sunsetting `messaging-whatsapp-k8s-orch` downstream. Use the Senders v2 API (`/v2/Channels/Senders`) instead.
+
+**Voice**
+- Added `links.conversation` to Transcription resources as the absolute Conversations API URL for the
+- transcript's `conversationId`. It is present once the transcript has been stored; the `links` object
+- is omitted otherwise.
+- Removed `mediaUrl` from `CreateRequestWithMediaUrl`'s required fields so a request with neither `sourceId` nor `mediaUrl` reaches the downstream service, which rejects it with the specific error code 17500 instead of a generic gateway 400
+- Set `additionalProperties: false` on both `CreateRequestWithSourceId` and `CreateRequestWithMediaUrl` so the two `oneOf` variants stay mutually exclusive: `sourceId` is undeclared on the media-URL variant and `mediaUrl` is undeclared on the source-ID variant, keeping every request shape resolvable to exactly one variant
+
+
+--------------------------
+**Conversations**
+- Restructured the `StartConversation` request body: removed the top-level `channel`, `from`, `to`, `content`, and `orchestratorPolicy` fields in favor of a `participants` roster plus a single dispatched `action` (`SEND_MESSAGE`, `START_FLOW`, or `CALL`) **(breaking change)**
+- Removed the `VOICE` value from the `start_conversation_channel` enum and dropped the `orchestratorPolicy`/`orchestratorPolicyAction` schemas; voice calls are now placed via the new `CALL` action and Studio Flow dispatch via the new `START_FLOW` action **(breaking change)**
+- Added AI agent calling support: a new `agentConnectConnectionId` on participants and an `AGENT_CONNECT` call handler that connects an answered call to an AI agent over ConversationRelay
+- Added `callSettings` (curated passthrough to Voice's `POST /Calls`) and per-conversation `configuration` overrides (`intelligenceConfigurationIds`, `statusCallbacks`) to `StartConversation`
+- Added `READ` to the `recipient_delivery_status` enum for channels that support read receipts (e.g. WhatsApp/RCS); `COMPLETED` is now deprecated
+
+**Messaging**
+- Removed the `whatsapp_template_enum_category` enum and the WhatsApp Template resource from the spec **(breaking change)**
+
+**Intelligence**
+- Minor updates (metadata only)
+
+**Knowledge**
+- Minor updates (metadata only)
+
+**Memory**
+- Minor updates (metadata only)
+
+**Numbers**
+- Minor updates (metadata only)
+
+
+--------------------------
+**Twiml**
+- Remove `<Assistant>` noun from `<Connect>` verb as part of the AI Assistants deprecation **(breaking change)**
+- Add `passports` attribute to `<Dial>` verb for SHAKEN/STIR passport passthrough
+
+**Destinations**
+- Minor updates (formatting, metadata)
+
+**Memory**
+- **Breaking change**:
+- Removed the deprecated `CSV` and `DATASET` values from the `DataMappingType` enum.
+- `INGRESS`, `DATASET_CLOUDAPP`, and `DATASET_WAREHOUSE` are the only valid values now.
+- Removed the `DataMappingFromCSV` and `DataMappingFromDataSet` schemas and their
+- `oneOf`/discriminator entries on `DataMappingFromTypes`, along with the corresponding
+- `CSV`/`DATASET` discriminator mapping keys.
+- Any caller still sending `type: CSV` or `type: DATASET` on `CreateDataMapping` or
+- `UpdateDataMapping` (or filtering `ListDataMappings`/`ListDataMappingSuggestions` by
+- those values) will get a 400.
+
+**Voice**
+- Added GET /v3/Transcriptions to list and filter transcriptions (status, sourceId, languageCode, createdAfter/createdBefore) with pageSize/pageToken pagination. createdAfter is inclusive and createdBefore exclusive. Returns 422 (error code 17535) when a sourceId's historical item count exceeds the service scan cap
+
+**Webhooks**
+- # API Changes
+- **Changed**: Created Webhooks Config API ( https://docs.google.com/document/d/1zkAJD8a8MgoxWifdYDl_d465Az3W6CcD9fuCC2xlSXE/edit?tab=t.0#heading=h.u9e0ry6oe89j ), that includes 7 new resource(s)**: SharedKeys, AuthProfiles, Settings, Rules, Operations, Tests, EdgeZones in /v1/Webhooks referencing webhooks-config downstream.
+
+
+--------------------------
+**Destinations**
+- **Content updates**:
+- Added properties to `DestinationType`: releaseStatus
+- Removed properties from `DestinationType`: maturity
+
+**Memory**
+- No path changes (updated metadata only)
+- `DataMappingType` gains `INGRESS`, `DATASET_CLOUDAPP`, and `DATASET_WAREHOUSE`.
+- `CSV` and `DATASET` remain valid and unchanged; they are deprecated aliases and
+- will be removed in a follow-up change.
+- `DataMappingFromTypes` gains three `oneOf` members and three discriminator keys:
+- `DataMappingFromIngress` (renames `DataMappingFromCSV`),
+- `DataMappingFromCloudAppDataSet` and `DataMappingFromWarehouseDataSet`
+- (both split from `DataMappingFromDataSet`, distinguishing a cloud-app-backed
+- TDI dataset from a warehouse-backed one).
+- Additive and backwards compatible: existing `CSV` and `DATASET` payloads are
+- unaffected.
+
+--------------------------
+**Library - Chore**
+- [PR #149](https://github.com/twilio/twilio-oai/pull/149): Update test-and-deploy.yml. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+- [PR #141](https://github.com/twilio/twilio-oai/pull/141): oas3-valid-schema-example check validation. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+
+**Library - Fix**
+- [PR #147](https://github.com/twilio/twilio-oai/pull/147): remove Events API from memory V1 specs. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+- [PR #142](https://github.com/twilio/twilio-oai/pull/142): pin spectral-rulesets to 1.22.2 to fix Node 18 compatibility. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+
+**Twiml**
+- Remove `<Assistant>` noun from `<Connect>` verb as part of the AI Assistants deprecation **(breaking change)**
+- Add `passports` attribute to `<Dial>` verb for SHAKEN/STIR passport passthrough
+
+**Accounts**
+- Add `SuppressEmailNotification` parameter to the Secondary Auth Token and Auth Token promotion endpoints. Set it to `true` to suppress the email notification sent to account owners and administrators. Defaults to `false`, preserving existing behavior.
+- Add SMS Pumping Protection GET and POST API
+
+**Ai**
+- Removing ai workbench apis
+
+**Api**
+- Add missing `uri` property to the `twiml_session` resource
+
+**Data-ingress**
+- **Removed 1 API path**:
+- `/v1/DataQuery` (Realtime DataQuery)
+- **Added 1 new API path  (data plane)**:
+- `/v1/DataQuery` (Realtime DataQuery)
+- **Content updates**:
+- Added properties to `OAuthJWTBearerCredentials`: privateKey, privateKeyPassphrase
+- **Added 16 new path(s)**:
+- `/v1/DataSyncs/{syncId}` (FetchDataSync)
+- `/v1/CloudAppSources/{sourceId}/Objects` (ListCloudAppObjects)
+- `/v1/WarehouseSources/{sourceId}/Preview` (CreateWarehousePreview)
+- `/v1/WarehouseSources/{sourceId}/Preview/{operationId}` (FetchWarehousePreview)
+- `/v1/DataSample/{operationId}` (FetchDataSample)
+- `/v1/ControlPlane/CloudAppSources/{sourceId}` (FetchCloudAppSource, PatchCloudAppSource, DeleteCloudAppSource)
+- `/v1/ControlPlane/CloudAppSources/{sourceId}/Datasets` (ListCloudAppDatasets, CreateCloudAppDataset)
+- `/v1/ControlPlane/CloudAppSources/{sourceId}/Datasets/{datasetId}` (FetchCloudAppDataset, PatchCloudAppDataset, DeleteCloudAppDataset)
+- `/v1/ControlPlane/WarehouseSources/{sourceId}` (FetchWarehouseSource, PatchWarehouseSource, DeleteWarehouseSource)
+- `/v1/ControlPlane/WarehouseSources/{sourceId}/Datasets` (ListWarehouseDatasets, CreateWarehouseDataset)
+- ...and 6 more paths
+- **Removed 16 path(s)**:
+- `/v1/DataSyncs/{SyncId}` (FetchDataSync)
+- `/v1/CloudAppSources/{SourceId}/Objects` (ListCloudAppObjects)
+- `/v1/WarehouseSources/{SourceId}/Preview` (CreateWarehousePreview)
+- `/v1/WarehouseSources/{SourceId}/Preview/{OperationId}` (FetchWarehousePreview)
+- `/v1/DataSample/{OperationId}` (FetchDataSample)
+- `/v1/ControlPlane/CloudAppSources/{SourceId}` (FetchCloudAppSource, PatchCloudAppSource, DeleteCloudAppSource)
+- `/v1/ControlPlane/CloudAppSources/{SourceId}/Datasets` (ListCloudAppDatasets, CreateCloudAppDataset)
+- `/v1/ControlPlane/CloudAppSources/{SourceId}/Datasets/{DatasetId}` (FetchCloudAppDataset, PatchCloudAppDataset, DeleteCloudAppDataset)
+- `/v1/ControlPlane/WarehouseSources/{SourceId}` (FetchWarehouseSource, PatchWarehouseSource, DeleteWarehouseSource)
+- `/v1/ControlPlane/WarehouseSources/{SourceId}/Datasets` (ListWarehouseDatasets, CreateWarehouseDataset)
+- ...and 6 more paths
+- **Added 3 new Signal API path(s) for public exposure (data plane)**:
+- `/v1/EventSources/{sourceId}/Signals` (ListSignals)
+- `/v1/EventSources/{sourceId}/Signals/{signalKey}` (GetSignalBySignalKey)
+- `/v1/EventSources/{sourceId}/SignalStats` (ListSignalStats)
+- **Added new Signal API schemas**:
+- Signal, SignalListResponse, HourlyStats, SignalStatsResponse
+- **Added 12 new path(s) for public exposure**:
+- `/v1/ControlPlane/EventSources` (CreateEventSource, ListEventSources)
+- `/v1/ControlPlane/EventSources/{SourceId}` (FetchEventSource, PatchEventSource, DeleteEventSource)
+- `/v1/ControlPlane/EventSources/{SourceId}/WriteKeys` (CreateWriteKey, ListWriteKeys)
+- `/v1/ControlPlane/EventSources/{SourceId}/WriteKeys/{WriteKey}` (DeleteWriteKey)
+- `/v1/ControlPlane/EventSources/{SourceId}/Datasets` (CreateEventSourceDataset, ListEventSourceDatasets)
+- `/v1/ControlPlane/EventSources/{SourceId}/Datasets/{DatasetId}` (FetchEventSourceDataset, PatchEventSourceDataset, DeleteEventSourceDataset)
+- `/v1/ControlPlane/EventSources/{SourceId}/EventSchemas` (CreateEventSchema, ListEventSchemas)
+- `/v1/ControlPlane/EventSources/{SourceId}/EventSchemas/{SchemaId}` (FetchEventSchema, PatchEventSchema, DeleteEventSchema)
+- `/v1/ControlPlane/AutoInstrumentationRule` (CreateAutoInstrumentationRule, ListAutoInstrumentationRules)
+- `/v1/ControlPlane/AutoInstrumentationRule/{AutoInstrumentationRuleId}` (FetchAutoInstrumentationRule, PatchAutoInstrumentationRule, DeleteAutoInstrumentationRule)
+- `/v1/ControlPlane/AutoInstrumentationRule/{AutoInstrumentationRuleId}/Versions` (ListAutoInstrumentationRuleVersions)
+- `/v1/ControlPlane/AutoInstrumentationRule/{AutoInstrumentationRuleId}/Versions/{Version}` (FetchAutoInstrumentationRuleVersion)
+- **Added new schemas**:
+- EventSource, EventSourceCreate, EventSourceUpdate
+- WriteKey, WriteKeyCreate
+- EventSourceDataset, EventSourceDatasetCreate, EventSourceDatasetUpdate
+- EventSchema, EventSchemaCreate, EventSchemaUpdate, EventSchemaField, EventSchemaProperty
+- AutoInstrumentationRule, AutoInstrumentationRuleCreate, AutoInstrumentationRuleUpdate
+- AutoInstrumentationRuleVersion, AutoInstrumentationRuleVersionsResponse
+- **Added 16 new path(s)**:
+- `/v1/DataSyncs/{syncId}` (FetchDataSync)
+- `/v1/CloudAppSources/{sourceId}/Objects` (ListCloudAppObjects)
+- `/v1/WarehouseSources/{sourceId}/Preview` (CreateWarehousePreview)
+- `/v1/WarehouseSources/{sourceId}/Preview/{operationId}` (FetchWarehousePreview)
+- `/v1/DataSample/{operationId}` (FetchDataSample)
+- `/v1/ControlPlane/CloudAppSources/{sourceId}` (FetchCloudAppSource, PatchCloudAppSource, DeleteCloudAppSource)
+- `/v1/ControlPlane/CloudAppSources/{sourceId}/Datasets` (ListCloudAppDatasets, CreateCloudAppDataset)
+- `/v1/ControlPlane/CloudAppSources/{sourceId}/Datasets/{datasetId}` (FetchCloudAppDataset, PatchCloudAppDataset, DeleteCloudAppDataset)
+- `/v1/ControlPlane/WarehouseSources/{sourceId}` (FetchWarehouseSource, PatchWarehouseSource, DeleteWarehouseSource)
+- `/v1/ControlPlane/WarehouseSources/{sourceId}/Datasets` (ListWarehouseDatasets, CreateWarehouseDataset)
+- ...and 6 more paths
+- **Removed 16 path(s)**:
+- `/v1/DataSyncs/{SyncId}` (FetchDataSync)
+- `/v1/CloudAppSources/{SourceId}/Objects` (ListCloudAppObjects)
+- `/v1/WarehouseSources/{SourceId}/Preview` (CreateWarehousePreview)
+- `/v1/WarehouseSources/{SourceId}/Preview/{OperationId}` (FetchWarehousePreview)
+- `/v1/DataSample/{OperationId}` (FetchDataSample)
+- `/v1/ControlPlane/CloudAppSources/{SourceId}` (FetchCloudAppSource, PatchCloudAppSource, DeleteCloudAppSource)
+- `/v1/ControlPlane/CloudAppSources/{SourceId}/Datasets` (ListCloudAppDatasets, CreateCloudAppDataset)
+- `/v1/ControlPlane/CloudAppSources/{SourceId}/Datasets/{DatasetId}` (FetchCloudAppDataset, PatchCloudAppDataset, DeleteCloudAppDataset)
+- `/v1/ControlPlane/WarehouseSources/{SourceId}` (FetchWarehouseSource, PatchWarehouseSource, DeleteWarehouseSource)
+- `/v1/ControlPlane/WarehouseSources/{SourceId}/Datasets` (ListWarehouseDatasets, CreateWarehouseDataset)
+- ...and 6 more paths
+
+**Deletions**
+- # API Changes
+- Initial public Rest Proxy registration for the User Data Deletions API
+- (`POST` / `GET /v1/UserDataDeletions`, `GET /v1/UserDataDeletions/{deletionId}`,
+- `GET /v1/Operations/{operationId}`).
+- A single request may mix identifier formats: E.164 phone numbers, email
+- addresses, and profile IDs.
+
+**Destinations**
+- # API Changes
+- **Content updates**:
+- Updated summary for `ListDestinationSupportedEventTypes`
+- **Content updates**:
+- Updated summary for `ListDestinationSupportedEventTypes`
+- **Added 3 new path(s)**:
+- `/v1/Catalog/DestinationSupportedEventTypes` (ListDestinationSupportedEventTypes)
+- `/v1/ControlPlane/Subscriptions/{subscriptionId}/EventTypes` (ListSubscribedEvents, CreateSubscribedEvent)
+- `/v1/ControlPlane/Subscriptions/{subscriptionId}/EventTypes/{eventType}` (GetSubscribedEvent, UpdateSubscribedEvent, DeleteSubscribedEvent)
+- **Removed 3 path(s)**:
+- `/v1/ControlPlane/Subscriptions/{subscriptionId}/SubscribedEvents` (ListSubscribedEvents, CreateSubscribedEvent)
+- `/v1/ControlPlane/Subscriptions/{subscriptionId}/SubscribedEvents/{eventType}` (GetSubscribedEvent, UpdateSubscribedEvent, DeleteSubscribedEvent)
+- `/v1/Catalog/DestinationEventTypes` (ListDestinationEventTypes)
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+- **Content updates**:
+- Added properties to `SubscriptionResponse`: eventTypes
+- **Content updates**:
+- Added properties to `DestinationType`: documentationUrl, maturity, tier, categories
+- Minor updates (formatting, metadata)
+- **Content updates**:
+- `meta` is now a required property in the response of `ListDestinations`, `ListSubscriptions`, and `ListSubscribedEvents`
+- `CreateSubscribedEvent` request body schema consolidated onto `SubscribedEventInput` (previously `SubscribedEventCreate`, a duplicate schema)
+- Added response examples for `ListDestinations`, `ListSubscriptions`, and `ListSubscribedEvents`
+- **Added 1 new path(s)**:
+- `/v1/Catalog/DestinationEventTypes` (ListDestinationEventTypes)
+- **Content updates**:
+- Added parameter(s) to `ListDestinations`: namePrefix
+- Updated description for `UpdateSubscription`
+- Added properties to `SubscriptionUpdate`: eventTypes
+- Initial release with 9 paths and 18 operations
+
+**Events**
+- Add `stage-ie1` realm support for EventTypes and Schemas endpoints (datataps-catalog)
+
+**Memory**
+- Removed `Events` endpoints from the spec, as they were hidden, never implemented, and are not part of the public API
+- **New functionality**:
+- Added `pageSize`, `pageToken`, and `orderBy` query parameters to `ListProfileImportsV2`, plus a `meta` object in its response, to support pagination.
+- **Content updates**:
+- Updated the `ListProfileImportsV2` description to document the new pagination behavior.
+- Corrected the example presigned upload URL on `CreateProfilesImportV2` to match the real S3 bucket naming convention.
+- Corrected the `meta.key` example on `ListProfileTraits`'s response (was `profiles`, now `traits`) to accurately describe which response field it points to.
+- **Content updates**:
+- Updated `matchingRules` description in `IdentityResolutionSettingsCore` to remove compound `AND` rule documentation
+- **Content updates**:
+- Increased the maximum value for the Twilio error `code` from `99999` to `999999`
+- **Content updates**:
+- Updated the `pageSize` description on the pagination `Meta` schema to clarify it reflects the number of items actually returned, not the requested or default page size.
+- **Content updates**:
+- Renamed `ListProfiles` response schema references from `ProfileID`/`ProfilesMeta` to `IdentityProfileID`/`IdentityProfilesMeta` (new `IdentityProfilesMeta` schema added; `ProfileID`/`ProfilesMeta` retained for other operations).
+- **Content updates**:
+- Updated description for `CreateDataMappingSuggestion`
+- Updated description for `FetchDataMappingSuggestion`
+- **Added 2 new path(s)**:
+- `/v1/ControlPlane/Stores/{storeId}/DataMappings/Suggestions` (ListDataMappingSuggestions, CreateDataMappingSuggestion)
+- `/v1/ControlPlane/Stores/{storeId}/DataMappings/Suggestions/{suggestionId}` (FetchDataMappingSuggestion)
+- **Content updates**:
+- Minor updates (formatting, metadata)
+- Updated x-twilio location parameter from `instance` to `list` for all endpoints that don't end with a /{param}
+- Updated description for `UpdateProfileTraits`
+- Updated summary for `UpdateProfileTraits`
+- Removed properties from `MappingTraitItem`: fieldName
+- Removed `additionalProperties` from `allof` schemas since it isn't supported and causes invalid lint errors on example blocks.
+- matruity ga and libraryVisibility public
+- **Content updates**:
+- Add ConversationID as an optional query parameter for ListObservations and ListConversationSummaries
 ### [8.3.4](https://github.com/twilio/twilio-cli-core/compare/8.3.3...8.3.4) (2026-05-06)
 
 --------------------------

@@ -157,10 +157,10 @@
           }
         },
         "required": [
+          "phoneNumber",
           "externalPhoneNumberStatus",
           "phoneNumberSid",
-          "accountSid",
-          "phoneNumber"
+          "accountSid"
         ]
       },
       "numbers.v2.address": {
@@ -1790,6 +1790,15 @@
               }
             },
             "description": "The override status of the country for the sender Id"
+          },
+          "compliant_until_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "The date until which the sender ID country is compliant"
+          },
+          "compliance_status": {
+            "$ref": "#/components/schemas/SenderIdComplianceStatus"
           }
         },
         "required": [
@@ -1809,6 +1818,14 @@
             "description": "Default Sender Id to use for replacement"
           }
         }
+      },
+      "SenderIdComplianceStatus": {
+        "description": "Computed compliance status based on the associated regulatory bundle. COMPLIANT indicates no bundle is linked or the bundle information has not yet expired. NOT_COMPLIANT indicates that the bundle information is no longer valid and has expired.",
+        "type": "string",
+        "enum": [
+          "COMPLIANT",
+          "NOT_COMPLIANT"
+        ]
       },
       "SenderIdResponsePage": {
         "type": "object",
@@ -2993,8 +3010,7 @@
           "sender_id",
           "business_identity",
           "is_subassigned",
-          "friendly_name",
-          "customer_profile_bundle_sid"
+          "friendly_name"
         ],
         "properties": {
           "global_hq_country": {
@@ -3042,6 +3058,7 @@
             "minLength": 34,
             "maxLength": 34,
             "pattern": "^BU[0-9a-fA-F]{32}$",
+            "nullable": true,
             "description": "Bundle SID of customer's profile"
           },
           "isv_opt_in_consent": {
@@ -3100,6 +3117,50 @@
             "description": "Bundle SID"
           }
         }
+      },
+      "numbers.v2.caller_id": {
+        "type": "object",
+        "properties": {
+          "sid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^PN[0-9a-fA-F]{32}$",
+            "description": "The unique SID of this Caller ID resource."
+          },
+          "accountSid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^AC[0-9a-fA-F]{32}$",
+            "description": "The Account SID that owns this Caller ID.",
+            "x-field-extra-annotation": "@JsonAlias({\"account_sid\"})"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true,
+            "description": "The phone number in E.164 format.",
+            "x-field-extra-annotation": "@JsonAlias({\"phone_number\"})"
+          },
+          "friendlyName": {
+            "type": "string",
+            "nullable": true,
+            "description": "A human-readable name for this caller ID.",
+            "x-field-extra-annotation": "@JsonAlias({\"friendly_name\"})"
+          },
+          "dateCreated": {
+            "type": "string",
+            "nullable": true,
+            "description": "The date this resource was created.",
+            "x-field-extra-annotation": "@JsonAlias({\"date_created\"})"
+          },
+          "dateUpdated": {
+            "type": "string",
+            "nullable": true,
+            "description": "The date this resource was last updated.",
+            "x-field-extra-annotation": "@JsonAlias({\"date_updated\"})"
+          }
+        }
       }
     },
     "parameters": {
@@ -3145,9 +3206,6 @@
   },
   "openapi": "3.0.1",
   "paths": {
-    "/v2/Addresses": {},
-    "/v2/Addresses/validate": {},
-    "/v2/Addresses/{addressSid}": {},
     "/v2/HostedNumber/AuthorizationDocuments/{Sid}": {
       "servers": [
         {
@@ -10202,16 +10260,6 @@
         "operationId": "FetchSupportingDocumentType"
       }
     },
-    "/v2/SenderIds": {},
-    "/v2/SenderIds/{senderIdSid}": {},
-    "/v2/SenderIds/{senderIdSid}/Countries": {},
-    "/v2/SenderIds/{senderIdSid}/Countries/{routingTableSid}": {},
-    "/v2/CountryRequirements": {},
-    "/v2/ValidateSenderIdApplicationCountry": {},
-    "/v2/SenderIdRegistrations": {},
-    "/v2/SenderIdRegistrations/{BundleSid}/Inquiries": {
-      "description": "Resume or Resubmit Inquiry"
-    },
     "/v2/ShortCodes/Applications": {
       "get": {
         "description": "list of all short code applications for an account",
@@ -10382,15 +10430,6 @@
         ],
         "operationId": "FetchShortCodeApplication"
       }
-    },
-    "/v2/ShortCodes/Applications/{Sid}/Cancel": {
-      "description": "Cancel an existing short code application"
-    },
-    "/v2/ShortCodes/Applications/Bundles/{BundleSid}/Inquiries": {
-      "description": "Initialize a Persona inquiry session for a shortcodes application"
-    },
-    "/v2/ShortCodes/Applications/{Sid}/Documents": {
-      "description": "Manage documents for a Short Code Application"
     }
   },
   "servers": [
@@ -10482,6 +10521,9 @@
     },
     {
       "name": "V2ShortCodeDocuments"
+    },
+    {
+      "name": "V2CallerIds"
     }
   ],
   "security": [
