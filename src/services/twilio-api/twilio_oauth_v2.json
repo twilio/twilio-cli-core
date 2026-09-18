@@ -58,6 +58,9 @@
               "schema": {
                 "type": "object",
                 "title": "CreateTokenRequest",
+                "required": [
+                  "grant_type"
+                ],
                 "properties": {
                   "grant_type": {
                     "type": "string",
@@ -90,6 +93,10 @@
                   "scope": {
                     "type": "string",
                     "description": "The scope of token"
+                  },
+                  "code_verifier": {
+                    "type": "string",
+                    "description": "The PKCE code verifier used to generate the code_challenge in the authorization request."
                   }
                 }
               },
@@ -196,6 +203,25 @@
               "type": "string",
               "example": "xvz"
             }
+          },
+          {
+            "name": "code_challenge",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM"
+            }
+          },
+          {
+            "name": "code_challenge_method",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "S256"
+              ],
+              "example": "S256"
+            }
           }
         ],
         "responses": {
@@ -205,6 +231,91 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/oauth.v2.authorize"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ErrorClientErrorResponse"
+          }
+        }
+      }
+    },
+    "/.well-known/oauth-authorization-server": {
+      "servers": [
+        {
+          "url": "https://oauth.twilio.com"
+        }
+      ],
+      "description": "RFC 8414 OAuth 2.0 Authorization Server Metadata",
+      "get": {
+        "operationId": "FetchOauth2ServerMetadata",
+        "description": "Returns RFC 8414 Authorization Server Metadata for oauth.twilio.com",
+        "summary": "OAuth 2.0 Authorization Server Metadata",
+        "security": [],
+        "tags": [
+          "OauthV2Metadata"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "issuer": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "authorization_endpoint": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "token_endpoint": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "response_types_supported": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "code"
+                        ]
+                      }
+                    },
+                    "grant_types_supported": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "authorization_code",
+                          "client_credentials",
+                          "refresh_token"
+                        ]
+                      }
+                    },
+                    "code_challenge_methods_supported": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "S256"
+                        ]
+                      }
+                    },
+                    "token_endpoint_auth_methods_supported": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "client_secret_post",
+                          "none"
+                        ]
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -587,6 +698,13 @@
         "schema": {
           "type": "integer",
           "example": 3600
+        }
+      },
+      "Cross-Origin-Opener-Policy": {
+        "description": "Severs the window.opener relationship with a cross-origin window that opened this one",
+        "schema": {
+          "type": "string",
+          "example": "same-origin"
         }
       }
     },

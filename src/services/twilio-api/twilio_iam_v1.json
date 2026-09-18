@@ -150,12 +150,6 @@
           }
         }
       },
-      "new_key_enum_keytype": {
-        "type": "string",
-        "enum": [
-          "restricted"
-        ]
-      },
       "role_enum_scope_type": {
         "type": "string",
         "enum": [
@@ -382,6 +376,215 @@
             "type": "string",
             "format": "date-time",
             "description": "Creation date of the organization"
+          }
+        }
+      },
+      "iam.v1.OrganizationToJoin": {
+        "type": "object",
+        "properties": {
+          "organizationSid": {
+            "pattern": "OR[0-9a-f]{32}",
+            "type": "string",
+            "format": "OrganizationSid",
+            "example": "OR33f4f3aa6fffe840d000f8ef22e883db",
+            "description": "Unique Twilio organization sid"
+          },
+          "name": {
+            "type": "string",
+            "description": "Friendly name of the organization"
+          },
+          "ownerEmail": {
+            "type": "string",
+            "description": "Email address of the organization owner"
+          },
+          "domainVerified": {
+            "type": "boolean",
+            "description": "Whether the organization has verified the domain"
+          }
+        }
+      },
+      "iam.v1.RequestToJoinOrg": {
+        "type": "object",
+        "properties": {
+          "notificationSid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^NF[0-9a-fA-F]{32}$"
+          },
+          "email": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 2,
+            "format": "email",
+            "description": "Email address of the requesting user"
+          },
+          "firstName": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 2,
+            "description": "First name of the requesting user"
+          },
+          "lastName": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 2,
+            "description": "Last name of the requesting user"
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date the join request was created"
+          },
+          "scope": {
+            "type": "string",
+            "description": "The SID of the entity requested to join (OR\u2026, AC\u2026, etc)"
+          },
+          "scopeType": {
+            "type": "string",
+            "description": "Type of the scope entity for the requested role",
+            "enum": [
+              "organization",
+              "account",
+              "subaccount",
+              "resource"
+            ]
+          },
+          "scopeName": {
+            "type": "string",
+            "description": "Scope Name e.g. Account or Organization friendly name"
+          },
+          "roles": {
+            "type": "array",
+            "description": "The requested roles",
+            "items": {
+              "type": "object",
+              "properties": {
+                "roleSid": {
+                  "type": "string",
+                  "description": "SID of the requested role",
+                  "pattern": "^IX[0-9a-fA-F]{32}$",
+                  "format": "IamRoleSid"
+                },
+                "roleName": {
+                  "type": "string",
+                  "description": "Name of the requested role"
+                }
+              }
+            }
+          },
+          "status": {
+            "type": "string",
+            "description": "Display status of the join request (e.g. Active, Expired), derived by the downstream service from the underlying notification's state and expiry. Does not map 1:1 to the notification's internal status."
+          }
+        }
+      },
+      "iam.v1.RequestToJoinOrgRequest": {
+        "type": "object",
+        "required": [
+          "organizationSid",
+          "roleSids"
+        ],
+        "properties": {
+          "organizationSid": {
+            "pattern": "OR[0-9a-f]{32}",
+            "type": "string",
+            "format": "OrganizationSid",
+            "example": "OR33f4f3aa6fffe840d000f8ef22e883db",
+            "description": "Unique Twilio sid of the organization to request to join"
+          },
+          "roleSids": {
+            "type": "array",
+            "description": "SIDs of the requested roles",
+            "items": {
+              "type": "string",
+              "pattern": "^IX[0-9a-fA-F]{32}$",
+              "format": "IamRoleSid"
+            },
+            "example": [
+              "IX8b69703c2a65ec199f061b0ae2974511"
+            ]
+          }
+        }
+      },
+      "iam.v1.RequestToJoinOrgResponse": {
+        "type": "object",
+        "properties": {
+          "notificationSid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^NF[0-9a-fA-F]{32}$",
+            "description": "SID of the created join-org request notification"
+          }
+        }
+      },
+      "iam.v1.RequestToJoinOrgSelf": {
+        "type": "object",
+        "properties": {
+          "notificationSid": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^NF[0-9a-fA-F]{32}$"
+          },
+          "scope": {
+            "type": "string",
+            "description": "The SID of the entity requested to join (OR\u2026, AC\u2026, etc)"
+          },
+          "scopeType": {
+            "type": "string",
+            "description": "Type of the scope entity for the requested role",
+            "enum": [
+              "organization",
+              "account",
+              "subaccount",
+              "resource"
+            ]
+          },
+          "scopeName": {
+            "type": "string",
+            "description": "Scope Name e.g. Account or Organization friendly name"
+          },
+          "roles": {
+            "type": "array",
+            "description": "The requested roles",
+            "items": {
+              "type": "object",
+              "properties": {
+                "roleSid": {
+                  "type": "string",
+                  "description": "SID of the requested role",
+                  "pattern": "^IX[0-9a-fA-F]{32}$",
+                  "format": "IamRoleSid"
+                },
+                "roleName": {
+                  "type": "string",
+                  "description": "Name of the requested role"
+                }
+              }
+            }
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date the join request was created"
+          },
+          "status": {
+            "type": "string",
+            "description": "Display status of the join request (e.g. Active, Expired, Declined, Accepted), derived by the downstream service from the underlying notification's state and expiry. Does not map 1:1 to the notification's internal status."
+          }
+        }
+      },
+      "iam.v1.AcceptRequestToJoinOrgResponse": {
+        "type": "object",
+        "properties": {
+          "executionSid": {
+            "type": "string",
+            "pattern": "WX[0-9a-f]{32}",
+            "format": "WorkflowExecutionSid",
+            "example": "WXe0c97ff86651669fefcd6cc4ecd96e9a",
+            "description": "The SID of the workflow that will handle accepting the join request"
           }
         }
       },
@@ -707,6 +910,73 @@
             "format": "date-time",
             "description": "Finish date and time of the import run",
             "example": "2024-06-27T09:31:38.283Z"
+          }
+        }
+      },
+      "iam.v1.ImportUsersRunUser": {
+        "type": "object",
+        "properties": {
+          "userSid": {
+            "pattern": "US[0-9a-f]{32}",
+            "type": "string",
+            "format": "UserSid",
+            "example": "USb51dccce9ac8e67b938253c7bcaa4f45",
+            "description": "Unique Twilio user sid"
+          },
+          "imported": {
+            "type": "boolean",
+            "description": "Whether the user was successfully imported"
+          },
+          "details": {
+            "type": "string",
+            "description": "Additional details about the import result for this user, e.g. a failure reason"
+          }
+        }
+      },
+      "iam.v1.ImportableUser": {
+        "type": "object",
+        "properties": {
+          "sid": {
+            "pattern": "US[0-9a-f]{32}",
+            "type": "string",
+            "format": "UserSid",
+            "example": "USb51dccce9ac8e67b938253c7bcaa4f45",
+            "description": "Unique Twilio user sid"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Display name of the eligible user"
+          },
+          "primaryEmailAddress": {
+            "type": "string",
+            "description": "Primary email address of the eligible user"
+          }
+        }
+      },
+      "iam.v1.ImportUsersRequest": {
+        "type": "object",
+        "properties": {
+          "userSids": {
+            "type": "array",
+            "items": {
+              "pattern": "US[0-9a-f]{32}",
+              "type": "string",
+              "format": "UserSid"
+            },
+            "description": "SIDs of the users to import"
+          },
+          "domainSids": {
+            "type": "array",
+            "items": {
+              "pattern": "DN[0-9a-f]{32}",
+              "type": "string",
+              "format": "DomainVerificationSid"
+            },
+            "description": "SIDs of the organization domains whose eligible users should be imported"
+          },
+          "notifyUsers": {
+            "type": "boolean",
+            "description": "Whether to notify imported users by email"
           }
         }
       },
@@ -1337,6 +1607,18 @@
           "created_by": {
             "type": "string"
           },
+          "creator_sid": {
+            "type": "string",
+            "pattern": "^US[0-9a-fA-F]{32}$",
+            "description": "The unique identifier (SID) of the user who created this OAuth app."
+          },
+          "token_endpoint_auth_method": {
+            "type": "string",
+            "enum": [
+              "client_secret_basic"
+            ],
+            "description": "Determines how the client authenticates. Organization OAuth apps only support 'client_secret_basic'."
+          },
           "company_name": {
             "type": "string"
           },
@@ -1404,6 +1686,13 @@
             "pattern": "^OQ[0-9a-fA-F]{32}$",
             "nullable": true
           },
+          "token_endpoint_auth_method": {
+            "type": "string",
+            "enum": [
+              "client_secret_basic"
+            ],
+            "description": "Determines how the client authenticates. Organization OAuth apps only support 'client_secret_basic'."
+          },
           "policy": {
             "type": "object",
             "properties": {
@@ -1463,6 +1752,14 @@
           "description": {
             "type": "string",
             "nullable": true
+          },
+          "token_endpoint_auth_method": {
+            "type": "string",
+            "enum": [
+              "client_secret_basic"
+            ],
+            "nullable": true,
+            "description": "Determines how the client authenticates. Organization OAuth apps only support 'client_secret_basic'."
           },
           "policy": {
             "type": "object",
@@ -1544,8 +1841,21 @@
           "created_by": {
             "type": "string"
           },
+          "creator_sid": {
+            "type": "string",
+            "pattern": "^US[0-9a-fA-F]{32}$",
+            "description": "The unique identifier (SID) of the user who created this OAuth app."
+          },
           "secret": {
-            "type": "string"
+            "type": "string",
+            "nullable": true,
+            "description": "Client secret. Only present for confidential apps (token_endpoint_auth_method=client_secret_basic) and only returned at creation time."
+          },
+          "token_endpoint_auth_method": {
+            "type": "string",
+            "enum": [
+              "client_secret_basic"
+            ]
           },
           "status": {
             "type": "string"
@@ -1882,6 +2192,11 @@
           "created_by": {
             "type": "string"
           },
+          "creator_sid": {
+            "type": "string",
+            "pattern": "^US[0-9a-fA-F]{32}$",
+            "description": "The unique identifier (SID) of the user who created this OAuth app."
+          },
           "access_token_ttl": {
             "type": "integer"
           }
@@ -1912,6 +2227,13 @@
             "maxLength": 34,
             "pattern": "^OQ[0-9a-fA-F]{32}$",
             "nullable": true
+          },
+          "token_endpoint_auth_method": {
+            "type": "string",
+            "enum": [
+              "client_secret_basic"
+            ],
+            "description": "Determines how the client authenticates. Account OAuth apps on v1 only support 'client_secret_basic'. For PKCE (none), use the v2 API."
           },
           "policy": {
             "type": "object",
@@ -1959,6 +2281,11 @@
           },
           "created_by": {
             "type": "string"
+          },
+          "creator_sid": {
+            "type": "string",
+            "pattern": "^US[0-9a-fA-F]{32}$",
+            "description": "The unique identifier (SID) of the user who created this OAuth app."
           },
           "secret": {
             "type": "string"
@@ -2121,6 +2448,346 @@
             "description": "Indicates whether the invitation token has expired"
           }
         }
+      },
+      "iam.v1.DisconnectSocialIdentityRequest": {
+        "type": "object",
+        "description": "Request to disconnect a social identity provider from the authenticated user's account",
+        "required": [
+          "provider"
+        ],
+        "properties": {
+          "provider": {
+            "type": "string",
+            "description": "The social identity provider to disconnect (e.g. google-oauth2, github, apple)"
+          }
+        }
+      },
+      "iam.v1.PostLoginActionUserContext": {
+        "type": "object",
+        "description": "Details about the user completing the Whitney auth_flow.checkpoint event that triggered this webhook",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "Whitney's own identifier for the user. This is not a Twilio user SID - the Twilio user record is resolved by email instead"
+          },
+          "emails": {
+            "type": "array",
+            "description": "The user's email addresses. The first entry is used to resolve their Twilio unified user record",
+            "items": {
+              "type": "string"
+            }
+          },
+          "phones": {
+            "type": "array",
+            "description": "The user's phone numbers, if any are on file",
+            "items": {
+              "type": "string"
+            }
+          },
+          "is_first_login": {
+            "type": "boolean",
+            "description": "Whether this is the user's first successful login"
+          }
+        }
+      },
+      "iam.v1.PostLoginActionRequestContext": {
+        "type": "object",
+        "description": "Request metadata for the Whitney auth_flow.checkpoint event, carried through for future blocklist/status-check use",
+        "properties": {
+          "ip_address": {
+            "type": "string",
+            "description": "The IP address the login request originated from"
+          },
+          "user_agent": {
+            "type": "string",
+            "description": "The User-Agent header from the login request"
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Whitney's request identifier for the login attempt"
+          }
+        }
+      },
+      "iam.v1.PostLoginActionOAuthContext": {
+        "type": "object",
+        "description": "Details of the OAuth authorization request the user is logging in for",
+        "properties": {
+          "client_id": {
+            "type": "string",
+            "description": "The OAuth client the user is authenticating to"
+          },
+          "scope": {
+            "type": "string",
+            "description": "The space-delimited scopes requested by the client"
+          },
+          "authorization_details": {
+            "type": "string",
+            "description": "RFC 9396 authorization_details sent with the authorization request, if any"
+          }
+        }
+      },
+      "iam.v1.PostLoginActionRequest": {
+        "type": "object",
+        "description": "The auth_flow.checkpoint webhook payload Whitney sends for a post-login action",
+        "required": [
+          "user_context"
+        ],
+        "properties": {
+          "version": {
+            "type": "string",
+            "description": "The version of the Whitney webhook payload contract"
+          },
+          "event": {
+            "type": "string",
+            "description": "The Whitney event name (e.g. auth_flow.checkpoint)"
+          },
+          "account_sid": {
+            "type": "string",
+            "description": "The Twilio account SID associated with the login"
+          },
+          "node_id": {
+            "type": "string",
+            "description": "The Whitney auth flow node identifier for this action"
+          },
+          "action_id": {
+            "type": "string",
+            "description": "Whitney's identifier for this action invocation"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Unix timestamp (seconds) of the login event"
+          },
+          "oauth": {
+            "$ref": "#/components/schemas/iam.v1.PostLoginActionOAuthContext"
+          },
+          "acr": {
+            "type": "string",
+            "description": "The authentication context class reference the login satisfied"
+          },
+          "completed_factors": {
+            "type": "array",
+            "description": "The authentication factors the user completed, as RFC 8176 authentication method reference values (e.g. pwd, otp, mfa)",
+            "items": {
+              "type": "string"
+            }
+          },
+          "user_context": {
+            "$ref": "#/components/schemas/iam.v1.PostLoginActionUserContext"
+          },
+          "request_context": {
+            "$ref": "#/components/schemas/iam.v1.PostLoginActionRequestContext"
+          }
+        }
+      },
+      "iam.v1.PostLoginActionTokenClaims": {
+        "type": "object",
+        "description": "Custom claims to attach to the id_token or access_token",
+        "properties": {
+          "custom_claims": {
+            "type": "object",
+            "description": "Map of custom claim name to value",
+            "additionalProperties": true
+          }
+        }
+      },
+      "iam.v1.PostLoginActionResponse": {
+        "type": "object",
+        "description": "The verdict UAS returns for a Whitney post-login action",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Whether the login should be allowed or denied",
+            "enum": [
+              "allow",
+              "deny"
+            ]
+          },
+          "id_token": {
+            "$ref": "#/components/schemas/iam.v1.PostLoginActionTokenClaims"
+          },
+          "access_token": {
+            "$ref": "#/components/schemas/iam.v1.PostLoginActionTokenClaims"
+          },
+          "reason": {
+            "type": "string",
+            "description": "The customer-facing message explaining why the login was denied. Present only when action is deny"
+          }
+        }
+      },
+      "iam.v1.SubaccountBatchWorkflowType": {
+        "type": "string",
+        "enum": [
+          "BULK_SUBACCOUNT_SUSPEND",
+          "BULK_SUBACCOUNT_UNSUSPEND",
+          "BULK_SUBACCOUNT_CLOSE"
+        ],
+        "example": "BULK_SUBACCOUNT_SUSPEND"
+      },
+      "iam.v1.SubaccountBatchStatus": {
+        "type": "string",
+        "enum": [
+          "SCHEDULED",
+          "PROCESSING",
+          "COMPLETED",
+          "FAILED",
+          "CANCELLED"
+        ],
+        "example": "PROCESSING"
+      },
+      "iam.v1.SubaccountBatch": {
+        "type": "object",
+        "required": [
+          "batchId",
+          "accountId",
+          "workflowType",
+          "status",
+          "actorUserId",
+          "dateCreated",
+          "dateUpdated"
+        ],
+        "properties": {
+          "batchId": {
+            "type": "string",
+            "minLength": 40,
+            "maxLength": 40,
+            "pattern": "^iam_operation_[0-9a-hjkmnp-tv-z]{26}$",
+            "description": "The unique identifier for this batch operation, also used as the public Job ID.",
+            "example": "iam_operation_00000000000000000000000000"
+          },
+          "accountId": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^AC[0-9a-f]{32}$",
+            "description": "The ID of the parent account that owns this batch.",
+            "example": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          "workflowType": {
+            "$ref": "#/components/schemas/iam.v1.SubaccountBatchWorkflowType"
+          },
+          "status": {
+            "$ref": "#/components/schemas/iam.v1.SubaccountBatchStatus"
+          },
+          "actorUserId": {
+            "type": "string",
+            "minLength": 34,
+            "maxLength": 34,
+            "pattern": "^US[0-9a-f]{32}$",
+            "description": "The ID of the user who submitted the batch.",
+            "example": "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          "actorUserEmail": {
+            "type": "string",
+            "nullable": true,
+            "description": "The email of the user who submitted the batch.",
+            "example": "someone@example.com"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "description": "The total number of subaccounts in the batch.",
+            "example": 250
+          },
+          "successCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "description": "The number of subaccounts processed successfully.",
+            "example": 248
+          },
+          "failureCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "description": "The number of subaccounts that failed processing.",
+            "example": 2
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date the batch was submitted, given in RFC 3339 format.",
+            "example": "2026-07-27T12:00:00Z"
+          },
+          "dateUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date the batch was last updated, given in RFC 3339 format.",
+            "example": "2026-07-27T12:05:00Z"
+          },
+          "dateCompleted": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "The date the batch reached a terminal state, given in RFC 3339 format.",
+            "example": "2026-07-27T12:10:00Z"
+          }
+        }
+      },
+      "iam.v1.SubaccountBatchAccepted": {
+        "type": "object",
+        "required": [
+          "batchId"
+        ],
+        "properties": {
+          "batchId": {
+            "type": "string",
+            "minLength": 40,
+            "maxLength": 40,
+            "pattern": "^iam_operation_[0-9a-hjkmnp-tv-z]{26}$",
+            "description": "The generated batch identifier, also used as the public Job ID.",
+            "example": "iam_operation_00000000000000000000000000"
+          }
+        }
+      },
+      "iam.v1.CreateSubaccountBatchRequest": {
+        "type": "object",
+        "required": [
+          "workflowType",
+          "subaccountIds"
+        ],
+        "properties": {
+          "workflowType": {
+            "$ref": "#/components/schemas/iam.v1.SubaccountBatchWorkflowType"
+          },
+          "subaccountIds": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1000,
+            "description": "The subaccount IDs to act on. A maximum of 1000 may be submitted per batch.",
+            "items": {
+              "type": "string",
+              "minLength": 34,
+              "maxLength": 34,
+              "pattern": "^AC[0-9a-f]{32}$"
+            },
+            "example": [
+              "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "ACbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            ]
+          }
+        }
+      },
+      "iam.v1.BatchDownloadUrl": {
+        "type": "object",
+        "required": [
+          "downloadUrl",
+          "expiresAt"
+        ],
+        "properties": {
+          "downloadUrl": {
+            "type": "string",
+            "description": "A pre-signed, time-limited S3 URL for the CSV. The lifetime is short and server-configured; read `expiresAt` rather than assuming a fixed duration.",
+            "example": "https://com-twilio-iam-prod-us1-icp-subaccount-batches.s3.amazonaws.com/results/iam_operation_00000000000000000000000000.csv?X-Amz-Signature=..."
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time the pre-signed URL stops being valid, given in RFC 3339 format.",
+            "example": "2026-07-15T14:30:00Z"
+          }
+        }
       }
     }
   },
@@ -2144,8 +2811,6 @@
   },
   "openapi": "3.0.1",
   "paths": {
-    "/v1/Accounts": {},
-    "/v1/Subaccounts": {},
     "/v1/Keys": {
       "servers": [
         {
@@ -2471,7 +3136,6 @@
                   },
                   "KeyType": {
                     "type": "string",
-                    "$ref": "#/components/schemas/new_key_enum_keytype",
                     "description": "The \\`KeyType\\` form parameter is used to specify the type of key you want to create.\n\n**Default Behavior**: If \\`KeyType\\` is not specified, the API will generate a standard key.\n\n**Restricted Key**: If \\`KeyType\\` is set to \\`restricted\\`, the API will create a new restricted key. In this case, a policy object is required to define the permissions."
                   },
                   "Policy": {
@@ -3080,33 +3744,6 @@
         }
       }
     },
-    "/v1/Accounts/Search": {},
-    "/v1/Accounts/{accountSid}/Roles": {},
-    "/v1/Accounts/Stats": {},
-    "/v1/Users/Self": {},
-    "/v1/Users/EmailChange/Initiate": {},
-    "/v1/Users/EmailChange/Verify": {},
-    "/v1/Users/EmailChange/Resend": {},
-    "/v1/Users/OneConsoleProvisioningStatus": {},
-    "/v1/Users/Mfa/ChallengeMethod": {},
-    "/v1/Users/Mfa/PhoneNumber": {},
-    "/v1/Users/Mfa/VerifyInitialTotpToken": {},
-    "/v1/Users/Mfa/AddTotpFactor": {},
-    "/v1/Users/Mfa/DeleteTotpFactor": {},
-    "/v1/Users/Mfa/RegenerateRecoveryToken": {},
-    "/v1/Users/Mfa/InvalidateRememberedBrowsers": {},
-    "/v1/Operations/{operationId}": {},
-    "/v1/Operations/{operationId}/ChildOperations": {},
-    "/v1/Organizations/Info": {},
-    "/v1/Organizations/Features": {},
-    "/v1/Organizations/Domains": {},
-    "/v1/Organizations/Domains/{domainSid}": {},
-    "/v1/Organizations/Domains/Limit": {},
-    "/v1/Organizations/ManagedUsers": {},
-    "/v1/Organizations/ManagedUsers/{userSid}": {},
-    "/v1/Organizations/ExternalUsers": {},
-    "/v1/Organizations/ExternalUsers/{userSid}": {},
-    "/v1/Organizations/ImportUsers": {},
     "/v1/Account/OAuthApps/{sid}": {
       "servers": [
         {
@@ -3449,32 +4086,6 @@
         }
       }
     },
-    "/v1/Account/OAuthApps/{sid}/secret": {
-      "servers": [
-        {
-          "url": "https://iam.twilio.com"
-        }
-      ]
-    },
-    "/v1/Organization/OAuthApps/{sid}/secret": {
-      "servers": [
-        {
-          "url": "https://iam.twilio.com"
-        }
-      ]
-    },
-    "/v1/Organization/OAuthApps/image/presigned-url": {
-      "servers": [
-        {
-          "url": "https://iam.twilio.com"
-        }
-      ]
-    },
-    "/v1/Organizations/InvitedAccounts": {},
-    "/v1/Organizations/InvitedAccounts/Limit": {},
-    "/v1/Organizations/ImportUsers/EligibleUsers/Count": {},
-    "/v1/console/mfa/v3/device/verify": {},
-    "/v1/console/mfa/v3/recovery-code": {},
     "/v1/Account/OAuthApps": {
       "servers": [
         {
@@ -3630,19 +4241,7 @@
           }
         }
       }
-    },
-    "/v1/Organizations/InvitedUsers": {},
-    "/v1/Organizations/ManagedAccounts/{accountSid}/ChangeOwner": {},
-    "/v1/Organizations/ManagedAccounts/{accountSid}/Organization": {},
-    "/v1/Users/SendPasswordResetEmail": {},
-    "/v1/Accounts/ChangeOwner": {},
-    "/v1/Accounts/Invitations": {},
-    "/v1/console/api/ipam/acr_list": {},
-    "/v1/console/api/ipam/add_ip": {},
-    "/v1/console/api/ipam/edit_ip": {},
-    "/v1/console/api/ipam/remove_ip": {},
-    "/v1/console/api/ipam/set_ipam_status": {},
-    "/v1/Authorize": {}
+    }
   },
   "servers": [
     {
@@ -3664,6 +4263,9 @@
     },
     {
       "name": "IamV1Index"
+    },
+    {
+      "name": "IamV1Jwks"
     },
     {
       "name": "IamV1NewApiKey"

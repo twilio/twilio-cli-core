@@ -236,7 +236,7 @@
           "id": {
             "type": "string",
             "description": "Conversation ID.",
-            "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+            "example": "conv_conversation_00000000000000000000000001"
           },
           "accountId": {
             "type": "string",
@@ -246,15 +246,10 @@
           "configurationId": {
             "type": "string",
             "description": "Configuration ID.",
-            "example": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2"
+            "example": "conv_configuration_00000000000000000000000001"
           },
           "status": {
-            "type": "string",
-            "enum": [
-              "ACTIVE",
-              "INACTIVE",
-              "CLOSED"
-            ],
+            "$ref": "#/components/schemas/conversations.v2.conversation_status",
             "description": "Conversation status.",
             "example": "ACTIVE"
           },
@@ -289,18 +284,12 @@
               },
               "description": {
                 "type": "string",
+                "maxLength": 512,
                 "description": "Human-readable description for the Configuration.",
                 "example": "Customer Support Configuration for handling all inbound customer inquiries"
               },
               "conversationGroupingType": {
-                "type": "string",
-                "enum": [
-                  "GROUP_BY_PROFILE",
-                  "GROUP_BY_PARTICIPANT_ADDRESSES",
-                  "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
-                ],
-                "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
-                "example": "GROUP_BY_PROFILE"
+                "$ref": "#/components/schemas/conversations.v2.conversation_grouping_type"
               },
               "memoryStoreId": {
                 "type": "string",
@@ -352,9 +341,9 @@
           }
         },
         "example": {
-          "id": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+          "id": "conv_conversation_00000000000000000000000001",
           "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-          "configurationId": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2",
+          "configurationId": "conv_configuration_00000000000000000000000001",
           "status": "ACTIVE",
           "name": "Customer Support - Multi-channel",
           "createdAt": "2023-07-01T12:00:00Z",
@@ -366,19 +355,18 @@
         "required": [
           "id",
           "conversationId",
-          "accountId",
-          "name"
+          "accountId"
         ],
         "properties": {
           "id": {
             "type": "string",
             "description": "Participant ID.",
-            "example": "conv_participant_01k1etx3jbfx88476ccja0889c"
+            "example": "conv_participant_00000000000000000000000001"
           },
           "conversationId": {
             "type": "string",
             "description": "Conversation ID.",
-            "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+            "example": "conv_conversation_00000000000000000000000001"
           },
           "accountId": {
             "type": "string",
@@ -387,18 +375,12 @@
           },
           "name": {
             "type": "string",
+            "nullable": true,
             "description": "Participant display name.",
             "example": "Dana S."
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "HUMAN_AGENT",
-              "CUSTOMER",
-              "AI_AGENT",
-              "AGENT",
-              "UNKNOWN"
-            ],
+            "$ref": "#/components/schemas/conversations.v2.participant_type",
             "description": "Type of Participant in the Conversation.",
             "example": "CUSTOMER"
           },
@@ -428,8 +410,8 @@
           }
         },
         "example": {
-          "id": "conv_participant_01k1etx3jbfx88476ccja0889c",
-          "conversationId": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+          "id": "conv_participant_00000000000000000000000001",
+          "conversationId": "conv_conversation_00000000000000000000000001",
           "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
           "name": "Dana",
           "type": "CUSTOMER",
@@ -460,14 +442,7 @@
         ],
         "properties": {
           "channel": {
-            "type": "string",
-            "enum": [
-              "VOICE",
-              "SMS",
-              "RCS",
-              "WHATSAPP",
-              "CHAT"
-            ],
+            "$ref": "#/components/schemas/conversations.v2.channel",
             "description": "The channel for Communication.",
             "example": "SMS"
           },
@@ -501,12 +476,12 @@
           "id": {
             "type": "string",
             "description": "Communication ID.",
-            "example": "conv_communication_01k1etk2y5f1y9fpe2epfdtvv2"
+            "example": "conv_communication_00000000000000000000000001"
           },
           "conversationId": {
             "type": "string",
             "description": "Conversation ID.",
-            "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+            "example": "conv_conversation_00000000000000000000000001"
           },
           "accountId": {
             "type": "string",
@@ -550,15 +525,8 @@
                   "type": "object",
                   "properties": {
                     "deliveryStatus": {
-                      "type": "string",
-                      "description": "Delivery status of the Communication to this recipient.",
-                      "enum": [
-                        "INITIATED",
-                        "IN_PROGRESS",
-                        "DELIVERED",
-                        "COMPLETED",
-                        "FAILED"
-                      ]
+                      "$ref": "#/components/schemas/conversations.v2.recipient_delivery_status",
+                      "description": "Delivery status of the Communication to this recipient."
                     }
                   }
                 }
@@ -585,13 +553,13 @@
           }
         },
         "example": {
-          "id": "conv_communication_01k1etk2y5f1y9fpe2epfdtvv2",
-          "conversationId": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+          "id": "conv_communication_00000000000000000000000001",
+          "conversationId": "conv_conversation_00000000000000000000000001",
           "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
           "author": {
             "address": "+18005550100",
             "channel": "SMS",
-            "participantId": "conv_participant_01k1etx3jbfx88476ccja0889c"
+            "participantId": "conv_participant_00000000000000000000000001"
           },
           "content": {
             "type": "TEXT",
@@ -602,7 +570,7 @@
             {
               "address": "+18005550102",
               "channel": "SMS",
-              "participantId": "conv_participant_02m2fuy4lcgy99587ddkb1990d",
+              "participantId": "conv_participant_00000000000000000000000002",
               "deliveryStatus": "DELIVERED"
             }
           ],
@@ -623,27 +591,20 @@
             "example": "+18005550100"
           },
           "channel": {
-            "type": "string",
-            "enum": [
-              "VOICE",
-              "SMS",
-              "RCS",
-              "WHATSAPP",
-              "CHAT"
-            ],
+            "$ref": "#/components/schemas/conversations.v2.channel",
             "description": "Channel type for the Participant address.",
             "example": "SMS"
           },
           "participantId": {
             "type": "string",
             "description": "Participant ID associated with this address.",
-            "example": "conv_participant_01k1etx3jbfx88476ccja0889c"
+            "example": "conv_participant_00000000000000000000000001"
           }
         },
         "example": {
           "address": "+18005550100",
           "channel": "SMS",
-          "participantId": "conv_participant_01k1etx3jbfx88476ccja0889c"
+          "participantId": "conv_participant_00000000000000000000000001"
         }
       },
       "conversations.v2.send_address": {
@@ -659,26 +620,20 @@
             "example": "+18005550100"
           },
           "channel": {
-            "type": "string",
-            "enum": [
-              "SMS",
-              "RCS",
-              "WHATSAPP",
-              "CHAT"
-            ],
+            "$ref": "#/components/schemas/conversations.v2.send_channel",
             "description": "Channel type for sending communications. Note: VOICE is receive-only and not supported for send operations.",
             "example": "SMS"
           },
           "participantId": {
             "type": "string",
             "description": "Optional Participant ID. If omitted, the system will resolve or create the participant based on address and channel.",
-            "example": "conv_participant_01k1etx3jbfx88476ccja0889c"
+            "example": "conv_participant_00000000000000000000000001"
           }
         },
         "example": {
           "address": "+18005550100",
           "channel": "SMS",
-          "participantId": "conv_participant_01k1etx3jbfx88476ccja0889c"
+          "participantId": "conv_participant_00000000000000000000000001"
         }
       },
       "conversations.v2.content_text": {
@@ -825,7 +780,7 @@
           "participantId": {
             "type": "string",
             "description": "Participant ID to resolve address from.",
-            "example": "conv_participant_01k1etx3jbfx88476ccja0889e"
+            "example": "conv_participant_00000000000000000000000000"
           },
           "address": {
             "type": "string",
@@ -833,14 +788,7 @@
             "example": "+15551234567"
           },
           "channel": {
-            "type": "string",
-            "enum": [
-              "VOICE",
-              "SMS",
-              "RCS",
-              "WHATSAPP",
-              "CHAT"
-            ],
+            "$ref": "#/components/schemas/conversations.v2.channel",
             "description": "Channel type for address resolution."
           }
         }
@@ -941,7 +889,7 @@
           "id": {
             "type": "string",
             "description": "Unique identifier for this Action.",
-            "example": "conv_action_01k1etx3jbfx88476ccja0889e"
+            "example": "conv_action_00000000000000000000000000"
           },
           "type": {
             "type": "string",
@@ -949,19 +897,14 @@
             "example": "SEND_MESSAGE"
           },
           "status": {
-            "type": "string",
-            "enum": [
-              "PENDING",
-              "COMPLETED",
-              "FAILED"
-            ],
+            "$ref": "#/components/schemas/conversations.v2.action_status",
             "description": "Current status of the Action.\n- PENDING: Action accepted, awaiting downstream confirmation\n- COMPLETED: Downstream backend confirmed the action\n- FAILED: Downstream backend reported a failure\n",
             "example": "PENDING"
           },
           "conversationId": {
             "type": "string",
             "description": "The conversation this action belongs to.",
-            "example": "conv_conversation_01k1etx3jbfx88476ccja0889c"
+            "example": "conv_conversation_00000000000000000000000000"
           },
           "related": {
             "type": "object",
@@ -971,7 +914,7 @@
             "description": "Named identifiers from downstream. For SEND_MESSAGE:\n- messageSid: The downstream message SID (present when PENDING or COMPLETED)\n- communicationId: The Communication ID (present when COMPLETED)\n",
             "example": {
               "messageSid": "SM1234567890abcdef1234567890abcdef",
-              "communicationId": "conv_communication_01k1etx3jbfx88476ccja0889c"
+              "communicationId": "conv_communication_00000000000000000000000000"
             }
           },
           "createdAt": {
@@ -994,16 +937,609 @@
           }
         },
         "example": {
-          "id": "conv_action_01k1etx3jbfx88476ccja0889e",
+          "id": "conv_action_00000000000000000000000000",
           "type": "SEND_MESSAGE",
           "status": "COMPLETED",
-          "conversationId": "conv_conversation_01k1etx3jbfx88476ccja0889c",
+          "conversationId": "conv_conversation_00000000000000000000000000",
           "related": {
             "messageSid": "SM1234567890abcdef1234567890abcdef",
-            "communicationId": "conv_communication_01k1etx3jbfx88476ccja0889c"
+            "communicationId": "conv_communication_00000000000000000000000000"
           },
           "createdAt": "2026-03-30T10:30:00Z",
           "completedAt": "2026-03-30T10:30:02Z"
+        }
+      },
+      "conversations.v2.start_conversation_participant": {
+        "type": "object",
+        "description": "A party on the Conversation. The dispatched `action` refers to Participants by `name`.",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Display name for this Participant, and the handle the action's `from` and `to` select it by. Must be unique within the request.",
+            "example": "Alice"
+          },
+          "type": {
+            "$ref": "#/components/schemas/conversations.v2.participant_type",
+            "description": "Type of Participant in the Conversation.",
+            "example": "CUSTOMER"
+          },
+          "profileId": {
+            "type": "string",
+            "description": "Profile to associate with this Participant, instead of resolving one from the addresses.",
+            "example": "mem_profile_00000000000000000000000000"
+          },
+          "addresses": {
+            "type": "array",
+            "description": "Channel addresses this Participant can be reached on.",
+            "items": {
+              "$ref": "#/components/schemas/conversations.v2.start_conversation_address"
+            }
+          }
+        },
+        "example": {
+          "name": "Alice",
+          "type": "CUSTOMER",
+          "addresses": [
+            {
+              "channel": "SMS",
+              "address": "+18005550199"
+            }
+          ]
+        }
+      },
+      "conversations.v2.start_conversation_address": {
+        "type": "object",
+        "description": "A channel address for a Participant on the Conversation being started.",
+        "required": [
+          "channel",
+          "address"
+        ],
+        "properties": {
+          "channel": {
+            "$ref": "#/components/schemas/conversations.v2.channel",
+            "description": "Channel this address belongs to.",
+            "example": "SMS"
+          },
+          "address": {
+            "type": "string",
+            "description": "Address formatted for the channel: E.164 for SMS/VOICE, `whatsapp:` or `rcs:` prefixed for those channels, a customer-defined string for CHAT.",
+            "example": "+18005550100"
+          }
+        },
+        "example": {
+          "channel": "SMS",
+          "address": "+18005550100"
+        }
+      },
+      "conversations.v2.start_conversation_participant_selector": {
+        "type": "object",
+        "description": "Points at one entry in `participants` by its `name`.",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The `name` of a Participant declared in `participants`.",
+            "example": "Alice"
+          }
+        },
+        "example": {
+          "name": "Alice"
+        }
+      },
+      "conversations.v2.start_conversation_configuration": {
+        "type": "object",
+        "description": "Per-Conversation overrides applied on top of the Configuration named by `configurationId`.",
+        "properties": {
+          "statusCallbacks": {
+            "type": "array",
+            "description": "Webhook configurations for Conversation-level events on this Conversation.",
+            "maxItems": 2,
+            "items": {
+              "$ref": "#/components/schemas/conversations.v2.status_callback_config"
+            }
+          }
+        },
+        "example": {
+          "statusCallbacks": [
+            {
+              "url": "https://webhook.example.com/conversation/status",
+              "method": "POST"
+            }
+          ]
+        }
+      },
+      "conversations.v2.start_conversation_send_message_action": {
+        "title": "StartConversationSendMessageAction",
+        "type": "object",
+        "description": "Sends a message on the Conversation being started.",
+        "required": [
+          "type",
+          "channel",
+          "payload"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Action type discriminator. Accepted values: SEND_MESSAGE.",
+            "enum": [
+              "SEND_MESSAGE"
+            ],
+            "example": "SEND_MESSAGE"
+          },
+          "channel": {
+            "$ref": "#/components/schemas/conversations.v2.send_channel",
+            "description": "Channel the message is sent on.",
+            "example": "SMS"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_send_message_payload"
+          }
+        },
+        "example": {
+          "type": "SEND_MESSAGE",
+          "channel": "SMS",
+          "payload": {
+            "content": {
+              "text": "Your order has shipped!"
+            }
+          }
+        }
+      },
+      "conversations.v2.start_conversation_send_message_payload": {
+        "type": "object",
+        "description": "Message to send on the Conversation being started.",
+        "required": [
+          "content"
+        ],
+        "properties": {
+          "from": {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_participant_selector",
+            "description": "Sender. Defaults to the roster's only agent-typed Participant."
+          },
+          "to": {
+            "type": "array",
+            "description": "The single recipient (1:1). Defaults to the roster's only `CUSTOMER` Participant.",
+            "maxItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/conversations.v2.start_conversation_participant_selector"
+            }
+          },
+          "content": {
+            "$ref": "#/components/schemas/conversations.v2.send_content",
+            "description": "Message content to send."
+          },
+          "channelSettings": {
+            "$ref": "#/components/schemas/conversations.v2.channel_settings"
+          }
+        },
+        "example": {
+          "content": {
+            "text": "Your order has shipped!"
+          }
+        }
+      },
+      "conversations.v2.start_conversation_start_flow_action": {
+        "title": "StartConversationStartFlowAction",
+        "type": "object",
+        "description": "Hands the Conversation being started to a Studio Flow.",
+        "required": [
+          "type",
+          "payload"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Action type discriminator. Accepted values: START_FLOW.",
+            "enum": [
+              "START_FLOW"
+            ],
+            "example": "START_FLOW"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_start_flow_payload"
+          }
+        },
+        "example": {
+          "type": "START_FLOW",
+          "payload": {
+            "flowId": "FW00000000000000000000000000000000"
+          }
+        }
+      },
+      "conversations.v2.start_conversation_start_flow_payload": {
+        "type": "object",
+        "description": "Studio Flow to execute for the Conversation being started.",
+        "required": [
+          "flowId"
+        ],
+        "properties": {
+          "flowId": {
+            "type": "string",
+            "description": "Studio Flow to execute.",
+            "pattern": "^FW[0-9a-fA-F]{32}$",
+            "example": "FW00000000000000000000000000000000"
+          },
+          "from": {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_participant_selector",
+            "description": "Actor the Flow runs as. Defaults to the roster's only agent-typed Participant."
+          },
+          "to": {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_participant_selector",
+            "description": "Actor the Flow targets. Defaults to the roster's only `CUSTOMER` Participant."
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Key/value pairs passed through to the Studio Flow execution.",
+            "example": {
+              "orderNumber": "12345"
+            }
+          }
+        },
+        "example": {
+          "flowId": "FW00000000000000000000000000000000",
+          "parameters": {
+            "orderNumber": "12345"
+          }
+        }
+      },
+      "conversations.v2.start_conversation_call_action": {
+        "title": "StartConversationCallAction",
+        "type": "object",
+        "description": "Places an outbound call on the Conversation being started.",
+        "required": [
+          "type",
+          "payload"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Action type discriminator. Accepted values: CALL.",
+            "enum": [
+              "CALL"
+            ],
+            "example": "CALL"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_call_payload"
+          }
+        },
+        "example": {
+          "type": "CALL",
+          "payload": {
+            "handler": {
+              "type": "AGENT_CONNECT",
+              "relayUrl": "wss://example.ngrok.io/agent_connect_connection_XXXX"
+            }
+          }
+        }
+      },
+      "conversations.v2.start_conversation_call_payload": {
+        "type": "object",
+        "description": "Outbound call to place for the Conversation being started.",
+        "required": [
+          "handler"
+        ],
+        "properties": {
+          "handler": {
+            "$ref": "#/components/schemas/conversations.v2.agent_connect_handler",
+            "description": "Where the answered call's instructions come from."
+          },
+          "from": {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_participant_selector",
+            "description": "Caller the call is placed as. Defaults to the roster's only agent-typed Participant."
+          },
+          "to": {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_participant_selector",
+            "description": "Party the call is placed to. Defaults to the roster's only `CUSTOMER` Participant."
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Key/value pairs passed through to the handler that answers the call.",
+            "example": {
+              "campaignId": "spring-2026"
+            }
+          },
+          "callSettings": {
+            "$ref": "#/components/schemas/conversations.v2.call_settings"
+          }
+        },
+        "example": {
+          "handler": {
+            "type": "AGENT_CONNECT",
+            "relayUrl": "wss://example.ngrok.io/agent_connect_connection_XXXX",
+            "greeting": {
+              "text": "Hi, calling about your order."
+            }
+          }
+        }
+      },
+      "conversations.v2.agent_connect_handler": {
+        "type": "object",
+        "description": "Connects the answered call to an AI agent over ConversationRelay.",
+        "required": [
+          "type",
+          "relayUrl"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Handler type. Accepted values: AGENT_CONNECT.",
+            "enum": [
+              "AGENT_CONNECT"
+            ],
+            "example": "AGENT_CONNECT"
+          },
+          "greeting": {
+            "$ref": "#/components/schemas/conversations.v2.send_content",
+            "description": "Spoken as the relay's welcome greeting. Not `content` - no Communication is delivered."
+          },
+          "relayUrl": {
+            "type": "string",
+            "description": "Relay endpoint the answered call connects to. This is what addresses the agent, so it is supplied whole.",
+            "pattern": "^wss://.+",
+            "maxLength": 2048,
+            "example": "wss://example.ngrok.io/agent_connect_connection_XXXX"
+          },
+          "relay": {
+            "$ref": "#/components/schemas/conversations.v2.relay_settings"
+          }
+        },
+        "example": {
+          "type": "AGENT_CONNECT",
+          "relayUrl": "wss://example.ngrok.io/agent_connect_connection_XXXX",
+          "greeting": {
+            "text": "Hi, calling about your order."
+          }
+        }
+      },
+      "conversations.v2.relay_settings": {
+        "type": "object",
+        "description": "Per-call ConversationRelay session settings. Strings rather than enums because Voice owns the accepted values.",
+        "properties": {
+          "language": {
+            "type": "string",
+            "description": "BCP-47 language tag for the session.",
+            "example": "en-US"
+          },
+          "ttsProvider": {
+            "type": "string",
+            "description": "Text-to-speech provider for the session.",
+            "example": "ElevenLabs"
+          },
+          "voice": {
+            "type": "string",
+            "description": "Provider-specific voice identifier.",
+            "example": "UgBBYS2sOqTuMpoF3BR0"
+          },
+          "interruptible": {
+            "type": "string",
+            "description": "Whether and how the caller may interrupt the agent.",
+            "example": "speech"
+          }
+        },
+        "example": {
+          "language": "en-US",
+          "ttsProvider": "ElevenLabs",
+          "voice": "UgBBYS2sOqTuMpoF3BR0",
+          "interruptible": "speech"
+        }
+      },
+      "conversations.v2.call_settings": {
+        "type": "object",
+        "description": "Curated passthrough to Twilio Voice POST /Calls.",
+        "properties": {
+          "machineDetection": {
+            "type": "string",
+            "description": "Answering-machine detection. `Enable` or `DetectMessageEnd`.",
+            "example": "DetectMessageEnd"
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Seconds to let the call ring before giving up.",
+            "example": 30
+          }
+        },
+        "example": {
+          "machineDetection": "DetectMessageEnd",
+          "timeout": 30
+        }
+      },
+      "conversations.v2.start_conversation_action_request": {
+        "description": "The single action dispatched once the Conversation is created, selected by `type`.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_send_message_action"
+          },
+          {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_start_flow_action"
+          },
+          {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_call_action"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "SEND_MESSAGE": "#/components/schemas/conversations.v2.start_conversation_send_message_action",
+            "START_FLOW": "#/components/schemas/conversations.v2.start_conversation_start_flow_action",
+            "CALL": "#/components/schemas/conversations.v2.start_conversation_call_action"
+          }
+        },
+        "example": {
+          "type": "SEND_MESSAGE",
+          "channel": "SMS",
+          "payload": {
+            "content": {
+              "text": "Your order has shipped!"
+            }
+          }
+        }
+      },
+      "conversations.v2.start_conversation_request": {
+        "type": "object",
+        "description": "Creates a Conversation from a Participant roster and dispatches one action on it.",
+        "required": [
+          "configurationId",
+          "participants",
+          "action"
+        ],
+        "properties": {
+          "configurationId": {
+            "type": "string",
+            "description": "Configuration governing grouping, timeouts, and channel configuration.",
+            "example": "conv_configuration_00000000000000000000000000"
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable name for the Conversation.",
+            "example": "Order updates"
+          },
+          "participants": {
+            "type": "array",
+            "description": "Everyone taking part. The dispatched action selects its actors from this roster.",
+            "minItems": 1,
+            "maxItems": 50,
+            "items": {
+              "$ref": "#/components/schemas/conversations.v2.start_conversation_participant"
+            }
+          },
+          "action": {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_action_request",
+            "description": "The action to dispatch once the Conversation is created."
+          },
+          "configuration": {
+            "$ref": "#/components/schemas/conversations.v2.start_conversation_configuration",
+            "description": "Per-Conversation overrides applied on top of the Configuration."
+          }
+        },
+        "example": {
+          "configurationId": "conv_configuration_00000000000000000000000000",
+          "name": "Order updates",
+          "participants": [
+            {
+              "name": "Acme",
+              "type": "AGENT",
+              "addresses": [
+                {
+                  "channel": "SMS",
+                  "address": "+18005550100"
+                }
+              ]
+            },
+            {
+              "name": "Alice",
+              "type": "CUSTOMER",
+              "addresses": [
+                {
+                  "channel": "SMS",
+                  "address": "+18005550199"
+                }
+              ]
+            }
+          ],
+          "action": {
+            "type": "SEND_MESSAGE",
+            "channel": "SMS",
+            "payload": {
+              "content": {
+                "text": "Your order has shipped!"
+              }
+            }
+          }
+        }
+      },
+      "conversations.v2.update_start_conversation_action_request": {
+        "type": "object",
+        "description": "Reports the outcome of an outbound call back to its Action.",
+        "required": [
+          "callStatus"
+        ],
+        "properties": {
+          "callStatus": {
+            "$ref": "#/components/schemas/conversations.v2.call_status",
+            "description": "Outcome of the outbound call."
+          },
+          "callId": {
+            "type": "string",
+            "description": "The Call SID of the outbound call.",
+            "pattern": "^CA[0-9a-fA-F]{32}$",
+            "example": "CA00000000000000000000000000000000"
+          }
+        },
+        "example": {
+          "callStatus": "ANSWERED",
+          "callId": "CA00000000000000000000000000000000"
+        }
+      },
+      "conversations.v2.start_conversation_action": {
+        "type": "object",
+        "description": "The Action created by the StartConversation action. Type-less: the created\nConversation and downstream channel identifiers live in the `related` map (not at\nthe top level) so they remain valid across the full lifecycle.\n",
+        "required": [
+          "id",
+          "status",
+          "createdAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for this Action.",
+            "example": "conv_action_00000000000000000000000000"
+          },
+          "status": {
+            "$ref": "#/components/schemas/conversations.v2.action_status",
+            "description": "Current status of the Action.\n- PENDING: Action accepted; Conversation creation and dispatch in progress\n- COMPLETED: Downstream backend confirmed dispatch\n- FAILED: Conversation creation or dispatch reported a failure (see failureReason)\n",
+            "example": "PENDING"
+          },
+          "related": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Named identifiers, populated as the asynchronous work completes and varying by action type:\n- conversationId: The created Conversation\n- channelId: The downstream channel identifier, for SEND_MESSAGE\n- executionSid: The Studio Flow execution started for the Conversation, for START_FLOW\n- callId: The Call SID of the outbound call, for CALL and for START_FLOW once its Flow reports back\n\nAbsent from the 202 response (returned as an empty map).\n",
+            "example": {
+              "conversationId": "conv_conversation_00000000000000000000000000",
+              "channelId": "SM1234567890abcdef1234567890abcdef"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the Action was created.",
+            "example": "2026-03-30T10:30:00Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the Action was last updated.",
+            "example": "2026-03-30T10:30:02Z"
+          },
+          "completedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "Timestamp when the Action reached a terminal status. Null until the Action reaches one.",
+            "example": "2026-03-30T10:30:02Z"
+          },
+          "failureReason": {
+            "type": "string",
+            "nullable": true,
+            "description": "Human-readable failure reason. Null unless status is FAILED.",
+            "example": "Permission to send an SMS has not been enabled for the region indicated by the 'To' number"
+          }
+        },
+        "example": {
+          "id": "conv_action_00000000000000000000000000",
+          "status": "PENDING",
+          "related": {},
+          "createdAt": "2026-03-30T10:30:00Z",
+          "updatedAt": "2026-03-30T10:30:00Z"
         }
       },
       "conversations.v2.communication_endpoint": {
@@ -1013,7 +1549,7 @@
           "participantId": {
             "type": "string",
             "description": "Participant ID to resolve address from. When provided, Conversations looks up\nthe participant's registered addresses and selects based on channel.\n",
-            "example": "conv_participant_01k1etx3jbfx88476ccja0889e"
+            "example": "conv_participant_00000000000000000000000000"
           },
           "address": {
             "type": "string",
@@ -1021,19 +1557,13 @@
             "example": "+18005550100"
           },
           "channel": {
-            "type": "string",
-            "enum": [
-              "SMS",
-              "RCS",
-              "WHATSAPP",
-              "CHAT"
-            ],
+            "$ref": "#/components/schemas/conversations.v2.send_channel",
             "description": "Channel type. Required when participantId has multiple addresses or when using explicit address.",
             "example": "SMS"
           }
         },
         "example": {
-          "participantId": "conv_participant_01k1etx3jbfx88476ccja0889e",
+          "participantId": "conv_participant_00000000000000000000000000",
           "channel": "SMS"
         }
       },
@@ -1102,7 +1632,7 @@
           "id": {
             "type": "string",
             "description": "Configuration ID.",
-            "example": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2"
+            "example": "conv_configuration_00000000000000000000000001"
           },
           "displayName": {
             "type": "string",
@@ -1113,18 +1643,12 @@
           },
           "description": {
             "type": "string",
+            "maxLength": 512,
             "description": "Human-readable description for the Configuration. Allows spaces and special characters, typically limited to a paragraph of text. This serves as a descriptive field rather than just a name.",
             "example": "Customer Support Configuration for handling all inbound customer inquiries"
           },
           "conversationGroupingType": {
-            "type": "string",
-            "enum": [
-              "GROUP_BY_PROFILE",
-              "GROUP_BY_PARTICIPANT_ADDRESSES",
-              "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
-            ],
-            "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
-            "example": "GROUP_BY_PROFILE"
+            "$ref": "#/components/schemas/conversations.v2.conversation_grouping_type"
           },
           "memoryStoreId": {
             "type": "string",
@@ -1188,7 +1712,7 @@
           }
         },
         "example": {
-          "id": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2",
+          "id": "conv_configuration_00000000000000000000000001",
           "displayName": "Multi Channel Config",
           "description": "Configuration supporting SMS, WhatsApp, and RCS channels",
           "conversationGroupingType": "GROUP_BY_PROFILE",
@@ -1461,6 +1985,7 @@
         "properties": {
           "statusCallbacks": {
             "type": "array",
+            "nullable": true,
             "description": "List of webhook configurations for this conversation. Send an empty array to clear all callbacks and stop webhook delivery.",
             "maxItems": 20,
             "items": {
@@ -1503,14 +2028,7 @@
             "example": "proc_job_01h9d8r0vte3hz8tykdj329t7r"
           },
           "status": {
-            "type": "string",
-            "enum": [
-              "PENDING",
-              "RUNNING",
-              "CANCELLED",
-              "COMPLETED",
-              "FAILED"
-            ],
+            "$ref": "#/components/schemas/conversations.v2.operation_status_value",
             "description": "Current status of the operation.",
             "example": "COMPLETED"
           },
@@ -1622,6 +2140,100 @@
             "configurationId": "cfg_configuration_01h9d8r0vte3hz8tykdj329t7r"
           }
         }
+      },
+      "conversations.v2.conversation_status": {
+        "type": "string",
+        "enum": [
+          "ACTIVE",
+          "INACTIVE",
+          "CLOSED"
+        ],
+        "description": "Lifecycle status of a Conversation."
+      },
+      "conversations.v2.conversation_grouping_type": {
+        "type": "string",
+        "enum": [
+          "GROUP_BY_PROFILE",
+          "GROUP_BY_PARTICIPANT_ADDRESSES",
+          "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
+        ],
+        "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
+        "example": "GROUP_BY_PROFILE"
+      },
+      "conversations.v2.participant_type": {
+        "type": "string",
+        "enum": [
+          "HUMAN_AGENT",
+          "CUSTOMER",
+          "AI_AGENT",
+          "AGENT",
+          "UNKNOWN"
+        ],
+        "description": "Type of Participant in the Conversation."
+      },
+      "conversations.v2.channel": {
+        "type": "string",
+        "enum": [
+          "VOICE",
+          "SMS",
+          "RCS",
+          "WHATSAPP",
+          "CHAT",
+          "VIDEO"
+        ],
+        "description": "Channel type for a Communication address."
+      },
+      "conversations.v2.send_channel": {
+        "type": "string",
+        "enum": [
+          "SMS",
+          "RCS",
+          "WHATSAPP",
+          "CHAT"
+        ],
+        "description": "Channel type for sending a Communication. Note: VOICE is receive-only and not supported for send operations."
+      },
+      "conversations.v2.call_status": {
+        "type": "string",
+        "enum": [
+          "ANSWERED",
+          "BUSY",
+          "NO_ANSWER",
+          "FAILED",
+          "CANCELED"
+        ],
+        "description": "Outcome of an outbound call placed by a CALL StartConversation Action.",
+        "example": "ANSWERED"
+      },
+      "conversations.v2.recipient_delivery_status": {
+        "type": "string",
+        "enum": [
+          "INITIATED",
+          "IN_PROGRESS",
+          "DELIVERED",
+          "READ",
+          "COMPLETED",
+          "FAILED"
+        ],
+        "description": "Delivery status of a Communication to a recipient.\n- INITIATED: Communication is initiated to be sent at a future time\n- IN_PROGRESS: Communication is in the process of being sent\n- DELIVERED: Provider confirms the Communication has been delivered\n- READ: Recipient has read the Communication (channels that support read receipts, e.g. WhatsApp, RCS)\n- FAILED: Communication could not be sent or delivered\n- COMPLETED: Deprecated and unused. Never emitted; do not rely on this value.\n"
+      },
+      "conversations.v2.action_status": {
+        "type": "string",
+        "enum": [
+          "PENDING",
+          "COMPLETED",
+          "FAILED"
+        ],
+        "description": "Lifecycle status of an Action."
+      },
+      "conversations.v2.operation_status_value": {
+        "type": "string",
+        "enum": [
+          "PENDING",
+          "COMPLETED",
+          "FAILED"
+        ],
+        "description": "Lifecycle status of a long-running operation."
       }
     }
   },
@@ -1743,7 +2355,7 @@
                           "id": {
                             "type": "string",
                             "description": "Configuration ID.",
-                            "example": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2"
+                            "example": "conv_configuration_00000000000000000000000001"
                           },
                           "displayName": {
                             "type": "string",
@@ -1754,18 +2366,12 @@
                           },
                           "description": {
                             "type": "string",
+                            "maxLength": 512,
                             "description": "Human-readable description for the Configuration. Allows spaces and special characters, typically limited to a paragraph of text. This serves as a descriptive field rather than just a name.",
                             "example": "Customer Support Configuration for handling all inbound customer inquiries"
                           },
                           "conversationGroupingType": {
-                            "type": "string",
-                            "enum": [
-                              "GROUP_BY_PROFILE",
-                              "GROUP_BY_PARTICIPANT_ADDRESSES",
-                              "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
-                            ],
-                            "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
-                            "example": "GROUP_BY_PROFILE"
+                            "$ref": "#/components/schemas/conversations.v2.conversation_grouping_type"
                           },
                           "memoryStoreId": {
                             "type": "string",
@@ -1829,7 +2435,7 @@
                           }
                         },
                         "example": {
-                          "id": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2",
+                          "id": "conv_configuration_00000000000000000000000001",
                           "displayName": "Multi Channel Config",
                           "description": "Configuration supporting SMS, WhatsApp, and RCS channels",
                           "conversationGroupingType": "GROUP_BY_PROFILE",
@@ -1982,6 +2588,7 @@
                   },
                   "description": {
                     "type": "string",
+                    "maxLength": 512,
                     "description": "Human-readable description for the configuration.",
                     "example": "Customer Support Configuration for handling all inbound customer inquiries"
                   },
@@ -1992,7 +2599,7 @@
                       "GROUP_BY_PARTICIPANT_ADDRESSES",
                       "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
                     ],
-                    "description": "The strategy Conversation Orchestrator uses to assign communications to conversations.",
+                    "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
                     "example": "GROUP_BY_PROFILE"
                   },
                   "memoryStoreId": {
@@ -2073,10 +2680,7 @@
                           "default": "POST",
                           "enum": [
                             "POST",
-                            "GET",
-                            "PUT",
-                            "DELETE",
-                            "PATCH"
+                            "GET"
                           ],
                           "description": "The HTTP method used to invoke the webhook URL."
                         }
@@ -2100,6 +2704,24 @@
                     "default": false,
                     "description": "Whether memory extraction is enabled for conversations under this configuration. Defaults to false.",
                     "example": false
+                  },
+                  "conversationsV1Bridge": {
+                    "description": "Configuration for Conversations V1 bridge. When set, messaging channels route through Conversations V1. Use this to integrate with existing Conversations V1 applications.",
+                    "type": "object",
+                    "required": [
+                      "serviceId"
+                    ],
+                    "properties": {
+                      "serviceId": {
+                        "type": "string",
+                        "description": "The Conversations V1 Service SID (IS prefix). One configuration per V1 Service SID.",
+                        "pattern": "^IS[0-9a-f]{32}$",
+                        "example": "IS00000000000000000000000000000000"
+                      }
+                    },
+                    "example": {
+                      "serviceId": "IS00000000000000000000000000000000"
+                    }
                   }
                 }
               }
@@ -2187,7 +2809,7 @@
         }
       }
     },
-    "/v2/ControlPlane/Configurations/{Sid}": {
+    "/v2/ControlPlane/Configurations/{id}": {
       "servers": [
         {
           "url": "https://conversations.twilio.com"
@@ -2198,14 +2820,14 @@
       },
       "parameters": [
         {
-          "name": "Sid",
+          "name": "id",
           "in": "path",
           "required": true,
           "schema": {
             "type": "string"
           },
           "x-twilio": {
-            "shortDescription": "Configuration SID",
+            "shortDescription": "Configuration ID",
             "normalizeSid": true
           }
         }
@@ -2241,7 +2863,7 @@
                     "id": {
                       "type": "string",
                       "description": "Configuration ID.",
-                      "example": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_configuration_00000000000000000000000001"
                     },
                     "displayName": {
                       "type": "string",
@@ -2252,18 +2874,12 @@
                     },
                     "description": {
                       "type": "string",
+                      "maxLength": 512,
                       "description": "Human-readable description for the Configuration. Allows spaces and special characters, typically limited to a paragraph of text. This serves as a descriptive field rather than just a name.",
                       "example": "Customer Support Configuration for handling all inbound customer inquiries"
                     },
                     "conversationGroupingType": {
-                      "type": "string",
-                      "enum": [
-                        "GROUP_BY_PROFILE",
-                        "GROUP_BY_PARTICIPANT_ADDRESSES",
-                        "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
-                      ],
-                      "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
-                      "example": "GROUP_BY_PROFILE"
+                      "$ref": "#/components/schemas/conversations.v2.conversation_grouping_type"
                     },
                     "memoryStoreId": {
                       "type": "string",
@@ -2327,7 +2943,7 @@
                     }
                   },
                   "example": {
-                    "id": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "id": "conv_configuration_00000000000000000000000001",
                     "displayName": "Multi Channel Config",
                     "description": "Configuration supporting SMS, WhatsApp, and RCS channels",
                     "conversationGroupingType": "GROUP_BY_PROFILE",
@@ -2445,6 +3061,7 @@
                   },
                   "description": {
                     "type": "string",
+                    "maxLength": 512,
                     "description": "Human-readable description for the configuration.",
                     "example": "Updated Customer Support Configuration"
                   },
@@ -2455,7 +3072,7 @@
                       "GROUP_BY_PARTICIPANT_ADDRESSES",
                       "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
                     ],
-                    "description": "The strategy Conversation Orchestrator uses to assign communications to conversations.",
+                    "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
                     "example": "GROUP_BY_PROFILE"
                   },
                   "memoryStoreId": {
@@ -2530,10 +3147,7 @@
                           "default": "POST",
                           "enum": [
                             "POST",
-                            "GET",
-                            "PUT",
-                            "DELETE",
-                            "PATCH"
+                            "GET"
                           ]
                         }
                       }
@@ -2556,6 +3170,281 @@
                     "default": false,
                     "description": "Whether memory extraction is enabled for conversations under this configuration. Defaults to false.",
                     "example": false
+                  },
+                  "conversationsV1Bridge": {
+                    "description": "Configuration for Conversations V1 bridge. When set, messaging channels route through Conversations V1. Use this to integrate with existing Conversations V1 applications.",
+                    "type": "object",
+                    "required": [
+                      "serviceId"
+                    ],
+                    "properties": {
+                      "serviceId": {
+                        "type": "string",
+                        "description": "The Conversations V1 Service SID (IS prefix). One configuration per V1 Service SID.",
+                        "pattern": "^IS[0-9a-f]{32}$",
+                        "example": "IS00000000000000000000000000000000"
+                      }
+                    },
+                    "example": {
+                      "serviceId": "IS00000000000000000000000000000000"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted - Operation created for asynchronous processing",
+            "headers": {
+              "Operation-Id": {
+                "description": "Unique identifier for the long-running operation",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Retry-After": {
+                "description": "Suggested number of seconds before polling operation status",
+                "schema": {
+                  "type": "integer",
+                  "example": 5
+                }
+              },
+              "Location": {
+                "description": "URI of the operation status endpoint",
+                "schema": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Slim response for an accepted long-running operation.",
+                  "additionalProperties": true,
+                  "required": [
+                    "statusUrl"
+                  ],
+                  "properties": {
+                    "statusUrl": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL to poll for operation status.",
+                      "example": "https://conversations.twilio.com/v2/ControlPlane/Operations/proc_job_01h9d8r0vte3hz8tykdj329t7r"
+                    },
+                    "related": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "nullable": true,
+                      "description": "Named resource identifiers associated with this operation. Keys depend on the operation type:\n- config-create, config-update, config-delete: configurationId\n- conversation-delete: conversationId\n",
+                      "example": {
+                        "configurationId": "cfg_configuration_01h9d8r0vte3hz8tykdj329t7r"
+                      }
+                    }
+                  },
+                  "example": {
+                    "statusUrl": "https://conversations.twilio.com/v2/ControlPlane/Operations/proc_job_01h9d8r0vte3hz8tykdj329t7r",
+                    "related": {
+                      "configurationId": "cfg_configuration_01h9d8r0vte3hz8tykdj329t7r"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Patch Configuration",
+        "description": "Partially update a Configuration. Only fields present in the request body are changed; omitted fields are left untouched. For `channelSettings`, an omitted channel key is preserved, a channel key mapped to a value replaces that channel's settings, and a channel key explicitly mapped to `null` removes it.",
+        "tags": [
+          "ConversationsV2Configuration"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKeyHeader"
+          }
+        ],
+        "security": [
+          {
+            "basic_apikey_or_accountsid": []
+          }
+        ],
+        "operationId": "PatchConfiguration",
+        "requestBody": {
+          "description": "The partial configuration update.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "displayName": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "A human-readable name for the configuration. Limited to 32 characters.",
+                    "maxLength": 32,
+                    "pattern": "^[a-zA-Z0-9-_ ]+$",
+                    "example": "My Support Config"
+                  },
+                  "description": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 512,
+                    "description": "Human-readable description for the configuration.",
+                    "example": "Updated Customer Support Configuration"
+                  },
+                  "conversationGroupingType": {
+                    "type": "string",
+                    "enum": [
+                      "GROUP_BY_PROFILE",
+                      "GROUP_BY_PARTICIPANT_ADDRESSES",
+                      "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
+                    ],
+                    "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
+                    "example": "GROUP_BY_PROFILE"
+                  },
+                  "memoryStoreId": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "The Memory Store ID for profile resolution.",
+                    "example": "memora_service_123"
+                  },
+                  "channelSettings": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "nullable": true,
+                      "properties": {
+                        "statusTimeouts": {
+                          "type": "object",
+                          "properties": {
+                            "inactive": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "example": 10
+                            },
+                            "closed": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "example": 15
+                            }
+                          }
+                        },
+                        "captureRules": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "from",
+                              "to"
+                            ],
+                            "properties": {
+                              "from": {
+                                "type": "string",
+                                "example": "+18005550100"
+                              },
+                              "to": {
+                                "type": "string",
+                                "example": "+18005550101"
+                              },
+                              "metadata": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "description": "Channel-specific settings to merge onto the existing channelSettings map. A channel key mapped to a value replaces that channel's settings; a channel key explicitly mapped to null removes it; an omitted channel key is left untouched."
+                  },
+                  "statusCallbacks": {
+                    "type": "array",
+                    "nullable": true,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "url"
+                      ],
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "method": {
+                          "type": "string",
+                          "default": "POST",
+                          "enum": [
+                            "POST",
+                            "GET"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "intelligenceConfigurationIds": {
+                    "type": "array",
+                    "nullable": true,
+                    "description": "A list of Conversational Intelligence configuration IDs.",
+                    "maxItems": 5,
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "agent1",
+                      "agent2"
+                    ]
+                  },
+                  "memoryExtractionEnabled": {
+                    "type": "boolean",
+                    "nullable": true,
+                    "description": "Whether memory extraction is enabled for conversations under this configuration.",
+                    "example": false
+                  },
+                  "conversationsV1Bridge": {
+                    "nullable": true,
+                    "description": "Configuration for Conversations V1 bridge. When set, messaging channels route through Conversations V1. Use this to integrate with existing Conversations V1 applications.",
+                    "type": "object",
+                    "required": [
+                      "serviceId"
+                    ],
+                    "properties": {
+                      "serviceId": {
+                        "type": "string",
+                        "description": "The Conversations V1 Service SID (IS prefix). One configuration per V1 Service SID.",
+                        "pattern": "^IS[0-9a-f]{32}$",
+                        "example": "IS00000000000000000000000000000000"
+                      }
+                    },
+                    "example": {
+                      "serviceId": "IS00000000000000000000000000000000"
+                    }
                   }
                 }
               }
@@ -2772,7 +3661,8 @@
                   "ACTIVE",
                   "INACTIVE",
                   "CLOSED"
-                ]
+                ],
+                "description": "Lifecycle status of a Conversation."
               }
             }
           },
@@ -2841,7 +3731,7 @@
                           "id": {
                             "type": "string",
                             "description": "Conversation ID.",
-                            "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+                            "example": "conv_conversation_00000000000000000000000001"
                           },
                           "accountId": {
                             "type": "string",
@@ -2851,15 +3741,10 @@
                           "configurationId": {
                             "type": "string",
                             "description": "Configuration ID.",
-                            "example": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2"
+                            "example": "conv_configuration_00000000000000000000000001"
                           },
                           "status": {
-                            "type": "string",
-                            "enum": [
-                              "ACTIVE",
-                              "INACTIVE",
-                              "CLOSED"
-                            ],
+                            "$ref": "#/components/schemas/conversations.v2.conversation_status",
                             "description": "Conversation status.",
                             "example": "ACTIVE"
                           },
@@ -2894,18 +3779,12 @@
                               },
                               "description": {
                                 "type": "string",
+                                "maxLength": 512,
                                 "description": "Human-readable description for the Configuration.",
                                 "example": "Customer Support Configuration for handling all inbound customer inquiries"
                               },
                               "conversationGroupingType": {
-                                "type": "string",
-                                "enum": [
-                                  "GROUP_BY_PROFILE",
-                                  "GROUP_BY_PARTICIPANT_ADDRESSES",
-                                  "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
-                                ],
-                                "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
-                                "example": "GROUP_BY_PROFILE"
+                                "$ref": "#/components/schemas/conversations.v2.conversation_grouping_type"
                               },
                               "memoryStoreId": {
                                 "type": "string",
@@ -2957,9 +3836,9 @@
                           }
                         },
                         "example": {
-                          "id": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+                          "id": "conv_conversation_00000000000000000000000001",
                           "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                          "configurationId": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2",
+                          "configurationId": "conv_configuration_00000000000000000000000001",
                           "status": "ACTIVE",
                           "name": "Customer Support - Multi-channel",
                           "createdAt": "2023-07-01T12:00:00Z",
@@ -3040,7 +3919,7 @@
                   "configurationId": {
                     "type": "string",
                     "description": "The ID of an existing configuration.",
-                    "example": "conv_configuration_01k1etx3jbfx88476ccja0889d"
+                    "example": "conv_configuration_00000000000000000000000002"
                   },
                   "name": {
                     "type": "string",
@@ -3073,13 +3952,15 @@
                           "description": "Display name for the Participant."
                         },
                         "type": {
+                          "description": "Type of Participant in the Conversation.",
                           "type": "string",
                           "enum": [
                             "HUMAN_AGENT",
                             "CUSTOMER",
-                            "AI_AGENT"
-                          ],
-                          "description": "Type of Participant in the Conversation."
+                            "AI_AGENT",
+                            "AGENT",
+                            "UNKNOWN"
+                          ]
                         },
                         "profileId": {
                           "type": "string",
@@ -3101,12 +3982,11 @@
                                   "VOICE",
                                   "SMS",
                                   "RCS",
-                                  "EMAIL",
                                   "WHATSAPP",
                                   "CHAT",
-                                  "API",
-                                  "SYSTEM"
-                                ]
+                                  "VIDEO"
+                                ],
+                                "description": "Channel type for a Communication address."
                               },
                               "address": {
                                 "type": "string"
@@ -3141,7 +4021,7 @@
                     "id": {
                       "type": "string",
                       "description": "Conversation ID.",
-                      "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_conversation_00000000000000000000000001"
                     },
                     "accountId": {
                       "type": "string",
@@ -3151,15 +4031,10 @@
                     "configurationId": {
                       "type": "string",
                       "description": "Configuration ID.",
-                      "example": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_configuration_00000000000000000000000001"
                     },
                     "status": {
-                      "type": "string",
-                      "enum": [
-                        "ACTIVE",
-                        "INACTIVE",
-                        "CLOSED"
-                      ],
+                      "$ref": "#/components/schemas/conversations.v2.conversation_status",
                       "description": "Conversation status.",
                       "example": "ACTIVE"
                     },
@@ -3194,18 +4069,12 @@
                         },
                         "description": {
                           "type": "string",
+                          "maxLength": 512,
                           "description": "Human-readable description for the Configuration.",
                           "example": "Customer Support Configuration for handling all inbound customer inquiries"
                         },
                         "conversationGroupingType": {
-                          "type": "string",
-                          "enum": [
-                            "GROUP_BY_PROFILE",
-                            "GROUP_BY_PARTICIPANT_ADDRESSES",
-                            "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
-                          ],
-                          "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
-                          "example": "GROUP_BY_PROFILE"
+                          "$ref": "#/components/schemas/conversations.v2.conversation_grouping_type"
                         },
                         "memoryStoreId": {
                           "type": "string",
@@ -3257,9 +4126,9 @@
                     }
                   },
                   "example": {
-                    "id": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "id": "conv_conversation_00000000000000000000000001",
                     "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                    "configurationId": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "configurationId": "conv_configuration_00000000000000000000000001",
                     "status": "ACTIVE",
                     "name": "Customer Support - Multi-channel",
                     "createdAt": "2023-07-01T12:00:00Z",
@@ -3290,7 +4159,7 @@
         }
       }
     },
-    "/v2/Conversations/{Sid}": {
+    "/v2/Conversations/{id}": {
       "servers": [
         {
           "url": "https://conversations.twilio.com"
@@ -3301,7 +4170,7 @@
       },
       "parameters": [
         {
-          "name": "Sid",
+          "name": "id",
           "in": "path",
           "required": true,
           "schema": {
@@ -3341,7 +4210,7 @@
                     "id": {
                       "type": "string",
                       "description": "Conversation ID.",
-                      "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_conversation_00000000000000000000000001"
                     },
                     "accountId": {
                       "type": "string",
@@ -3351,15 +4220,10 @@
                     "configurationId": {
                       "type": "string",
                       "description": "Configuration ID.",
-                      "example": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_configuration_00000000000000000000000001"
                     },
                     "status": {
-                      "type": "string",
-                      "enum": [
-                        "ACTIVE",
-                        "INACTIVE",
-                        "CLOSED"
-                      ],
+                      "$ref": "#/components/schemas/conversations.v2.conversation_status",
                       "description": "Conversation status.",
                       "example": "ACTIVE"
                     },
@@ -3394,18 +4258,12 @@
                         },
                         "description": {
                           "type": "string",
+                          "maxLength": 512,
                           "description": "Human-readable description for the Configuration.",
                           "example": "Customer Support Configuration for handling all inbound customer inquiries"
                         },
                         "conversationGroupingType": {
-                          "type": "string",
-                          "enum": [
-                            "GROUP_BY_PROFILE",
-                            "GROUP_BY_PARTICIPANT_ADDRESSES",
-                            "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
-                          ],
-                          "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
-                          "example": "GROUP_BY_PROFILE"
+                          "$ref": "#/components/schemas/conversations.v2.conversation_grouping_type"
                         },
                         "memoryStoreId": {
                           "type": "string",
@@ -3457,9 +4315,9 @@
                     }
                   },
                   "example": {
-                    "id": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "id": "conv_conversation_00000000000000000000000001",
                     "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                    "configurationId": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "configurationId": "conv_configuration_00000000000000000000000001",
                     "status": "ACTIVE",
                     "name": "Customer Support - Multi-channel",
                     "createdAt": "2023-07-01T12:00:00Z",
@@ -3514,13 +4372,13 @@
                     "example": "Support Chat"
                   },
                   "status": {
+                    "description": "Lifecycle status of a Conversation.",
                     "type": "string",
                     "enum": [
                       "ACTIVE",
                       "INACTIVE",
                       "CLOSED"
-                    ],
-                    "description": "The state of the Conversation."
+                    ]
                   }
                 }
               }
@@ -3543,7 +4401,7 @@
                     "id": {
                       "type": "string",
                       "description": "Conversation ID.",
-                      "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_conversation_00000000000000000000000001"
                     },
                     "accountId": {
                       "type": "string",
@@ -3553,15 +4411,10 @@
                     "configurationId": {
                       "type": "string",
                       "description": "Configuration ID.",
-                      "example": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_configuration_00000000000000000000000001"
                     },
                     "status": {
-                      "type": "string",
-                      "enum": [
-                        "ACTIVE",
-                        "INACTIVE",
-                        "CLOSED"
-                      ],
+                      "$ref": "#/components/schemas/conversations.v2.conversation_status",
                       "description": "Conversation status.",
                       "example": "ACTIVE"
                     },
@@ -3596,18 +4449,12 @@
                         },
                         "description": {
                           "type": "string",
+                          "maxLength": 512,
                           "description": "Human-readable description for the Configuration.",
                           "example": "Customer Support Configuration for handling all inbound customer inquiries"
                         },
                         "conversationGroupingType": {
-                          "type": "string",
-                          "enum": [
-                            "GROUP_BY_PROFILE",
-                            "GROUP_BY_PARTICIPANT_ADDRESSES",
-                            "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
-                          ],
-                          "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
-                          "example": "GROUP_BY_PROFILE"
+                          "$ref": "#/components/schemas/conversations.v2.conversation_grouping_type"
                         },
                         "memoryStoreId": {
                           "type": "string",
@@ -3659,9 +4506,9 @@
                     }
                   },
                   "example": {
-                    "id": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "id": "conv_conversation_00000000000000000000000001",
                     "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                    "configurationId": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "configurationId": "conv_configuration_00000000000000000000000001",
                     "status": "ACTIVE",
                     "name": "Customer Support - Multi-channel",
                     "createdAt": "2023-07-01T12:00:00Z",
@@ -3809,17 +4656,18 @@
                 "properties": {
                   "name": {
                     "type": "string",
+                    "nullable": true,
                     "description": "The name of the Conversation.",
                     "example": "Support Chat"
                   },
                   "status": {
+                    "description": "Lifecycle status of a Conversation.",
                     "type": "string",
                     "enum": [
                       "ACTIVE",
                       "INACTIVE",
                       "CLOSED"
-                    ],
-                    "description": "The state of the Conversation."
+                    ]
                   },
                   "configuration": {
                     "description": "Partial configuration update for an existing conversation. Only statusCallbacks can be modified.",
@@ -3827,6 +4675,7 @@
                     "properties": {
                       "statusCallbacks": {
                         "type": "array",
+                        "nullable": true,
                         "description": "List of webhook configurations for this conversation. Send an empty array to clear all callbacks and stop webhook delivery.",
                         "maxItems": 20,
                         "items": {
@@ -3856,7 +4705,7 @@
                     "id": {
                       "type": "string",
                       "description": "Conversation ID.",
-                      "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_conversation_00000000000000000000000001"
                     },
                     "accountId": {
                       "type": "string",
@@ -3866,15 +4715,10 @@
                     "configurationId": {
                       "type": "string",
                       "description": "Configuration ID.",
-                      "example": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_configuration_00000000000000000000000001"
                     },
                     "status": {
-                      "type": "string",
-                      "enum": [
-                        "ACTIVE",
-                        "INACTIVE",
-                        "CLOSED"
-                      ],
+                      "$ref": "#/components/schemas/conversations.v2.conversation_status",
                       "description": "Conversation status.",
                       "example": "ACTIVE"
                     },
@@ -3909,18 +4753,12 @@
                         },
                         "description": {
                           "type": "string",
+                          "maxLength": 512,
                           "description": "Human-readable description for the Configuration.",
                           "example": "Customer Support Configuration for handling all inbound customer inquiries"
                         },
                         "conversationGroupingType": {
-                          "type": "string",
-                          "enum": [
-                            "GROUP_BY_PROFILE",
-                            "GROUP_BY_PARTICIPANT_ADDRESSES",
-                            "GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE"
-                          ],
-                          "description": "Type of Conversation grouping strategy:\n- `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.\n  A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.\n- `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.\n  A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.\n- `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.\n  A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.\n",
-                          "example": "GROUP_BY_PROFILE"
+                          "$ref": "#/components/schemas/conversations.v2.conversation_grouping_type"
                         },
                         "memoryStoreId": {
                           "type": "string",
@@ -3972,9 +4810,9 @@
                     }
                   },
                   "example": {
-                    "id": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "id": "conv_conversation_00000000000000000000000001",
                     "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                    "configurationId": "conv_configuration_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "configurationId": "conv_configuration_00000000000000000000000001",
                     "status": "ACTIVE",
                     "name": "Customer Support - Multi-channel",
                     "createdAt": "2023-07-01T12:00:00Z",
@@ -4002,7 +4840,7 @@
         }
       }
     },
-    "/v2/Conversations/{ConversationSid}/Participants": {
+    "/v2/Conversations/{ConversationId}/Actions": {
       "servers": [
         {
           "url": "https://conversations.twilio.com"
@@ -4013,7 +4851,364 @@
       },
       "parameters": [
         {
-          "name": "ConversationSid",
+          "name": "ConversationId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-twilio": {
+            "shortDescription": "Conversation ID",
+            "normalizeSid": true
+          }
+        }
+      ],
+      "post": {
+        "summary": "Create an Action",
+        "description": "Creates an Action within a Conversation. Currently supports SEND_MESSAGE,\nwhich sends a message to recipients via the configured channel.\n\nReturns 202 Accepted with the Action in PENDING status. Poll\n`GET /v2/Conversations/{ConversationId}/Actions/{ActionId}` to check completion.\n",
+        "tags": [
+          "ConversationsV2Action"
+        ],
+        "security": [
+          {
+            "basic_apikey_or_accountsid": []
+          }
+        ],
+        "operationId": "CreateConversationAction",
+        "requestBody": {
+          "description": "The action to perform.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "payload"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "Action type discriminator. Accepted values: SEND_MESSAGE.",
+                        "example": "SEND_MESSAGE"
+                      },
+                      "payload": {
+                        "$ref": "#/components/schemas/conversations.v2.send_message_payload"
+                      }
+                    }
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "type"
+                }
+              },
+              "examples": {
+                "sendMessage": {
+                  "summary": "Send a message",
+                  "value": {
+                    "type": "SEND_MESSAGE",
+                    "payload": {
+                      "from": {
+                        "address": "+18005550100",
+                        "channel": "SMS"
+                      },
+                      "to": [
+                        {
+                          "address": "+18005550199",
+                          "channel": "SMS"
+                        }
+                      ],
+                      "content": {
+                        "text": "Hello from the Actions API!"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Action accepted. Returns the Action in PENDING status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "type",
+                    "status",
+                    "conversationId",
+                    "createdAt"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Unique identifier for this Action.",
+                      "example": "conv_action_00000000000000000000000000"
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "The type of action. Accepted values: SEND_MESSAGE.",
+                      "example": "SEND_MESSAGE"
+                    },
+                    "status": {
+                      "$ref": "#/components/schemas/conversations.v2.action_status",
+                      "description": "Current status of the Action.\n- PENDING: Action accepted, awaiting downstream confirmation\n- COMPLETED: Downstream backend confirmed the action\n- FAILED: Downstream backend reported a failure\n",
+                      "example": "PENDING"
+                    },
+                    "conversationId": {
+                      "type": "string",
+                      "description": "The conversation this action belongs to.",
+                      "example": "conv_conversation_00000000000000000000000000"
+                    },
+                    "related": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Named identifiers from downstream. For SEND_MESSAGE:\n- messageSid: The downstream message SID (present when PENDING or COMPLETED)\n- communicationId: The Communication ID (present when COMPLETED)\n",
+                      "example": {
+                        "messageSid": "SM1234567890abcdef1234567890abcdef",
+                        "communicationId": "conv_communication_00000000000000000000000000"
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp when the action was created.",
+                      "example": "2026-03-30T10:30:00Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp when the action was last updated.",
+                      "example": "2026-03-30T10:30:02Z"
+                    },
+                    "completedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp when the action reached a terminal status.",
+                      "example": "2026-03-30T10:30:02Z"
+                    }
+                  },
+                  "example": {
+                    "id": "conv_action_00000000000000000000000000",
+                    "type": "SEND_MESSAGE",
+                    "status": "COMPLETED",
+                    "conversationId": "conv_conversation_00000000000000000000000000",
+                    "related": {
+                      "messageSid": "SM1234567890abcdef1234567890abcdef",
+                      "communicationId": "conv_communication_00000000000000000000000000"
+                    },
+                    "createdAt": "2026-03-30T10:30:00Z",
+                    "completedAt": "2026-03-30T10:30:02Z"
+                  }
+                },
+                "example": {
+                  "id": "conv_action_00000000000000000000000000",
+                  "type": "SEND_MESSAGE",
+                  "status": "PENDING",
+                  "conversationId": "conv_conversation_00000000000000000000000000",
+                  "related": {
+                    "messageSid": "SM1234567890abcdef1234567890abcdef"
+                  },
+                  "createdAt": "2026-03-30T10:30:00Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
+        }
+      }
+    },
+    "/v2/Conversations/{ConversationId}/Actions/{ActionId}": {
+      "servers": [
+        {
+          "url": "https://conversations.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "pathType": "instance"
+      },
+      "parameters": [
+        {
+          "name": "ConversationId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-twilio": {
+            "shortDescription": "Conversation ID",
+            "normalizeSid": true
+          }
+        },
+        {
+          "name": "ActionId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-twilio": {
+            "shortDescription": "Action ID",
+            "normalizeSid": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get Action Status",
+        "description": "Retrieve the current status of an Action.",
+        "tags": [
+          "ConversationsV2Action"
+        ],
+        "security": [
+          {
+            "basic_apikey_or_accountsid": []
+          }
+        ],
+        "operationId": "FetchConversationAction",
+        "responses": {
+          "200": {
+            "description": "Action status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "type",
+                    "status",
+                    "conversationId",
+                    "createdAt"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Unique identifier for this Action.",
+                      "example": "conv_action_00000000000000000000000000"
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "The type of action. Accepted values: SEND_MESSAGE.",
+                      "example": "SEND_MESSAGE"
+                    },
+                    "status": {
+                      "$ref": "#/components/schemas/conversations.v2.action_status",
+                      "description": "Current status of the Action.\n- PENDING: Action accepted, awaiting downstream confirmation\n- COMPLETED: Downstream backend confirmed the action\n- FAILED: Downstream backend reported a failure\n",
+                      "example": "PENDING"
+                    },
+                    "conversationId": {
+                      "type": "string",
+                      "description": "The conversation this action belongs to.",
+                      "example": "conv_conversation_00000000000000000000000000"
+                    },
+                    "related": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Named identifiers from downstream. For SEND_MESSAGE:\n- messageSid: The downstream message SID (present when PENDING or COMPLETED)\n- communicationId: The Communication ID (present when COMPLETED)\n",
+                      "example": {
+                        "messageSid": "SM1234567890abcdef1234567890abcdef",
+                        "communicationId": "conv_communication_00000000000000000000000000"
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp when the action was created.",
+                      "example": "2026-03-30T10:30:00Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp when the action was last updated.",
+                      "example": "2026-03-30T10:30:02Z"
+                    },
+                    "completedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp when the action reached a terminal status.",
+                      "example": "2026-03-30T10:30:02Z"
+                    }
+                  },
+                  "example": {
+                    "id": "conv_action_00000000000000000000000000",
+                    "type": "SEND_MESSAGE",
+                    "status": "COMPLETED",
+                    "conversationId": "conv_conversation_00000000000000000000000000",
+                    "related": {
+                      "messageSid": "SM1234567890abcdef1234567890abcdef",
+                      "communicationId": "conv_communication_00000000000000000000000000"
+                    },
+                    "createdAt": "2026-03-30T10:30:00Z",
+                    "completedAt": "2026-03-30T10:30:02Z"
+                  }
+                },
+                "example": {
+                  "id": "conv_action_00000000000000000000000000",
+                  "type": "SEND_MESSAGE",
+                  "status": "COMPLETED",
+                  "conversationId": "conv_conversation_00000000000000000000000000",
+                  "related": {
+                    "messageSid": "SM1234567890abcdef1234567890abcdef",
+                    "communicationId": "conv_communication_00000000000000000000000000"
+                  },
+                  "createdAt": "2026-03-30T10:30:00Z",
+                  "completedAt": "2026-03-30T10:30:02Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
+        }
+      }
+    },
+    "/v2/Conversations/{ConversationId}/Participants": {
+      "servers": [
+        {
+          "url": "https://conversations.twilio.com"
+        }
+      ],
+      "x-twilio": {
+        "pathType": "list"
+      },
+      "parameters": [
+        {
+          "name": "ConversationId",
           "in": "path",
           "required": true,
           "schema": {
@@ -4080,19 +5275,18 @@
                         "required": [
                           "id",
                           "conversationId",
-                          "accountId",
-                          "name"
+                          "accountId"
                         ],
                         "properties": {
                           "id": {
                             "type": "string",
                             "description": "Participant ID.",
-                            "example": "conv_participant_01k1etx3jbfx88476ccja0889c"
+                            "example": "conv_participant_00000000000000000000000001"
                           },
                           "conversationId": {
                             "type": "string",
                             "description": "Conversation ID.",
-                            "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+                            "example": "conv_conversation_00000000000000000000000001"
                           },
                           "accountId": {
                             "type": "string",
@@ -4101,18 +5295,12 @@
                           },
                           "name": {
                             "type": "string",
+                            "nullable": true,
                             "description": "Participant display name.",
                             "example": "Dana S."
                           },
                           "type": {
-                            "type": "string",
-                            "enum": [
-                              "HUMAN_AGENT",
-                              "CUSTOMER",
-                              "AI_AGENT",
-                              "AGENT",
-                              "UNKNOWN"
-                            ],
+                            "$ref": "#/components/schemas/conversations.v2.participant_type",
                             "description": "Type of Participant in the Conversation.",
                             "example": "CUSTOMER"
                           },
@@ -4142,8 +5330,8 @@
                           }
                         },
                         "example": {
-                          "id": "conv_participant_01k1etx3jbfx88476ccja0889c",
-                          "conversationId": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+                          "id": "conv_participant_00000000000000000000000001",
+                          "conversationId": "conv_conversation_00000000000000000000000001",
                           "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                           "name": "Dana",
                           "type": "CUSTOMER",
@@ -4240,7 +5428,8 @@
                       "AI_AGENT",
                       "AGENT",
                       "UNKNOWN"
-                    ]
+                    ],
+                    "description": "Type of Participant in the Conversation."
                   },
                   "profileId": {
                     "type": "string"
@@ -4261,8 +5450,10 @@
                             "SMS",
                             "RCS",
                             "WHATSAPP",
-                            "CHAT"
-                          ]
+                            "CHAT",
+                            "VIDEO"
+                          ],
+                          "description": "Channel type for a Communication address."
                         },
                         "address": {
                           "type": "string"
@@ -4288,19 +5479,18 @@
                   "required": [
                     "id",
                     "conversationId",
-                    "accountId",
-                    "name"
+                    "accountId"
                   ],
                   "properties": {
                     "id": {
                       "type": "string",
                       "description": "Participant ID.",
-                      "example": "conv_participant_01k1etx3jbfx88476ccja0889c"
+                      "example": "conv_participant_00000000000000000000000001"
                     },
                     "conversationId": {
                       "type": "string",
                       "description": "Conversation ID.",
-                      "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_conversation_00000000000000000000000001"
                     },
                     "accountId": {
                       "type": "string",
@@ -4309,18 +5499,12 @@
                     },
                     "name": {
                       "type": "string",
+                      "nullable": true,
                       "description": "Participant display name.",
                       "example": "Dana S."
                     },
                     "type": {
-                      "type": "string",
-                      "enum": [
-                        "HUMAN_AGENT",
-                        "CUSTOMER",
-                        "AI_AGENT",
-                        "AGENT",
-                        "UNKNOWN"
-                      ],
+                      "$ref": "#/components/schemas/conversations.v2.participant_type",
                       "description": "Type of Participant in the Conversation.",
                       "example": "CUSTOMER"
                     },
@@ -4350,8 +5534,8 @@
                     }
                   },
                   "example": {
-                    "id": "conv_participant_01k1etx3jbfx88476ccja0889c",
-                    "conversationId": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "id": "conv_participant_00000000000000000000000001",
+                    "conversationId": "conv_conversation_00000000000000000000000001",
                     "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "name": "Dana",
                     "type": "CUSTOMER",
@@ -4398,7 +5582,7 @@
         }
       }
     },
-    "/v2/Conversations/{ConversationSid}/Participants/{Sid}": {
+    "/v2/Conversations/{ConversationId}/Participants/{id}": {
       "servers": [
         {
           "url": "https://conversations.twilio.com"
@@ -4409,7 +5593,7 @@
       },
       "parameters": [
         {
-          "name": "ConversationSid",
+          "name": "ConversationId",
           "in": "path",
           "required": true,
           "schema": {
@@ -4421,14 +5605,14 @@
           }
         },
         {
-          "name": "Sid",
+          "name": "id",
           "in": "path",
           "required": true,
           "schema": {
             "type": "string"
           },
           "x-twilio": {
-            "shortDescription": "Participant SID",
+            "shortDescription": "Participant ID",
             "normalizeSid": true
           }
         }
@@ -4455,19 +5639,18 @@
                   "required": [
                     "id",
                     "conversationId",
-                    "accountId",
-                    "name"
+                    "accountId"
                   ],
                   "properties": {
                     "id": {
                       "type": "string",
                       "description": "Participant ID.",
-                      "example": "conv_participant_01k1etx3jbfx88476ccja0889c"
+                      "example": "conv_participant_00000000000000000000000001"
                     },
                     "conversationId": {
                       "type": "string",
                       "description": "Conversation ID.",
-                      "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_conversation_00000000000000000000000001"
                     },
                     "accountId": {
                       "type": "string",
@@ -4476,18 +5659,12 @@
                     },
                     "name": {
                       "type": "string",
+                      "nullable": true,
                       "description": "Participant display name.",
                       "example": "Dana S."
                     },
                     "type": {
-                      "type": "string",
-                      "enum": [
-                        "HUMAN_AGENT",
-                        "CUSTOMER",
-                        "AI_AGENT",
-                        "AGENT",
-                        "UNKNOWN"
-                      ],
+                      "$ref": "#/components/schemas/conversations.v2.participant_type",
                       "description": "Type of Participant in the Conversation.",
                       "example": "CUSTOMER"
                     },
@@ -4517,8 +5694,8 @@
                     }
                   },
                   "example": {
-                    "id": "conv_participant_01k1etx3jbfx88476ccja0889c",
-                    "conversationId": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "id": "conv_participant_00000000000000000000000001",
+                    "conversationId": "conv_conversation_00000000000000000000000001",
                     "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "name": "Dana",
                     "type": "CUSTOMER",
@@ -4591,7 +5768,8 @@
                       "AI_AGENT",
                       "AGENT",
                       "UNKNOWN"
-                    ]
+                    ],
+                    "description": "Type of Participant in the Conversation."
                   },
                   "profileId": {
                     "type": "string"
@@ -4612,8 +5790,10 @@
                             "SMS",
                             "RCS",
                             "WHATSAPP",
-                            "CHAT"
-                          ]
+                            "CHAT",
+                            "VIDEO"
+                          ],
+                          "description": "Channel type for a Communication address."
                         },
                         "address": {
                           "type": "string"
@@ -4639,19 +5819,18 @@
                   "required": [
                     "id",
                     "conversationId",
-                    "accountId",
-                    "name"
+                    "accountId"
                   ],
                   "properties": {
                     "id": {
                       "type": "string",
                       "description": "Participant ID.",
-                      "example": "conv_participant_01k1etx3jbfx88476ccja0889c"
+                      "example": "conv_participant_00000000000000000000000001"
                     },
                     "conversationId": {
                       "type": "string",
                       "description": "Conversation ID.",
-                      "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_conversation_00000000000000000000000001"
                     },
                     "accountId": {
                       "type": "string",
@@ -4660,18 +5839,12 @@
                     },
                     "name": {
                       "type": "string",
+                      "nullable": true,
                       "description": "Participant display name.",
                       "example": "Dana S."
                     },
                     "type": {
-                      "type": "string",
-                      "enum": [
-                        "HUMAN_AGENT",
-                        "CUSTOMER",
-                        "AI_AGENT",
-                        "AGENT",
-                        "UNKNOWN"
-                      ],
+                      "$ref": "#/components/schemas/conversations.v2.participant_type",
                       "description": "Type of Participant in the Conversation.",
                       "example": "CUSTOMER"
                     },
@@ -4701,8 +5874,8 @@
                     }
                   },
                   "example": {
-                    "id": "conv_participant_01k1etx3jbfx88476ccja0889c",
-                    "conversationId": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "id": "conv_participant_00000000000000000000000001",
+                    "conversationId": "conv_conversation_00000000000000000000000001",
                     "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "name": "Dana",
                     "type": "CUSTOMER",
@@ -4746,7 +5919,7 @@
         }
       }
     },
-    "/v2/Conversations/{ConversationSid}/Communications": {
+    "/v2/Conversations/{ConversationId}/Communications": {
       "servers": [
         {
           "url": "https://conversations.twilio.com"
@@ -4757,7 +5930,7 @@
       },
       "parameters": [
         {
-          "name": "ConversationSid",
+          "name": "ConversationId",
           "in": "path",
           "required": true,
           "schema": {
@@ -4842,12 +6015,12 @@
                           "id": {
                             "type": "string",
                             "description": "Communication ID.",
-                            "example": "conv_communication_01k1etk2y5f1y9fpe2epfdtvv2"
+                            "example": "conv_communication_00000000000000000000000001"
                           },
                           "conversationId": {
                             "type": "string",
                             "description": "Conversation ID.",
-                            "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+                            "example": "conv_conversation_00000000000000000000000001"
                           },
                           "accountId": {
                             "type": "string",
@@ -4891,15 +6064,8 @@
                                   "type": "object",
                                   "properties": {
                                     "deliveryStatus": {
-                                      "type": "string",
-                                      "description": "Delivery status of the Communication to this recipient.",
-                                      "enum": [
-                                        "INITIATED",
-                                        "IN_PROGRESS",
-                                        "DELIVERED",
-                                        "COMPLETED",
-                                        "FAILED"
-                                      ]
+                                      "$ref": "#/components/schemas/conversations.v2.recipient_delivery_status",
+                                      "description": "Delivery status of the Communication to this recipient."
                                     }
                                   }
                                 }
@@ -4926,13 +6092,13 @@
                           }
                         },
                         "example": {
-                          "id": "conv_communication_01k1etk2y5f1y9fpe2epfdtvv2",
-                          "conversationId": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+                          "id": "conv_communication_00000000000000000000000001",
+                          "conversationId": "conv_conversation_00000000000000000000000001",
                           "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                           "author": {
                             "address": "+18005550100",
                             "channel": "SMS",
-                            "participantId": "conv_participant_01k1etx3jbfx88476ccja0889c"
+                            "participantId": "conv_participant_00000000000000000000000001"
                           },
                           "content": {
                             "type": "TEXT",
@@ -4943,7 +6109,7 @@
                             {
                               "address": "+18005550102",
                               "channel": "SMS",
-                              "participantId": "conv_participant_02m2fuy4lcgy99587ddkb1990d",
+                              "participantId": "conv_participant_00000000000000000000000002",
                               "deliveryStatus": "DELIVERED"
                             }
                           ],
@@ -5017,6 +6183,7 @@
                 "properties": {
                   "author": {
                     "type": "object",
+                    "title": "CreateCommunicationInConversationRequestAuthor",
                     "required": [
                       "address",
                       "channel"
@@ -5032,8 +6199,10 @@
                           "SMS",
                           "RCS",
                           "WHATSAPP",
-                          "CHAT"
-                        ]
+                          "CHAT",
+                          "VIDEO"
+                        ],
+                        "description": "Channel type for a Communication address."
                       },
                       "participantId": {
                         "type": "string"
@@ -5103,6 +6272,7 @@
                   "recipients": {
                     "type": "array",
                     "minItems": 1,
+                    "title": "CreateCommunicationInConversationRequestRecipients",
                     "items": {
                       "type": "object",
                       "required": [
@@ -5120,14 +6290,21 @@
                             "SMS",
                             "RCS",
                             "WHATSAPP",
-                            "CHAT"
-                          ]
+                            "CHAT",
+                            "VIDEO"
+                          ],
+                          "description": "Channel type for a Communication address."
                         },
                         "participantId": {
                           "type": "string"
                         }
                       }
                     }
+                  },
+                  "occurredAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp when this Communication occurred. If omitted, the server uses the current time."
                   }
                 }
               }
@@ -5153,12 +6330,12 @@
                     "id": {
                       "type": "string",
                       "description": "Communication ID.",
-                      "example": "conv_communication_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_communication_00000000000000000000000001"
                     },
                     "conversationId": {
                       "type": "string",
                       "description": "Conversation ID.",
-                      "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_conversation_00000000000000000000000001"
                     },
                     "accountId": {
                       "type": "string",
@@ -5202,15 +6379,8 @@
                             "type": "object",
                             "properties": {
                               "deliveryStatus": {
-                                "type": "string",
-                                "description": "Delivery status of the Communication to this recipient.",
-                                "enum": [
-                                  "INITIATED",
-                                  "IN_PROGRESS",
-                                  "DELIVERED",
-                                  "COMPLETED",
-                                  "FAILED"
-                                ]
+                                "$ref": "#/components/schemas/conversations.v2.recipient_delivery_status",
+                                "description": "Delivery status of the Communication to this recipient."
                               }
                             }
                           }
@@ -5237,13 +6407,13 @@
                     }
                   },
                   "example": {
-                    "id": "conv_communication_01k1etk2y5f1y9fpe2epfdtvv2",
-                    "conversationId": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "id": "conv_communication_00000000000000000000000001",
+                    "conversationId": "conv_conversation_00000000000000000000000001",
                     "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "author": {
                       "address": "+18005550100",
                       "channel": "SMS",
-                      "participantId": "conv_participant_01k1etx3jbfx88476ccja0889c"
+                      "participantId": "conv_participant_00000000000000000000000001"
                     },
                     "content": {
                       "type": "TEXT",
@@ -5254,7 +6424,7 @@
                       {
                         "address": "+18005550102",
                         "channel": "SMS",
-                        "participantId": "conv_participant_02m2fuy4lcgy99587ddkb1990d",
+                        "participantId": "conv_participant_00000000000000000000000002",
                         "deliveryStatus": "DELIVERED"
                       }
                     ],
@@ -5283,7 +6453,7 @@
         }
       }
     },
-    "/v2/Conversations/{ConversationSid}/Communications/{Sid}": {
+    "/v2/Conversations/{ConversationId}/Communications/{id}": {
       "servers": [
         {
           "url": "https://conversations.twilio.com"
@@ -5294,26 +6464,26 @@
       },
       "parameters": [
         {
-          "name": "ConversationSid",
+          "name": "ConversationId",
           "in": "path",
           "required": true,
           "schema": {
             "type": "string"
           },
           "x-twilio": {
-            "shortDescription": "Conversation SID",
+            "shortDescription": "Conversation ID",
             "normalizeSid": true
           }
         },
         {
-          "name": "Sid",
+          "name": "id",
           "in": "path",
           "required": true,
           "schema": {
             "type": "string"
           },
           "x-twilio": {
-            "shortDescription": "Communication SID",
+            "shortDescription": "Communication ID",
             "normalizeSid": true
           }
         }
@@ -5349,12 +6519,12 @@
                     "id": {
                       "type": "string",
                       "description": "Communication ID.",
-                      "example": "conv_communication_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_communication_00000000000000000000000001"
                     },
                     "conversationId": {
                       "type": "string",
                       "description": "Conversation ID.",
-                      "example": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2"
+                      "example": "conv_conversation_00000000000000000000000001"
                     },
                     "accountId": {
                       "type": "string",
@@ -5398,15 +6568,8 @@
                             "type": "object",
                             "properties": {
                               "deliveryStatus": {
-                                "type": "string",
-                                "description": "Delivery status of the Communication to this recipient.",
-                                "enum": [
-                                  "INITIATED",
-                                  "IN_PROGRESS",
-                                  "DELIVERED",
-                                  "COMPLETED",
-                                  "FAILED"
-                                ]
+                                "$ref": "#/components/schemas/conversations.v2.recipient_delivery_status",
+                                "description": "Delivery status of the Communication to this recipient."
                               }
                             }
                           }
@@ -5433,13 +6596,13 @@
                     }
                   },
                   "example": {
-                    "id": "conv_communication_01k1etk2y5f1y9fpe2epfdtvv2",
-                    "conversationId": "conv_conversation_01k1etk2y5f1y9fpe2epfdtvv2",
+                    "id": "conv_communication_00000000000000000000000001",
+                    "conversationId": "conv_conversation_00000000000000000000000001",
                     "accountId": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "author": {
                       "address": "+18005550100",
                       "channel": "SMS",
-                      "participantId": "conv_participant_01k1etx3jbfx88476ccja0889c"
+                      "participantId": "conv_participant_00000000000000000000000001"
                     },
                     "content": {
                       "type": "TEXT",
@@ -5450,7 +6613,7 @@
                       {
                         "address": "+18005550102",
                         "channel": "SMS",
-                        "participantId": "conv_participant_02m2fuy4lcgy99587ddkb1990d",
+                        "participantId": "conv_participant_00000000000000000000000002",
                         "deliveryStatus": "DELIVERED"
                       }
                     ],
@@ -5479,7 +6642,7 @@
         }
       }
     },
-    "/v2/ControlPlane/Operations/{Sid}": {
+    "/v2/ControlPlane/Operations/{id}": {
       "servers": [
         {
           "url": "https://conversations.twilio.com"
@@ -5490,7 +6653,7 @@
       },
       "parameters": [
         {
-          "name": "Sid",
+          "name": "id",
           "in": "path",
           "required": true,
           "schema": {
@@ -5535,14 +6698,7 @@
                       "example": "proc_job_01h9d8r0vte3hz8tykdj329t7r"
                     },
                     "status": {
-                      "type": "string",
-                      "enum": [
-                        "PENDING",
-                        "RUNNING",
-                        "CANCELLED",
-                        "COMPLETED",
-                        "FAILED"
-                      ],
+                      "$ref": "#/components/schemas/conversations.v2.operation_status_value",
                       "description": "Current status of the operation.",
                       "example": "COMPLETED"
                     },
