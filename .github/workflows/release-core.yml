@@ -1,0 +1,149 @@
+# Reusable release chain: publish, verify against twilio-cli, then hand off to
+# the twilio-cli release workflow.
+#
+# Called from two entry points, because the oai spec update and the
+# release can no longer happen in a single run (the specs must land via PR):
+#   * release.yml              - dispatch with no spec changes to propose
+#   * release-on-spec-merge.yml - after an api-definitions PR merges to main
+name: Cli-core Release Core
+
+on:
+  workflow_call:
+    inputs:
+      change-log:
+        description: 'Release notes for this release'
+        type: string
+        required: true
+      version-type:
+        description: '0=major, 1=minor, 2=patch'
+        type: string
+        required: true
+      cli-branch:
+        description: 'Run cli workflow in the given branch'
+        type: string
+        default: main
+      homebrew-branch:
+        type: string
+        default: main
+      homebrew-prerelease:
+        type: string
+        default: 'false'
+    outputs:
+      tag-name:
+        value: ${{ jobs.release.outputs.tag-name }}
+
+permissions:
+  id-token: write
+  contents: write
+
+env:
+  ARTIFACTORY_URL: ${{ vars.ARTIFACTORY_URL }}
+
+jobs:
+  release:
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      tag-name: ${{ steps.update-release.outputs.TAG_NAME }}
+    steps:
+      - name: Checkout cli-core repo
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          persist-credentials: false
+      - run: make install
+      - name: Use Node 22
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: '22'
+
+      # Ensure npm 11.5.1 or later is installed
+      - name: Update npm
+        run: npm install -g npm@latest
+
+      - name: semanticRelease
+        id: semantic-release
+        run: DEBUG=semantic-release:* npx semantic-release -t \${version}
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true # required for OIDC
+
+      # @semantic-release/git used to commit CHANGES.md + package.json straight
+      # to main. The branch ruleset rejects that, so the plugin is gone and the
+      # same commit is proposed as an auto-merging PR instead.
+      - name: Propose release commit as a PR
+        if: steps.semantic-release.outputs.TAG_NAME != ''
+        env:
+          GH_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No release commit to propose."
+            exit 0
+          fi
+          git remote set-url origin \
+            "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          message="chore(release): set \`package.json\` to ${TAG_NAME} [skip ci]"
+          bash .github/scripts/open-pr.sh \
+            "release-${TAG_NAME}" \
+            "$message" \
+            "$message" \
+            "Version bump and changelog for the \`${TAG_NAME}\` release, which is already published to npm and tagged. Merging this keeps \`main\` in sync with the published version."
+
+      - name: Update release
+        id: update-release
+        run: |
+          echo "TAG_NAME=$TAG_NAME" >> "$GITHUB_OUTPUT"
+          fileName="$GITHUB_WORKSPACE/.github/scripts/update-release.js"
+          node -e "require('$fileName').updateRelease()"
+        env:
+          REPO_ACCESS_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ steps.semantic-release.outputs.TAG_NAME }}
+          RELEASE_BODY: ${{ inputs.change-log }}
+          REPO_NAME: ${{ github.repository }}
+
+  post-build-checks:
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
+    needs: [ release ]
+    steps:
+      - name: Clone twilio-cli repo
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          repository: '${{ github.repository_owner }}/twilio-cli'
+      - name: Update cli-core version and run tests
+        run: |
+          node .github/scripts/update-cli-core-release-version.js
+          make install
+          make test
+        env:
+          REPO_NAME: ${{ github.repository_owner }}/twilio-cli
+          CLI_CORE_TAG: ${{ needs.release.outputs.tag-name }}
+
+  triggerCliWorkflow:
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
+    needs: [ release, post-build-checks ]
+    steps:
+      - name: Checkout cli-core repo
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - run: make install
+      - name: Invoke CLI workflow with changelog and version-type
+        run: |
+          fileName="$GITHUB_WORKSPACE/.github/scripts/trigger-workflow.js"
+          node -e "require('$fileName').triggerWorkflow()"
+        env:
+          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          WORKFLOW_NAME: 'release.yml'
+          BRANCH_NAME: ${{ inputs.cli-branch }}
+          REPO_NAME: ${{ github.repository_owner }}/twilio-cli
+          INPUTS: '{ "change-log": ${{ toJSON(inputs.change-log) }}, "version-type": "${{ inputs.version-type }}", "homebrew-branch": "${{ inputs.homebrew-branch }}", "homebrew-prerelease": "${{ inputs.homebrew-prerelease }}", "tag-name": "${{ needs.release.outputs.tag-name }}" }'
