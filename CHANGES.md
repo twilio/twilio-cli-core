@@ -1,3 +1,15 @@
+## [9.0.1](https://github.com/twilio/twilio-cli-core/compare/9.0.0...9.0.1) (2026-09-21)
+
+### Library - Fixes
+
+* make the release prepare stage actually work (ESM import + tagFormat) ([#326](https://github.com/twilio/twilio-cli-core/issues/326)) ([6f4fee1](https://github.com/twilio/twilio-cli-core/commit/6f4fee1b592fa281aa8625e9a6f55f5826a98280)), closes [#325](https://github.com/twilio/twilio-cli-core/issues/325) [#325](https://github.com/twilio/twilio-cli-core/issues/325)
+* publish the release from the commit that contains the version ([#325](https://github.com/twilio/twilio-cli-core/issues/325)) ([3b6101e](https://github.com/twilio/twilio-cli-core/commit/3b6101e311fd24d7b64a4e981ac7a747a1ad39a2))
+
+### Library - Chores
+
+* **release:** set `package.json` to 9.0.0 [skip ci] ([#323](https://github.com/twilio/twilio-cli-core/issues/323)) ([9ea29df](https://github.com/twilio/twilio-cli-core/commit/9ea29df9b0d95524d5fd573733cbd400ff1022e6))
+
+
 ## [9.0.0](https://github.com/twilio/twilio-cli-core/compare/8.3.4...9.0.0) (2026-09-18)
 
 ### ⚠ BREAKING CHANGES
