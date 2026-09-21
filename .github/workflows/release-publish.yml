@@ -37,8 +37,12 @@ jobs:
           persist-credentials: false
           # Needed to find the previous tag and the api-definitions commit.
           fetch-depth: 0
-      - name: Artifactory OIDC Auth
-        uses: twilio/sdk-actions/artifactory-oidc@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
+      # Deliberately no Artifactory OIDC auth here. It repoints npm at the
+      # Artifactory registry, and semantic-release then publishes there
+      # instead of registry.npmjs.org, which fails with:
+      #   Can't generate provenance for new or private package
+      # The release job has never done Artifactory auth; make install works
+      # without it (restore-lockfile-registry.js runs as a postinstall hook).
       - run: make install
       - name: Use Node 22
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
