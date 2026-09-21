@@ -1,3 +1,25 @@
+## [9.0.0](https://github.com/twilio/twilio-cli-core/compare/8.3.4...9.0.0) (2026-09-18)
+
+### ⚠ BREAKING CHANGES
+
+* The minimum supported Node.js version is now 22.0.0.
+Node.js 18 and 20 are no longer supported. Consumers running an earlier
+runtime must upgrade to Node.js 22 or later before installing this version.
+
+### Library - Features
+
+* add API standards support — JSON bodies, PUT/PATCH, pagination,… ([#310](https://github.com/twilio/twilio-cli-core/issues/310)) ([5258acc](https://github.com/twilio/twilio-cli-core/commit/5258acc54a2a0f0453f26f44c1ac3d1894acb1b3))
+* require Node.js 22.0.0 or later ([#312](https://github.com/twilio/twilio-cli-core/issues/312)) ([21b57fe](https://github.com/twilio/twilio-cli-core/commit/21b57fe659f01407a8a0cdd68959719796433503))
+
+### Library - Fixes
+
+* pin conventionalcommits preset to 9.x for writer 8 compatibility ([#322](https://github.com/twilio/twilio-cli-core/issues/322)) ([321964c](https://github.com/twilio/twilio-cli-core/commit/321964c0c7ea1f34470d77dc618fc66fde7f00d0))
+
+### Library - Chores
+
+* new api fixes ([#318](https://github.com/twilio/twilio-cli-core/issues/318)) ([206e293](https://github.com/twilio/twilio-cli-core/commit/206e29309adbd21706c515081ccd741db5b05b29))
+* update release process, since direct push not allowed ([#319](https://github.com/twilio/twilio-cli-core/issues/319)) ([054f495](https://github.com/twilio/twilio-cli-core/commit/054f49599e56e2eb07e766b2b81d1775945b5b88))
+
 --------------------------
 **Audiences**
 - Backticked brace- and angle-bracket-bearing tokens in descriptions for MDX safety.
