@@ -144,20 +144,16 @@ jobs:
           make install
           cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
           bash .github/scripts/update-api-spec-with-changelog.sh
-  # When there was nothing new to propose, main is already up to date and we
-  # release straight away. When a spec PR *was* opened, the release instead runs
-  # from release-on-spec-merge.yml once that PR merges.
-  release:
+  # When there was nothing new to propose, main is already up to date and we go
+  # straight to preparing the release PR. When a spec PR *was* opened, that
+  # happens instead from release-on-spec-merge.yml once the spec PR merges.
+  prepare-release:
     needs: [ update-api-specs ]
     if: needs.update-api-specs.outputs.spec-pr-opened == 'false'
-    uses: ./.github/workflows/release-core.yml
+    uses: ./.github/workflows/release-prepare.yml
     secrets: inherit
     with:
       change-log: ${{ needs.update-api-specs.outputs.change-log }}
-      version-type: ${{ needs.update-api-specs.outputs.version-type }}
-      cli-branch: ${{ github.event.inputs.cli-branch }}
-      homebrew-branch: ${{ github.event.inputs.homebrew-branch }}
-      homebrew-prerelease: ${{ github.event.inputs.homebrew-prerelease }}
 
   summarize:
     needs: [ update-api-specs ]
@@ -173,7 +169,7 @@ jobs:
             echo "so the specs were proposed as a PR instead of pushed."
             echo
             echo "**The release has not run yet.** Approve and merge that PR and the"
-            echo "\`Cli-core Release On Spec Merge\` workflow will publish the release."
+            echo "\`Cli-core Release On Spec Merge\` workflow will open the release PR."
           } >> "$GITHUB_STEP_SUMMARY"
 
 #  notify-complete-fail:
