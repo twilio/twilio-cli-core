@@ -100,6 +100,27 @@ jobs:
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           repository: '${{ github.repository_owner }}/twilio-cli'
+      # make install does `rm -f package-lock.json && npm install`, so it
+      # resolves the just-published version from the registry. In run
+      # 35688951339 that ran 16 seconds after the publish and failed with
+      # ETARGET "No matching version found for @twilio/cli-core@9.0.1".
+      #
+      # npm view is the same resolution npm install will do, so polling it
+      # is a direct check rather than a guess at how long to wait.
+      - name: Wait for the published version to reach the registry
+        env:
+          CLI_CORE_TAG: ${{ needs.release.outputs.tag-name }}
+        run: |
+          for attempt in $(seq 1 15); do
+            if npm view "@twilio/cli-core@${CLI_CORE_TAG}" version > /dev/null 2>&1; then
+              echo "@twilio/cli-core@${CLI_CORE_TAG} is on the registry (attempt ${attempt})."
+              exit 0
+            fi
+            echo "Attempt ${attempt}/15: @twilio/cli-core@${CLI_CORE_TAG} not on the registry yet; retrying in 20s."
+            sleep 20
+          done
+          echo "::error::@twilio/cli-core@${CLI_CORE_TAG} did not appear on the registry within 5 minutes."
+          exit 1
       - name: Update cli-core version and run tests
         run: |
           node .github/scripts/update-cli-core-release-version.js
