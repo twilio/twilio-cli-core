@@ -37,8 +37,6 @@ jobs:
           persist-credentials: false
           # Needed to find the previous tag and the api-definitions commit.
           fetch-depth: 0
-      - name: Artifactory OIDC Auth
-        uses: twilio/sdk-actions/artifactory-oidc@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
       - run: make install
       - name: Use Node 22
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
