@@ -1,3 +1,11 @@
+## [9.1.0](https://github.com/twilio/twilio-cli-core/compare/9.0.1...9.1.0) (2026-10-07)
+
+### Library - Fixes
+
+* Update change-log-helper.js to only read release headers ([#332](https://github.com/twilio/twilio-cli-core/issues/332)) ([64c8d66](https://github.com/twilio/twilio-cli-core/commit/64c8d667025d159acf5dee23c2548a4a7211a64b))
+* wait for the published version to reach the registry ([#329](https://github.com/twilio/twilio-cli-core/issues/329)) ([6838dd4](https://github.com/twilio/twilio-cli-core/commit/6838dd465f700580066116a219b4d3e6e776feeb))
+
+
 --------------------------
 **Audiences**
 - **Added 1 new path(s)**:
