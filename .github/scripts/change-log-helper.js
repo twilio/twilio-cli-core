@@ -5,6 +5,13 @@ const { logger } = require('../../src/services/messaging/logging');
 
 const defaultVersionRegex = /(\d+)\.(\d+)\.(\d+)/;
 const defaultDateRegex = /\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/;
+/*
+ * OAI release headers look like "[2026-10-06] Version 2.9.0". Sections also contain
+ * "- ## YYYY-MM-DD" sub-headings that can predate the previous release, so matching any
+ * date would end a scan inside the newest release. Only headers mark boundaries.
+ */
+const defaultOaiReleaseHeaderRegex =
+  /^\[(\d{4}-(?:0[1-9]|1[012])-(?:0[1-9]|[12][0-9]|3[01]))\] Version (\d+\.\d+\.\d+)/;
 const cliCoreChangelogFile = 'CHANGES.md';
 const oaiChangelogFile = 'OAI_CHANGES.md';
 
@@ -14,9 +21,11 @@ class ChangeLogHelper {
     oaiChangelogFilename = oaiChangelogFile,
     versionRegex = defaultVersionRegex,
     dateRegex = defaultDateRegex,
+    oaiReleaseHeaderRegex = defaultOaiReleaseHeaderRegex,
   ) {
     this.versionRegex = versionRegex;
     this.dateRegex = dateRegex;
+    this.oaiReleaseHeaderRegex = oaiReleaseHeaderRegex;
     this.cliCoreChangelogFilename = cliCoreChangelogFilename;
     this.oaiChangelogFilename = oaiChangelogFilename;
     this.logger = logger;
@@ -27,13 +36,15 @@ class ChangeLogHelper {
     const versions = [];
     const readLine = await this.getReadLiner(this.oaiChangelogFilename);
     for await (const line of readLine) {
-      const currentDate = this.dateRegex.exec(line);
-      if (currentDate) {
-        const version = this.versionRegex.exec(line);
-        if (version) {
-          versions.push(version[0]);
-        }
-        if (currentDate[0] <= date) {
+      const header = this.oaiReleaseHeaderRegex.exec(line);
+      if (header) {
+        const [, releaseDate, version] = header;
+        /*
+         * Include the first release on or before the date: it is the baseline the newer
+         * versions are compared against.
+         */
+        versions.push(version);
+        if (releaseDate <= date) {
           break;
         }
       }
@@ -63,16 +74,21 @@ class ChangeLogHelper {
     let fileData = '';
     const readLine = await this.getReadLiner(this.oaiChangelogFilename);
     for await (const line of readLine) {
-      const currentDate = this.dateRegex.exec(line);
-      if (currentDate) {
-        if (currentDate[0] > date) {
+      const header = this.oaiReleaseHeaderRegex.exec(line);
+      if (header) {
+        if (header[1] > date) {
           this.logger.info('Reading the lines');
           readLines = true;
         } else {
           this.logger.info(`Changes from OpenAPI specs: ${fileData}`);
           break;
         }
-      } else if (readLines) {
+      } else if (readLines && !this.dateRegex.test(line)) {
+        /*
+         * Dated lines are dropped, as before. This output is prepended to CHANGES.md, and the next
+         * run takes its first dated line as the last release date -- a copied "- ## YYYY-MM-DD"
+         * sub-heading would be mistaken for it.
+         */
         fileData += `${line}\n`;
       }
     }
