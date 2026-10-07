@@ -29,7 +29,12 @@
     "posttest": "eslint --ignore-path .gitignore ."
   },
   "overrides": {
-    "ejs": "^6.0.1"
+    "ejs": "^6.0.1",
+    "undici": "^6.29.0",
+    "argparse": "^2.0.1",
+    "@oclif/core": {
+      "globby": "^7.1.1"
+    }
   },
   "dependencies": {
     "@actions/core": "^2.0.0",
