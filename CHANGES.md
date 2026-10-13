@@ -1,3 +1,22 @@
+---------------------------
+**Library - Fix**
+- [PR #167](https://github.com/twilio/twilio-oai/pull/167): upgrade version. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+
+**Audiences**
+- Minor updates (formatting, metadata)
+- Minor updates (formatting, metadata)
+
+**Conversations**
+- Add PATCH /v2/Imports/{id} to cancel an import, and the `CANCELED` import status (dev-us1 and stage-us1)
+- Add Imports endpoints for 1console (private visibility, dev-us1 and stage-us1)
+
+**Events**
+- Remove the Replays API (`/v1/Replays`, beta feature `api.eventstreams.replay`); the feature was never GA and is being sunset **(breaking change)**
+
+**Messaging**
+- Enable messaging service add-ons, update messaging service, and opt-out configuration admin endpoints in prod-us1 and prod-ie1
+
+
 ## [9.1.0](https://github.com/twilio/twilio-cli-core/compare/9.0.1...9.1.0) (2026-10-07)
 
 ### Library - Fixes
