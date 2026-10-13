@@ -15,8 +15,4 @@ module.exports = {
     outputFormats: require('./services/output-formats'),
   },
   configureEnv: require('./services/env'),
-  releaseScripts: {
-    UpdateRelease: require('../.github/scripts/update-release'),
-    TriggerWorkflow: require('../.github/scripts/trigger-workflow'),
-  },
 };
