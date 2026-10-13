@@ -1,3 +1,10 @@
+## [9.2.0](https://github.com/twilio/twilio-cli-core/compare/9.1.0...9.2.0) (2026-10-13)
+
+### Library - Chores
+
+* add proxyquire to devDeps ([#335](https://github.com/twilio/twilio-cli-core/issues/335)) ([ea54467](https://github.com/twilio/twilio-cli-core/commit/ea544673b748ddaae5d36869c631d4b13eea3d71))
+
+
 ---------------------------
 **Library - Fix**
 - [PR #167](https://github.com/twilio/twilio-oai/pull/167): upgrade version. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
