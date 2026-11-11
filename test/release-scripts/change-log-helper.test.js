@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const { expect, test } = require('@twilio/cli-test');
-const mock = require('mock-fs');
+const tmp = require('tmp');
 
 const { ChangeLogHelper } = require('../../.github/scripts/change-log-helper');
 
@@ -10,10 +10,27 @@ const defaultDateRegex = /\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/;
 const cliCoreChangelogFile = 'CHANGES.md';
 const oaiChangelogFile = 'OAI_CHANGES.md';
 
+/*
+ * The helper reads and writes files relative to the current directory, so run each test in a
+ * throwaway directory holding the fixture files.
+ */
+let originalCwd;
+let tmpDir;
+const setupFiles = (files) => {
+  originalCwd = process.cwd();
+  tmpDir = tmp.dirSync({ unsafeCleanup: true });
+  process.chdir(tmpDir.name);
+  Object.entries(files).forEach(([name, content]) => fs.writeFileSync(name, content));
+};
+const teardownFiles = () => {
+  process.chdir(originalCwd);
+  tmpDir.removeCallback();
+};
+
 describe('release-scripts', () => {
   describe('change-log-helper', () => {
     beforeEach(() => {
-      mock({
+      setupFiles({
         'CHANGES.md':
           '[2021-08-26] Version 2.28.1\n' +
           '---------------------------\n' +
@@ -55,7 +72,7 @@ describe('release-scripts', () => {
       });
     });
     afterEach(() => {
-      mock.restore();
+      teardownFiles();
     });
     test.it('change-log-helper Default', () => {
       const changeLogHelper = new ChangeLogHelper();
