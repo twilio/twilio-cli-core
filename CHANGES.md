@@ -1,3 +1,10 @@
+## [9.3.0](https://github.com/twilio/twilio-cli-core/compare/9.2.0...9.3.0) (2026-11-11)
+
+### Library - Chores
+
+* undici dependency ([#339](https://github.com/twilio/twilio-cli-core/issues/339)) ([d29b9b0](https://github.com/twilio/twilio-cli-core/commit/d29b9b08666d58ce224de9578f7c17ac4202a1f0))
+
+
 ---------------------------
 **Twiml**
 - Add ElevenLabs voices to `<Say>` verb.
