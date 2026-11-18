@@ -1,3 +1,6 @@
+## [9.3.1](https://github.com/twilio/twilio-cli-core/compare/9.3.0...9.3.1) (2026-11-18)
+
+
 ---------------------------
 **Twiml**
 - Add `conversation_id` and `conversation_configuration` attributes to `<ConversationRelay>` and `<Transcription>` nouns
